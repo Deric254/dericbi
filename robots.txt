@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://deric-exes-analytics.netlify.app/sitemap.xml

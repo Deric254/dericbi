@@ -1,0 +1,25 @@
+# Force browser download for Python & SQL source files
+/downloads/*.py
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment
+  X-Content-Type-Options: nosniff
+  Cache-Control: public, max-age=3600
+
+/downloads/*.sql
+  Content-Type: application/octet-stream
+  Content-Disposition: attachment
+  X-Content-Type-Options: nosniff
+  Cache-Control: public, max-age=3600
+
+# (Optional) Force download for other raw source if needed
+#/downloads/*.ipynb
+#  Content-Type: application/octet-stream
+#  Content-Disposition: attachment
+#  X-Content-Type-Options: nosniff
+
+# Security hardening (optional global)
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()

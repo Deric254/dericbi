@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en" class="overflow-x-hidden">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services – EXES </title>
+  <meta name="description" content="EXES offers professional data analysis, Excel cleanup, PowerBI dashboards, and business intelligence services in Kenya. Transform your data into actionable insights.">
+  <meta name="keywords" content="data analysis services Kenya, Excel cleanup, PowerBI dashboards, business intelligence, data visualization, analytics consulting">
+  <meta name="author" content="Deric Marangu">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+/* Subtle hover effect for all buttons */
+button, .fancy-btn, .glow-btn {
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s, color 0.2s;
+}
+button:hover, .fancy-btn:hover, .glow-btn:hover {
+  box-shadow: 0 2px 12px 0 #49A07833, 0 0 8px #facc15;
+  transform: translateY(-2px) scale(1.03);
+  background: #fef9c3;
+  color: #222;
+}
+
+/* Card hover effect */
+.card, .list-card, .project-card {
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover, .list-card:hover, .project-card:hover {
+  box-shadow: 0 4px 16px 0 #2563EB22, 0 0 8px #49A07833;
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Improve color contrast for accessibility */
+.text-gray-600 {
+  color: #222 !important;
+}
+.text-gray-500 {
+  color: #333 !important;
+}
+
+/* Ensure all images have alt text for accessibility */
+img:not([alt]) {
+  outline: 2px dashed #facc15;
+}
+    @keyframes slide {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .animate-slide {
+      animation: slide 20s linear infinite;
+    }
+  </style>
+  
+  <!-- ✅ Favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="https://deric-exes-analytics.netlify.app/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://deric-exes-analytics.netlify.app/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://deric-exes-analytics.netlify.app/icon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://deric-exes-analytics.netlify.app/icon/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="https://deric-exes-analytics.netlify.app/icon/android-chrome-512x512.png">
+<link rel="shortcut icon" href="https://deric-exes-analytics.netlify.app/icon/favicon.ico">
+<link rel="manifest" href="https://deric-exes-analytics.netlify.app/icon/site.webmanifest">
+<meta name="theme-color" content="#ffffff">
+
+  <!-- ✅ EXES Chatbot -->
+  <script src="assets/js/chatbot.js"></script>
+</head>
+<body class="bg-white text-gray-800 flex flex-col min-h-screen">
+
+<!-- ✅ Responsive Navbar -->
+<nav class="bg-[#49A078] text-white px-4 py-3 shadow-md sticky top-0 z-50">
+  <div class="container mx-auto flex items-center justify-between gap-4">
+
+    <!-- ✅ Logo & Brand -->
+    <div class="flex items-center gap-3 shrink-0">
+      <img src="assets/img/logo.png" 
+           alt="EXES Logo" 
+           class="h-14 w-14 sm:h-16 sm:w-16 rounded-full object-cover shadow-md border-2 border-white" />
+      <span class="font-bold text-2xl leading-none">EXES</span>
+
+      <!-- ✅ Extra Links for Small Screens -->
+      <div class="flex gap-3 ml-4 md:hidden">
+  <a href="index.html" class="nav-link text-xs tracking-wide">Home</a>
+  <a href="services.html" class="nav-link text-xs tracking-wide font-bold underline underline-offset-4 text-yellow-300">Services</a>
+  <a href="My-projects.html" class="nav-link text-xs tracking-wide">Projects</a>
+      </div>
+    </div>
+
+    <!-- ✅ Scrolling Text (Visible on medium+) -->
+    <div class="hidden md:flex flex-1 justify-center overflow-hidden relative h-10 px-6">
+      <div class="whitespace-nowrap animate-slide text-lg font-semibold text-[#facc15] tracking-wide flex items-center">
+        • We Analyze, You Decide • We Analyze, You Decide • We Analyze, You Decide • We Analyze, You Decide •
+      </div>
+    </div>
+
+    <!-- ✅ Desktop Nav Links -->
+    <ul class="hidden md:flex gap-6 text-sm font-medium items-center shrink-0">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="My-projects.html" class="nav-link">Projects</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+  <li><a href="services.html" class="nav-link font-bold underline underline-offset-4 text-yellow-300">Services</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="terms.html" class="nav-link">Terms & Conditions</a></li>
+      <li><a href="https://tujengane.netlify.app/" class="nav-link">Tujengane</a></li>
+    </ul>
+
+    <!-- ✅ Hamburger Menu -->
+    <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none ml-3">☰</button>
+  </div>
+
+  <!-- ✅ Mobile Menu -->
+  <div id="mobile-menu" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex-col bg-[#3e8865] px-4">
+    <a href="index.html" class="nav-link block py-3 border-b border-green-300">Home</a>
+  <a href="services.html" class="nav-link block py-3 border-b border-green-300 font-bold underline underline-offset-4 text-yellow-300">Services</a>
+    <a href="My-projects.html" class="nav-link block py-3 border-b border-green-300">Projects</a>
+    <a href="contact.html" class="nav-link block py-3 border-b border-green-300">Contact</a>
+    <a href="about.html" class="nav-link block py-3 border-b border-green-300">About Us</a>
+    <a href="terms.html" class="nav-link block py-3">Terms & Conditions</a>
+     <a href=" https://tujengane.netlify.app/" class="nav-link block py-3">Tujengane</a>
+   
+  </div>
+</nav>
+
+<!-- ✅ CSS -->
+<style>
+/* Navigation Links Hover Glow */
+.nav-link {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.nav-link:hover {
+  color: #facc15; /* Soft Yellow */
+  text-shadow: 0 0 4px rgba(250, 204, 21, 0.4);
+}
+
+/* Continuous Scrolling Animation */
+@keyframes slide {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.animate-slide {
+  animation: slide 20s linear infinite;
+}
+</style>
+
+<!-- ✅ JS -->
+<script>
+const toggleBtn = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+
+toggleBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('max-h-0');
+  mobileMenu.classList.toggle('max-h-screen');
+});
+</script>
+
+<section class="bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] py-1 sm:py-6 md:py-12 px-0 w-full m-1">
+  <div class="w-full">
+
+<!-- Refined Powerful Opening Statement -->
+<div class="bg-gradient-to-br from-green-50 via-white to-green-100 p-4 sm:p-8 md:p-10 rounded-2xl shadow-lg border border-green-200 mb-8 relative overflow-hidden">
+  <span class="absolute left-0 top-1/2 -translate-y-1/2 opacity-20 pointer-events-none select-none w-64 h-64 md:w-96 md:h-96 flex items-center justify-center">
+    <span class="inline-flex items-center justify-center w-full h-full rounded-full bg-gradient-to-br from-[#49A078] via-[#facc15] to-[#2563EB] shadow-lg">
+      <i class="fas fa-chart-line text-white text-[7rem] md:text-[10rem]"></i>
+    </span>
+  </span>
+  <div class="relative z-10 text-left">
+    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-green-700 mb-4 leading-tight">
+      💰 Your Business Might Be Leaking Profits — Quietly.
+    </h2>
+    <p class="text-base sm:text-lg text-gray-800 leading-relaxed mb-3">
+      Most businesses don't lose money from theft — they lose it silently, every day, through untracked decisions.
+      At <span class="font-bold text-[#49A078]">EXES</span>, we expose those hidden drains and help you reclaim lost revenue.
+    </p>
+    <ul class="list-disc list-inside space-y-2 text-base sm:text-lg text-gray-800 font-medium">
+      <li>📦 Stock that doesn't move — tying up your money.</li>
+      <li>🧾 Sales not tracked — you're flying blind.</li>
+      <li>💸 Cash that disappears — no digital trail, no accountability.</li>
+      <li>📉 Decisions made from gut — not grounded in real numbers.</li>
+    </ul>
+    <p class="mt-4 text-base sm:text-lg text-gray-800 leading-relaxed">
+      💵 Our structured analytics help you stop bleeding revenue. For many clients, 
+      it's the difference between a <strong>KSh 1 million</strong> year and a <strong>KSh 10 million</strong> breakthrough.
+    </p>
+  </div>
+</div>
+
+    <!-- 📊 Clear Dual Offering -->
+  <div class="grid md:grid-cols-2 gap-4 sm:gap-6 mb-8">
+      <!-- For those without data -->
+  <div class="bg-gradient-to-br from-orange-50 via-white to-orange-100 p-4 sm:p-6 rounded-xl border-l-4 border-orange-400 shadow">
+        <h3 class="text-xl font-semibold text-orange-700 mb-2">Don't have data yet?</h3>
+        <p class="text-gray-700 mb-4">We set up tracking systems from scratch.</p>
+        <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7" target="_blank" 
+           class="bg-orange-500 text-white px-4 py-2 rounded font-semibold hover:bg-orange-600 transition">
+          Get Setup Help
+        </a>
+      </div>
+      
+      <!-- For those with data -->
+  <div class="bg-gradient-to-br from-blue-50 via-white to-blue-100 p-4 sm:p-6 rounded-xl border-l-4 border-blue-400 shadow">
+        <h3 class="text-xl font-semibold text-blue-700 mb-2">Already have data?</h3>
+        <p class="text-gray-700 mb-4">We'll clean it up and build powerful insights.</p>
+        <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank" 
+           class="bg-blue-500 text-white px-4 py-2 rounded font-semibold hover:bg-blue-600 transition">
+          Submit Your Data
+        </a>
+      </div>
+    </div>
+
+    <!-- 🎯 Three Paths Forward -->
+  <h2 class="text-2xl font-bold text-[#49A078] text-center mb-6">Three Ways We Help You Win</h2>
+  <div class="grid md:grid-cols-3 gap-4 sm:gap-6 mb-10">
+      <!-- Path 1: Excel Cleanup -->
+  <div class="bg-gradient-to-br from-green-50 via-white to-green-100 p-4 sm:p-6 rounded-xl shadow border border-green-200">
+        <div class="text-center mb-4">
+          <i class="fas fa-file-excel text-green-600 text-4xl mb-2"></i>
+          <h3 class="text-xl font-bold text-green-700">Excel Cleanup</h3>
+        </div>
+        <ul class="space-y-2 text-gray-700">
+          <li>✅ Remove duplicates and errors</li>
+          <li>✅ Organize messy spreadsheets</li>
+          <li>✅ Create automated formulas</li>
+          <li>✅ Build summary dashboards</li>
+        </ul>
+      </div>
+
+      <!-- Path 2: Data Analysis -->
+  <div class="bg-gradient-to-br from-blue-50 via-white to-blue-100 p-4 sm:p-6 rounded-xl shadow border border-blue-200">
+        <div class="text-center mb-4">
+          <i class="fas fa-chart-line text-blue-600 text-4xl mb-2"></i>
+          <h3 class="text-xl font-bold text-blue-700">Data Analysis</h3>
+        </div>
+        <ul class="space-y-2 text-gray-700">
+          <li>✅ Find hidden patterns</li>
+          <li>✅ Identify profit opportunities</li>
+          <li>✅ Track key performance metrics</li>
+          <li>✅ Generate actionable insights</li>
+        </ul>
+      </div>
+
+      <!-- Path 3: PowerBI Dashboards -->
+  <div class="bg-gradient-to-br from-purple-50 via-white to-purple-100 p-4 sm:p-6 rounded-xl shadow border border-purple-200">
+        <div class="text-center mb-4">
+          <i class="fas fa-chart-bar text-purple-600 text-4xl mb-2"></i>
+          <h3 class="text-xl font-bold text-purple-700">PowerBI Dashboards</h3>
+        </div>
+        <ul class="space-y-2 text-gray-700">
+          <li>✅ Real-time data visualization</li>
+          <li>✅ Interactive business reports</li>
+          <li>✅ Automated data updates</li>
+          <li>✅ Mobile-friendly dashboards</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Try Yourself Button -->
+  <div class="flex justify-end mb-6">
+      <a href="https://exes-ebi.streamlit.app/" target="_blank"
+        class="bg-[#facc15] hover:bg-[#eab308] text-black px-4 py-2 rounded-lg font-semibold flex items-center gap-2 shadow transition">
+        <i class="fas fa-flask"></i>Try Yourself
+      </a>
+    </div>
+
+    <!-- 💼 Simple Process -->
+  <div class="bg-gradient-to-br from-[#e0f7fa] to-[#f0fdf4] p-4 sm:p-8 rounded-xl mb-8">
+      <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">Our Simple Process</h2>
+      
+  <div class="grid md:grid-cols-4 gap-4 sm:gap-6">
+        <div class="text-center">
+          <div class="bg-[#49A078] text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">1</div>
+          <h4 class="font-semibold text-gray-800 mb-2">Send Data</h4>
+          <p class="text-gray-600 text-sm">Upload your files or describe your needs</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-[#49A078] text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">2</div>
+          <h4 class="font-semibold text-gray-800 mb-2">We Analyze</h4>
+          <p class="text-gray-600 text-sm">Our experts clean and analyze your data</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-[#49A078] text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">3</div>
+          <h4 class="font-semibold text-gray-800 mb-2">Get Results</h4>
+          <p class="text-gray-600 text-sm">Receive clean data and actionable insights</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-[#49A078] text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">4</div>
+          <h4 class="font-semibold text-gray-800 mb-2">Make Decisions</h4>
+          <p class="text-gray-600 text-sm">Use data-driven insights to grow your business</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 📞 Call to Action -->
+  <div class="text-center bg-gradient-to-br from-[#49A078] via-[#facc15] to-[#2563EB] text-white p-4 sm:p-8 rounded-xl">
+      <h2 class="text-2xl font-bold mb-4">Ready to Transform Your Data?</h2>
+      <p class="text-lg mb-6">Join hundreds of businesses that trust EXES for their data needs.</p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://wa.me/254791360805" target="_blank" 
+           class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition flex items-center justify-center">
+          <i class="fab fa-whatsapp mr-2"></i>WhatsApp Us
+        </a>
+        <a href="mailto:dericmarangu@gmail.com" 
+           class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition flex items-center justify-center">
+          <i class="fas fa-envelope mr-2"></i>Send Email
+        </a>
+        <a href="contact.html" 
+           class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition flex items-center justify-center">
+          <i class="fas fa-phone mr-2"></i>All Contacts
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ Compact Action Bar -->
+<section class="bg-gray-50 py-4 px-4 border-t border-gray-200">
+  <div class="container mx-auto max-w-4xl">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+      <!-- Quick Actions -->
+      <div class="flex flex-wrap items-center gap-2">
+        <button onclick="toggleProjectServices()" 
+          class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded text-xs font-semibold transition group">
+          <i class="fas fa-rocket mr-1"></i>Start Project
+          <span class="hidden group-hover:inline ml-1 text-[#facc15]">✓</span>
+        </button>
+        <button onclick="toggleDownloadServices()" 
+          class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-3 py-2 rounded text-xs font-semibold transition group">
+          <i class="fas fa-download mr-1"></i>Download Files
+          <span class="hidden group-hover:inline ml-1 text-[#facc15]">📁</span>
+        </button>
+        <a href="https://exes-ebi.streamlit.app/" target="_blank"
+          class="bg-[#facc15] hover:bg-[#eab308] text-black px-3 py-2 rounded text-xs font-semibold transition flex items-center gap-1">
+          <i class="fas fa-flask"></i>Try Yourself
+        </a>
+        <div class="hidden sm:flex items-center text-xs text-gray-500">
+          <i class="fas fa-shield-alt text-green-600 mr-1"></i>Secure
+        </div>
+      </div>
+
+      <!-- Expandable Project Section -->
+      <div id="projectSectionServices" class="hidden w-full sm:w-auto">
+        <div class="flex gap-2 items-center">
+          <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank"
+            class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded text-xs font-semibold transition">
+            <i class="fas fa-upload mr-1"></i>I Have Data
+          </a>
+          <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7" target="_blank"
+            class="bg-[#f59e0b] hover:bg-[#d97706] text-white px-3 py-2 rounded text-xs font-semibold transition">
+            <i class="fas fa-chart-line mr-1"></i>I Need Setup
+          </a>
+        </div>
+      </div>
+
+      <!-- Expandable Download Section -->
+      <div id="downloadSectionServices" class="hidden w-full sm:w-auto">
+        <div class="flex flex-col xs:flex-row gap-2 items-center">
+          <input id="fileNameInputServices" type="text" placeholder="File name..." 
+            class="px-3 py-2 rounded text-xs border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#2563EB] w-full xs:w-32 min-w-0">
+          <button onclick="downloadFileServices()" 
+            class="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs font-semibold transition">
+            <i class="fas fa-download"></i>
+          </button>
+        </div>
+        <p id="errorMessageServices" class="text-red-600 text-xs mt-1 hidden">File not found. Contact: +254791360805</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+// Toggle project section
+function toggleProjectServices() {
+  const section = document.getElementById('projectSectionServices');
+  const downloadSection = document.getElementById('downloadSectionServices');
+  downloadSection.classList.add('hidden');
+  section.classList.toggle('hidden');
+}
+
+// Toggle download section
+function toggleDownloadServices() {
+  const section = document.getElementById('downloadSectionServices');
+  const projectSection = document.getElementById('projectSectionServices');
+  projectSection.classList.add('hidden');
+  section.classList.toggle('hidden');
+  if (!section.classList.contains('hidden')) {
+    document.getElementById('fileNameInputServices').focus();
+  }
+}
+
+// Download function
+function downloadFileServices() {
+  const input = document.getElementById('fileNameInputServices');
+  const fileName = input.value.trim();
+  const error = document.getElementById('errorMessageServices');
+
+  if (!fileName) {
+    error.textContent = 'Enter file name first.';
+    error.classList.remove('hidden');
+    return;
+  }
+
+  error.classList.add('hidden');
+  
+  const link = document.createElement('a');
+  link.href = `downloads/${fileName}`;
+  link.download = fileName;
+  document.body.appendChild(link);
+  
+  fetch(`downloads/${fileName}`)
+    .then(response => {
+      if (response.ok) {
+        link.click();
+        input.value = '';
+        document.getElementById('downloadSectionServices').classList.add('hidden');
+      } else {
+        error.classList.remove('hidden');
+      }
+    })
+    .catch(() => {
+      error.classList.remove('hidden');
+    })
+    .finally(() => {
+      document.body.removeChild(link);
+    });
+}
+
+// Enter key support
+document.getElementById('fileNameInputServices')?.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    downloadFileServices();
+  }
+});
+
+// Newsletter toggle
+function toggleNewsletter() {
+  const newsletter = document.getElementById('newsletterSignup');
+  newsletter.classList.toggle('hidden');
+}
+</script>
+
+<!-- Add a subtle Tujengane Data Basics promo at the bottom before the footer -->
+<div class="w-full text-center py-2 text-xs text-gray-400 bg-transparent mt-8">
+  <a href="https://forms.gle/Mi9eGTF7AQFBTxsw7" target="_blank" class="underline hover:text-[#49A078]">
+    🎓 Tujengane Data Basics: Free class – Learn to collect, clean, and store data
+  </a>
+  <span class="mx-2">|</span>
+  <a href="https://chat.whatsapp.com/DHO6xjyr8xu6x5opHRG7fl" target="_blank" class="underline hover:text-[#2563EB]">
+    WhatsApp Group
+  </a>
+</div>
+
+<!-- ✅ Footer -->
+<footer class="bg-[#DFF3EA] py-4 px-4 text-sm text-gray-600 mt-auto border-t border-green-300">
+  <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+
+<!-- ✅ Footer Logo and Tagline -->
+<div class="flex items-center gap-3">
+  <img src="assets/img/logo.png" 
+       alt="EXES Logo" 
+       class="h-12 w-12 rounded-full object-cover shadow-md border-2 border-white" />
+  <div class="flex flex-col leading-tight">
+    <span class="font-extrabold text-xl text-gray-800 tracking-wide">
+      E<span class="text-[22px] text-green-600 drop-shadow font-black">X</span>ES
+    </span>
+    <span class="text-xs italic text-gray-500 -mt-1">We analyze. You decide.</span>
+  </div>
+</div>
+
+    <!-- ✅ Copyright & Links Stacked -->
+    <div class="flex flex-col items-center text-center">
+      <div class="text-xs sm:text-sm text-gray-500">
+        &copy; 2025 EXES – Built by 
+        <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link">Deric Marangu</a>. All rights reserved.
+      </div>
+      <div class="flex gap-4 mt-1">
+        <a href="about.html" class="footer-link">About Us</a>
+        <a href="terms.html" class="footer-link">Terms & Conditions</a>
+        <a href="https://exes-ebi.streamlit.app/" target="_blank" class="footer-link font-bold text-[#49A078]">Try Yourself</a>
+        <button onclick="toggleNewsletter()" class="footer-link text-xs">
+          <i class="fas fa-envelope mr-1"></i>Newsletter
+        </button>
+      </div>
+      <!-- Hidden Newsletter Signup -->
+      <div id="newsletterSignup" class="hidden mt-2 w-full max-w-xs">
+        <div class="flex text-xs">
+          <input type="email" placeholder="Your email..." 
+            class="flex-1 px-2 py-1 text-xs border border-gray-300 rounded-l focus:outline-none focus:ring-1 focus:ring-[#49A078]">
+          <button class="bg-[#49A078] text-white px-3 py-1 rounded-r text-xs hover:bg-[#3e8865] transition">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        <p class="text-xs text-gray-400 mt-1">Monthly insights & tips</p>
+      </div>
+    </div>
+
+    <!-- ✅ Social + Founder -->
+    <div class="flex items-center gap-3">
+      <div class="flex flex-col items-end text-right">
+        <div class="flex items-center gap-2">
+          <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-semibold text-sm">Deric Marangu</a>
+          <div class="flex gap-2">
+            <a href="https://wa.me/254791360805" target="_blank" class="footer-link"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:dericmarangu@gmail.com" class="footer-link" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://web.facebook.com/deric.aldertrax" target="_blank" class="footer-link"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.facebook.com/exes.125107/" target="_blank" class="footer-link" title="EXES Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" class="footer-link"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <p class="text-xs italic text-gray-600">
+          CEO and Founder of 
+          <a href="https://deric-exes-analytics.netlify.app/" target="_blank" class="footer-link font-semibold">
+            E<span class="text-green-600 text-[15px] font-bold drop-shadow">X</span>ES
+          </a>
+        </p>
+      </div>
+      <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link rounded-full">
+        <img src="assets/img/deric.png" alt="Deric's Photo" class="h-12 w-12 rounded-full object-cover shadow-md" />
+      </a>
+    </div>
+  </div>
+<style>
+.footer-link {
+  color: inherit;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.footer-link:hover {
+  color: #facc15; /* Soft Yellow */
+  text-shadow: 0 0 4px rgba(250, 204, 21, 0.5); /* Subtle glow */
+}
+</style>
+</footer>
+</body>
+</html>

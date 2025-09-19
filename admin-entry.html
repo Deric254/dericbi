@@ -1,0 +1,121 @@
+/* Subtle hover effect for all buttons */
+button, .fancy-btn, .glow-btn {
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s, color 0.2s;
+}
+button:hover, .fancy-btn:hover, .glow-btn:hover {
+  box-shadow: 0 2px 12px 0 #49A07833, 0 0 8px #facc15;
+  transform: translateY(-2px) scale(1.03);
+  background: #fef9c3;
+  color: #222;
+}
+
+/* Card hover effect */
+.card, .list-card, .project-card {
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover, .list-card:hover, .project-card:hover {
+  box-shadow: 0 4px 16px 0 #2563EB22, 0 0 8px #49A07833;
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Improve color contrast for accessibility */
+.text-gray-600 {
+  color: #222 !important;
+}
+.text-gray-500 {
+  color: #333 !important;
+}
+
+/* Ensure all images have alt text for accessibility */
+img:not([alt]) {
+  outline: 2px dashed #facc15;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Case Study – EXES Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800 min-h-screen flex flex-col">
+  <!-- Sticky Navbar -->
+  <nav class="bg-[#49A078] text-white px-4 py-3 shadow-md sticky top-0 z-50" role="navigation" aria-label="Main Navigation">
+    <div class="flex items-center justify-between">
+      <a href="index.html" class="font-bold text-xl flex items-center gap-2">
+        <span class="hidden sm:inline">EXES</span>
+      </a>
+      <button class="sm:hidden p-2 focus:outline-none" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="hidden sm:flex gap-6 font-semibold text-base">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="my-projects.html" class="nav-link">Projects</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="admin-entry.html" class="nav-link font-bold underline underline-offset-4 text-yellow-300">Admin Entry</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="terms.html" class="nav-link">Terms & Conditions</a></li>
+        <li><a href="https://tujengane.netlify.app/" class="nav-link">Tujengane</a></li>
+      </ul>
+    </div>
+    <!-- Mobile Menu -->
+    <ul id="mobileMenu" class="sm:hidden flex flex-col gap-2 mt-2 font-semibold text-base bg-[#49A078] rounded shadow-lg p-4 hidden">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="my-projects.html" class="nav-link">Projects</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="admin-entry.html" class="nav-link font-bold underline underline-offset-4 text-yellow-300">Admin Entry</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="terms.html" class="nav-link">Terms & Conditions</a></li>
+      <li><a href="https://tujengane.netlify.app/" class="nav-link">Tujengane</a></li>
+    </ul>
+  </nav>
+  <div class="max-w-3xl mx-auto bg-white p-8 shadow-lg rounded-xl">
+    <h1 class="text-2xl font-bold mb-6 text-center text-[#49A078]">📘 Add New Case Study</h1>
+    <form id="caseForm" class="space-y-4">
+      <input class="w-full p-2 border rounded" placeholder="Title" id="title" required>
+      <input class="w-full p-2 border rounded" placeholder="Date (YYYY-MM-DD)" id="date" required>
+      <textarea class="w-full p-2 border rounded" placeholder="Description" id="description" rows="4"></textarea>
+      <input class="w-full p-2 border rounded" placeholder="Tools (comma-separated)" id="tools">
+      <textarea class="w-full p-2 border rounded" placeholder="Files (name|link per line)" id="files" rows="3"></textarea>
+      <input class="w-full p-2 border rounded" placeholder="GitHub Link" id="github">
+      <button type="submit" class="bg-[#49A078] text-white px-6 py-2 rounded hover:bg-[#3e8865] transition w-full">Generate JSON</button>
+    </form>
+
+    <div id="output" class="mt-6 bg-gray-100 p-4 rounded text-sm whitespace-pre-wrap font-mono hidden"></div>
+  </div>
+
+  <script>
+    document.getElementById('caseForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const title = document.getElementById('title').value.trim();
+      const date = document.getElementById('date').value.trim();
+      const description = document.getElementById('description').value.trim();
+      const tools = document.getElementById('tools').value.trim();
+      const github = document.getElementById('github').value.trim();
+
+      const filesRaw = document.getElementById('files').value.trim().split('\\n');
+      const files = filesRaw.map(line => {
+        const [name, link] = line.split('|');
+        return { name: name.trim(), link: link.trim() };
+      });
+
+      const jsonBlock = {
+        title,
+        date,
+        description,
+        tools,
+        files,
+        github
+      };
+
+      const output = document.getElementById('output');
+      output.textContent = JSON.stringify(jsonBlock, null, 2);
+      output.classList.remove('hidden');
+    });
+  </script>
+
+</body>
+</html>

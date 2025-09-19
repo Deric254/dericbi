@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" class="overflow-x-hidden">
+<head>
+  <meta charset="UTF-8"  <link rel="manifest" href="https://deric-exes-analytics.netlify.app/icon/site.webmanifest">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- ✅ EXES Chatbot -->
+  <script src="assets/js/chatbot.js"></script>
+</head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – EXES | Expert Data Analysis Services Kenya</title>
+  <meta name="description" content="Contact EXES for Excel cleanup, data analysis, and business insights in Kenya. Professional data solutions by Deric Marangu. WhatsApp: +254791360805">
+  <meta name="keywords" content="contact EXES Kenya, data analysis contact, Excel cleanup services, business insights Kenya, Deric Marangu contact, data visualization services">
+  <meta name="author" content="Deric Marangu">
+  
+  <!-- Enhanced Open Graph Meta -->
+  <meta property="og:title" content="Contact EXES - Professional Data Analysis Services">
+  <meta property="og:description" content="Get in touch with EXES for expert data analysis, Excel cleanup, and business insights. Multiple contact options available.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deric-exes-analytics.netlify.app/contact.html">
+  <meta property="og:image" content="https://deric-exes-analytics.netlify.app/assets/img/logo.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Contact EXES - Data Analysis Experts">
+  <meta name="twitter:description" content="Professional data analysis and Excel cleanup services in Kenya. Contact us today!">
+  <meta name="twitter:image" content="https://deric-exes-analytics.netlify.app/assets/img/logo.png">
+  
+  <!-- Structured Data for Local Business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "EXES Analytics",
+    "description": "Professional data analysis and Excel cleanup services",
+    "telephone": "+254791360805",
+    "email": "dericmarangu@gmail.com",
+    "founder": {
+      "@type": "Person",
+      "name": "Deric Marangu"
+    },
+    "serviceArea": {
+      "@type": "Place",
+      "name": "Kenya"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/deric-marangu-134340297/",
+      "https://www.facebook.com/exes.125107/",
+      "https://www.instagram.com/dericmarangu/"
+    ]
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+/* Subtle hover effect for all buttons */
+button, .fancy-btn, .glow-btn {
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s, color 0.2s;
+}
+button:hover, .fancy-btn:hover, .glow-btn:hover {
+  box-shadow: 0 2px 12px 0 #49A07833, 0 0 8px #facc15;
+  transform: translateY(-2px) scale(1.03);
+  background: #fef9c3;
+  color: #222;
+}
+
+/* Card hover effect */
+.card, .list-card, .project-card {
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover, .list-card:hover, .project-card:hover {
+  box-shadow: 0 4px 16px 0 #2563EB22, 0 0 8px #49A07833;
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Improve color contrast for accessibility */
+.text-gray-600 {
+  color: #222 !important;
+}
+.text-gray-500 {
+  color: #333 !important;
+}
+
+/* Ensure all images have alt text for accessibility */
+img:not([alt]) {
+  outline: 2px dashed #facc15;
+}
+    @keyframes slide {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .animate-slide {
+      animation: slide 20s linear infinite;
+    }
+  </style>
+  
+  <!-- ✅ Favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="https://deric-exes-analytics.netlify.app/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://deric-exes-analytics.netlify.app/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://deric-exes-analytics.netlify.app/icon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://deric-exes-analytics.netlify.app/icon/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="https://deric-exes-analytics.netlify.app/icon/android-chrome-512x512.png">
+<link rel="shortcut icon" href="https://deric-exes-analytics.netlify.app/icon/favicon.ico">
+<link rel="manifest" href="https://deric-exes-analytics.netlify.app/icon/site.webmanifest">
+<meta name="theme-color" content="#ffffff">
+</head>
+<body class="bg-white text-gray-800 flex flex-col min-h-screen">
+
+<!-- ✅ Responsive Navbar -->
+<nav class="bg-[#49A078] text-white px-4 py-3 shadow-md sticky top-0 z-50" role="navigation" aria-label="Main Navigation">
+  <div class="container mx-auto flex items-center justify-between gap-4">
+
+    <!-- ✅ Logo & Brand -->
+    <div class="flex items-center gap-3 shrink-0">
+      <img src="assets/img/logo.png" 
+           alt="EXES Logo" 
+           class="h-14 w-14 sm:h-16 sm:w-16 rounded-full object-cover shadow-md border-2 border-white" />
+      <span class="font-bold text-2xl leading-none">EXES</span>
+
+      <!-- ✅ Extra Links for Small Screens -->
+      <div class="flex gap-3 ml-4 md:hidden">
+        <a href="index.html" class="nav-link text-xs tracking-wide">Home</a>
+        <a href="services.html" class="nav-link text-xs tracking-wide">Services</a>
+        <a href="My-projects.html" class="nav-link text-xs tracking-wide">Projects</a>
+      </div>
+    </div>
+
+    <!-- ✅ Scrolling Text (Visible on medium+) -->
+    <div class="hidden md:flex flex-1 justify-center overflow-hidden relative h-10 px-6">
+      <div class="whitespace-nowrap animate-slide text-lg font-semibold text-[#facc15] tracking-wide flex items-center">
+        • We Analyze, You Decide • We Analyze, You Decide • We Analyze, You Decide • We Analyze, You Decide •
+      </div>
+    </div>
+
+    <!-- ✅ Desktop Nav Links -->
+    <ul class="hidden md:flex gap-6 text-sm font-medium items-center shrink-0">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+      <li><a href="My-projects.html" class="nav-link">Projects</a></li>
+      <li><a href="contact.html" class="nav-link font-bold underline underline-offset-4 text-yellow-300">Contact</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="terms.html" class="nav-link">Terms & Conditions</a></li>
+      <li><a href="https://tujengane.netlify.app/" class="nav-link">Tujengane</a></li>
+    </ul>
+
+    <!-- ✅ Hamburger Menu -->
+    <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none ml-3">☰</button>
+  </div>
+
+  <!-- ✅ Mobile Menu -->
+  <div id="mobile-menu" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex-col bg-[#3e8865] px-4">
+    <a href="index.html" class="nav-link block py-3 border-b border-green-300">Home</a>
+    <a href="services.html" class="nav-link block py-3 border-b border-green-300">Services</a>
+    <a href="My-projects.html" class="nav-link block py-3 border-b border-green-300">Projects</a>
+    <a href="contact.html" class="nav-link block py-3 border-b border-green-300">Contact</a>
+    <a href="about.html" class="nav-link block py-3 border-b border-green-300">About Us</a>
+    <a href="terms.html" class="nav-link block py-3">Terms & Conditions</a>
+    <a href="https://tujengane.netlify.app/" class="nav-link block py-3">Tujengane</a>
+  </div>
+</nav>
+
+<!-- ✅ CSS -->
+<style>
+/* Navigation Links Hover Glow */
+.nav-link {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.nav-link:hover {
+  color: #facc15; /* Soft Yellow */
+  text-shadow: 0 0 4px rgba(250, 204, 21, 0.4);
+}
+
+/* Continuous Scrolling Animation */
+@keyframes slide {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.animate-slide {
+  animation: slide 20s linear infinite;
+}
+</style>
+
+<!-- ✅ JS -->
+<script>
+const toggleBtn = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+
+toggleBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('max-h-0');
+  mobileMenu.classList.toggle('max-h-screen'); // Now expands fully
+});
+</script>
+
+
+<!-- ✅ Contact Section -->
+<section class="relative py-4 sm:py-3 md:py-6 px-2 sm:px-3 md:px-4 w-full m-0 bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] flex-1 w-full overflow-hidden">
+  <!-- Decorative SVG Top Shape -->
+  <svg class="absolute top-0 left-0 w-full h-16 md:h-32 pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#49A078" fill-opacity="0.08" d="M0,32L80,69.3C160,107,320,181,480,176C640,171,800,85,960,69.3C1120,53,1280,107,1360,133.3L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
+  <!-- Decorative SVG Bottom Shape -->
+  <svg class="absolute bottom-0 left-0 w-full h-16 md:h-32 pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#2563EB" fill-opacity="0.07" d="M0,224L80,213.3C160,203,320,181,480,154.7C640,128,800,96,960,117.3C1120,139,1280,213,1360,245.3L1440,288L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+  <!-- Envelope-themed SVG (left) -->
+  <div class="absolute left-0 top-1/2 -translate-y-1/2 hidden md:block z-0">
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="40" width="80" height="40" rx="12" fill="#49A078" fill-opacity="0.13"/>
+      <rect x="30" y="55" width="60" height="8" rx="4" fill="#2563EB" fill-opacity="0.18"/>
+      <rect x="30" y="70" width="60" height="8" rx="4" fill="#facc15" fill-opacity="0.15"/>
+      <text x="60" y="95" text-anchor="middle" fill="#2563EB" font-size="18" font-family="Arial" font-weight="bold">✉️</text>
+    </svg>
+  </div>
+  <div class="relative z-10">
+  <div class="w-full m-0 px-0 text-center mb-4">
+    <h1 class="text-3xl font-bold text-[#49A078] mb-4">Get in Touch</h1>
+    <p class="text-gray-700 text-lg">
+      We’re just a click away. Choose your preferred way to connect with us.
+    </p>
+  </div>
+
+  <!-- ✅ Social Contact Grid -->
+  <div class="w-full m-1 px-0 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6">
+    <!-- WhatsApp -->
+    <a href="https://wa.me/254791360805" target="_blank" 
+       class="group flex flex-col items-center bg-green-50 p-4 rounded-lg hover:shadow-lg transition">
+      <i class="fab fa-whatsapp text-green-600 text-4xl mb-2 group-hover:scale-110 transition-transform"></i>
+      <span class="font-semibold text-gray-800">WhatsApp</span>
+      <span class="text-xs text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">Chat Now</span>
+    </a>
+    <!-- Email -->
+    <a href="mailto:dericmarangu@gmail.com" 
+       class="group flex flex-col items-center bg-blue-50 p-4 rounded-lg hover:shadow-lg transition">
+      <i class="fas fa-envelope text-blue-600 text-4xl mb-2 group-hover:scale-110 transition-transform"></i>
+      <span class="font-semibold text-gray-800">Email</span>
+      <span class="text-xs text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">Send Mail</span>
+    </a>
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/dericmarangu/" target="_blank" 
+       class="group flex flex-col items-center bg-pink-50 p-4 rounded-lg hover:shadow-lg transition">
+      <i class="fab fa-instagram text-pink-500 text-4xl mb-2 group-hover:scale-110 transition-transform"></i>
+      <span class="font-semibold text-gray-800">Instagram</span>
+      <span class="text-xs text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">Follow</span>
+    </a>
+    <!-- Facebook -->
+    <a href="https://web.facebook.com/deric.aldertrax" target="_blank" 
+       class="group flex flex-col items-center bg-blue-100 p-4 rounded-lg hover:shadow-lg transition">
+      <i class="fab fa-facebook text-blue-600 text-4xl mb-2 group-hover:scale-110 transition-transform"></i>
+      <span class="font-semibold text-gray-800">Facebook</span>
+      <span class="text-xs text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">Connect</span>
+    </a>
+    <!-- EXES Facebook -->
+    <a href="https://www.facebook.com/exes.125107/" target="_blank" 
+       class="group flex flex-col items-center bg-blue-100 p-4 rounded-lg hover:shadow-lg transition">
+      <i class="fab fa-facebook text-blue-600 text-4xl mb-2 group-hover:scale-110 transition-transform"></i>
+      <span class="font-semibold text-gray-800">EXES Facebook</span>
+      <span class="text-xs text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">Business</span>
+    </a>
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" 
+       class="group flex flex-col items-center bg-gray-100 p-4 rounded-lg hover:shadow-lg transition">
+      <i class="fab fa-linkedin text-blue-700 text-4xl mb-2 group-hover:scale-110 transition-transform"></i>
+      <span class="font-semibold text-gray-800">LinkedIn</span>
+      <span class="text-xs text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">Professional</span>
+    </a>
+  </div>
+</section>
+
+<!-- ✅ Compact Action Bar -->
+<section class="bg-gray-50 py-4 px-4 border-t border-gray-200">
+  <div class="container mx-auto max-w-4xl">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+      
+      <!-- Quick Actions -->
+      <div class="flex flex-wrap items-center gap-2">
+        <button onclick="toggleProjectContact()" 
+          class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded text-xs font-semibold transition group">
+          <i class="fas fa-rocket mr-1"></i>Start Project
+          <span class="hidden group-hover:inline ml-1 text-[#facc15]">✓</span>
+        </button>
+        <button onclick="toggleDownloadContact()" 
+          class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-3 py-2 rounded text-xs font-semibold transition group">
+          <i class="fas fa-download mr-1"></i>Download Files
+          <span class="hidden group-hover:inline ml-1 text-[#facc15]">📁</span>
+        </button>
+        <div class="hidden sm:flex items-center text-xs text-gray-500">
+          <i class="fas fa-shield-alt text-green-600 mr-1"></i>Secure
+        </div>
+      </div>
+
+      <!-- Expandable Project Section -->
+      <div id="projectSectionContact" class="hidden w-full sm:w-auto">
+        <div class="flex gap-2 items-center">
+          <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank"
+            class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded text-xs font-semibold transition">
+            <i class="fas fa-upload mr-1"></i>I Have Data
+          </a>
+          <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7" target="_blank"
+            class="bg-[#f59e0b] hover:bg-[#d97706] text-white px-3 py-2 rounded text-xs font-semibold transition">
+            <i class="fas fa-chart-line mr-1"></i>I Need Setup
+          </a>
+        </div>
+      </div>
+
+      <!-- Expandable Download Section -->
+      <div id="downloadSectionContact" class="hidden w-full sm:w-auto">
+        <div class="flex flex-col xs:flex-row gap-2 items-center">
+          <input id="fileNameInputContact" type="text" placeholder="File name..." 
+            class="px-3 py-2 rounded text-xs border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#2563EB] w-full xs:w-32 min-w-0">
+          <button onclick="downloadFileContact()" 
+            class="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs font-semibold transition">
+            <i class="fas fa-download"></i>
+          </button>
+        </div>
+        <p id="errorMessageContact" class="text-red-600 text-xs mt-1 hidden">File not found. Contact: +254791360805</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+// Toggle project section
+function toggleProjectContact() {
+  const section = document.getElementById('projectSectionContact');
+  const downloadSection = document.getElementById('downloadSectionContact');
+  downloadSection.classList.add('hidden');
+  section.classList.toggle('hidden');
+}
+
+// Toggle download section
+function toggleDownloadContact() {
+  const section = document.getElementById('downloadSectionContact');
+  const projectSection = document.getElementById('projectSectionContact');
+  projectSection.classList.add('hidden');
+  section.classList.toggle('hidden');
+  if (!section.classList.contains('hidden')) {
+    document.getElementById('fileNameInputContact').focus();
+  }
+}
+
+// Download function
+function downloadFileContact() {
+  const input = document.getElementById('fileNameInputContact');
+  const fileName = input.value.trim();
+  const error = document.getElementById('errorMessageContact');
+
+  if (!fileName) {
+    error.textContent = 'Enter file name first.';
+    error.classList.remove('hidden');
+    return;
+  }
+
+  error.classList.add('hidden');
+  
+  const link = document.createElement('a');
+  link.href = `downloads/${fileName}`;
+  link.download = fileName;
+  document.body.appendChild(link);
+  
+  fetch(`downloads/${fileName}`)
+    .then(response => {
+      if (response.ok) {
+        link.click();
+        input.value = '';
+        document.getElementById('downloadSectionContact').classList.add('hidden');
+      } else {
+        error.classList.remove('hidden');
+      }
+    })
+    .catch(() => {
+      error.classList.remove('hidden');
+    })
+    .finally(() => {
+      document.body.removeChild(link);
+    });
+}
+
+// Enter key support
+document.getElementById('fileNameInputContact')?.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    downloadFileContact();
+  }
+});
+
+// Newsletter toggle
+function toggleNewsletter() {
+  const newsletter = document.getElementById('newsletterSignup');
+  newsletter.classList.toggle('hidden');
+}
+</script>
+
+<!-- ✅ Footer -->
+<footer class="bg-[#DFF3EA] py-4 px-4 text-sm text-gray-600 mt-auto border-t border-green-300">
+  <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+
+<!-- ✅ Footer Logo and Tagline -->
+<div class="flex items-center gap-3">
+  <img src="assets/img/logo.png" 
+       alt="EXES Logo" 
+       class="h-12 w-12 rounded-full object-cover shadow-md border-2 border-white" />
+  <div class="flex flex-col leading-tight">
+    <span class="font-extrabold text-xl text-gray-800 tracking-wide">
+      E<span class="text-[22px] text-green-600 drop-shadow font-black">X</span>ES
+    </span>
+    <span class="text-xs italic text-gray-500 -mt-1">We analyze. You decide.</span>
+  </div>
+</div>
+
+
+    <!-- ✅ Copyright & Links Stacked -->
+    <div class="flex flex-col items-center text-center">
+      <div class="text-xs sm:text-sm text-gray-500">
+        &copy; 2025 EXES – Built by 
+        <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link">Deric Marangu</a>. All rights reserved.
+      </div>
+      <div class="flex gap-4 mt-1">
+        <a href="about.html" class="footer-link">About Us</a>
+        <a href="terms.html" class="footer-link">Terms & Conditions</a>
+        <button onclick="toggleNewsletter()" class="footer-link text-xs">
+          <i class="fas fa-envelope mr-1"></i>Newsletter
+        </button>
+      </div>
+      <!-- Hidden Newsletter Signup -->
+      <div id="newsletterSignup" class="hidden mt-2 w-full max-w-xs">
+        <div class="flex text-xs">
+          <input type="email" placeholder="Your email..." 
+            class="flex-1 px-2 py-1 text-xs border border-gray-300 rounded-l focus:outline-none focus:ring-1 focus:ring-[#49A078]">
+          <button class="bg-[#49A078] text-white px-3 py-1 rounded-r text-xs hover:bg-[#3e8865] transition">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        <p class="text-xs text-gray-400 mt-1">Monthly insights & tips</p>
+      </div>
+    </div>
+
+    <!-- ✅ Social + Founder -->
+    <div class="flex items-center gap-3">
+      <div class="flex flex-col items-end text-right">
+        <div class="flex items-center gap-2">
+          <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-semibold text-sm">Deric Marangu</a>
+          <div class="flex gap-2">
+            <a href="https://wa.me/254791360805" target="_blank" class="footer-link"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:dericmarangu@gmail.com" class="footer-link" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://web.facebook.com/deric.aldertrax" target="_blank" class="footer-link"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.facebook.com/exes.125107/" target="_blank" class="footer-link" title="EXES Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" class="footer-link"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <p class="text-xs italic text-gray-600">
+          CEO and Founder of 
+          <a href="https://deric-exes-analytics.netlify.app/" target="_blank" class="footer-link font-semibold">
+            E<span class="text-green-600 text-[15px] font-bold drop-shadow">X</span>ES
+          </a>
+        </p>
+      </div>
+      <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link rounded-full">
+        <img src="assets/img/deric.png" alt="Deric's Photo" class="h-12 w-12 rounded-full object-cover shadow-md" />
+      </a>
+    </div>
+  </div>
+<style>
+.footer-link {
+  color: inherit;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.footer-link:hover {
+  color: #facc15; /* Soft Yellow */
+  text-shadow: 0 0 4px rgba(250, 204, 21, 0.5); /* Subtle glow */
+}
+</style>
+</footer>
+</body>
+</html>

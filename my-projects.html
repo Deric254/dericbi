@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en" class="overflow-x-hidden">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EXES – My Projects</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Discover the journey behind EXES – from concept to empowering businesses with data-driven insights by Deric Marangu." />
+  <meta name="keywords" content="Deric Marangu, EXES journey, data analytics Kenya, Excel cleanup, business insights" />
+  <meta name="author" content="Deric Marangu" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="https://deric-exes-analytics.netlify.app/icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://deric-exes-analytics.netlify.app/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://deric-exes-analytics.netlify.app/icon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://deric-exes-analytics.netlify.app/icon/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="https://deric-exes-analytics.netlify.app/icon/android-chrome-512x512.png">
+  <link rel="shortcut icon" href="https://deric-exes-analytics.netlify.app/icon/favicon.ico">
+  <link rel="manifest" href="https://deric-exes-analytics.netlify.app/icon/site.webmanifest">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <!-- Mobile Optimization -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- EXES Chatbot -->
+  <script src="assets/js/chatbot.js"></script>
+
+  <!-- Custom Styles -->
+  <style>
+/* Subtle hover effect for all buttons */
+button, .fancy-btn, .glow-btn {
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s, color 0.2s;
+}
+button:hover, .fancy-btn:hover, .glow-btn:hover {
+  box-shadow: 0 2px 12px 0 #49A07833, 0 0 8px #facc15;
+  transform: translateY(-2px) scale(1.03);
+  background: #fef9c3;
+  color: #222;
+}
+
+/* Card hover effect */
+.card, .list-card, .project-card {
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover, .list-card:hover, .project-card:hover {
+  box-shadow: 0 4px 16px 0 #2563EB22, 0 0 8px #49A07833;
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Improve color contrast for accessibility */
+.text-gray-600 {
+  color: #222 !important;
+}
+.text-gray-500 {
+  color: #333 !important;
+}
+
+/* Ensure all images have alt text for accessibility */
+img:not([alt]) {
+  outline: 2px dashed #facc15;
+}
+    @keyframes slide {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .animate-slide {
+      animation: slide 20s linear infinite;
+    }
+    .thumb-active {
+      outline: 3px solid #49A078;
+      outline-offset: 2px;
+    }
+    .zoomed {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      transform: none !important;
+      z-index: 9999 !important;
+      background-color: rgba(0, 0, 0, 0.95) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 1rem !important;
+      box-sizing: border-box !important;
+    }
+    .zoomed img, .zoomed video {
+      max-width: calc(100vw - 2rem) !important;
+      max-height: calc(100vh - 2rem) !important;
+      width: auto !important;
+      height: auto !important;
+      object-fit: contain !important;
+      border-radius: 0.5rem !important;
+      box-shadow: 0 0 50px rgba(255,255,255,0.1) !important;
+      cursor: pointer !important;
+      touch-action: manipulation !important;
+    }
+    .zoom-close-btn {
+      position: fixed !important;
+      top: 1rem !important;
+      right: 1rem !important;
+      background: white !important;
+      color: black !important;
+      border: none !important;
+      border-radius: 50% !important;
+      width: 2rem !important;
+      height: 2rem !important;
+      font-size: 1rem !important;
+      cursor: pointer !important;
+      z-index: 10000 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+      transition: all 0.3s ease !important;
+      opacity: 0.9 !important;
+    }
+    .zoom-close-btn:hover {
+      background: #f3f4f6 !important;
+      transform: scale(1.05) !important;
+      opacity: 1 !important;
+    }
+    @media (min-width: 768px) {
+      .zoomed {
+        padding: 2rem !important;
+      }
+      .zoomed img, .zoomed video {
+        max-width: calc(100vw - 4rem) !important;
+        max-height: calc(100vh - 4rem) !important;
+      }
+    }
+    /* Tool Filter Buttons */
+    .tool-filter {
+      background: #f3f4f6;
+      color: #6b7280;
+      border: 1px solid #d1d5db;
+    }
+    .tool-filter:hover {
+      background: #e5e7eb;
+      color: #374151;
+    }
+    .tool-filter.active {
+      background: #49A078;
+      color: white;
+      border-color: #49A078;
+    }
+    /* Prevent zoom on double-tap except for images */
+    img, video, .zoomable {
+      touch-action: auto;
+    }
+    /* Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 6rem; /* Positioned above chatbot */
+      right: 2rem;
+      background: #49A078;
+      color: white;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 1000; /* Below zoom modal but above chatbot */
+    }
+    #backToTop.visible {
+      opacity: 0.9;
+    }
+    #backToTop:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    /* Share Button Styles */
+    .share-btn {
+      background: #2563EB;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      transition: background 0.3s ease;
+    }
+    .share-btn:hover {
+      background: #1e40af;
+    }
+    /* Loading Indicator for Downloads */
+    .download-loading {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+    /* Hamburger Menu */
+    #menu-toggle {
+      z-index: 1001; /* Above all other elements */
+    }
+    /* Enhanced Responsiveness */
+    @media (max-width: 640px) {
+      .flex-wrap {
+        flex-wrap: wrap;
+      }
+      .gap-2 {
+        gap: 0.5rem;
+      }
+      .px-3 {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+      .py-2 {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+      .text-xs {
+        font-size: 0.75rem;
+      }
+      .zoomed img, .zoomed video {
+        max-height: calc(100vh - 4rem) !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-[#EDF7F1] text-gray-800 min-h-screen flex flex-col">
+<!-- Responsive Navbar -->
+<nav class="bg-[#49A078] text-white px-4 py-3 shadow-md sticky top-0 z-50">
+  <div class="container mx-auto flex items-center justify-between gap-4">
+    <!-- Logo & Brand -->
+    <div class="flex items-center gap-3 shrink-0">
+      <img src="assets/img/logo.png" 
+           alt="EXES Logo" 
+           class="h-14 w-14 sm:h-16 sm:w-16 rounded-full object-cover shadow-md border-2 border-white" />
+      <span class="font-bold text-2xl leading-none">EXES</span>
+      <!-- Extra Links for Small Screens -->
+      <div class="flex gap-3 ml-4 md:hidden">
+  <a href="index.html" class="nav-link text-xs tracking-wide">Home</a>
+  <a href="services.html" class="nav-link text-xs tracking-wide">Services</a>
+  <a href="My-projects.html" class="nav-link text-xs tracking-wide font-bold underline underline-offset-4 text-yellow-300">Projects</a>
+      </div>
+    </div>
+    <!-- Scrolling Text (Visible on medium+) -->
+    <div class="hidden md:flex flex-1 justify-center overflow-hidden relative h-10 px-6">
+      <div class="whitespace-nowrap animate-slide text-lg font-semibold text-[#facc15] tracking-wide flex items-center">
+        • We Analyze, You Decide • We Analyze, You Decide • We Analyze, You Decide • We Analyze, You Decide •
+      </div>
+    </div>
+    <!-- Desktop Nav Links -->
+    <ul class="hidden md:flex gap-6 text-sm font-medium items-center shrink-0">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="services.html" class="nav-link">Services</a></li>
+  <li><a href="My-projects.html" class="nav-link font-bold underline underline-offset-4 text-yellow-300">Projects</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+      <li><a href="about.html" class="nav-link">About Us</a></li>
+      <li><a href="terms.html" class="nav-link">Terms & Conditions</a></li>
+      <li><a href="https://tujengane.netlify.app/" class="nav-link">Tujengane</a></li>
+    </ul>
+    <!-- Hamburger Menu -->
+    <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none ml-3">☰</button>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out flex-col bg-[#3e8865] px-4">
+    <a href="index.html" class="nav-link block py-3 border-b border-green-300">Home</a>
+    <a href="services.html" class="nav-link block py-3 border-b border-green-300">Services</a>
+  <a href="My-projects.html" class="nav-link block py-3 border-b border-green-300 font-bold underline underline-offset-4 text-yellow-300">Projects</a>
+    <a href="contact.html" class="nav-link block py-3 border-b border-green-300">Contact</a>
+    <a href="about.html" class="nav-link block py-3 border-b border-green-300">About Us</a>
+    <a href="terms.html" class="nav-link block py-3">Terms & Conditions</a>
+    <a href="https://tujengane.netlify.app/" class="nav-link block py-3">Tujengane</a>
+  </div>
+</nav>
+
+<!-- CSS -->
+<style>
+/* Navigation Links Hover Glow */
+.nav-link {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.nav-link:hover {
+  color: #facc15;
+  text-shadow: 0 0 4px rgba(250, 204, 21, 0.4);
+}
+</style>
+
+<!-- JS -->
+<script>
+const toggleBtn = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+toggleBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('max-h-0');
+  mobileMenu.classList.toggle('max-h-screen');
+});
+</script>
+
+<!-- Journey Section -->
+<section class="w-full py-6 px-0 min-h-screen m-1">
+  <h1 class="text-3xl font-bold text-[#2D3142] mb-6 text-center">📘 Case Studies and Projects</h1>
+  
+  <!-- Compact Search & Filter -->
+  <div class="flex flex-col sm:flex-row gap-3 mb-6 w-full m-1">
+    <!-- Search Input -->
+    <div class="flex-1 relative">
+      <input type="text" id="searchInput" placeholder="Search by project number (1), name (Student), or keyword..." 
+        class="w-full px-4 py-2 pl-10 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#49A078]">
+      <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+      <div id="searchLoader" class="hidden absolute right-3 top-1/2 transform -translate-y-1/2">
+        <div class="animate-spin rounded-full h-4 w-4 border-2 border-[#49A078] border-t-transparent"></div>
+      </div>
+    </div>
+    <!-- Tool Filters -->
+    <div class="flex flex-wrap gap-2">
+      <button onclick="filterByTool('all')" id="filter-all" 
+        class="tool-filter active px-3 py-2 text-xs font-semibold rounded-lg transition">
+        All <span id="count-all" class="ml-1">(40)</span>
+      </button>
+      <button onclick="filterByTool('excel')" id="filter-excel" 
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        <i class="fas fa-file-excel mr-1"></i>Excel <span id="count-excel" class="ml-1">(14)</span>
+      </button>
+      <button onclick="filterByTool('powerbi')" id="filter-powerbi" 
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        <i class="fas fa-chart-bar mr-1"></i>PowerBI <span id="count-powerbi" class="ml-1">(12)</span>
+      </button>
+      <button onclick="filterByTool('python')" id="filter-python" 
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        <i class="fab fa-python mr-1"></i>Python <span id="count-python" class="ml-1">(9)</span>
+      </button>
+      <button onclick="filterByTool('sql')" id="filter-sql" 
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        <i class="fas fa-database mr-1"></i>SQL <span id="count-sql" class="ml-1">(9)</span>
+      </button>
+      <button onclick="filterByTool('other')" id="filter-other" 
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        <i class="fas fa-cogs mr-1"></i>Other <span id="count-other" class="ml-1">(0)</span>
+      </button>
+    </div>
+  </div>
+  <!-- Try Yourself Button -->
+  <div class="w-full mb-6 flex justify-end m-1">
+    <a href="https://exes-ebi.streamlit.app/" target="_blank"
+  class="bg-[#facc15] hover:bg-[#eab308] text-black px-5 py-2.5 rounded-lg font-semibold flex items-center gap-2 shadow transition m-2"
+      <i class="fas fa-flask"></i>Try Yourself
+    </a>
+  </div>
+
+  <!-- Progress Indicator -->
+  <div id="resultsProgress" class="w-full mb-4 hidden m-1">
+    <div class="flex items-center justify-between text-xs text-gray-500 mb-2">
+      <span id="resultsCount">Loading projects...</span>
+      <span id="loadTime" class="flex items-center"><i class="fas fa-clock mr-1"></i>0.1s</span>
+    </div>
+    <div class="w-full bg-gray-200 rounded-full h-1">
+      <div id="progressBar" class="bg-[#49A078] h-1 rounded-full transition-all duration-300" style="width: 0%"></div>
+    </div>
+  </div>
+  
+  <div id="case-container" class="space-y-12"></div>
+</section>
+
+<!-- Compact Action Bar -->
+<section class="bg-gray-50 py-4 px-4 border-t border-gray-200">
+  <div class="container mx-auto max-w-4xl">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex flex-wrap items-center gap-2">
+        <button onclick="toggleProjectJourney()" 
+          class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded text-xs font-semibold transition group">
+          <i class="fas fa-rocket mr-1"></i>Start Project
+          <span class="hidden group-hover:inline ml-1 text-[#facc15]">✓</span>
+        </button>
+        <button onclick="toggleDownloadJourney()" 
+          class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-3 py-2 rounded text-xs font-semibold transition group">
+          <i class="fas fa-download mr-1"></i>Download Files
+          <span class="hidden group-hover:inline ml-1 text-[#facc15]">📁</span>
+        </button>
+        <a href="https://exes-ebi.streamlit.app/" target="_blank"
+          class="bg-[#facc15] hover:bg-[#eab308] text-black px-3 py-2 rounded text-xs font-semibold transition flex items-center gap-1">
+          <i class="fas fa-flask"></i>Try Yourself
+        </a>
+        <div class="hidden sm:flex items-center text-xs text-gray-500">
+          <i class="fas fa-chart-bar text-blue-500 mr-1"></i>40+ Projects
+        </div>
+      </div>
+      <div id="projectSectionJourney" class="hidden w-full sm:w-auto">
+        <div class="flex gap-2 items-center">
+          <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank"
+            class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded text-xs font-semibold transition">
+            <i class="fas fa-upload mr-1"></i>I Have Data
+          </a>
+          <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7" target="_blank"
+            class="bg-[#f59e0b] hover:bg-[#d97706] text-white px-3 py-2 rounded text-xs font-semibold transition">
+            <i class="fas fa-chart-line mr-1"></i>I Need Setup
+          </a>
+        </div>
+      </div>
+      <div id="downloadSectionJourney" class="hidden w-full sm:w-auto">
+        <div class="flex flex-col xs:flex-row gap-2 items-center">
+          <input id="fileNameInputJourney" type="text" placeholder="File name..." 
+            class="px-3 py-2 rounded text-xs border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#2563EB] w-full xs:w-32 min-w-0">
+          <button onclick="downloadFileJourney()" 
+            class="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs font-semibold transition">
+            <i class="fas fa-download"></i>
+          </button>
+        </div>
+        <p id="errorMessageJourney" class="text-red-600 text-xs mt-1 hidden">File not found. Contact: +254791360805</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="hidden md:block">
+  <i class="fas fa-arrow-up text-xl"></i>
+</button>
+
+<script>
+// Performance optimizations
+const debounce = (func, wait) => {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+};
+
+// Toggle project section
+function toggleProjectJourney() {
+  const section = document.getElementById('projectSectionJourney');
+  const downloadSection = document.getElementById('downloadSectionJourney');
+  downloadSection.classList.add('hidden');
+  section.classList.toggle('hidden');
+}
+
+// Toggle download section
+function toggleDownloadJourney() {
+  const section = document.getElementById('downloadSectionJourney');
+  const projectSection = document.getElementById('projectSectionJourney');
+  projectSection.classList.add('hidden');
+  section.classList.toggle('hidden');
+  if (!section.classList.contains('hidden')) {
+    document.getElementById('fileNameInputJourney').focus();
+  }
+}
+
+// Download function with loading indicator
+function downloadFileJourney() {
+  const input = document.getElementById('fileNameInputJourney');
+  const fileName = input.value.trim();
+  const error = document.getElementById('errorMessageJourney');
+
+  if (!fileName) {
+    error.textContent = 'Enter file name first.';
+    error.classList.remove('hidden');
+    return;
+  }
+
+  error.classList.add('hidden');
+  
+  const btn = document.querySelector('#downloadSectionJourney button');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '<i class="fas fa-spinner animate-spin"></i>';
+  btn.disabled = true;
+
+  const link = document.createElement('a');
+  link.href = `downloads/${fileName}`;
+  link.download = fileName;
+  document.body.appendChild(link);
+  
+  fetch(`downloads/${fileName}`)
+    .then(response => {
+      if (response.ok) {
+        link.click();
+        input.value = '';
+        document.getElementById('downloadSectionJourney').classList.add('hidden');
+      } else {
+        error.classList.remove('hidden');
+      }
+    })
+    .catch(() => {
+      error.classList.add('hidden');
+    })
+    .finally(() => {
+      document.body.removeChild(link);
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    });
+}
+
+// Enter key support
+document.getElementById('fileNameInputJourney')?.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    downloadFileJourney();
+  }
+});
+
+// Main Project Rendering and Interaction Logic
+function renderProjects(projects, container) {
+  container.innerHTML = '';
+  if (projects.length === 0) {
+    container.innerHTML = `
+      <div class="text-center py-12">
+        <i class="fas fa-search text-gray-400 text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold text-gray-600 mb-2">No projects found</h3>
+        <p class="text-gray-500">Try adjusting your search or filter criteria</p>
+      </div>
+    `;
+    return;
+  }
+
+  projects.forEach((cs, index) => {
+    const serial = cs.serial || `Project ${index + 1}`;
+    const images = cs.images || [];
+    const mainImgId = `main-img-${index}`;
+    const thumbsId = `thumbs-${index}`;
+    const prevBtnId = `rotate-left-${index}`;
+    const nextBtnId = `rotate-right-${index}`;
+    const zoomBtnId = `zoom-${index}`;
+    const zoomWrapperId = `zoom-wrapper-${index}`;
+    const projectId = serial.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+    let thumbsArr = [];
+    if (cs.video) {
+      if (Array.isArray(cs.video)) {
+        cs.video.forEach(v => thumbsArr.push({ type: 'video', src: v, poster: images[0] || '' }));
+      } else {
+        thumbsArr.push({ type: 'video', src: cs.video, poster: images[0] || '' });
+      }
+    }
+    // Only add images as thumbnails if there are no videos for this project
+    // Always add images as thumbnails, even if there are videos
+    images.forEach(img => thumbsArr.push({ type: 'image', src: img }));
+    const isVideo = thumbsArr.length > 0 && thumbsArr[0].type === 'video';
+
+    const card = document.createElement("div");
+    card.className = "bg-white p-6 rounded-xl shadow-md border border-gray-200 space-y-4";
+    card.id = `project-${projectId}`;
+    card.innerHTML = `
+      <div class="flex items-center justify-between">
+        <div class="text-xs text-gray-400">${serial}</div>
+        <div class="flex gap-1">
+          ${categorizeByTool(cs).map(cat => {
+            const icons = {
+              excel: '<i class="fas fa-file-excel text-green-600" title="Excel"></i>',
+              powerbi: '<i class="fas fa-chart-bar text-yellow-600" title="PowerBI"></i>',
+              python: '<i class="fab fa-python text-blue-600" title="Python"></i>',
+              sql: '<i class="fas fa-database text-gray-600" title="SQL"></i>',
+              other: '<i class="fas fa-cogs text-purple-600" title="Other Tools"></i>'
+            };
+            return `<span class="text-sm">${icons[cat] || ''}</span>`;
+          }).join('')}
+        </div>
+      </div>
+      <h2 class="text-xl font-bold text-[#2D3142]">${cs.title}</h2>
+
+      <p class="text-sm text-gray-500">📅 ${cs.date}</p>
+      <div class="flex flex-col md:flex-row gap-6">
+        <div class="w-full md:w-1/2 relative">
+          <div class="absolute z-20 right-2 top-2 flex gap-2">
+            <button id="${prevBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100 ${isVideo ? 'hidden' : ''}" title="Rotate Left">
+              <i class="fas fa-undo-alt"></i>
+            </button>
+            <button id="${nextBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100 ${isVideo ? 'hidden' : ''}" title="Rotate Right">
+              <i class="fas fa-redo-alt"></i>
+            </button>
+            <button id="${zoomBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100" title="Zoom">
+              <i class="fas fa-expand"></i>
+            </button>
+            <button id="download-img-${index}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100" title="Download">
+              <i class="fas fa-download"></i>
+            </button>
+          </div>
+          <div id="${zoomWrapperId}" class="relative transition-all duration-300 ease-in-out">
+            ${
+              thumbsArr.length > 0 && thumbsArr[0].type === 'video'
+                ? `<div id="${mainImgId}" class="w-full h-[380px] flex items-center justify-center rounded-xl border border-[#2563EB] cursor-pointer video-thumb-main relative" style="box-shadow:0 0 0 3px #facc15; background:transparent;">
+                    <video src="${thumbsArr[0].src}" poster="${thumbsArr[0].poster || ''}" class="main-video-element" style="width:100%;height:100%;object-fit:contain;border-radius:12px;pointer-events:none;filter:brightness(0.95);" preload="metadata"></video>
+                    <svg class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none" width="68" height="68" viewBox="0 0 68 68" fill="none" style="opacity:0.92;">
+                      <circle cx="34" cy="34" r="32" fill="#111" fill-opacity="0.85" stroke="#fff" stroke-width="3"/>
+                      <polygon points="30,22 50,34 30,46" fill="#fff" stroke="#111" stroke-width="2"/>
+                    </svg>
+                  </div>`
+                : `<img id="${mainImgId}" src="${images[0] || 'assets/img/placeholder.png'}" alt="${cs.title}" loading="lazy" class="w-full h-[380px] object-contain rounded-xl border border-gray-300 bg-white transition-transform duration-300" style="transform: rotate(0deg);" />`
+            }
+          </div>
+          ${thumbsArr.length > 1 ? `
+            <div id="${thumbsId}" class="flex flex-wrap gap-3 mt-4">
+              ${
+                thumbsArr.map((thumb, i) =>
+                  thumb.type === 'video'
+                    ? `<div class="relative group">
+                        <div class="w-20 h-20 rounded-lg overflow-hidden border-2 border-[#facc15] shadow-lg cursor-pointer thumb-video-thumb ${i === 0 ? 'thumb-active' : ''}" style="background:#222; position:relative;">
+                          <video src="${thumb.src}" poster="${thumb.poster}" class="w-full h-full object-cover pointer-events-none" style="border-radius:8px;"></video>
+                          <span class="absolute top-1 left-1 bg-[#facc15] text-[#2563EB] px-2 py-0.5 rounded text-[10px] font-bold shadow">VIDEO</span>
+
+                          <button class="thumb-download absolute -top-1 -right-1 bg-[#49A078] text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#3e8865]" 
+                                  data-media-type="video" data-media-src="${thumb.src}" title="Download Video">
+                            <i class="fas fa-download text-[8px]"></i>
+                          </button>
+                        </div>
+                      </div>`
+                    : `<div class="relative group">
+                        <img src="${thumb.src}" data-index="${i}" alt="Thumb ${i + 1}" loading="lazy" class="w-20 h-20 object-cover rounded-lg cursor-pointer transition-all border border-gray-200 hover:ring-2 hover:ring-green-500 ${i === 0 && !isVideo ? 'thumb-active' : ''}" />
+                        <button class="thumb-download absolute -top-1 -right-1 bg-[#49A078] text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#3e8865]" 
+                                data-media-type="image" data-media-src="${thumb.src}" title="Download Image">
+                          <i class="fas fa-download text-[8px]"></i>
+                        </button>
+                      </div>`
+                ).join('')
+              }
+            </div>
+          ` : ''}
+        </div>
+        <div class="w-full md:w-1/2 space-y-2">
+          <p class="text-gray-700 text-sm leading-relaxed">${cs.description}</p>
+          <p class="text-sm"><strong>Tools Used:</strong> ${cs.tools}</p>
+          <div class="mt-4 p-3 bg-gray-50 rounded-lg border">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="text-sm font-semibold text-gray-800">📁 Full Project Download</h4>
+                <p class="text-xs text-gray-600">Get complete project files and documentation</p>
+              </div>
+              <button id="download-project-${index}" class="bg-[#49A078] text-white px-3 py-1 rounded-md text-xs hover:bg-[#3e8865] transition-colors relative">
+                <i class="fas fa-download mr-1"></i>Download
+                <div class="download-loading absolute inset-0 flex items-center justify-center bg-[#49A078] bg-opacity-80 rounded-md">
+                  <i class="fas fa-spinner animate-spin text-white"></i>
+                </div>
+              </button>
+            </div>
+          </div>
+          <!-- Share Button -->
+          <div class="mt-4">
+            <button onclick="shareProject('${projectId}', '${cs.title}')" class="share-btn">
+              <i class="fas fa-share-alt mr-1"></i>Share Project
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+
+    // Initialize interaction logic
+    setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, prevBtnId, nextBtnId, zoomBtnId, zoomWrapperId, projectId);
+    // Add play icon click logic for video main thumb
+    if (thumbsArr.length > 0 && thumbsArr[0].type === 'video') {
+      const mainThumb = card.querySelector('.video-thumb-main');
+      if (mainThumb) {
+        mainThumb.addEventListener('click', function() {
+          const svgIcon = mainThumb.querySelector('svg');
+          const videoEl = mainThumb.querySelector('video');
+          if (svgIcon && videoEl) {
+            svgIcon.style.display = 'none';
+            videoEl.style.pointerEvents = 'auto';
+            videoEl.setAttribute('controls', '');
+            videoEl.play();
+          }
+        });
+      }
+    }
+  });
+}
+
+function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, prevBtnId, nextBtnId, zoomBtnId, zoomWrapperId, projectId) {
+  let currentMediaIndex = thumbsArr[0].type === 'video' ? 0 : 0;
+  let currentRotation = 0;
+  const mainMediaEl = document.getElementById(mainImgId);
+  const thumbElems = document.querySelectorAll(`#${thumbsId} .group`);
+  const rotateLeftBtn = document.getElementById(prevBtnId);
+  const rotateRightBtn = document.getElementById(nextBtnId);
+  const zoomBtn = document.getElementById(zoomBtnId);
+  const zoomWrapper = document.getElementById(zoomWrapperId);
+  const downloadImgBtn = document.getElementById(`download-img-${index}`);
+  const downloadProjectBtn = document.getElementById(`download-project-${index}`);
+  const serial = cs.serial || `Project ${index + 1}`;
+
+  const updateRotationButtons = () => {
+    const isImage = thumbsArr[currentMediaIndex].type === 'image';
+    rotateLeftBtn.classList.toggle('hidden', !isImage);
+    rotateRightBtn.classList.toggle('hidden', !isImage);
+  };
+
+  const updateMainMedia = () => {
+    const activeThumb = thumbsArr[currentMediaIndex];
+    zoomWrapper.innerHTML = `
+      ${
+        activeThumb.type === 'video'
+          ? `<video id="${mainImgId}" src="${activeThumb.src}" poster="${activeThumb.poster || ''}" controls class="w-full h-[380px] object-contain rounded-xl border border-[#2563EB] bg-black transition-transform duration-300" style="transform: rotate(0deg); box-shadow:0 0 0 3px #facc15;">
+              Sorry, your browser doesn't support embedded videos.
+            </video>`
+          : `<img id="${mainImgId}" src="${activeThumb.src || 'assets/img/placeholder.png'}" alt="${cs.title}" loading="lazy" class="w-full h-[380px] object-contain rounded-xl border border-gray-300 bg-white transition-transform duration-300" style="transform: rotate(${currentRotation}deg);" />`
+      }
+    `;
+    updateRotationButtons();
+    setupMediaInteractions();
+  };
+
+  downloadImgBtn.onclick = () => {
+    downloadImgBtn.innerHTML = '<i class="fas fa-spinner animate-spin"></i>';
+    downloadImgBtn.disabled = true;
+    const activeThumb = thumbsArr[currentMediaIndex];
+    if (activeThumb.type === 'video') {
+      downloadVideo(activeThumb.src, `${cs.title}_${serial}_video`).finally(() => {
+        downloadImgBtn.innerHTML = '<i class="fas fa-download"></i>';
+        downloadImgBtn.disabled = false;
+      });
+    } else {
+      downloadImage(activeThumb.src, `${cs.title}_${serial}_image_${currentMediaIndex + 1 - (cs.video ? 1 : 0)}`).finally(() => {
+        downloadImgBtn.innerHTML = '<i class="fas fa-download"></i>';
+        downloadImgBtn.disabled = false;
+      });
+    }
+  };
+
+  downloadProjectBtn.onclick = () => {
+    const loading = downloadProjectBtn.querySelector('.download-loading');
+    loading.style.display = 'flex';
+    downloadProjectBtn.disabled = true;
+    if (cs.projectLink) {
+      window.open(cs.projectLink, '_blank');
+    } else {
+      alert('🚫 Project download link has expired. Please contact EXES for access to the full project files.\n\n📧 Email: dericmarangu@gmail.com\n📱 WhatsApp: +254791360805');
+    }
+    setTimeout(() => {
+      loading.style.display = 'none';
+      downloadProjectBtn.disabled = false;
+    }, 1000);
+  };
+
+  thumbElems.forEach((thumbDiv, i) => {
+    thumbDiv.addEventListener('click', () => {
+      currentMediaIndex = i;
+      currentRotation = 0;
+      thumbElems.forEach(t => {
+        const v = t.querySelector('.thumb-video-thumb');
+        const img = t.querySelector('img');
+        if (v) v.classList.remove('thumb-active');
+        if (img) img.classList.remove('thumb-active');
+      });
+      const activeThumb = thumbsArr[i];
+      if (activeThumb.type === 'video') {
+        thumbDiv.querySelector('.thumb-video-thumb').classList.add('thumb-active');
+      } else {
+        thumbDiv.querySelector('img').classList.add('thumb-active');
+      }
+      updateMainMedia();
+    });
+  });
+
+  document.querySelectorAll(`#${thumbsId} .thumb-download`).forEach((btn, i) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      btn.innerHTML = '<i class="fas fa-spinner animate-spin text-[8px]"></i>';
+      btn.disabled = true;
+      const type = btn.getAttribute('data-media-type');
+      const src = btn.getAttribute('data-media-src');
+      if (type === 'video') {
+        downloadVideo(src, `${cs.title}_${serial}_video`).finally(() => {
+          btn.innerHTML = '<i class="fas fa-download text-[8px]"></i>';
+          btn.disabled = false;
+        });
+      } else {
+        downloadImage(src, `${cs.title}_${serial}_image_${i + 1 - (cs.video ? 1 : 0)}`).finally(() => {
+          btn.innerHTML = '<i class="fas fa-download text-[8px]"></i>';
+          btn.disabled = false;
+        });
+      }
+    });
+  });
+
+  rotateLeftBtn.onclick = () => {
+    if (thumbsArr[currentMediaIndex].type === 'image') {
+      currentRotation -= 90;
+      document.getElementById(mainImgId).style.transform = `rotate(${currentRotation}deg)`;
+    }
+  };
+  rotateRightBtn.onclick = () => {
+    if (thumbsArr[currentMediaIndex].type === 'image') {
+      currentRotation += 90;
+      document.getElementById(mainImgId).style.transform = `rotate(${currentRotation}deg)`;
+    }
+  };
+
+  function setupMediaInteractions() {
+    const mainMediaEl = document.getElementById(mainImgId);
+    const zoomWrapper = document.getElementById(zoomWrapperId);
+    let tapCount = 0;
+    let tapTimeout;
+
+    const enterZoom = () => {
+      if (!zoomWrapper.classList.contains('zoomed')) {
+        const activeThumb = thumbsArr[currentMediaIndex];
+        zoomWrapper.classList.add('zoomed');
+        zoomWrapper.innerHTML = `
+          ${
+            activeThumb.type === 'video'
+              ? `<video src="${activeThumb.src}" poster="${activeThumb.poster || ''}" controls autoplay class="w-full h-[80vh] object-contain rounded-xl border-4 border-[#facc15] bg-black" style="max-width:90vw;">
+                  Sorry, your browser doesn't support embedded videos.
+                </video>`
+              : `<img src="${activeThumb.src}" alt="Zoomed Image" loading="lazy" class="w-full h-[80vh] object-contain rounded-xl border-4 border-[#49A078] bg-white" style="max-width:90vw; transform: rotate(${currentRotation}deg);" />`
+          }
+          <button id="close-zoom-${index}" class="zoom-close-btn">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
+        const closeZoomBtn = document.getElementById(`close-zoom-${index}`);
+        const newMedia = zoomWrapper.querySelector('img, video');
+        closeZoomBtn.onclick = closeZoom;
+        closeZoomBtn.ontouchend = closeZoom;
+        zoomWrapper.onclick = (e) => {
+          if (e.target === zoomWrapper) closeZoom();
+        };
+        zoomWrapper.ontouchend = (e) => {
+          if (e.target === zoomWrapper) closeZoom();
+        };
+        newMedia.ondblclick = closeZoom;
+        newMedia.ontouchend = (e) => {
+          tapCount++;
+          if (tapCount === 1) {
+            tapTimeout = setTimeout(() => tapCount = 0, 300);
+          } else if (tapCount === 2) {
+            clearTimeout(tapTimeout);
+            tapCount = 0;
+            e.preventDefault();
+            closeZoom();
+          }
+        };
+        document.addEventListener('keydown', escHandler);
+      }
+    };
+
+    const closeZoom = () => {
+      zoomWrapper.classList.remove('zoomed');
+      document.body.style.overflow = '';
+      zoomWrapper.onclick = null;
+      zoomWrapper.ontouchend = null;
+      document.removeEventListener('keydown', escHandler);
+      updateMainMedia();
+    };
+
+    const escHandler = (e) => {
+      if (e.key === 'Escape' && zoomWrapper.classList.contains('zoomed')) {
+        closeZoom();
+      }
+    };
+
+    zoomBtn.onclick = enterZoom;
+    zoomBtn.ontouchend = enterZoom;
+
+    mainMediaEl.ondblclick = () => {
+      if (zoomWrapper.classList.contains('zoomed')) {
+        closeZoom();
+      } else {
+        enterZoom();
+      }
+    };
+
+    mainMediaEl.ontouchend = (e) => {
+      tapCount++;
+      if (tapCount === 1) {
+        tapTimeout = setTimeout(() => tapCount = 0, 300);
+      } else if (tapCount === 2) {
+        clearTimeout(tapTimeout);
+        tapCount = 0;
+        e.preventDefault();
+        if (zoomWrapper.classList.contains('zoomed')) {
+          closeZoom();
+        } else {
+          enterZoom();
+        }
+      }
+    };
+  }
+
+  setupMediaInteractions();
+  updateRotationButtons();
+}
+
+// Search and Filter Functionality
+let allProjects = [];
+let filteredProjects = [];
+
+fetch('journey-data.json')
+  .then(res => res.json())
+  .then(data => {
+    allProjects = data;
+    filteredProjects = data;
+    updateProjectCounts();
+    renderProjects(filteredProjects, document.getElementById('case-container'));
+    handleDeepLink();
+  });
+
+function categorizeByTool(project) {
+  const tools = project.tools ? project.tools.toLowerCase() : '';
+  const categories = [];
+  if (tools.includes('excel') || tools.includes('powerquery') || tools.includes('power query')) categories.push('excel');
+  if (tools.includes('powerbi') || tools.includes('power bi')) categories.push('powerbi');
+  if (tools.includes('python') || tools.includes('pandas')) categories.push('python');
+  if (tools.includes('sql') || tools.includes('mysql')) categories.push('sql');
+  if (tools.includes('web') || tools === 'web tools') categories.push('other');
+  if (categories.length === 0) categories.push('other');
+  return categories;
+}
+
+function updateProjectCounts() {
+  const counts = { all: 0, excel: 0, powerbi: 0, python: 0, sql: 0, other: 0 };
+  allProjects.forEach(project => {
+    categorizeByTool(project).forEach(cat => counts[cat]++);
+  });
+  counts.all = allProjects.length;
+  Object.keys(counts).forEach(tool => {
+    const countElement = document.getElementById(`count-${tool}`);
+    if (countElement) countElement.textContent = `(${counts[tool]})`;
+  });
+}
+
+const filterByTool = debounce((tool) => {
+  document.querySelectorAll('.tool-filter').forEach(btn => btn.classList.remove('active'));
+  document.getElementById(`filter-${tool}`).classList.add('active');
+  filteredProjects = tool === 'all' ? allProjects : allProjects.filter(project => categorizeByTool(project).includes(tool));
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  if (searchTerm) {
+    filteredProjects = filteredProjects.filter(project => 
+      project.title.toLowerCase().includes(searchTerm) ||
+      project.description.toLowerCase().includes(searchTerm) ||
+      (project.tools && project.tools.toLowerCase().includes(searchTerm))
+    );
+  }
+  renderProjects(filteredProjects, document.getElementById('case-container'));
+}, 100);
+
+document.getElementById('searchInput').addEventListener('input', debounce(function(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  const loader = document.getElementById('searchLoader');
+  const progress = document.getElementById('resultsProgress');
+  const progressBar = document.getElementById('progressBar');
+  const resultsCount = document.getElementById('resultsCount');
+  const loadTime = document.getElementById('loadTime');
+  loader.classList.remove('hidden');
+  progress.classList.remove('hidden');
+  const startTime = performance.now();
+
+  if (searchTerm === '') {
+    const activeFilter = document.querySelector('.tool-filter.active').id.replace('filter-', '');
+    filterByTool(activeFilter);
+    loader.classList.add('hidden');
+    progress.classList.add('hidden');
+    return;
+  }
+
+  const activeFilter = document.querySelector('.tool-filter.active').id.replace('filter-', '');
+  let baseProjects = activeFilter === 'all' ? allProjects : allProjects.filter(project => categorizeByTool(project).includes(activeFilter));
+  filteredProjects = baseProjects.filter(project => {
+    const title = (project.title || '').toLowerCase();
+    const description = (project.description || '').toLowerCase();
+    const tools = (project.tools || '').toLowerCase();
+    const serial = (project.serial || '').toLowerCase();
+    const isNumberSearch = /^[\d.]+$/.test(searchTerm.trim());
+    if (isNumberSearch) {
+      const searchNumber = searchTerm.trim();
+      const projectNumberMatch = serial.match(/project\s*([\d.]+)/);
+      if (projectNumberMatch) {
+        const projectNumber = projectNumberMatch[1];
+        if (projectNumber === searchNumber || projectNumber.startsWith(searchNumber + '.')) return true;
+      }
+      return title.includes(searchNumber) || description.includes(searchNumber) || tools.includes(searchNumber) || serial.includes(searchNumber);
+    }
+    return title.includes(searchTerm) || description.includes(searchTerm) || tools.includes(searchTerm) || serial.includes(searchTerm) ||
+           (serial.includes('project') && searchTerm.split(' ').some(term => serial.includes(term)));
+  });
+
+  resultsCount.textContent = `Found ${filteredProjects.length} project${filteredProjects.length !== 1 ? 's' : ''}`;
+  const endTime = performance.now();
+  const duration = ((endTime - startTime) / 1000).toFixed(2);
+  loadTime.innerHTML = `<i class="fas fa-clock mr-1"></i>${duration}s`;
+  progressBar.style.width = '100%';
+  renderProjects(filteredProjects, document.getElementById('case-container'));
+  setTimeout(() => {
+    loader.classList.add('hidden');
+    setTimeout(() => {
+      progress.classList.add('hidden');
+      progressBar.style.width = '0%';
+    }, 500);
+  }, 100);
+}, 150));
+
+function downloadImage(url, filename) {
+  return fetch(url)
+    .then(response => response.blob())
+    .then(blob => {
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename.replace(/[^a-z0-9_-]/gi, '_') + '.jpg';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+    })
+    .catch(error => {
+      console.error('Download failed:', error);
+      alert('Download failed. Please try again or contact EXES for assistance.');
+    });
+}
+
+function downloadVideo(url, filename) {
+  return fetch(url)
+    .then(response => response.blob())
+    .then(blob => {
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename.replace(/[^a-z0-9_-]/gi, '_') + '.mp4';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+    })
+    .catch(error => {
+      console.error('Download failed:', error);
+      alert('Video download failed. Please try again or contact EXES for assistance.');
+    });
+}
+
+function showAllProjects() {
+  document.getElementById('searchInput').value = '';
+  filterByTool('all');
+}
+
+function handleDeepLink() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const projectParam = urlParams.get('project');
+  if (projectParam) {
+    setTimeout(() => filterSpecificProject(projectParam), 500);
+    return;
+  }
+  const hash = window.location.hash;
+  if (hash && hash.startsWith('#project-')) {
+    const projectId = hash.substring(1);
+    setTimeout(() => {
+      const projectElement = document.getElementById(projectId);
+      if (projectElement) {
+        projectElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        projectElement.style.transition = 'all 0.5s ease';
+        projectElement.style.border = '3px solid #49A078';
+        projectElement.style.boxShadow = '0 0 20px rgba(73, 160, 120, 0.3)';
+        setTimeout(() => {
+          projectElement.style.border = '1px solid #e5e7eb';
+          projectElement.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)';
+        }, 3000);
+      }
+    }, 1000);
+  }
+}
+
+function filterSpecificProject(identifier) {
+  const searchInput = document.getElementById('searchInput');
+  const container = document.getElementById('case-container');
+  document.querySelectorAll('.tool-filter').forEach(btn => btn.classList.remove('active'));
+  document.getElementById('filter-all').classList.add('active');
+  const searchId = identifier.toLowerCase();
+  const isNumberSearch = /^[\d.]+$/.test(searchId);
+  if (isNumberSearch) {
+    const matchingProjects = allProjects.filter(p => {
+      const serial = (p.serial || '').toLowerCase();
+      const projectNumberMatch = serial.match(/project\s*([\d.]+)/);
+      if (projectNumberMatch) {
+        const projectNumber = projectNumberMatch[1];
+        if (projectNumber === searchId || projectNumber.startsWith(searchId + '.')) return true;
+      }
+      return false;
+    });
+    if (matchingProjects.length > 0) {
+      filteredProjects = matchingProjects;
+      if (matchingProjects.length === 1) {
+        searchInput.value = `Project: ${matchingProjects[0].title}`;
+        container.innerHTML = '';
+        const singleProjectCard = document.createElement('div');
+        singleProjectCard.className = 'max-w-4xl mx-auto';
+        singleProjectCard.innerHTML = `
+          <div class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white p-4 rounded-t-xl">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="text-2xl font-bold">📌 Direct Project Access</h2>
+                <p class="text-green-100">Showing: ${matchingProjects[0].title}</p>
+              </div>
+              <button onclick="showAllProjects()" class="bg-white text-[#49A078] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
+                <i class="fas fa-grid-3x3 mr-2"></i>View All Projects
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(singleProjectCard);
+        renderProjects(filteredProjects, container);
+      }
+    } else {
+      container.innerHTML = `
+        <div class="text-center py-12">
+          <i class="fas fa-search text-gray-400 text-4xl mb-4"></i>
+          <h3 class="text-xl font-semibold text-gray-600 mb-2">Project not found</h3>
+          <p class="text-gray-500">No project matches the specified ID. Try another search.</p>
+        </div>
+      `;
+    }
+  }
+}
+
+async function shareProject(projectId, title) {
+  const shareUrl = `${window.location.origin}${window.location.pathname}#${projectId}`;
+  const shareData = { title, text: 'Check out this EXES project!', url: shareUrl };
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+    } else {
+      await navigator.clipboard.writeText(shareUrl);
+      alert('Project link copied to clipboard!');
+    }
+  } catch (err) {
+    console.error('Sharing failed:', err);
+    alert('Sharing not supported. Copy this link: ' + shareUrl);
+  }
+}
+
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 300);
+  backToTop.classList.toggle('hidden', window.scrollY <= 300);
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+<footer class="bg-[#DFF3EA] py-4 px-4 text-sm text-gray-600 mt-auto border-t border-green-300">
+  <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <img src="assets/img/logo.png" alt="EXES Logo" class="h-12 w-12 rounded-full object-cover shadow-md border-2 border-white" />
+      <div class="flex flex-col leading-tight">
+        <span class="font-extrabold text-xl text-gray-800 tracking-wide">
+          E<span class="text-[22px] text-green-600 drop-shadow font-black">X</span>ES
+        </span>
+        <span class="text-xs italic text-gray-500 -mt-1">We analyze. You decide.</span>
+      </div>
+    </div>
+    <div class="flex flex-col items-center text-center">
+      <div class="text-xs sm:text-sm text-gray-500">
+        &copy; 2025 EXES – Built by 
+        <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link">Deric Marangu</a>. All rights reserved.
+      </div>
+      <div class="flex gap-4 mt-1">
+        <a href="about.html" class="footer-link">About Us</a>
+        <a href="terms.html" class="footer-link">Terms & Conditions</a>
+        <a href="https://exes-ebi.streamlit.app/" target="_blank" class="footer-link font-bold text-[#49A078]">Try Yourself</a>
+        <button onclick="toggleNewsletter()" class="footer-link text-xs">
+          <i class="fas fa-envelope mr-1"></i>Newsletter
+        </button>
+      </div>
+      <div id="newsletterSignup" class="hidden mt-2 w-full max-w-xs">
+        <div class="flex text-xs">
+          <input type="email" placeholder="Your email..." class="flex-1 px-2 py-1 text-xs border border-gray-300 rounded-l focus:outline-none focus:ring-1 focus:ring-[#49A078]">
+          <button class="bg-[#49A078] text-white px-3 py-1 rounded-r text-xs hover:bg-[#3e8865] transition">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        <p class="text-xs text-gray-400 mt-1">Monthly insights & tips</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <div class="flex flex-col items-end text-right">
+        <div class="flex items-center gap-2">
+          <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-semibold text-sm">Deric Marangu</a>
+          <div class="flex gap-2">
+            <a href="https://wa.me/254791360805" target="_blank" class="footer-link"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:dericmarangu@gmail.com" class="footer-link" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://web.facebook.com/deric.aldertrax" target="_blank" class="footer-link"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.facebook.com/exes.125107/" target="_blank" class="footer-link" title="EXES Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" class="footer-link"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <p class="text-xs italic text-gray-600">
+          CEO and Founder of 
+          <a href="https://deric-exes-analytics.netlify.app/" target="_blank" class="footer-link font-semibold">E<span class="text-green-600 text-[15px] font-bold drop-shadow">X</span>ES</a>
+        </p>
+      </div>
+      <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link rounded-full">
+        <img src="assets/img/deric.png" alt="Deric's Photo" class="h-12 w-12 rounded-full object-cover shadow-md" />
+      </a>
+    </div>
+  </div>
+<style>
+.footer-link {
+  color: inherit;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+.footer-link:hover {
+  color: #facc15;
+  text-shadow: 0 0 4px rgba(250, 204, 21, 0.5);
+}
+</style>
+</footer>
+</body>
+</html>
+</html>
