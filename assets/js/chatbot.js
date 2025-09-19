@@ -245,7 +245,7 @@ class EXESChatbot {
       </div>
 
       <!-- Chatbot Container -->
-      <div id="chatbot-container" class="fixed bottom-6 right-6 w-80 max-w-[calc(100vw-2rem)] z-50 transform translate-y-full opacity-0 transition-all duration-300 ease-out">
+      <div id="chatbot-container" class="fixed bottom-6 right-6 w-72 max-w-[calc(100vw-2rem)] z-50 transform translate-y-full opacity-0 transition-all duration-300 ease-out">
         <div class="bg-white rounded-lg shadow-2xl border border-gray-200 overflow-hidden">
           
           <!-- Header -->
@@ -266,7 +266,7 @@ class EXESChatbot {
           </div>
 
           <!-- Chat Messages -->
-          <div id="chatbot-messages" class="h-64 overflow-y-auto p-4 space-y-3 bg-gray-50">
+          <div id="chatbot-messages" class="h-56 overflow-y-auto p-4 space-y-3 bg-gray-50">
             <div class="bot-message">
               <div class="flex items-start gap-2">
                 <img src="assets/img/logo.png" alt="Bot" class="w-6 h-6 rounded-full mt-1">
@@ -419,6 +419,19 @@ class EXESChatbot {
     // Close chatbot
     document.getElementById('chatbot-close').addEventListener('click', () => {
       this.closeChatbot();
+    });
+
+    // Click outside to close chatbot
+    document.addEventListener('click', (e) => {
+      const chatContainer = document.getElementById('chatbot-container');
+      const chatToggle = document.getElementById('chatbot-toggle');
+      
+      // Check if click is outside chatbot and not on toggle button
+      if (this.isOpen && 
+          !chatContainer.contains(e.target) && 
+          !chatToggle.contains(e.target)) {
+        this.closeChatbot();
+      }
     });
 
     // Send message
