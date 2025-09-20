@@ -3,11 +3,17 @@ class EAIChatbot {
   constructor() {
     this.isOpen = false;
     this.currentConversation = [];
+    this.conversationContext = {
+      lastTopic: null,
+      userIntent: null,
+      awaitingFollowup: false,
+      contextData: {}
+    };
     this.userContext = this.detectUserContext();
-    this.projectsData = null; // Store projects data for search
+    this.projectsData = null;
     this.userSession = this.initializeUserSession();
-    this.userInteractions = []; // Track user behavior for smart suggestions
-    this.agenticMemory = this.initializeAgenticMemory(); // AI memory system
+    this.userInteractions = [];
+    this.agenticMemory = this.initializeAgenticMemory();
     this.init();
   }
 
@@ -704,6 +710,13 @@ class EAIChatbot {
   }
 
   handleUserMessage(message) {
+    // Add to conversation history
+    this.currentConversation.push({
+      type: 'user',
+      message: message,
+      timestamp: Date.now()
+    });
+    
     // Track user interaction for agentic behavior
     this.userInteractions.push({
       message: message,
@@ -711,24 +724,37 @@ class EAIChatbot {
       context: this.userContext
     });
     
-    // Update agentic memory with user preferences
+    // Update user preferences
     this.updateUserPreferences(message);
     
     // Add user message to chat
     this.addMessage(message, 'user');
     
-    // Show typing indicator with intelligent delay
+    // Show typing indicator
     this.showTypingIndicator();
     
-    // Process message with enhanced AI logic
+    // Process message with context awareness
     const processingDelay = this.calculateProcessingDelay(message);
     setTimeout(() => {
       this.hideTypingIndicator();
-      const response = this.generateIntelligentResponse(message);
+      const response = this.generateContextualResponse(message);
+      
+      // Add bot response to conversation history
+      this.currentConversation.push({
+        type: 'bot',
+        message: response.text,
+        timestamp: Date.now(),
+        context: this.conversationContext
+      });
+      
       this.addMessage(response.text, 'bot', response.action);
       
-      // Follow up with proactive suggestions if appropriate
-      this.considerFollowUpSuggestions(message, response);
+      // Handle follow-up prompts if needed
+      if (response.followUp) {
+        setTimeout(() => {
+          this.addMessage(response.followUp, 'bot');
+        }, 2000);
+      }
     }, processingDelay);
   }
 
@@ -759,132 +785,334 @@ class EAIChatbot {
     return baseDelay + (complexityMultiplier * 300) + randomness;
   }
 
-  // Generate intelligent response with enhanced NLP
-  generateIntelligentResponse(userMessage) {
-    const message = userMessage.toLowerCase();
+  // Generate contextual response with conversation flow
+  generateContextualResponse(userMessage) {
+    const message = userMessage.toLowerCase().trim();
     
-    // Check if user has a pending suggestion when they open EAI
-    if (this.pendingSuggestion && this.userInteractions.length === 1) {
-      const suggestion = this.pendingSuggestion;
-      this.pendingSuggestion = null;
+    // Check for conversation continuity first
+    if (this.conversationContext.awaitingFollowup) {
+      return this.handleFollowUpResponse(message);
+    }
+    
+    // Handle short responses and confirmations
+    if (this.isShortResponse(message)) {
+      return this.handleShortResponse(message);
+    }
+    
+    // Check for project search queries
+    const projectSearchResult = this.searchProjects(message);
+    if (projectSearchResult) {
+      this.conversationContext.lastTopic = 'projects';
+      this.conversationContext.awaitingFollowup = true;
+      this.conversationContext.contextData = { searchPerformed: true };
       return { 
-        text: `🧠 **I was just thinking** - ${suggestion}\n\nBut I see you have a question: "${userMessage}". Let me help with that first! ${this.generateResponse(userMessage).text}`,
+        text: projectSearchResult, 
+        action: null,
+        followUp: "Would you like me to help you download files from any of these projects, or find something more specific?"
+      };
+    }
+    
+    // Handle greetings
+    if (this.containsPatterns(message, this.knowledgeBase.greetings.patterns)) {
+      this.conversationContext.lastTopic = 'greeting';
+      this.conversationContext.awaitingFollowup = true;
+      return this.handleGreeting();
+    }
+    
+    // Service queries
+    if (this.containsPatterns(message, this.knowledgeBase.services.patterns)) {
+      return this.handleServiceQuery(message);
+    }
+    
+    // Navigation queries
+    if (this.containsPatterns(message, this.knowledgeBase.navigation.patterns)) {
+      return this.handleNavigationQuery(message);
+    }
+    
+    // Technical queries
+    if (this.containsPatterns(message, this.knowledgeBase.technical.patterns)) {
+      return this.handleTechnicalQuery(message);
+    }
+    
+    // Business queries
+    if (this.containsPatterns(message, this.knowledgeBase.business.patterns)) {
+      return this.handleBusinessQuery(message);
+    }
+    
+    // Products and systems
+    if (this.containsPatterns(message, this.knowledgeBase.products_systems.patterns)) {
+      return this.handleProductsQuery(message);
+    }
+    
+    // Complex queries
+    if (this.isComplexQuery(message)) {
+      return this.handleComplexQuery(message);
+    }
+    
+    // Default fallback with conversation flow
+    return this.handleFallbackResponse(message);
+  }
+  
+  // Handle follow-up responses in conversation
+  handleFollowUpResponse(message) {
+    const lastTopic = this.conversationContext.lastTopic;
+    
+    if (this.isConfirmation(message)) {
+      switch (lastTopic) {
+        case 'projects':
+          this.conversationContext.awaitingFollowup = false;
+          return {
+            text: "Great! Which specific project interests you? You can say something like 'Project 3' or 'Excel dashboard project'.",
+            action: null
+          };
+          
+        case 'services':
+          this.conversationContext.awaitingFollowup = false;
+          return {
+            text: "Excellent! Let me connect you with our team for a personalized quote. What type of data analysis do you need?",
+            action: () => window.open('https://wa.me/254791360805?text=Hi! I need a quote for data analysis services', '_blank')
+          };
+          
+        case 'greeting':
+          this.conversationContext.awaitingFollowup = false;
+          return {
+            text: "Perfect! I'm here to help. You can ask me about:\n• 📊 Our projects and portfolio\n• 💼 Services and pricing\n• 🔍 How to navigate the website\n• 📞 Getting in touch with our team\n\nWhat interests you most?",
+            action: null
+          };
+      }
+    }
+    
+    if (this.isNegation(message)) {
+      this.conversationContext.awaitingFollowup = false;
+      return {
+        text: "No problem! What else can I help you with today? Feel free to ask about anything EXES-related.",
         action: null
       };
     }
-
-    // Enhanced intent recognition with contextual awareness
-    const intent = this.recognizeIntent(message);
     
-    // Use agentic memory to personalize responses
-    if (intent === 'technology_interest' && this.agenticMemory.userPreferences.python > 2) {
+    // If it's a new question, treat it as such but maintain some context
+    this.conversationContext.awaitingFollowup = false;
+    return this.generateContextualResponse(message);
+  }
+  
+  // Handle short responses like "yes", "no", "ok", etc.
+  handleShortResponse(message) {
+    if (this.isConfirmation(message)) {
       return {
-        text: "🐍 **I noticed you're really interested in Python!** You've asked about it several times. Here are our best Python projects: Project 3 (Student Performance Analysis), Project 6 (E-Commerce Analysis), and Project 8 (COVID-19 Analysis). Would you like me to show you the download links?",
-        action: () => this.suggestPythonProjects()
+        text: "Great! What would you like to know more about? I can help with projects, services, pricing, or navigation.",
+        action: null
       };
     }
-
-    // Context-aware file operation suggestions
-    if (intent === 'download_interest') {
-      return this.generateFileOperationResponse(message);
-    }
-
-    // Fallback to standard response with agentic enhancements
-    const standardResponse = this.generateResponse(userMessage);
-    return this.enhanceWithAgenticInsights(standardResponse, message);
-  }
-
-  // Advanced intent recognition
-  recognizeIntent(message) {
-    const intents = {
-      'download_interest': ['download', 'file', 'save', 'get', 'access'],
-      'technology_interest': ['python', 'excel', 'powerbi', 'sql', 'dashboard'],
-      'pricing_inquiry': ['price', 'cost', 'charge', 'fee', 'quote', 'budget'],
-      'help_seeking': ['help', 'how', 'guide', 'tutorial', 'explain'],
-      'project_exploration': ['project', 'portfolio', 'work', 'example', 'show me']
-    };
-
-    for (const [intent, keywords] of Object.entries(intents)) {
-      if (keywords.some(keyword => message.includes(keyword))) {
-        return intent;
-      }
+    
+    if (this.isNegation(message)) {
+      return {
+        text: "No worries! Is there something else I can help you with?",
+        action: null
+      };
     }
     
-    return 'general';
-  }
-
-  // Generate file operation suggestions
-  generateFileOperationResponse(message) {
-    const fileTypes = {
-      '.py': 'Python script',
-      '.xlsx': 'Excel workbook', 
-      '.pbix': 'Power BI dashboard',
-      '.sql': 'SQL database script'
-    };
-
+    if (message === 'ok' || message === 'okay' || message === 'cool' || message === 'nice') {
+      return {
+        text: "😊 Glad to help! Anything else you'd like to explore?",
+        action: null
+      };
+    }
+    
     return {
-      text: `📁 **File Access Made Easy!** I can help you find and download specific project files:\n\n• **Python files** (.py) - Data analysis scripts\n• **Excel files** (.xlsx) - Cleaned datasets & dashboards\n• **Power BI files** (.pbix) - Interactive dashboards\n• **SQL files** (.sql) - Database scripts\n\n🎯 **Just tell me**: "Download Python files for project 3" or "Show me Excel files for e-commerce analysis"`,
-      action: () => this.suggestFileOperations()
+      text: "I'd love to help! Could you tell me a bit more about what you're looking for?",
+      action: null
+    };
+  }
+  
+  // Check if message is a short response
+  isShortResponse(message) {
+    const shortPatterns = ['yes', 'no', 'ok', 'okay', 'sure', 'thanks', 'cool', 'nice', 'good', 'great'];
+    return message.split(' ').length <= 2 && shortPatterns.some(pattern => message.includes(pattern));
+  }
+  
+  // Check if message is confirmation
+  isConfirmation(message) {
+    const confirmations = ['yes', 'yeah', 'yep', 'sure', 'okay', 'ok', 'definitely', 'absolutely', 'of course'];
+    return confirmations.some(conf => message.includes(conf));
+  }
+  
+  // Check if message is negation
+  isNegation(message) {
+    const negations = ['no', 'nope', 'not really', 'no thanks', 'nah'];
+    return negations.some(neg => message.includes(neg));
+  }
+  
+  // Enhanced greeting handler
+  handleGreeting() {
+    let greetingText;
+    
+    if (this.userSession.returningUser && this.currentConversation.length === 1) {
+      greetingText = `🎉 **Welcome back!** I'm EAI, your EXES assistant. Good to see you again!`;
+    } else {
+      greetingText = `👋 **Hello! I'm EAI**, your intelligent guide to EXES Analytics. We turn data chaos into clear insights!`;
+    }
+    
+    return {
+      text: greetingText + "\n\nI can help you explore our projects, learn about services, or navigate the website. What brings you here today?",
+      action: null
+    };
+  }
+  
+  // Service query handler with conversation flow
+  handleServiceQuery(message) {
+    this.conversationContext.lastTopic = 'services';
+    
+    if (message.includes('price') || message.includes('cost')) {
+      this.conversationContext.awaitingFollowup = true;
+      this.conversationContext.contextData = { pricingQuery: true };
+      return {
+        text: "💰 **Our Service Pricing**:\n\n• **Excel Cleanup**: KSh 2,000-10,000\n• **Data Analysis**: KSh 5,000-25,000\n• **PowerBI Dashboards**: KSh 8,000-30,000\n• **Complete Setup**: KSh 15,000-50,000\n\nPrices vary based on complexity and data size.",
+        action: null,
+        followUp: "Would you like a personalized quote for your specific needs? I can connect you with our team!"
+      };
+    }
+    
+    if (message.includes('excel')) {
+      return {
+        text: "✨ **Excel Cleanup Service**: We transform messy spreadsheets into organized, analysis-ready data! This includes removing duplicates, standardizing formats, creating formulas, and building summary reports.\n\nStarting from just KSh 2,000 depending on complexity.",
+        action: null,
+        followUp: "Interested in seeing some Excel project examples?"
+      };
+    }
+    
+    // Default service response
+    return {
+      text: "💼 **EXES Services Overview**:\n• Excel cleanup & automation\n• Data analysis & insights\n• PowerBI dashboard creation\n• Database setup & tracking\n\nWe turn your data problems into business solutions!",
+      action: null,
+      followUp: "Which service interests you most? I can provide more details!"
     };
   }
 
-  // Enhance responses with agentic insights
-  enhanceWithAgenticInsights(response, message) {
-    // Add personalized recommendations based on user history
-    if (this.agenticMemory.userPreferences.projects && Math.random() < 0.4) {
-      response.text += `\n\n💡 **Smart Suggestion**: Based on your interest in projects, you might also like our ${this.getPersonalizedProjectSuggestion()}`;
-    }
-
-    return response;
-  }
-
-  // Get personalized project suggestions
-  getPersonalizedProjectSuggestion() {
-    const preferences = this.agenticMemory.userPreferences;
+  // Navigation query handler
+  handleNavigationQuery(message) {
+    this.conversationContext.lastTopic = 'navigation';
     
-    if (preferences.python > preferences.excel) {
-      return "advanced Python analytics projects - they showcase sophisticated data science techniques!";
-    } else if (preferences.excel > 0) {
-      return "Excel dashboard projects - perfect for business intelligence applications!";
-    } else if (preferences.powerbi > 0) {
-      return "Power BI visualizations - they're great for interactive data storytelling!";
+    if (message.includes('project')) {
+      return {
+        text: "🎯 **Projects Page**: Find all our portfolio work! Click the 'Projects' link in the navigation menu to explore 40+ completed projects with filtering and search options.",
+        action: () => window.location.href = 'My-projects.html',
+        followUp: "Want me to help you find specific types of projects?"
+      };
     }
     
-    return "portfolio overview - it shows the full range of our capabilities!";
-  }
-
-  // Consider intelligent follow-up suggestions
-  considerFollowUpSuggestions(userMessage, response) {
-    setTimeout(() => {
-      const followUps = this.generateFollowUpSuggestions(userMessage);
-      if (followUps.length > 0 && Math.random() < 0.3) { // 30% chance
-        const followUp = followUps[Math.floor(Math.random() * followUps.length)];
-        this.addMessage(`💭 **Follow-up thought**: ${followUp}`, 'bot');
-      }
-    }, 3000); // 3 seconds after main response
-  }
-
-  // Generate context-aware follow-up suggestions
-  generateFollowUpSuggestions(message) {
-    const msg = message.toLowerCase();
-    const suggestions = [];
-
-    if (msg.includes('project')) {
-      suggestions.push("Would you like me to show you how to use the project filtering features?");
-      suggestions.push("I can also help you find projects by specific technologies or business domains.");
+    if (message.includes('service')) {
+      return {
+        text: "💼 **Services Page**: Learn about our data solutions! We help businesses stop profit leaks through better data management.",
+        action: () => window.location.href = 'services.html',
+        followUp: "Curious about pricing for any specific service?"
+      };
     }
     
-    if (msg.includes('price') || msg.includes('cost')) {
-      suggestions.push("I can connect you with our team for a personalized quote - it usually takes less than 24 hours!");
-      suggestions.push("Would you like to see examples of similar projects we've completed within different budget ranges?");
+    return {
+      text: "🧭 **Navigation Help**: I can guide you to any page! Try asking for 'projects', 'services', 'contact', or 'about' pages.",
+      action: null
+    };
+  }
+  
+  // Technical query handler  
+  handleTechnicalQuery(message) {
+    if (message.includes('zoom')) {
+      return {
+        text: "🔍 **Image Zoom**: Double-click any project image to view it fullscreen. On mobile, double-tap. Press ESC or click the X to close.",
+        action: null,
+        followUp: "Need help with any other website features?"
+      };
     }
-
-    if (msg.includes('download')) {
-      suggestions.push("Pro tip: You can also use our smart search to find files by project name or technology!");
-      suggestions.push("Need help organizing your downloaded files? I can suggest folder structures for data analysis projects.");
+    
+    if (message.includes('filter') || message.includes('search')) {
+      return {
+        text: "🎛️ **Smart Filtering**: On the Projects page, use filter buttons (Excel, PowerBI, Python, SQL) to see specific types. The search box helps find projects by name or technology.",
+        action: null,
+        followUp: "Want me to show you some specific project examples?"
+      };
     }
-
-    return suggestions;
+    
+    return {
+      text: "🛠️ **Technical Features**: I can help with image zoom, project filtering, search functionality, or file downloads. What do you need help with?",
+      action: null
+    };
+  }
+  
+  // Business query handler
+  handleBusinessQuery(message) {
+    this.conversationContext.lastTopic = 'business';
+    
+    if (message.includes('founder') || message.includes('deric') || message.includes('ceo')) {
+      return {
+        text: "👨‍💻 **Meet Our Founder**: Deric Marangu - CEO and founder of EXES. Business Information Technology student, data analytics expert, and passionate about turning data chaos into clarity!",
+        action: () => window.location.href = 'about.html',
+        followUp: "Want to see some of Deric's best project work?"
+      };
+    }
+    
+    if (message.includes('about') || message.includes('company')) {
+      return {
+        text: "🏢 **About EXES**: We're Kenya's premier data analytics company, specializing in Excel cleanup, dashboard creation, and data-driven insights. 40+ successful projects and counting!",
+        action: () => window.location.href = 'about.html',
+        followUp: "Interested in seeing our portfolio or learning about our services?"
+      };
+    }
+    
+    return {
+      text: "🏢 **EXES Business Info**: Founded by Deric Marangu, we're data analytics specialists helping businesses make better decisions. What would you like to know more about?",
+      action: null
+    };
+  }
+  
+  // Products query handler
+  handleProductsQuery(message) {
+    if (message.includes('streamlit') || message.includes('try yourself')) {
+      return {
+        text: "🧪 **Try Our Analytics Tool**: Experience our data analysis capabilities firsthand with our interactive Streamlit app!",
+        action: () => window.open('https://exes-ebi.streamlit.app/', '_blank'),
+        followUp: "After trying it, let me know if you'd like similar analysis for your data!"
+      };
+    }
+    
+    if (message.includes('tujengane') || message.includes('education')) {
+      return {
+        text: "🎓 **Tujengane Education**: Our data literacy programs! From free Data Basics to professional Analyst Pro courses.",
+        action: () => window.open('https://tujengane.netlify.app/', '_blank'),
+        followUp: "Interested in joining any specific program?"
+      };
+    }
+    
+    return {
+      text: "🛠️ **Our Tech Stack**: Python, Excel, PowerBI, SQL, and more! We use the best tools for your data needs.",
+      action: null,
+      followUp: "Want to know more about specific technologies or see project examples?"
+    };
+  }
+  
+  // Complex query handler
+  handleComplexQuery(message) {
+    return {
+      text: "🤝 **Complex Request Detected**: This sounds like something our expert team should discuss with you personally! We love tackling challenging projects.",
+      action: () => window.open('https://wa.me/254791360805?text=Hi! I have a complex data analysis requirement', '_blank'),
+      followUp: "Our team typically responds within an hour for detailed consultations!"
+    };
+  }
+  
+  // Fallback response handler
+  handleFallbackResponse(message) {
+    const encouragingResponses = [
+      "🤗 **I'm here to help!** I can guide you through our website, explain services, or connect you with our team. What specific area interests you?",
+      "💡 **Let me assist you!** Try asking about our projects, services, pricing, or how to use website features.",
+      "😊 **I'd love to help!** What would you like to know about EXES? Our work, services, or team?"
+    ];
+    
+    const randomResponse = encouragingResponses[Math.floor(Math.random() * encouragingResponses.length)];
+    
+    return {
+      text: randomResponse,
+      action: null,
+      followUp: "Feel free to ask anything - from technical questions to business inquiries!"
+    };
   }
 
   // Method to search projects based on user input
