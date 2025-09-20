@@ -822,68 +822,10 @@ setInterval(() => {
   goToSlide(currentSlide);
 }, 4000); // Change every 4 seconds
 
-// Simple chat widget
-let chatOpen = false;
-
-function toggleChat() {
-  const chatWidget = document.getElementById('chatWidget');
-  const chatButton = document.getElementById('chatButton');
-  
-  chatOpen = !chatOpen;
-  
-  if (chatOpen) {
-    chatWidget.classList.remove('hidden');
-    chatButton.innerHTML = '<i class="fas fa-times"></i>';
-    chatButton.style.backgroundColor = '#ef4444';
-  } else {
-    chatWidget.classList.add('hidden');
-    chatButton.innerHTML = '<i class="fas fa-comments"></i>';
-    chatButton.style.backgroundColor = '#49A078';
-  }
-}
-
-// Auto-hide chat after 5 seconds if no interaction
-setTimeout(() => {
-  if (chatOpen) {
-    const chatWidget = document.getElementById('chatWidget');
-    chatWidget.style.opacity = '0.7';
-  }
-}, 5000);
+// EAI chatbot is loaded via chatbot.js - no additional chat widget needed
 </script>
 
-<!-- ✅ Live Chat Widget -->
-<div id="chatButton" onclick="toggleChat()" 
-  class="fixed bottom-6 right-6 bg-[#49A078] text-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-[#3e8865] transition-all z-50 pulse-animation">
-  <i class="fas fa-comments"></i>
-</div>
-
-<div id="chatWidget" class="hidden fixed bottom-20 right-6 bg-white border border-gray-200 rounded-lg shadow-xl w-80 max-w-sm z-50">
-  <div class="bg-[#49A078] text-white p-3 rounded-t-lg">
-    <h4 class="font-semibold text-sm">💬 Quick Chat with EXES</h4>
-  </div>
-  <div class="p-4 space-y-3">
-    <div class="bg-gray-100 p-2 rounded text-sm">
-      <strong>EXES Bot:</strong> Hi! How can we help with your data needs today?
-    </div>
-    <div class="space-y-2">
-      <a href="https://wa.me/254791360805?text=Hi%20EXES,%20I%20need%20help%20with%20data%20analysis" 
-         target="_blank" class="block bg-green-500 text-white p-2 rounded text-center text-xs hover:bg-green-600 transition">
-        <i class="fab fa-whatsapp mr-1"></i>WhatsApp (Fastest Response)
-      </a>
-      <a href="mailto:dericmarangu@gmail.com?subject=Data%20Analysis%20Inquiry" 
-         class="block bg-blue-500 text-white p-2 rounded text-center text-xs hover:bg-blue-600 transition">
-        <i class="fas fa-envelope mr-1"></i>Email Us
-      </a>
-      <button onclick="openModal('projectModal')" 
-         class="w-full bg-[#49A078] text-white p-2 rounded text-xs hover:bg-[#3e8865] transition">
-        <i class="fas fa-rocket mr-1"></i>Start Project Now
-      </button>
-    </div>
-    <p class="text-xs text-gray-500 text-center">
-      <i class="fas fa-clock mr-1"></i>Usually respond within 1 hour
-    </p>
-  </div>
-</div>
+<!-- EAI Chatbot is automatically initialized via chatbot.js -->
 
 <style>
 .pulse-animation {
