@@ -1,11 +1,13 @@
-// EXES Intelligent Chatbot System
-class EXESChatbot {
+// EAI (Exesbi Artificial Intelligence) - Advanced Chatbot System
+class EAIChatbot {
   constructor() {
     this.isOpen = false;
     this.currentConversation = [];
     this.userContext = this.detectUserContext();
     this.projectsData = null; // Store projects data for search
     this.userSession = this.initializeUserSession();
+    this.userInteractions = []; // Track user behavior for smart suggestions
+    this.agenticMemory = this.initializeAgenticMemory(); // AI memory system
     this.init();
   }
 
@@ -14,6 +16,109 @@ class EXESChatbot {
     this.bindEvents();
     this.loadKnowledgeBase();
     this.loadProjectsData(); // Load project data for search
+    this.startAgenticBehavior(); // Initialize proactive AI behavior
+  }
+
+  // Initialize AI memory system for personalized experience
+  initializeAgenticMemory() {
+    const stored = localStorage.getItem('eai_memory');
+    const memory = stored ? JSON.parse(stored) : {
+      userPreferences: {},
+      interactionHistory: [],
+      commonQuestions: [],
+      suggestedActions: [],
+      lastActiveContext: null
+    };
+    return memory;
+  }
+
+  // Save AI memory to localStorage
+  saveAgenticMemory() {
+    localStorage.setItem('eai_memory', JSON.stringify(this.agenticMemory));
+  }
+
+  // Start proactive AI behavior
+  startAgenticBehavior() {
+    // Analyze user behavior after a delay
+    setTimeout(() => {
+      this.analyzeUserBehavior();
+    }, 10000); // 10 seconds after load
+
+    // Periodic intelligent suggestions
+    setInterval(() => {
+      if (!this.isOpen) {
+        this.considerProactiveSuggestion();
+      }
+    }, 60000); // Every minute
+  }
+
+  // Analyze user behavior and adapt responses
+  analyzeUserBehavior() {
+    const timeOnPage = Date.now() - this.userSession.currentTime.getTime();
+    const context = this.userContext;
+    
+    // Store behavioral data
+    this.agenticMemory.lastActiveContext = context;
+    this.agenticMemory.interactionHistory.push({
+      context: context,
+      timeSpent: timeOnPage,
+      timestamp: Date.now()
+    });
+    
+    // Suggest contextual help if user seems inactive
+    if (timeOnPage > 30000 && !this.userSession.returningUser) {
+      this.suggestContextualHelp();
+    }
+    
+    this.saveAgenticMemory();
+  }
+
+  // Suggest contextual help based on current page
+  suggestContextualHelp() {
+    const suggestions = {
+      'homepage': "I noticed you're exploring our homepage. Would you like me to show you our best projects or explain our services?",
+      'projects': "I see you're viewing our projects! I can help you find specific work by technology (Python, Excel, PowerBI) or topic. Try asking me to 'show Excel projects'",
+      'services': "Looking at our services? I can provide detailed pricing info or show you examples of similar work we've completed!",
+      'contact': "Need to get in touch? I can guide you to the fastest contact method or help you prepare your project requirements.",
+      'about': "Learning about our team? I can share more about CEO Deric Marangu's expertise or show you his best work examples!"
+    };
+
+    const suggestion = suggestions[this.userContext];
+    if (suggestion && !this.isOpen) {
+      // Add a subtle notification to the EAI button
+      this.addNotificationPulse(suggestion);
+    }
+  }
+
+  // Add notification pulse to EAI button
+  addNotificationPulse(message) {
+    const toggleBtn = document.getElementById('chatbot-toggle');
+    if (toggleBtn) {
+      toggleBtn.classList.add('eai-has-suggestion');
+      toggleBtn.title = `EAI has a suggestion: ${message}`;
+      
+      // Store the suggestion for when user opens EAI
+      this.pendingSuggestion = message;
+    }
+  }
+
+  // Consider proactive suggestions based on user context
+  considerProactiveSuggestion() {
+    const timeOnCurrentPage = Date.now() - this.userSession.currentTime.getTime();
+    
+    // If user has been on page for a while, suggest help
+    if (timeOnCurrentPage > 120000 && Math.random() < 0.3) { // 2 minutes, 30% chance
+      const contextSuggestions = {
+        'projects': "💡 I can help you find specific projects by technology or topic!",
+        'services': "💼 Want to know more about pricing or see project examples?", 
+        'homepage': "🚀 Need a quick tour of our capabilities or have questions?"
+      };
+      
+      const suggestion = contextSuggestions[this.userContext];
+      if (suggestion) {
+        this.addNotificationPulse(suggestion);
+      }
+    }
   }
 
   // Initialize user session for personalized greetings
@@ -111,12 +216,17 @@ class EXESChatbot {
 
       // Service-related questions
       services: {
-        patterns: ['price', 'cost', 'service', 'excel', 'data', 'analysis', 'dashboard', 'cleanup', 'quote', 'budget', 'rates', 'affordable', 'how much', 'pricing', 'fees', 'charges', 'what do you offer', 'your services'],
+        patterns: ['price', 'cost', 'service', 'excel', 'data', 'analysis', 'dashboard', 'cleanup', 'quote', 'budget', 'rates', 'affordable', 'how much', 'pricing', 'fees', 'charges', 'what do you offer', 'your services', 'powerbi', 'power bi', 'setup', 'tracking'],
         responses: {
-          'excel_cleanup': "✨ **Excel Cleanup Service**: We fix messy spreadsheets, remove duplicates, standardize formats, and make your data analysis-ready. Starting from affordable rates! For specific pricing, please contact us for a personalized quote.",
-          'data_analysis': "📊 **Data Analysis**: We turn your raw data into actionable insights with statistical analysis, trend identification, and business recommendations. We handle various data sizes and complexities.",
-          'dashboard': "📈 **Dashboard Creation**: Beautiful, interactive dashboards in Excel, PowerBI, or Python that help you monitor your business metrics in real-time. Customizable to your needs.",
-          'pricing': "💰 **Pricing**: Our services are very affordable! Pricing depends on project complexity. Contact us at EXESanalytics@hotmail.com or WhatsApp 0791360805 for a free quote - we'll work within your budget!"
+          'excel_cleanup': "✨ **Excel Cleanup Service**: We fix messy spreadsheets, remove duplicates, standardize formats, and make your data analysis-ready. This includes organizing data, creating automated formulas, and building summary dashboards. Perfect for businesses with chaotic data!",
+          'data_analysis': "📊 **Data Analysis**: We turn your raw data into actionable insights with statistical analysis, trend identification, and business recommendations. We find hidden patterns, identify profit opportunities, track key performance metrics, and generate actionable insights that drive business decisions.",
+          'dashboard': "📈 **Dashboard Creation**: Beautiful, interactive dashboards in Excel, PowerBI, or Python that help you monitor your business metrics in real-time. Features include real-time data visualization, interactive business reports, automated data updates, and mobile-friendly dashboards.",
+          'powerbi_dashboards': "💼 **PowerBI Dashboards**: Professional interactive dashboards with real-time data visualization, automated updates, and mobile compatibility. Perfect for executive reporting and business intelligence.",
+          'setup_services': "🔧 **Data Setup Services**: Don't have data yet? We set up tracking systems from scratch including sales tracking, inventory management, customer databases, and automated reporting systems.",
+          'process': "� **Our Simple 4-Step Process**:\n\n1️⃣ **Send Data**: Upload your files or describe your needs\n2️⃣ **We Analyze**: Our experts clean and analyze your data\n3️⃣ **Get Results**: Receive clean data and actionable insights\n4️⃣ **Make Decisions**: Use data-driven insights to grow your business",
+          'pricing_structure': "💰 **Our Pricing Structure**:\n\n• **Excel Cleanup**: Starting from KSh 2,000-10,000 (depending on complexity)\n• **Data Analysis**: KSh 5,000-25,000 (based on dataset size and depth)\n• **PowerBI Dashboards**: KSh 8,000-30,000 (interactive dashboards)\n• **Complete Setup**: KSh 15,000-50,000 (full system implementation)\n\n💡 **Volume Discounts Available!** Contact us for custom quotes.",
+          'value_proposition': "🎯 **Why Choose EXES?**\n\n• **Stop Revenue Leaks**: Most businesses lose money through untracked decisions - we fix that\n• **Turn KSh 1M into KSh 10M**: Our analytics help clients achieve 10x growth\n• **40+ Successful Projects**: Proven track record across various industries\n• **Fast Turnaround**: Most projects completed within 3-7 days\n• **Affordable Rates**: Starting from just KSh 2,000",
+          'contact_options': "📞 **Get Started Today**:\n\n• **WhatsApp**: +254791360805 (Fastest response)\n• **Email**: EXESanalytics@hotmail.com\n• **Have Data?** → https://forms.gle/krViHXVaJKP2JARZ7\n• **Need Setup?** → https://forms.gle/Uzq3L9wtm5yM6KEX7"
         }
       },
 
@@ -168,47 +278,47 @@ class EXESChatbot {
         patterns: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'greetings', 'hola', 'howdy', 'yo', 'sup', 'whats up', 'bonjour', 'salut', 'ciao', 'aloha', 'shalom', 'namaste', 'salaam', 'konnichiwa', 'annyeong'],
         responses: {
           'first_visit': [
-            "🌟 **Welcome to EXES!** Great to meet you! I'm your intelligent assistant, here to help you discover our data analytics expertise led by CEO Deric Marangu. What brings you here today?",
-            "👋 **Hello there!** Welcome to EXES - where we turn data chaos into clarity! I'm here to guide you through our services and projects. How can I help?",
-            "😊 **Hi! Welcome aboard!** I'm the EXES assistant, ready to help you navigate our website and learn about our amazing data solutions. What interests you most?",
-            "🎉 **Greetings!** First time here? EXES is all about smart data solutions led by CEO Deric Marangu. What's on your mind?",
-            "✨ **Hey!** Delighted to have you at EXES. From greetings to deep dives, I'm here. How may I assist?"
+            "🧠 **Welcome to EAI!** I'm your Exesbi Artificial Intelligence assistant, here to help you discover our data analytics expertise led by CEO Deric Marangu. What brings you here today?",
+            "👋 **Hello there!** Welcome to EXES - I'm EAI, your intelligent guide! Where we turn data chaos into clarity! How can I help you explore our capabilities?",
+            "😊 **Hi! Welcome aboard!** I'm EAI, your AI assistant, ready to help you navigate our website and learn about our amazing data solutions. What interests you most?",
+            "🎉 **Greetings!** First time here? I'm EAI, and EXES is all about smart data solutions led by CEO Deric Marangu. What's on your mind?",
+            "✨ **Hey there!** I'm EAI, your intelligent companion at EXES. From simple questions to deep dives, I'm here to assist. How may I help?"
           ],
           'returning_visitor': [
-            "🎉 **Welcome back!** Nice to see you again! Ready to explore more of what EXES has to offer?",
-            "👋 **Hey again!** Good to have you back! What can I help you discover today?",
-            "😊 **Welcome back to EXES!** Hope you're having a great day! What would you like to explore this time?",
-            "🌟 **Hello returning friend!** EXES appreciates your visits. Anything specific from our CEO Deric Marangu's portfolio?",
-            "👏 **Hi once more!** Great to see familiar faces. Let's pick up where we left off—what's your query?"
+            "🎉 **Welcome back!** It's EAI here - nice to see you again! Ready to explore more of what EXES has to offer?",
+            "👋 **Hey again!** EAI at your service - good to have you back! What can I help you discover today?",
+            "😊 **Welcome back to EXES!** It's your AI assistant EAI - hope you're having a great day! What would you like to explore this time?",
+            "🌟 **Hello returning friend!** EAI here - EXES appreciates your visits. Anything specific from our CEO Deric Marangu's portfolio?",
+            "👏 **Hi once more!** EAI is excited to see familiar faces. Let's pick up where we left off—what's your query?"
           ],
           'time_based': {
             'morning': [
-              "☀️ **Good morning!** Perfect time to dive into some data insights! How can I brighten your day with EXES solutions?",
-              "🌅 **Morning!** Ready to start the day with some amazing data analytics? What can I show you?",
-              "🌤️ **Bright morning greetings!** EXES, led by CEO Deric Marangu, is here to kickstart your data journey.",
-              "☕ **Good morning!** Coffee in hand? Let's talk EXES services or projects to energize your day."
+              "☀️ **Good morning!** EAI here - perfect time to dive into some data insights! How can I brighten your day with EXES solutions?",
+              "🌅 **Morning!** Your AI assistant EAI is ready to start the day with some amazing data analytics! What can I show you?",
+              "🌤️ **Bright morning greetings!** I'm EAI, and EXES, led by CEO Deric Marangu, is here to kickstart your data journey.",
+              "☕ **Good morning!** EAI here with your coffee-time data chat! Let's talk EXES services or projects to energize your day."
             ],
             'afternoon': [
-              "🌞 **Good afternoon!** Hope your day is going well! Let me help you discover what EXES can do for you.",
-              "☀️ **Afternoon!** Perfect timing to explore our data solutions. What interests you most?",
-              "🏙️ **Afternoon vibes!** EXES is ready to assist with any website queries or beyond.",
-              "🌤️ **Hello afternoon explorer!** From CEO Deric Marangu's insights to project details, ask away."
+              "🌞 **Good afternoon!** EAI at your service - hope your day is going well! Let me help you discover what EXES can do for you.",
+              "☀️ **Afternoon!** Your intelligent EAI assistant here - perfect timing to explore our data solutions. What interests you most?",
+              "🏙️ **Afternoon vibes!** EAI is ready to assist with any website queries or beyond.",
+              "🌤️ **Hello afternoon explorer!** EAI here - from CEO Deric Marangu's insights to project details, ask away."
             ],
             'evening': [
-              "🌅 **Good evening!** Winding down with some data exploration? I'm here to help!",
-              "🌆 **Evening!** Great time to check out our portfolio. What would you like to see?",
-              "🌇 **Evening greetings!** EXES wraps up your day with smart answers. How can I assist?",
-              "🌙 **Good evening!** Relax and let me guide you through EXES offerings."
+              "🌅 **Good evening!** EAI here - winding down with some data exploration? I'm here to help!",
+              "🌆 **Evening!** Your AI companion EAI - great time to check out our portfolio. What would you like to see?",
+              "🌇 **Evening greetings!** EAI wraps up your day with smart answers. How can I assist?",
+              "🌙 **Good evening!** EAI here to help you relax and explore EXES offerings."
             ],
             'night': [
-              "🌙 **Good evening!** Late night research? I'm here to help you find what you need!",
-              "✨ **Hello night owl!** Exploring data solutions? Let me guide you through EXES!",
-              "🌌 **Late night hello!** EXES doesn't sleep—ask about anything from services to CEO Deric Marangu.",
-              "🦉 **Greetings night thinker!** Burning the midnight oil? EXES is here for all your questions."
+              "🌙 **Good evening!** EAI here for late night research - I'm here to help you find what you need!",
+              "✨ **Hello night owl!** EAI at your service for exploring data solutions! Let me guide you through EXES!",
+              "🌌 **Late night hello!** EAI doesn't sleep—ask about anything from services to CEO Deric Marangu.",
+              "🦉 **Greetings night thinker!** EAI here for burning the midnight oil - EXES is here for all your questions."
             ],
             'late night': [
-              "🌑 **Late night greetings!** Still up? EXES is always on for data chats.",
-              "🌙 **Hello in the wee hours!** From projects to contacts, I've got you covered at EXES."
+              "🌑 **Late night greetings!** EAI here - still up? EXES is always on for data chats.",
+              "🌙 **Hello in the wee hours!** EAI at your service - from projects to contacts, I've got you covered at EXES."
             ]
           }
         }
@@ -230,107 +340,118 @@ class EXESChatbot {
           'data_viz': "📊 **Data Visualization**: We create stunning dashboards and charts that make complex data easy to understand. Check our portfolio for examples!",
           'statistics': "📈 **Statistical Analysis**: We provide comprehensive statistical analysis including trend analysis, correlation studies, and predictive insights. Our CEO Deric Marangu specializes in this area."
         }
+      },
+
+      // Products and Systems
+      products_systems: {
+        patterns: ['products', 'systems', 'tools', 'platforms', 'technology', 'streamlit', 'tujengane', 'what tools', 'tech stack', 'software', 'applications'],
+        responses: {
+          'tech_stack': "💻 **EXES Tech Stack**:\n\n**Frontend**: HTML, TailwindCSS, JavaScript\n**Analytics**: Python, SQL, Power BI, Excel\n**Data Processing**: Pandas, NumPy, Matplotlib, Seaborn\n**Dashboards**: Power BI, Excel, Python visualizations\n**Storage**: Google Drive, Google Sheets\n**Hosting**: GitHub Pages, Netlify\n**Communication**: WhatsApp, Email, Google Forms",
+          
+          'streamlit_app': "🧪 **Try Yourself Platform**: Our interactive Streamlit application (https://exes-ebi.streamlit.app/) lets you:\n• Test data analysis features\n• Preview dashboard capabilities\n• Experience our tools firsthand\n• See sample analytics in action\n\nPerfect for exploring what EXES can do for your data!",
+          
+          'tujengane_programs': "🎓 **Tujengane Education Programs**:\n\n**1. Data Basics** (Free):\n• Data collection, cleaning, storage\n• Basic Excel and database concepts\n• WhatsApp Group: Business & student support\n\n**2. Analyst Pro** (Paid):\n• Excel, PowerBI, SQL, Python\n• Real-world analytics projects\n• Professional certification track\n\nBoth programs help you become data-literate!",
+          
+          'analysis_tools': "🛠️ **Our Analysis Arsenal**:\n\n**Python**: Advanced statistical analysis, machine learning\n**Excel**: Data cleaning, pivot tables, dashboards\n**Power BI**: Interactive business intelligence dashboards\n**SQL**: Database querying, data extraction\n**Google Sheets**: Collaborative data management\n**Matplotlib/Seaborn**: Professional data visualizations",
+          
+          'project_categories': "📊 **Project Types We Handle**:\n\n• **Excel Projects**: Cleanup, automation, dashboards\n• **Python Analytics**: Statistical analysis, ML models\n• **Power BI Dashboards**: Interactive business reports\n• **SQL Database**: Data extraction, reporting\n• **Mixed Projects**: Multi-tool comprehensive solutions\n\n40+ completed projects across all categories!"
+        }
       }
     };
   }
 
   createChatbotHTML() {
     const chatbotHTML = `
-      <!-- Chatbot Toggle Button -->
-      <div id="chatbot-toggle" class="fixed bottom-6 right-6 z-50">
-        <button class="bg-[#49A078] hover:bg-[#3e8865] text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all transform hover:scale-110 relative">
-          <i class="fas fa-comments text-xl"></i>
-          <div class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+      <!-- EAI Toggle Button -->
+      <div id="chatbot-toggle" class="fixed bottom-4 right-4 z-50">
+        <button class="bg-gradient-to-r from-[#49A078] to-[#3e8865] hover:from-[#3e8865] hover:to-[#2f6b52] text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-all transform hover:scale-105 relative group">
+          <i class="fas fa-robot text-lg"></i>
+          <div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse"></div>
+          <div class="absolute inset-0 rounded-full bg-white opacity-20 scale-0 group-hover:scale-100 transition-transform duration-300"></div>
         </button>
       </div>
 
-      <!-- Chatbot Container -->
-      <div id="chatbot-container" class="fixed bottom-6 right-6 w-72 max-w-[calc(100vw-2rem)] z-50 transform translate-y-full opacity-0 transition-all duration-300 ease-out">
-        <div class="bg-white rounded-lg shadow-2xl border border-gray-200 overflow-hidden">
+      <!-- EAI Container -->
+      <div id="chatbot-container" class="fixed bottom-4 right-4 w-64 max-w-[calc(100vw-1rem)] z-50 transform translate-y-full opacity-0 transition-all duration-300 ease-out">
+        <div class="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden backdrop-blur-sm">
           
           <!-- Header -->
-          <div class="bg-[#49A078] text-white p-4 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <img src="assets/img/logo.png" alt="EXES" class="w-8 h-8 rounded-full border-2 border-white">
+          <div class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white p-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <img src="assets/img/logo.png" alt="EXES Logo" class="w-7 h-7 rounded-full border border-white/30">
               <div>
-                <h3 class="font-semibold text-sm">EXES Assistant</h3>
+                <h3 class="font-bold text-sm">EAI</h3>
                 <p class="text-xs opacity-90 flex items-center">
-                  <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
-                  Online & Ready to Help
+                  <span class="w-1.5 h-1.5 bg-green-300 rounded-full mr-1.5 animate-pulse"></span>
+                  AI Assistant
                 </p>
               </div>
             </div>
-            <button id="chatbot-close" class="text-white hover:text-yellow-300 transition-colors">
-              <i class="fas fa-times"></i>
+            <button id="chatbot-close" class="text-white/80 hover:text-white transition-colors p-1">
+              <i class="fas fa-times text-sm"></i>
             </button>
           </div>
 
           <!-- Chat Messages -->
-          <div id="chatbot-messages" class="h-56 overflow-y-auto p-4 space-y-3 bg-gray-50">
+          <div id="chatbot-messages" class="h-48 overflow-y-auto p-3 space-y-2 bg-gradient-to-b from-gray-50 to-white">
             <div class="bot-message">
               <div class="flex items-start gap-2">
-                <img src="assets/img/logo.png" alt="Bot" class="w-6 h-6 rounded-full mt-1">
-                <div class="bg-white p-3 rounded-lg shadow-sm border text-sm max-w-xs">
-                  <p>👋 **Welcome to EXES!** I'm your intelligent guide.</p>
-                  <div class="mt-3 space-y-2">
+                <img src="assets/img/logo.png" alt="EXES" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5">
+                <div class="bg-white p-2.5 rounded-lg shadow-sm border text-xs max-w-xs border-l-2 border-l-[#49A078]">
+                  <p>� **Welcome to EAI!** I'm your intelligent assistant.</p>
+                  <div class="mt-2 space-y-1.5">
                     <p class="text-xs font-semibold text-gray-700">I can help you:</p>
-                    <ul class="text-xs space-y-1 text-gray-600">
-                      <li>🎯 Find specific pages & features</li>
-                      <li>💼 Learn about our services & pricing</li>
-                      <li>📁 Navigate project downloads</li>
-                      <li>🔍 Use website features (zoom, filters)</li>
-                      <li>📞 Connect you with our experts</li>
+                    <ul class="text-xs space-y-0.5 text-gray-600">
+                      <li>🎯 Navigate & explore features</li>
+                      <li>💼 Learn about services & pricing</li>
+                      <li>📁 Find & download projects</li>
+                      <li>🔍 Use smart search tools</li>
+                      <li>📞 Connect with experts</li>
                     </ul>
                   </div>
-                  <p class="mt-3 text-xs text-[#49A078] font-medium">What brings you to EXES today?</p>
+                  <p class="mt-2 text-xs text-[#49A078] font-medium">How can I assist you today?</p>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Input Area -->
-          <div class="p-4 border-t border-gray-200 bg-white">
+          <div class="p-3 border-t border-gray-200 bg-white">
             <div class="flex gap-2">
               <input 
                 type="text" 
                 id="chatbot-input" 
-                placeholder="Ask me anything about EXES..." 
-                class="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#49A078] focus:border-transparent"
+                placeholder="Ask EAI anything..." 
+                class="flex-1 px-2.5 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#49A078] focus:border-transparent"
                 maxlength="500"
               >
               <button 
                 id="chatbot-send" 
-                class="bg-[#49A078] hover:bg-[#3e8865] text-white px-4 py-2 rounded-lg transition-colors flex items-center justify-center min-w-[40px]"
+                class="bg-gradient-to-r from-[#49A078] to-[#3e8865] hover:from-[#3e8865] hover:to-[#2f6b52] text-white px-3 py-2 rounded-lg transition-all flex items-center justify-center min-w-[36px]"
               >
-                <i class="fas fa-paper-plane text-sm"></i>
+                <i class="fas fa-paper-plane text-xs"></i>
               </button>
             </div>
             
             <!-- Quick Actions -->
-            <div class="mt-3 flex flex-wrap gap-1">
+            <div class="mt-2 flex flex-wrap gap-1">
               <button class="quick-action-btn" data-message="Where can I find your projects?">
                 📁 Projects
               </button>
               <button class="quick-action-btn" data-message="Show me Python projects">
-                🐍 Python Work
+                🐍 Python
               </button>
               <button class="quick-action-btn" data-message="What services do you offer?">
                 💼 Services
               </button>
-              <button class="quick-action-btn" data-message="Find project 1">
-                🔍 Search Projects
-              </button>
               <button class="quick-action-btn" data-message="How much do you charge?">
                 💰 Pricing
-              </button>
-              <button class="quick-action-btn" data-message="How do I contact you?">
-                📞 Contact
               </button>
             </div>
             
             <!-- Smart Suggestions based on page -->
             <div id="smart-suggestions" class="mt-2 hidden">
-              <p class="text-xs text-gray-500 mb-1">💡 Since you're on this page:</p>
+              <p class="text-xs text-gray-500 mb-1">💡 Smart suggestions:</p>
               <div class="flex flex-wrap gap-1" id="page-suggestions"></div>
             </div>
           </div>
@@ -339,19 +460,21 @@ class EXESChatbot {
 
       <style>
         .quick-action-btn {
-          background: #f3f4f6;
-          color: #374151;
-          padding: 4px 8px;
-          border-radius: 12px;
-          font-size: 10px;
-          border: 1px solid #e5e7eb;
+          background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+          color: #475569;
+          padding: 3px 6px;
+          border-radius: 8px;
+          font-size: 9px;
+          border: 1px solid #e2e8f0;
           cursor: pointer;
-          transition: all 0.2s;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          font-weight: 500;
         }
         .quick-action-btn:hover {
-          background: #49A078;
+          background: linear-gradient(135deg, #49A078, #3e8865);
           color: white;
           transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(73, 160, 120, 0.3);
         }
 
         .user-message {
@@ -359,50 +482,79 @@ class EXESChatbot {
           justify-content: flex-end;
         }
         .user-message .message-content {
-          background: #49A078;
+          background: linear-gradient(135deg, #49A078, #3e8865);
           color: white;
-          padding: 8px 12px;
-          border-radius: 12px;
-          max-width: 200px;
-          font-size: 13px;
+          padding: 6px 10px;
+          border-radius: 12px 12px 4px 12px;
+          max-width: 180px;
+          font-size: 12px;
+          box-shadow: 0 2px 8px rgba(73, 160, 120, 0.2);
         }
 
         .bot-message .message-content {
           background: white;
           color: #374151;
-          padding: 8px 12px;
-          border-radius: 12px;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-          border: 1px solid #e5e7eb;
-          max-width: 220px;
-          font-size: 13px;
+          padding: 6px 10px;
+          border-radius: 4px 12px 12px 12px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+          border: 1px solid #f3f4f6;
+          max-width: 200px;
+          font-size: 11px;
         }
 
         .action-button {
-          background: #49A078;
+          background: linear-gradient(135deg, #49A078, #3e8865);
           color: white;
-          padding: 6px 12px;
+          padding: 4px 8px;
           border-radius: 6px;
-          font-size: 11px;
+          font-size: 10px;
           border: none;
           cursor: pointer;
-          margin-top: 8px;
+          margin-top: 4px;
           transition: all 0.2s;
+          font-weight: 500;
         }
         .action-button:hover {
-          background: #3e8865;
+          background: linear-gradient(135deg, #3e8865, #2f6b52);
           transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(73, 160, 120, 0.3);
         }
 
         #chatbot-messages::-webkit-scrollbar {
-          width: 4px;
+          width: 3px;
         }
         #chatbot-messages::-webkit-scrollbar-track {
-          background: #f1f1f1;
+          background: #f8fafc;
         }
         #chatbot-messages::-webkit-scrollbar-thumb {
-          background: #49A078;
+          background: linear-gradient(135deg, #49A078, #3e8865);
           border-radius: 2px;
+        }
+
+        /* EAI Notification Styles */
+        .eai-has-suggestion {
+          animation: eai-pulse 2s infinite;
+        }
+        
+        @keyframes eai-pulse {
+          0% { box-shadow: 0 0 0 0 rgba(73, 160, 120, 0.7); }
+          70% { box-shadow: 0 0 0 10px rgba(73, 160, 120, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(73, 160, 120, 0); }
+        }
+        
+        /* Enhanced hover effects */
+        #chatbot-toggle:hover {
+          transform: scale(1.05);
+        }
+        
+        /* Message animation */
+        .bot-message, .user-message {
+          animation: messageSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes messageSlideIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
         }
       </style>
     `;
@@ -510,13 +662,27 @@ class EXESChatbot {
 
   toggleChatbot() {
     const container = document.getElementById('chatbot-container');
+    const toggleBtn = document.getElementById('chatbot-toggle');
+    
     if (this.isOpen) {
       this.closeChatbot();
     } else {
       this.isOpen = true;
       container.style.transform = 'translateY(0)';
       container.style.opacity = '1';
+      
+      // Remove notification pulse when opened
+      toggleBtn.classList.remove('eai-has-suggestion');
+      toggleBtn.title = 'EAI - Your Intelligent Assistant';
+      
       document.getElementById('chatbot-input').focus();
+      
+      // Track opening in agentic memory
+      this.agenticMemory.interactionHistory.push({
+        action: 'opened_eai',
+        timestamp: Date.now(),
+        context: this.userContext
+      });
     }
   }
 
@@ -538,18 +704,187 @@ class EXESChatbot {
   }
 
   handleUserMessage(message) {
+    // Track user interaction for agentic behavior
+    this.userInteractions.push({
+      message: message,
+      timestamp: Date.now(),
+      context: this.userContext
+    });
+    
+    // Update agentic memory with user preferences
+    this.updateUserPreferences(message);
+    
     // Add user message to chat
     this.addMessage(message, 'user');
     
-    // Show typing indicator
+    // Show typing indicator with intelligent delay
     this.showTypingIndicator();
     
-    // Process message and respond
+    // Process message with enhanced AI logic
+    const processingDelay = this.calculateProcessingDelay(message);
     setTimeout(() => {
       this.hideTypingIndicator();
-      const response = this.generateResponse(message);
+      const response = this.generateIntelligentResponse(message);
       this.addMessage(response.text, 'bot', response.action);
-    }, 1000 + Math.random() * 1000); // Random delay for realism
+      
+      // Follow up with proactive suggestions if appropriate
+      this.considerFollowUpSuggestions(message, response);
+    }, processingDelay);
+  }
+
+  // Update user preferences based on their messages
+  updateUserPreferences(message) {
+    const msg = message.toLowerCase();
+    
+    // Track technology interests
+    if (msg.includes('python')) this.agenticMemory.userPreferences.python = (this.agenticMemory.userPreferences.python || 0) + 1;
+    if (msg.includes('excel')) this.agenticMemory.userPreferences.excel = (this.agenticMemory.userPreferences.excel || 0) + 1;
+    if (msg.includes('powerbi')) this.agenticMemory.userPreferences.powerbi = (this.agenticMemory.userPreferences.powerbi || 0) + 1;
+    if (msg.includes('sql')) this.agenticMemory.userPreferences.sql = (this.agenticMemory.userPreferences.sql || 0) + 1;
+    
+    // Track service interests
+    if (msg.includes('price') || msg.includes('cost')) this.agenticMemory.userPreferences.pricing = true;
+    if (msg.includes('project') || msg.includes('portfolio')) this.agenticMemory.userPreferences.projects = true;
+    
+    this.saveAgenticMemory();
+  }
+
+  // Calculate intelligent processing delay based on message complexity
+  calculateProcessingDelay(message) {
+    const baseDelay = 800;
+    const wordCount = message.split(' ').length;
+    const complexityMultiplier = Math.min(wordCount / 10, 2); // Cap at 2x
+    const randomness = Math.random() * 500; // Add natural variation
+    
+    return baseDelay + (complexityMultiplier * 300) + randomness;
+  }
+
+  // Generate intelligent response with enhanced NLP
+  generateIntelligentResponse(userMessage) {
+    const message = userMessage.toLowerCase();
+    
+    // Check if user has a pending suggestion when they open EAI
+    if (this.pendingSuggestion && this.userInteractions.length === 1) {
+      const suggestion = this.pendingSuggestion;
+      this.pendingSuggestion = null;
+      return { 
+        text: `🧠 **I was just thinking** - ${suggestion}\n\nBut I see you have a question: "${userMessage}". Let me help with that first! ${this.generateResponse(userMessage).text}`,
+        action: null
+      };
+    }
+
+    // Enhanced intent recognition with contextual awareness
+    const intent = this.recognizeIntent(message);
+    
+    // Use agentic memory to personalize responses
+    if (intent === 'technology_interest' && this.agenticMemory.userPreferences.python > 2) {
+      return {
+        text: "🐍 **I noticed you're really interested in Python!** You've asked about it several times. Here are our best Python projects: Project 3 (Student Performance Analysis), Project 6 (E-Commerce Analysis), and Project 8 (COVID-19 Analysis). Would you like me to show you the download links?",
+        action: () => this.suggestPythonProjects()
+      };
+    }
+
+    // Context-aware file operation suggestions
+    if (intent === 'download_interest') {
+      return this.generateFileOperationResponse(message);
+    }
+
+    // Fallback to standard response with agentic enhancements
+    const standardResponse = this.generateResponse(userMessage);
+    return this.enhanceWithAgenticInsights(standardResponse, message);
+  }
+
+  // Advanced intent recognition
+  recognizeIntent(message) {
+    const intents = {
+      'download_interest': ['download', 'file', 'save', 'get', 'access'],
+      'technology_interest': ['python', 'excel', 'powerbi', 'sql', 'dashboard'],
+      'pricing_inquiry': ['price', 'cost', 'charge', 'fee', 'quote', 'budget'],
+      'help_seeking': ['help', 'how', 'guide', 'tutorial', 'explain'],
+      'project_exploration': ['project', 'portfolio', 'work', 'example', 'show me']
+    };
+
+    for (const [intent, keywords] of Object.entries(intents)) {
+      if (keywords.some(keyword => message.includes(keyword))) {
+        return intent;
+      }
+    }
+    
+    return 'general';
+  }
+
+  // Generate file operation suggestions
+  generateFileOperationResponse(message) {
+    const fileTypes = {
+      '.py': 'Python script',
+      '.xlsx': 'Excel workbook', 
+      '.pbix': 'Power BI dashboard',
+      '.sql': 'SQL database script'
+    };
+
+    return {
+      text: `📁 **File Access Made Easy!** I can help you find and download specific project files:\n\n• **Python files** (.py) - Data analysis scripts\n• **Excel files** (.xlsx) - Cleaned datasets & dashboards\n• **Power BI files** (.pbix) - Interactive dashboards\n• **SQL files** (.sql) - Database scripts\n\n🎯 **Just tell me**: "Download Python files for project 3" or "Show me Excel files for e-commerce analysis"`,
+      action: () => this.suggestFileOperations()
+    };
+  }
+
+  // Enhance responses with agentic insights
+  enhanceWithAgenticInsights(response, message) {
+    // Add personalized recommendations based on user history
+    if (this.agenticMemory.userPreferences.projects && Math.random() < 0.4) {
+      response.text += `\n\n💡 **Smart Suggestion**: Based on your interest in projects, you might also like our ${this.getPersonalizedProjectSuggestion()}`;
+    }
+
+    return response;
+  }
+
+  // Get personalized project suggestions
+  getPersonalizedProjectSuggestion() {
+    const preferences = this.agenticMemory.userPreferences;
+    
+    if (preferences.python > preferences.excel) {
+      return "advanced Python analytics projects - they showcase sophisticated data science techniques!";
+    } else if (preferences.excel > 0) {
+      return "Excel dashboard projects - perfect for business intelligence applications!";
+    } else if (preferences.powerbi > 0) {
+      return "Power BI visualizations - they're great for interactive data storytelling!";
+    }
+    
+    return "portfolio overview - it shows the full range of our capabilities!";
+  }
+
+  // Consider intelligent follow-up suggestions
+  considerFollowUpSuggestions(userMessage, response) {
+    setTimeout(() => {
+      const followUps = this.generateFollowUpSuggestions(userMessage);
+      if (followUps.length > 0 && Math.random() < 0.3) { // 30% chance
+        const followUp = followUps[Math.floor(Math.random() * followUps.length)];
+        this.addMessage(`💭 **Follow-up thought**: ${followUp}`, 'bot');
+      }
+    }, 3000); // 3 seconds after main response
+  }
+
+  // Generate context-aware follow-up suggestions
+  generateFollowUpSuggestions(message) {
+    const msg = message.toLowerCase();
+    const suggestions = [];
+
+    if (msg.includes('project')) {
+      suggestions.push("Would you like me to show you how to use the project filtering features?");
+      suggestions.push("I can also help you find projects by specific technologies or business domains.");
+    }
+    
+    if (msg.includes('price') || msg.includes('cost')) {
+      suggestions.push("I can connect you with our team for a personalized quote - it usually takes less than 24 hours!");
+      suggestions.push("Would you like to see examples of similar projects we've completed within different budget ranges?");
+    }
+
+    if (msg.includes('download')) {
+      suggestions.push("Pro tip: You can also use our smart search to find files by project name or technology!");
+      suggestions.push("Need help organizing your downloaded files? I can suggest folder structures for data analysis projects.");
+    }
+
+    return suggestions;
   }
 
   // Method to search projects based on user input
@@ -645,6 +980,13 @@ class EXESChatbot {
     
     // Handle greetings with enhanced logic
     if (this.containsPatterns(message, this.knowledgeBase.greetings.patterns)) {
+      // Try agentic greeting first
+      const agenticGreeting = this.getAgenticGreeting();
+      if (agenticGreeting) {
+        return { text: agenticGreeting, action: null };
+      }
+      
+      // Fallback to standard greetings
       const greetings = this.knowledgeBase.greetings.responses;
       let selectedGreetings;
 
@@ -715,15 +1057,44 @@ class EXESChatbot {
     if (this.containsPatterns(message, this.knowledgeBase.services.patterns)) {
       if (message.includes('price') || message.includes('cost') || message.includes('quote')) {
         return { 
-          text: this.knowledgeBase.services.responses.pricing + "\n\n💬 **Want a quick quote?** Our team can give you a personalized estimate in minutes!", 
+          text: this.knowledgeBase.services.responses.pricing_structure + "\n\n💬 **Want a quick quote?** Our team can give you a personalized estimate in minutes!", 
           action: () => this.suggestQuoteContact()
         };
       } else if (message.includes('excel')) {
         return { text: this.knowledgeBase.services.responses.excel_cleanup, action: null };
-      } else if (message.includes('dashboard')) {
+      } else if (message.includes('dashboard') || message.includes('powerbi')) {
         return { text: this.knowledgeBase.services.responses.dashboard, action: null };
       } else if (message.includes('analysis')) {
         return { text: this.knowledgeBase.services.responses.data_analysis, action: null };
+      } else if (message.includes('setup') || message.includes('tracking')) {
+        return { text: this.knowledgeBase.services.responses.setup_services, action: null };
+      } else if (message.includes('process') || message.includes('how it works')) {
+        return { text: this.knowledgeBase.services.responses.process, action: null };
+      } else if (message.includes('why choose') || message.includes('value')) {
+        return { text: this.knowledgeBase.services.responses.value_proposition, action: null };
+      } else if (message.includes('contact') || message.includes('get started')) {
+        return { text: this.knowledgeBase.services.responses.contact_options, action: null };
+      }
+    }
+
+    // Products and Systems queries
+    if (this.containsPatterns(message, this.knowledgeBase.products_systems.patterns)) {
+      if (message.includes('streamlit') || message.includes('try yourself')) {
+        return { 
+          text: this.knowledgeBase.products_systems.responses.streamlit_app,
+          action: () => window.open('https://exes-ebi.streamlit.app/', '_blank')
+        };
+      } else if (message.includes('tujengane') || message.includes('education') || message.includes('course')) {
+        return { 
+          text: this.knowledgeBase.products_systems.responses.tujengane_programs,
+          action: () => window.open('https://tujengane.netlify.app/', '_blank')
+        };
+      } else if (message.includes('tech stack') || message.includes('technology')) {
+        return { text: this.knowledgeBase.products_systems.responses.tech_stack, action: null };
+      } else if (message.includes('tools') || message.includes('analysis tools')) {
+        return { text: this.knowledgeBase.products_systems.responses.analysis_tools, action: null };
+      } else if (message.includes('project types') || message.includes('categories')) {
+        return { text: this.knowledgeBase.products_systems.responses.project_categories, action: null };
       }
     }
 
@@ -869,7 +1240,7 @@ class EXESChatbot {
       const actionButton = action ? `<button class="action-button" onclick="(${action.toString()})()">Take Action</button>` : '';
       messageDiv.innerHTML = `
         <div class="flex items-start gap-2">
-          <img src="assets/img/logo.png" alt="Bot" class="w-6 h-6 rounded-full mt-1">
+          <img src="assets/img/logo.png" alt="EXES" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5">
           <div class="message-content">
             ${this.formatMarkdown(content)}
             ${actionButton}
@@ -896,12 +1267,12 @@ class EXESChatbot {
     typingDiv.className = 'bot-message';
     typingDiv.innerHTML = `
       <div class="flex items-start gap-2">
-        <img src="assets/img/logo.png" alt="Bot" class="w-6 h-6 rounded-full mt-1">
+        <img src="assets/img/logo.png" alt="EXES" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5">
         <div class="message-content">
           <div class="flex gap-1">
-            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
-            <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+            <div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></div>
+            <div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+            <div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
           </div>
         </div>
       </div>
@@ -945,9 +1316,57 @@ class EXESChatbot {
         () => window.open('https://wa.me/0791360805?text=Hi! I need expert consultation for a complex data project', '_blank'));
     }, 500);
   }
+
+  // File operation suggestions
+  suggestFileOperations() {
+    setTimeout(() => {
+      this.addMessage("📁 **Smart File Operations:**\n\n🔍 **Quick Search**: Tell me 'download Project 3 Excel files'\n📦 **Bulk Download**: 'Get all Python projects'\n🎯 **Specific Files**: 'Show me PowerBI dashboards for retail'\n📊 **By Category**: 'Download all e-commerce analysis files'\n\nWhat files are you looking for?", 'bot');
+    }, 500);
+  }
+
+  // Python project suggestions
+  suggestPythonProjects() {
+    setTimeout(() => {
+      this.addMessage("🐍 **Your Python Project Hub:**\n\n**Featured Python Projects:**\n• **Project 3**: Student Performance Analytics\n• **Project 6**: E-Commerce Data Pipeline\n• **Project 8**: COVID-19 Statistical Analysis\n\n📥 **Download Options:**\n• Individual .py files\n• Complete project folders\n• Datasets + scripts bundles", 'bot',
+        () => window.location.href = 'my-projects.html#python-filter');
+    }, 500);
+  }
+
+  // Enhanced greeting with agentic insights
+  getAgenticGreeting() {
+    const preferences = this.agenticMemory.userPreferences;
+    const history = this.agenticMemory.interactionHistory;
+    
+    let greeting = this.knowledgeBase.greetings.responses;
+    
+    // Personalize based on previous interactions
+    if (history.length > 5) {
+      const commonContext = this.getMostCommonContext(history);
+      return `🧠 **Welcome back to EAI!** I see you often explore our ${commonContext} section. Ready to dive deeper today?`;
+    }
+    
+    // Personalize based on preferences
+    if (preferences.python > 2) {
+      return "🧠 **Hello Python enthusiast!** EAI here - I remember you're interested in our data science projects. What would you like to explore today?";
+    }
+    
+    return null; // Use default greeting
+  }
+
+  // Get most common context from user history
+  getMostCommonContext(history) {
+    const contexts = {};
+    history.forEach(entry => {
+      if (entry.context) {
+        contexts[entry.context] = (contexts[entry.context] || 0) + 1;
+      }
+    });
+    
+    return Object.keys(contexts).reduce((a, b) => contexts[a] > contexts[b] ? a : b);
+  }
 }
 
-// Initialize chatbot when page loads
+// Initialize EAI when page loads
 document.addEventListener('DOMContentLoaded', () => {
-  window.exesChatbot = new EXESChatbot();
+  window.eaiChatbot = new EAIChatbot();
 });
