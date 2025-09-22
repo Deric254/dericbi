@@ -1,5 +1,19 @@
  
 [
+{
+  "serial": "Project 40",
+  "title": "Retail Fashion Analytics Dashboard",
+  "date": "2025-09-19",
+  "description": "<strong>Problem Statement:</strong> Fashion retailers struggle to track sales performance, inventory turnover, and customer preferences across multiple product categories and seasons.<br><br><strong>Business Objective:</strong> Build a PowerBI dashboard to analyze fashion retail data, monitor product performance, and uncover actionable insights for inventory management and sales optimization.<br><br><strong>My Approach:</strong> I used PowerBI to analyze retail fashion data, visualize sales trends by category and season, and track inventory levels. The dashboard provides interactive views for management to drill down into product performance, customer segments, and seasonal trends. The walkthrough video demonstrates key dashboard features.<br><br><strong>Key Insights:</strong><br>1️⃣ Identified top-performing fashion categories and seasonal trends<br>2️⃣ Revealed inventory turnover rates and stock optimization opportunities<br>3️⃣ Highlighted customer purchase patterns and preferences<br>4️⃣ Uncovered seasonal sales peaks and promotional effectiveness<br><br><strong>Impact:</strong> The dashboard enables data-driven decisions for fashion retailers, helping optimize inventory levels, plan seasonal collections, and improve sales performance through targeted marketing strategies.",
+  "tools": "PowerBI",
+  "projectLink": "downloads/retail_fashion.pbix",
+  "images": [
+    "assets/projects/retail_fashion/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/retail_fashion/18PQZA8ijj.mp4"
+  ]
+},
       {
   "serial": "Project 39",
   "title": "Electronics Shop Sales Analytics",
