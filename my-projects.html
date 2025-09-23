@@ -229,6 +229,28 @@ img:not([alt]) {
       .zoomed img, .zoomed video {
         max-height: calc(100vh - 4rem) !important;
       }
+      /* Ensure proper margins on mobile */
+      .project-card {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+    
+    /* Prevent content overflow */
+    .case-container {
+      overflow-x: hidden;
+    }
+    
+    /* Ensure project cards don't overflow */
+    .bg-white {
+      box-sizing: border-box;
+    }
+    
+    /* Additional mobile optimizations */
+    @media (max-width: 768px) {
+      .space-y-12 > * + * {
+        margin-top: 2rem !important;
+      }
     }
   </style>
 </head>
@@ -304,11 +326,11 @@ toggleBtn.addEventListener('click', () => {
 </script>
 
 <!-- Journey Section -->
-<section class="w-full py-6 px-0 min-h-screen m-1">
+<section class="w-full py-6 px-1 min-h-screen">
   <h1 class="text-3xl font-bold text-[#2D3142] mb-6 text-center">📘 Case Studies and Projects</h1>
   
   <!-- Compact Search & Filter -->
-  <div class="flex flex-col sm:flex-row gap-3 mb-6 w-full m-1">
+  <div class="flex flex-col sm:flex-row gap-3 mb-6 w-full px-1">
     <!-- Search Input -->
     <div class="flex-1 relative">
       <input type="text" id="searchInput" placeholder="Search by project number (1), name (Student), or keyword..." 
@@ -347,15 +369,15 @@ toggleBtn.addEventListener('click', () => {
     </div>
   </div>
   <!-- Try Yourself Button -->
-  <div class="w-full mb-6 flex justify-end m-1">
+  <div class="w-full mb-6 flex justify-end px-1">
     <a href="https://exes-ebi.streamlit.app/" target="_blank"
-  class="bg-[#facc15] hover:bg-[#eab308] text-black px-5 py-2.5 rounded-lg font-semibold flex items-center gap-2 shadow transition m-2"
+  class="bg-[#facc15] hover:bg-[#eab308] text-black px-5 py-2.5 rounded-lg font-semibold flex items-center gap-2 shadow transition"
       <i class="fas fa-flask"></i>Try Yourself
     </a>
   </div>
 
   <!-- Progress Indicator -->
-  <div id="resultsProgress" class="w-full mb-4 hidden m-1">
+  <div id="resultsProgress" class="w-full mb-4 hidden px-1">
     <div class="flex items-center justify-between text-xs text-gray-500 mb-2">
       <span id="resultsCount">Loading projects...</span>
       <span id="loadTime" class="flex items-center"><i class="fas fa-clock mr-1"></i>0.1s</span>
@@ -365,13 +387,12 @@ toggleBtn.addEventListener('click', () => {
     </div>
   </div>
   
-  <div id="case-container" class="space-y-12"></div>
+  <div id="case-container" class="space-y-12 px-1"></div>
 </section>
 
 <!-- Compact Action Bar -->
-<section class="bg-gray-50 py-4 px-4 border-t border-gray-200">
-  <div class="container mx-auto max-w-4xl">
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+<section class="bg-gray-50 py-4 px-1 border-t border-gray-200">
+  <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
       <div class="flex flex-wrap items-center gap-2">
         <button onclick="toggleProjectJourney()" 
           class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded text-xs font-semibold transition group">
@@ -415,7 +436,6 @@ toggleBtn.addEventListener('click', () => {
         <p id="errorMessageJourney" class="text-red-600 text-xs mt-1 hidden">File not found. Contact: +254791360805</p>
       </div>
     </div>
-  </div>
 </section>
 
 <!-- Back to Top Button -->
@@ -1135,8 +1155,8 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 </script>
-<footer class="bg-[#DFF3EA] py-4 px-4 text-sm text-gray-600 mt-auto border-t border-green-300">
-  <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+<footer class="bg-[#DFF3EA] py-4 px-1 text-sm text-gray-600 mt-auto border-t border-green-300">
+  <div class="flex flex-col md:flex-row items-center justify-between gap-4">
     <div class="flex items-center gap-3">
       <img src="assets/img/logo.png" alt="EXES Logo" class="h-12 w-12 rounded-full object-cover shadow-md border-2 border-white" />
       <div class="flex flex-col leading-tight">
