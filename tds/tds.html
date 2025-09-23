@@ -399,6 +399,120 @@
             padding-left: 0 !important;
         }
 
+        /* Recent Projects Responsive Design - Main Panel */
+        .main-recent-projects {
+            display: block;
+        }
+        
+        .main-project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .main-recent-projects a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(73,160,120,0.4);
+        }
+
+        /* Mobile CTA for projects - hidden by default */
+        .mobile-projects-cta {
+            display: none;
+            background: linear-gradient(135deg, rgba(73,160,120,0.1), rgba(62,136,101,0.1));
+            border-radius: 0.8rem;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(73,160,120,0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .mobile-projects-cta a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(73,160,120,0.4);
+        }
+
+        /* Responsive breakpoints for main panel projects */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .main-recent-projects {
+                margin-top: 1.2rem;
+            }
+            
+            .main-project-card {
+                padding: 1rem !important;
+            }
+            
+            .main-project-card h4 {
+                font-size: 0.9rem !important;
+            }
+            
+            .main-project-card p {
+                font-size: 0.85rem !important;
+            }
+            
+            .main-recent-projects h3 {
+                font-size: 1.1rem !important;
+            }
+            
+            /* Responsive buttons on tablet */
+            .main-recent-projects .curriculum-link {
+                padding: 0.5rem 0.7rem !important;
+                font-size: 0.85rem !important;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .main-recent-projects {
+                margin-top: 2rem;
+            }
+            
+            .main-project-card {
+                padding: 1.5rem !important;
+            }
+            
+            .main-project-card h4 {
+                font-size: 1.1rem !important;
+            }
+            
+            .main-recent-projects h3 {
+                font-size: 1.3rem !important;
+            }
+        }
+
+        /* Single column layout for smaller desktop screens */
+        @media (min-width: 769px) and (max-width: 999px) {
+            .main-recent-projects div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            /* Stack buttons vertically on smaller screens */
+            .main-recent-projects div[style*="justify-content:space-between"] {
+                flex-direction: column !important;
+                gap: 0.8rem !important;
+                align-items: center !important;
+            }
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .main-recent-projects div[style*="justify-content:space-between"] {
+                flex-direction: column !important;
+                gap: 0.8rem !important;
+                align-items: center !important;
+            }
+        }
+
+        /* Very small screens */
+        @media (max-width: 480px) {
+            .main-recent-projects .curriculum-link {
+                padding: 0.5rem 0.7rem !important;
+                font-size: 0.85rem !important;
+                width: 100% !important;
+                text-align: center !important;
+                max-width: 200px !important;
+            }
+        }
+
         @media (max-width: 768px) {
             nav img {
                 width: 32px !important;
@@ -408,6 +522,16 @@
             nav {
                 padding-left: 0.25rem !important;
                 padding-right: 1rem !important;
+            }
+            
+            /* Hide recent projects section on mobile */
+            .main-recent-projects {
+                display: none !important;
+            }
+            
+            /* Show mobile projects CTA on small screens */
+            .mobile-projects-cta {
+                display: block !important;
             }
         }
 
@@ -420,6 +544,25 @@
             nav {
                 padding-left: 0.25rem !important;
                 padding-right: 0.75rem !important;
+            }
+            
+            /* Optimize mobile projects CTA for very small screens */
+            .mobile-projects-cta {
+                padding: 1rem !important;
+                margin: 1rem 0 !important;
+            }
+            
+            .mobile-projects-cta h3 {
+                font-size: 1rem !important;
+            }
+            
+            .mobile-projects-cta p {
+                font-size: 0.9rem !important;
+            }
+            
+            .mobile-projects-cta a {
+                padding: 0.7rem 1rem !important;
+                font-size: 0.9rem !important;
             }
         }
 
@@ -505,7 +648,7 @@
                         <span>Analyst Pro</span>
                         <span class="premium-badge" style="margin-left:auto;">PREMIUM</span>
                     </a>
-                    <p>Master advanced analytics and BI for KES 100 per session.</p>
+                    <p>Master advanced analytics and BI for $1 per session.</p>
                 </div>
                 <div class="sidebar-item">
                     <a href="computer basicss/computerbasicss.html" style="display:flex;align-items:center;gap:0.5rem;"><i class="fas fa-laptop"></i>
@@ -519,7 +662,7 @@
                         <span>Computer Literacy</span>
                         <span class="premium-badge" style="margin-left:auto;">PREMIUM</span>
                     </a>
-                    <p>Essential skills for students and professionals, KES 100 per session.</p>
+                    <p>Essential skills for students and professionals, $1 per session.</p>
                 </div>
                 <div class="sidebar-item">
                     <a href="https://exesbi.netlify.app" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe-africa"></i> EXES BI Platform</a>
@@ -533,6 +676,7 @@
                     <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-user"></i> About the Author</a>
                     <p>Learn more about Deric Marangu, the Founder  of ExesBI and Tujengane Digital Skills.</p>
                 </div>
+                
                 <!-- Compact mission / vision / core values — small, readable, no layout change -->
                 <div class="sidebar-item" style="margin-top:0.5rem; padding:0.75rem;">
                     <div style="font-weight:800;display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;"><i class="fas fa-bullseye"></i><span>Our Purpose</span></div>
@@ -671,9 +815,60 @@
                 <!-- compact CTA footer inside main content -->
                 <section style="margin-top:1rem;display:flex;gap:0.6rem;align-items:center;justify-content:space-between;flex-wrap:wrap;">
                     <div style="font-weight:800;color:#0f172a;">Ready to start?</div>
-                    <div style="display:flex;gap:0.5rem;">
-                        <a href="Tujengane data basics/databasics.html" class="curriculum-link" style="padding:0.6rem 0.9rem;">Start Data Basics</a>
-                        <a href="computer basicss/computerbasicss.html" class="curriculum-link" style="padding:0.6rem 0.9rem;">Start Computer Basics</a>
+                </section>
+
+                <!-- Recent Projects Section - Only visible on large screens (main panel space) -->
+                <section class="main-recent-projects" style="margin-top:1.5rem;">
+                    <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+                        <i class="fas fa-star" style="color:#facc15;font-size:20px;"></i>
+                        <h3 style="font-size:1.2rem;font-weight:800;color:#0f172a;margin:0;">Latest Projects</h3>
+                        <div style="flex:1;height:2px;background:linear-gradient(to right,#facc15,transparent);margin-left:1rem;"></div>
+                    </div>
+                    
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;" id="dynamic-projects">
+                        <!-- Projects will be loaded dynamically here -->
+                    </div>
+                    
+                    <!-- CTA to see more projects and course buttons -->
+                    <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.2rem;flex-wrap:wrap;">
+                        <a href="Tujengane data basics/databasics.html" class="curriculum-link" style="padding:0.6rem 0.9rem;flex-shrink:0;">Start Data Basics</a>
+                        
+                        <a href="../my-projects.html" style="display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg,#49A078,#3e8865);color:#fff;padding:0.8rem 1.5rem;border-radius:0.6rem;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(73,160,120,0.3);transition:all 0.3s ease;flex-shrink:0;">
+                            <i class="fas fa-rocket" style="font-size:0.9rem;"></i>
+                            View All 40+ Projects
+                            <i class="fas fa-arrow-right" style="font-size:0.8rem;"></i>
+                        </a>
+                        
+                        <a href="computer basicss/computerbasicss.html" class="curriculum-link" style="padding:0.6rem 0.9rem;flex-shrink:0;">Start Computer Basics</a>
+                    </div>
+                </section>
+
+                <!-- Mobile Projects CTA - Only visible on small screens -->
+                <section class="mobile-projects-cta">
+                    <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.8rem;justify-content:center;">
+                        <i class="fas fa-star" style="color:#facc15;font-size:18px;"></i>
+                        <h3 style="font-size:1.1rem;font-weight:800;color:#0f172a;margin:0;">Explore Our Latest Work</h3>
+                    </div>
+                    <p style="text-align:center;color:#4b5563;margin-bottom:1rem;font-size:0.95rem;">Discover 40+ real projects from retail analytics to finance dashboards — see what you could build!</p>
+                    <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;">
+                        <a href="my-projects.html" style="display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg,#49A078,#3e8865);color:#fff;padding:0.8rem 1.2rem;border-radius:0.6rem;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(73,160,120,0.3);transition:all 0.3s ease;">
+                            <i class="fas fa-rocket" style="font-size:0.9rem;"></i>
+                            View All Projects
+                            <i class="fas fa-arrow-right" style="font-size:0.8rem;"></i>
+                        </a>
+                        
+                        <!-- Course start buttons for mobile -->
+                        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;">
+                            <a href="Tujengane data basics/databasics.html" class="curriculum-link" style="padding:0.6rem 0.9rem;">Start Data Basics</a>
+                            <a href="computer basicss/computerbasicss.html" class="curriculum-link" style="padding:0.6rem 0.9rem;">Start Computer Basics</a>
+                        </div>
+                    </div>
+                    <div style="text-align:center;margin-top:0.8rem;">
+                        <div style="display:inline-flex;gap:1rem;align-items:center;color:#6b7280;font-size:0.8rem;">
+                            <span><i class="fas fa-chart-bar" style="color:#2563eb;margin-right:0.3rem;"></i>PowerBI</span>
+                            <span><i class="fas fa-file-excel" style="color:#217346;margin-right:0.3rem;"></i>Excel</span>
+                            <span><i class="fab fa-python" style="color:#f59e0b;margin-right:0.3rem;"></i>Python</span>
+                        </div>
                     </div>
                 </section>
 
@@ -687,6 +882,180 @@
                             // nothing else to do here; WhatsApp link is target=_blank
                         });
                     }
+
+                    // Dynamic Projects Loading
+                    async function loadRecentProjects() {
+                        try {
+                            const response = await fetch('journey-data.json');
+                            const projects = await response.json();
+                            
+                            // Sort by date (most recent first) and get top 2
+                            const sortedProjects = projects.sort((a, b) => new Date(b.date) - new Date(a.date));
+                            const recentProjects = sortedProjects.slice(0, 2);
+                            
+                            const container = document.getElementById('dynamic-projects');
+                            if (!container) return;
+                            
+                            container.innerHTML = recentProjects.map((project, index) => {
+                                // Get tool color and icon
+                                const toolInfo = getToolInfo(project.tools);
+                                
+                                // Get first image or video
+                                const mediaUrl = getProjectMedia(project);
+                                const mediaElement = mediaUrl ? createMediaElement(mediaUrl) : '';
+                                
+                                // Clean description (remove HTML tags for summary)
+                                const cleanDesc = project.description.replace(/<[^>]*>/g, '').substring(0, 120) + '...';
+                                
+                                // Format date
+                                const formattedDate = new Date(project.date).toLocaleDateString('en-US', { 
+                                    month: 'short', year: 'numeric' 
+                                });
+                                
+                                return `
+                                    <div class="main-project-card" style="background:#ffffff;border-radius:0.8rem;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(73,160,120,0.1);transition:all 0.3s ease;cursor:pointer;" onclick="window.open('my-projects.html', '_blank')">
+                                        ${mediaElement ? `
+                                            <div style="margin-bottom:0.8rem;border-radius:0.5rem;overflow:hidden;height:120px;background:#f3f4f6;">
+                                                ${mediaElement}
+                                            </div>
+                                        ` : ''}
+                                        <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.8rem;">
+                                            <div style="width:40px;height:40px;background:${toolInfo.gradient};border-radius:0.5rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                                <i class="${toolInfo.icon}" style="color:#fff;font-size:18px;"></i>
+                                            </div>
+                                            <div style="flex:1;min-width:0;">
+                                                <h4 style="font-size:1rem;font-weight:700;color:#0f172a;margin:0;line-height:1.2;word-wrap:break-word;">${project.title}</h4>
+                                                <p style="font-size:0.8rem;color:#6b7280;margin:0;">${project.tools}</p>
+                                            </div>
+                                        </div>
+                                        <p style="font-size:0.9rem;color:#4b5563;margin:0 0 1rem 0;line-height:1.4;">${cleanDesc}</p>
+                                        <div style="display:flex;align-items:center;justify-content:space-between;">
+                                            <span style="background:${toolInfo.badgeColor};color:#fff;font-size:0.8rem;font-weight:600;padding:0.3rem 0.6rem;border-radius:0.4rem;">${project.tools}</span>
+                                            <span style="font-size:0.8rem;color:#6b7280;">${formattedDate}</span>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('');
+                            
+                        } catch (error) {
+                            console.log('Projects loading fallback mode');
+                            // Fallback to static content if JSON fails
+                            loadFallbackProjects();
+                        }
+                    }
+
+                    function getToolInfo(tools) {
+                        const toolLower = tools.toLowerCase();
+                        if (toolLower.includes('powerbi') || toolLower.includes('power bi')) {
+                            return {
+                                gradient: 'linear-gradient(135deg,#2563eb,#1d4ed8)',
+                                icon: 'fas fa-chart-bar',
+                                badgeColor: '#2563eb'
+                            };
+                        } else if (toolLower.includes('excel')) {
+                            return {
+                                gradient: 'linear-gradient(135deg,#10b981,#059669)',
+                                icon: 'fas fa-file-excel',
+                                badgeColor: '#10b981'
+                            };
+                        } else if (toolLower.includes('python')) {
+                            return {
+                                gradient: 'linear-gradient(135deg,#f59e0b,#d97706)',
+                                icon: 'fab fa-python',
+                                badgeColor: '#f59e0b'
+                            };
+                        } else if (toolLower.includes('sql')) {
+                            return {
+                                gradient: 'linear-gradient(135deg,#8b5cf6,#7c3aed)',
+                                icon: 'fas fa-database',
+                                badgeColor: '#8b5cf6'
+                            };
+                        } else {
+                            return {
+                                gradient: 'linear-gradient(135deg,#6b7280,#4b5563)',
+                                icon: 'fas fa-cog',
+                                badgeColor: '#6b7280'
+                            };
+                        }
+                    }
+
+                    function getProjectMedia(project) {
+                        // Check for images first, then videos
+                        if (project.images && project.images.length > 0) {
+                            return project.images[0];
+                        } else if (project.video && project.video.length > 0) {
+                            return project.video[0];
+                        }
+                        return null;
+                    }
+
+                    function createMediaElement(mediaUrl) {
+                        const isVideo = mediaUrl.includes('.mp4') || mediaUrl.includes('.webm') || mediaUrl.includes('.mov');
+                        
+                        if (isVideo) {
+                            return `
+                                <video style="width:100%;height:100%;object-fit:cover;border-radius:0.5rem;" 
+                                       onclick="event.stopPropagation(); this.paused ? this.play() : this.pause();"
+                                       onmouseover="this.controls=true" 
+                                       onmouseout="this.controls=false"
+                                       preload="metadata">
+                                    <source src="${mediaUrl}" type="video/mp4">
+                                    Video not supported
+                                </video>
+                            `;
+                        } else {
+                            return `
+                                <img src="${mediaUrl}" 
+                                     alt="Project preview" 
+                                     style="width:100%;height:100%;object-fit:cover;border-radius:0.5rem;" 
+                                     onerror="this.style.display='none'"
+                                     onclick="event.stopPropagation();">
+                            `;
+                        }
+                    }
+
+                    function loadFallbackProjects() {
+                        const container = document.getElementById('dynamic-projects');
+                        if (!container) return;
+                        
+                        container.innerHTML = `
+                            <div class="main-project-card" style="background:#ffffff;border-radius:0.8rem;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(73,160,120,0.1);transition:all 0.3s ease;cursor:pointer;" onclick="window.open('my-projects.html', '_blank')">
+                                <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.8rem;">
+                                    <div style="width:40px;height:40px;background:linear-gradient(135deg,#2563eb,#1d4ed8);border-radius:0.5rem;display:flex;align-items:center;justify-content:center;">
+                                        <i class="fas fa-chart-bar" style="color:#fff;font-size:18px;"></i>
+                                    </div>
+                                    <div>
+                                        <h4 style="font-size:1rem;font-weight:700;color:#0f172a;margin:0;line-height:1.2;">Latest Analytics Project</h4>
+                                        <p style="font-size:0.8rem;color:#6b7280;margin:0;">PowerBI Dashboard</p>
+                                    </div>
+                                </div>
+                                <p style="font-size:0.9rem;color:#4b5563;margin:0 0 1rem 0;line-height:1.4;">Comprehensive dashboard with advanced analytics and business intelligence insights.</p>
+                                <div style="display:flex;align-items:center;justify-content:space-between;">
+                                    <span style="background:#2563eb;color:#fff;font-size:0.8rem;font-weight:600;padding:0.3rem 0.6rem;border-radius:0.4rem;">PowerBI</span>
+                                    <span style="font-size:0.8rem;color:#6b7280;">Recent</span>
+                                </div>
+                            </div>
+                            <div class="main-project-card" style="background:#ffffff;border-radius:0.8rem;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(73,160,120,0.1);transition:all 0.3s ease;cursor:pointer;" onclick="window.open('my-projects.html', '_blank')">
+                                <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.8rem;">
+                                    <div style="width:40px;height:40px;background:linear-gradient(135deg,#10b981,#059669);border-radius:0.5rem;display:flex;align-items:center;justify-content:center;">
+                                        <i class="fas fa-file-excel" style="color:#fff;font-size:18px;"></i>
+                                    </div>
+                                    <div>
+                                        <h4 style="font-size:1rem;font-weight:700;color:#0f172a;margin:0;line-height:1.2;">Excel Dashboard Project</h4>
+                                        <p style="font-size:0.8rem;color:#6b7280;margin:0;">Excel Dashboard</p>
+                                    </div>
+                                </div>
+                                <p style="font-size:0.9rem;color:#4b5563;margin:0 0 1rem 0;line-height:1.4;">Interactive Excel dashboard with sales performance and business metrics.</p>
+                                <div style="display:flex;align-items:center;justify-content:space-between;">
+                                    <span style="background:#10b981;color:#fff;font-size:0.8rem;font-weight:600;padding:0.3rem 0.6rem;border-radius:0.4rem;">Excel</span>
+                                    <span style="font-size:0.8rem;color:#6b7280;">Recent</span>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    // Load projects when page loads
+                    document.addEventListener('DOMContentLoaded', loadRecentProjects);
                 </script>
             </main>
     </div>
