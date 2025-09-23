@@ -399,6 +399,71 @@
             padding-left: 0 !important;
         }
 
+        /* Recent Projects Media Enhancement */
+        .main-project-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-project-card .media-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            background: #f3f4f6;
+            width: 100%;
+            height: 100%;
+        }
+
+        .main-project-card .media-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(73,160,120,0.0);
+            transition: background 0.3s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .main-project-card:hover .media-container::before {
+            background: rgba(73,160,120,0.1);
+        }
+
+        .main-project-card .media-container img,
+        .main-project-card .media-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .main-project-card:hover .media-container img,
+        .main-project-card:hover .media-container video {
+            transform: scale(1.02);
+        }
+
+        /* Enhanced hover effects for project cards */
+        .main-project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(73,160,120,0.1), transparent);
+            transition: left 0.6s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .main-project-card:hover::before {
+            left: 100%;
+        }
+
         /* Recent Projects Responsive Design - Main Panel */
         .main-recent-projects {
             display: block;
@@ -412,6 +477,27 @@
         .main-recent-projects a:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 18px rgba(73,160,120,0.4);
+        }
+
+        /* Responsive media sizing */
+        @media (min-width: 1200px) {
+            .main-recent-projects .media-container {
+                height: 160px !important;
+            }
+            
+            .main-project-card {
+                min-height: 350px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1199px) {
+            .main-recent-projects .media-container {
+                height: 140px !important;
+            }
+            
+            .main-project-card {
+                min-height: 320px;
+            }
         }
 
         /* Mobile CTA for projects - hidden by default */
@@ -524,14 +610,32 @@
                 padding-right: 1rem !important;
             }
             
-            /* Hide recent projects section on mobile */
+            /* Show recent projects on mobile with adjusted styling */
             .main-recent-projects {
-                display: none !important;
+                display: block !important;
+                margin-top: 1rem !important;
             }
             
-            /* Show mobile projects CTA on small screens */
+            .main-recent-projects h3 {
+                font-size: 1rem !important;
+            }
+            
+            .main-recent-projects div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            .main-project-card {
+                min-height: 280px !important;
+            }
+            
+            .main-project-card .media-container {
+                height: 120px !important;
+            }
+            
+            /* Hide mobile projects CTA since we're showing main projects */
             .mobile-projects-cta {
-                display: block !important;
+                display: none !important;
             }
         }
 
@@ -823,6 +927,8 @@
                         <i class="fas fa-star" style="color:#facc15;font-size:20px;"></i>
                         <h3 style="font-size:1.2rem;font-weight:800;color:#0f172a;margin:0;">Latest Projects</h3>
                         <div style="flex:1;height:2px;background:linear-gradient(to right,#facc15,transparent);margin-left:1rem;"></div>
+                        <!-- Temporary debug button -->
+                        <button onclick="loadRecentProjects(); loadFallbackProjects();" style="background:#49A078;color:#fff;border:none;padding:0.3rem 0.6rem;border-radius:0.3rem;font-size:0.8rem;cursor:pointer;">Test Load</button>
                     </div>
                     
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;" id="dynamic-projects">
@@ -851,7 +957,7 @@
                     </div>
                     <p style="text-align:center;color:#4b5563;margin-bottom:1rem;font-size:0.95rem;">Discover 40+ real projects from retail analytics to finance dashboards — see what you could build!</p>
                     <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;">
-                        <a href="my-projects.html" style="display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg,#49A078,#3e8865);color:#fff;padding:0.8rem 1.2rem;border-radius:0.6rem;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(73,160,120,0.3);transition:all 0.3s ease;">
+                        <a href="../my-projects.html" style="display:inline-flex;align-items:center;gap:0.6rem;background:linear-gradient(135deg,#49A078,#3e8865);color:#fff;padding:0.8rem 1.2rem;border-radius:0.6rem;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(73,160,120,0.3);transition:all 0.3s ease;">
                             <i class="fas fa-rocket" style="font-size:0.9rem;"></i>
                             View All Projects
                             <i class="fas fa-arrow-right" style="font-size:0.8rem;"></i>
@@ -886,7 +992,10 @@
                     // Dynamic Projects Loading
                     async function loadRecentProjects() {
                         try {
-                            const response = await fetch('journey-data.json');
+                            const response = await fetch('../journey-data.json');
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
                             const projects = await response.json();
                             
                             // Sort by date (most recent first) and get top 2
@@ -894,7 +1003,16 @@
                             const recentProjects = sortedProjects.slice(0, 2);
                             
                             const container = document.getElementById('dynamic-projects');
-                            if (!container) return;
+                            if (!container) {
+                                console.log('Dynamic projects container not found');
+                                return;
+                            }
+                            
+                            if (recentProjects.length === 0) {
+                                console.log('No recent projects found, using fallback');
+                                loadFallbackProjects();
+                                return;
+                            }
                             
                             container.innerHTML = recentProjects.map((project, index) => {
                                 // Get tool color and icon
@@ -913,9 +1031,9 @@
                                 });
                                 
                                 return `
-                                    <div class="main-project-card" style="background:#ffffff;border-radius:0.8rem;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(73,160,120,0.1);transition:all 0.3s ease;cursor:pointer;" onclick="window.open('my-projects.html', '_blank')">
+                                    <div class="main-project-card" style="background:#ffffff;border-radius:0.8rem;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(73,160,120,0.1);transition:all 0.3s ease;cursor:pointer;" onclick="window.open('../my-projects.html', '_blank')">
                                         ${mediaElement ? `
-                                            <div style="margin-bottom:0.8rem;border-radius:0.5rem;overflow:hidden;height:120px;background:#f3f4f6;">
+                                            <div style="margin-bottom:0.8rem;border-radius:0.5rem;overflow:hidden;height:140px;background:#f3f4f6;">
                                                 ${mediaElement}
                                             </div>
                                         ` : ''}
@@ -937,8 +1055,10 @@
                                 `;
                             }).join('');
                             
+                            console.log(`Successfully loaded ${recentProjects.length} recent projects`);
+                            
                         } catch (error) {
-                            console.log('Projects loading fallback mode');
+                            console.log('Projects loading error:', error.message, '- Using fallback mode');
                             // Fallback to static content if JSON fails
                             loadFallbackProjects();
                         }
@@ -994,22 +1114,27 @@
                         
                         if (isVideo) {
                             return `
-                                <video style="width:100%;height:100%;object-fit:cover;border-radius:0.5rem;" 
-                                       onclick="event.stopPropagation(); this.paused ? this.play() : this.pause();"
-                                       onmouseover="this.controls=true" 
-                                       onmouseout="this.controls=false"
-                                       preload="metadata">
-                                    <source src="${mediaUrl}" type="video/mp4">
-                                    Video not supported
-                                </video>
+                                <div class="media-container" style="width:100%;height:100%;position:relative;">
+                                    <video style="width:100%;height:100%;object-fit:cover;border-radius:0.5rem;display:block;" 
+                                           onclick="event.stopPropagation(); this.paused ? this.play() : this.pause();"
+                                           onmouseover="this.controls=true" 
+                                           onmouseout="this.controls=false"
+                                           preload="metadata"
+                                           muted>
+                                        <source src="../${mediaUrl}" type="video/mp4">
+                                        Video not supported
+                                    </video>
+                                </div>
                             `;
                         } else {
                             return `
-                                <img src="${mediaUrl}" 
-                                     alt="Project preview" 
-                                     style="width:100%;height:100%;object-fit:cover;border-radius:0.5rem;" 
-                                     onerror="this.style.display='none'"
-                                     onclick="event.stopPropagation();">
+                                <div class="media-container" style="width:100%;height:100%;position:relative;">
+                                    <img src="../${mediaUrl}" 
+                                         alt="Project preview" 
+                                         style="width:100%;height:100%;object-fit:cover;border-radius:0.5rem;display:block;" 
+                                         onerror="this.parentElement.parentElement.style.display='none'"
+                                         onclick="event.stopPropagation();">
+                                </div>
                             `;
                         }
                     }
@@ -1018,8 +1143,13 @@
                         const container = document.getElementById('dynamic-projects');
                         if (!container) return;
                         
+                        console.log('Loading fallback projects...');
+                        
                         container.innerHTML = `
-                            <div class="main-project-card" style="background:#ffffff;border-radius:0.8rem;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(73,160,120,0.1);transition:all 0.3s ease;cursor:pointer;" onclick="window.open('my-projects.html', '_blank')">
+                            <div class="main-project-card" style="background:#ffffff;border-radius:0.8rem;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(73,160,120,0.1);transition:all 0.3s ease;cursor:pointer;" onclick="window.open('../my-projects.html', '_blank')">
+                                <div style="margin-bottom:0.8rem;border-radius:0.5rem;overflow:hidden;height:140px;background:linear-gradient(135deg,#2563eb,#1d4ed8);display:flex;align-items:center;justify-content:center;">
+                                    <i class="fas fa-chart-bar" style="color:#fff;font-size:48px;opacity:0.8;"></i>
+                                </div>
                                 <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.8rem;">
                                     <div style="width:40px;height:40px;background:linear-gradient(135deg,#2563eb,#1d4ed8);border-radius:0.5rem;display:flex;align-items:center;justify-content:center;">
                                         <i class="fas fa-chart-bar" style="color:#fff;font-size:18px;"></i>
@@ -1035,7 +1165,10 @@
                                     <span style="font-size:0.8rem;color:#6b7280;">Recent</span>
                                 </div>
                             </div>
-                            <div class="main-project-card" style="background:#ffffff;border-radius:0.8rem;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(73,160,120,0.1);transition:all 0.3s ease;cursor:pointer;" onclick="window.open('my-projects.html', '_blank')">
+                            <div class="main-project-card" style="background:#ffffff;border-radius:0.8rem;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(73,160,120,0.1);transition:all 0.3s ease;cursor:pointer;" onclick="window.open('../my-projects.html', '_blank')">
+                                <div style="margin-bottom:0.8rem;border-radius:0.5rem;overflow:hidden;height:140px;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;">
+                                    <i class="fas fa-file-excel" style="color:#fff;font-size:48px;opacity:0.8;"></i>
+                                </div>
                                 <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.8rem;">
                                     <div style="width:40px;height:40px;background:linear-gradient(135deg,#10b981,#059669);border-radius:0.5rem;display:flex;align-items:center;justify-content:center;">
                                         <i class="fas fa-file-excel" style="color:#fff;font-size:18px;"></i>
@@ -1052,10 +1185,21 @@
                                 </div>
                             </div>
                         `;
+                        
+                        console.log('Fallback projects loaded successfully');
                     }
 
                     // Load projects when page loads
-                    document.addEventListener('DOMContentLoaded', loadRecentProjects);
+                    document.addEventListener('DOMContentLoaded', function() {
+                        console.log('DOM loaded, starting project loading...');
+                        loadRecentProjects();
+                    });
+                    
+                    // Also try loading after a short delay in case of timing issues
+                    window.addEventListener('load', function() {
+                        console.log('Window fully loaded, ensuring projects are loaded...');
+                        setTimeout(loadRecentProjects, 500);
+                    });
                 </script>
             </main>
     </div>
