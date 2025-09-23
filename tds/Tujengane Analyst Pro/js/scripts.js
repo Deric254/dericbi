@@ -2293,7 +2293,7 @@ document.addEventListener('DOMContentLoaded', function() {
         wrapper.style.cssText = 'position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;';
 
         var bgFrame = document.createElement('iframe');
-        bgFrame.src = '../index.html';
+        bgFrame.src = '../tds.html';
         bgFrame.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
         bgFrame.setAttribute('aria-hidden','true');
 
@@ -2339,7 +2339,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var ta = document.createElement('textarea'); ta.value = waUrl; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); toast.style.display = 'block'; setTimeout(function(){ toast.style.display='none'; },1800); } catch(err){} ta.remove();
             }
         });
-        document.getElementById('waCancelBtn').addEventListener('click', function(){ window.location.href = '../index.html'; });
+        document.getElementById('waCancelBtn').addEventListener('click', function(){ window.location.href = '../tds.html'; });
     }
 
     function askPassword() {
@@ -2348,7 +2348,7 @@ document.addEventListener('DOMContentLoaded', function() {
         wrapper.style.cssText = 'position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;padding:16px;';
 
         var bgFrame = document.createElement('iframe');
-        bgFrame.src = '../index.html';
+        bgFrame.src = '../tds.html';
         bgFrame.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
         bgFrame.setAttribute('aria-hidden','true');
 
@@ -2391,7 +2391,7 @@ document.addEventListener('DOMContentLoaded', function() {
             pwInput.focus();
         });
 
-        document.getElementById('pwCancel').addEventListener('click', function(){ cleanup(); window.location.href = '../index.html'; });
+        document.getElementById('pwCancel').addEventListener('click', function(){ cleanup(); window.location.href = '../tds.html'; });
 
         document.getElementById('pwSubmit').addEventListener('click', function(){
             var input = (pwInput && pwInput.value) ? pwInput.value : '';
@@ -2851,3 +2851,4 @@ function setupMobileNavigation() {
 
 // Initialize mobile navigation when DOM is loaded
 document.addEventListener('DOMContentLoaded', setupMobileNavigation);
+
