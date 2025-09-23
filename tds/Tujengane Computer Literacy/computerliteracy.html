@@ -77,8 +77,10 @@
             <div class="flex items-center gap-4">
                 <button class="hamburger" id="hamburger-btn"><i class="fas fa-bars"></i></button>
                 <ul class="nav-links flex gap-6 text-sm font-medium items-center shrink-0" id="nav-links">
-                    <li><a href="../../index.html" class="nav-link hover:text-[#facc15] transition-colors">Analytics</a></li>
-                    <li><a href="../tds.html" class="nav-link hover:text-[#facc15] transition-colors">Home</a></li>
+                    <li><a href="../../index.html" class="nav-link hover:text-[#facc15] transition-colors">EXES Home</a></li>
+                    <li><a href="../tds.html" class="nav-link hover:text-[#facc15] transition-colors">TDS Hub</a></li>
+                    <li><a href="../../services.html" class="nav-link hover:text-[#facc15] transition-colors">Services</a></li>
+                    <li><a href="../../my-projects.html" class="nav-link hover:text-[#facc15] transition-colors">Portfolio</a></li>
                     <li><a href="../Tujengane data basics/databasics.html" class="nav-link hover:text-[#facc15] transition-colors">Data Basics</a></li>
                     <li><a href="../Tujengane Analyst Pro/analystpro.html" class="nav-link hover:text-[#facc15] transition-colors">Analyst Pro</a></li>
                 </ul>
@@ -94,11 +96,12 @@
                             </button>
                         </div>
                         <ul class="mobile-nav-links">
-                            <li><a href="../../index.html" class="mobile-nav-link"><i class="fas fa-home"></i><span>Analytics</span></a></li>
-                            <li><a href="../tds.html" class="mobile-nav-link"><i class="fas fa-graduation-cap"></i><span>Home</span></a></li>
+                            <li><a href="../../index.html" class="mobile-nav-link"><i class="fas fa-home"></i><span>EXES Home</span></a></li>
+                            <li><a href="../tds.html" class="mobile-nav-link"><i class="fas fa-graduation-cap"></i><span>TDS Hub</span></a></li>
+                            <li><a href="../../services.html" class="mobile-nav-link"><i class="fas fa-cogs"></i><span>Services</span></a></li>
+                            <li><a href="../../my-projects.html" class="mobile-nav-link"><i class="fas fa-briefcase"></i><span>Portfolio</span></a></li>
                             <li><a href="../Tujengane data basics/databasics.html" class="mobile-nav-link"><i class="fas fa-database"></i><span>Data Basics</span></a></li>
                             <li><a href="../Tujengane Analyst Pro/analystpro.html" class="mobile-nav-link"><i class="fas fa-chart-line"></i><span>Analyst Pro</span></a></li>
-                            <li><a href="../Tujengane data basics/databasics.html" class="mobile-nav-link"><i class="fas fa-chart-bar"></i><span>EXES BI</span></a></li>
                             <li class="mobile-nav-divider"></li>
                             <li><a href="https://wa.me/254791360805" class="mobile-nav-link" target="_blank"><i class="fab fa-whatsapp"></i><span>Contact Us</span></a></li>
                             <li><a href="https://forms.gle/krViHXVaJKP2JARZ7" class="mobile-nav-link" target="_blank"><i class="fas fa-user-plus"></i><span>Enroll Now</span></a></li>
@@ -347,6 +350,7 @@
     </div>
     
     <footer class="footer">
+    <footer class="footer">
         <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-3 footer-logo">
                 <img src="../../assets/img/logo.png" alt="Tujengane Digital Skills Logo" class="h-10 w-10 rounded-full object-cover shadow-md border-2 border-white" style="border-radius:9999px;">
@@ -361,10 +365,16 @@
                 <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link"><i class="fab fa-instagram"></i></a>
             </div>
-            <div class="text-xs text-gray-500 footer-copyright">
-                &copy; 2025 TDS powered by EXES BI – Developed by <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-[#49A078] hover:underline">Deric Marangu</a>
+            <div class="text-xs text-gray-500 footer-copyright flex flex-col md:flex-row items-center gap-2">
+                <span>&copy; 2025 TDS powered by EXES BI – Developed by <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-[#49A078] hover:underline">Deric Marangu</a></span>
+                <span class="hidden md:inline">|</span>
+                <div class="flex gap-3 text-xs">
+                    <a href="../../index.html" class="text-[#49A078] hover:underline font-medium">EXES Home</a>
+                    <a href="../../services.html" class="text-[#49A078] hover:underline font-medium">Services</a>
+                    <a href="../../my-projects.html" class="text-[#49A078] hover:underline font-medium">Portfolio</a>
+                    <a href="../../contact.html" class="text-[#49A078] hover:underline font-medium">Contact</a>
+                </div>
             </div>
-            <a href="../../index.html" class="footer-link footer-home-link">Analytics</a>
         </div>
     </footer>
     <button id="floatingHomeBtn" class="fixed text-white p-3 rounded-full shadow-lg cursor-pointer transition-all flex items-center justify-center w-12 h-12" style="display:none; background: rgba(73, 160, 120, 0.7); backdrop-filter: blur(8px); opacity: 0.8;" title="Navigation Menu">
