@@ -27,6 +27,79 @@ html, body {
     overflow: auto;
 }
 
+/* Logo left-margin positioning - consistent with other TDS files */
+nav img {
+    width: 36px !important;
+    height: 36px !important;
+}
+
+nav {
+    padding-left: 0.5rem !important;
+    padding-right: 1.5rem !important;
+}
+
+nav .container {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    max-width: none !important;
+}
+
+nav .container > div:first-child {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+/* Footer logo left-margin positioning */
+.footer .container {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    max-width: none !important;
+    padding-left: 0.5rem !important;
+}
+
+.footer-logo {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+.footer img {
+    width: 32px !important;
+    height: 32px !important;
+}
+
+@media (max-width: 768px) {
+    nav img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    
+    nav {
+        padding-left: 0.25rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    .footer .container {
+        padding-left: 0.25rem !important;
+    }
+    
+    .footer img {
+        width: 28px !important;
+        height: 28px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    nav img {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    
+    nav {
+        padding-left: 0.25rem !important;
+        padding-right: 0.75rem !important;
+    }
+}
+
 /* Sidebar */
 .sidebar {
     width: 280px;

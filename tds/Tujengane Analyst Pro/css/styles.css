@@ -426,11 +426,12 @@ html {
         justify-content: center !important;
     }
     
-    /* Adjust layout to account for dynamic header */
+    /* Adjust layout to account for dynamic header - mobile only */
     .layout {
         margin-top: 80px !important;
         margin-bottom: 50px !important;
         height: calc(100vh - 130px) !important;
+        gap: 0.25rem !important;
     }
     
     /* Hide slogan completely on very small screens to save space */
@@ -466,16 +467,111 @@ html {
         width: auto !important;
         justify-content: flex-start !important;
     }
-}.layout {
+}
+
+/* Desktop Layout - Default responsive layout with proper gaps */
+.layout {
     display: flex;
     flex: 1;
     flex-direction: row;
     gap: 0.5rem;
     padding: 0.125rem;
-    margin-top: 60px;
+    margin-top: 70px;
     margin-bottom: 50px;
-    height: calc(100vh - 110px);
+    height: calc(100vh - 120px);
     overflow: hidden;
+}
+
+/* Override Tailwind logo classes for better responsiveness */
+nav img {
+    width: 36px !important;
+    height: 36px !important;
+}
+
+/* Push logo section to left margin */
+nav {
+    padding-left: 0.5rem !important;
+    padding-right: 1.5rem !important;
+}
+
+nav .container {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    max-width: none !important;
+}
+
+nav .container > div:first-child {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+@media (max-width: 768px) {
+    nav img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    
+    nav {
+        padding-left: 0.25rem !important;
+        padding-right: 1rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    nav img {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    
+    nav {
+        padding-left: 0.25rem !important;
+        padding-right: 0.75rem !important;
+    }
+}
+
+/* Ensure proper header sizing on desktop/laptop */
+@media (min-width: 769px) {
+    nav {
+        height: 70px !important;
+        min-height: 70px !important;
+        padding: 0.75rem 1.5rem 0.75rem 0.5rem !important;
+    }
+    
+    nav .container {
+        height: 100% !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        max-width: none !important;
+    }
+    
+    /* Ensure logo fits properly within header and stays left */
+    nav .container > div:first-child {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+    
+    nav .container > div:first-child img {
+        width: 36px !important;
+        height: 36px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* Ensure hamburger fits properly */
+    .hamburger {
+        width: 40px !important;
+        height: 40px !important;
+        padding: 0.5rem !important;
+        font-size: 1.1rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .layout {
+        margin-top: 70px !important;
+        gap: 0.5rem !important;
+        height: calc(100vh - 120px) !important;
+    }
 }
 
 /* Sidebar */
@@ -1204,8 +1300,48 @@ nav .container {
     }
 }
 
-/* Main Mobile Responsive Section - Exact Computer Literacy Implementation */
-@media (max-width: 768px) {
+/* Tablet responsive layout - between mobile and desktop */
+@media (min-width: 481px) and (max-width: 768px) {
+    nav {
+        height: 65px !important;
+        min-height: 65px !important;
+        padding: 0.75rem 1rem 0.75rem 0.5rem !important;
+    }
+    
+    nav .container {
+        flex-wrap: nowrap !important;
+        height: 100% !important;
+        align-items: center !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        max-width: none !important;
+    }
+    
+    /* Tablet logo sizing and left alignment */
+    nav .container > div:first-child {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+    
+    nav .container > div:first-child img {
+        width: 32px !important;
+        height: 32px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .layout {
+        margin-top: 65px !important;
+        gap: 0.5rem !important;
+        height: calc(100vh - 115px) !important;
+    }
+    
+    .sidebar {
+        width: 250px !important;
+    }
+}
+
+/* Main Mobile Responsive Section - Only for actual mobile devices */
+@media (max-width: 480px) {
     /* Allow mobile scrolling by overriding desktop lock */
     body, html {
         overflow-y: auto !important;
@@ -1217,6 +1353,7 @@ nav .container {
     nav {
         height: auto !important;
         min-height: 60px !important;
+        padding: 0.5rem 1rem !important;
     }
     
     nav .container {
@@ -1229,6 +1366,7 @@ nav .container {
         margin-top: 80px !important;
         margin-bottom: 50px !important;
         height: calc(100vh - 130px) !important;
+        gap: 0.25rem !important;
     }
     
     .sidebar {
@@ -2001,8 +2139,8 @@ nav .container {
     }
 }
 
-/* Critical fix for screens 370px and below */
-@media (max-width: 370px) {
+/* Critical fix for very small screens only */
+@media (max-width: 360px) {
     /* Allow header to expand naturally */
     nav {
         padding: 0.5rem 0.3rem !important;

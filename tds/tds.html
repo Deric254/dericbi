@@ -14,6 +14,9 @@
     <link rel="icon" type="image/png" href="../icon/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+    <!-- Enhanced EXES BI Styling -->
+    <link rel="stylesheet" href="../assets/css/shared-variables.css">
+    <link rel="stylesheet" href="../assets/css/loading-states.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -373,6 +376,81 @@
             .footer-socials { flex-wrap: wrap; }
             .curriculum-grid { grid-template-columns: 1fr; gap: 0.3rem; }
         }
+
+        /* Logo left-margin positioning - consistent with other TDS files */
+        nav img {
+            width: 36px !important;
+            height: 36px !important;
+        }
+
+        nav {
+            padding-left: 0.5rem !important;
+            padding-right: 1.5rem !important;
+        }
+
+        nav .container {
+            margin-left: 0 !important;
+            margin-right: auto !important;
+            max-width: none !important;
+        }
+
+        nav .container > div:first-child {
+            margin-left: 0 !important;
+            padding-left: 0 !important;
+        }
+
+        @media (max-width: 768px) {
+            nav img {
+                width: 32px !important;
+                height: 32px !important;
+            }
+            
+            nav {
+                padding-left: 0.25rem !important;
+                padding-right: 1rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav img {
+                width: 30px !important;
+                height: 30px !important;
+            }
+            
+            nav {
+                padding-left: 0.25rem !important;
+                padding-right: 0.75rem !important;
+            }
+        }
+
+        /* Footer logo left-margin positioning */
+        .footer .container {
+            margin-left: 0 !important;
+            margin-right: auto !important;
+            max-width: none !important;
+            padding-left: 0.5rem !important;
+        }
+
+        .footer-logo {
+            margin-left: 0 !important;
+            padding-left: 0 !important;
+        }
+
+        .footer img {
+            width: 32px !important;
+            height: 32px !important;
+        }
+
+        @media (max-width: 768px) {
+            .footer .container {
+                padding-left: 0.25rem !important;
+            }
+            
+            .footer img {
+                width: 28px !important;
+                height: 28px !important;
+            }
+        }
     </style>
     <style>
     /* Conservative global touch feedback (no motion): color + shadow on :active for buttons/links */
@@ -411,6 +489,7 @@
             </div>
         </div>
     </nav>
+    
     <div class="layout">
         <aside class="sidebar" id="mainSidebar">
             <div class="sidebar-content">
