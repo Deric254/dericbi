@@ -1184,7 +1184,7 @@
                         console.log('Loading fallback projects...');
                         
                         container.innerHTML = `
-                            <div class="main-project-card" style="background:#ffffff;border-radius:0.8rem;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(73,160,120,0.1);transition:all 0.3s ease;cursor:pointer;" onclick="window.open('../my-projects.html', '_blank')">
+                            <a href="../my-projects.html" class="main-project-card" style="display:block;background:#ffffff;border-radius:0.8rem;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(73,160,120,0.1);transition:all 0.3s ease;cursor:pointer;text-decoration:none;" target="_blank">
                                 <div style="margin-bottom:0.8rem;border-radius:0.5rem;overflow:hidden;height:140px;background:linear-gradient(135deg,#2563eb,#1d4ed8);display:flex;align-items:center;justify-content:center;">
                                     <i class="fas fa-chart-bar" style="color:#fff;font-size:48px;opacity:0.8;"></i>
                                 </div>
@@ -1202,8 +1202,8 @@
                                     <span style="background:#2563eb;color:#fff;font-size:0.8rem;font-weight:600;padding:0.3rem 0.6rem;border-radius:0.4rem;">PowerBI</span>
                                     <span style="font-size:0.8rem;color:#6b7280;">Recent</span>
                                 </div>
-                            </div>
-                            <div class="main-project-card" style="background:#ffffff;border-radius:0.8rem;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(73,160,120,0.1);transition:all 0.3s ease;cursor:pointer;" onclick="window.open('../my-projects.html', '_blank')">
+                            </a>
+                            <a href="../my-projects.html" class="main-project-card" style="display:block;background:#ffffff;border-radius:0.8rem;padding:1.2rem;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:1px solid rgba(73,160,120,0.1);transition:all 0.3s ease;cursor:pointer;text-decoration:none;" target="_blank">
                                 <div style="margin-bottom:0.8rem;border-radius:0.5rem;overflow:hidden;height:140px;background:linear-gradient(135deg,#10b981,#059669);display:flex;align-items:center;justify-content:center;">
                                     <i class="fas fa-file-excel" style="color:#fff;font-size:48px;opacity:0.8;"></i>
                                 </div>
@@ -1221,7 +1221,7 @@
                                     <span style="background:#10b981;color:#fff;font-size:0.8rem;font-weight:600;padding:0.3rem 0.6rem;border-radius:0.4rem;">Excel</span>
                                     <span style="font-size:0.8rem;color:#6b7280;">Recent</span>
                                 </div>
-                            </div>
+                            </a>
                         `;
                         
                         console.log('Fallback projects loaded successfully');

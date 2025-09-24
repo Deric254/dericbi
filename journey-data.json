@@ -1,6 +1,20 @@
  
 [
 {
+  "serial": "Project 41",
+  "title": "Retail Expenses Analytics Dashboard",
+  "date": "2025-09-22",
+  "description": "<strong>Problem Statement:</strong> Retail businesses struggle to monitor and control operational expenses, leading to missed cost-saving opportunities.<br><br><strong>Business Objective:</strong> Build a PowerBI dashboard to analyze retail expense data, identify major cost drivers, and uncover actionable insights for expense optimization.<br><br><strong>My Approach:</strong> I used PowerBI to visualize expense categories, track spending trends, and highlight areas of overspending. The dashboard provides interactive views for management to drill down into expense details and compare costs across periods. The walkthrough video demonstrates dashboard features and insights.<br><br><strong>Key Insights:</strong><br>1️⃣ Identified top expense categories impacting profitability<br>2️⃣ Revealed monthly and seasonal expense trends<br>3️⃣ Highlighted cost-saving opportunities in operations<br>4️⃣ Provided recommendations for expense control and budgeting<br><br><strong>Impact:</strong> The dashboard enables retail managers to make data-driven decisions, optimize operational costs, and improve overall financial health.",
+  "tools": "PowerBI",
+  "projectLink": "downloads/retailexpenses.pbix",
+  "images": [
+    "assets/projects/retail_expenses/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/retail_expenses/ISUTXIUx6E.mp4"
+  ]
+},
+{
   "serial": "Project 40",
   "title": "Retail Fashion Analytics Dashboard",
   "date": "2025-09-19",
