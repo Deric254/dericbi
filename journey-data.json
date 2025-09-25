@@ -1,5 +1,19 @@
  
 [
+ {
+  "serial": "Project 42",
+  "title": "Banking HR Analytics Dashboard",
+  "date": "2025-09-25",
+  "description": "<strong>Problem Statement:</strong> Banks need to analyze HR data to optimize workforce planning, monitor employee performance, and improve retention.<br><br><strong>Business Objective:</strong> Build a PowerBI dashboard to visualize key HR metrics, track staff turnover, and uncover actionable insights for HR management.<br><br><strong>My Approach:</strong> I used PowerBI to process banking HR datasets, visualize employee demographics, turnover rates, and performance trends. The dashboard provides interactive views for HR teams to drill down into department-level data and compare metrics over time. The walkthrough video demonstrates dashboard features and insights.<br><br><strong>Key Insights:</strong><br>1️⃣ Identified departments with high turnover rates<br>2️⃣ Revealed trends in employee performance and tenure<br>3️⃣ Highlighted diversity and gender balance across roles<br>4️⃣ Provided recommendations for retention and workforce planning<br><br><strong>Impact:</strong> The dashboard enables HR managers to make data-driven decisions, improve employee retention, and optimize workforce allocation.",
+  "tools": "PowerBI",
+  "projectLink": "downloads/bankinghr.pbix",
+  "images": [
+    "assets/projects/bankinghr/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/bankinghr/PBIDesktop_DTxwpYddBR.mp4"
+  ]
+},
 {
   "serial": "Project 41",
   "title": "Retail Expenses Analytics Dashboard",
