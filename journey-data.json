@@ -1,19 +1,34 @@
  
 [
- {
+{
+  "serial": "Project 43",
+  "title": "Comprehensive Banking Transaction Dashboard (Excel)",
+  "date": "2025-09-28",
+  "description": "<strong>Problem Statement:</strong> Banks face challenges in managing massive transaction data, monitoring customer activity, and identifying fraud or anomalies.<br><br><strong>Business Objective:</strong> Build an Excel dashboard to analyze customer transactions, track branch performance, and uncover actionable insights for growth and risk management.<br><br><strong>My Approach:</strong> I used Excel to clean, process, and visualize transaction data, creating interactive dashboards for branch managers and executives. The dashboard highlights customer demographics, transaction types, and anomalies for decision-making.<br><br><strong>Key Insights:</strong><br>1️⃣ Total customers analyzed: 33.28K, with an average lifetime value of 4.01K.<br>2️⃣ Rapid growth from 9B in 2020 to a projected 212B by 2025.<br>3️⃣ Millennials dominate with 160B in generational transactions.<br>4️⃣ Flagged transactions of 90.1B indicate potential fraud risk.<br>5️⃣ Top-performing branches: B001 & B002; B004 underperforming.<br>6️⃣ Balanced transaction distribution: deposits (34%), withdrawals (33%), transfers (33%).<br><br><strong>Impact:</strong> The dashboard helps banks optimize branch strategies, monitor fraud, and deliver customer-focused services using data-driven insights.",
+  "tools": "Excel",
+  "projectLink": "downloads/bigbankingDB.xlsx",
+  "images": [
+    "assets/projects/bankinghr/excel/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/bankinghr/excel/Y2ESrK98NY.mp4"
+  ]
+},
+{
   "serial": "Project 42",
-  "title": "Banking HR Analytics Dashboard",
+  "title": "Comprehensive Banking Transaction Dashboard (Power BI)",
   "date": "2025-09-25",
-  "description": "<strong>Problem Statement:</strong> Banks need to analyze HR data to optimize workforce planning, monitor employee performance, and improve retention.<br><br><strong>Business Objective:</strong> Build a PowerBI dashboard to visualize key HR metrics, track staff turnover, and uncover actionable insights for HR management.<br><br><strong>My Approach:</strong> I used PowerBI to process banking HR datasets, visualize employee demographics, turnover rates, and performance trends. The dashboard provides interactive views for HR teams to drill down into department-level data and compare metrics over time. The walkthrough video demonstrates dashboard features and insights.<br><br><strong>Key Insights:</strong><br>1️⃣ Identified departments with high turnover rates<br>2️⃣ Revealed trends in employee performance and tenure<br>3️⃣ Highlighted diversity and gender balance across roles<br>4️⃣ Provided recommendations for retention and workforce planning<br><br><strong>Impact:</strong> The dashboard enables HR managers to make data-driven decisions, improve employee retention, and optimize workforce allocation.",
+  "description": "<strong>Problem Statement:</strong> Financial institutions need to monitor transaction trends, branch performance, and anomalies to improve operational efficiency and risk management.<br><br><strong>Business Objective:</strong> Develop a Power BI dashboard to visualize key banking metrics, detect anomalies, and support strategic decision-making.<br><br><strong>My Approach:</strong> I used Power BI to build interactive reports with drill-down capabilities, integrating visuals for customer segments, transaction types, and branch analytics. The dashboard provides real-time monitoring and deeper insights.<br><br><strong>Key Insights:</strong><br>1️⃣ Total transaction amount: 540.6B with 1.0M total customers.<br>2️⃣ Flagged transactions worth 90.1B for closer investigation.<br>3️⃣ Millennials dominate transactions (160B), followed by Baby Boomers (120B).<br>4️⃣ Transaction growth trend shows 23× increase over 5 years.<br>5️⃣ B001 and B002 lead in branch performance, while B004 needs improvement.<br>6️⃣ Equal gender participation: Female (33%), Male (33%), Other (34%).<br><br><strong>Impact:</strong> This Power BI dashboard empowers leadership teams to track performance, mitigate fraud risks, and align strategies with customer behavior insights.",
   "tools": "PowerBI",
   "projectLink": "downloads/bankinghr.pbix",
   "images": [
-    "assets/projects/bankinghr/dash.JPG"
+    "assets/projects/bankinghr/powerbi/dash.JPG"
   ],
   "video": [
-    "assets/projects/bankinghr/PBIDesktop_DTxwpYddBR.mp4"
+    "assets/projects/bankinghr/powerbi/PBIDesktop_DTxwpYddBR.mp4"
   ]
-},
+}
+,
 {
   "serial": "Project 41",
   "title": "Retail Expenses Analytics Dashboard",
