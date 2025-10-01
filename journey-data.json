@@ -1,10 +1,10 @@
  
 [
-  {
+{
   "serial": "Project 45",
-  "title": "",
-  "date": "2025-09-30",
-  "description": " ",
+  "title": "Student GPA Performance Dashboard",
+  "date": "2025-10-01",
+  "description": "<strong>Problem Statement:</strong> Students and educators need a clear way to track academic performance and identify areas for improvement.<br><br><strong>Business Objective:</strong> Build an Excel dashboard to visualize GPA trends, highlight top-performing subjects, and support data-driven academic planning.<br><br><strong>My Approach:</strong> I designed an interactive Excel dashboard that displays GPA performance over time, subject breakdowns, and key academic metrics. The dashboard enables users to monitor progress, spot strengths and weaknesses, and make informed decisions.<br><br><strong>Key Insights:</strong><br>1️⃣ Visualizes GPA trends across semesters.<br>2️⃣ Highlights subjects with highest and lowest performance.<br>3️⃣ Identifies improvement opportunities for students.<br><br><strong>Impact:</strong> This dashboard empowers students and educators to take targeted actions for academic success and continuous improvement.",
   "projectLink": "downloads/gpaperformance.xlsx",
   "images": [
     "assets/projects/gpa/dash.JPG"
