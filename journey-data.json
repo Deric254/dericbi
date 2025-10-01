@@ -1,5 +1,18 @@
  
 [
+  {
+  "serial": "Project 45",
+  "title": "",
+  "date": "2025-09-30",
+  "description": " ",
+  "projectLink": "downloads/gpaperformance.xlsx",
+  "images": [
+    "assets/projects/gpa/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/gpa/ryyJZ4Inzb.mp4"
+  ]
+},
 {
   "serial": "Project 44",
   "title": "Banking Data Visualization Challenge (Frontend Dashboard)",
