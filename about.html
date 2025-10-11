@@ -1,14 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us – EXES</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <title>About Us – dericBI | Expert Data Analysis Services Kenya</title>
   
   <!-- ✅ SEO Meta Tags -->
-  <meta name="description" content="About EXES: Data cleanup and analytics services for small businesses in Kenya, founded by Deric Marangu." />
-  <meta name="keywords" content="About EXES, Data services Kenya, Deric Marangu, Excel cleanup, analytics" />
+  <meta name="description" content="About dericBI: Data cleanup and analytics services for small businesses in Kenya, founded by Deric Marangu." />
+  <meta name="keywords" content="About dericBI, Data services Kenya, Deric Marangu, Excel cleanup, analytics" />
   <meta name="author" content="Deric Marangu" />
+  
+  <!-- Enhanced Open Graph Meta -->
+  <meta property="og:title" content="About dericBI - Professional Data Analysis Services">
+  <meta property="og:description" content="Learn about dericBI, founded by Deric Marangu to provide expert data analysis services to small businesses in Kenya.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dericbi-analytics.netlify.app/about.html">
+  <meta property="og:image" content="https://dericbi-analytics.netlify.app/assets/img/logo.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="About dericBI - Data Analysis Experts">
+  <meta name="twitter:description" content="Learn about our story and mission to provide data analysis solutions for small businesses in Kenya.">
+  <meta name="twitter:image" content="https://dericbi-analytics.netlify.app/assets/img/logo.png">
+  
+  <!-- Structured Data for Local Business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "dericBI Analytics",
+    "description": "Professional data analysis and Excel cleanup services",
+    "telephone": "+254791360805",
+    "email": "dericmarangu@gmail.com",
+    "founder": {
+      "@type": "Person",
+      "name": "Deric Marangu"
+    },
+    "serviceArea": {
+      "@type": "Place",
+      "name": "Kenya"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/deric-marangu-134340297/",
+      "https://www.facebook.com/dericbi/",
+      "https://www.instagram.com/dericmarangu/"
+    ]
+  }
+  </script>
 
   <!-- ✅ Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -76,18 +114,20 @@ img:not([alt]) {
 <body class="bg-white text-gray-800 min-h-screen flex flex-col break-words">
 
 <!-- ✅ Responsive Navbar -->
-<nav class="bg-[#49A078] text-white px-4 py-3 shadow-md sticky top-0 z-50" role="navigation" aria-label="Main Navigation">
-  <div class="container mx-auto flex items-center justify-between gap-4">
+<nav class="bg-[#49A078] text-white px-2 xs:px-3 sm:px-4 py-2 xs:py-3 shadow-lg sticky top-0 z-50 w-full bg-gradient-to-r from-[#49A078] to-[#3D8069]" role="navigation" aria-label="Main Navigation">
+  <div class="w-full max-w-7xl mx-auto flex items-center justify-between gap-2 xs:gap-3 sm:gap-4">
 
     <!-- ✅ Logo & Brand -->
-    <div class="flex items-center gap-3 shrink-0">
+    <div class="flex items-center gap-2 xs:gap-3 shrink-0">
       <img src="assets/img/logo.png" 
-           alt="EXES Logo" 
-           class="h-14 w-14 sm:h-16 sm:w-16 rounded-full object-cover shadow-md border-2 border-white" />
-      <span class="font-bold text-2xl leading-none">EXES</span>
+           alt="dericBI Logo" 
+           class="h-10 w-10 xs:h-12 xs:w-12 sm:h-16 sm:w-16 rounded-full object-cover shadow-md border-2 border-white" />
+      <div class="font-bold text-xl xs:text-2xl leading-none">
+        <span>deric</span><span class="text-[#facc15]">BI</span>
+      </div>
 
       <!-- ✅ Extra Links for Small Screens -->
-      <div class="flex gap-3 ml-4 md:hidden">
+      <div class="flex gap-1 xs:gap-2 sm:gap-3 ml-2 xs:ml-3 sm:ml-4 md:hidden">
         <a href="index.html" class="nav-link text-xs tracking-wide">Home</a>
         <a href="services.html" class="nav-link text-xs tracking-wide">Services</a>
         <a href="My-projects.html" class="nav-link text-xs tracking-wide">Projects</a>
@@ -103,28 +143,28 @@ img:not([alt]) {
 
     <!-- ✅ Desktop Nav Links -->
     <ul class="hidden md:flex gap-6 text-sm font-medium items-center shrink-0">
-  <li><a href="index.html" class="nav-link">Home</a></li>
-  <li><a href="services.html" class="nav-link">Services</a></li>
-  <li><a href="My-projects.html" class="nav-link">Projects</a></li>
-  <li><a href="contact.html" class="nav-link">Contact</a></li>
-  <li><a href="about.html" class="nav-link font-bold underline underline-offset-4 text-yellow-300">About Us</a></li>
-  <!--<li><a href="terms.html" class="nav-link">Terms & Conditions</a></li>-->
-  <li><a href="https://tujengane.netlify.app/" class="nav-link">Tujengane</a></li>
+      <li><a href="index.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Home</a></li>
+      <li><a href="services.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Services</a></li>
+      <li><a href="My-projects.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Projects</a></li>
+      <li><a href="contact.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Contact</a></li>
+      <li><a href="about.html" class="nav-link font-bold px-3 py-2 rounded-md bg-[#3D8069]/50 shadow-inner text-yellow-300 border-b-2 border-yellow-300">About Us</a></li>
+      <!--<li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms & Conditions</a></li>-->
+      <li><a href="https://tujengane.netlify.app/" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Tujengane</a></li>
     </ul>
 
     <!-- ✅ Hamburger Menu -->
-    <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none ml-3">☰</button>
+    <button id="menu-toggle" class="block md:hidden text-2xl xs:text-3xl focus:outline-none ml-1 xs:ml-2 sm:ml-3 shrink-0 bg-[#3D8069]/50 hover:bg-[#3D8069]/70 p-1 rounded-md shadow-md transition-all">☰</button>
   </div>
 
   <!-- ✅ Mobile Menu -->
-  <div id="mobile-menu" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex-col bg-[#3e8865] px-4">
-    <a href="index.html" class="nav-link block py-3 border-b border-green-300">Home</a>
-    <a href="services.html" class="nav-link block py-3 border-b border-green-300">Services</a>
-    <a href="My-projects.html" class="nav-link block py-3 border-b border-green-300">Projects</a>
-    <a href="contact.html" class="nav-link block py-3 border-b border-green-300">Contact</a>
-    <a href="about.html" class="nav-link block py-3 border-b border-green-300">About Us</a>
-    <a href="terms.html" class="nav-link block py-3">Terms & Conditions</a>
-    <a href="https://tujengane.netlify.app/" class="nav-link block py-3">Tujengane</a>
+  <div id="mobile-menu" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex-col bg-[#3e8865] px-2 xs:px-3 sm:px-4 w-full shadow-inner">
+    <a href="index.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Home</a>
+    <a href="services.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Services</a>
+    <a href="My-projects.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Projects</a>
+    <a href="contact.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Contact</a>
+    <a href="about.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all bg-[#367659]/30 font-semibold text-yellow-300">About Us</a>
+    <a href="terms.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Terms & Conditions</a>
+    <a href="https://tujengane.netlify.app/" class="nav-link block py-3 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Tujengane</a>
   </div>
 </nav>
 
@@ -192,18 +232,25 @@ toggleBtn.addEventListener('click', () => {
       But what if even a boutique in Nairobi , hardware in meru, or a local kiosk in Kisumu could have the same edge?
     </p>
 
-  <p class="text-lg mb-2 font-semibold text-[#49A078]">EXES was built from that belief.</p>
+  <p class="text-xl mb-3 font-semibold text-[#49A078] text-center bg-[#f0fdfa] py-2 px-4 rounded-lg shadow-inner">
+      dericBI was built from that belief.
+    </p>
 
   <p class="text-lg mb-2 text-gray-700">
-      We deliver powerful insights without requiring complex systems or big budgets. Whether you're tracking sales through notes or restocking from memory, EXES helps transform raw habits into smart decisions.
+      We deliver powerful insights without requiring complex systems or big budgets. Whether you're tracking sales through notes or restocking from memory, dericBI helps transform raw habits into smart decisions.
     </p>
   </section>
 
   <!-- ✅ Founder Section -->
-  <section class="bg-gray-100 shadow-md py-2 px-1 w-full rounded-lg mb-2">
-  <h2 class="text-3xl md:text-4xl font-bold text-center text-[#49A078] mb-2">👤 Meet the Founder – Deric Marangu</h2>
-  <div class="flex flex-col md:flex-row items-center gap-1">
-  <img src="assets/img/deric.png" alt="Deric Marangu" class="w-24 h-24 rounded-full shadow-lg">
+  <section class="bg-gradient-to-br from-gray-50 to-white shadow-lg py-4 px-3 sm:px-4 w-full rounded-xl mb-4 max-w-5xl mx-auto border border-green-100/50">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#49A078] mb-4 flex items-center justify-center gap-2">
+      <span class="bg-[#49A078]/10 p-2 rounded-full">👤</span> Meet the Founder – Deric Marangu
+    </h2>
+    <div class="flex flex-col md:flex-row items-center gap-4 bg-white/80 p-4 rounded-xl shadow-sm">
+      <div class="flex flex-col items-center">
+        <img src="assets/img/deric.png" alt="Deric Marangu" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full shadow-lg border-2 border-[#49A078]/30 hover:border-[#49A078] transition-all">
+        <span class="bg-[#49A078] text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm mt-2">Founder & CEO</span>
+      </div>
       <div>
   <p class="text-base md:text-lg mb-1 font-semibold text-gray-800"><strong>You’re not just using a tool—you’re working with a genius in this.</strong></p>
   <p class="text-base md:text-lg mb-1 text-gray-700">
