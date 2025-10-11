@@ -386,29 +386,37 @@ toggleBtn.addEventListener('click', () => {
     </p>
   </section>
 
-  <!-- ✅ Founder Section -->
-  <section class="bg-gradient-to-br from-gray-50 to-white shadow-lg py-4 px-3 sm:px-4 w-full rounded-xl mb-4 max-w-5xl mx-auto border border-green-100/50">
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#49A078] mb-4 flex items-center justify-center gap-2">
-      <span class="bg-[#49A078]/10 p-2 rounded-full">👤</span> Meet the Founder – Deric Marangu
+<!-- ✅ Founder Section -->
+<section class="relative pt-6 pb-8 px-2 xs:px-3 sm:px-4 w-full m-0 bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] overflow-hidden">
+  <!-- Decorative SVG Top Shape -->
+  <svg class="absolute top-0 left-0 w-full h-16 md:h-24 pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#49A078" fill-opacity="0.08" d="M0,32L80,69.3C160,107,320,181,480,176C640,171,800,85,960,69.3C1120,53,1280,107,1360,133.3L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
+  <!-- Decorative SVG Bottom Shape -->
+  <svg class="absolute bottom-0 left-0 w-full h-16 md:h-24 pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#2563EB" fill-opacity="0.07" d="M0,224L80,213.3C160,203,320,181,480,154.7C640,128,800,96,960,117.3C1120,139,1280,213,1360,245.3L1440,288L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+  
+  <div class="relative z-10 w-full max-w-6xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#49A078] mb-6 flex items-center justify-center gap-2">
+      <span class="bg-[#49A078]/10 p-2 rounded-full shadow-inner">👤</span> Meet the Founder – Deric Marangu
     </h2>
-    <div class="flex flex-col md:flex-row items-center gap-4 bg-white/80 p-4 rounded-xl shadow-sm">
-      <div class="flex flex-col items-center">
-        <img src="assets/img/deric.png" alt="Deric Marangu" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full shadow-lg border-2 border-[#49A078]/30 hover:border-[#49A078] transition-all">
-        <span class="bg-[#49A078] text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm mt-2">Founder & CEO</span>
+    
+    <div class="bg-white/90 p-4 md:p-6 rounded-xl shadow-md border border-green-100 flex flex-col md:flex-row items-center md:items-start gap-6">
+      <div class="flex flex-col items-center shrink-0">
+        <img src="assets/img/deric.png" alt="Deric Marangu" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full shadow-lg object-cover hover:shadow-xl transition-all">
+        <span class="bg-[#49A078] text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-sm mt-3">Founder & CEO</span>
       </div>
-      <div>
-  <p class="text-base md:text-lg mb-1 font-semibold text-gray-800"><strong>You’re not just using a tool—you’re working with a genius in this.</strong></p>
-  <p class="text-base md:text-lg mb-1 text-gray-700">
-          A quiet observer with sharp instincts, <strong>Deric Marangu</strong> saw something others missed. Armed with a bachelor's degree in Business Information Technology and a gift for simplifying complex patterns, he noticed small shops suffering while big tech thrived on data which is unfair to SMES.
+      
+      <div class="flex-1">
+        <p class="text-lg md:text-xl mb-3 font-semibold text-gray-800"><strong>You're not just using a tool—you're working with a genius in this.</strong></p>
+        <p class="text-base md:text-lg mb-4 text-gray-700 leading-relaxed">
+          A quiet observer with sharp instincts, <strong>Deric Marangu</strong> saw something others missed. Armed with a bachelor's degree in Business Information Technology and a gift for simplifying complex patterns, he noticed small shops suffering while big tech thrived on data which is unfair to SMEs.
         </p>
-  <blockquote class="italic text-[#49A078] border-l-4 border-[#49A078] pl-4 mt-2 text-base md:text-lg">
-          “I believe data should be accessible to everyone—not just those with servers and strategy teams. EXES is my way of making that happen.”<br>
+        <blockquote class="italic text-[#49A078] border-l-4 border-[#49A078] pl-5 py-2 mt-2 text-lg md:text-xl bg-green-50/70 rounded-r-lg">
+          "I believe data should be accessible to everyone—not just those with servers and strategy teams. EXES is my way of making that happen."<br>
           — <strong>Deric Marangu, Founder & CEO</strong>
         </blockquote>
       </div>
     </div>
-  </section>
-
+  </div>
+</section>
 <!-- ✅ Compact Action Bar -->
 <section class="bg-gray-50 py-4 px-4 border-t border-gray-200">
   <div class="container mx-auto max-w-4xl">
