@@ -252,6 +252,31 @@ img:not([alt]) {
         margin-top: 2rem !important;
       }
     }
+    
+    /* Very small screen optimizations */
+    @media (max-width: 360px) {
+      /* Hide brand name on very small screens */
+      .brand-text {
+        display: none;
+      }
+      
+      /* Tighter spacing */
+      .gap-3 {
+        gap: 0.5rem;
+      }
+      
+      /* Smaller fonts */
+      .text-xs {
+        font-size: 0.65rem;
+      }
+      
+      /* Ensure hamburger menu is visible */
+      #menu-toggle {
+        display: block !important;
+        margin-left: auto !important;
+        font-size: 1.25rem !important;
+      }
+    }
   </style>
 </head>
 
@@ -260,16 +285,18 @@ img:not([alt]) {
 <nav class="bg-[#49A078] text-white px-4 py-3 shadow-md sticky top-0 z-50">
   <div class="container mx-auto flex items-center justify-between gap-4">
     <!-- Logo & Brand -->
-    <div class="flex items-center gap-3 shrink-0">
+    <div class="flex items-center gap-2 xs:gap-3 shrink-0">
       <img src="assets/img/logo.png" 
-           alt="EXES Logo" 
-           class="h-14 w-14 sm:h-16 sm:w-16 rounded-full object-cover shadow-md border-2 border-white" />
-      <span class="font-bold text-2xl leading-none">EXES</span>
-      <!-- Extra Links for Small Screens -->
-      <div class="flex gap-3 ml-4 md:hidden">
-  <a href="index.html" class="nav-link text-xs tracking-wide">Home</a>
-  <a href="services.html" class="nav-link text-xs tracking-wide">Services</a>
-  <a href="My-projects.html" class="nav-link text-xs tracking-wide font-bold underline underline-offset-4 text-yellow-300">Projects</a>
+           alt="dericBI Logo" 
+           class="h-10 w-10 xs:h-12 xs:w-12 sm:h-16 sm:w-16 rounded-full object-cover shadow-md" />
+      <div class="font-bold text-xl xs:text-2xl leading-none brand-text">
+        <span>deric</span><span class="text-[#facc15]">BI</span>
+      </div>
+      <!-- ✅ Extra Links for Small Screens -->
+      <div class="hidden xs:flex gap-1 xs:gap-2 sm:gap-3 ml-1 xs:ml-2 sm:ml-3 md:hidden">
+        <a href="index.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Home</a>
+        <a href="services.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Services</a>
+        <a href="My-projects.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Projects</a>
       </div>
     </div>
     <!-- Scrolling Text (Visible on medium+) -->
@@ -278,28 +305,28 @@ img:not([alt]) {
         • We Analyze, You Decide • We Analyze, You Decide • We Analyze, You Decide • We Analyze, You Decide •
       </div>
     </div>
-    <!-- Desktop Nav Links -->
+    <!-- ✅ Desktop Nav Links -->
     <ul class="hidden md:flex gap-6 text-sm font-medium items-center shrink-0">
-      <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="services.html" class="nav-link">Services</a></li>
-  <li><a href="My-projects.html" class="nav-link font-bold underline underline-offset-4 text-yellow-300">Projects</a></li>
-      <li><a href="contact.html" class="nav-link">Contact</a></li>
-      <!--<li><a href="about.html" class="nav-link">About Us</a></li>
-      <li><a href="terms.html" class="nav-link">Terms & Conditions</a></li>-->
-      <li><a href="https://tujengane.netlify.app/" class="nav-link">Tujengane</a></li>
+      <li><a href="index.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Home</a></li>
+      <li><a href="services.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Services</a></li>
+      <li><a href="My-projects.html" class="nav-link font-bold px-3 py-2 rounded-md bg-[#3D8069]/50 shadow-inner text-yellow-300 border-b-2 border-yellow-300">Projects</a></li>
+      <li><a href="contact.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Contact</a></li>
+      <li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>
+      <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms & Conditions</a></li>
+      <li><a href="https://tujengane.netlify.app/" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Tujengane</a></li>
     </ul>
-    <!-- Hamburger Menu -->
-    <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none ml-3">☰</button>
+    <!-- ✅ Hamburger Menu -->
+    <button id="menu-toggle" class="block md:hidden text-2xl xs:text-3xl focus:outline-none ml-1 xs:ml-2 sm:ml-3 shrink-0 bg-[#3D8069]/50 hover:bg-[#3D8069]/70 p-1 rounded-md shadow-md transition-all">☰</button>
   </div>
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out flex-col bg-[#3e8865] px-4">
-    <a href="index.html" class="nav-link block py-3 border-b border-green-300">Home</a>
-    <a href="services.html" class="nav-link block py-3 border-b border-green-300">Services</a>
-  <a href="My-projects.html" class="nav-link block py-3 border-b border-green-300 font-bold underline underline-offset-4 text-yellow-300">Projects</a>
-    <a href="contact.html" class="nav-link block py-3 border-b border-green-300">Contact</a>
-    <a href="about.html" class="nav-link block py-3 border-b border-green-300">About Us</a>
-    <a href="terms.html" class="nav-link block py-3">Terms & Conditions</a>
-    <a href="https://tujengane.netlify.app/" class="nav-link block py-3">Tujengane</a>
+  <!-- ✅ Mobile Menu -->
+  <div id="mobile-menu" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex-col bg-[#3e8865] px-2 xs:px-3 sm:px-4 w-full shadow-inner">
+    <a href="index.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Home</a>
+    <a href="services.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Services</a>
+    <a href="My-projects.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all bg-[#367659]/30 font-semibold text-yellow-300">Projects</a>
+    <a href="contact.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Contact</a>
+    <a href="about.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">About Us</a>
+    <a href="terms.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Terms & Conditions</a>
+    <a href="https://tujengane.netlify.app/" class="nav-link block py-3 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Tujengane</a>
   </div>
 </nav>
 
@@ -1155,26 +1182,26 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 </script>
-<footer class="bg-[#DFF3EA] py-4 px-1 text-sm text-gray-600 mt-auto border-t border-green-300">
-  <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-    <div class="flex items-center gap-3">
-      <img src="assets/img/logo.png" alt="EXES Logo" class="h-12 w-12 rounded-full object-cover shadow-md border-2 border-white" />
+<footer class="bg-[#DFF3EA] py-4 px-1 xs:px-2 sm:px-4 text-sm text-gray-600 mt-auto border-t border-green-300">
+  <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-7xl mx-auto">
+    <div class="flex items-center gap-2 xs:gap-3">
+      <img src="assets/img/logo.png" alt="dericBI Logo" class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover shadow-md" />
       <div class="flex flex-col leading-tight">
-        <span class="font-extrabold text-xl text-gray-800 tracking-wide">
-          E<span class="text-[22px] text-green-600 drop-shadow font-black">X</span>ES
+        <span class="font-bold text-xl xs:text-2xl leading-none">
+          <span>deric</span><span class="text-[#facc15]">BI</span>
         </span>
         <span class="text-xs italic text-gray-500 -mt-1">We analyze. You decide.</span>
       </div>
     </div>
     <div class="flex flex-col items-center text-center">
       <div class="text-xs sm:text-sm text-gray-500">
-        &copy; 2025 EXES – Built by 
+        &copy; 2025 dericBI – Built by 
         <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link">Deric Marangu</a>. All rights reserved.
       </div>
       <div class="flex gap-4 mt-1">
         <a href="about.html" class="footer-link">About Us</a>
         <a href="terms.html" class="footer-link">Terms & Conditions</a>
-        <a href="https://exes-ebi.streamlit.app/" target="_blank" class="footer-link font-bold text-[#49A078]">Try Yourself</a>
+        <a href="https://dericbi-streamlit.netlify.app/" target="_blank" class="footer-link font-bold text-[#49A078]">Try Yourself</a>
         <button onclick="toggleNewsletter()" class="footer-link text-xs">
           <i class="fas fa-envelope mr-1"></i>Newsletter
         </button>
@@ -1197,7 +1224,7 @@ backToTop.addEventListener('click', () => {
             <a href="https://wa.me/254791360805" target="_blank" class="footer-link"><i class="fab fa-whatsapp"></i></a>
             <a href="mailto:dericmarangu@gmail.com" class="footer-link" title="Email"><i class="fas fa-envelope"></i></a>
             <a href="https://web.facebook.com/deric.aldertrax" target="_blank" class="footer-link"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.facebook.com/exes.125107/" target="_blank" class="footer-link" title="EXES Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.facebook.com/dericbi/" target="_blank" class="footer-link" title="dericBI Facebook"><i class="fab fa-facebook"></i></a>
             <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" class="footer-link"><i class="fab fa-linkedin"></i></a>
             <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link"><i class="fab fa-twitter"></i></a>
             <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link"><i class="fab fa-instagram"></i></a>
@@ -1205,7 +1232,7 @@ backToTop.addEventListener('click', () => {
         </div>
         <p class="text-xs italic text-gray-600">
           CEO and Founder of 
-          <a href="https://deric-exes-analytics.netlify.app/" target="_blank" class="footer-link font-semibold">E<span class="text-green-600 text-[15px] font-bold drop-shadow">X</span>ES</a>
+          <a href="https://dericbi-analytics.netlify.app/" target="_blank" class="footer-link font-semibold"><span>deric</span><span class="text-[#facc15]">BI</span></a>
         </p>
       </div>
       <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link rounded-full">

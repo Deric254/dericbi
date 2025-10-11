@@ -116,6 +116,11 @@ img:not([alt]) {
     margin-left: 0 !important;
     font-size: 1.25rem !important;
   }
+  
+  /* Hide brand name on very small screens */
+  .brand-text {
+    display: none;
+  }
 }
 
 /* Prevent text overflow */
@@ -161,15 +166,15 @@ html, body {
       <img src="assets/img/logo.png" 
            alt="dericBI Logo" 
            class="h-10 w-10 xs:h-12 xs:w-12 sm:h-16 sm:w-16 rounded-full object-cover shadow-md" />
-      <div class="font-bold text-xl xs:text-2xl leading-none">
+      <div class="font-bold text-xl xs:text-2xl leading-none brand-text">
         <span>deric</span><span class="text-[#facc15]">BI</span>
       </div>
 
       <!-- ✅ Extra Links for Small Screens -->
-      <div class="flex gap-1 xs:gap-2 sm:gap-3 ml-2 xs:ml-3 sm:ml-4 md:hidden">
-        <a href="index.html" class="nav-link text-xs tracking-wide">Home</a>
-        <a href="services.html" class="nav-link text-xs tracking-wide">Services</a>
-        <a href="My-projects.html" class="nav-link text-xs tracking-wide">Projects</a>
+      <div class="hidden xs:flex gap-1 xs:gap-2 sm:gap-3 ml-1 xs:ml-2 sm:ml-3 md:hidden">
+        <a href="index.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Home</a>
+        <a href="services.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Services</a>
+        <a href="My-projects.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Projects</a>
       </div>
     </div>
 
@@ -192,7 +197,7 @@ html, body {
     </ul>
 
     <!-- ✅ Hamburger Menu -->
-    <button id="menu-toggle" class="block md:hidden text-2xl xs:text-3xl focus:outline-none ml-1 xs:ml-2 sm:ml-3 shrink-0 bg-[#3D8069]/50 hover:bg-[#3D8069]/70 p-1 rounded-md shadow-md transition-all">☰</button>
+    <button id="menu-toggle" class="block md:hidden text-2xl xs:text-3xl focus:outline-none ml-auto xs:ml-2 sm:ml-3 shrink-0 bg-[#3D8069]/50 hover:bg-[#3D8069]/70 p-1 rounded-md shadow-md transition-all">☰</button>
   </div>
 
   <!-- ✅ Mobile Menu -->
