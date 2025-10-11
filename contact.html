@@ -279,7 +279,7 @@ a:not(.group):not(.nav-link):not(.footer-link):hover {
     <div class="flex items-center gap-2 xs:gap-3 shrink-0">
       <img src="assets/img/logo.png" 
            alt="dericBI Logo" 
-           class="h-10 w-10 xs:h-12 xs:w-12 sm:h-16 sm:w-16 rounded-full object-cover shadow-md border-2 border-white" />
+           class="h-10 w-10 xs:h-12 xs:w-12 sm:h-16 sm:w-16 rounded-full object-cover shadow-md" />
       <div class="font-bold text-xl xs:text-2xl leading-none">
         <span>deric</span><span class="text-[#facc15]">BI</span>
       </div>
@@ -591,7 +591,7 @@ function toggleNewsletter() {
 <div class="flex items-center gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm hover:shadow-md transition-all border border-green-100">
   <img src="assets/img/logo.png" 
        alt="dericBI Logo" 
-       class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover shadow-md border-2 border-white" />
+       class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover shadow-md" />
   <div class="flex flex-col leading-tight">
     <div class="font-extrabold text-xl text-gray-800 tracking-wide">
       <span>deric</span><span class="text-[#facc15] text-[22px] drop-shadow-lg font-black">BI</span>
@@ -628,30 +628,33 @@ function toggleNewsletter() {
     </div>
 
     <!-- ✅ Social + Founder -->
-    <div class="flex items-center gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm border border-green-100">
-      <div class="flex flex-col items-end text-right">
-        <div class="flex items-center gap-1 xs:gap-2">
-          <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-semibold text-xs xs:text-sm hover:text-[#49A078]">Deric Marangu</a>
-          <div class="flex flex-wrap gap-1 xs:gap-2 max-w-[180px] xs:max-w-none">
-            <a href="https://wa.me/254791360805" target="_blank" class="footer-link bg-green-100 hover:bg-green-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-whatsapp text-green-600"></i></a>
-            <a href="mailto:dericmarangu@gmail.com" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="Email"><i class="fas fa-envelope text-blue-600"></i></a>
-            <a href="https://web.facebook.com/deric.aldertrax" target="_blank" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-facebook text-blue-600"></i></a>
-            <a href="https://www.facebook.com/exes.125107/" target="_blank" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="dericBI Facebook"><i class="fab fa-facebook text-blue-600"></i></a>
-            <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" class="footer-link bg-blue-700 hover:bg-blue-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-linkedin text-white"></i></a>
-            <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link bg-black hover:bg-gray-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-twitter text-white"></i></a>
-            <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link bg-pink-100 hover:bg-pink-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-instagram text-pink-600"></i></a>
-          </div>
+    <div class="flex items-center justify-between gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm border border-green-100">
+      <!-- Profile image next to name -->
+      <div class="flex items-center gap-2 xs:gap-3">
+        <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link rounded-full p-1 bg-white hover:bg-green-50 shadow-sm hover:shadow-md transition-all">
+          <img src="assets/img/deric.png" alt="Deric's Photo" class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover border-2 border-[#49A078]/30 hover:border-[#49A078] transition-all" />
+        </a>
+        <div class="flex flex-col">
+          <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-semibold text-sm hover:text-[#49A078]">Deric Marangu</a>
+          <p class="text-xs italic text-gray-600">
+            CEO and Founder of 
+            <a href="https://deric-exes-analytics.netlify.app/" target="_blank" class="footer-link font-semibold hover:text-[#49A078]">
+              <span>deric</span><span class="text-[#facc15] text-[15px] font-bold drop-shadow-md">BI</span>
+            </a>
+          </p>
         </div>
-        <p class="text-xs italic text-gray-600 bg-white/80 px-2 py-1 rounded-md shadow-sm">
-          CEO and Founder of 
-          <a href="https://deric-exes-analytics.netlify.app/" target="_blank" class="footer-link font-semibold hover:text-[#49A078]">
-            <span>deric</span><span class="text-[#facc15] text-[15px] font-bold drop-shadow-md">BI</span>
-          </a>
-        </p>
       </div>
-      <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link rounded-full p-1 bg-white hover:bg-green-50 shadow-sm hover:shadow-md transition-all">
-        <img src="assets/img/deric.png" alt="Deric's Photo" class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover border-2 border-[#49A078]/30 hover:border-[#49A078] transition-all" />
-      </a>
+      
+      <!-- Social media icons in a more compact, right-aligned container -->
+      <div class="flex flex-wrap justify-end gap-1">
+        <a href="https://wa.me/254791360805" target="_blank" class="footer-link bg-green-100 hover:bg-green-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-whatsapp text-green-600"></i></a>
+        <a href="mailto:dericmarangu@gmail.com" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="Email"><i class="fas fa-envelope text-blue-600"></i></a>
+        <a href="https://web.facebook.com/deric.aldertrax" target="_blank" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-facebook text-blue-600"></i></a>
+        <a href="https://www.facebook.com/exes.125107/" target="_blank" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="dericBI Facebook"><i class="fab fa-facebook text-blue-600"></i></a>
+        <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" class="footer-link bg-blue-700 hover:bg-blue-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-linkedin text-white"></i></a>
+        <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link bg-black hover:bg-gray-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-twitter text-white"></i></a>
+        <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link bg-pink-100 hover:bg-pink-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-instagram text-pink-600"></i></a>
+      </div>
     </div>
   </div>
 <style>

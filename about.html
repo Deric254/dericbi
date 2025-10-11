@@ -390,68 +390,84 @@ document.getElementById('fileNameInputAbout')?.addEventListener('keypress', func
 </section>
 
 <!-- ✅ Footer -->
-<footer class="bg-[#DFF3EA] py-4 px-4 text-sm text-gray-600 mt-auto border-t border-green-300">
-  <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+<footer class="bg-gradient-to-b from-white to-[#DFF3EA] py-3 xs:py-4 px-2 xs:px-3 sm:px-4 text-sm text-gray-600 mt-auto border-t border-green-300 w-full shadow-inner">
+  <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 xs:gap-4">
 
 <!-- ✅ Footer Logo and Tagline -->
-<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm hover:shadow-md transition-all border border-green-100">
   <img src="assets/img/logo.png" 
-       alt="EXES Logo" 
-       class="h-12 w-12 rounded-full object-cover shadow-md border-2 border-white" />
+       alt="dericBI Logo" 
+       class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover shadow-md border-2 border-white" />
   <div class="flex flex-col leading-tight">
-    <span class="font-extrabold text-xl text-gray-800 tracking-wide">
-      E<span class="text-[22px] text-green-600 drop-shadow font-black">X</span>ES
-    </span>
-    <span class="text-xs italic text-gray-500 -mt-1">We analyze. You decide.</span>
+    <div class="font-extrabold text-xl text-gray-800 tracking-wide">
+      <span>deric</span><span class="text-[#facc15] text-[22px] drop-shadow-lg font-black">BI</span>
+    </div>
+    <span class="text-xs italic text-gray-500 -mt-1 bg-gradient-to-r from-gray-500 to-gray-700 bg-clip-text text-transparent font-medium">We analyze. You decide.</span>
   </div>
 </div>
 
 
     <!-- ✅ Copyright & Links Stacked -->
-    <div class="flex flex-col items-center text-center">
+    <div class="flex flex-col items-center text-center bg-white/70 p-2 rounded-xl shadow-sm border border-green-100">
       <div class="text-xs sm:text-sm text-gray-500">
-        &copy; 2025 EXES – Built by 
-        <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link">Deric Marangu</a>. All rights reserved.
+        &copy; 2025 <span>deric</span><span class="text-[#facc15] font-bold drop-shadow-sm">BI</span> – Built by 
+        <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-medium hover:text-[#49A078] transition-colors underline decoration-dotted hover:decoration-solid">Deric Marangu</a>. All rights reserved.
       </div>
-      <div class="flex gap-4 mt-1">
-        <a href="about.html" class="footer-link">About Us</a>
-        <a href="terms.html" class="footer-link">Terms & Conditions</a>
+      <div class="flex flex-wrap justify-center gap-2 xs:gap-3 sm:gap-4 mt-1">
+        <a href="about.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">About Us</a>
+        <a href="terms.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">Terms & Conditions</a>
+        <button onclick="toggleNewsletter()" class="footer-link text-xs bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">
+          <i class="fas fa-envelope mr-1"></i>Newsletter
+        </button>
+      </div>
+      <!-- Hidden Newsletter Signup -->
+      <div id="newsletterSignup" class="hidden mt-2 w-full max-w-xs bg-white rounded-lg p-2 shadow-md border border-green-200">
+        <div class="flex text-xs">
+          <input type="email" placeholder="Your email..." 
+            class="flex-1 px-2 py-1 text-xs border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-[#49A078] shadow-inner">
+          <button class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white px-3 py-1 rounded-r text-xs hover:from-[#3e8865] hover:to-[#357255] transition shadow-sm hover:shadow">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        <p class="text-xs text-gray-600 mt-1 font-medium">Monthly insights & tips</p>
       </div>
     </div>
 
     <!-- ✅ Social + Founder -->
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm border border-green-100">
       <div class="flex flex-col items-end text-right">
-        <div class="flex items-center gap-2">
-          <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-semibold text-sm">Deric Marangu</a>
-          <div class="flex gap-2">
-            <a href="https://wa.me/254791360805" target="_blank" class="footer-link"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:dericmarangu@gmail.com" class="footer-link" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://web.facebook.com/deric.aldertrax" target="_blank" class="footer-link"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.facebook.com/exes.125107/" target="_blank" class="footer-link" title="EXES Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" class="footer-link"><i class="fab fa-linkedin"></i></a>
-            <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link"><i class="fab fa-instagram"></i></a>
+        <div class="flex items-center gap-1 xs:gap-2">
+          <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-semibold text-xs xs:text-sm hover:text-[#49A078]">Deric Marangu</a>
+          <div class="flex flex-wrap gap-1 xs:gap-2 max-w-[180px] xs:max-w-none">
+            <a href="https://wa.me/254791360805" target="_blank" class="footer-link bg-green-100 hover:bg-green-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-whatsapp text-green-600"></i></a>
+            <a href="mailto:dericmarangu@gmail.com" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="Email"><i class="fas fa-envelope text-blue-600"></i></a>
+            <a href="https://web.facebook.com/deric.aldertrax" target="_blank" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-facebook text-blue-600"></i></a>
+            <a href="https://www.facebook.com/exes.125107/" target="_blank" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="dericBI Facebook"><i class="fab fa-facebook text-blue-600"></i></a>
+            <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" class="footer-link bg-blue-700 hover:bg-blue-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-linkedin text-white"></i></a>
+            <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link bg-black hover:bg-gray-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-twitter text-white"></i></a>
+            <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link bg-pink-100 hover:bg-pink-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-instagram text-pink-600"></i></a>
           </div>
         </div>
-        <p class="text-xs italic text-gray-600">
+        <p class="text-xs italic text-gray-600 bg-white/80 px-2 py-1 rounded-md shadow-sm">
           CEO and Founder of 
-          <a href="https://deric-exes-analytics.netlify.app/" target="_blank" class="footer-link font-semibold">
-            E<span class="text-green-600 text-[15px] font-bold drop-shadow">X</span>ES
+          <a href="https://deric-exes-analytics.netlify.app/" target="_blank" class="footer-link font-semibold hover:text-[#49A078]">
+            <span>deric</span><span class="text-[#facc15] text-[15px] font-bold drop-shadow-md">BI</span>
           </a>
         </p>
       </div>
-      <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link rounded-full">
-        <img src="assets/img/deric.png" alt="Deric's Photo" class="h-12 w-12 rounded-full object-cover shadow-md" />
+      <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link rounded-full p-1 bg-white hover:bg-green-50 shadow-sm hover:shadow-md transition-all">
+        <img src="assets/img/deric.png" alt="Deric's Photo" class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover border-2 border-[#49A078]/30 hover:border-[#49A078] transition-all" />
       </a>
     </div>
   </div>
 <style>
 .footer-link {
   color: inherit;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-block;
 }
 .footer-link:hover {
+  transform: translateY(-1px);
   color: #facc15; /* Soft Yellow */
   text-shadow: 0 0 4px rgba(250, 204, 21, 0.5); /* Subtle glow */
 }
