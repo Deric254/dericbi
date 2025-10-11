@@ -1,0 +1,82 @@
+/* Only adjust chatbot position */
+#chatbot-toggle {
+  position: fixed !important;
+  bottom: 5rem !important; /* Move it higher to avoid overlapping with footer links */
+  right: 1rem !important;
+  z-index: 5 !important; /* Lower z-index so it doesn't block other elements */
+  pointer-events: auto !important; /* Ensure it only captures its own clicks */
+}
+
+#chatbot-container {
+  position: fixed !important;
+  bottom: 5rem !important; /* Move it higher to match toggle button */
+  right: 1rem !important;
+  z-index: 10 !important; /* Higher than toggle but still low enough not to interfere */
+}
+
+/* Fix for social links to ensure they're clickable */
+.footer-link, 
+a[href*="instagram"], 
+a[href*="facebook"],
+a[href*="linkedin"],
+a[href*="twitter"],
+a[href*="wa.me"],
+.group {
+  position: relative !important;
+  z-index: 20 !important; /* Higher than chatbot */
+  pointer-events: auto !important; /* Ensure clicks register */
+}
+
+/* Specifically for contact page social grid */
+.w-full.grid.grid-cols-2,
+.w-full.grid.grid-cols-3,
+.w-full.grid.grid-cols-6 {
+  position: relative;
+  z-index: 30; /* Higher than chatbot */
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 640px) {
+  #chatbot-toggle {
+    bottom: 6rem !important; /* Move even higher on mobile */
+  }
+  #chatbot-container {
+    bottom: 6rem !important; /* Match toggle button position */
+  }
+}
+
+
+/* This CSS creates invisible shields around social links to ensure they're clickable */
+.footer-link::before,
+.group::before,
+a[href*="instagram"]::before, 
+a[href*="facebook"]::before,
+a[href*="linkedin"]::before,
+a[href*="twitter"]::before,
+a[href*="wa.me"]::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+/* Make chatbot components have restricted pointer events */
+#chatbot-toggle {
+  pointer-events: auto;
+}
+
+/* Ensures no other elements can accidentally block clicks */
+body::after {
+  content: '';
+  display: block;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 100px; 
+  width: 100px;
+  z-index: 1; /* Very low z-index */
+}
