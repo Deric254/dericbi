@@ -83,6 +83,57 @@ button:hover, .fancy-btn:hover, .glow-btn:hover {
 img:not([alt]) {
   outline: 2px dashed #facc15;
 }
+
+/* Extra responsive utilities for smallest screens */
+@media (max-width: 360px) {
+  .text-xs {
+    font-size: 0.65rem;
+  }
+  .h-14, .w-14 {
+    height: 3rem;
+    width: 3rem;
+  }
+  .gap-3 {
+    gap: 0.5rem;
+  }
+  .py-2 {
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+  }
+  .px-3 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  /* Better wrapping for tiny screens */
+  .flex {
+    flex-wrap: wrap;
+  }
+  
+  /* Ensure hamburger menu is always visible */
+  #menu-toggle {
+    display: block !important;
+    margin-left: 0 !important;
+    font-size: 1.25rem !important;
+  }
+}
+
+/* Prevent text overflow */
+.text-overflow-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Better responsive handling */
+html, body {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
     @keyframes slide {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
@@ -99,11 +150,11 @@ img:not([alt]) {
 
 </head>
 
-<body class="bg-white text-gray-800 flex flex-col min-h-screen break-words">
+<body class="bg-white text-gray-800 flex flex-col min-h-screen overflow-x-hidden w-full max-w-[100vw]">
 
 <!-- ✅ Responsive Navbar -->
-<nav class="bg-[#49A078] text-white px-4 py-3 shadow-md sticky top-0 z-50" role="navigation" aria-label="Main Navigation">
-  <div class="container mx-auto flex items-center justify-between gap-4">
+<nav class="bg-[#49A078] text-white px-2 xs:px-3 sm:px-4 py-2 xs:py-3 shadow-lg sticky top-0 z-50 w-full bg-gradient-to-r from-[#49A078] to-[#3D8069]" role="navigation" aria-label="Main Navigation">
+  <div class="w-full max-w-7xl mx-auto flex items-center justify-between gap-2 xs:gap-3 sm:gap-4">
 
     <!-- ✅ Logo & Brand -->
     <div class="flex items-center gap-2 xs:gap-3 shrink-0">
@@ -115,10 +166,10 @@ img:not([alt]) {
       </div>
 
       <!-- ✅ Extra Links for Small Screens -->
-      <div class="flex gap-3 ml-4 md:hidden">
-        <a href="index.html" class="nav-link text-xs tracking-wide">Home</a>
-        <a href="services.html" class="nav-link text-xs tracking-wide">Services</a>
-        <a href="My-projects.html" class="nav-link text-xs tracking-wide">Projects</a>
+      <div class="flex gap-1 xs:gap-2 sm:gap-3 ml-2 xs:ml-3 sm:ml-4 md:hidden">
+        <a href="index.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Home</a>
+        <a href="services.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Services</a>
+        <a href="My-projects.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Projects</a>
       </div>
     </div>
 
@@ -183,8 +234,23 @@ const toggleBtn = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 
 toggleBtn.addEventListener('click', () => {
-  mobileMenu.classList.toggle('max-h-0');
-  mobileMenu.classList.toggle('max-h-screen'); // Now expands fully
+  if (mobileMenu.classList.contains('max-h-0')) {
+    mobileMenu.classList.remove('max-h-0');
+    mobileMenu.classList.add('max-h-[500px]'); // Set specific height instead of max-h-screen
+    toggleBtn.innerHTML = '✕'; // Change to X when open
+    toggleBtn.classList.add('bg-[#357659]');
+    toggleBtn.classList.add('text-white');
+    toggleBtn.classList.add('rotate-90');
+    toggleBtn.classList.add('scale-110');
+  } else {
+    mobileMenu.classList.add('max-h-0');
+    mobileMenu.classList.remove('max-h-[500px]');
+    toggleBtn.innerHTML = '☰'; // Change back to hamburger when closed
+    toggleBtn.classList.remove('bg-[#357659]');
+    toggleBtn.classList.remove('text-white');
+    toggleBtn.classList.remove('rotate-90');
+    toggleBtn.classList.remove('scale-110');
+  }
 });
 </script>
 
