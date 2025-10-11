@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>KNEC — Online Exam (Training Demo)</title>
+<style>
+  :root{
+    --bg:#f4f6f8; --panel:#ffffff; --knc:#004a99; --accent:#d19a0c; --muted:#6b7280; --dark:#0b1220;
+  }
+  *{box-sizing:border-box;font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  body{margin:0;background:linear-gradient(180deg,#e9eef6 0%, #f4f6f8 100%);color:var(--dark);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+  .wrap{width:100%;max-width:980px;background:var(--panel);border-radius:8px;box-shadow:0 8px 28px rgba(9,30,66,0.08);overflow:hidden}
+  header{display:flex;align-items:center;gap:16px;padding:18px 22px;background:linear-gradient(90deg, rgba(0,74,153,0.06), transparent)}
+  .knc-mark{width:56px;height:56px;border-radius:6px;background:linear-gradient(180deg,var(--knc),#123e6b);display:grid;place-items:center;color:#fff;font-weight:800}
+  .title{font-size:16px;margin:0}
+  .subtitle{font-size:12px;color:var(--muted);margin-top:4px}
+  .head-right{margin-left:auto;text-align:right;font-size:13px;color:var(--muted)}
+  main{display:flex;gap:20px;padding:18px}
+  .left{flex:1;min-width:320px}
+  .panel{background:transparent;padding:12px}
+  .card{background:#fff;border-radius:6px;padding:14px;box-shadow:0 2px 6px rgba(11,18,32,0.04);border:1px solid rgba(11,18,32,0.03)}
+  label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+  input[type="text"]{width:100%;padding:10px;border-radius:6px;border:1px solid #e6e9ee;background:#fbfdff}
+  button{cursor:pointer;border:0;padding:10px 14px;border-radius:6px;background:var(--knc);color:#fff;font-weight:600}
+  .muted{color:var(--muted);font-size:13px}
+  .exam-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .timer-box{display:flex;align-items:center;gap:12px}
+  .time{background:#f3f8ff;border:1px solid rgba(0,74,153,0.06);padding:8px 12px;border-radius:6px;font-weight:700;color:var(--knc)}
+  .progress{margin-top:12px;height:8px;background:#eef3fb;border-radius:999px;overflow:hidden}
+  .progbar{height:100%;background:linear-gradient(90deg,var(--knc),var(--accent));width:0%}
+  .question{margin-top:12px}
+  .question h3{margin:0;font-size:15px}
+  .choices{margin-top:10px;display:flex;flex-direction:column;gap:8px}
+  .choice{display:flex;align-items:center;gap:10px;padding:10px;border-radius:6px;border:1px solid #eef3fb;background:#fbfdff;cursor:pointer}
+  .choice input{transform:scale(1.1)}
+  .controls{display:flex;justify-content:space-between;gap:10px;margin-top:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(44px,1fr));gap:8px;margin-top:10px}
+  .grid button{padding:8px;border-radius:6px;border:1px solid #e6e9ee;background:#fff}
+  .grid button.answered{background:linear-gradient(90deg,var(--knc),var(--accent));color:#fff;border:0}
+  .receipt{padding:12px;border-radius:6px;background:#fff;border:1px solid #eef3fb}
+  .center{display:grid;place-items:center;padding:28px}
+  @media (max-width:880px){ main{flex-direction:column} .head-right{text-align:left} }
+</style>
+</head>
+<body>
+  <div class="wrap" role="application" aria-labelledby="apptitle">
+    <header>
+      <div class="knc-mark" aria-hidden="true">KNEC</div>
+      <div>
+        <h1 id="apptitle" class="title">KNEC — Online Exam (Training)</h1>
+        <div class="subtitle">Kenya National Examinations Council — Invigilator Training Demo</div>
+      </div>
+      <div class="head-right">
+        <div id="session" style="font-weight:700">PRIMARY 4 — ENGLISH PAPER 1</div>
+        <div class="muted" style="margin-top:4px">Training copy — NOT connected to KNEC systems</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="left">
+        <!-- START / LOGIN -->
+        <div id="loginCard" class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700">Candidate Login</div>
+              <div class="muted" style="margin-top:6px">Type candidate details exactly as on the attendance list.</div>
+            </div>
+            <div class="muted" style="font-size:13px">Exam duration: <strong id="durLabel">30 min</strong></div>
+          </div>
+
+          <div style="margin-top:12px">
+            <label for="candName">Candidate name</label>
+            <input id="candName" type="text" placeholder="Full name" autocomplete="off" />
+
+            <div style="display:flex;gap:12px;margin-top:10px">
+              <div style="flex:1">
+                <label for="candReg">Index number</label>
+                <input id="candReg" type="text" placeholder="e.g. 1234567" />
+              </div>
+              <div style="width:160px;align-self:end">
+                <button id="startBtn" style="width:100%">Start Exam</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EXAM -->
+        <div id="examCard" class="card" style="display:none">
+          <div class="exam-top">
+            <div>
+              <div style="font-weight:700" id="examTitle">PRIMARY 4 — ENGLISH PAPER 1</div>
+              <div class="muted" id="candInfo">Candidate: — • Index: —</div>
+            </div>
+            <div class="timer-box">
+              <div class="muted" style="font-size:13px">Time remaining</div>
+              <div class="time" id="timeLeft">30:00</div>
+            </div>
+          </div>
+
+          <div class="progress" aria-hidden="true">
+            <div class="progbar" id="progbar" style="width:0%"></div>
+          </div>
+
+          <div id="questionArea" class="question" aria-live="polite"></div>
+
+          <div class="controls">
+            <div>
+              <button id="prevBtn" class="muted small">Previous</button>
+              <button id="nextBtn" class="muted small">Next</button>
+            </div>
+            <div>
+              <button id="submitBtn">Submit Paper</button>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+            <div class="muted">Auto-save enabled • Do not refresh</div>
+            <div class="muted" id="statusCount">Answered: 0 / 0</div>
+          </div>
+        </div>
+
+        <!-- FINISH -->
+        <div id="finishCard" class="card" style="display:none;margin-top:12px">
+          <div class="center">
+            <div class="receipt" id="receipt">
+              <div style="font-weight:700">Submission Accepted</div>
+              <div class="muted" id="resInfo" style="margin-top:6px">Candidate: — • Index: —</div>
+              <div style="margin-top:10px;font-size:14px">Score: <strong id="resScore">0%</strong></div>
+              <div class="muted" id="resSummary" style="margin-top:6px">Correct: 0 • Attempted: 0 • Total: 0</div>
+              <div style="margin-top:10px;display:flex;gap:8px">
+                <button id="printBtn" class="muted small">Print Receipt</button>
+                <button id="newBtn" class="muted small">Start New</button>
+              </div>
+              <div class="muted" style="margin-top:10px;font-size:12px">This is a training copy. For real exams use the official KNEC portal and follow invigilation procedures.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside style="width:300px">
+        <div class="card">
+          <div style="font-weight:700">Question list</div>
+          <div class="grid" id="qGrid" style="margin-top:8px"></div>
+
+          <div style="margin-top:14px">
+            <div style="font-weight:700;font-size:13px">Invigilator checklist</div>
+            <ul style="padding-left:18px;margin-top:8px;color:var(--muted);font-size:13px">
+              <li>Confirm identity & index number</li>
+              <li>Start the candidate and watch the timer</li>
+              <li>Allow navigation; do not assist with answers</li>
+              <li>Click Submit once when finished</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+<script>
+/* CONFIG */
+const DURATION_MIN = 30; // realistic default
+const QUESTIONS = [
+  {id:1,q:"1. Who is the President of Kenya?",choices:["William Ruto","Uhuru Kenyatta","Mwai Kibaki","Daniel arap Moi"],answer:0},
+  {id:2,q:"2. 7 + 5 = ?",choices:["10","11","12","13"],answer:2},
+  {id:3,q:"3. Which of these is a vegetable?",choices:["Banana","Carrot","Mango","Bread"],answer:1},
+  {id:4,q:"4. The Sun rises from the _____.",choices:["West","East","North","South"],answer:1},
+  {id:5,q:"5. Which animal gives us milk?",choices:["Goat","Lion","Eagle","Snake"],answer:0},
+];
+
+/* STATE */
+let state = {
+  started:false,
+  timeLeft: DURATION_MIN*60,
+  current:0,
+  answers:{}, // id -> selected index
+  candidate:'',
+  indexNo:'',
+  timer:null,
+  submitted:false
+};
+
+/* ELEMENTS */
+const loginCard = document.getElementById('loginCard');
+const examCard = document.getElementById('examCard');
+const finishCard = document.getElementById('finishCard');
+const startBtn = document.getElementById('startBtn');
+const candName = document.getElementById('candName');
+const candReg = document.getElementById('candReg');
+const timeLeftEl = document.getElementById('timeLeft');
+const qArea = document.getElementById('questionArea');
+const progbar = document.getElementById('progbar');
+const qGrid = document.getElementById('qGrid');
+const statusCount = document.getElementById('statusCount');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const submitBtn = document.getElementById('submitBtn');
+const resInfo = document.getElementById('resInfo');
+const resScore = document.getElementById('resScore');
+const resSummary = document.getElementById('resSummary');
+const printBtn = document.getElementById('printBtn');
+const newBtn = document.getElementById('newBtn');
+const durLabel = document.getElementById('durLabel');
+
+/* INIT UI */
+durLabel.textContent = DURATION_MIN + ' min';
+timeLeftEl.textContent = formatTime(state.timeLeft);
+renderGrid();
+
+/* UTIL */
+function formatTime(s){ const mm = String(Math.floor(s/60)).padStart(2,'0'); const ss=String(s%60).padStart(2,'0'); return mm+':'+ss; }
+function save(){ const p={answers:state.answers,timeLeft:state.timeLeft,started:state.started,candidate:state.candidate,indexNo:state.indexNo,submitted:state.submitted}; localStorage.setItem('kn_exam_demo',JSON.stringify(p)); }
+function load(){ try{ const r=JSON.parse(localStorage.getItem('kn_exam_demo')); if(r){ state.answers=r.answers||{}; state.timeLeft=('timeLeft' in r)?r.timeLeft:state.timeLeft; state.started=!!r.started; state.candidate=r.candidate||''; state.indexNo=r.indexNo||''; state.submitted=!!r.submitted; } }catch(e){} }
+function clearSave(){ localStorage.removeItem('kn_exam_demo'); }
+
+/* RENDER */
+function renderGrid(){ qGrid.innerHTML=''; QUESTIONS.forEach((q,i)=>{ const btn=document.createElement('button'); btn.textContent = i+1; if(state.answers[q.id]!==undefined) btn.classList.add('answered'); btn.addEventListener('click', ()=>{ state.current = i; renderQuestion(); }); qGrid.appendChild(btn); }); updateStatus(); }
+function renderQuestion(){
+  const q = QUESTIONS[state.current];
+  if(!q) return;
+  qArea.innerHTML = '';
+  const h = document.createElement('h3'); h.textContent = q.q; qArea.appendChild(h);
+  const choices = document.createElement('div'); choices.className='choices';
+  q.choices.forEach((c,idx)=>{
+    const lab = document.createElement('label'); lab.className='choice';
+    const radio = document.createElement('input'); radio.type='radio'; radio.name='opt'; radio.value=idx;
+    if(state.answers[q.id]===idx) radio.checked=true;
+    radio.addEventListener('change', ()=>{ state.answers[q.id]=idx; save(); renderGrid(); updateStatus(); });
+    lab.appendChild(radio);
+    const span = document.createElement('span'); span.textContent = c; lab.appendChild(span);
+    choices.appendChild(lab);
+  });
+  qArea.appendChild(choices);
+  document.getElementById('examTitle').textContent = 'PRIMARY 4 — ENGLISH PAPER 1';
+  document.getElementById('candInfo').textContent = `Candidate: ${state.candidate} • Index: ${state.indexNo}`;
+  document.getElementById('statusCount').textContent = `Answered: ${Object.keys(state.answers).length} / ${QUESTIONS.length}`;
+  const pct = Math.round(100 * (Object.keys(state.answers).length / QUESTIONS.length));
+  progbar.style.width = pct + '%';
+}
+
+/* TIMER */
+function startTimer(){
+  if(state.timer) clearInterval(state.timer);
+  state.timer = setInterval(()=>{
+    if(state.timeLeft<=0){ clearInterval(state.timer); autoSubmit(true); return; }
+    state.timeLeft--; timeLeftEl.textContent = formatTime(state.timeLeft); save();
+  },1000);
+}
+
+/* FLOW */
+startBtn.addEventListener('click', ()=>{
+  const name = candName.value.trim(); const idx = candReg.value.trim();
+  if(!name || !idx){ alert('Please type candidate name and index number.'); return; }
+  state.candidate = name; state.indexNo = idx; state.started = true; state.timeLeft = DURATION_MIN*60;
+  loginCard.style.display='none'; examCard.style.display='block'; finishCard.style.display='none';
+  renderGrid(); renderQuestion(); startTimer(); save();
+});
+
+prevBtn.addEventListener('click', ()=>{ if(state.current>0){ state.current--; renderQuestion(); }});
+nextBtn.addEventListener('click', ()=>{ if(state.current<QUESTIONS.length-1){ state.current++; renderQuestion(); }});
+
+submitBtn.addEventListener('click', ()=>{ if(!confirm('Submit paper? You will not be able to change answers.')) return; autoSubmit(false); });
+
+function autoSubmit(timeout=false){
+  if(state.submitted) return;
+  state.submitted = true; state.started = false;
+  if(state.timer) clearInterval(state.timer);
+  // compute
+  let correct=0, attempted=0;
+  QUESTIONS.forEach(q=>{ const a=state.answers[q.id]; if(a!==undefined){ attempted++; if(a===q.answer) correct++; } });
+  const total = QUESTIONS.length; const pct = Math.round(100*(correct/total));
+  // show finish
+  examCard.style.display='none'; finishCard.style.display='block';
+  resInfo.textContent = `Candidate: ${state.candidate} • Index: ${state.indexNo}`;
+  resScore.textContent = pct + '%';
+  resSummary.textContent = `Correct: ${correct} • Attempted: ${attempted} • Total: ${total}` ;
+  save(); clearSave(); // clear after submission for training flow
+}
+
+/* Save/load */
+load();
+if(state.started && !state.submitted){
+  // resume silently only if candidate fields exist
+  if(state.candidate){ candName.value = state.candidate; candReg.value = state.indexNo; loginCard.style.display='none'; examCard.style.display='block'; renderGrid(); renderQuestion(); startTimer(); }
+} else {
+  // populate fields if available
+  if(state.candidate) candName.value = state.candidate;
+  if(state.indexNo) candReg.value = state.indexNo;
+}
+
+/* extra buttons */
+printBtn.addEventListener('click', ()=>window.print());
+newBtn.addEventListener('click', ()=>{ if(confirm('Start a new session?')){ clearSave(); location.reload(); }});
+
+/* UX: prevent accidental refresh and double-submit */
+window.addEventListener('beforeunload', function(e){
+  if(state.started && !state.submitted){ e.preventDefault(); e.returnValue=''; }
+});
+document.addEventListener('keydown',(e)=>{ if(e.key==='F5' || ((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='r')) e.preventDefault(); });
+
+</script>
+</body>
+</html>
