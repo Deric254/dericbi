@@ -167,9 +167,9 @@ html, body {
 
       <!-- ✅ Extra Links for Small Screens -->
       <div class="flex gap-1 xs:gap-2 sm:gap-3 ml-2 xs:ml-3 sm:ml-4 md:hidden">
-        <a href="index.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Home</a>
-        <a href="services.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Services</a>
-        <a href="My-projects.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Projects</a>
+        <a href="index.html" class="nav-link text-xs tracking-wide">Home</a>
+        <a href="services.html" class="nav-link text-xs tracking-wide">Services</a>
+        <a href="My-projects.html" class="nav-link text-xs tracking-wide">Projects</a>
       </div>
     </div>
 
@@ -182,13 +182,13 @@ html, body {
 
     <!-- ✅ Desktop Nav Links -->
     <ul class="hidden md:flex gap-6 text-sm font-medium items-center shrink-0">
-  <li><a href="index.html" class="nav-link">Home</a></li>
-  <li><a href="services.html" class="nav-link">Services</a></li>
-  <li><a href="My-projects.html" class="nav-link">Projects</a></li>
-  <li><a href="contact.html" class="nav-link">Contact</a></li>
-  <!--<li><a href="about.html" class="nav-link">About Us</a></li>-->
-  <li><a href="terms.html" class="nav-link font-bold underline underline-offset-4 text-yellow-300">T&C's</a></li>
-  <li><a href="https://tujengane.netlify.app/" class="nav-link">Tujengane</a></li>
+      <li><a href="index.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Home</a></li>
+      <li><a href="services.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Services</a></li>
+      <li><a href="My-projects.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Projects</a></li>
+      <li><a href="contact.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Contact</a></li>
+      <li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>
+      <li><a href="terms.html" class="nav-link font-bold px-3 py-2 rounded-md bg-[#3D8069]/50 shadow-inner text-yellow-300 border-b-2 border-yellow-300">Terms & Conditions</a></li>
+      <li><a href="https://tujengane.netlify.app/" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Tujengane</a></li>
     </ul>
 
     <!-- ✅ Hamburger Menu -->
@@ -234,23 +234,8 @@ const toggleBtn = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 
 toggleBtn.addEventListener('click', () => {
-  if (mobileMenu.classList.contains('max-h-0')) {
-    mobileMenu.classList.remove('max-h-0');
-    mobileMenu.classList.add('max-h-[500px]'); // Set specific height instead of max-h-screen
-    toggleBtn.innerHTML = '✕'; // Change to X when open
-    toggleBtn.classList.add('bg-[#357659]');
-    toggleBtn.classList.add('text-white');
-    toggleBtn.classList.add('rotate-90');
-    toggleBtn.classList.add('scale-110');
-  } else {
-    mobileMenu.classList.add('max-h-0');
-    mobileMenu.classList.remove('max-h-[500px]');
-    toggleBtn.innerHTML = '☰'; // Change back to hamburger when closed
-    toggleBtn.classList.remove('bg-[#357659]');
-    toggleBtn.classList.remove('text-white');
-    toggleBtn.classList.remove('rotate-90');
-    toggleBtn.classList.remove('scale-110');
-  }
+  mobileMenu.classList.toggle('max-h-0');
+  mobileMenu.classList.toggle('max-h-screen'); // Now expands fully
 });
 </script>
 
