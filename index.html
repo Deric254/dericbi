@@ -271,8 +271,10 @@ html, body {
   <!-- ✅ Icons & Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
 
-  <!-- ✅ EXES Chatbot -->
+  <!-- ✅ dericBI Chatbot -->
+  <link rel="stylesheet" href="assets/css/social_links.css">
   <script src="assets/js/chatbot.js"></script>
+  <script src="assets/js/social_links.js"></script>
 
   <!-- ✅ GoatCounter Analytics -->
   <script data-goatcounter="https://deric-exes-analytics.goatcounter.com/count"
@@ -315,8 +317,8 @@ html, body {
       <li><a href="services.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Services</a></li>
       <li><a href="My-projects.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Projects</a></li>
       <li><a href="contact.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Contact</a></li>
-      <li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>
-      <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms & Conditions</a></li>
+      <!--<li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>
+      <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms & Conditions</a></li>-->
       <li><a href="https://tujengane.netlify.app/" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Tujengane</a></li>
     </ul>
 
@@ -1012,19 +1014,44 @@ img:not([alt]) {
 }
 </style>
 
-<!-- Add Back to Top Button just before the closing body tag -->
-<button id="backToTop" class="fixed bottom-24 right-6 bg-[#2563EB] text-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-xl z-40 opacity-0 transition-opacity duration-300"
-  style="border: none; outline: none;">
+<!-- Back to Top Button -->
+<button id="backToTop" class="fixed bg-[#49A078] text-white rounded-full shadow-lg flex items-center justify-center text-xl z-40 opacity-0 transition-opacity duration-300 md:flex"
+  style="border: none; outline: none; display: none; bottom: 10rem; right: 2rem; width: 3rem; height: 3rem;">
   <i class="fas fa-arrow-up"></i>
 </button>
 
 <script>
-// Back to Top Button logic
-const backToTopBtn = document.getElementById('backToTop');
+// Back to Top Button logic with 3-second timeout
+const backToTop = document.getElementById('backToTop');
+let hideTimeout;
+
+// Show button on scroll and set timeout to hide it after 3 seconds
 window.addEventListener('scroll', () => {
-  backToTopBtn.style.opacity = window.scrollY > 300 ? '0.9' : '0';
+  // Clear any existing timeout to reset the timer on new scroll events
+  clearTimeout(hideTimeout);
+  
+  // Show the button when scrolled down
+  if (window.scrollY > 300) {
+    backToTop.style.display = 'flex';
+    backToTop.style.opacity = '0.9';
+    
+    // Set timeout to hide the button after 3 seconds
+    hideTimeout = setTimeout(() => {
+      backToTop.style.opacity = '0';
+      setTimeout(() => {
+        backToTop.style.display = 'none';
+      }, 300); // Wait for the opacity transition before hiding
+    }, 3000); // 3 seconds
+  } else {
+    // Hide immediately when at the top
+    backToTop.style.opacity = '0';
+    setTimeout(() => {
+      backToTop.style.display = 'none';
+    }, 300);
+  }
 });
-backToTopBtn.addEventListener('click', () => {
+
+backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 </script>

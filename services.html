@@ -301,8 +301,8 @@ html, body {
       <li><a href="services.html" class="nav-link font-bold px-3 py-2 rounded-md bg-[#3D8069]/50 shadow-inner text-yellow-300 border-b-2 border-yellow-300">Services</a></li>
       <li><a href="My-projects.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Projects</a></li>
       <li><a href="contact.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Contact</a></li>
-      <li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>
-      <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms & Conditions</a></li>
+      <!--<li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>
+      <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms & Conditions</a></li>-->
       <li><a href="https://tujengane.netlify.app/" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Tujengane</a></li>
     </ul>
 
@@ -740,5 +740,47 @@ function toggleNewsletter() {
 }
 </style>
 </footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="fixed bg-[#49A078] text-white rounded-full shadow-lg flex items-center justify-center text-xl z-40 opacity-0 transition-opacity duration-300 md:flex"
+  style="border: none; outline: none; display: none; bottom: 10rem; right: 2rem; width: 3rem; height: 3rem;">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+// Back to Top Button logic with 3-second timeout
+const backToTop = document.getElementById('backToTop');
+let hideTimeout;
+
+// Show button on scroll and set timeout to hide it after 3 seconds
+window.addEventListener('scroll', () => {
+  // Clear any existing timeout to reset the timer on new scroll events
+  clearTimeout(hideTimeout);
+  
+  // Show the button when scrolled down
+  if (window.scrollY > 300) {
+    backToTop.style.display = 'flex';
+    backToTop.style.opacity = '0.9';
+    
+    // Set timeout to hide the button after 3 seconds
+    hideTimeout = setTimeout(() => {
+      backToTop.style.opacity = '0';
+      setTimeout(() => {
+        backToTop.style.display = 'none';
+      }, 300); // Wait for the opacity transition before hiding
+    }, 3000); // 3 seconds
+  } else {
+    // Hide immediately when at the top
+    backToTop.style.opacity = '0';
+    setTimeout(() => {
+      backToTop.style.display = 'none';
+    }, 300);
+  }
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
 </body>
 </html>

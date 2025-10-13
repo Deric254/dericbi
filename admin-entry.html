@@ -5,8 +5,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Add Case Study – EXES Admin</title>
+  <title>Add Case Study – dericBI Admin</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <!-- Chatbot and Social Links -->
+  <link rel="stylesheet" href="assets/css/social_links.css">
+  <script src="assets/js/chatbot.js"></script>
+  <script src="assets/js/social_links.js"></script>
   <style>
   /* Subtle hover effect for all buttons */
 button, .fancy-btn, .glow-btn {
@@ -47,7 +53,7 @@ img:not([alt]) {
   <nav class="bg-[#49A078] text-white px-4 py-3 shadow-md sticky top-0 z-50" role="navigation" aria-label="Main Navigation">
     <div class="flex items-center justify-between">
       <a href="index.html" class="font-bold text-xl flex items-center gap-2">
-        <span class="hidden sm:inline">EXES</span>
+        <span class="hidden sm:inline">deric<span class="text-[#facc15]">BI</span></span>
       </a>
       <button class="sm:hidden p-2 focus:outline-none" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
         <i class="fas fa-bars"></i>
@@ -121,5 +127,46 @@ img:not([alt]) {
     });
   </script>
 
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="fixed bg-[#49A078] text-white rounded-full shadow-lg flex items-center justify-center text-xl z-40 opacity-0 transition-opacity duration-300 md:flex"
+    style="border: none; outline: none; display: none; bottom: 10rem; right: 2rem; width: 3rem; height: 3rem;">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+  // Back to Top Button logic with 3-second timeout
+  const backToTop = document.getElementById('backToTop');
+  let hideTimeout;
+
+  // Show button on scroll and set timeout to hide it after 3 seconds
+  window.addEventListener('scroll', () => {
+    // Clear any existing timeout to reset the timer on new scroll events
+    clearTimeout(hideTimeout);
+    
+    // Show the button when scrolled down
+    if (window.scrollY > 300) {
+      backToTop.style.display = 'flex';
+      backToTop.style.opacity = '0.9';
+      
+      // Set timeout to hide the button after 3 seconds
+      hideTimeout = setTimeout(() => {
+        backToTop.style.opacity = '0';
+        setTimeout(() => {
+          backToTop.style.display = 'none';
+        }, 300); // Wait for the opacity transition before hiding
+      }, 3000); // 3 seconds
+    } else {
+      // Hide immediately when at the top
+      backToTop.style.opacity = '0';
+      setTimeout(() => {
+        backToTop.style.display = 'none';
+      }, 300);
+    }
+  });
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  </script>
 </body>
 </html>

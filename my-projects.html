@@ -470,8 +470,8 @@ img:not([alt]) {
       <li><a href="services.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Services</a></li>
       <li><a href="My-projects.html" class="nav-link font-bold px-3 py-2 rounded-md bg-[#3D8069]/50 shadow-inner text-yellow-300 border-b-2 border-yellow-300">Projects</a></li>
       <li><a href="contact.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Contact</a></li>
-      <li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>
-      <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms & Conditions</a></li>
+      <!--<li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>
+      <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms & Conditions</a></li>-->
       <li><a href="https://tujengane.netlify.app/" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Tujengane</a></li>
     </ul>
     <!-- Hamburger Menu -->
@@ -613,8 +613,8 @@ toggleBtn.addEventListener('click', () => {
 </section>
 
 <!-- Back to Top Button -->
-<button id="backToTop" class="hidden md:block">
-  <i class="fas fa-arrow-up text-xl"></i>
+<button id="backToTop" class="fixed bottom-10rem right-2rem bg-[#49A078] text-white w-3rem h-3rem rounded-full shadow-lg flex items-center justify-center text-xl z-40 opacity-0 transition-opacity duration-300 md:flex" style="border: none; outline: none; display: none;">
+  <i class="fas fa-arrow-up"></i>
 </button>
 
 <script>
@@ -1328,18 +1328,22 @@ window.addEventListener('scroll', () => {
   
   // Show the button when scrolled down
   if (window.scrollY > 300) {
-    backToTop.classList.add('visible');
-    backToTop.classList.remove('hidden');
+    backToTop.style.display = 'flex';
+    backToTop.style.opacity = '0.9';
     
     // Set timeout to hide the button after 3 seconds
     hideTimeout = setTimeout(() => {
-      backToTop.classList.remove('visible');
-      backToTop.classList.add('hidden');
+      backToTop.style.opacity = '0';
+      setTimeout(() => {
+        backToTop.style.display = 'none';
+      }, 300); // Wait for the opacity transition before hiding
     }, 3000); // 3 seconds
   } else {
     // Hide immediately when at the top
-    backToTop.classList.remove('visible');
-    backToTop.classList.add('hidden');
+    backToTop.style.opacity = '0';
+    setTimeout(() => {
+      backToTop.style.display = 'none';
+    }, 300);
   }
 });
 
