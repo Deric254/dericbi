@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.amplitude.com/script/5a4bb01b3841a994768853dd53f10382.js"></script><script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('5a4bb01b3841a994768853dd53f10382', {"fetchRemoteConfig":true,"autocapture":true});</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <script src="https://cdn.amplitude.com/script/5a606w6w3841a994768853dd53f10382.js"></script><script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('5a606w6w3841a994768853dd53f10382', {"fetchRemoteConfig":true,"autocapture":true});</script>
 
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJM885LMLJ"></script>
@@ -16,11 +16,11 @@
 </script>
 
   <!-- ✅ Page Title -->
-  <title>EXESBI – Home</title>
+  <title>dericBI – Home</title>
 
   <!-- ✅ SEO Meta -->
   <meta name="description" content="🚀 Kenya's #1 Data Analytics Service! 40+ successful projects. Clients see 40% revenue growth in 3 months. Excel to PowerBI dashboards in 48hrs. Starting KSh 100. Deric Marangu transforms data chaos into business success!">
-  <meta name="keywords" content="EXES Kenya, Data Analytics Kenya, Excel PowerBI Kenya, Deric Marangu, Revenue Growth Analytics, Business Intelligence Kenya, Data Dashboards Nairobi, 40% Revenue Increase, Excel to PowerBI, Data Analysis Services Kenya">
+  <meta name="keywords" content="dericBI Kenya, Data Analytics Kenya, Excel PowerBI Kenya, Deric Marangu, Revenue Growth Analytics, Business Intelligence Kenya, Data Dashboards Nairobi, 40% Revenue Increase, Excel to PowerBI, Data Analysis Services Kenya">
   <meta name="author" content="Deric Marangu" />
 
   <!-- ✅ Contact & Social Meta -->
@@ -34,6 +34,17 @@
 
   <!-- ✅ Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          screens: {
+            'xs': '375px',
+          },
+        }
+      }
+    }
+  </script>
 
   <!-- ✅ Custom Animation -->
   <style>
@@ -44,7 +55,187 @@
     .animate-slide {
       animation: slide 20s linear infinite;
     }
-  </style>
+    /* Subtle hover effect for all buttons */
+button, .fancy-btn, .glow-btn {
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s, color 0.2s;
+}
+button:hover, .fancy-btn:hover, .glow-btn:hover {
+  box-shadow: 0 2px 12px 0 #49A07833, 0 0 8px #facc15;
+  transform: translateY(-2px) scale(1.03);
+  background: #fef9c3;
+  color: #222;
+}
+
+/* Card hover effect */
+.card, .list-card, .project-card {
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover, .list-card:hover, .project-card:hover {
+  box-shadow: 0 4px 16px 0 #2563EB22, 0 0 8px #49A07833;
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Footer links styling */
+.footer-link {
+  position: relative;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+.footer-link:hover {
+  color: #49A078;
+  transform: translateY(-1px);
+}
+
+/* Improved appearance for social icons */
+.group {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.group:hover {
+  transform: translateY(-2px);
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.1);
+  filter: brightness(1.05);
+}
+
+.group:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  filter: brightness(0.98);
+}
+
+/* Improve color contrast for accessibility */
+.text-gray-600 {
+  color: #222 !important;
+}
+.text-gray-500 {
+  color: #333 !important;
+}
+
+/* Ensure all images have alt text for accessibility */
+img:not([alt]) {
+  outline: 2px dashed #facc15;
+}
+
+/* Enhance all clickable elements */
+a:not(.group):not(.nav-link):not(.footer-link) {
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+a:not(.group):not(.nav-link):not(.footer-link):hover {
+  filter: brightness(1.05);
+  text-decoration: underline;
+}
+
+/* Extra responsive utilities for smallest screens */
+@media (max-width: 360px) {
+  .text-xs {
+    font-size: 0.65rem;
+  }
+  .h-14, .w-14 {
+    height: 3rem;
+    width: 3rem;
+  }
+  .gap-3 {
+    gap: 0.5rem;
+  }
+  .py-2 {
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+  }
+  .px-3 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  /* Better wrapping for tiny screens */
+  .flex {
+    flex-wrap: wrap;
+  }
+  
+  /* Ensure hamburger menu is always visible */
+  #menu-toggle {
+    display: block !important;
+    margin-left: auto !important;
+    font-size: 1.25rem !important;
+  }
+  
+  /* Hide brand name on very small screens */
+  .brand-text {
+    display: none;
+  }
+}
+
+/* Add subtle borders to help distinguish elements when congested */
+@media (max-width: 480px) {
+  .grid > a, .grid > div {
+    border-width: 1px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 4px;
+  }
+  
+  /* Better icon/text ratio on small screens */
+  .text-3xl.xs\:text-4xl {
+    font-size: 1.75rem !important;
+  }
+  
+  /* Add micro-spacing between congested elements */
+  .gap-1 {
+    gap: 0.375rem !important;
+  }
+  
+  /* Improve contrast for better readability */
+  .text-xs {
+    font-weight: 500;
+  }
+}
+
+/* Safe area for notched phones */
+@supports(padding: max(0px)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Better responsive handling */
+html, body {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Prevent content overflow */
+* {
+  box-sizing: border-box;
+  max-width: 100vw;
+}
+
+/* Improve element distinction */
+.grid > a, .grid > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced readability for text within grid items */
+.grid a span, .grid div span {
+  display: block;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Prevent text overflow */
+.text-overflow-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+</style>
 
   <!-- ✅ Favicons -->
 <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
@@ -57,24 +248,24 @@
 <meta name="theme-color" content="#ffffff">
 
   <!-- ✅ Open Graph for Social Preview -->
-  <meta property="og:title" content="🚀 EXES Analytics: Transform Your Data Into 40% Revenue Growth">
+  <meta property="og:title" content="🚀 dericBI: Transform Your Data Into 40% Revenue Growth">
   <meta property="og:description" content="💰 Clients see 40% revenue increases in 3 months! From messy Excel chaos to PowerBI dashboards in 48 hours. 40+ proven projects. Starting at KSh 100. We analyze, you decide! 📊✨">
-  <meta property="og:image" content="https://deric-exes-analytics.netlify.app/assets/img/logo.png">
-  <meta property="og:url" content="https://deric-exes-analytics.netlify.app">
+  <meta property="og:image" content="https://dericbi-analytics.netlify.app/assets/img/logo.png">
+  <meta property="og:url" content="https://dericbi-analytics.netlify.app">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="EXES Analytics Kenya">
+  <meta property="og:site_name" content="dericBI Analytics Kenya">
   <meta property="og:locale" content="en_KE">
 
   <!-- ✅ Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="🔥 EXES: Data That Drives 40% Revenue Growth">
+  <meta name="twitter:title" content="🔥 dericBI: Data That Drives 40% Revenue Growth">
   <meta name="twitter:description" content="📈 Turn Excel mess into profit! 40+ successful projects. PowerBI dashboards in 48hrs. From KSh 100. Kenya's trusted data experts! 🇰🇪">
-  <meta name="twitter:image" content="https://deric-exes-analytics.netlify.app/assets/img/logo.png">
+  <meta name="twitter:image" content="https://dericbi-analytics.netlify.app/assets/img/logo.png">
   <meta name="twitter:creator" content="@deric_exes">
   <meta name="twitter:site" content="@deric_exes">
 
   <!-- ✅ SEO Verifications -->
-  <meta name="google-site-verification" content="atXrWwnfuGsW-bG32kFaaYl_7cX59LFFuawPIoGcPYk" />
+  <meta name="google-site-verification" content="atXrWwnWwnfuGsW-bG32kFaaYl_7cX59LFFuawPIoGcPYk" />
   <meta name="google-site-verification" content="Jy01n_QNsBr6VEkwL0RMSE-ya0yPNywvSnNEdO6_TcE" />
 
   <!-- ✅ Icons & Fonts -->
@@ -91,18 +282,20 @@
 <body class="bg-white text-gray-800 min-h-screen flex flex-col break-words">
 
 <!-- ✅ Responsive Navbar -->
-<nav class="bg-[#49A078] text-white px-4 py-3 shadow-md sticky top-0 z-50 w-full" role="navigation" aria-label="Main Navigation">
-  <div class="container mx-auto flex flex-wrap items-center justify-between gap-4">
+<nav class="bg-[#49A078] text-white px-2 xs:px-3 sm:px-4 py-2 xs:py-3 shadow-lg sticky top-0 z-50 w-full bg-gradient-to-r from-[#49A078] to-[#3D8069]" role="navigation" aria-label="Main Navigation">
+  <div class="w-full max-w-7xl mx-auto flex items-center justify-between gap-2 xs:gap-3 sm:gap-4">
 
     <!-- ✅ Logo & Brand -->
-    <div class="flex items-center gap-3 shrink-0 min-w-0">
-   <img src="assets/img/logo.png" 
-     alt="EXES Logo" 
-     class="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-full object-cover shadow-md border-2 border-white max-w-full" />
-  <span class="font-bold text-xl sm:text-2xl leading-none">EXES</span>
+    <div class="flex items-center gap-2 xs:gap-3 shrink-0">
+      <img src="assets/img/logo.png" 
+           alt="dericBI Logo" 
+           class="h-10 w-10 xs:h-12 xs:w-12 sm:h-16 sm:w-16 rounded-full object-cover shadow-md" />
+      <div class="font-bold text-xl xs:text-2xl leading-none brand-text">
+        <span>deric</span><span class="text-[#facc15]">BI</span>
+      </div>
 
       <!-- ✅ Extra Links for Small Screens -->
-  <div class="flex gap-2 ml-2 md:hidden flex-wrap">
+      <div class="flex gap-1 xs:gap-2 sm:gap-3 ml-2 xs:ml-3 sm:ml-4 md:hidden">
         <a href="index.html" class="nav-link text-xs tracking-wide">Home</a>
         <a href="services.html" class="nav-link text-xs tracking-wide">Services</a>
         <a href="My-projects.html" class="nav-link text-xs tracking-wide">Projects</a>
@@ -110,36 +303,36 @@
     </div>
 
     <!-- ✅ Scrolling Text (Visible on medium+) -->
-  <div class="hidden md:flex flex-1 justify-center overflow-hidden relative h-10 px-4 md:px-6 min-w-0">
+    <div class="hidden md:flex flex-1 justify-center overflow-hidden relative h-10 px-6">
       <div class="whitespace-nowrap animate-slide text-lg font-semibold text-[#facc15] tracking-wide flex items-center">
         • We Analyze, You Decide • We Analyze, You Decide • We Analyze, You Decide • We Analyze, You Decide •
       </div>
     </div>
 
     <!-- ✅ Desktop Nav Links -->
-  <ul class="hidden md:flex gap-4 lg:gap-6 text-sm md:text-base font-medium items-center shrink-0 flex-wrap">
-      <li><a href="index.html" class="nav-link relative">Home
-        <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#facc15] rounded"></span>
-      </a></li>
-      <li><a href="services.html" class="nav-link">Services</a></li>
-      <li><a href="My-projects.html" class="nav-link">Projects</a></li>
-      <li><a href="contact.html" class="nav-link">Contact</a></li>
-      <li><a href="https://tujengane.netlify.app/" class="nav-link">Tujengane</a></li>
+    <ul class="hidden md:flex gap-6 text-sm font-medium items-center shrink-0">
+      <li><a href="index.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Home</a></li>
+      <li><a href="services.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Services</a></li>
+      <li><a href="My-projects.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Projects</a></li>
+      <li><a href="contact.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Contact</a></li>
+      <li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>
+      <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms & Conditions</a></li>
+      <li><a href="https://tujengane.netlify.app/" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Tujengane</a></li>
     </ul>
 
     <!-- ✅ Hamburger Menu -->
-    <button id="menu-toggle" class="md:hidden text-3xl focus:outline-none ml-3">☰</button>
+    <button id="menu-toggle" class="block md:hidden text-2xl xs:text-3xl focus:outline-none ml-1 xs:ml-2 sm:ml-3 shrink-0 bg-[#3D8069]/50 hover:bg-[#3D8069]/70 p-1 rounded-md shadow-md transition-all">☰</button>
   </div>
 
   <!-- ✅ Mobile Menu -->
-  <div id="mobile-menu" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex flex-col bg-[#3e8865] px-4 w-full">
-    <a href="index.html" class="nav-link block py-3 border-b border-green-300">Home</a>
-    <a href="services.html" class="nav-link block py-3 border-b border-green-300">Services</a>
-    <a href="My-projects.html" class="nav-link block py-3 border-b border-green-300">Projects</a>
-    <a href="contact.html" class="nav-link block py-3 border-b border-green-300">Contact</a>
-    <a href="about.html" class="nav-link block py-3 border-b border-green-300">About Us</a>
-    <a href="terms.html" class="nav-link block py-3">Terms & Conditions</a>
-    <a href="https://tujengane.netlify.app/" class="nav-link block py-3">Tujengane</a>
+  <div id="mobile-menu" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex-col bg-[#3e8865] px-2 xs:px-3 sm:px-4 w-full shadow-inner">
+    <a href="index.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Home</a>
+    <a href="services.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Services</a>
+    <a href="My-projects.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Projects</a>
+    <a href="contact.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Contact</a>
+    <a href="about.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">About Us</a>
+    <a href="terms.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Terms & Conditions</a>
+    <a href="https://tujengane.netlify.app/" class="nav-link block py-3 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Tujengane</a>
   </div>
 </nav>
 
@@ -176,7 +369,6 @@ toggleBtn.addEventListener('click', () => {
 </script>
 
 
-
  <!-- ✅ Hero Section -->
 <section class="relative text-center pt-8 pb-4 sm:py-6 md:py-20 px-4 sm:px-6 md:px-0 w-full m-1 bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] flex-1 w-full overflow-hidden">
   <!-- Left analytic chart visual -->
@@ -196,7 +388,7 @@ toggleBtn.addEventListener('click', () => {
       <rect x="20" y="90" width="40" height="150" rx="12" fill="#2563EB" fill-opacity="0.13"/>
       <rect x="80" y="60" width="40" height="180" rx="12" fill="#facc15" fill-opacity="0.15"/>
       <rect x="140" y="120" width="40" height="120" rx="12" fill="#49A078" fill-opacity="0.18"/>
-      <circle cx="60" cy="40" r="18" fill="#2563EB" fill-opacity="0.22"/>
+      <circle cx="60" cy="40" r="18" fill="#2563EB" fill-opacity="0.18"/>
       <circle cx="180" cy="60" r="14" fill="#facc15" fill-opacity="0.18"/>
       <polyline points="40,240 80,180 140,200 180,220" stroke="#49A078" stroke-width="4" fill="none" stroke-dasharray="8 4"/>
     </svg>
@@ -341,28 +533,6 @@ toggleBtn.addEventListener('click', () => {
 
 <!-- ✅ Quick Testimonials Carousel -->
 <section class="relative bg-white py-6 md:py-10 px-0 sm:px-2 md:px-4 border-t border-gray-100 w-full overflow-hidden">
-  <!-- Left analytic chart visual -->
-  <div class="absolute left-0 top-1/2 -translate-y-1/2 hidden md:block z-0">
-    <svg width="120" height="180" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="10" y="40" width="20" height="90" rx="7" fill="#49A078" fill-opacity="0.14"/>
-      <rect x="40" y="70" width="20" height="60" rx="7" fill="#2563EB" fill-opacity="0.11"/>
-      <rect x="70" y="55" width="20" height="75" rx="7" fill="#facc15" fill-opacity="0.13"/>
-      <circle cx="30" cy="25" r="9" fill="#49A078" fill-opacity="0.18"/>
-      <circle cx="90" cy="35" r="7" fill="#2563EB" fill-opacity="0.15"/>
-      <polyline points="20,140 40,120 70,130 90,110" stroke="#2563EB" stroke-width="2" fill="none" stroke-dasharray="6 3"/>
-    </svg>
-  </div>
-  <!-- Right analytic chart visual -->
-  <div class="absolute right-0 top-1/2 -translate-y-1/2 hidden md:block z-0">
-    <svg width="120" height="180" viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="10" y="55" width="20" height="75" rx="7" fill="#2563EB" fill-opacity="0.11"/>
-      <rect x="40" y="40" width="20" height="90" rx="7" fill="#facc15" fill-opacity="0.13"/>
-      <rect x="70" y="70" width="20" height="60" rx="7" fill="#49A078" fill-opacity="0.14"/>
-      <circle cx="30" cy="25" r="9" fill="#2563EB" fill-opacity="0.18"/>
-      <circle cx="90" cy="35" r="7" fill="#facc15" fill-opacity="0.15"/>
-      <polyline points="20,140 40,110 70,120 90,130" stroke="#49A078" stroke-width="2" fill="none" stroke-dasharray="6 3"/>
-    </svg>
-  </div>
   <div class="mx-auto w-full">
     <div class="relative overflow-hidden">
       <div id="testimonialSlider" class="flex transition-transform duration-500 ease-in-out w-full">
@@ -519,7 +689,7 @@ toggleBtn.addEventListener('click', () => {
         <p class="font-bold mb-1">3. Receive Your Insights</p>
         <ul class="list-disc pl-5 mb-2">
           <li>We email your results along with a unique access code.</li>
-          <li>Enter the code in the download section above to get your insights — it's that simple!</li>
+          <li>Enter the code in the download section above to get your download — it's that simple!</li>
         </ul>
         <p>We clean, analyze, and visualize — you decide.</p>
         <p class="mt-2 text-green-700 font-semibold">
@@ -676,132 +846,95 @@ toggleBtn.addEventListener('click', () => {
   </section>
 
 <!-- ✅ Footer -->
-<footer class="bg-[#DFF3EA] py-4 px-2 sm:px-4 text-sm text-gray-600 mt-auto border-t border-green-300 w-full">
-  <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+<footer class="bg-gradient-to-b from-white to-[#DFF3EA] py-3 xs:py-4 px-2 xs:px-3 sm:px-4 text-sm text-gray-600 mt-auto border-t border-green-300 w-full shadow-inner">
+  <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 xs:gap-4">
 
 <!-- ✅ Footer Logo and Tagline -->
-<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm hover:shadow-md transition-all border border-green-100">
   <img src="assets/img/logo.png" 
-       alt="EXES Logo" 
-       class="h-12 w-12 rounded-full object-cover shadow-md border-2 border-white" />
+       alt="dericBI Logo" 
+       class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover shadow-md" />
   <div class="flex flex-col leading-tight">
-    <span class="font-extrabold text-xl text-gray-800 tracking-wide">
-      E<span class="text-[22px] text-green-600 drop-shadow font-black">X</span>ES
-    </span>
-    <span class="text-xs italic text-gray-500 -mt-1">We analyze. You decide.</span>
+    <div class="font-extrabold text-xl text-gray-800 tracking-wide">
+      <span>deric</span><span class="text-[#facc15] text-[22px] drop-shadow-lg font-black">BI</span>
+    </div>
+    <span class="text-xs italic text-gray-500 -mt-1 bg-gradient-to-r from-gray-500 to-gray-700 bg-clip-text text-transparent font-medium">We analyze. You decide.</span>
   </div>
 </div>
 
-
     <!-- ✅ Copyright & Links Stacked -->
-    <div class="flex flex-col items-center text-center">
+    <div class="flex flex-col items-center text-center bg-white/70 p-2 rounded-xl shadow-sm border border-green-100">
       <div class="text-xs sm:text-sm text-gray-500">
-        &copy; 2025 EXES – Built by 
-        <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link">Deric Marangu</a>. All rights reserved.
+        &copy; 2025 <span>deric</span><span class="text-[#facc15] font-bold drop-shadow-sm">BI</span> – Built by 
+        <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-medium hover:text-[#49A078] transition-colors underline decoration-dotted hover:decoration-solid">Deric Marangu</a>. All rights reserved.
       </div>
-      <div class="flex gap-4 mt-1">
-        <a href="about.html" class="footer-link">About Us</a>
-        <a href="terms.html" class="footer-link">Terms & Conditions</a>
+      <div class="flex flex-wrap justify-center gap-2 xs:gap-3 sm:gap-4 mt-1">
+        <a href="about.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">About Us</a>
+        <a href="terms.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">Terms & Conditions</a>
+        <a href="https://dericbi-app.streamlit.app/" target="_blank" class="footer-link font-bold text-[#49A078] text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">Try Yourself</a>
+        <button onclick="toggleNewsletter()" class="footer-link text-xs bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">
+          <i class="fas fa-envelope mr-1"></i>Newsletter
+        </button>
+      </div>
+      <!-- Hidden Newsletter Signup -->
+      <div id="newsletterSignup" class="hidden mt-2 w-full max-w-xs bg-white rounded-lg p-2 shadow-md border border-green-200">
+        <div class="flex text-xs">
+          <input type="email" placeholder="Your email..." 
+            class="flex-1 px-2 py-1 text-xs border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-[#49A078] shadow-inner">
+          <button class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white px-3 py-1 rounded-r text-xs hover:from-[#3e8865] hover:to-[#357255] transition shadow-sm hover:shadow">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        <p class="text-xs text-gray-600 mt-1 font-medium">Monthly insights & tips</p>
       </div>
     </div>
 
     <!-- ✅ Social + Founder -->
-    <div class="flex items-center gap-3">
-      <div class="flex flex-col items-end text-right">
-        <div class="flex items-center gap-2">
-          <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-semibold text-sm">Deric Marangu</a>
-          <div class="flex gap-2">
-            <a href="https://wa.me/254791360805" target="_blank" class="footer-link"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:dericmarangu@gmail.com" class="footer-link" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://web.facebook.com/deric.aldertrax" target="_blank" class="footer-link"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.facebook.com/exes.125107/" target="_blank" class="footer-link" title="EXES Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" class="footer-link"><i class="fab fa-linkedin"></i></a>
-            <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link"><i class="fab fa-instagram"></i></a>
-          </div>
+    <div class="flex items-center justify-between gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm border border-green-100">
+      <!-- Profile image next to name -->
+      <div class="flex items-center gap-2 xs:gap-3">
+        <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link rounded-full p-1 bg-white hover:bg-green-50 shadow-sm hover:shadow-md transition-all">
+          <img src="assets/img/deric.png" alt="Deric's Photo" class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover border-2 border-[#49A078]/30 hover:border-[#49A078] transition-all" />
+        </a>
+        <div class="flex flex-col">
+          <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-semibold text-sm hover:text-[#49A078]">Deric Marangu</a>
+          <p class="text-xs italic text-gray-600">
+            CEO and Founder of 
+            <a href="https://dericbi.netlify.app/" target="_blank" class="footer-link font-semibold hover:text-[#49A078]">
+              <span>deric</span><span class="text-[#facc15] text-[15px] font-bold drop-shadow-md">BI</span>
+            </a>
+          </p>
         </div>
-        <p class="text-xs italic text-gray-600">
-          CEO and Founder of 
-          <a href="https://deric-exes-analytics.netlify.app/" target="_blank" class="footer-link font-semibold">
-            E<span class="text-green-600 text-[15px] font-bold drop-shadow">X</span>ES
-          </a>
-        </p>
       </div>
-      <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link rounded-full">
-        <img src="assets/img/deric.png" alt="Deric's Photo" class="h-12 w-12 rounded-full object-cover shadow-md" />
-      </a>
+      
+      <!-- Social media icons in a more compact, right-aligned container -->
+      <div class="flex flex-wrap justify-end gap-1">
+        <a href="https://wa.me/254791360805" target="_blank" class="footer-link bg-green-100 hover:bg-green-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-whatsapp text-green-600"></i></a>
+        <a href="mailto:dericmarangu@gmail.com" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="Email"><i class="fas fa-envelope text-blue-600"></i></a>
+        <a href="https://web.facebook.com/deric.aldertrax" target="_blank" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-facebook text-blue-600"></i></a>
+        <a href="https://www.facebook.com/exes.125107/" target="_blank" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="dericBI Facebook"><i class="fab fa-facebook text-blue-600"></i></a>
+        <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" class="footer-link bg-blue-700 hover:bg-blue-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-linkedin text-white"></i></a>
+        <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link bg-black hover:bg-gray-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-twitter text-white"></i></a>
+        <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link bg-pink-100 hover:bg-pink-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-instagram text-pink-600"></i></a>
+      </div>
     </div>
   </div>
-</footer>
-
 <style>
 .footer-link {
   color: inherit;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-block;
 }
 .footer-link:hover {
+  transform: translateY(-1px);
   color: #facc15; /* Soft Yellow */
   text-shadow: 0 0 4px rgba(250, 204, 21, 0.5); /* Subtle glow */
 }
-
-/* Testimonial dots */
-.testimonial-dot.active {
-  background-color: #49A078 !important;
-}
-
-/* Fancy Button for Pricing/FAQ links */
-/* Fancy Button for Pricing/FAQ links */
-/* Clean, compact fancy button for Pricing/FAQ links */
-.fancy-btn {
-  display: inline-block;
-  padding: 0.32rem 0.9rem;
-  border-radius: 0.28rem;
-  font-weight: 500;
-  font-size: 0.97em;
-  margin-top: 0.18rem;
-  background: #fff;
-  color: #222;
-  border: 1.5px solid #facc15;
-  transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.2s;
-  text-decoration: none !important;
-  outline: none;
-  box-shadow: none;
-}
-.fancy-btn.bg-\[\#49A078\],
-.fancy-btn.bg-\[\#2563EB\] {
-  background: #fff !important;
-  color: #222 !important;
-  border: 1.5px solid #facc15 !important;
-}
-.fancy-btn:hover {
-  background: #fef9c3;
-  color: #111;
-  border-color: #facc15;
-  box-shadow: 0 0 8px 2px #facc15;
-}
-.glow-btn {
-  box-shadow: 0 0 6px 2px #facc15;
-  border: 1.5px solid #facc15;
-}
-.glow-btn:hover {
-  box-shadow: 0 0 12px 4px #facc15;
-  border-color: #facc15;
-}
-/* Glow effect for pricing/FAQ buttons */
-.glow-btn {
-  box-shadow: 0 0 8px 2px #facc15, 0 0 16px 2px #49A07833;
-  border: 1px solid #facc15;
-  filter: brightness(1.08);
-}
-/* Make glow more visible on hover */
-.glow-btn:hover {
-  box-shadow: 0 0 16px 4px #facc15, 0 0 24px 4px #49A07855;
-  border-color: #49A078;
-}
 </style>
+</footer>
 
-<script>
-// Testimonial carousel
+  <script>
+  // Testimonial carousel
 let currentSlide = 0;
 const totalSlides = 3;
 
