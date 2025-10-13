@@ -173,6 +173,224 @@ toggleBtn.addEventListener('click', () => {
 });
 </script>
 
+<!-- ✅ Animated Welcome Banner -->
+<section class="relative bg-gradient-to-r from-[#2563EB] via-[#1e40af] to-[#2563EB] py-4 sm:py-6 md:py-8 overflow-hidden border-t-4 border-[#facc15] shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 relative">
+    <!-- Left Spinning Wheel with "Welcome to dericBI" -->
+    <div class="absolute left-0 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 z-10">
+      <div class="spinning-wheel-left relative" style="width: 100px; height: 100px;">
+        <svg viewBox="0 0 200 200" class="animate-spin-slow drop-shadow-lg">
+          <defs>
+            <path id="circlePath" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+          </defs>
+          <circle cx="100" cy="100" r="78" fill="rgba(250, 204, 21, 0.15)" stroke="#facc15" stroke-width="3" opacity="0.8"/>
+          <text class="spinning-text" fill="#ffffff" font-size="22" font-weight="900" font-family="Arial, sans-serif" stroke="#facc15" stroke-width="0.5">
+            <textPath href="#circlePath" startOffset="0%">
+              ★ Welcome to dericBI ★ Welcome to dericBI ★
+            </textPath>
+          </text>
+        </svg>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="bg-[#facc15] rounded-full p-3 shadow-xl">
+            <i class="fas fa-chart-line text-[#2563EB] text-2xl animate-pulse"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Center Welcome Message -->
+    <div class="text-center py-2 sm:py-3 relative z-20 px-20 sm:px-24">
+      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-lg animate-fade-in">
+        🎉 <span class="text-[#facc15]">Deric Marangu</span> Welcomes You! 🎉
+      </h2>
+      <p class="text-xs sm:text-sm md:text-base text-white/90 mt-1 sm:mt-2 font-medium animate-fade-in-delay">
+        Your Trusted Data Analytics Partner 📊✨
+      </p>
+    </div>
+    
+    <!-- Right Spinning Wheel with "Data Center Excellence" -->
+    <div class="absolute right-0 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 z-10">
+      <div class="spinning-wheel-right relative" style="width: 100px; height: 100px;">
+        <svg viewBox="0 0 200 200" class="animate-spin-reverse drop-shadow-lg">
+          <defs>
+            <path id="circlePathRight" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+          </defs>
+          <circle cx="100" cy="100" r="78" fill="rgba(250, 204, 21, 0.15)" stroke="#facc15" stroke-width="3" opacity="0.8"/>
+          <text class="spinning-text" fill="#ffffff" font-size="22" font-weight="900" font-family="Arial, sans-serif" stroke="#facc15" stroke-width="0.5">
+            <textPath href="#circlePathRight" startOffset="0%">
+              ✨ Data Center ✨ Excellence ✨ Data Center ✨
+            </textPath>
+          </text>
+        </svg>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="bg-[#facc15] rounded-full p-3 shadow-xl">
+            <i class="fas fa-database text-[#2563EB] text-2xl animate-pulse"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Decorative Particles -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="particle particle-1"></div>
+      <div class="particle particle-2"></div>
+      <div class="particle particle-3"></div>
+      <div class="particle particle-4"></div>
+      <div class="particle particle-5"></div>
+      <div class="particle particle-6"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Spinning Wheel Animations */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 15s linear infinite;
+}
+
+/* Fade In Animations */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in-delay {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: fade-in-delay 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+/* Decorative Floating Particles */
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #facc15;
+  border-radius: 50%;
+  opacity: 0.7;
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+  animation: float 4s ease-in-out infinite;
+}
+
+.particle-1 { top: 20%; left: 15%; animation-delay: 0s; }
+.particle-2 { top: 60%; left: 25%; animation-delay: 1s; }
+.particle-3 { top: 30%; right: 20%; animation-delay: 0.5s; }
+.particle-4 { top: 70%; right: 30%; animation-delay: 1.5s; }
+.particle-5 { top: 40%; left: 35%; animation-delay: 0.8s; }
+.particle-6 { top: 50%; right: 35%; animation-delay: 1.2s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .spinning-wheel-left,
+  .spinning-wheel-right {
+    width: 75px !important;
+    height: 75px !important;
+  }
+  
+  .spinning-wheel-left svg,
+  .spinning-wheel-right svg {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .spinning-text {
+    font-size: 18px;
+    font-weight: 900;
+  }
+  
+  .particle {
+    width: 7px;
+    height: 7px;
+  }
+  
+  .spinning-wheel-left .bg-\[#facc15\],
+  .spinning-wheel-right .bg-\[#facc15\] {
+    padding: 0.5rem;
+  }
+  
+  .spinning-wheel-left i,
+  .spinning-wheel-right i {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .spinning-wheel-left,
+  .spinning-wheel-right {
+    width: 65px !important;
+    height: 65px !important;
+  }
+  
+  .spinning-wheel-left svg,
+  .spinning-wheel-right svg {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .spinning-text {
+    font-size: 16px;
+    font-weight: 900;
+  }
+  
+  .spinning-wheel-left .bg-\[#facc15\],
+  .spinning-wheel-right .bg-\[#facc15\] {
+    padding: 0.4rem;
+  }
+  
+  .spinning-wheel-left i,
+  .spinning-wheel-right i {
+    font-size: 1rem;
+  }
+}
+
+/* Ensure wheels don't overlap on very small screens */
+@media (max-width: 380px) {
+  .spinning-wheel-left {
+    left: -5px !important;
+  }
+  
+  .spinning-wheel-right {
+    right: -5px !important;
+  }
+  
+  .spinning-wheel-left,
+  .spinning-wheel-right {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  
+  .spinning-text {
+    font-size: 14px;
+  }
+}
+</style>
 
  <!-- ✅ Hero Section -->
 <section class="relative text-center pt-8 pb-4 sm:py-6 md:py-20 px-4 sm:px-6 md:px-0 w-full m-1 bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] flex-1 w-full overflow-hidden">
