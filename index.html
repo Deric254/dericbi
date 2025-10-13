@@ -689,49 +689,54 @@ window.addEventListener('load', function() {
     </div>
 
     <!-- ✅ Hero CTA Buttons - Always Horizontal -->
-    <div class="flex flex-row justify-center items-stretch gap-2 xs:gap-3 sm:gap-4 max-w-4xl mx-auto w-full">
+    <div class="flex flex-row justify-center items-stretch gap-2 xs:gap-2.5 sm:gap-3 max-w-5xl mx-auto w-full">
     <!-- Start Project Button -->
     <button onclick="openModal('projectModal')" 
-  class="group relative flex-1 bg-gray-100 hover:bg-yellow-100 text-gray-500 hover:text-gray-900 px-3 py-2.5 xs:px-4 xs:py-3 sm:px-6 sm:py-3.5 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-xl border border-gray-200 hover:border-yellow-400 text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl whitespace-nowrap">
-      <i class="fas fa-rocket mr-1 xs:mr-1.5 sm:mr-2 group-hover:animate-pulse text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl"></i><span class="hidden xs:inline">Start Your </span>Project
-      <span class="absolute -top-1.5 -right-1.5 xs:-top-2 xs:-right-2 bg-yellow-400 text-black text-[10px] xs:text-xs px-1.5 py-0.5 xs:px-2 xs:py-1 rounded-full font-bold group-hover:block hidden">FREE!</span>
+  class="group relative flex-1 bg-gradient-to-br from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black px-2 xs:px-3 sm:px-4 md:px-6 py-3 sm:py-3.5 md:py-4 rounded-lg font-bold transition-all duration-200 shadow-lg hover:shadow-2xl border-2 border-yellow-500 hover:border-orange-600 text-xs xs:text-sm sm:text-base md:text-lg flex flex-col items-center justify-center">
+      <i class="fas fa-rocket text-lg xs:text-xl sm:text-2xl md:text-3xl mb-1 group-hover:animate-pulse"></i>
+      <span class="leading-tight text-center"><span class="hidden sm:inline">Start Your </span>Project</span>
+      <span class="absolute -top-1 -right-1 bg-green-500 text-white text-[9px] xs:text-[10px] px-1.5 py-0.5 rounded-full font-bold shadow-md animate-pulse">FREE!</span>
     </button>
 
     <!-- Download Results Button -->
     <button onclick="openModal('downloadModal')" 
-  class="group relative flex-1 bg-gray-100 hover:bg-yellow-100 text-gray-500 hover:text-gray-900 px-3 py-2.5 xs:px-4 xs:py-3 sm:px-6 sm:py-3.5 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-xl border border-gray-200 hover:border-yellow-400 text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl whitespace-nowrap">
-      <i class="fas fa-download mr-1 xs:mr-1.5 sm:mr-2 group-hover:animate-bounce text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl"></i><span class="hidden xs:inline">Download </span>Results
-      <span class="absolute -top-1.5 -right-1.5 xs:-top-2 xs:-right-2 bg-green-400 text-white text-[10px] xs:text-xs px-1.5 py-0.5 xs:px-2 xs:py-1 rounded-full font-bold group-hover:block hidden">17+</span>
+  class="group relative flex-1 bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-2 xs:px-3 sm:px-4 md:px-6 py-3 sm:py-3.5 md:py-4 rounded-lg font-bold transition-all duration-200 shadow-lg hover:shadow-2xl border-2 border-blue-600 hover:border-blue-800 text-xs xs:text-sm sm:text-base md:text-lg flex flex-col items-center justify-center">
+      <i class="fas fa-download text-lg xs:text-xl sm:text-2xl md:text-3xl mb-1 group-hover:animate-bounce"></i>
+      <span class="leading-tight text-center"><span class="hidden xs:inline">Download </span>Results</span>
+      <span class="absolute -top-1 -right-1 bg-yellow-400 text-black text-[9px] xs:text-[10px] px-1.5 py-0.5 rounded-full font-bold shadow-md">17+</span>
     </button>
-  </div>
-  
-    <!-- Secondary CTA: Try Yourself - Now a Button -->
-    <div class="mt-3 xs:mt-4 text-center">
-      <a href="https://exes-ebi.streamlit.app/" target="_blank" class="inline-flex items-center justify-center bg-gray-50 hover:bg-yellow-50 text-gray-600 hover:text-gray-900 px-4 xs:px-5 sm:px-6 md:px-8 py-2 xs:py-2.5 sm:py-3 rounded-lg font-medium transition-all shadow-sm hover:shadow-md border border-gray-200 hover:border-yellow-300 text-xs xs:text-sm sm:text-base md:text-lg">
-        <i class="fas fa-flask mr-1.5 xs:mr-2"></i>Try it yourself for free
-      </a>
+    
+    <!-- Try Yourself Button -->
+    <a href="https://exes-ebi.streamlit.app/" target="_blank" class="group relative flex-1 bg-gradient-to-br from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white px-2 xs:px-3 sm:px-4 md:px-6 py-3 sm:py-3.5 md:py-4 rounded-lg font-bold transition-all duration-200 shadow-lg hover:shadow-2xl border-2 border-green-600 hover:border-teal-700 text-xs xs:text-sm sm:text-base md:text-lg flex flex-col items-center justify-center">
+      <i class="fas fa-flask text-lg xs:text-xl sm:text-2xl md:text-3xl mb-1 group-hover:animate-pulse"></i>
+      <span class="leading-tight text-center">Try <span class="hidden xs:inline">it yourself </span>free</span>
+    </a>
     </div>
   </div>
 </section>
 
 <!-- ⭐ Social Proof Trust Bar (NEW) -->
-<section class="w-full bg-white py-3 xs:py-4 px-4 sm:px-3 md:px-2 border-y border-gray-200 shadow-sm">
-  <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-3 xs:gap-4 sm:gap-6 text-xs xs:text-sm text-gray-600">
-    <div class="flex items-center gap-1.5 xs:gap-2 hover:scale-105 transition-transform">
-      <i class="fas fa-check-circle text-green-600 text-base xs:text-lg"></i>
-      <span><strong class="text-gray-800">40+</strong> Projects</span>
+<section class="w-full bg-gradient-to-r from-green-50 via-blue-50 to-yellow-50 py-4 xs:py-5 sm:py-6 px-4 sm:px-3 md:px-2 border-y-2 border-yellow-400 shadow-lg">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+    <div class="flex flex-col items-center justify-center p-3 xs:p-4 bg-white rounded-xl shadow-md hover:shadow-xl transition-all hover:scale-105 border-2 border-green-200 hover:border-green-400">
+      <i class="fas fa-check-circle text-green-600 text-2xl xs:text-3xl sm:text-4xl mb-2"></i>
+      <span class="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-800">40+</span>
+      <span class="text-xs xs:text-sm text-gray-600 font-medium">Projects</span>
     </div>
-    <div class="flex items-center gap-1.5 xs:gap-2 hover:scale-105 transition-transform">
-      <i class="fas fa-users text-blue-600 text-base xs:text-lg"></i>
-      <span><strong class="text-gray-800">100+</strong> Happy Clients</span>
+    <div class="flex flex-col items-center justify-center p-3 xs:p-4 bg-white rounded-xl shadow-md hover:shadow-xl transition-all hover:scale-105 border-2 border-blue-200 hover:border-blue-400">
+      <i class="fas fa-users text-blue-600 text-2xl xs:text-3xl sm:text-4xl mb-2"></i>
+      <span class="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-800">100+</span>
+      <span class="text-xs xs:text-sm text-gray-600 font-medium">Happy Clients</span>
     </div>
-    <div class="flex items-center gap-1.5 xs:gap-2 hover:scale-105 transition-transform">
-      <i class="fas fa-clock text-yellow-600 text-base xs:text-lg"></i>
-      <span><strong class="text-gray-800">48hrs</strong> Delivery</span>
+    <div class="flex flex-col items-center justify-center p-3 xs:p-4 bg-white rounded-xl shadow-md hover:shadow-xl transition-all hover:scale-105 border-2 border-yellow-200 hover:border-yellow-400">
+      <i class="fas fa-clock text-yellow-600 text-2xl xs:text-3xl sm:text-4xl mb-2"></i>
+      <span class="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-800">48hrs</span>
+      <span class="text-xs xs:text-sm text-gray-600 font-medium">Delivery</span>
     </div>
-    <div class="flex items-center gap-1.5 xs:gap-2 hover:scale-105 transition-transform">
-      <i class="fas fa-star text-yellow-400 text-base xs:text-lg"></i>
-      <span><strong class="text-gray-800">5.0</strong> Rating</span>
+    <div class="flex flex-col items-center justify-center p-3 xs:p-4 bg-white rounded-xl shadow-md hover:shadow-xl transition-all hover:scale-105 border-2 border-yellow-200 hover:border-yellow-400">
+      <i class="fas fa-star text-yellow-400 text-2xl xs:text-3xl sm:text-4xl mb-2"></i>
+      <span class="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-800">5.0</span>
+      <span class="text-xs xs:text-sm text-gray-600 font-medium">Rating</span>
     </div>
   </div>
 </section>
@@ -840,12 +845,12 @@ window.addEventListener('load', function() {
         </div>
       </div>
     </div>
-    <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center w-full">
-      <a href="https://tujengane.netlify.app/" target="_blank" class="bg-gray-100 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-6 py-3 rounded font-semibold text-base shadow-md hover:shadow-lg transition-all border border-gray-300 hover:border-yellow-400 w-full sm:w-auto text-center relative inline-flex items-center justify-center gap-2">
+    <div class="mt-6 sm:mt-8 flex flex-row gap-2 xs:gap-2.5 sm:gap-3 justify-center items-stretch w-full">
+      <a href="https://tujengane.netlify.app/" target="_blank" class="flex-1 bg-gray-100 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-3 xs:px-4 sm:px-6 py-3 rounded font-semibold text-xs xs:text-sm sm:text-base shadow-md hover:shadow-lg transition-all border border-gray-300 hover:border-yellow-400 text-center relative flex items-center justify-center gap-1 xs:gap-1.5 sm:gap-2">
         � Explore All Courses & Join
       </a>
-      <a href="https://chat.whatsapp.com/DHO6xjyr8xu6x5opHRG7fl" target="_blank" class="bg-gray-100 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-6 py-3 rounded font-semibold text-base shadow-md hover:shadow-lg transition-all border border-gray-300 hover:border-yellow-400 w-full sm:w-auto flex items-center justify-center gap-2">
-        <i class="fab fa-whatsapp text-green-600"></i> Join WhatsApp Community
+      <a href="https://chat.whatsapp.com/DHO6xjyr8xu6x5opHRG7fl" target="_blank" class="flex-1 bg-gray-100 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-3 xs:px-4 sm:px-6 py-3 rounded font-semibold text-xs xs:text-sm sm:text-base shadow-md hover:shadow-lg transition-all border border-gray-300 hover:border-yellow-400 flex items-center justify-center gap-1 xs:gap-1.5 sm:gap-2">
+        <i class="fab fa-whatsapp text-green-600"></i> <span class="hidden xs:inline">Join WhatsApp Community</span><span class="xs:hidden">WhatsApp</span>
       </a>
     </div>
   </div>
@@ -967,14 +972,6 @@ window.addEventListener('load', function() {
         </div>
       </div>
 
-      <!-- Navigation Buttons -->
-      <button onclick="prevTestimonial()" class="absolute left-2 xs:left-0 top-1/2 -translate-y-1/2 bg-white hover:bg-yellow-100 text-gray-800 w-10 h-10 xs:w-12 xs:h-12 rounded-full shadow-lg hover:shadow-xl transition-colors flex items-center justify-center z-10">
-        <i class="fas fa-chevron-left text-sm xs:text-base"></i>
-      </button>
-      <button onclick="nextTestimonial()" class="absolute right-2 xs:right-0 top-1/2 -translate-y-1/2 bg-white hover:bg-yellow-100 text-gray-800 w-10 h-10 xs:w-12 xs:h-12 rounded-full shadow-lg hover:shadow-xl transition-colors flex items-center justify-center z-10">
-        <i class="fas fa-chevron-right text-sm xs:text-base"></i>
-      </button>
-
       <!-- Dots Indicator -->
       <div class="flex justify-center gap-2 mt-6">
         <button onclick="goToTestimonial(0)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-800 transition-all"></button>
@@ -986,10 +983,14 @@ window.addEventListener('load', function() {
     </div>
     
     <!-- View More Button -->
-    <div class="text-center mt-6">
-      <a href="my-projects.html" class="inline-flex items-center gap-2 bg-white hover:bg-yellow-100 text-gray-800 px-5 xs:px-6 py-2.5 xs:py-3 rounded-lg font-semibold shadow-md hover:shadow-xl transition-all border border-gray-300 hover:border-yellow-400 text-sm xs:text-base">
+    <div class="text-center mt-6 flex flex-col xs:flex-row items-stretch justify-center gap-3 w-full">
+      <a href="my-projects.html" class="flex-1 flex items-center justify-center gap-2 bg-white hover:bg-yellow-100 text-gray-800 px-5 xs:px-6 py-2.5 xs:py-3 rounded-lg font-semibold shadow-md hover:shadow-xl transition-all border border-gray-300 hover:border-yellow-400 text-sm xs:text-base">
         <i class="fas fa-trophy text-yellow-500"></i> 
         <span>See All Success Stories</span>
+      </a>
+      <a href="https://wa.me/254791360805?text=Hi%20dericBI!%20I'd%20love%20to%20share%20my%20success%20story%20with%20you.%20Here's%20how%20your%20services%20helped%20my%20business:%20" target="_blank" class="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-5 xs:px-6 py-2.5 xs:py-3 rounded-lg font-semibold shadow-md hover:shadow-xl transition-all text-sm xs:text-base">
+        <i class="fab fa-whatsapp text-lg"></i>
+        <span>Share Your Story</span>
       </a>
     </div>
   </div>
