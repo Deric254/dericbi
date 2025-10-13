@@ -122,9 +122,9 @@
 
       <!-- ✅ Extra Links for Small Screens -->
       <div class="flex gap-1 xs:gap-2 sm:gap-3 ml-2 xs:ml-3 sm:ml-4 md:hidden">
-        <a href="index.html" class="nav-link text-xs tracking-wide">Home</a>
-        <a href="services.html" class="nav-link text-xs tracking-wide">Services</a>
-        <a href="My-projects.html" class="nav-link text-xs tracking-wide">Projects</a>
+        <a href="index.html" class="nav-link text-xs tracking-wide px-2 py-1 rounded-lg bg-[#3D8069]/60 shadow-md border border-yellow-300/50 font-bold text-yellow-300 hover:bg-[#3D8069]/80 hover:shadow-lg transition-all">Home</a>
+        <a href="services.html" class="nav-link text-xs tracking-wide px-2 py-1 rounded-lg bg-white/10 shadow-md border border-white/30 hover:bg-white/20 hover:border-white/50 hover:shadow-lg transition-all">Services</a>
+        <a href="My-projects.html" class="nav-link text-xs tracking-wide px-2 py-1 rounded-lg bg-white/10 shadow-md border border-white/30 hover:bg-white/20 hover:border-white/50 hover:shadow-lg transition-all">Projects</a>
       </div>
     </div>
 
@@ -136,29 +136,62 @@
     </div>
 
     <!-- ✅ Desktop Nav Links -->
-    <ul class="hidden md:flex gap-6 text-sm font-medium items-center shrink-0">
-      <li><a href="index.html" class="nav-link font-bold px-3 py-2 rounded-md bg-[#3D8069]/50 shadow-inner text-yellow-300 border-b-2 border-yellow-300">Home</a></li>
-      <li><a href="services.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Services</a></li>
-      <li><a href="My-projects.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Projects</a></li>
-      <li><a href="contact.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Contact</a></li>
-      <!--<li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>
-      <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms & Conditions</a></li>-->
-      <li><a href="https://tujengane.netlify.app/" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Tujengane</a></li>
+    <ul class="hidden md:flex gap-3 text-sm font-medium items-center shrink-0">
+      <li><a href="index.html" class="nav-link font-bold px-4 py-2 rounded-lg bg-[#3D8069]/80 shadow-lg text-yellow-300 border-2 border-yellow-300/60 hover:border-yellow-300 transition-all hover:shadow-xl hover:scale-105 active:scale-95">Home</a></li>
+      <li><a href="services.html" class="nav-link bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all shadow-md border-2 border-white/30 hover:border-white/50 hover:shadow-lg hover:scale-105 active:scale-95">Services</a></li>
+      <li><a href="My-projects.html" class="nav-link bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all shadow-md border-2 border-white/30 hover:border-white/50 hover:shadow-lg hover:scale-105 active:scale-95">Projects</a></li>
+      <li><a href="contact.html" class="nav-link bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all shadow-md border-2 border-white/30 hover:border-white/50 hover:shadow-lg hover:scale-105 active:scale-95">Contact</a></li>
+      <!--<li><a href="about.html" class="nav-link bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all shadow-md border-2 border-white/30 hover:border-white/50 hover:shadow-lg hover:scale-105 active:scale-95">About Us</a></li>
+      <li><a href="terms.html" class="nav-link bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all shadow-md border-2 border-white/30 hover:border-white/50 hover:shadow-lg hover:scale-105 active:scale-95">Terms & Conditions</a></li>-->
+      <li class="relative">
+        <a href="https://tujengane.netlify.app/" class="nav-link bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all shadow-md border-2 border-white/30 hover:border-white/50 hover:shadow-lg hover:scale-105 active:scale-95 inline-flex items-center gap-1">
+          Tujengane
+          <span class="relative inline-flex items-center justify-center w-10 h-10 -ml-1">
+            <!-- Sunflower outer glow -->
+            <span class="absolute inset-0 bg-gradient-to-br from-[#FCD34D] to-[#F59E0B] rounded-full opacity-40 blur-[2px] animate-pulse"></span>
+            <!-- Sunflower badge -->
+            <span class="relative flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] rounded-full shadow-lg border-2 border-white" style="box-shadow: 0 0 12px rgba(251, 191, 36, 0.5);">
+              <!-- Inner brown center -->
+              <span class="absolute inset-[3px] rounded-full bg-gradient-to-br from-[#B45309] to-[#78350F] flex items-center justify-center">
+                <span class="text-[9px] font-black text-white leading-none">50%</span>
+              </span>
+            </span>
+          </span>
+        </a>
+      </li>
     </ul>
 
     <!-- ✅ Hamburger Menu -->
-    <button id="menu-toggle" class="block md:hidden text-2xl xs:text-3xl focus:outline-none ml-1 xs:ml-2 sm:ml-3 shrink-0 bg-[#3D8069]/50 hover:bg-[#3D8069]/70 p-1 rounded-md shadow-md transition-all">☰</button>
-  </div>
-
-  <!-- ✅ Mobile Menu -->
-  <div id="mobile-menu" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex-col bg-[#3e8865] px-2 xs:px-3 sm:px-4 w-full shadow-inner">
-    <a href="index.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all bg-[#367659]/30 font-semibold text-yellow-300">Home</a>
-    <a href="services.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Services</a>
-    <a href="My-projects.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Projects</a>
-    <a href="contact.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Contact</a>
-    <a href="about.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">About Us</a>
-    <a href="terms.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Terms & Conditions</a>
-    <a href="https://tujengane.netlify.app/" class="nav-link block py-3 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Tujengane</a>
+    <div class="relative">
+      <button id="menu-toggle" class="block md:hidden text-xl xs:text-2xl focus:outline-none ml-1 xs:ml-2 sm:ml-3 shrink-0 bg-[#3D8069]/50 hover:bg-[#3D8069]/70 p-2 rounded-md shadow-md transition-all">☰</button>
+      
+      <!-- ✅ Mobile Menu Dropdown -->
+      <div id="mobile-menu" class="absolute right-0 top-full mt-2 w-56 max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-[#3e8865] rounded-lg shadow-2xl z-50">
+        <div class="py-2 px-3">
+          <a href="index.html" class="nav-link block py-2.5 rounded-lg my-1 px-3 transition-all bg-[#367659]/50 font-bold text-yellow-300 shadow-md border border-yellow-300/50 hover:bg-[#367659]/70 hover:border-yellow-300/70 hover:shadow-lg text-sm">Home</a>
+          <a href="services.html" class="nav-link block py-2.5 rounded-lg my-1 px-3 transition-all bg-[#367659]/40 shadow-md border border-white/30 hover:bg-[#367659]/60 hover:border-white/50 hover:shadow-lg text-sm">Services</a>
+          <a href="My-projects.html" class="nav-link block py-2.5 rounded-lg my-1 px-3 transition-all bg-[#367659]/40 shadow-md border border-white/30 hover:bg-[#367659]/60 hover:border-white/50 hover:shadow-lg text-sm">Projects</a>
+          <a href="contact.html" class="nav-link block py-2.5 rounded-lg my-1 px-3 transition-all bg-[#367659]/40 shadow-md border border-white/30 hover:bg-[#367659]/60 hover:border-white/50 hover:shadow-lg text-sm">Contact</a>
+          <a href="about.html" class="nav-link block py-2.5 rounded-lg my-1 px-3 transition-all bg-[#367659]/40 shadow-md border border-white/30 hover:bg-[#367659]/60 hover:border-white/50 hover:shadow-lg text-sm">About Us</a>
+          <a href="terms.html" class="nav-link block py-2.5 rounded-lg my-1 px-3 transition-all bg-[#367659]/40 shadow-md border border-white/30 hover:bg-[#367659]/60 hover:border-white/50 hover:shadow-lg text-sm">Terms</a>
+          <a href="https://tujengane.netlify.app/" class="nav-link block py-2.5 rounded-lg my-1 px-3 transition-all bg-[#367659]/40 shadow-md border border-white/30 hover:bg-[#367659]/60 hover:border-white/50 hover:shadow-lg text-sm inline-flex items-center gap-2">
+      Tujengane
+      <span class="relative inline-flex items-center justify-center w-10 h-10">
+        <!-- Sunflower outer glow -->
+        <span class="absolute inset-0 bg-gradient-to-br from-[#FCD34D] to-[#F59E0B] rounded-full opacity-40 blur-[2px] animate-pulse"></span>
+        <!-- Sunflower badge -->
+        <span class="relative flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] rounded-full shadow-lg border-2 border-white" style="box-shadow: 0 0 12px rgba(251, 191, 36, 0.5);">
+          <!-- Inner brown center -->
+          <span class="absolute inset-[3px] rounded-full bg-gradient-to-br from-[#B45309] to-[#78350F] flex items-center justify-center">
+            <span class="text-[9px] font-black text-white leading-none">50%</span>
+          </span>
+        </span>
+      </span>
+            Tujengane
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -167,15 +200,132 @@
 const toggleBtn = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 
-toggleBtn.addEventListener('click', () => {
+// Toggle menu on button click
+toggleBtn.addEventListener('click', (e) => {
+  e.stopPropagation(); // Prevent this click from immediately closing the menu
   mobileMenu.classList.toggle('max-h-0');
-  mobileMenu.classList.toggle('max-h-screen'); // Now expands fully
+  mobileMenu.classList.toggle('max-h-96'); // Compact dropdown size
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  const isMenuOpen = mobileMenu.classList.contains('max-h-96');
+  const clickedInsideMenu = mobileMenu.contains(e.target);
+  const clickedToggleBtn = toggleBtn.contains(e.target);
+  
+  // If menu is open and click is outside menu and not on toggle button
+  if (isMenuOpen && !clickedInsideMenu && !clickedToggleBtn) {
+    mobileMenu.classList.remove('max-h-96');
+    mobileMenu.classList.add('max-h-0');
+  }
+});
+
+// Close menu when clicking on a menu link
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('max-h-96');
+    mobileMenu.classList.add('max-h-0');
+  });
+});
+</script>
+
+<!-- 🎉 Promotional Banner - Dismissible -->
+<div id="promo-banner" class="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-[#ef4444] via-[#dc2626] to-[#ef4444] text-white py-2 px-4 shadow-2xl transform -translate-y-full opacity-0 transition-all duration-700 ease-out">
+  <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+    <div class="flex items-center gap-2 flex-1">
+      <span class="text-2xl animate-bounce">🎉</span>
+      <div class="flex flex-col sm:flex-row sm:items-center sm:gap-2 flex-1">
+        <span class="text-sm sm:text-base font-bold">LIMITED TIME OFFER:</span>
+        <span class="text-xs sm:text-sm font-semibold bg-[#facc15] text-black px-2 py-1 rounded-full animate-pulse">50% OFF</span>
+        <span class="text-xs sm:text-sm">All Services - Next 30 Days Only! 🚀</span>
+      </div>
+    </div>
+    <button onclick="closePromoBanner()" class="ml-2 text-white hover:text-[#facc15] transition-colors text-xl font-bold shrink-0" aria-label="Close promotion">
+      ×
+    </button>
+  </div>
+</div>
+
+<script>
+// Top Promo Banner Logic with Smooth Fade
+function closePromoBanner() {
+  const banner = document.getElementById('promo-banner');
+  banner.style.opacity = '0';
+  setTimeout(function() {
+    banner.style.transform = 'translateY(-100%)';
+  }, 500); // Wait for fade out
+  // Remember user closed it for 24 hours
+  localStorage.setItem('promo-banner-closed', Date.now());
+}
+
+// Show banner with smooth fade after 0.8 seconds if not closed in last 24 hours
+window.addEventListener('load', function() {
+  const lastClosed = localStorage.getItem('promo-banner-closed');
+  const twentyFourHours = 24 * 60 * 60 * 1000;
+  
+  console.log('Promo Banner Check:', {
+    lastClosed: lastClosed,
+    hoursSinceClosed: lastClosed ? Math.round((Date.now() - parseInt(lastClosed)) / (60 * 60 * 1000)) : 'Never closed',
+    willShow: !lastClosed || (Date.now() - parseInt(lastClosed)) > twentyFourHours
+  });
+  
+  // Check if banner was closed recently
+  if (!lastClosed || (Date.now() - parseInt(lastClosed)) > twentyFourHours) {
+    setTimeout(function() {
+      const banner = document.getElementById('promo-banner');
+      banner.style.transform = 'translateY(0)';
+      setTimeout(function() {
+        banner.style.opacity = '1';
+      }, 100);
+    }, 800); // Reduced from 1500ms to 800ms
+  }
+  
+  // FOR TESTING: You can manually reset the banner by running this in console:
+  // localStorage.removeItem('promo-banner-closed'); location.reload();
+  
+  // Center Banner Alternating Animation
+  let showingWelcome = true;
+  const welcomeMsg = document.getElementById('welcome-message');
+  const promoMsg = document.getElementById('promo-message');
+  
+  function alternateMessages() {
+    if (showingWelcome) {
+      // Fade out welcome
+      welcomeMsg.style.opacity = '0';
+      setTimeout(function() {
+        welcomeMsg.style.display = 'none';
+        promoMsg.style.display = 'block';
+        promoMsg.style.pointerEvents = 'auto';
+        setTimeout(function() {
+          promoMsg.style.opacity = '1';
+        }, 50);
+      }, 1000);
+    } else {
+      // Fade out promo
+      promoMsg.style.opacity = '0';
+      setTimeout(function() {
+        promoMsg.style.display = 'none';
+        promoMsg.style.pointerEvents = 'none';
+        welcomeMsg.style.display = 'block';
+        setTimeout(function() {
+          welcomeMsg.style.opacity = '1';
+        }, 50);
+      }, 1000);
+    }
+    showingWelcome = !showingWelcome;
+  }
+  
+  // Start alternating after 4 seconds, then every 5 seconds
+  setTimeout(function() {
+    alternateMessages();
+    setInterval(alternateMessages, 5000);
+  }, 4000);
 });
 </script>
 
 <!-- ✅ Animated Welcome Banner -->
-<section class="relative bg-gradient-to-r from-[#2563EB] via-[#1e40af] to-[#2563EB] py-4 sm:py-6 md:py-8 overflow-hidden border-t-4 border-[#facc15] shadow-lg">
-  <div class="max-w-7xl mx-auto px-4 relative">
+<section class="relative bg-gradient-to-r from-[#2563EB] via-[#1e40af] to-[#2563EB] overflow-hidden border-t-4 border-[#facc15] shadow-lg h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px]">
+  <div class="max-w-7xl mx-auto px-4 relative h-full flex items-center">
     <!-- Left Spinning Wheel with "Welcome to dericBI" -->
     <div class="absolute left-0 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 z-10">
       <div class="spinning-wheel-left relative" style="width: 100px; height: 100px;">
@@ -198,14 +348,29 @@ toggleBtn.addEventListener('click', () => {
       </div>
     </div>
     
-    <!-- Center Welcome Message -->
-    <div class="text-center py-2 sm:py-3 relative z-20 px-20 sm:px-24">
-      <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-lg animate-fade-in">
-        🎉 <span class="text-[#facc15]">Deric Marangu</span> Welcomes You! 🎉
-      </h2>
-      <p class="text-xs sm:text-sm md:text-base text-white/90 mt-1 sm:mt-2 font-medium animate-fade-in-delay">
-        Your Trusted Data Analytics Partner 📊✨
-      </p>
+    <!-- Center Alternating Welcome/Promotion Messages -->
+    <div class="text-center relative z-20 px-20 sm:px-24 w-full flex items-center justify-center">
+      <!-- Welcome Message -->
+      <div id="welcome-message" class="transition-opacity duration-1000 ease-in-out w-full">
+        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-lg">
+          🎉 <span class="text-[#facc15]">Deric Marangu</span> Welcomes You! 🎉
+        </h2>
+        <p class="text-xs sm:text-sm md:text-base text-white/90 mt-1 sm:mt-2 font-medium">
+          Your Trusted Data Analytics Partner 📊✨
+        </p>
+      </div>
+      
+      <!-- Promotion Message (Hidden Initially) -->
+      <div id="promo-message" class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-1000 ease-in-out pointer-events-none px-4 sm:px-8" style="display: none;">
+        <div class="text-center">
+          <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-lg">
+            🔥 <span class="text-[#facc15] animate-pulse">50% OFF</span> All Services! 🔥
+          </h2>
+          <p class="text-xs sm:text-sm md:text-base text-white/90 mt-1 sm:mt-2 font-medium">
+            Limited Time: Next 30 Days Only! ⏰ Save Big Today! �
+          </p>
+        </div>
+      </div>
     </div>
     
     <!-- Right Spinning Wheel with "Data Center Excellence" -->
@@ -453,8 +618,8 @@ toggleBtn.addEventListener('click', () => {
 
 
 <!-- 🚀 Tujengane Programs (Professionally Styled) -->
-<section class="w-full bg-gradient-to-br from-[#e0f7fa] to-[#f0fdf4] py-1 px-4 sm:px-6 md:px-8 sm:py-4 md:py-8 border-t border-green-200">
-  <div class="container mx-auto flex flex-col items-center text-center w-full px-4 sm:px-6 md:px-8">
+<section class="w-full bg-gradient-to-br from-[#e0f7fa] to-[#f0fdf4] py-4 sm:py-6 md:py-8 border-t border-green-200">
+  <div class="max-w-7xl mx-auto flex flex-col items-center text-center w-full px-4 sm:px-6 md:px-8">
   <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-[#2563EB] mb-6 flex items-center justify-center gap-2 leading-tight tracking-wide"> 
       <span>🎓</span> Tujengane Digital skills
       <span class="dancing-badge ml-2 px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-pink-400 via-yellow-300 to-green-400 text-white shadow-lg border border-white">NEW</span>
