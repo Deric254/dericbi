@@ -212,7 +212,7 @@ img:not([alt]) {
     /* Back to Top Button */
     #backToTop {
       position: fixed;
-      bottom: 6rem; /* Positioned above chatbot */
+      bottom: 10rem; /* Moved higher to avoid obscuring chatbot */
       right: 2rem;
       background: #49A078;
       color: white;
@@ -1319,10 +1319,30 @@ async function shareProject(projectId, title) {
 }
 
 const backToTop = document.getElementById('backToTop');
+let hideTimeout;
+
+// Show button on scroll and set timeout to hide it after 3 seconds
 window.addEventListener('scroll', () => {
-  backToTop.classList.toggle('visible', window.scrollY > 300);
-  backToTop.classList.toggle('hidden', window.scrollY <= 300);
+  // Clear any existing timeout to reset the timer on new scroll events
+  clearTimeout(hideTimeout);
+  
+  // Show the button when scrolled down
+  if (window.scrollY > 300) {
+    backToTop.classList.add('visible');
+    backToTop.classList.remove('hidden');
+    
+    // Set timeout to hide the button after 3 seconds
+    hideTimeout = setTimeout(() => {
+      backToTop.classList.remove('visible');
+      backToTop.classList.add('hidden');
+    }, 3000); // 3 seconds
+  } else {
+    // Hide immediately when at the top
+    backToTop.classList.remove('visible');
+    backToTop.classList.add('hidden');
+  }
 });
+
 backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
