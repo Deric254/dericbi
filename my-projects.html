@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-  <title>EXES – My Projects</title>
+  <title>dericBI – My Projects</title>
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Discover the journey behind EXES – from concept to empowering businesses with data-driven insights by Deric Marangu." />
-  <meta name="keywords" content="Deric Marangu, EXES journey, data analytics Kenya, Excel cleanup, business insights" />
+  <meta name="description" content="Discover the journey behind dericBI – from concept to empowering businesses with data-driven insights by Deric Marangu." />
+  <meta name="keywords" content="Deric Marangu, dericBI journey, data analytics Kenya, Excel cleanup, business insights" />
   <meta name="author" content="Deric Marangu" />
 
   <!-- Enhanced Open Graph Meta -->
-  <meta property="og:title" content="EXES – My Projects" />
-  <meta property="og:description" content="Discover the journey behind EXES – from concept to empowering businesses with data-driven insights by Deric Marangu." />
+  <meta property="og:title" content="dericBI – My Projects" />
+  <meta property="og:description" content="Discover the journey behind dericBI – from concept to empowering businesses with data-driven insights by Deric Marangu." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dericbi-analytics.netlify.app/My-projects.html" />
   <meta property="og:image" content="https://dericbi-analytics.netlify.app/assets/img/logo.png" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="EXES – My Projects" />
-  <meta name="twitter:description" content="Discover the journey behind EXES – from concept to empowering businesses with data-driven insights by Deric Marangu." />
+  <meta name="twitter:title" content="dericBI – My Projects" />
+  <meta name="twitter:description" content="Discover the journey behind dericBI – from concept to empowering businesses with data-driven insights by Deric Marangu." />
   <meta name="twitter:image" content="https://dericbi-analytics.netlify.app/assets/img/logo.png" />
 
   <!-- Structured Data for Local Business -->
@@ -80,7 +80,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="format-detection" content="telephone=no">
 
-  <!-- EXES Chatbot -->
+  <!-- dericBI Chatbot -->
   <link rel="stylesheet" href="assets/css/social_links.css">
   <script src="assets/js/chatbot.js"></script>
   <script src="assets/js/social_links.js"></script>
@@ -501,7 +501,7 @@ toggleBtn.addEventListener('click', () => {
 
 <!-- Journey Section -->
 <section class="w-full py-6 px-1 min-h-screen">
-  <h1 class="text-3xl font-bold text-[#2D3142] mb-6 text-center">📘 Case Studies and Projects</h1>
+  <h1 class="text-3xl font-bold text-[#2D3142] mb-6 text-center">📘 <span class="font-bold text-[#49A078]">deric<span class="text-yellow-500">BI</span></span> Case Studies and Projects</h1>
   
   <!-- Compact Search & Filter -->
   <div class="flex flex-col sm:flex-row gap-3 mb-6 w-full px-1">
@@ -918,7 +918,7 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
     if (cs.projectLink) {
       window.open(cs.projectLink, '_blank');
     } else {
-      alert('🚫 Project download link has expired. Please contact EXES for access to the full project files.\n\n📧 Email: dericmarangu@gmail.com\n📱 WhatsApp: +254791360805');
+      alert('🚫 Project download link has expired. Please contact dericBI for access to the full project files.\n\n📧 Email: dericmarangu@gmail.com\n📱 WhatsApp: +254791360805');
     }
     setTimeout(() => {
       loading.style.display = 'none';
@@ -1197,7 +1197,7 @@ function downloadImage(url, filename) {
     })
     .catch(error => {
       console.error('Download failed:', error);
-      alert('Download failed. Please try again or contact EXES for assistance.');
+      alert('Download failed. Please try again or contact dericBI for assistance.');
     });
 }
 
@@ -1215,7 +1215,7 @@ function downloadVideo(url, filename) {
     })
     .catch(error => {
       console.error('Download failed:', error);
-      alert('Video download failed. Please try again or contact EXES for assistance.');
+      alert('Video download failed. Please try again or contact dericBI for assistance.');
     });
 }
 
@@ -1304,7 +1304,7 @@ function filterSpecificProject(identifier) {
 
 async function shareProject(projectId, title) {
   const shareUrl = `${window.location.origin}${window.location.pathname}#${projectId}`;
-  const shareData = { title, text: 'Check out this EXES project!', url: shareUrl };
+  const shareData = { title, text: 'Check out this dericBI project!', url: shareUrl };
   try {
     if (navigator.share) {
       await navigator.share(shareData);
@@ -1358,7 +1358,7 @@ function toggleNewsletter() {
       <div class="flex flex-wrap justify-center gap-2 xs:gap-3 sm:gap-4 mt-1">
         <a href="about.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">About Us</a>
         <a href="terms.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">Terms & Conditions</a>
-        <a href="https://dericbi-app.streamlit.app/" target="_blank" class="footer-link font-bold text-[#49A078] text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">Try Yourself</a>
+        <a href="https://exes-ebi.streamlit.app/" target="_blank" class="footer-link font-bold text-[#49A078] text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">Try Yourself</a>
         <button onclick="toggleNewsletter()" class="footer-link text-xs bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">
           <i class="fas fa-envelope mr-1"></i>Newsletter
         </button>
