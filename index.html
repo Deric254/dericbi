@@ -46,196 +46,17 @@
     }
   </script>
 
-  <!-- ✅ Custom Animation -->
+  <!-- ✅ Page-specific inline styles (moved most to style.css) -->
   <style>
-    @keyframes slide {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
+    /* Navigation Links Hover Glow */
+    .nav-link {
+      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
-    .animate-slide {
-      animation: slide 20s linear infinite;
+    .nav-link:hover {
+      color: #facc15;
+      text-shadow: 0 0 4px rgba(250, 204, 21, 0.4);
     }
-    /* Subtle hover effect for all buttons */
-button, .fancy-btn, .glow-btn {
-  transition: box-shadow 0.2s, transform 0.2s, background 0.2s, color 0.2s;
-}
-button:hover, .fancy-btn:hover, .glow-btn:hover {
-  box-shadow: 0 2px 12px 0 #49A07833, 0 0 8px #facc15;
-  transform: translateY(-2px) scale(1.03);
-  background: #fef9c3;
-  color: #222;
-}
-
-/* Card hover effect */
-.card, .list-card, .project-card {
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.card:hover, .list-card:hover, .project-card:hover {
-  box-shadow: 0 4px 16px 0 #2563EB22, 0 0 8px #49A07833;
-  transform: translateY(-2px) scale(1.02);
-}
-
-/* Footer links styling */
-.footer-link {
-  position: relative;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-.footer-link:hover {
-  color: #49A078;
-  transform: translateY(-1px);
-}
-
-/* Improved appearance for social icons */
-.group {
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-}
-
-.group:hover {
-  transform: translateY(-2px);
-  z-index: 5;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.1);
-  filter: brightness(1.05);
-}
-
-.group:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  filter: brightness(0.98);
-}
-
-/* Improve color contrast for accessibility */
-.text-gray-600 {
-  color: #222 !important;
-}
-.text-gray-500 {
-  color: #333 !important;
-}
-
-/* Ensure all images have alt text for accessibility */
-img:not([alt]) {
-  outline: 2px dashed #facc15;
-}
-
-/* Enhance all clickable elements */
-a:not(.group):not(.nav-link):not(.footer-link) {
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-a:not(.group):not(.nav-link):not(.footer-link):hover {
-  filter: brightness(1.05);
-  text-decoration: underline;
-}
-
-/* Extra responsive utilities for smallest screens */
-@media (max-width: 360px) {
-  .text-xs {
-    font-size: 0.65rem;
-  }
-  .h-14, .w-14 {
-    height: 3rem;
-    width: 3rem;
-  }
-  .gap-3 {
-    gap: 0.5rem;
-  }
-  .py-2 {
-    padding-top: 0.35rem;
-    padding-bottom: 0.35rem;
-  }
-  .px-3 {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-  
-  /* Better wrapping for tiny screens */
-  .flex {
-    flex-wrap: wrap;
-  }
-  
-  /* Ensure hamburger menu is always visible */
-  #menu-toggle {
-    display: block !important;
-    margin-left: auto !important;
-    font-size: 1.25rem !important;
-  }
-  
-  /* Hide brand name on very small screens */
-  .brand-text {
-    display: none;
-  }
-}
-
-/* Add subtle borders to help distinguish elements when congested */
-@media (max-width: 480px) {
-  .grid > a, .grid > div {
-    border-width: 1px;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-    margin-bottom: 4px;
-  }
-  
-  /* Better icon/text ratio on small screens */
-  .text-3xl.xs\:text-4xl {
-    font-size: 1.75rem !important;
-  }
-  
-  /* Add micro-spacing between congested elements */
-  .gap-1 {
-    gap: 0.375rem !important;
-  }
-  
-  /* Improve contrast for better readability */
-  .text-xs {
-    font-weight: 500;
-  }
-}
-
-/* Safe area for notched phones */
-@supports(padding: max(0px)) {
-  body {
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-}
-
-/* Better responsive handling */
-html, body {
-  max-width: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-/* Prevent content overflow */
-* {
-  box-sizing: border-box;
-  max-width: 100vw;
-}
-
-/* Improve element distinction */
-.grid > a, .grid > div {
-  position: relative;
-  z-index: 1;
-}
-
-/* Enhanced readability for text within grid items */
-.grid a span, .grid div span {
-  display: block;
-  width: 100%;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-/* Prevent text overflow */
-.text-overflow-ellipsis {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-</style>
+  </style>
 
   <!-- ✅ Favicons -->
 <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
@@ -271,8 +92,11 @@ html, body {
   <!-- ✅ Icons & Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
 
-  <!-- ✅ dericBI Chatbot -->
+  <!-- ✅ Custom Styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/social_links.css">
+  
+  <!-- ✅ dericBI Chatbot -->
   <script src="assets/js/chatbot.js"></script>
   <script src="assets/js/social_links.js"></script>
 
@@ -338,27 +162,6 @@ html, body {
   </div>
 </nav>
 
-<!-- ✅ CSS -->
-<style>
-/* Navigation Links Hover Glow */
-.nav-link {
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-.nav-link:hover {
-  color: #facc15; /* Soft Yellow */
-  text-shadow: 0 0 4px rgba(250, 204, 21, 0.4);
-}
-
-/* Continuous Scrolling Animation */
-@keyframes slide {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-.animate-slide {
-  animation: slide 20s linear infinite;
-}
-</style>
-
 <!-- ✅ JS -->
 <script>
 const toggleBtn = document.getElementById('menu-toggle');
@@ -374,7 +177,7 @@ toggleBtn.addEventListener('click', () => {
  <!-- ✅ Hero Section -->
 <section class="relative text-center pt-8 pb-4 sm:py-6 md:py-20 px-4 sm:px-6 md:px-0 w-full m-1 bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] flex-1 w-full overflow-hidden">
   <!-- Left analytic chart visual -->
-  <div class="absolute left-0 top-1/2 -translate-y-1/2 hidden md:block z-0">
+  <div class="absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block z-0">
     <svg width="220" height="320" viewBox="0 0 220 320" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="20" y="60" width="40" height="180" rx="12" fill="#49A078" fill-opacity="0.18"/>
       <rect x="80" y="120" width="40" height="120" rx="12" fill="#2563EB" fill-opacity="0.13"/>
@@ -385,7 +188,7 @@ toggleBtn.addEventListener('click', () => {
     </svg>
   </div>
   <!-- Right analytic chart visual -->
-  <div class="absolute right-0 top-1/2 -translate-y-1/2 hidden md:block z-0">
+  <div class="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block z-0">
     <svg width="220" height="320" viewBox="0 0 220 320" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="20" y="90" width="40" height="150" rx="12" fill="#2563EB" fill-opacity="0.13"/>
       <rect x="80" y="60" width="40" height="180" rx="12" fill="#facc15" fill-opacity="0.15"/>
@@ -438,7 +241,7 @@ toggleBtn.addEventListener('click', () => {
       <span>🎓</span> Tujengane Digital skills
       <span class="dancing-badge ml-2 px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-pink-400 via-yellow-300 to-green-400 text-white shadow-lg border border-white">NEW</span>
     </h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4 w-full px-0">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 w-full px-0">
       <!-- Modern Card 1: Computer Literacy -->
   <div class="rounded-2xl shadow-lg border-0 bg-gradient-to-br from-green-50 via-white to-green-100 p-2 sm:p-4 flex flex-col md:flex-row items-center md:items-stretch overflow-hidden">
   <div class="flex items-center justify-center md:justify-start w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-green-300 to-green-500 mr-2 sm:mr-4 mb-2 md:mb-0">
@@ -516,21 +319,6 @@ toggleBtn.addEventListener('click', () => {
       <a href="https://tujengane.netlify.app/" target="_blank" class="inline-block bg-[#2563EB] hover:bg-[#1e40af] text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-bold text-base shadow w-full md:w-auto">🌐 More: Tujengane Digital skills </a>
     </div>
   </div>
-<style>
-  .dancing-badge {
-    display: inline-block;
-    animation: dance 1.2s infinite alternate cubic-bezier(.68,-0.55,.27,1.55);
-    box-shadow: 0 0 8px 2px rgba(255, 193, 7, 0.3);
-  }
-  @keyframes dance {
-    0% { transform: rotate(-8deg) scale(1) translateY(0); }
-    20% { transform: rotate(8deg) scale(1.08) translateY(-2px); }
-    40% { transform: rotate(-8deg) scale(1.12) translateY(2px); }
-    60% { transform: rotate(8deg) scale(1.08) translateY(-2px); }
-    80% { transform: rotate(-8deg) scale(1.05) translateY(2px); }
-    100% { transform: rotate(8deg) scale(1) translateY(0); }
-  }
-</style>
 </section>
 
 <!-- ✅ Quick Testimonials Carousel -->
@@ -580,8 +368,8 @@ toggleBtn.addEventListener('click', () => {
 </section>
 
 <!-- ✅ Project Modal -->
-<div id="projectModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
+<div id="projectModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 px-4">
+  <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full max-w-md mx-auto relative" style="max-width: min(28rem, calc(100vw - 2rem));">
     <button onclick="closeModal('projectModal')" 
       class="absolute top-2 right-3 text-gray-500 hover:text-red-500 text-xl">&times;</button>
     <h2 class="text-lg font-bold mb-4 text-center text-[#49A078]">Choose Your Path</h2>
@@ -600,8 +388,8 @@ toggleBtn.addEventListener('click', () => {
 </div>
 
 <!-- ✅ Download Modal -->
-<div id="downloadModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
+<div id="downloadModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 px-4">
+  <div class="bg-white p-4 sm:p-6 rounded-lg shadow-lg w-full max-w-md mx-auto relative" style="max-width: min(28rem, calc(100vw - 2rem));">
     <button onclick="closeModal('downloadModal')" 
       class="absolute top-2 right-3 text-gray-500 hover:text-red-500 text-xl">&times;</button>
     <h2 class="text-lg font-semibold mb-4 text-center">Enter File Name to Download</h2>
@@ -921,24 +709,13 @@ toggleBtn.addEventListener('click', () => {
       </div>
     </div>
   </div>
-<style>
-.footer-link {
-  color: inherit;
-  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  display: inline-block;
-}
-.footer-link:hover {
-  transform: translateY(-1px);
-  color: #facc15; /* Soft Yellow */
-  text-shadow: 0 0 4px rgba(250, 204, 21, 0.5); /* Subtle glow */
-}
-</style>
 </footer>
 
   <script>
-  // Testimonial carousel
+  // Testimonial carousel with pause-on-hover
 let currentSlide = 0;
 const totalSlides = 3;
+let testimonialInterval;
 
 function goToSlide(slideIndex) {
   currentSlide = slideIndex;
@@ -952,71 +729,35 @@ function goToSlide(slideIndex) {
   });
 }
 
-// Auto-slide testimonials
-setInterval(() => {
-  currentSlide = (currentSlide + 1) % totalSlides;
-  goToSlide(currentSlide);
-}, 4000); // Change every 4 seconds
+// Start auto-slide
+function startTestimonialSlider() {
+  testimonialInterval = setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    goToSlide(currentSlide);
+  }, 5000); // Change every 5 seconds (increased from 4s for better readability)
+}
+
+// Pause on hover for better UX
+const testimonialSection = document.querySelector('#testimonialSlider').parentElement.parentElement;
+testimonialSection.addEventListener('mouseenter', () => {
+  clearInterval(testimonialInterval);
+});
+
+testimonialSection.addEventListener('mouseleave', () => {
+  startTestimonialSlider();
+});
+
+// Start the slider
+startTestimonialSlider();
 
 // EAI chatbot is loaded via chatbot.js - no additional chat widget needed
 </script>
 
 <!-- EAI Chatbot is automatically initialized via chatbot.js -->
 
-<style>
-.pulse-animation {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(73, 160, 120, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(73, 160, 120, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(73, 160, 120, 0);
-  }
-}
-
-/* Subtle hover effect for all buttons */
-button, .fancy-btn, .glow-btn {
-  transition: box-shadow 0.2s, transform 0.2s, background 0.2s, color 0.2s;
-}
-button:hover, .fancy-btn:hover, .glow-btn:hover {
-  box-shadow: 0 2px 12px 0 #49A07833, 0 0 8px #facc15;
-  transform: translateY(-2px) scale(1.03);
-  background: #fef9c3;
-  color: #222;
-}
-
-/* Card hover effect */
-.card, .list-card, .project-card {
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.card:hover, .list-card:hover, .project-card:hover {
-  box-shadow: 0 4px 16px 0 #2563EB22, 0 0 8px #49A07833;
-  transform: translateY(-2px) scale(1.02);
-}
-
-/* Improve color contrast for accessibility */
-.text-gray-600 {
-  color: #222 !important;
-}
-.text-gray-500 {
-  color: #333 !important;
-}
-
-/* Ensure all images have alt text for accessibility */
-img:not([alt]) {
-  outline: 2px dashed #facc15;
-}
-</style>
-
 <!-- Back to Top Button -->
 <button id="backToTop" class="fixed bg-[#49A078] text-white rounded-full shadow-lg flex items-center justify-center text-xl z-40 opacity-0 transition-opacity duration-300 md:flex"
-  style="border: none; outline: none; display: none; bottom: 10rem; right: 2rem; width: 3rem; height: 3rem;">
+  style="border: none; outline: none; display: none; bottom: 11.5rem; right: 2rem; width: 3rem; height: 3rem;">
   <i class="fas fa-arrow-up"></i>
 </button>
 

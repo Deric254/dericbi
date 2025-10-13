@@ -1,0 +1,288 @@
+/* ============================================
+   dericBI Main Stylesheet - Consolidated
+   All custom styles for responsiveness & UX
+   ============================================ */
+
+/* ===== ANIMATIONS ===== */
+@keyframes slide {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-slide {
+  animation: slide 20s linear infinite;
+}
+
+@keyframes dance {
+  0% { transform: rotate(-8deg) scale(1) translateY(0); }
+  20% { transform: rotate(8deg) scale(1.08) translateY(-2px); }
+  40% { transform: rotate(-8deg) scale(1.12) translateY(2px); }
+  60% { transform: rotate(8deg) scale(1.08) translateY(-2px); }
+  80% { transform: rotate(-8deg) scale(1.05) translateY(2px); }
+  100% { transform: rotate(8deg) scale(1) translateY(0); }
+}
+
+.dancing-badge {
+  display: inline-block;
+  animation: dance 1.2s infinite alternate cubic-bezier(.68,-0.55,.27,1.55);
+  box-shadow: 0 0 8px 2px rgba(255, 193, 7, 0.3);
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(73, 160, 120, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(73, 160, 120, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(73, 160, 120, 0);
+  }
+}
+
+/* ===== BUTTON HOVER EFFECTS ===== */
+button, .fancy-btn, .glow-btn {
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s, color 0.2s;
+}
+
+button:hover, .fancy-btn:hover, .glow-btn:hover {
+  box-shadow: 0 2px 12px 0 #49A07833, 0 0 8px #facc15;
+  transform: translateY(-2px) scale(1.03);
+  background: #fef9c3;
+  color: #222;
+}
+
+/* ===== CARD HOVER EFFECTS ===== */
+.card, .list-card, .project-card {
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover, .list-card:hover, .project-card:hover {
+  box-shadow: 0 4px 16px 0 #2563EB22, 0 0 8px #49A07833;
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* ===== NAVIGATION LINK EFFECTS ===== */
+.nav-link {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #facc15;
+  text-shadow: 0 0 4px rgba(250, 204, 21, 0.4);
+}
+
+/* ===== FOOTER LINK STYLING ===== */
+.footer-link {
+  position: relative;
+  transition: all 0.3s ease;
+  display: inline-block;
+  color: inherit;
+}
+
+.footer-link:hover {
+  color: #49A078;
+  transform: translateY(-1px);
+  text-shadow: 0 0 4px rgba(250, 204, 21, 0.5);
+}
+
+/* ===== SOCIAL ICON EFFECTS ===== */
+.group {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.group:hover {
+  transform: translateY(-2px);
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.1);
+  filter: brightness(1.05);
+}
+
+.group:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  filter: brightness(0.98);
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+/* Improve color contrast for better readability */
+.text-gray-600 {
+  color: #222 !important;
+}
+
+.text-gray-500 {
+  color: #333 !important;
+}
+
+/* Visual indicator for images missing alt text */
+img:not([alt]) {
+  outline: 2px dashed #facc15;
+}
+
+/* ===== LINK ENHANCEMENTS ===== */
+a:not(.group):not(.nav-link):not(.footer-link) {
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+a:not(.group):not(.nav-link):not(.footer-link):hover {
+  filter: brightness(1.05);
+  text-decoration: underline;
+}
+
+/* ===== BASE RESPONSIVE FOUNDATION ===== */
+/* Better responsive handling - prevent horizontal scroll */
+html, body {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Prevent content overflow globally */
+* {
+  box-sizing: border-box;
+  max-width: 100vw;
+}
+
+/* Safe area for notched phones (iPhone X+) */
+@supports(padding: max(0px)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* ===== GRID & LAYOUT IMPROVEMENTS ===== */
+/* Improve element distinction in grids */
+.grid > a, .grid > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced readability for text within grid items */
+.grid a span, .grid div span {
+  display: block;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Prevent text overflow utility */
+.text-overflow-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Ultra-small screens (< 360px) - Galaxy Fold, etc. */
+@media (max-width: 360px) {
+  .text-xs {
+    font-size: 0.75rem; /* WCAG minimum 12px for accessibility */
+  }
+  
+  .h-14, .w-14 {
+    height: 3rem;
+    width: 3rem;
+  }
+  
+  .gap-3 {
+    gap: 0.5rem;
+  }
+  
+  .py-2 {
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+  }
+  
+  .px-3 {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  /* Better wrapping for tiny screens */
+  .flex {
+    flex-wrap: wrap;
+  }
+  
+  /* Ensure hamburger menu is always visible */
+  #menu-toggle {
+    display: block !important;
+    margin-left: auto !important;
+    font-size: 1.25rem !important;
+  }
+}
+
+/* Hide brand name only on extremely small screens */
+@media (max-width: 350px) {
+  .brand-text {
+    display: none;
+  }
+}
+
+/* Small phones (< 480px) */
+@media (max-width: 480px) {
+  /* Add subtle borders to help distinguish elements */
+  .grid > a, .grid > div {
+    border-width: 1px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 4px;
+  }
+  
+  /* Better icon/text ratio on small screens */
+  .text-3xl.xs\:text-4xl {
+    font-size: 1.75rem !important;
+  }
+  
+  /* Add micro-spacing between congested elements */
+  .gap-1 {
+    gap: 0.375rem !important;
+  }
+  
+  /* Improve contrast for better readability */
+  .text-xs {
+    font-weight: 500;
+  }
+}
+
+/* Mobile chatbot adjustments */
+@media (max-width: 640px) {
+  #chatbot-toggle {
+    bottom: 6rem !important;
+  }
+  
+  #chatbot-container {
+    bottom: 6rem !important;
+  }
+}
+
+/* ===== TESTIMONIAL DOTS ===== */
+.testimonial-dot {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.testimonial-dot:hover {
+  transform: scale(1.2);
+}
+
+.testimonial-dot.active {
+  background-color: #49A078;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.break-words {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
