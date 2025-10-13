@@ -56,6 +56,104 @@
       color: #facc15;
       text-shadow: 0 0 4px rgba(250, 204, 21, 0.4);
     }
+
+    /* ⭐ Fade-in-up Animation for Sections */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    /* Stagger animation delays */
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+
+    /* ⭐ Bounce-in Animation for Exit Popup */
+    @keyframes bounce-in {
+      0% { 
+        transform: scale(0.8); 
+        opacity: 0; 
+      }
+      50% { 
+        transform: scale(1.05); 
+      }
+      100% { 
+        transform: scale(1); 
+        opacity: 1; 
+      }
+    }
+
+    .animate-bounce-in {
+      animation: bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    /* ⭐ Chatbot Pulse Animation (Enhanced) */
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(73, 160, 120, 0.7);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 0 12px rgba(73, 160, 120, 0);
+        transform: scale(1.05);
+      }
+    }
+
+    /* Target chatbot button when it exists */
+    #dai-chatbot-toggle,
+    .chatbot-toggle,
+    [class*="chatbot"] button[class*="toggle"] {
+      animation: pulse-glow 2.5s infinite;
+      transition: all 0.3s ease;
+    }
+
+    #dai-chatbot-toggle:hover,
+    .chatbot-toggle:hover {
+      animation-play-state: paused;
+      transform: scale(1.1) !important;
+    }
+
+    /* ⭐ Promo Banner Speed Fix */
+    @keyframes slide {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    
+    .animate-slide {
+      animation: slide 35s linear infinite; /* Slowed from default */
+    }
+    
+    .animate-slide:hover {
+      animation-play-state: paused; /* Pause on hover */
+    }
+
+    /* ⭐ Toast Slide-Up Animation */
+    @keyframes slideUp {
+      from {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .animate-slide-up {
+      animation: slideUp 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
   </style>
 
   <!-- ✅ Favicons -->
@@ -581,38 +679,99 @@ window.addEventListener('load', function() {
     <p class="text-base sm:text-lg text-gray-600 mb-2 leading-relaxed">We analyze your precious data so you can make informed decisions.</p>
   </div>
 
-  <div class="flex flex-col md:flex-row justify-center gap-2 sm:gap-4 max-w-xl mx-auto w-full z-10">
-    <!-- ✅ Start Project Modal Trigger -->
+  <!-- ✅ Hero CTA Buttons - Always Horizontal -->
+  <div class="flex flex-row justify-center items-stretch gap-2 xs:gap-3 sm:gap-4 max-w-4xl mx-auto w-full z-10 px-2">
+    <!-- Start Project Button -->
     <button onclick="openModal('projectModal')" 
-  class="group relative w-full md:w-1/2 bg-gray-100 hover:bg-yellow-100 text-gray-500 hover:text-gray-900 px-4 py-2.5 sm:px-6 sm:py-3 rounded font-semibold transition-all duration-200 shadow-md hover:shadow-lg border border-gray-200 hover:border-yellow-300 text-sm md:text-base">
-      <i class="fas fa-rocket mr-2 group-hover:animate-pulse"></i>Start Your Project
-      <span class="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs px-2 py-1 rounded-full font-bold hidden group-hover:block">FREE!</span>
+  class="group relative flex-1 bg-gray-100 hover:bg-yellow-100 text-gray-500 hover:text-gray-900 px-3 py-2.5 xs:px-4 xs:py-3 sm:px-6 sm:py-3.5 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-xl border border-gray-200 hover:border-yellow-400 text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl whitespace-nowrap">
+      <i class="fas fa-rocket mr-1 xs:mr-1.5 sm:mr-2 group-hover:animate-pulse text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl"></i><span class="hidden xs:inline">Start Your </span>Project
+      <span class="absolute -top-1.5 -right-1.5 xs:-top-2 xs:-right-2 bg-yellow-400 text-black text-[10px] xs:text-xs px-1.5 py-0.5 xs:px-2 xs:py-1 rounded-full font-bold group-hover:block hidden">FREE!</span>
     </button>
 
-    <!-- ✅ Download Modal Trigger -->
+    <!-- Download Results Button -->
     <button onclick="openModal('downloadModal')" 
-  class="group relative w-full md:w-1/2 bg-gray-100 hover:bg-yellow-100 text-gray-500 hover:text-gray-900 px-4 py-2.5 sm:px-6 sm:py-3 rounded font-semibold transition-all duration-200 shadow-md hover:shadow-lg border border-gray-200 hover:border-yellow-300 text-sm md:text-base">
-      <i class="fas fa-download mr-2 group-hover:animate-bounce"></i>Download Results
-      <span class="absolute -top-2 -right-2 bg-green-400 text-white text-xs px-2 py-1 rounded-full font-bold hidden group-hover:block">17+</span>
+  class="group relative flex-1 bg-gray-100 hover:bg-yellow-100 text-gray-500 hover:text-gray-900 px-3 py-2.5 xs:px-4 xs:py-3 sm:px-6 sm:py-3.5 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-xl border border-gray-200 hover:border-yellow-400 text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl whitespace-nowrap">
+      <i class="fas fa-download mr-1 xs:mr-1.5 sm:mr-2 group-hover:animate-bounce text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl"></i><span class="hidden xs:inline">Download </span>Results
+      <span class="absolute -top-1.5 -right-1.5 xs:-top-2 xs:-right-2 bg-green-400 text-white text-[10px] xs:text-xs px-1.5 py-0.5 xs:px-2 xs:py-1 rounded-full font-bold group-hover:block hidden">17+</span>
     </button>
-
-    <!-- ✅ Try Yourself Button -->
-    <a href="https://exes-ebi.streamlit.app/" target="_blank"
-  class="group w-full md:w-1/2 bg-gray-100 hover:bg-yellow-100 text-gray-500 hover:text-gray-900 px-4 py-2.5 sm:px-6 sm:py-3 rounded font-semibold transition-all duration-200 shadow-md hover:shadow-lg border border-gray-200 hover:border-yellow-300 flex items-center justify-center text-sm md:text-base">
-      <i class="fas fa-flask mr-2"></i>Try Yourself
+  </div>
+  
+  <!-- Secondary CTA: Try Yourself - Now a Button -->
+  <div class="mt-3 xs:mt-4 text-center px-2">
+    <a href="https://exes-ebi.streamlit.app/" target="_blank" class="inline-flex items-center justify-center bg-gray-50 hover:bg-yellow-50 text-gray-600 hover:text-gray-900 px-4 xs:px-5 sm:px-6 md:px-8 py-2 xs:py-2.5 sm:py-3 rounded-lg font-medium transition-all shadow-sm hover:shadow-md border border-gray-200 hover:border-yellow-300 text-xs xs:text-sm sm:text-base md:text-lg">
+      <i class="fas fa-flask mr-1.5 xs:mr-2"></i>Try it yourself for free
     </a>
   </div>
 </section>
 
+<!-- ⭐ Social Proof Trust Bar (NEW) -->
+<section class="w-full bg-white py-3 xs:py-4 px-4 border-y border-gray-200 shadow-sm">
+  <div class="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-3 xs:gap-4 sm:gap-6 text-xs xs:text-sm text-gray-600">
+    <div class="flex items-center gap-1.5 xs:gap-2 hover:scale-105 transition-transform">
+      <i class="fas fa-check-circle text-green-600 text-base xs:text-lg"></i>
+      <span><strong class="text-gray-800">40+</strong> Projects</span>
+    </div>
+    <div class="flex items-center gap-1.5 xs:gap-2 hover:scale-105 transition-transform">
+      <i class="fas fa-users text-blue-600 text-base xs:text-lg"></i>
+      <span><strong class="text-gray-800">100+</strong> Happy Clients</span>
+    </div>
+    <div class="flex items-center gap-1.5 xs:gap-2 hover:scale-105 transition-transform">
+      <i class="fas fa-clock text-yellow-600 text-base xs:text-lg"></i>
+      <span><strong class="text-gray-800">48hrs</strong> Delivery</span>
+    </div>
+    <div class="flex items-center gap-1.5 xs:gap-2 hover:scale-105 transition-transform">
+      <i class="fas fa-star text-yellow-400 text-base xs:text-lg"></i>
+      <span><strong class="text-gray-800">5.0</strong> Rating</span>
+    </div>
+  </div>
+</section>
+
+<!-- 🎯 Value Proposition Cards (NEW) -->
+<section class="w-full bg-gray-50 py-6 xs:py-8 sm:py-10 px-4 fade-in-up">
+  <div class="max-w-6xl mx-auto">
+    <h3 class="text-xl xs:text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-4 xs:mb-6 sm:mb-8">Why Choose dericBI?</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 xs:gap-5 sm:gap-6">
+      
+      <!-- Card 1: Speed -->
+      <div class="bg-white p-4 xs:p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 fade-in-up delay-1">
+        <div class="w-10 h-10 xs:w-12 xs:h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-3 xs:mb-4">
+          <i class="fas fa-bolt text-yellow-600 text-xl xs:text-2xl"></i>
+        </div>
+        <h4 class="text-base xs:text-lg font-bold text-gray-800 mb-2">⚡ Lightning Fast</h4>
+        <p class="text-gray-600 text-xs xs:text-sm leading-relaxed">Get your PowerBI dashboard or Excel analysis delivered in just <strong>48 hours</strong>. No waiting weeks for insights!</p>
+      </div>
+
+      <!-- Card 2: Affordable -->
+      <div class="bg-white p-4 xs:p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 fade-in-up delay-2">
+        <div class="w-10 h-10 xs:w-12 xs:h-12 bg-green-100 rounded-full flex items-center justify-center mb-3 xs:mb-4">
+          <i class="fas fa-coins text-green-600 text-xl xs:text-2xl"></i>
+        </div>
+        <h4 class="text-base xs:text-lg font-bold text-gray-800 mb-2">💰 Small Business Friendly</h4>
+        <p class="text-gray-600 text-xs xs:text-sm leading-relaxed">Starting from just <strong>KSh 100</strong>. Professional analytics without the enterprise price tag.</p>
+      </div>
+
+      <!-- Card 3: Expert -->
+      <div class="bg-white p-4 xs:p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 fade-in-up delay-3">
+        <div class="w-10 h-10 xs:w-12 xs:h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3 xs:mb-4">
+          <i class="fas fa-user-graduate text-blue-600 text-xl xs:text-2xl"></i>
+        </div>
+        <h4 class="text-base xs:text-lg font-bold text-gray-800 mb-2">🎓 Expert Guidance</h4>
+        <p class="text-gray-600 text-xs xs:text-sm leading-relaxed"><strong>40+ successful projects</strong>. We don't just analyze—we teach you to understand your data.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- 🚀 Tujengane Programs (Professionally Styled) -->
 <section class="w-full bg-gradient-to-br from-[#e0f7fa] to-[#f0fdf4] py-4 sm:py-6 md:py-8 border-t border-green-200">
-  <div class="max-w-7xl mx-auto flex flex-col items-center text-center w-full px-4 sm:px-6 md:px-8">
-  <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-[#2563EB] mb-6 flex items-center justify-center gap-2 leading-tight tracking-wide"> 
-      <span>🎓</span> Tujengane Digital skills
-      <span class="dancing-badge ml-2 px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-pink-400 via-yellow-300 to-green-400 text-white shadow-lg border border-white">NEW</span>
-    </h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 w-full px-0">
+  <div class="w-full max-w-7xl mx-auto px-2 xs:px-3 sm:px-4">
+    <div class="flex flex-col items-center text-center w-full">
+      <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-[#2563EB] mb-6 flex flex-wrap items-center justify-center gap-2 leading-tight tracking-wide"> 
+        <span>🎓</span> Tujengane Digital skills
+        <span class="dancing-badge px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-pink-400 via-yellow-300 to-green-400 text-white shadow-lg border border-white">NEW</span>
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full">
       <!-- Modern Card 1: Computer Literacy -->
   <div class="rounded-2xl shadow-lg border-0 bg-gradient-to-br from-green-50 via-white to-green-100 p-2 sm:p-4 flex flex-col md:flex-row items-center md:items-stretch overflow-hidden">
   <div class="flex items-center justify-center md:justify-start w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-green-300 to-green-500 mr-2 sm:mr-4 mb-2 md:mb-0">
@@ -625,10 +784,6 @@ window.addEventListener('load', function() {
           </div>
           <span class="text-gray-700 text-sm mb-1">Master essential computer skills for work and life.</span>
           <span class="text-xs text-gray-500 mb-2">Covers Windows, Office, internet, email, and basic troubleshooting. Perfect for beginners and business owners.</span>
-          <div class="flex gap-2 flex-wrap mt-1">
-            <a href="https://chat.whatsapp.com/HrYrcCRLcVUKNXCehfzioZ" target="_blank" class="bg-green-200 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-4 py-3 rounded font-semibold text-sm flex items-center gap-1.5 shadow-md hover:shadow-lg transition-all border border-green-300 hover:border-yellow-300"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
-            <a href="https://tujengane.netlify.app/tujengane%20computer%20literacy/computerliteracy" target="_blank" class="bg-green-200 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-4 py-3 rounded font-semibold text-sm shadow-md hover:shadow-lg transition-all border border-green-300 hover:border-yellow-300">Course Page</a>
-          </div>
         </div>
       </div>
       <!-- Modern Card 2: Computer Basics -->
@@ -643,10 +798,6 @@ window.addEventListener('load', function() {
           </div>
           <span class="text-gray-700 text-sm mb-1">Start your digital journey with foundational computer knowledge.</span>
           <span class="text-xs text-gray-500 mb-2">Learn mouse, keyboard, files, folders, and simple navigation. Ideal for total beginners and youth.</span>
-          <div class="flex gap-2 flex-wrap mt-1">
-            <a href="https://tujengane.netlify.app/computer%20basicss/computerbasicss.html" target="_blank" class="bg-blue-200 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-4 py-3 rounded font-semibold text-sm shadow-md hover:shadow-lg transition-all border border-blue-300 hover:border-yellow-300">Course Page</a>
-            <button disabled class="bg-gray-100 text-gray-500 px-4 py-3 rounded font-semibold text-sm flex items-center gap-1.5 cursor-not-allowed opacity-50 shadow-sm border border-gray-200"><i class="fab fa-whatsapp"></i> WhatsApp (Upcoming)</button>
-          </div>
         </div>
       </div>
       <!-- Modern Card 3: Data Basics -->
@@ -661,10 +812,6 @@ window.addEventListener('load', function() {
           </div>
           <span class="text-gray-700 text-sm mb-1">Learn the essentials of working with data for business and personal growth.</span>
           <span class="text-xs text-gray-500 mb-2">Covers data collection, cleaning, storage, and sharing. No experience needed—great for small businesses and students.</span>
-          <div class="flex gap-2 flex-wrap mt-1">
-            <a href="https://chat.whatsapp.com/DHO6xjyr8xu6x5opHRG7fl" target="_blank" class="bg-yellow-200 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-4 py-3 rounded font-semibold text-sm flex items-center gap-1.5 shadow-md hover:shadow-lg transition-all border border-yellow-300 hover:border-yellow-300"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
-            <a href="https://tujengane.netlify.app/tujengane%20data%20basics/databasics" target="_blank" class="bg-yellow-200 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-4 py-3 rounded font-semibold text-sm shadow-md hover:shadow-lg transition-all border border-yellow-300 hover:border-yellow-300">Course Page</a>
-          </div>
         </div>
       </div>
       <!-- Modern Card 4: Analyst Pro -->
@@ -679,61 +826,93 @@ window.addEventListener('load', function() {
           </div>
           <span class="text-gray-700 text-sm mb-1">Advance your analytics expertise with practical, professional lessons.</span>
           <span class="text-xs text-gray-500 mb-2">Learn Excel, PowerBI, SQL, and real-world analytics projects. For aspiring analysts and professionals.</span>
-          <div class="flex gap-2 flex-wrap mt-1">
-            <a href="https://chat.whatsapp.com/BRpUgo7QD8rFtvOslAveNS" target="_blank" class="bg-purple-200 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-4 py-3 rounded font-semibold text-sm flex items-center gap-1.5 shadow-md hover:shadow-lg transition-all border border-purple-300 hover:border-yellow-300"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
-            <a href="https://tujengane.netlify.app/tujengane%20analyst%20pro/analystpro" target="_blank" class="bg-purple-200 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-4 py-3 rounded font-semibold text-sm shadow-md hover:shadow-lg transition-all border border-purple-300 hover:border-yellow-300">Course Page</a>
-          </div>
         </div>
       </div>
     </div>
-    <div class="mt-6 sm:mt-8">
-      <a href="https://tujengane.netlify.app/" target="_blank" class="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded font-semibold text-base shadow-md hover:shadow-lg transition-all border border-gray-300 hover:border-gray-400 w-full md:w-auto">🌐 More: Tujengane Digital skills </a>
+    <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center w-full">
+      <a href="https://tujengane.netlify.app/" target="_blank" class="bg-gray-100 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-6 py-3 rounded font-semibold text-base shadow-md hover:shadow-lg transition-all border border-gray-300 hover:border-yellow-400 w-full sm:w-auto text-center">
+        � Explore All Courses & Join
+      </a>
+      <a href="https://chat.whatsapp.com/DHO6xjyr8xu6x5opHRG7fl" target="_blank" class="bg-gray-100 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-6 py-3 rounded font-semibold text-base shadow-md hover:shadow-lg transition-all border border-gray-300 hover:border-yellow-400 w-full sm:w-auto flex items-center justify-center gap-2">
+        <i class="fab fa-whatsapp text-green-600"></i> Join WhatsApp Community
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ✅ Quick Testimonials Carousel -->
-<section class="relative bg-white py-6 md:py-10 px-0 sm:px-2 md:px-4 border-t border-gray-100 w-full overflow-hidden">
-  <div class="mx-auto w-full">
-    <div class="relative overflow-hidden">
-      <div id="testimonialSlider" class="flex transition-transform duration-500 ease-in-out w-full">
-        <!-- Testimonial 1 -->
-        <div class="w-full flex-shrink-0 text-center px-4">
-          <div class="flex items-center justify-center mb-2">
-            <div class="flex text-yellow-400">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
+<!-- ⭐ Enhanced Testimonials Section (NEW) -->
+<section class="w-full bg-gradient-to-br from-blue-50 to-green-50 py-8 xs:py-10 sm:py-12 px-4 fade-in-up">
+  <div class="max-w-6xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-6 xs:mb-8">
+      <h3 class="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-800 mb-2 xs:mb-3">What Our Clients Say</h3>
+      <div class="flex items-center justify-center gap-1 text-yellow-400 text-xl xs:text-2xl mb-2">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p class="text-gray-600 text-sm xs:text-base font-medium">5.0 rating from 50+ happy clients</p>
+    </div>
+    
+    <!-- Testimonials Grid (2 cards on desktop, stack on mobile) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 xs:gap-5 sm:gap-6 mb-6">
+      
+      <!-- Testimonial Card 1: Sarah M. -->
+      <div class="bg-white p-5 xs:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 fade-in-up delay-1">
+        <div class="flex items-center gap-3 xs:gap-4 mb-4">
+          <div class="w-10 h-10 xs:w-12 xs:h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <span class="text-green-600 font-bold text-lg xs:text-xl">SM</span>
           </div>
-          <p class="text-gray-600 italic text-lg mb-2">EXES transformed our messy sales data into clear insights. Revenue increased 40% in 3 months!</p>
-          <p class="text-xs text-gray-500">- Sarah M., Retail Business Owner</p>
+          <div class="flex-1 min-w-0">
+            <div class="font-bold text-gray-800 text-sm xs:text-base truncate">Sarah M.</div>
+            <div class="text-xs xs:text-sm text-gray-500 truncate">Retail Business Owner</div>
+          </div>
         </div>
-        <!-- Testimonial 2 -->
-        <div class="w-full flex-shrink-0 text-center px-4">
-          <div class="flex items-center justify-center mb-2">
-            <div class="flex text-yellow-400">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-          </div>
-          <p class="text-gray-600 italic text-lg mb-2">Professional PowerBI dashboard delivered in 48 hours. Exactly what we needed!</p>
-          <p class="text-xs text-gray-500">- John K., Restaurant Chain</p>
-        </div>
-        <!-- Testimonial 3 -->
-        <div class="w-full flex-shrink-0 text-center px-4">
-          <div class="flex items-center justify-center mb-2">
-            <div class="flex text-yellow-400">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-          </div>
-          <p class="text-gray-600 italic text-lg mb-2">From Excel chaos to automated tracking system. Deric's expertise saved us hours daily.</p>
-          <p class="text-xs text-gray-500">- Mary L., SME Owner</p>
+        <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"EXES transformed our messy sales data into clear insights. Revenue increased 40% in 3 months!"</p>
+        <div class="flex text-yellow-400 text-sm xs:text-base">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
       </div>
-      <!-- Navigation Dots -->
-      <div class="flex justify-center mt-4 space-x-2">
-        <button onclick="goToSlide(0)" class="w-2 h-2 rounded-full bg-[#49A078] testimonial-dot active"></button>
-        <button onclick="goToSlide(1)" class="w-2 h-2 rounded-full bg-gray-300 testimonial-dot"></button>
-        <button onclick="goToSlide(2)" class="w-2 h-2 rounded-full bg-gray-300 testimonial-dot"></button>
+      
+      <!-- Testimonial Card 2: John K. -->
+      <div class="bg-white p-5 xs:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 fade-in-up delay-2">
+        <div class="flex items-center gap-3 xs:gap-4 mb-4">
+          <div class="w-10 h-10 xs:w-12 xs:h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <span class="text-blue-600 font-bold text-lg xs:text-xl">JK</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="font-bold text-gray-800 text-sm xs:text-base truncate">John K.</div>
+            <div class="text-xs xs:text-sm text-gray-500 truncate">Restaurant Chain</div>
+          </div>
+        </div>
+        <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"Professional PowerBI dashboard delivered in 48 hours. Exactly what we needed!"</p>
+        <div class="flex text-yellow-400 text-sm xs:text-base">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
       </div>
+
+      <!-- Testimonial Card 3: Mary L. -->
+      <div class="bg-white p-5 xs:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 fade-in-up delay-3 md:col-span-2 md:max-w-lg md:mx-auto">
+        <div class="flex items-center gap-3 xs:gap-4 mb-4">
+          <div class="w-10 h-10 xs:w-12 xs:h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <span class="text-purple-600 font-bold text-lg xs:text-xl">ML</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="font-bold text-gray-800 text-sm xs:text-base truncate">Mary L.</div>
+            <div class="text-xs xs:text-sm text-gray-500 truncate">SME Owner</div>
+          </div>
+        </div>
+        <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"From Excel chaos to automated tracking system. Deric's expertise saved us hours daily."</p>
+        <div class="flex text-yellow-400 text-sm xs:text-base">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+      </div>
+    </div>
+    
+    <!-- View More Button -->
+    <div class="text-center">
+      <a href="my-projects.html" class="inline-flex items-center gap-2 bg-white hover:bg-yellow-100 text-gray-800 px-5 xs:px-6 py-2.5 xs:py-3 rounded-lg font-semibold shadow-md hover:shadow-xl transition-all border border-gray-300 hover:border-yellow-400 text-sm xs:text-base">
+        <i class="fas fa-trophy text-yellow-500"></i> 
+        <span>See All Success Stories</span>
+      </a>
     </div>
   </div>
 </section>
@@ -820,8 +999,8 @@ window.addEventListener('load', function() {
 
 
 <!-- How It Works Section -->
-<section class="relative py-10 md:py-16 px-4 sm:px-6 md:px-8 bg-[#e8f6ed] w-full">
-  <div class="mx-auto w-full">
+<section class="relative py-6 xs:py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 bg-[#e8f6ed] w-full">
+  <div class="mx-auto w-full max-w-7xl">
     <h2 class="text-3xl font-bold mb-10 text-center">How It Works</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left w-full">
       <!-- Step 1: Upload -->
@@ -862,10 +1041,49 @@ window.addEventListener('load', function() {
   </div>
 </section>
 
+<!-- ⭐ Custom Training CTA Card (fills visual gap) -->
+<div class="w-full bg-gradient-to-br from-yellow-50 via-orange-50 to-yellow-100 border-t border-b border-yellow-200">
+  <div class="max-w-7xl mx-auto px-4 py-4 xs:py-5 sm:py-6">
+    <div class="bg-white rounded-xl shadow-lg p-4 xs:p-5 sm:p-6 border-2 border-yellow-300 hover:border-yellow-400 transition-all hover:shadow-xl">
+      <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+        <!-- Icon -->
+        <div class="flex-shrink-0 w-14 h-14 xs:w-16 xs:h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+          <i class="fas fa-chalkboard-teacher text-white text-2xl xs:text-3xl"></i>
+        </div>
+        
+        <!-- Content -->
+        <div class="flex-1 text-center sm:text-left">
+          <h3 class="text-lg xs:text-xl font-bold text-gray-800 mb-1 flex items-center justify-center sm:justify-start gap-2">
+            <span>🎓 Need Custom Training?</span>
+          </h3>
+          <p class="text-sm xs:text-base text-gray-600 mb-3">
+            Tailored Excel, PowerBI, SQL, or Python training for your team. <strong>From KSh 5,000/session</strong>.
+          </p>
+          <div class="flex flex-wrap gap-2 justify-center sm:justify-start">
+            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-semibold">✓ On-site or Remote</span>
+            <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-semibold">✓ Custom Curriculum</span>
+            <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full font-semibold">✓ Certificate Provided</span>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="flex-shrink-0">
+          <a href="https://wa.me/254791360805?text=Hi%20dericBI!%20I'm%20interested%20in%20custom%20training%20for%20my%20team.%20Here%20are%20the%20details:%0A%0A📊%20Training%20Topic:%20%0A👥%20Number%20of%20Participants:%20%0A📅%20Preferred%20Schedule:%20%0A📍%20Location%20(On-site/Remote):%20%0A%0ALooking%20forward%20to%20your%20response!" 
+             target="_blank" 
+             class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black font-bold px-5 xs:px-6 py-3 xs:py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 text-sm xs:text-base whitespace-nowrap">
+            <i class="fab fa-whatsapp text-xl"></i>
+            <span>Request Training</span>
+            <i class="fas fa-arrow-right text-sm"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- ✅ Embedded EXES Add-ons -->
-  <section class="bg-gradient-to-br from-gray-100 via-white to-green-50 py-8 md:py-12 px-4 text-sm w-full">
-  <div class="mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+  <section class="bg-gradient-to-br from-gray-100 via-white to-green-50 py-4 xs:py-6 sm:py-8 md:py-10 px-4 text-sm w-full">
+  <div class="mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 w-full max-w-7xl">
       <!-- FAQ: Modern Card -->
       <div class="flex flex-col h-full justify-between">
         <div>
@@ -901,20 +1119,21 @@ window.addEventListener('load', function() {
               </div>
               <div>
                 <h4 class="font-semibold text-[#49A078] mb-1">How do I get started?</h4>
-                <p class="text-gray-700 flex flex-col gap-2">
-                  <span class="font-semibold">Analytics:</span>
-                  <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank" class="bg-blue-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-sm font-semibold transition-all inline-block">Submit your data here</a>
-                  <span class="font-semibold">Education:</span>
-                  <a href="https://tujengane.netlify.app/" target="_blank" class="bg-green-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-sm font-semibold transition-all inline-block">Join Tujengane Data Basics</a>
-                  <span class="font-semibold">Need setup?</span>
-                  <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7" target="_blank" class="bg-blue-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-sm font-semibold transition-all inline-block">Request tracking setup</a>
-                </p>
+                <p class="text-gray-700 mb-3">Choose your path: Analytics projects, data tracking setup, or learning courses.</p>
+                <div class="flex flex-col sm:flex-row gap-2">
+                  <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank" class="bg-gray-100 hover:bg-yellow-100 text-gray-700 hover:text-gray-900 px-4 py-2 rounded text-sm font-semibold transition-all inline-flex items-center justify-center gap-1 border border-gray-300 hover:border-yellow-400 shadow-sm hover:shadow">
+                    <i class="fas fa-chart-bar"></i> Start Analytics Project
+                  </a>
+                  <a href="https://wa.me/254791360805" target="_blank" class="bg-gray-100 hover:bg-yellow-100 text-gray-700 hover:text-gray-900 px-4 py-2 rounded text-sm font-semibold transition-all inline-flex items-center justify-center gap-1 border border-gray-300 hover:border-yellow-400 shadow-sm hover:shadow">
+                    <i class="fab fa-whatsapp text-green-600"></i> WhatsApp Us
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <!-- Corporates Card moved here, aligned bottom -->
-        <div class="mt-8">
+        <div class="mt-4 xs:mt-5 sm:mt-6">
           <div class="bg-gradient-to-br from-purple-50 via-white to-purple-100 rounded-xl shadow-md p-5 border border-purple-100">
             <span class="font-bold text-[#2563EB] text-lg flex items-center gap-2"><i class="fas fa-building"></i> Corporates</span>
             <ul class="mt-2 space-y-2 text-gray-700">
@@ -1085,8 +1304,124 @@ window.addEventListener('load', function() {
   </div>
 </footer>
 
+<!-- ⭐ Temporary Toast Notification (Shows for 5 seconds then disappears) -->
+<div id="toastNotification" class="fixed bottom-6 right-6 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-4 xs:px-5 py-3 xs:py-4 rounded-xl shadow-2xl z-50 hidden transition-all duration-500 transform translate-y-0 max-w-sm">
+  <div class="flex items-center gap-3">
+    <div class="flex-shrink-0">
+      <i class="fas fa-rocket text-2xl"></i>
+    </div>
+    <div class="flex-1 min-w-0">
+      <p class="font-bold text-sm xs:text-base mb-1">🚀 Ready to Transform Your Data?</p>
+      <p class="text-xs opacity-90">Get started in just 2 minutes!</p>
+    </div>
+    <button onclick="closeToast()" class="flex-shrink-0 text-black hover:text-gray-700 text-xl leading-none w-6 h-6 flex items-center justify-center rounded-full hover:bg-black/10 transition-all">
+      &times;
+    </button>
+  </div>
+  <div class="flex gap-2 mt-3">
+    <button onclick="openModal('projectModal'); closeToast();" class="flex-1 bg-black hover:bg-gray-800 text-yellow-400 px-3 py-1.5 rounded-lg font-semibold text-xs transition-all hover:scale-105 shadow-md">
+      <i class="fas fa-rocket mr-1"></i>Start Now
+    </button>
+    <button onclick="openModal('downloadModal'); closeToast();" class="flex-1 bg-white hover:bg-gray-100 text-black px-3 py-1.5 rounded-lg font-semibold text-xs transition-all hover:scale-105 shadow-md">
+      <i class="fas fa-download mr-1"></i>Download
+    </button>
+  </div>
+</div>
+
+<!-- ⭐ Exit-Intent Popup (NEW) -->
+<div id="exitPopup" class="fixed inset-0 bg-black bg-opacity-60 z-[100] hidden flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 p-6 xs:p-8 relative animate-bounce-in">
+    <button onclick="closeExitPopup()" class="absolute top-3 right-3 xs:top-4 xs:right-4 text-gray-400 hover:text-gray-600 text-2xl xs:text-3xl leading-none w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-all">&times;</button>
+    
+    <div class="text-center">
+      <div class="w-14 h-14 xs:w-16 xs:h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3 xs:mb-4">
+        <i class="fas fa-gift text-yellow-600 text-2xl xs:text-3xl"></i>
+      </div>
+      <h3 class="text-xl xs:text-2xl font-bold text-gray-800 mb-2">Wait! Don't Leave Yet 🎁</h3>
+      <p class="text-gray-600 mb-5 xs:mb-6 text-sm xs:text-base">Get a <strong class="text-green-600">FREE data health check</strong> worth KSh 500!</p>
+      
+      <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 xs:p-4 mb-5 xs:mb-6 text-left">
+        <p class="text-xs xs:text-sm text-gray-700 space-y-1">
+          <span class="flex items-start gap-2"><i class="fas fa-check-circle text-green-600 mt-0.5"></i><span>Find hidden issues in your data</span></span>
+          <span class="flex items-start gap-2"><i class="fas fa-check-circle text-green-600 mt-0.5"></i><span>Get personalized recommendations</span></span>
+          <span class="flex items-start gap-2"><i class="fas fa-check-circle text-green-600 mt-0.5"></i><span>No credit card required</span></span>
+        </p>
+      </div>
+      
+      <button onclick="openModal('projectModal'); closeExitPopup();" class="w-full bg-yellow-400 hover:bg-yellow-500 text-black px-5 xs:px-6 py-2.5 xs:py-3 rounded-lg font-bold text-base xs:text-lg shadow-lg hover:shadow-xl transition-all mb-3 hover:scale-105">
+        Claim Free Check Now
+      </button>
+      <button onclick="closeExitPopup()" class="text-gray-500 hover:text-gray-700 text-xs xs:text-sm underline">No thanks, I'll pass</button>
+    </div>
+  </div>
+</div>
+
+<!-- ⭐ Scroll Progress Bar (NEW) -->
+<div id="scrollProgress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-yellow-400 via-green-400 to-blue-400 z-50 transition-all duration-150" style="width: 0%"></div>
+
   <script>
-  // Testimonial carousel with pause-on-hover
+  // ⭐ Temporary Toast Notification Script
+  let toastShown = sessionStorage.getItem('toastShown') === 'true';
+  let toastTimeout;
+
+  function showToast() {
+    const toast = document.getElementById('toastNotification');
+    if (!toastShown) {
+      toast.classList.remove('hidden');
+      toast.classList.add('animate-slide-up');
+      
+      // Auto-hide after 5 seconds
+      toastTimeout = setTimeout(() => {
+        closeToast();
+      }, 5000);
+      
+      sessionStorage.setItem('toastShown', 'true');
+      toastShown = true;
+    }
+  }
+
+  function closeToast() {
+    const toast = document.getElementById('toastNotification');
+    toast.classList.add('opacity-0', 'translate-y-4');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 300);
+    if (toastTimeout) clearTimeout(toastTimeout);
+  }
+
+  // Show toast on ANY scroll (only once per session)
+  let toastTriggered = false;
+  window.addEventListener('scroll', () => {
+    if (!toastTriggered && window.scrollY > 50 && !toastShown) {
+      showToast();
+      toastTriggered = true;
+    }
+  });
+
+  // ⭐ Exit-Intent Popup Script
+  let exitPopupShown = sessionStorage.getItem('exitPopupShown') === 'true';
+
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY < 10 && !exitPopupShown && window.scrollY > 300) {
+      document.getElementById('exitPopup').classList.remove('hidden');
+      exitPopupShown = true;
+      sessionStorage.setItem('exitPopupShown', 'true');
+    }
+  });
+
+  function closeExitPopup() {
+    document.getElementById('exitPopup').classList.add('hidden');
+  }
+
+  // ⭐ Scroll Progress Bar Script
+  window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById('scrollProgress').style.width = scrolled + '%';
+  });
+
+  // Testimonial carousel with pause-on-hover (LEGACY - can be removed since we upgraded testimonials)
 let currentSlide = 0;
 const totalSlides = 3;
 let testimonialInterval;
