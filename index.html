@@ -108,7 +108,7 @@
 <body class="bg-white text-gray-800 min-h-screen flex flex-col">
 
 <!-- ✅ Responsive Navbar - Fixed at Top -->
-<nav class="bg-[#49A078] text-white px-2 xs:px-3 sm:px-4 py-2 xs:py-3 shadow-lg fixed top-0 left-0 right-0 z-50 w-full bg-gradient-to-r from-[#49A078] to-[#3D8069]" role="navigation" aria-label="Main Navigation">
+<nav class="bg-[#49A078] text-white px-2 xs:px-3 sm:px-4 py-2 xs:py-3 shadow-lg fixed top-0 left-0 right-0 z-50 w-full bg-gradient-to-r from-[#49A078] to-[#3D8069] border-b border-gray-300" role="navigation" aria-label="Main Navigation">
   <div class="w-full max-w-7xl mx-auto flex items-center justify-between gap-2 xs:gap-3 sm:gap-4">
 
     <!-- ✅ Logo & Brand -->
@@ -136,59 +136,30 @@
     </div>
 
     <!-- ✅ Desktop Nav Links -->
-    <ul class="hidden md:flex gap-3 text-sm font-medium items-center shrink-0">
-      <li><a href="index.html" class="nav-link font-bold px-4 py-2 rounded-lg bg-[#3D8069]/80 shadow-lg text-yellow-300 border-2 border-yellow-300/60 hover:border-yellow-300 transition-all hover:shadow-xl hover:scale-105 active:scale-95">Home</a></li>
-      <li><a href="services.html" class="nav-link bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all shadow-md border-2 border-white/30 hover:border-white/50 hover:shadow-lg hover:scale-105 active:scale-95">Services</a></li>
-      <li><a href="My-projects.html" class="nav-link bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all shadow-md border-2 border-white/30 hover:border-white/50 hover:shadow-lg hover:scale-105 active:scale-95">Projects</a></li>
-      <li><a href="contact.html" class="nav-link bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all shadow-md border-2 border-white/30 hover:border-white/50 hover:shadow-lg hover:scale-105 active:scale-95">Contact</a></li>
-      <!--<li><a href="about.html" class="nav-link bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all shadow-md border-2 border-white/30 hover:border-white/50 hover:shadow-lg hover:scale-105 active:scale-95">About Us</a></li>
-      <li><a href="terms.html" class="nav-link bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all shadow-md border-2 border-white/30 hover:border-white/50 hover:shadow-lg hover:scale-105 active:scale-95">Terms & Conditions</a></li>-->
-      <li class="relative">
-        <a href="https://tujengane.netlify.app/" class="nav-link bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all shadow-md border-2 border-white/30 hover:border-white/50 hover:shadow-lg hover:scale-105 active:scale-95 inline-flex items-center gap-1">
-          Tujengane
-          <span class="relative inline-flex items-center justify-center w-10 h-10 -ml-1">
-            <!-- Sunflower outer glow -->
-            <span class="absolute inset-0 bg-gradient-to-br from-[#FCD34D] to-[#F59E0B] rounded-full opacity-40 blur-[2px] animate-pulse"></span>
-            <!-- Sunflower badge -->
-            <span class="relative flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] rounded-full shadow-lg border-2 border-white" style="box-shadow: 0 0 12px rgba(251, 191, 36, 0.5);">
-              <!-- Inner brown center -->
-              <span class="absolute inset-[3px] rounded-full bg-gradient-to-br from-[#B45309] to-[#78350F] flex items-center justify-center">
-                <span class="text-[9px] font-black text-white leading-none">50%</span>
-              </span>
-            </span>
-          </span>
-        </a>
-      </li>
+    <ul class="hidden md:flex gap-6 text-sm font-medium items-center shrink-0">
+      <li><a href="index.html" class="nav-link font-bold px-3 py-2 rounded-md bg-[#3D8069]/50 shadow-inner text-yellow-300 border-b-2 border-yellow-300">Home</a></li>
+      <li><a href="services.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Services</a></li>
+      <li><a href="My-projects.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Projects</a></li>
+      <li><a href="contact.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Contact</a></li>
+      <!--<li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>
+      <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms & Conditions</a></li>-->
+      <li><a href="https://tujengane.netlify.app/" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Tujengane</a></li>
     </ul>
 
     <!-- ✅ Hamburger Menu -->
     <div class="relative">
       <button id="menu-toggle" class="block md:hidden text-xl xs:text-2xl focus:outline-none ml-1 xs:ml-2 sm:ml-3 shrink-0 bg-[#3D8069]/50 hover:bg-[#3D8069]/70 p-2 rounded-md shadow-md transition-all">☰</button>
       
-      <!-- ✅ Mobile Menu Dropdown -->
-      <div id="mobile-menu" class="absolute right-0 top-full mt-2 w-56 max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-[#3e8865] rounded-lg shadow-2xl z-50">
-        <div class="py-2 px-3">
-          <a href="index.html" class="nav-link block py-2.5 rounded-lg my-1 px-3 transition-all bg-[#367659]/50 font-bold text-yellow-300 shadow-md border border-yellow-300/50 hover:bg-[#367659]/70 hover:border-yellow-300/70 hover:shadow-lg text-sm">Home</a>
-          <a href="services.html" class="nav-link block py-2.5 rounded-lg my-1 px-3 transition-all bg-[#367659]/40 shadow-md border border-white/30 hover:bg-[#367659]/60 hover:border-white/50 hover:shadow-lg text-sm">Services</a>
-          <a href="My-projects.html" class="nav-link block py-2.5 rounded-lg my-1 px-3 transition-all bg-[#367659]/40 shadow-md border border-white/30 hover:bg-[#367659]/60 hover:border-white/50 hover:shadow-lg text-sm">Projects</a>
-          <a href="contact.html" class="nav-link block py-2.5 rounded-lg my-1 px-3 transition-all bg-[#367659]/40 shadow-md border border-white/30 hover:bg-[#367659]/60 hover:border-white/50 hover:shadow-lg text-sm">Contact</a>
-          <a href="about.html" class="nav-link block py-2.5 rounded-lg my-1 px-3 transition-all bg-[#367659]/40 shadow-md border border-white/30 hover:bg-[#367659]/60 hover:border-white/50 hover:shadow-lg text-sm">About Us</a>
-          <a href="terms.html" class="nav-link block py-2.5 rounded-lg my-1 px-3 transition-all bg-[#367659]/40 shadow-md border border-white/30 hover:bg-[#367659]/60 hover:border-white/50 hover:shadow-lg text-sm">Terms</a>
-          <a href="https://tujengane.netlify.app/" class="nav-link block py-2.5 rounded-lg my-1 px-3 transition-all bg-[#367659]/40 shadow-md border border-white/30 hover:bg-[#367659]/60 hover:border-white/50 hover:shadow-lg text-sm inline-flex items-center gap-2">
-      Tujengane
-      <span class="relative inline-flex items-center justify-center w-10 h-10">
-        <!-- Sunflower outer glow -->
-        <span class="absolute inset-0 bg-gradient-to-br from-[#FCD34D] to-[#F59E0B] rounded-full opacity-40 blur-[2px] animate-pulse"></span>
-        <!-- Sunflower badge -->
-        <span class="relative flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[#FCD34D] via-[#FBBF24] to-[#F59E0B] rounded-full shadow-lg border-2 border-white" style="box-shadow: 0 0 12px rgba(251, 191, 36, 0.5);">
-          <!-- Inner brown center -->
-          <span class="absolute inset-[3px] rounded-full bg-gradient-to-br from-[#B45309] to-[#78350F] flex items-center justify-center">
-            <span class="text-[9px] font-black text-white leading-none">50%</span>
-          </span>
-        </span>
-      </span>
-            Tujengane
-          </a>
+      <!-- ✅ Mobile Menu Dropdown - Compact -->
+      <div id="mobile-menu" class="absolute right-0 top-full mt-2 w-48 max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#3e8865] rounded-md shadow-xl z-50">
+        <div class="py-2 px-2">
+          <a href="index.html" class="nav-link block py-2 my-0.5 px-2 transition-all bg-[#367659]/50 font-semibold text-yellow-300 border-l-2 border-yellow-300 text-sm">Home</a>
+          <a href="services.html" class="nav-link block py-2 my-0.5 px-2 transition-all hover:bg-[#367659]/40 border-l-2 border-transparent hover:border-white/50 text-sm">Services</a>
+          <a href="My-projects.html" class="nav-link block py-2 my-0.5 px-2 transition-all hover:bg-[#367659]/40 border-l-2 border-transparent hover:border-white/50 text-sm">Projects</a>
+          <a href="contact.html" class="nav-link block py-2 my-0.5 px-2 transition-all hover:bg-[#367659]/40 border-l-2 border-transparent hover:border-white/50 text-sm">Contact</a>
+          <a href="about.html" class="nav-link block py-2 my-0.5 px-2 transition-all hover:bg-[#367659]/40 border-l-2 border-transparent hover:border-white/50 text-sm">About</a>
+          <a href="terms.html" class="nav-link block py-2 my-0.5 px-2 transition-all hover:bg-[#367659]/40 border-l-2 border-transparent hover:border-white/50 text-sm">Terms</a>
+          <a href="https://tujengane.netlify.app/" class="nav-link block py-2 my-0.5 px-2 transition-all hover:bg-[#367659]/40 border-l-2 border-transparent hover:border-white/50 text-sm">Tujengane</a>
         </div>
       </div>
     </div>
@@ -202,9 +173,9 @@ const mobileMenu = document.getElementById('mobile-menu');
 
 // Toggle menu on button click
 toggleBtn.addEventListener('click', (e) => {
-  e.stopPropagation(); // Prevent this click from immediately closing the menu
+  e.stopPropagation();
   mobileMenu.classList.toggle('max-h-0');
-  mobileMenu.classList.toggle('max-h-96'); // Compact dropdown size
+  mobileMenu.classList.toggle('max-h-96');
 });
 
 // Close menu when clicking outside
@@ -213,8 +184,19 @@ document.addEventListener('click', (e) => {
   const clickedInsideMenu = mobileMenu.contains(e.target);
   const clickedToggleBtn = toggleBtn.contains(e.target);
   
-  // If menu is open and click is outside menu and not on toggle button
   if (isMenuOpen && !clickedInsideMenu && !clickedToggleBtn) {
+    mobileMenu.classList.remove('max-h-96');
+    mobileMenu.classList.add('max-h-0');
+  }
+});
+
+// Close menu on touch outside (mobile devices)
+document.addEventListener('touchstart', (e) => {
+  const isMenuOpen = mobileMenu.classList.contains('max-h-96');
+  const touchedInsideMenu = mobileMenu.contains(e.target);
+  const touchedToggleBtn = toggleBtn.contains(e.target);
+  
+  if (isMenuOpen && !touchedInsideMenu && !touchedToggleBtn) {
     mobileMenu.classList.remove('max-h-96');
     mobileMenu.classList.add('max-h-0');
   }
@@ -323,11 +305,11 @@ window.addEventListener('load', function() {
 });
 </script>
 
+<!-- Spacer for Fixed Navbar -->
+<div class="h-14 xs:h-16 sm:h-20 border-b border-gray-200"></div>
+
 <!-- Main Content Wrapper - Grows to push footer down -->
 <main class="flex-1 flex flex-col w-full">
-
-<!-- Spacer for Fixed Navbar -->
-<div class="h-14 xs:h-16 sm:h-20"></div>
 
 <!-- ✅ Animated Welcome Banner -->
 <section class="relative bg-gradient-to-r from-[#2563EB] via-[#1e40af] to-[#2563EB] overflow-hidden border-t-4 border-[#facc15] shadow-lg h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px]">
@@ -602,21 +584,21 @@ window.addEventListener('load', function() {
   <div class="flex flex-col md:flex-row justify-center gap-2 sm:gap-4 max-w-xl mx-auto w-full z-10">
     <!-- ✅ Start Project Modal Trigger -->
     <button onclick="openModal('projectModal')" 
-  class="group w-full md:w-1/2 bg-[#49A078] hover:bg-[#3e8865] text-white px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold transition duration-200 relative text-sm md:text-base lg:text-lg">
+  class="group relative w-full md:w-1/2 bg-gray-100 hover:bg-yellow-100 text-gray-500 hover:text-gray-900 px-4 py-2.5 sm:px-6 sm:py-3 rounded font-semibold transition-all duration-200 shadow-md hover:shadow-lg border border-gray-200 hover:border-yellow-300 text-sm md:text-base">
       <i class="fas fa-rocket mr-2 group-hover:animate-pulse"></i>Start Your Project
       <span class="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs px-2 py-1 rounded-full font-bold hidden group-hover:block">FREE!</span>
     </button>
 
     <!-- ✅ Download Modal Trigger -->
     <button onclick="openModal('downloadModal')" 
-  class="group w-full md:w-1/2 bg-[#2563EB] hover:bg-[#1e40af] text-white px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold transition duration-200 relative text-sm md:text-base lg:text-lg">
+  class="group relative w-full md:w-1/2 bg-gray-100 hover:bg-yellow-100 text-gray-500 hover:text-gray-900 px-4 py-2.5 sm:px-6 sm:py-3 rounded font-semibold transition-all duration-200 shadow-md hover:shadow-lg border border-gray-200 hover:border-yellow-300 text-sm md:text-base">
       <i class="fas fa-download mr-2 group-hover:animate-bounce"></i>Download Results
       <span class="absolute -top-2 -right-2 bg-green-400 text-white text-xs px-2 py-1 rounded-full font-bold hidden group-hover:block">17+</span>
     </button>
 
     <!-- ✅ Try Yourself Button -->
     <a href="https://exes-ebi.streamlit.app/" target="_blank"
-  class="group w-full md:w-1/2 bg-[#facc15] hover:bg-[#eab308] text-black px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold transition duration-200 relative flex items-center justify-center text-sm md:text-base lg:text-lg">
+  class="group w-full md:w-1/2 bg-gray-100 hover:bg-yellow-100 text-gray-500 hover:text-gray-900 px-4 py-2.5 sm:px-6 sm:py-3 rounded font-semibold transition-all duration-200 shadow-md hover:shadow-lg border border-gray-200 hover:border-yellow-300 flex items-center justify-center text-sm md:text-base">
       <i class="fas fa-flask mr-2"></i>Try Yourself
     </a>
   </div>
@@ -639,13 +621,13 @@ window.addEventListener('load', function() {
         <div class="flex-1 flex flex-col text-left">
           <div class="flex items-center mb-1">
             <span class="font-bold text-lg text-[#49A078]">Tujengane Computer Literacy</span>
-            <span class="ml-2 bg-[#49A078] text-white text-xs px-2 py-1 rounded-full font-semibold">Premium</span>
+            <span class="ml-2 bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded border border-gray-200 font-semibold">Premium</span>
           </div>
           <span class="text-gray-700 text-sm mb-1">Master essential computer skills for work and life.</span>
           <span class="text-xs text-gray-500 mb-2">Covers Windows, Office, internet, email, and basic troubleshooting. Perfect for beginners and business owners.</span>
           <div class="flex gap-2 flex-wrap mt-1">
-            <a href="https://chat.whatsapp.com/HrYrcCRLcVUKNXCehfzioZ" target="_blank" class="bg-[#25D366] hover:bg-[#128C7E] text-white px-4 py-2.5 rounded-3xl font-bold text-sm flex items-center gap-1.5 shadow-md hover:shadow-lg transition-all"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
-            <a href="https://tujengane.netlify.app/tujengane%20computer%20literacy/computerliteracy" target="_blank" class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-4 py-2.5 rounded-3xl font-bold text-sm shadow-md hover:shadow-lg transition-all">Course Page</a>
+            <a href="https://chat.whatsapp.com/HrYrcCRLcVUKNXCehfzioZ" target="_blank" class="bg-green-200 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-4 py-3 rounded font-semibold text-sm flex items-center gap-1.5 shadow-md hover:shadow-lg transition-all border border-green-300 hover:border-yellow-300"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
+            <a href="https://tujengane.netlify.app/tujengane%20computer%20literacy/computerliteracy" target="_blank" class="bg-green-200 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-4 py-3 rounded font-semibold text-sm shadow-md hover:shadow-lg transition-all border border-green-300 hover:border-yellow-300">Course Page</a>
           </div>
         </div>
       </div>
@@ -657,13 +639,13 @@ window.addEventListener('load', function() {
         <div class="flex-1 flex flex-col text-left">
           <div class="flex items-center mb-1">
             <span class="font-bold text-lg text-[#2563EB]">Tujengane Computer Basics</span>
-            <span class="ml-2 bg-[#2563EB] text-white text-xs px-2 py-1 rounded-full font-semibold">Free</span>
+            <span class="ml-2 bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded border border-gray-200 font-semibold">Free</span>
           </div>
           <span class="text-gray-700 text-sm mb-1">Start your digital journey with foundational computer knowledge.</span>
           <span class="text-xs text-gray-500 mb-2">Learn mouse, keyboard, files, folders, and simple navigation. Ideal for total beginners and youth.</span>
           <div class="flex gap-2 flex-wrap mt-1">
-            <a href="https://tujengane.netlify.app/computer%20basicss/computerbasicss.html" target="_blank" class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-4 py-2.5 rounded-3xl font-bold text-sm shadow-md hover:shadow-lg transition-all">Course Page</a>
-            <button disabled class="bg-gray-300 text-gray-600 px-4 py-2.5 rounded-3xl font-bold text-sm flex items-center gap-1.5 cursor-not-allowed opacity-60 shadow-sm"><i class="fab fa-whatsapp"></i> WhatsApp (Upcoming)</button>
+            <a href="https://tujengane.netlify.app/computer%20basicss/computerbasicss.html" target="_blank" class="bg-blue-200 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-4 py-3 rounded font-semibold text-sm shadow-md hover:shadow-lg transition-all border border-blue-300 hover:border-yellow-300">Course Page</a>
+            <button disabled class="bg-gray-100 text-gray-500 px-4 py-3 rounded font-semibold text-sm flex items-center gap-1.5 cursor-not-allowed opacity-50 shadow-sm border border-gray-200"><i class="fab fa-whatsapp"></i> WhatsApp (Upcoming)</button>
           </div>
         </div>
       </div>
@@ -675,13 +657,13 @@ window.addEventListener('load', function() {
         <div class="flex-1 flex flex-col text-left">
           <div class="flex items-center mb-1">
             <span class="font-bold text-lg text-[#49A078]">Tujengane Data Basics</span>
-            <span class="ml-2 bg-[#49A078] text-white text-xs px-2 py-1 rounded-full font-semibold">Free</span>
+            <span class="ml-2 bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded border border-gray-200 font-semibold">Free</span>
           </div>
           <span class="text-gray-700 text-sm mb-1">Learn the essentials of working with data for business and personal growth.</span>
           <span class="text-xs text-gray-500 mb-2">Covers data collection, cleaning, storage, and sharing. No experience needed—great for small businesses and students.</span>
           <div class="flex gap-2 flex-wrap mt-1">
-            <a href="https://chat.whatsapp.com/DHO6xjyr8xu6x5opHRG7fl" target="_blank" class="bg-[#25D366] hover:bg-[#128C7E] text-white px-4 py-2.5 rounded-3xl font-bold text-sm flex items-center gap-1.5 shadow-md hover:shadow-lg transition-all"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
-            <a href="https://tujengane.netlify.app/tujengane%20data%20basics/databasics" target="_blank" class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-4 py-2.5 rounded-3xl font-bold text-sm shadow-md hover:shadow-lg transition-all">Course Page</a>
+            <a href="https://chat.whatsapp.com/DHO6xjyr8xu6x5opHRG7fl" target="_blank" class="bg-yellow-200 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-4 py-3 rounded font-semibold text-sm flex items-center gap-1.5 shadow-md hover:shadow-lg transition-all border border-yellow-300 hover:border-yellow-300"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
+            <a href="https://tujengane.netlify.app/tujengane%20data%20basics/databasics" target="_blank" class="bg-yellow-200 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-4 py-3 rounded font-semibold text-sm shadow-md hover:shadow-lg transition-all border border-yellow-300 hover:border-yellow-300">Course Page</a>
           </div>
         </div>
       </div>
@@ -693,19 +675,19 @@ window.addEventListener('load', function() {
         <div class="flex-1 flex flex-col text-left">
           <div class="flex items-center mb-1">
             <span class="font-bold text-lg text-[#7C3AED]">Analyst Pro</span>
-            <span class="ml-2 bg-[#7C3AED] text-white text-xs px-2 py-1 rounded-full font-semibold">Premium</span>
+            <span class="ml-2 bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded border border-gray-200 font-semibold">Premium</span>
           </div>
           <span class="text-gray-700 text-sm mb-1">Advance your analytics expertise with practical, professional lessons.</span>
           <span class="text-xs text-gray-500 mb-2">Learn Excel, PowerBI, SQL, and real-world analytics projects. For aspiring analysts and professionals.</span>
           <div class="flex gap-2 flex-wrap mt-1">
-            <a href="https://chat.whatsapp.com/BRpUgo7QD8rFtvOslAveNS" target="_blank" class="bg-[#25D366] hover:bg-[#128C7E] text-white px-4 py-2.5 rounded-3xl font-bold text-sm flex items-center gap-1.5 shadow-md hover:shadow-lg transition-all"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
-            <a href="https://tujengane.netlify.app/tujengane%20analyst%20pro/analystpro" target="_blank" class="bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-4 py-2.5 rounded-3xl font-bold text-sm shadow-md hover:shadow-lg transition-all">Course Page</a>
+            <a href="https://chat.whatsapp.com/BRpUgo7QD8rFtvOslAveNS" target="_blank" class="bg-purple-200 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-4 py-3 rounded font-semibold text-sm flex items-center gap-1.5 shadow-md hover:shadow-lg transition-all border border-purple-300 hover:border-yellow-300"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
+            <a href="https://tujengane.netlify.app/tujengane%20analyst%20pro/analystpro" target="_blank" class="bg-purple-200 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-4 py-3 rounded font-semibold text-sm shadow-md hover:shadow-lg transition-all border border-purple-300 hover:border-yellow-300">Course Page</a>
           </div>
         </div>
       </div>
     </div>
     <div class="mt-6 sm:mt-8">
-      <a href="https://tujengane.netlify.app/" target="_blank" class="inline-block bg-[#2563EB] hover:bg-[#1e40af] text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-bold text-base shadow w-full md:w-auto">🌐 More: Tujengane Digital skills </a>
+      <a href="https://tujengane.netlify.app/" target="_blank" class="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded font-semibold text-base shadow-md hover:shadow-lg transition-all border border-gray-300 hover:border-gray-400 w-full md:w-auto">🌐 More: Tujengane Digital skills </a>
     </div>
   </div>
 </section>
@@ -765,11 +747,11 @@ window.addEventListener('load', function() {
     <p class="text-gray-600 text-center mb-6">Pick the option that suits your business best:</p>
     <div class="flex flex-col gap-4">
       <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank"
-        class="block bg-[#49A078] hover:bg-[#3e8865] text-white text-center px-4 py-3 rounded-lg font-semibold shadow-md">
+        class="block bg-gray-100 hover:bg-gray-200 text-gray-800 text-center px-6 py-3 rounded font-semibold shadow-md hover:shadow-lg transition-all border border-gray-300 hover:border-gray-400">
         ✅ I Have Data (Upload Files)
       </a>
       <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7" target="_blank"
-        class="block bg-[#2563EB] hover:bg-[#1e40af] text-white text-center px-4 py-3 rounded-lg font-semibold shadow-md">
+        class="block bg-gray-100 hover:bg-gray-200 text-gray-800 text-center px-6 py-3 rounded font-semibold shadow-md hover:shadow-lg transition-all border border-gray-300 hover:border-gray-400">
         🚀 No Data ,start here
       </a>
     </div>
@@ -909,7 +891,7 @@ window.addEventListener('load', function() {
                 <p class="text-gray-700">
                   M-PESA to <strong>+254791360805</strong>.<br>
                   Other payment methods: <strong>USDT, bank, PayPal, Airtm</strong>.<br>
-                  WhatsApp <a href="https://wa.me/254791360805" target="_blank" class="fancy-btn">+254791360805</a> for guidance.
+                  WhatsApp <a href="https://wa.me/254791360805" target="_blank" class="bg-yellow-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-xs font-semibold transition-all">+254791360805</a> for guidance.
                 </p>
               </div>
             </div>
@@ -921,11 +903,11 @@ window.addEventListener('load', function() {
                 <h4 class="font-semibold text-[#49A078] mb-1">How do I get started?</h4>
                 <p class="text-gray-700 flex flex-col gap-2">
                   <span class="font-semibold">Analytics:</span>
-                  <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank" class="fancy-btn">Submit your data here</a>
+                  <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank" class="bg-blue-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-sm font-semibold transition-all inline-block">Submit your data here</a>
                   <span class="font-semibold">Education:</span>
-                  <a href="https://tujengane.netlify.app/" target="_blank" class="fancy-btn bg-[#49A078] hover:bg-[#2563EB]">Join Tujengane Data Basics</a>
+                  <a href="https://tujengane.netlify.app/" target="_blank" class="bg-green-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-sm font-semibold transition-all inline-block">Join Tujengane Data Basics</a>
                   <span class="font-semibold">Need setup?</span>
-                  <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7" target="_blank" class="fancy-btn">Request tracking setup</a>
+                  <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7" target="_blank" class="bg-blue-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-sm font-semibold transition-all inline-block">Request tracking setup</a>
                 </p>
               </div>
             </div>
@@ -937,7 +919,7 @@ window.addEventListener('load', function() {
             <span class="font-bold text-[#2563EB] text-lg flex items-center gap-2"><i class="fas fa-building"></i> Corporates</span>
             <ul class="mt-2 space-y-2 text-gray-700">
               <li>
-                <strong>Custom Solutions:</strong> Contact us at <a href="https://wa.me/254791360805" target="_blank" class="fancy-btn ml-2 text-xs bg-[#2563EB] hover:bg-[#49A078]">+254791360805</a>
+                <strong>Custom Solutions:</strong> Contact us at <a href="https://wa.me/254791360805" target="_blank" class="bg-purple-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-xs font-semibold transition-all ml-2">+254791360805</a>
                 <span class="block text-xs text-gray-500">Tailored analytics and training for your organization.</span>
               </li>
             </ul>
@@ -956,35 +938,35 @@ window.addEventListener('load', function() {
               <div class="flex flex-col gap-1">
                 <div class="flex flex-col sm:flex-row sm:items-center gap-2">
                   <span><strong>1. Basic Cleanup:</strong> $1 (KSh 100)</span>
-                  <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank" class="fancy-btn glow-btn text-xs">Submit Data</a>
+                  <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank" class="bg-blue-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-xs font-semibold transition-all">Submit Data</a>
                 </div>
                 <span class="block text-xs text-gray-500">Upload your Excel or CSV file for professional cleaning and organization.</span>
               </div>
               <div class="flex flex-col gap-1">
                 <div class="flex flex-col sm:flex-row sm:items-center gap-2">
                   <span><strong>2. Formulas + Totals:</strong> $2 (KSh 200)</span>
-                  <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank" class="fancy-btn glow-btn text-xs">Submit Data</a>
+                  <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank" class="bg-blue-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-xs font-semibold transition-all">Submit Data</a>
                 </div>
                 <span class="block text-xs text-gray-500">Automate calculations and totals for accurate reporting.</span>
               </div>
               <div class="flex flex-col gap-1">
                 <div class="flex flex-col sm:flex-row sm:items-center gap-2">
                   <span><strong>3. Charts + Pivots:</strong> $3 (KSh 300)</span>
-                  <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank" class="fancy-btn glow-btn text-xs">Submit Data</a>
+                  <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank" class="bg-blue-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-xs font-semibold transition-all">Submit Data</a>
                 </div>
                 <span class="block text-xs text-gray-500">Receive clear visualizations and pivot tables for business insights.</span>
               </div>
               <div class="flex flex-col gap-1">
                 <div class="flex flex-col sm:flex-row sm:items-center gap-2">
                   <span><strong>4. Whole Package:</strong> $5 (All-in-one)</span>
-                  <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank" class="fancy-btn glow-btn text-xs bg-[#49A078] hover:bg-[#2563EB]">Get Full Service</a>
+                  <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank" class="bg-blue-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-xs font-semibold transition-all">Get Full Service</a>
                 </div>
                 <span class="block text-xs text-gray-500">Full cleanup, formulas, charts, pivots, and business insights.</span>
               </div>
               <div class="flex flex-col gap-1">
                 <div class="flex flex-col sm:flex-row sm:items-center gap-2">
                   <span><strong>5. No Data? Start Here:</strong></span>
-                  <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7" target="_blank" class="fancy-btn glow-btn text-xs bg-[#49A078] hover:bg-[#2563EB]">Request Setup</a>
+                  <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7" target="_blank" class="bg-blue-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-xs font-semibold transition-all">Request Setup</a>
                 </div>
                 <span class="block text-xs text-gray-500">We set up tracking and help you start collecting data from scratch.</span>
               </div>
@@ -996,9 +978,9 @@ window.addEventListener('load', function() {
               <div class="flex flex-col gap-1">
                 <div class="flex flex-col sm:flex-row sm:items-center gap-2">
                   <span><strong>1. Tujengane Data Basics:</strong> <span class="text-green-600 font-bold">FREE</span></span>
-                  <div class="flex gap-2">
-                    <a href="https://forms.gle/Mi9eGTF7AQFBTxsw7" target="_blank" class="fancy-btn text-xs bg-[#49A078] hover:bg-[#2563EB]">Join Free Class</a>
-                    <a href="https://chat.whatsapp.com/DHO6xjyr8xu6x5opHRG7fl" target="_blank" class="fancy-btn text-xs bg-[#2563EB] hover:bg-[#49A078]">WhatsApp Group</a>
+                  <div class="flex gap-2 flex-wrap">
+                    <a href="https://forms.gle/Mi9eGTF7AQFBTxsw7" target="_blank" class="bg-green-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-xs font-semibold transition-all">Join Free Class</a>
+                    <a href="https://chat.whatsapp.com/DHO6xjyr8xu6x5opHRG7fl" target="_blank" class="bg-green-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-xs font-semibold transition-all">WhatsApp Group</a>
                   </div>
                 </div>
                 <span class="block text-xs text-gray-500">Learn the essentials of data collection, cleaning, and storage.</span>
@@ -1006,14 +988,14 @@ window.addEventListener('load', function() {
               <div class="flex flex-col gap-1">
                 <div class="flex flex-col sm:flex-row sm:items-center gap-2">
                   <span><strong>2. Tujengane Digital Literacy:</strong> $1 (KSh 100) per session</span>
-                  <a href="https://chat.whatsapp.com/HrYrcCRLcVUKNXCehfzioZ" target="_blank" class="fancy-btn glow-btn text-xs bg-[#2563EB] hover:bg-[#49A078]">WhatsApp Group</a>
+                  <a href="https://chat.whatsapp.com/HrYrcCRLcVUKNXCehfzioZ" target="_blank" class="bg-green-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-xs font-semibold transition-all">WhatsApp Group</a>
                 </div>
                 <span class="block text-xs text-gray-500">Enhance your computer skills for business and personal growth. Direct WhatsApp access—no forms required.</span>
               </div>
               <div class="flex flex-col gap-1">
                 <div class="flex flex-col sm:flex-row sm:items-center gap-2">
                   <span><strong>3. Tujengane Analyst Pro:</strong> $1 (KSh 100) per session</span>
-                  <a href="https://chat.whatsapp.com/BRpUgo7QD8rFtvOslAveNS" target="_blank" class="fancy-btn glow-btn text-xs bg-[#2563EB] hover:bg-[#49A078]">WhatsApp Group</a>
+                  <a href="https://chat.whatsapp.com/BRpUgo7QD8rFtvOslAveNS" target="_blank" class="bg-green-50 hover:bg-yellow-100 text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded text-xs font-semibold transition-all">WhatsApp Group</a>
                 </div>
                 <span class="block text-xs text-gray-500">Advance your analytics expertise with practical, professional lessons. Direct WhatsApp access—no forms required.</span>
               </div>

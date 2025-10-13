@@ -272,8 +272,8 @@ html, body {
 </head>
 <body class="bg-white text-gray-800 flex flex-col min-h-screen overflow-x-hidden w-full max-w-[100vw]">
 
-<!-- ✅ Responsive Navbar -->
-<nav class="bg-[#49A078] text-white px-2 xs:px-3 sm:px-4 py-2 xs:py-3 shadow-lg sticky top-0 z-50 w-full bg-gradient-to-r from-[#49A078] to-[#3D8069]" role="navigation" aria-label="Main Navigation">
+<!-- ✅ Responsive Navbar - Fixed at Top -->
+<nav class="bg-[#49A078] text-white px-2 xs:px-3 sm:px-4 py-2 xs:py-3 shadow-lg fixed top-0 left-0 right-0 z-50 w-full bg-gradient-to-r from-[#49A078] to-[#3D8069] border-b border-gray-300" role="navigation" aria-label="Main Navigation">
   <div class="w-full max-w-7xl mx-auto flex items-center justify-between gap-2 xs:gap-3 sm:gap-4">
 
     <!-- ✅ Logo & Brand -->
@@ -358,6 +358,9 @@ toggleBtn.addEventListener('click', () => {
   mobileMenu.classList.toggle('max-h-screen'); // Now expands fully
 });
 </script>
+
+<!-- Spacer for Fixed Navbar -->
+<div class="h-14 xs:h-16 sm:h-20"></div>
 
 <section class="bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] py-1 sm:py-6 md:py-12 px-0 w-full m-1">
   <div class="w-full">
