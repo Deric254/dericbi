@@ -241,23 +241,29 @@
       <li><a href="contact.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Contact</a></li>
       <!--<li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>
       <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms & Conditions</a></li>-->
-      <li><a href="https://tujengane.netlify.app/" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Tujengane</a></li>
+      <li><a href="https://tujengane.netlify.app/" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all relative">
+        Tujengane
+        <span class="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full shadow-md animate-pulse">50% OFF</span>
+      </a></li>
     </ul>
 
-    <!-- ✅ Hamburger Menu -->
-    <div class="relative">
-      <button id="menu-toggle" class="block md:hidden text-xl xs:text-2xl focus:outline-none ml-1 xs:ml-2 sm:ml-3 shrink-0 bg-[#3D8069]/50 hover:bg-[#3D8069]/70 p-2 rounded-md shadow-md transition-all">☰</button>
+    <!-- ✅ Hamburger Menu Button with Dropdown -->
+    <div class="relative block md:hidden">
+      <button id="menu-toggle" class="text-xl xs:text-2xl focus:outline-none ml-1 xs:ml-2 sm:ml-3 shrink-0 bg-[#3D8069]/50 hover:bg-[#3D8069]/70 p-2 rounded-md shadow-md transition-all">☰</button>
       
-      <!-- ✅ Mobile Menu Dropdown - Compact -->
-      <div id="mobile-menu" class="absolute right-0 top-full mt-2 w-48 max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#3e8865] rounded-md shadow-xl z-50">
-        <div class="py-2 px-2">
-          <a href="index.html" class="nav-link block py-2 my-0.5 px-2 transition-all bg-[#367659]/50 font-semibold text-yellow-300 border-l-2 border-yellow-300 text-sm">Home</a>
-          <a href="services.html" class="nav-link block py-2 my-0.5 px-2 transition-all hover:bg-[#367659]/40 border-l-2 border-transparent hover:border-white/50 text-sm">Services</a>
-          <a href="My-projects.html" class="nav-link block py-2 my-0.5 px-2 transition-all hover:bg-[#367659]/40 border-l-2 border-transparent hover:border-white/50 text-sm">Projects</a>
-          <a href="contact.html" class="nav-link block py-2 my-0.5 px-2 transition-all hover:bg-[#367659]/40 border-l-2 border-transparent hover:border-white/50 text-sm">Contact</a>
-          <a href="about.html" class="nav-link block py-2 my-0.5 px-2 transition-all hover:bg-[#367659]/40 border-l-2 border-transparent hover:border-white/50 text-sm">About</a>
-          <a href="terms.html" class="nav-link block py-2 my-0.5 px-2 transition-all hover:bg-[#367659]/40 border-l-2 border-transparent hover:border-white/50 text-sm">Terms</a>
-          <a href="https://tujengane.netlify.app/" class="nav-link block py-2 my-0.5 px-2 transition-all hover:bg-[#367659]/40 border-l-2 border-transparent hover:border-white/50 text-sm">Tujengane</a>
+      <!-- ✅ Compact Menu Dropdown (Below Icon) -->
+      <div id="mobile-menu" class="absolute right-0 top-full mt-2 w-48 max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#3e8865] rounded-lg shadow-2xl border-2 border-[#49A078] z-50">
+        <div class="py-2 px-2 flex flex-col gap-1.5">
+          <a href="index.html" class="nav-link block py-2 px-3 transition-all bg-[#367659]/60 font-semibold text-yellow-300 text-xs rounded-md border border-yellow-400/50 shadow-sm">Home</a>
+          <a href="services.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Services</a>
+          <a href="My-projects.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Projects</a>
+          <a href="contact.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Contact</a>
+          <a href="about.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367609]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">About</a>
+          <a href="terms.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Terms</a>
+          <a href="https://tujengane.netlify.app/" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm relative">
+            Tujengane
+            <span class="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full shadow-lg animate-pulse">50% OFF</span>
+          </a>
         </div>
       </div>
     </div>
@@ -411,7 +417,7 @@ window.addEventListener('load', function() {
 
 <!-- ✅ Animated Welcome Banner -->
 <section class="relative bg-gradient-to-r from-[#2563EB] via-[#1e40af] to-[#2563EB] overflow-hidden border-t-4 border-[#facc15] shadow-lg h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px]">
-  <div class="max-w-7xl mx-auto px-4 relative h-full flex items-center">
+  <div class="max-w-7xl mx-auto px-4 sm:px-3 md:px-2 relative h-full flex items-center">
     <!-- Left Spinning Wheel with "Welcome to dericBI" -->
     <div class="absolute left-0 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 z-10">
       <div class="spinning-wheel-left relative" style="width: 100px; height: 100px;">
@@ -644,7 +650,7 @@ window.addEventListener('load', function() {
 </style>
 
  <!-- ✅ Hero Section -->
-<section class="relative text-center pt-8 pb-4 sm:py-6 md:py-20 px-4 sm:px-6 md:px-0 w-full m-1 bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] flex-1 w-full overflow-hidden">
+<section class="relative text-center pt-8 pb-4 sm:py-6 md:py-20 px-4 sm:px-3 md:px-2 w-full bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] overflow-hidden">
   <!-- Left analytic chart visual -->
   <div class="absolute left-0 top-1/2 -translate-y-1/2 hidden lg:block z-0">
     <svg width="220" height="320" viewBox="0 0 220 320" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -671,16 +677,19 @@ window.addEventListener('load', function() {
   <svg class="absolute top-0 left-0 w-full h-16 md:h-32 pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#49A078" fill-opacity="0.08" d="M0,32L80,69.3C160,107,320,181,480,176C640,171,800,85,960,69.3C1120,53,1280,107,1360,133.3L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
   <!-- Decorative SVG Bottom Shape -->
   <svg class="absolute bottom-0 left-0 w-full h-16 md:h-32 pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#2563EB" fill-opacity="0.07" d="M0,224L80,213.3C160,203,320,181,480,154.7C640,128,800,96,960,117.3C1120,139,1280,213,1360,245.3L1440,288L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
-  <div class="flex flex-col items-center justify-center gap-2 mb-6">
-    <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-[#49A078] via-[#facc15] to-[#2563EB] shadow-lg mb-2 animate-bounce">
-      <i class="fas fa-chart-pie text-white text-3xl"></i>
-    </span>
-    <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 leading-tight tracking-wide drop-shadow-lg">Transform Your Data Into Actionable Insights</h1>
-    <p class="text-base sm:text-lg text-gray-600 mb-2 leading-relaxed">We analyze your precious data so you can make informed decisions.</p>
-  </div>
+  
+  <!-- Content Container with max-w-7xl -->
+  <div class="relative z-10 max-w-7xl mx-auto">
+    <div class="flex flex-col items-center justify-center gap-2 mb-6">
+      <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-[#49A078] via-[#facc15] to-[#2563EB] shadow-lg mb-2 animate-bounce">
+        <i class="fas fa-chart-pie text-white text-3xl"></i>
+      </span>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 leading-tight tracking-wide drop-shadow-lg">Transform Your Data Into Actionable Insights</h1>
+      <p class="text-base sm:text-lg text-gray-600 mb-2 leading-relaxed">We analyze your precious data so you can make informed decisions.</p>
+    </div>
 
-  <!-- ✅ Hero CTA Buttons - Always Horizontal -->
-  <div class="flex flex-row justify-center items-stretch gap-2 xs:gap-3 sm:gap-4 max-w-4xl mx-auto w-full z-10 px-2">
+    <!-- ✅ Hero CTA Buttons - Always Horizontal -->
+    <div class="flex flex-row justify-center items-stretch gap-2 xs:gap-3 sm:gap-4 max-w-4xl mx-auto w-full">
     <!-- Start Project Button -->
     <button onclick="openModal('projectModal')" 
   class="group relative flex-1 bg-gray-100 hover:bg-yellow-100 text-gray-500 hover:text-gray-900 px-3 py-2.5 xs:px-4 xs:py-3 sm:px-6 sm:py-3.5 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-xl border border-gray-200 hover:border-yellow-400 text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl whitespace-nowrap">
@@ -696,17 +705,18 @@ window.addEventListener('load', function() {
     </button>
   </div>
   
-  <!-- Secondary CTA: Try Yourself - Now a Button -->
-  <div class="mt-3 xs:mt-4 text-center px-2">
-    <a href="https://exes-ebi.streamlit.app/" target="_blank" class="inline-flex items-center justify-center bg-gray-50 hover:bg-yellow-50 text-gray-600 hover:text-gray-900 px-4 xs:px-5 sm:px-6 md:px-8 py-2 xs:py-2.5 sm:py-3 rounded-lg font-medium transition-all shadow-sm hover:shadow-md border border-gray-200 hover:border-yellow-300 text-xs xs:text-sm sm:text-base md:text-lg">
-      <i class="fas fa-flask mr-1.5 xs:mr-2"></i>Try it yourself for free
-    </a>
+    <!-- Secondary CTA: Try Yourself - Now a Button -->
+    <div class="mt-3 xs:mt-4 text-center">
+      <a href="https://exes-ebi.streamlit.app/" target="_blank" class="inline-flex items-center justify-center bg-gray-50 hover:bg-yellow-50 text-gray-600 hover:text-gray-900 px-4 xs:px-5 sm:px-6 md:px-8 py-2 xs:py-2.5 sm:py-3 rounded-lg font-medium transition-all shadow-sm hover:shadow-md border border-gray-200 hover:border-yellow-300 text-xs xs:text-sm sm:text-base md:text-lg">
+        <i class="fas fa-flask mr-1.5 xs:mr-2"></i>Try it yourself for free
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- ⭐ Social Proof Trust Bar (NEW) -->
-<section class="w-full bg-white py-3 xs:py-4 px-4 border-y border-gray-200 shadow-sm">
-  <div class="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-3 xs:gap-4 sm:gap-6 text-xs xs:text-sm text-gray-600">
+<section class="w-full bg-white py-3 xs:py-4 px-4 sm:px-3 md:px-2 border-y border-gray-200 shadow-sm">
+  <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-3 xs:gap-4 sm:gap-6 text-xs xs:text-sm text-gray-600">
     <div class="flex items-center gap-1.5 xs:gap-2 hover:scale-105 transition-transform">
       <i class="fas fa-check-circle text-green-600 text-base xs:text-lg"></i>
       <span><strong class="text-gray-800">40+</strong> Projects</span>
@@ -727,8 +737,8 @@ window.addEventListener('load', function() {
 </section>
 
 <!-- 🎯 Value Proposition Cards (NEW) -->
-<section class="w-full bg-gray-50 py-6 xs:py-8 sm:py-10 px-4 fade-in-up">
-  <div class="max-w-6xl mx-auto">
+<section class="w-full bg-gray-50 py-6 xs:py-8 sm:py-10 px-4 sm:px-3 md:px-2 fade-in-up">
+  <div class="max-w-7xl mx-auto">
     <h3 class="text-xl xs:text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-4 xs:mb-6 sm:mb-8">Why Choose dericBI?</h3>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 xs:gap-5 sm:gap-6">
       
@@ -763,12 +773,13 @@ window.addEventListener('load', function() {
 </section>
 
 <!-- 🚀 Tujengane Programs (Professionally Styled) -->
-<section class="w-full bg-gradient-to-br from-[#e0f7fa] to-[#f0fdf4] py-4 sm:py-6 md:py-8 border-t border-green-200">
-  <div class="w-full max-w-7xl mx-auto px-2 xs:px-3 sm:px-4">
+<section class="w-full bg-gradient-to-br from-[#e0f7fa] to-[#f0fdf4] py-4 sm:py-6 md:py-8 px-4 sm:px-3 md:px-2 border-t border-green-200">
+  <div class="w-full max-w-7xl mx-auto">
     <div class="flex flex-col items-center text-center w-full">
       <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-[#2563EB] mb-6 flex flex-wrap items-center justify-center gap-2 leading-tight tracking-wide"> 
         <span>🎓</span> Tujengane Digital skills
         <span class="dancing-badge px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-pink-400 via-yellow-300 to-green-400 text-white shadow-lg border border-white">NEW</span>
+        <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg animate-pulse">50% OFF</span>
       </h2>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full">
@@ -830,7 +841,7 @@ window.addEventListener('load', function() {
       </div>
     </div>
     <div class="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center w-full">
-      <a href="https://tujengane.netlify.app/" target="_blank" class="bg-gray-100 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-6 py-3 rounded font-semibold text-base shadow-md hover:shadow-lg transition-all border border-gray-300 hover:border-yellow-400 w-full sm:w-auto text-center">
+      <a href="https://tujengane.netlify.app/" target="_blank" class="bg-gray-100 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-6 py-3 rounded font-semibold text-base shadow-md hover:shadow-lg transition-all border border-gray-300 hover:border-yellow-400 w-full sm:w-auto text-center relative inline-flex items-center justify-center gap-2">
         � Explore All Courses & Join
       </a>
       <a href="https://chat.whatsapp.com/DHO6xjyr8xu6x5opHRG7fl" target="_blank" class="bg-gray-100 hover:bg-yellow-100 text-gray-800 hover:text-gray-900 px-6 py-3 rounded font-semibold text-base shadow-md hover:shadow-lg transition-all border border-gray-300 hover:border-yellow-400 w-full sm:w-auto flex items-center justify-center gap-2">
@@ -841,7 +852,7 @@ window.addEventListener('load', function() {
 </section>
 
 <!-- ⭐ What Our Clients Say (Carousel Testimonials Section) -->
-<section class="w-full bg-gradient-to-br from-blue-50 to-green-50 py-6 xs:py-8 sm:py-10 md:py-12 px-4 fade-in-up">
+<section class="w-full bg-gradient-to-br from-blue-50 to-green-50 py-6 xs:py-8 sm:py-10 md:py-12 px-4 sm:px-3 md:px-2 fade-in-up">
   <div class="max-w-7xl mx-auto">
     <!-- Header -->
     <div class="text-center mb-6 xs:mb-8">
@@ -1066,7 +1077,7 @@ window.addEventListener('load', function() {
 
 
 <!-- How It Works Section -->
-<section class="relative py-6 xs:py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 bg-[#e8f6ed] w-full">
+<section class="relative py-6 xs:py-8 sm:py-10 md:py-12 px-4 sm:px-3 md:px-2 bg-[#e8f6ed] w-full">
   <div class="mx-auto w-full max-w-7xl">
     <h2 class="text-3xl font-bold mb-10 text-center">How It Works</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left w-full">
@@ -1109,7 +1120,7 @@ window.addEventListener('load', function() {
 </section>
 
   <!-- ✅ Embedded EXES Add-ons -->
-  <section class="bg-gradient-to-br from-gray-100 via-white to-green-50 py-4 xs:py-6 sm:py-8 md:py-10 px-4 text-sm w-full">
+  <section class="bg-gradient-to-br from-gray-100 via-white to-green-50 py-4 xs:py-6 sm:py-8 md:py-10 px-4 sm:px-3 md:px-2 text-sm w-full">
   <div class="mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 w-full max-w-7xl">
       <!-- FAQ: Modern Card -->
       <div class="flex flex-col h-full justify-between">
