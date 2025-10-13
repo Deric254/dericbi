@@ -369,78 +369,77 @@ class DAIChatbot {
   createChatbotHTML() {
     const chatbotHTML = `
       <!-- DAI Toggle Button -->
-      <div id="chatbot-toggle" class="fixed bottom-4 right-4 z-50">
-        <button class="bg-gradient-to-r from-[#49A078] to-[#3e8865] hover:from-[#3e8865] hover:to-[#2f6b52] text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-all transform hover:scale-105 relative group">
-          <i class="fas fa-robot text-lg"></i>
+      <div id="chatbot-toggle" class="fixed bottom-3 right-3 z-[9999]">
+        <button class="bg-gradient-to-r from-[#49A078] to-[#3e8865] hover:from-[#3e8865] hover:to-[#2f6b52] text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg flex items-center justify-center transition-all transform hover:scale-105 relative group">
+          <i class="fas fa-robot text-base sm:text-lg"></i>
           <div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse"></div>
           <div class="absolute inset-0 rounded-full bg-white opacity-20 scale-0 group-hover:scale-100 transition-transform duration-300"></div>
         </button>
       </div>
 
       <!-- DAI Container -->
-      <div id="chatbot-container" class="fixed bottom-4 right-4 w-64 max-w-[calc(100vw-1rem)] z-50 transform translate-y-full opacity-0 transition-all duration-300 ease-out">
+      <div id="chatbot-container" class="fixed bottom-3 right-3 w-64 sm:w-72 md:w-80 max-w-[calc(100vw-1.5rem)] z-[9999] transform translate-y-full opacity-0 transition-all duration-300 ease-out">
         <div class="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden backdrop-blur-sm">
           
           <!-- Header -->
-          <div class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white p-3 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <img src="assets/img/logo.png" alt="dericBI Logo" class="w-7 h-7 rounded-full border border-white/30">
+          <div class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white p-2 sm:p-2.5 flex items-center justify-between">
+            <div class="flex items-center gap-1.5 sm:gap-2">
+              <img src="assets/img/logo.png" alt="dericBI Logo" class="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-white/30">
               <div>
-                <h3 class="font-bold text-sm">DAI</h3>
-                <p class="text-xs opacity-90 flex items-center">
-                  <span class="w-1.5 h-1.5 bg-green-300 rounded-full mr-1.5 animate-pulse"></span>
+                <h3 class="font-bold text-xs sm:text-sm">DAI</h3>
+                <p class="text-[10px] sm:text-xs opacity-90 flex items-center">
+                  <span class="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-green-300 rounded-full mr-1 sm:mr-1.5 animate-pulse"></span>
                   AI Assistant
                 </p>
               </div>
             </div>
-            <button id="chatbot-close" class="text-white/80 hover:text-white transition-colors p-1">
-              <i class="fas fa-times text-sm"></i>
+            <button id="chatbot-close" class="text-white/80 hover:text-white transition-colors p-0.5 sm:p-1">
+              <i class="fas fa-times text-xs sm:text-sm"></i>
             </button>
           </div>
 
           <!-- Chat Messages -->
-          <div id="chatbot-messages" class="h-48 overflow-y-auto p-3 space-y-2 bg-gradient-to-b from-gray-50 to-white">
+          <div id="chatbot-messages" class="h-48 sm:h-56 md:h-64 overflow-y-auto p-2 sm:p-2.5 space-y-1.5 sm:space-y-2 bg-gradient-to-b from-gray-50 to-white">
             <div class="bot-message">
-              <div class="flex items-start gap-2">
-                <img src="assets/img/logo.png" alt="dericBI" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5">
-                <div class="bg-white p-2.5 rounded-lg shadow-sm border text-xs max-w-xs border-l-2 border-l-[#49A078]">
-                  <p>� **Welcome to DAI!** I'm your intelligent assistant.</p>
-                  <div class="mt-2 space-y-1.5">
-                    <p class="text-xs font-semibold text-gray-700">I can help you:</p>
-                    <ul class="text-xs space-y-0.5 text-gray-600">
-                      <li>🎯 Navigate & explore features</li>
-                      <li>💼 Learn about services & pricing</li>
-                      <li>📁 Find & download projects</li>
-                      <li>🔍 Use smart search tools</li>
-                      <li>📞 Connect with experts</li>
+              <div class="flex items-start gap-1.5 sm:gap-2">
+                <img src="assets/img/logo.png" alt="dericBI" class="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-gray-200 mt-0.5 shrink-0">
+                <div class="bg-white p-2 sm:p-2.5 rounded-lg shadow-sm border text-xs max-w-[85%] border-l-2 border-l-[#49A078]">
+                  <p class="text-xs sm:text-sm font-semibold">👋 Welcome to DAI!</p>
+                  <div class="mt-1.5 space-y-0.5">
+                    <p class="text-[11px] sm:text-xs font-semibold text-gray-700">I can help:</p>
+                    <ul class="text-[10px] sm:text-xs space-y-0.5 text-gray-600 leading-relaxed">
+                      <li>🎯 Navigate & explore</li>
+                      <li>💼 Services & pricing</li>
+                      <li>📁 Find projects</li>
+                      <li>🔍 Smart search</li>
                     </ul>
                   </div>
-                  <p class="mt-2 text-xs text-[#49A078] font-medium">How can I assist you today?</p>
+                  <p class="mt-1.5 text-[11px] sm:text-xs text-[#49A078] font-medium">Ask me anything!</p>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Input Area -->
-          <div class="p-3 border-t border-gray-200 bg-white">
-            <div class="flex gap-2">
+          <div class="p-2 sm:p-3 border-t border-gray-200 bg-white">
+            <div class="flex gap-1.5 sm:gap-2">
               <input 
                 type="text" 
                 id="chatbot-input" 
-                placeholder="Ask DAI anything..." 
-                class="flex-1 px-2.5 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#49A078] focus:border-transparent"
+                placeholder="Ask DAI..." 
+                class="flex-1 px-2 sm:px-2.5 py-1.5 sm:py-2 text-[11px] sm:text-xs border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#49A078] focus:border-transparent"
                 maxlength="500"
               >
               <button 
                 id="chatbot-send" 
-                class="bg-gradient-to-r from-[#49A078] to-[#3e8865] hover:from-[#3e8865] hover:to-[#2f6b52] text-white px-3 py-2 rounded-lg transition-all flex items-center justify-center min-w-[36px]"
+                class="bg-gradient-to-r from-[#49A078] to-[#3e8865] hover:from-[#3e8865] hover:to-[#2f6b52] text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg transition-all flex items-center justify-center min-w-[32px] sm:min-w-[36px]"
               >
-                <i class="fas fa-paper-plane text-xs"></i>
+                <i class="fas fa-paper-plane text-[10px] sm:text-xs"></i>
               </button>
             </div>
             
             <!-- Quick Actions -->
-            <div class="mt-2 flex flex-wrap gap-1">
+            <div class="mt-1.5 sm:mt-2 flex flex-wrap gap-1 sm:gap-1.5">
               <button class="quick-action-btn" data-message="Where can I find your projects?">
                 📁 Projects
               </button>
@@ -456,8 +455,8 @@ class DAIChatbot {
             </div>
             
             <!-- Smart Suggestions based on page -->
-            <div id="smart-suggestions" class="mt-2 hidden">
-              <p class="text-xs text-gray-500 mb-1">💡 Smart suggestions:</p>
+            <div id="smart-suggestions" class="mt-1.5 sm:mt-2 hidden">
+              <p class="text-[10px] sm:text-xs text-gray-500 mb-1">💡 Smart suggestions:</p>
               <div class="flex flex-wrap gap-1" id="page-suggestions"></div>
             </div>
           </div>
@@ -465,22 +464,37 @@ class DAIChatbot {
       </div>
 
       <style>
+        /* ✅ Ensure chatbot is always on top */
+        #chatbot-toggle,
+        #chatbot-container {
+          z-index: 9999 !important;
+          position: fixed !important;
+        }
+
         .quick-action-btn {
           background: linear-gradient(135deg, #f8fafc, #f1f5f9);
           color: #475569;
           padding: 3px 6px;
-          border-radius: 8px;
-          font-size: 9px;
+          border-radius: 5px;
+          font-size: 10px;
           border: 1px solid #e2e8f0;
           cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
           font-weight: 500;
+          line-height: 1.3;
         }
         .quick-action-btn:hover {
           background: linear-gradient(135deg, #49A078, #3e8865);
           color: white;
-          transform: translateY(-1px);
-          box-shadow: 0 4px 12px rgba(73, 160, 120, 0.3);
+          transform: translateY(-0.5px);
+          box-shadow: 0 2px 8px rgba(73, 160, 120, 0.3);
+        }
+        
+        @media (min-width: 640px) {
+          .quick-action-btn {
+            padding: 3px 7px;
+            font-size: 10px;
+          }
         }
 
         .user-message {
@@ -491,39 +505,51 @@ class DAIChatbot {
           background: linear-gradient(135deg, #49A078, #3e8865);
           color: white;
           padding: 6px 10px;
-          border-radius: 12px 12px 4px 12px;
-          max-width: 180px;
-          font-size: 12px;
+          border-radius: 10px 10px 3px 10px;
+          max-width: 75%;
+          font-size: 11px;
           box-shadow: 0 2px 8px rgba(73, 160, 120, 0.2);
+          word-wrap: break-word;
+          line-height: 1.4;
         }
 
         .bot-message .message-content {
           background: white;
           color: #374151;
           padding: 6px 10px;
-          border-radius: 4px 12px 12px 12px;
+          border-radius: 3px 10px 10px 10px;
           box-shadow: 0 2px 8px rgba(0,0,0,0.08);
           border: 1px solid #f3f4f6;
-          max-width: 200px;
+          max-width: 85%;
           font-size: 11px;
+          word-wrap: break-word;
+          line-height: 1.4;
         }
 
         .action-button {
           background: linear-gradient(135deg, #49A078, #3e8865);
           color: white;
-          padding: 4px 8px;
-          border-radius: 6px;
+          padding: 3px 6px;
+          border-radius: 5px;
           font-size: 10px;
           border: none;
           cursor: pointer;
-          margin-top: 4px;
+          margin-top: 3px;
           transition: all 0.2s;
           font-weight: 500;
+          line-height: 1.3;
         }
         .action-button:hover {
           background: linear-gradient(135deg, #3e8865, #2f6b52);
-          transform: translateY(-1px);
-          box-shadow: 0 4px 12px rgba(73, 160, 120, 0.3);
+          transform: translateY(-0.5px);
+          box-shadow: 0 2px 8px rgba(73, 160, 120, 0.3);
+        }
+        
+        @media (min-width: 640px) {
+          .action-button {
+            padding: 3px 7px;
+            font-size: 10px;
+          }
         }
 
         #chatbot-messages::-webkit-scrollbar {
