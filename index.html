@@ -154,6 +154,31 @@
     .animate-slide-up {
       animation: slideUp 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
+
+    /* ✅ ALL LINKS: No underline, Bold Blue styling */
+    a {
+      text-decoration: none !important;
+      transition: all 0.2s ease;
+    }
+
+    a:not(.nav-link):not(.footer-link):not([class*="bg-"]) {
+      color: #2563EB !important;
+      font-weight: 700 !important;
+    }
+
+    a:not(.nav-link):not(.footer-link):not([class*="bg-"]):hover {
+      color: #1e40af !important;
+      filter: brightness(1.1);
+    }
+
+    /* Ensure buttons with links keep their colors */
+    a[class*="bg-"] {
+      text-decoration: none !important;
+    }
+
+    .no-underline {
+      text-decoration: none !important;
+    }
   </style>
 
   <!-- ✅ Favicons -->
@@ -1033,10 +1058,21 @@ window.addEventListener('load', function() {
 
 
   <script>
-  // ✅ Modal Controls
+  // ✅ Modal Controls with outside click to close
   function openModal(id) {
-    document.getElementById(id).classList.remove('hidden');
+    const modal = document.getElementById(id);
+    modal.classList.remove('hidden');
+    
+    // Add click outside to close functionality
+    setTimeout(() => {
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal(id);
+        }
+      });
+    }, 100);
   }
+  
   function closeModal(id) {
     document.getElementById(id).classList.add('hidden');
   }

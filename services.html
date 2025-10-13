@@ -127,15 +127,29 @@ img:not([alt]) {
   outline: 2px dashed #facc15;
 }
 
-/* Enhance all clickable elements */
-a:not(.group):not(.nav-link):not(.footer-link) {
+/* ✅ ALL LINKS: No underline, Bold Blue styling */
+a {
+  text-decoration: none !important;
   transition: all 0.2s ease;
-  position: relative;
 }
 
-a:not(.group):not(.nav-link):not(.footer-link):hover {
-  filter: brightness(1.05);
-  text-decoration: underline;
+a:not(.nav-link):not(.footer-link):not([class*="bg-"]) {
+  color: #2563EB !important;
+  font-weight: 700 !important;
+}
+
+a:not(.nav-link):not(.footer-link):not([class*="bg-"]):hover {
+  color: #1e40af !important;
+  filter: brightness(1.1);
+}
+
+/* Ensure buttons with links keep their colors */
+a[class*="bg-"] {
+  text-decoration: none !important;
+}
+
+.no-underline {
+  text-decoration: none !important;
 }
 
 /* Extra responsive utilities for smallest screens */
@@ -287,9 +301,9 @@ html, body {
 
       <!-- ✅ Extra Links for Small Screens -->
       <div class="flex gap-1 xs:gap-2 sm:gap-3 ml-2 xs:ml-3 sm:ml-4 md:hidden">
-        <a href="index.html" class="nav-link text-xs tracking-wide">Home</a>
-        <a href="services.html" class="nav-link text-xs tracking-wide">Services</a>
-        <a href="My-projects.html" class="nav-link text-xs tracking-wide">Projects</a>
+        <a href="index.html" class="nav-link text-xs tracking-wide px-2 py-1 rounded-lg bg-white/10 shadow-md border border-white/30 hover:bg-white/20 hover:border-white/50 hover:shadow-lg transition-all">Home</a>
+        <a href="services.html" class="nav-link text-xs tracking-wide px-2 py-1 rounded-lg bg-[#3D8069]/60 shadow-md border border-yellow-300/50 font-bold text-yellow-300 hover:bg-[#3D8069]/80 hover:shadow-lg transition-all">Services</a>
+        <a href="My-projects.html" class="nav-link text-xs tracking-wide px-2 py-1 rounded-lg bg-white/10 shadow-md border border-white/30 hover:bg-white/20 hover:border-white/50 hover:shadow-lg transition-all">Projects</a>
       </div>
     </div>
 
@@ -308,22 +322,32 @@ html, body {
       <li><a href="contact.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Contact</a></li>
       <!--<li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>
       <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms & Conditions</a></li>-->
-      <li><a href="https://tujengane.netlify.app/" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Tujengane</a></li>
+      <li><a href="https://tujengane.netlify.app/" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all relative">
+        Tujengane
+        <span class="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full shadow-md animate-pulse">50% OFF</span>
+      </a></li>
     </ul>
 
-    <!-- ✅ Hamburger Menu -->
-    <button id="menu-toggle" class="block md:hidden text-2xl xs:text-3xl focus:outline-none ml-1 xs:ml-2 sm:ml-3 shrink-0 bg-[#3D8069]/50 hover:bg-[#3D8069]/70 p-1 rounded-md shadow-md transition-all">☰</button>
-  </div>
-
-  <!-- ✅ Mobile Menu -->
-  <div id="mobile-menu" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex-col bg-[#3e8865] px-2 xs:px-3 sm:px-4 w-full shadow-inner">
-    <a href="index.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Home</a>
-    <a href="services.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all bg-[#367659]/30 font-semibold text-yellow-300">Services</a>
-    <a href="My-projects.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Projects</a>
-    <a href="contact.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Contact</a>
-    <a href="about.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">About Us</a>
-    <a href="terms.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Terms & Conditions</a>
-    <a href="https://tujengane.netlify.app/" class="nav-link block py-3 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Tujengane</a>
+    <!-- ✅ Hamburger Menu Button with Dropdown -->
+    <div class="relative block md:hidden">
+      <button id="menu-toggle" class="text-xl xs:text-2xl focus:outline-none ml-1 xs:ml-2 sm:ml-3 shrink-0 bg-[#3D8069]/50 hover:bg-[#3D8069]/70 p-2 rounded-md shadow-md transition-all">☰</button>
+      
+      <!-- ✅ Compact Menu Dropdown (Below Icon) -->
+      <div id="mobile-menu" class="absolute right-0 top-full mt-2 w-48 max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#3e8865] rounded-lg shadow-2xl border-2 border-[#49A078] z-50">
+        <div class="py-2 px-2 flex flex-col gap-1.5">
+          <a href="index.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Home</a>
+          <a href="services.html" class="nav-link block py-2 px-3 transition-all bg-[#367659]/60 font-semibold text-yellow-300 text-xs rounded-md border border-yellow-400/50 shadow-sm">Services</a>
+          <a href="My-projects.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Projects</a>
+          <a href="contact.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Contact</a>
+          <a href="about.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367609]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">About</a>
+          <a href="terms.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Terms</a>
+          <a href="https://tujengane.netlify.app/" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm relative">
+            Tujengane
+            <span class="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full shadow-lg animate-pulse">50% OFF</span>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -353,20 +377,39 @@ html, body {
 const toggleBtn = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 
-toggleBtn.addEventListener('click', () => {
-  mobileMenu.classList.toggle('max-h-0');
-  mobileMenu.classList.toggle('max-h-screen'); // Now expands fully
+// Toggle menu on button click
+toggleBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (mobileMenu.style.maxHeight === '500px') {
+    mobileMenu.style.maxHeight = '0px';
+  } else {
+    mobileMenu.style.maxHeight = '500px';
+  }
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!mobileMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+    mobileMenu.style.maxHeight = '0px';
+  }
+});
+
+// Close menu when clicking a link
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.style.maxHeight = '0px';
+  });
 });
 </script>
 
 <!-- Spacer for Fixed Navbar -->
 <div class="h-14 xs:h-16 sm:h-20"></div>
 
-<section class="bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] py-1 sm:py-6 md:py-12 px-0 w-full m-1">
-  <div class="w-full">
+<section class="bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] py-4 xs:py-6 sm:py-8 md:py-12 px-4 sm:px-3 md:px-2 w-full">
+  <div class="w-full max-w-7xl mx-auto">
 
 <!-- Refined Powerful Opening Statement -->
-<div class="bg-gradient-to-br from-green-50 via-white to-green-100 p-4 sm:p-8 md:p-10 rounded-2xl shadow-lg border border-green-200 mb-8 relative overflow-hidden">
+<div class="bg-gradient-to-br from-green-50 via-white to-green-100 p-4 sm:p-8 md:p-10 rounded-2xl shadow-lg border border-green-200 mb-6 xs:mb-7 sm:mb-8 relative overflow-hidden">
   <span class="absolute left-0 top-1/2 -translate-y-1/2 opacity-20 pointer-events-none select-none w-64 h-64 md:w-96 md:h-96 flex items-center justify-center">
     <span class="inline-flex items-center justify-center w-full h-full rounded-full bg-gradient-to-br from-[#49A078] via-[#facc15] to-[#2563EB] shadow-lg">
       <i class="fas fa-chart-line text-white text-[7rem] md:text-[10rem]"></i>
@@ -470,32 +513,32 @@ toggleBtn.addEventListener('click', () => {
     </div>
 
     <!-- 💼 Simple Process -->
-  <div class="bg-gradient-to-br from-[#e0f7fa] to-[#f0fdf4] p-4 sm:p-8 rounded-xl mb-8">
-      <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">Our Simple Process</h2>
+  <div class="bg-gradient-to-br from-[#e0f7fa] to-[#f0fdf4] p-4 sm:p-6 md:p-8 rounded-xl mb-6 xs:mb-7 sm:mb-8">
+      <h2 class="text-xl xs:text-2xl font-bold text-center text-gray-800 mb-4 xs:mb-6 sm:mb-8">Our Simple Process</h2>
       
-  <div class="grid md:grid-cols-4 gap-4 sm:gap-6">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 xs:gap-4 sm:gap-6">
         <div class="text-center">
-          <div class="bg-[#49A078] text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">1</div>
-          <h4 class="font-semibold text-gray-800 mb-2">Send Data</h4>
-          <p class="text-gray-600 text-sm">Upload your files or describe your needs</p>
+          <div class="bg-[#49A078] text-white w-10 h-10 xs:w-12 xs:h-12 rounded-full flex items-center justify-center mx-auto mb-2 xs:mb-3 text-lg xs:text-xl font-bold">1</div>
+          <h4 class="font-semibold text-gray-800 mb-1 xs:mb-2 text-sm xs:text-base">Send Data</h4>
+          <p class="text-gray-600 text-xs xs:text-sm">Upload files or describe needs</p>
         </div>
         
         <div class="text-center">
-          <div class="bg-[#49A078] text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">2</div>
-          <h4 class="font-semibold text-gray-800 mb-2">We Analyze</h4>
-          <p class="text-gray-600 text-sm">Our experts clean and analyze your data</p>
+          <div class="bg-[#49A078] text-white w-10 h-10 xs:w-12 xs:h-12 rounded-full flex items-center justify-center mx-auto mb-2 xs:mb-3 text-lg xs:text-xl font-bold">2</div>
+          <h4 class="font-semibold text-gray-800 mb-1 xs:mb-2 text-sm xs:text-base">We Analyze</h4>
+          <p class="text-gray-600 text-xs xs:text-sm">Experts clean & analyze data</p>
         </div>
         
         <div class="text-center">
-          <div class="bg-[#49A078] text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">3</div>
-          <h4 class="font-semibold text-gray-800 mb-2">Get Results</h4>
-          <p class="text-gray-600 text-sm">Receive clean data and actionable insights</p>
+          <div class="bg-[#49A078] text-white w-10 h-10 xs:w-12 xs:h-12 rounded-full flex items-center justify-center mx-auto mb-2 xs:mb-3 text-lg xs:text-xl font-bold">3</div>
+          <h4 class="font-semibold text-gray-800 mb-1 xs:mb-2 text-sm xs:text-base">Get Results</h4>
+          <p class="text-gray-600 text-xs xs:text-sm">Receive clean data & insights</p>
         </div>
         
         <div class="text-center">
-          <div class="bg-[#49A078] text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">4</div>
-          <h4 class="font-semibold text-gray-800 mb-2">Make Decisions</h4>
-          <p class="text-gray-600 text-sm">Use data-driven insights to grow your business</p>
+          <div class="bg-[#49A078] text-white w-10 h-10 xs:w-12 xs:h-12 rounded-full flex items-center justify-center mx-auto mb-2 xs:mb-3 text-lg xs:text-xl font-bold">4</div>
+          <h4 class="font-semibold text-gray-800 mb-1 xs:mb-2 text-sm xs:text-base">Make Decisions</h4>
+          <p class="text-gray-600 text-xs xs:text-sm">Use data to grow business</p>
         </div>
       </div>
     </div>
@@ -505,18 +548,21 @@ toggleBtn.addEventListener('click', () => {
       <h2 class="text-2xl font-bold mb-4">Ready to Transform Your Data?</h2>
       <p class="text-lg mb-6">Join hundreds of businesses that trust dericBI for their data needs.</p>
       
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <div class="flex flex-row gap-1.5 xs:gap-2 sm:gap-3 md:gap-4 justify-center items-stretch max-w-4xl mx-auto">
         <a href="https://wa.me/254791360805" target="_blank" 
-           class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition flex items-center justify-center">
-          <i class="fab fa-whatsapp mr-2"></i>WhatsApp Us
+           class="flex-1 bg-green-600 hover:bg-green-700 text-white px-2 xs:px-3 sm:px-4 md:px-6 py-2.5 xs:py-3 rounded-lg font-bold transition flex flex-col xs:flex-row items-center justify-center gap-1 no-underline text-xs xs:text-sm sm:text-base min-w-0">
+          <i class="fab fa-whatsapp text-base xs:text-lg sm:text-xl"></i>
+          <span class="hidden xs:inline">WhatsApp</span><span class="xs:hidden">Chat</span>
         </a>
         <a href="mailto:dericmarangu@gmail.com" 
-           class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition flex items-center justify-center">
-          <i class="fas fa-envelope mr-2"></i>Send Email
+           class="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-2 xs:px-3 sm:px-4 md:px-6 py-2.5 xs:py-3 rounded-lg font-bold transition flex flex-col xs:flex-row items-center justify-center gap-1 no-underline text-xs xs:text-sm sm:text-base min-w-0">
+          <i class="fas fa-envelope text-base xs:text-lg sm:text-xl"></i>
+          <span class="hidden xs:inline">Send Email</span><span class="xs:hidden">Email</span>
         </a>
         <a href="contact.html" 
-           class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition flex items-center justify-center">
-          <i class="fas fa-phone mr-2"></i>All Contacts
+           class="flex-1 bg-gray-600 hover:bg-gray-700 text-white px-2 xs:px-3 sm:px-4 md:px-6 py-2.5 xs:py-3 rounded-lg font-bold transition flex flex-col xs:flex-row items-center justify-center gap-1 no-underline text-xs xs:text-sm sm:text-base min-w-0">
+          <i class="fas fa-phone text-base xs:text-lg sm:text-xl"></i>
+          <span class="hidden xs:inline">All Contacts</span><span class="xs:hidden">Call</span>
         </a>
       </div>
     </div>
@@ -524,52 +570,52 @@ toggleBtn.addEventListener('click', () => {
 </section>
 
 <!-- ✅ Compact Action Bar -->
-<section class="bg-gray-50 py-4 px-4 border-t border-gray-200">
-  <div class="container mx-auto max-w-4xl">
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+<section class="bg-gray-50 py-4 xs:py-5 sm:py-6 px-4 sm:px-3 md:px-2 border-t border-gray-200">
+  <div class="w-full max-w-7xl mx-auto">
+    <div class="flex flex-row items-center justify-center sm:justify-between gap-2 xs:gap-3 flex-wrap">
       <!-- Quick Actions -->
-      <div class="flex flex-wrap items-center gap-2">
+      <div class="flex flex-row items-center gap-1.5 xs:gap-2 flex-wrap justify-center">
         <button onclick="toggleProjectServices()" 
-          class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded text-xs font-semibold transition group">
-          <i class="fas fa-rocket mr-1"></i>Start Project
+          class="bg-[#49A078] hover:bg-[#3e8865] text-white px-2 xs:px-3 py-1.5 xs:py-2 rounded text-[10px] xs:text-xs font-semibold transition group whitespace-nowrap">
+          <i class="fas fa-rocket mr-1"></i><span class="hidden xs:inline">Start </span>Project
           <span class="hidden group-hover:inline ml-1 text-[#facc15]">✓</span>
         </button>
         <button onclick="toggleDownloadServices()" 
-          class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-3 py-2 rounded text-xs font-semibold transition group">
-          <i class="fas fa-download mr-1"></i>Download Files
+          class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-2 xs:px-3 py-1.5 xs:py-2 rounded text-[10px] xs:text-xs font-semibold transition group whitespace-nowrap">
+          <i class="fas fa-download mr-1"></i><span class="hidden xs:inline">Download </span>Files
           <span class="hidden group-hover:inline ml-1 text-[#facc15]">📁</span>
         </button>
         <a href="https://dericbi-app.streamlit.app/" target="_blank"
-          class="bg-[#facc15] hover:bg-[#eab308] text-black px-3 py-2 rounded text-xs font-semibold transition flex items-center gap-1">
-          <i class="fas fa-flask"></i>Try Yourself
+          class="bg-[#facc15] hover:bg-[#eab308] text-black px-2 xs:px-3 py-1.5 xs:py-2 rounded text-[10px] xs:text-xs font-semibold transition flex items-center gap-1 whitespace-nowrap no-underline">
+          <i class="fas fa-flask"></i><span class="hidden xs:inline">Try </span>Yourself
         </a>
-        <div class="hidden sm:flex items-center text-xs text-gray-500">
+        <div class="hidden sm:flex items-center text-[10px] xs:text-xs text-gray-500 whitespace-nowrap">
           <i class="fas fa-shield-alt text-green-600 mr-1"></i>Secure
         </div>
       </div>
 
       <!-- Expandable Project Section -->
-      <div id="projectSectionServices" class="hidden w-full sm:w-auto">
-        <div class="flex gap-2 items-center">
+      <div id="projectSectionServices" class="hidden w-full sm:w-auto transition-all duration-300 ease-in-out overflow-hidden" style="max-height: 0px; opacity: 0;">
+        <div class="flex flex-row gap-1.5 xs:gap-2 items-center justify-center">
           <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank"
-            class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded text-xs font-semibold transition">
-            <i class="fas fa-upload mr-1"></i>I Have Data
+            class="bg-[#49A078] hover:bg-[#3e8865] text-white px-2 xs:px-3 py-1.5 xs:py-2 rounded text-[10px] xs:text-xs font-semibold transition whitespace-nowrap no-underline">
+            <i class="fas fa-upload mr-1"></i><span class="hidden xs:inline">I Have </span>Data
           </a>
           <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7" target="_blank"
-            class="bg-[#f59e0b] hover:bg-[#d97706] text-white px-3 py-2 rounded text-xs font-semibold transition">
-            <i class="fas fa-chart-line mr-1"></i>I Need Setup
+            class="bg-[#f59e0b] hover:bg-[#d97706] text-white px-2 xs:px-3 py-1.5 xs:py-2 rounded text-[10px] xs:text-xs font-semibold transition whitespace-nowrap no-underline">
+            <i class="fas fa-chart-line mr-1"></i><span class="hidden xs:inline">I Need </span>Setup
           </a>
         </div>
       </div>
 
       <!-- Expandable Download Section -->
-      <div id="downloadSectionServices" class="hidden w-full sm:w-auto">
-        <div class="flex flex-col xs:flex-row gap-2 items-center">
+      <div id="downloadSectionServices" class="hidden w-full sm:w-auto transition-all duration-300 ease-in-out overflow-hidden" style="max-height: 0px; opacity: 0;">
+        <div class="flex flex-row gap-1.5 xs:gap-2 items-center justify-center">
           <input id="fileNameInputServices" type="text" placeholder="File name..." 
-            class="px-3 py-2 rounded text-xs border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#2563EB] w-full xs:w-32 min-w-0">
+            class="px-2 xs:px-3 py-1.5 xs:py-2 rounded text-[10px] xs:text-xs border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#2563EB] w-24 xs:w-32 sm:w-40 min-w-0">
           <button onclick="downloadFileServices()" 
-            class="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs font-semibold transition">
-            <i class="fas fa-download"></i>
+            class="bg-green-600 hover:bg-green-700 text-white px-2 xs:px-3 py-1.5 xs:py-2 rounded text-[10px] xs:text-xs font-semibold transition whitespace-nowrap">
+            <i class="fas fa-download"></i><span class="hidden xs:inline ml-1">Get</span>
           </button>
         </div>
         <p id="errorMessageServices" class="text-red-600 text-xs mt-1 hidden">File not found. Contact: +254791360805</p>
@@ -580,24 +626,83 @@ toggleBtn.addEventListener('click', () => {
 </section>
 
 <script>
-// Toggle project section
+// Toggle project section with smooth transitions
 function toggleProjectServices() {
   const section = document.getElementById('projectSectionServices');
   const downloadSection = document.getElementById('downloadSectionServices');
-  downloadSection.classList.add('hidden');
-  section.classList.toggle('hidden');
+  
+  // Close download section first
+  if (!downloadSection.classList.contains('hidden')) {
+    downloadSection.style.maxHeight = '0px';
+    downloadSection.style.opacity = '0';
+    setTimeout(() => downloadSection.classList.add('hidden'), 300);
+  }
+  
+  // Toggle project section
+  if (section.classList.contains('hidden')) {
+    section.classList.remove('hidden');
+    section.style.maxHeight = '0px';
+    section.style.opacity = '0';
+    setTimeout(() => {
+      section.style.maxHeight = '200px';
+      section.style.opacity = '1';
+    }, 10);
+  } else {
+    section.style.maxHeight = '0px';
+    section.style.opacity = '0';
+    setTimeout(() => section.classList.add('hidden'), 300);
+  }
 }
 
-// Toggle download section
+// Toggle download section with smooth transitions
 function toggleDownloadServices() {
   const section = document.getElementById('downloadSectionServices');
   const projectSection = document.getElementById('projectSectionServices');
-  projectSection.classList.add('hidden');
-  section.classList.toggle('hidden');
-  if (!section.classList.contains('hidden')) {
-    document.getElementById('fileNameInputServices').focus();
+  
+  // Close project section first
+  if (!projectSection.classList.contains('hidden')) {
+    projectSection.style.maxHeight = '0px';
+    projectSection.style.opacity = '0';
+    setTimeout(() => projectSection.classList.add('hidden'), 300);
+  }
+  
+  // Toggle download section
+  if (section.classList.contains('hidden')) {
+    section.classList.remove('hidden');
+    section.style.maxHeight = '0px';
+    section.style.opacity = '0';
+    setTimeout(() => {
+      section.style.maxHeight = '200px';
+      section.style.opacity = '1';
+      document.getElementById('fileNameInputServices').focus();
+    }, 10);
+  } else {
+    section.style.maxHeight = '0px';
+    section.style.opacity = '0';
+    setTimeout(() => section.classList.add('hidden'), 300);
   }
 }
+
+// Close expandable sections when clicking outside
+document.addEventListener('click', function(event) {
+  const projectSection = document.getElementById('projectSectionServices');
+  const downloadSection = document.getElementById('downloadSectionServices');
+  const projectBtn = event.target.closest('[onclick*="toggleProjectServices"]');
+  const downloadBtn = event.target.closest('[onclick*="toggleDownloadServices"]');
+  
+  // If click is outside both sections and buttons, close them
+  if (!projectBtn && !projectSection.contains(event.target) && !projectSection.classList.contains('hidden')) {
+    projectSection.style.maxHeight = '0px';
+    projectSection.style.opacity = '0';
+    setTimeout(() => projectSection.classList.add('hidden'), 300);
+  }
+  
+  if (!downloadBtn && !downloadSection.contains(event.target) && !downloadSection.classList.contains('hidden')) {
+    downloadSection.style.maxHeight = '0px';
+    downloadSection.style.opacity = '0';
+    setTimeout(() => downloadSection.classList.add('hidden'), 300);
+  }
+});
 
 // Download function
 function downloadFileServices() {
@@ -652,8 +757,9 @@ function toggleNewsletter() {
 
 <!-- Add a subtle Tujengane Data Basics promo at the bottom before the footer -->
 <div class="w-full text-center py-2 text-xs text-gray-400 bg-transparent mt-8">
-  <a href="https://forms.gle/Mi9eGTF7AQFBTxsw7" target="_blank" class="underline hover:text-[#49A078]">
+  <a href="https://forms.gle/Mi9eGTF7AQFBTxsw7" target="_blank" class="underline hover:text-[#49A078] relative inline-block">
     🎓 Tujengane Data Basics: Free class – Learn to collect, clean, and store data
+    <span class="ml-1 px-1.5 py-0.5 rounded-full text-[8px] font-bold bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-md animate-pulse">50% OFF</span>
   </a>
   <span class="mx-2">|</span>
   <a href="https://chat.whatsapp.com/DHO6xjyr8xu6x5opHRG7fl" target="_blank" class="underline hover:text-[#2563EB]">
@@ -662,7 +768,7 @@ function toggleNewsletter() {
 </div>
 
 <!-- ✅ Footer -->
-<footer class="bg-gradient-to-b from-white to-[#DFF3EA] py-3 xs:py-4 px-2 xs:px-3 sm:px-4 text-sm text-gray-600 mt-auto border-t border-green-300 w-full shadow-inner">
+<footer class="bg-gradient-to-b from-white to-[#DFF3EA] py-4 xs:py-5 sm:py-6 px-4 sm:px-3 md:px-2 text-sm text-gray-600 mt-auto border-t border-green-300 w-full shadow-inner">
   <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 xs:gap-4">
 
 <!-- ✅ Footer Logo and Tagline -->
@@ -751,7 +857,7 @@ function toggleNewsletter() {
 
 <!-- Back to Top Button -->
 <button id="backToTop" class="fixed bg-[#49A078] text-white rounded-full shadow-lg flex items-center justify-center text-xl z-40 opacity-0 transition-opacity duration-300 md:flex"
-  style="border: none; outline: none; display: none; bottom: 10rem; right: 2rem; width: 3rem; height: 3rem;">
+  style="border: none; outline: none; display: none; bottom: 11.5rem; right: 2rem; width: 3rem; height: 3rem;">
   <i class="fas fa-arrow-up"></i>
 </button>
 
