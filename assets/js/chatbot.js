@@ -1,5 +1,5 @@
-// EAI (Exesbi Artificial Intelligence) - Advanced Chatbot System
-class EAIChatbot {
+// DAI (dericBI Artificial Intelligence) - Advanced Chatbot System
+class DAIChatbot {
   constructor() {
     this.isOpen = false;
     this.currentConversation = [];
@@ -27,7 +27,7 @@ class EAIChatbot {
 
   // Initialize AI memory system for personalized experience
   initializeAgenticMemory() {
-    const stored = localStorage.getItem('eai_memory');
+    const stored = localStorage.getItem('dai_memory');
     const memory = stored ? JSON.parse(stored) : {
       userPreferences: {},
       interactionHistory: [],
@@ -40,7 +40,7 @@ class EAIChatbot {
 
   // Save AI memory to localStorage
   saveAgenticMemory() {
-    localStorage.setItem('eai_memory', JSON.stringify(this.agenticMemory));
+    localStorage.setItem('dai_memory', JSON.stringify(this.agenticMemory));
   }
 
   // Start proactive AI behavior
@@ -91,19 +91,19 @@ class EAIChatbot {
 
     const suggestion = suggestions[this.userContext];
     if (suggestion && !this.isOpen) {
-      // Add a subtle notification to the EAI button
+      // Add a subtle notification to the DAI button
       this.addNotificationPulse(suggestion);
     }
   }
 
-  // Add notification pulse to EAI button
+  // Add notification pulse to DAI button
   addNotificationPulse(message) {
     const toggleBtn = document.getElementById('chatbot-toggle');
     if (toggleBtn) {
-      toggleBtn.classList.add('eai-has-suggestion');
-      toggleBtn.title = `EAI has a suggestion: ${message}`;
+      toggleBtn.classList.add('dai-has-suggestion');
+      toggleBtn.title = `DAI has a suggestion: ${message}`;
       
-      // Store the suggestion for when user opens EAI
+      // Store the suggestion for when user opens DAI
       this.pendingSuggestion = message;
     }
   }
@@ -130,16 +130,16 @@ class EAIChatbot {
   // Initialize user session for personalized greetings
   initializeUserSession() {
     const session = {
-      visitCount: parseInt(localStorage.getItem('exes_visit_count') || '0') + 1,
-      lastVisit: localStorage.getItem('exes_last_visit'),
+      visitCount: parseInt(localStorage.getItem('dericbi_visit_count') || '0') + 1,
+      lastVisit: localStorage.getItem('dericbi_last_visit'),
       currentTime: new Date(),
       timeOfDay: this.getTimeOfDay(),
-      returningUser: localStorage.getItem('exes_visited') === 'true'
+      returningUser: localStorage.getItem('dericbi_visited') === 'true'
     };
     
-    localStorage.setItem('exes_visit_count', session.visitCount.toString());
-    localStorage.setItem('exes_last_visit', session.currentTime.toISOString());
-    localStorage.setItem('exes_visited', 'true');
+    localStorage.setItem('dericbi_visit_count', session.visitCount.toString());
+    localStorage.setItem('dericbi_last_visit', session.currentTime.toISOString());
+    localStorage.setItem('dericbi_visited', 'true');
     
     return session;
   }
@@ -214,7 +214,7 @@ class EAIChatbot {
             action: () => this.suggestNavigation('terms.html', 'View Terms')
           },
           'homepage': {
-            text: "🏠 You're on the homepage! It features an overview of EXES, how we transform data into insights, quick testimonials, and steps to get started with your project.",
+            text: "🏠 You're on the homepage! It features an overview of dericBI, how we transform data into insights, quick testimonials, and steps to get started with your project.",
             action: null
           }
         }
@@ -231,8 +231,8 @@ class EAIChatbot {
           'setup_services': "🔧 **Data Setup Services**: Don't have data yet? We set up tracking systems from scratch including sales tracking, inventory management, customer databases, and automated reporting systems.",
           'process': "� **Our Simple 4-Step Process**:\n\n1️⃣ **Send Data**: Upload your files or describe your needs\n2️⃣ **We Analyze**: Our experts clean and analyze your data\n3️⃣ **Get Results**: Receive clean data and actionable insights\n4️⃣ **Make Decisions**: Use data-driven insights to grow your business",
           'pricing_structure': "💰 **Our Pricing Structure**:\n\n• **Excel Cleanup**: Starting from KSh 2,000-10,000 (depending on complexity)\n• **Data Analysis**: KSh 5,000-25,000 (based on dataset size and depth)\n• **PowerBI Dashboards**: KSh 8,000-30,000 (interactive dashboards)\n• **Complete Setup**: KSh 15,000-50,000 (full system implementation)\n\n💡 **Volume Discounts Available!** Contact us for custom quotes.",
-          'value_proposition': "🎯 **Why Choose EXES?**\n\n• **Stop Revenue Leaks**: Most businesses lose money through untracked decisions - we fix that\n• **Turn KSh 1M into KSh 10M**: Our analytics help clients achieve 10x growth\n• **40+ Successful Projects**: Proven track record across various industries\n• **Fast Turnaround**: Most projects completed within 3-7 days\n• **Affordable Rates**: Starting from just KSh 2,000",
-          'contact_options': "📞 **Get Started Today**:\n\n• **WhatsApp**: +254791360805 (Fastest response)\n• **Email**: EXESanalytics@hotmail.com\n• **Have Data?** → https://forms.gle/krViHXVaJKP2JARZ7\n• **Need Setup?** → https://forms.gle/Uzq3L9wtm5yM6KEX7"
+          'value_proposition': "🎯 **Why Choose dericBI?**\n\n• **Stop Revenue Leaks**: Most businesses lose money through untracked decisions - we fix that\n• **Turn KSh 1M into KSh 10M**: Our analytics help clients achieve 10x growth\n• **40+ Successful Projects**: Proven track record across various industries\n• **Fast Turnaround**: Most projects completed within 3-7 days\n• **Affordable Rates**: Starting from just KSh 2,000",
+          'contact_options': "📞 **Get Started Today**:\n\n• **WhatsApp**: +254791360805 (Fastest response)\n• **Email**: deric.analytics@gmail.com\n• **Have Data?** → https://forms.gle/krViHXVaJKP2JARZ7\n• **Need Setup?** → https://forms.gle/Uzq3L9wtm5yM6KEX7"
         }
       },
 
@@ -251,7 +251,7 @@ class EAIChatbot {
       business: {
         patterns: ['business', 'company', 'experience', 'about', 'who', 'founded', 'location', 'ceo', 'founder', 'deric', 'marangu', 'team', 'mission', 'values', 'history', 'credentials', 'portfolio'],
         responses: {
-          'about_exes': "🏢 **About EXES**: We're a Kenyan data analytics company founded by our CEO Deric Marangu. We specialize in making messy data beautiful and actionable. Our mission is to empower businesses with clear insights. Check the About page for more.",
+          'about_dericbi': "🏢 **About dericBI**: We're a Kenyan data analytics company founded by our CEO Deric Marangu. We specialize in making messy data beautiful and actionable. Our mission is to empower businesses with clear insights. Check the About page for more.",
           'experience': "👨‍💼 **Our Experience**: 40+ completed projects across various industries. We've helped businesses clean Excel files, create dashboards, and gain insights from their data. Our CEO Deric Marangu leads with years of expertise in data analysis and dashboard creation.",
           'location': "📍 **Location**: We're based in Kenya but serve clients globally. All consultations and project deliveries can be done remotely. Contact us anytime!",
           'founder': "👨‍💻 **Founder and CEO**: Deric Marangu - Experienced data analyst passionate about turning data chaos into clarity. Born June 11, 2001, in Meru, Kenya. Bachelor's in Business Information Technology from Kirinyaga University (expected 2025). Skilled in SQL, Python, Power BI, Excel. Check his portfolio and credentials on the About page!"
@@ -262,9 +262,9 @@ class EAIChatbot {
       complex: {
         patterns: ['complex', 'advanced', 'custom', 'specific', 'detailed', 'integrate', 'api', 'database', 'algorithm', 'enterprise', 'large scale', 'sophisticated', 'technical details', 'implementation', 'how to build'],
         responses: {
-          'redirect_human': "🤝 **Complex Request Detected**: This sounds like something our team should discuss with you personally! Our experts can provide detailed answers and custom solutions. Please contact us at EXESanalytics@hotmail.com or WhatsApp 0791360805.",
-          'schedule_consultation': "📅 **Let's Schedule a Chat**: For detailed technical discussions or custom requirements, I recommend speaking directly with our team at EXESanalytics@hotmail.com or WhatsApp 0791360805.",
-          'contact_expert': "👨‍🔬 **Expert Consultation**: This requires human expertise! Our data analysts would love to discuss your specific needs in detail. Reach out to EXESanalytics@hotmail.com or WhatsApp 0791360805."
+          'redirect_human': "🤝 **Complex Request Detected**: This sounds like something our team should discuss with you personally! Our experts can provide detailed answers and custom solutions. Please contact us at deric.analytics@gmail.com or WhatsApp 0791360805.",
+          'schedule_consultation': "📅 **Let's Schedule a Chat**: For detailed technical discussions or custom requirements, I recommend speaking directly with our team at deric.analytics@gmail.com or WhatsApp 0791360805.",
+          'contact_expert': "👨‍🔬 **Expert Consultation**: This requires human expertise! Our data analysts would love to discuss your specific needs in detail. Reach out to deric.analytics@gmail.com or WhatsApp 0791360805."
         }
       },
 
@@ -284,47 +284,47 @@ class EAIChatbot {
         patterns: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'greetings', 'hola', 'howdy', 'yo', 'sup', 'whats up', 'bonjour', 'salut', 'ciao', 'aloha', 'shalom', 'namaste', 'salaam', 'konnichiwa', 'annyeong'],
         responses: {
           'first_visit': [
-            "🧠 **Welcome to EAI!** I'm your Exesbi Artificial Intelligence assistant, here to help you discover our data analytics expertise led by CEO Deric Marangu. What brings you here today?",
-            "👋 **Hello there!** Welcome to EXES - I'm EAI, your intelligent guide! Where we turn data chaos into clarity! How can I help you explore our capabilities?",
-            "😊 **Hi! Welcome aboard!** I'm EAI, your AI assistant, ready to help you navigate our website and learn about our amazing data solutions. What interests you most?",
-            "🎉 **Greetings!** First time here? I'm EAI, and EXES is all about smart data solutions led by CEO Deric Marangu. What's on your mind?",
-            "✨ **Hey there!** I'm EAI, your intelligent companion at EXES. From simple questions to deep dives, I'm here to assist. How may I help?"
+            "🧠 **Welcome to DAI!** I'm your dericBI Artificial Intelligence assistant, here to help you discover our data analytics expertise led by CEO Deric Marangu. What brings you here today?",
+            "👋 **Hello there!** Welcome to dericBI - I'm DAI, your intelligent guide! Where we turn data chaos into clarity! How can I help you explore our capabilities?",
+            "😊 **Hi! Welcome aboard!** I'm DAI, your AI assistant, ready to help you navigate our website and learn about our amazing data solutions. What interests you most?",
+            "🎉 **Greetings!** First time here? I'm DAI, and dericBI is all about smart data solutions led by CEO Deric Marangu. What's on your mind?",
+            "✨ **Hey there!** I'm DAI, your intelligent companion at dericBI. From simple questions to deep dives, I'm here to assist. How may I help?"
           ],
           'returning_visitor': [
-            "🎉 **Welcome back!** It's EAI here - nice to see you again! Ready to explore more of what EXES has to offer?",
-            "👋 **Hey again!** EAI at your service - good to have you back! What can I help you discover today?",
-            "😊 **Welcome back to EXES!** It's your AI assistant EAI - hope you're having a great day! What would you like to explore this time?",
-            "🌟 **Hello returning friend!** EAI here - EXES appreciates your visits. Anything specific from our CEO Deric Marangu's portfolio?",
-            "👏 **Hi once more!** EAI is excited to see familiar faces. Let's pick up where we left off—what's your query?"
+            "🎉 **Welcome back!** It's DAI here - nice to see you again! Ready to explore more of what dericBI has to offer?",
+            "👋 **Hey again!** DAI at your service - good to have you back! What can I help you discover today?",
+            "😊 **Welcome back to dericBI!** It's your AI assistant DAI - hope you're having a great day! What would you like to explore this time?",
+            "🌟 **Hello returning friend!** DAI here - dericBI appreciates your visits. Anything specific from our CEO Deric Marangu's portfolio?",
+            "👏 **Hi once more!** DAI is excited to see familiar faces. Let's pick up where we left off—what's your query?"
           ],
           'time_based': {
             'morning': [
-              "☀️ **Good morning!** EAI here - perfect time to dive into some data insights! How can I brighten your day with EXES solutions?",
-              "🌅 **Morning!** Your AI assistant EAI is ready to start the day with some amazing data analytics! What can I show you?",
-              "🌤️ **Bright morning greetings!** I'm EAI, and EXES, led by CEO Deric Marangu, is here to kickstart your data journey.",
-              "☕ **Good morning!** EAI here with your coffee-time data chat! Let's talk EXES services or projects to energize your day."
+              "☀️ **Good morning!** DAI here - perfect time to dive into some data insights! How can I brighten your day with dericBI solutions?",
+              "🌅 **Morning!** Your AI assistant DAI is ready to start the day with some amazing data analytics! What can I show you?",
+              "🌤️ **Bright morning greetings!** I'm DAI, and dericBI, led by CEO Deric Marangu, is here to kickstart your data journey.",
+              "☕ **Good morning!** DAI here with your coffee-time data chat! Let's talk dericBI services or projects to energize your day."
             ],
             'afternoon': [
-              "🌞 **Good afternoon!** EAI at your service - hope your day is going well! Let me help you discover what EXES can do for you.",
-              "☀️ **Afternoon!** Your intelligent EAI assistant here - perfect timing to explore our data solutions. What interests you most?",
-              "🏙️ **Afternoon vibes!** EAI is ready to assist with any website queries or beyond.",
-              "🌤️ **Hello afternoon explorer!** EAI here - from CEO Deric Marangu's insights to project details, ask away."
+              "🌞 **Good afternoon!** DAI at your service - hope your day is going well! Let me help you discover what dericBI can do for you.",
+              "☀️ **Afternoon!** Your intelligent DAI assistant here - perfect timing to explore our data solutions. What interests you most?",
+              "🏙️ **Afternoon vibes!** DAI is ready to assist with any website queries or beyond.",
+              "🌤️ **Hello afternoon explorer!** DAI here - from CEO Deric Marangu's insights to project details, ask away."
             ],
             'evening': [
-              "🌅 **Good evening!** EAI here - winding down with some data exploration? I'm here to help!",
-              "🌆 **Evening!** Your AI companion EAI - great time to check out our portfolio. What would you like to see?",
-              "🌇 **Evening greetings!** EAI wraps up your day with smart answers. How can I assist?",
-              "🌙 **Good evening!** EAI here to help you relax and explore EXES offerings."
+              "🌅 **Good evening!** DAI here - winding down with some data exploration? I'm here to help!",
+              "🌆 **Evening!** Your AI companion DAI - great time to check out our portfolio. What would you like to see?",
+              "🌇 **Evening greetings!** DAI wraps up your day with smart answers. How can I assist?",
+              "🌙 **Good evening!** DAI here to help you relax and explore dericBI offerings."
             ],
             'night': [
-              "🌙 **Good evening!** EAI here for late night research - I'm here to help you find what you need!",
-              "✨ **Hello night owl!** EAI at your service for exploring data solutions! Let me guide you through EXES!",
-              "🌌 **Late night hello!** EAI doesn't sleep—ask about anything from services to CEO Deric Marangu.",
-              "🦉 **Greetings night thinker!** EAI here for burning the midnight oil - EXES is here for all your questions."
+              "🌙 **Good evening!** DAI here for late night research - I'm here to help you find what you need!",
+              "✨ **Hello night owl!** DAI at your service for exploring data solutions! Let me guide you through dericBI!",
+              "🌌 **Late night hello!** DAI doesn't sleep—ask about anything from services to CEO Deric Marangu.",
+              "🦉 **Greetings night thinker!** DAI here for burning the midnight oil - dericBI is here for all your questions."
             ],
             'late night': [
-              "🌑 **Late night greetings!** EAI here - still up? EXES is always on for data chats.",
-              "🌙 **Hello in the wee hours!** EAI at your service - from projects to contacts, I've got you covered at EXES."
+              "🌑 **Late night greetings!** DAI here - still up? dericBI is always on for data chats.",
+              "🌙 **Hello in the wee hours!** DAI at your service - from projects to contacts, I've got you covered at dericBI."
             ]
           }
         }
@@ -334,7 +334,7 @@ class EAIChatbot {
       faq: {
         patterns: ['faq', 'help', 'support', 'question', 'common questions', 'issues', 'troubleshoot', 'how does it work', 'process'],
         responses: {
-          'general_help': "❓ **I'm here to help!** I can assist with:\n\n• **Navigation**: Find specific pages or features\n• **Services**: Learn about what we offer\n• **Projects**: Browse our portfolio\n• **Contact**: Connect with our team\n\nWhat would you like to know more about? If it's beyond my scope, feel free to contact EXESanalytics@hotmail.com or WhatsApp 0791360805."
+          'general_help': "❓ **I'm here to help!** I can assist with:\n\n• **Navigation**: Find specific pages or features\n• **Services**: Learn about what we offer\n• **Projects**: Browse our portfolio\n• **Contact**: Connect with our team\n\nWhat would you like to know more about? If it's beyond my scope, feel free to contact dericmarangu@gmail.com or WhatsApp 0791360805."
         }
       },
 
@@ -342,7 +342,7 @@ class EAIChatbot {
       data_science: {
         patterns: ['machine learning', 'ai', 'artificial intelligence', 'statistics', 'analytics', 'visualization', 'predictive', 'modeling', 'big data', 'insights', 'trends', 'correlation', 'data science', 'advanced analytics'],
         responses: {
-          'advanced_analytics': "🔬 **Advanced Analytics**: We work with statistical analysis, predictive modeling, and data visualization. For AI/ML projects, our team can discuss custom solutions! Contact EXESanalytics@hotmail.com or WhatsApp 0791360805 for details.",
+          'advanced_analytics': "🔬 **Advanced Analytics**: We work with statistical analysis, predictive modeling, and data visualization. For AI/ML projects, our team can discuss custom solutions! Contact dericmarangu@gmail.com or WhatsApp 0791360805 for details.",
           'data_viz': "📊 **Data Visualization**: We create stunning dashboards and charts that make complex data easy to understand. Check our portfolio for examples!",
           'statistics': "📈 **Statistical Analysis**: We provide comprehensive statistical analysis including trend analysis, correlation studies, and predictive insights. Our CEO Deric Marangu specializes in this area."
         }
@@ -352,9 +352,9 @@ class EAIChatbot {
       products_systems: {
         patterns: ['products', 'systems', 'tools', 'platforms', 'technology', 'streamlit', 'tujengane', 'what tools', 'tech stack', 'software', 'applications'],
         responses: {
-          'tech_stack': "💻 **EXES Tech Stack**:\n\n**Frontend**: HTML, TailwindCSS, JavaScript\n**Analytics**: Python, SQL, Power BI, Excel\n**Data Processing**: Pandas, NumPy, Matplotlib, Seaborn\n**Dashboards**: Power BI, Excel, Python visualizations\n**Storage**: Google Drive, Google Sheets\n**Hosting**: GitHub Pages, Netlify\n**Communication**: WhatsApp, Email, Google Forms",
+          'tech_stack': "💻 **dericBI Tech Stack**:\n\n**Frontend**: HTML, TailwindCSS, JavaScript\n**Analytics**: Python, SQL, Power BI, Excel\n**Data Processing**: Pandas, NumPy, Matplotlib, Seaborn\n**Dashboards**: Power BI, Excel, Python visualizations\n**Storage**: Google Drive, Google Sheets\n**Hosting**: GitHub Pages, Netlify\n**Communication**: WhatsApp, Email, Google Forms",
           
-          'streamlit_app': "🧪 **Try Yourself Platform**: Our interactive Streamlit application (https://exes-ebi.streamlit.app/) lets you:\n• Test data analysis features\n• Preview dashboard capabilities\n• Experience our tools firsthand\n• See sample analytics in action\n\nPerfect for exploring what EXES can do for your data!",
+          'streamlit_app': "🧪 **Try Yourself Platform**: Our interactive Streamlit application (https://exes-ebi.streamlit.app/) lets you:\n• Test data analysis features\n• Preview dashboard capabilities\n• Experience our tools firsthand\n• See sample analytics in action\n\nPerfect for exploring what dericBI can do for your data!",
           
           'tujengane_programs': "🎓 **Tujengane Education Programs**:\n\n**1. Data Basics** (Free):\n• Data collection, cleaning, storage\n• Basic Excel and database concepts\n• WhatsApp Group: Business & student support\n\n**2. Analyst Pro** (Paid):\n• Excel, PowerBI, SQL, Python\n• Real-world analytics projects\n• Professional certification track\n\nBoth programs help you become data-literate!",
           
@@ -368,7 +368,7 @@ class EAIChatbot {
 
   createChatbotHTML() {
     const chatbotHTML = `
-      <!-- EAI Toggle Button -->
+      <!-- DAI Toggle Button -->
       <div id="chatbot-toggle" class="fixed bottom-4 right-4 z-50">
         <button class="bg-gradient-to-r from-[#49A078] to-[#3e8865] hover:from-[#3e8865] hover:to-[#2f6b52] text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-all transform hover:scale-105 relative group">
           <i class="fas fa-robot text-lg"></i>
@@ -377,16 +377,16 @@ class EAIChatbot {
         </button>
       </div>
 
-      <!-- EAI Container -->
+      <!-- DAI Container -->
       <div id="chatbot-container" class="fixed bottom-4 right-4 w-64 max-w-[calc(100vw-1rem)] z-50 transform translate-y-full opacity-0 transition-all duration-300 ease-out">
         <div class="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden backdrop-blur-sm">
           
           <!-- Header -->
           <div class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white p-3 flex items-center justify-between">
             <div class="flex items-center gap-2">
-              <img src="assets/img/logo.png" alt="EXES Logo" class="w-7 h-7 rounded-full border border-white/30">
+              <img src="assets/img/logo.png" alt="dericBI Logo" class="w-7 h-7 rounded-full border border-white/30">
               <div>
-                <h3 class="font-bold text-sm">EAI</h3>
+                <h3 class="font-bold text-sm">DAI</h3>
                 <p class="text-xs opacity-90 flex items-center">
                   <span class="w-1.5 h-1.5 bg-green-300 rounded-full mr-1.5 animate-pulse"></span>
                   AI Assistant
@@ -402,9 +402,9 @@ class EAIChatbot {
           <div id="chatbot-messages" class="h-48 overflow-y-auto p-3 space-y-2 bg-gradient-to-b from-gray-50 to-white">
             <div class="bot-message">
               <div class="flex items-start gap-2">
-                <img src="assets/img/logo.png" alt="EXES" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5">
+                <img src="assets/img/logo.png" alt="dericBI" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5">
                 <div class="bg-white p-2.5 rounded-lg shadow-sm border text-xs max-w-xs border-l-2 border-l-[#49A078]">
-                  <p>� **Welcome to EAI!** I'm your intelligent assistant.</p>
+                  <p>� **Welcome to DAI!** I'm your intelligent assistant.</p>
                   <div class="mt-2 space-y-1.5">
                     <p class="text-xs font-semibold text-gray-700">I can help you:</p>
                     <ul class="text-xs space-y-0.5 text-gray-600">
@@ -427,7 +427,7 @@ class EAIChatbot {
               <input 
                 type="text" 
                 id="chatbot-input" 
-                placeholder="Ask EAI anything..." 
+                placeholder="Ask DAI anything..." 
                 class="flex-1 px-2.5 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#49A078] focus:border-transparent"
                 maxlength="500"
               >
@@ -537,12 +537,12 @@ class EAIChatbot {
           border-radius: 2px;
         }
 
-        /* EAI Notification Styles */
-        .eai-has-suggestion {
-          animation: eai-pulse 2s infinite;
+        /* DAI Notification Styles */
+        .dai-has-suggestion {
+          animation: dai-pulse 2s infinite;
         }
         
-        @keyframes eai-pulse {
+        @keyframes dai-pulse {
           0% { box-shadow: 0 0 0 0 rgba(73, 160, 120, 0.7); }
           70% { box-shadow: 0 0 0 10px rgba(73, 160, 120, 0); }
           100% { box-shadow: 0 0 0 0 rgba(73, 160, 120, 0); }
@@ -626,7 +626,7 @@ class EAIChatbot {
       'homepage': [
         { text: "🏠 Tour Website", message: "Can you give me a tour of this website?" },
         { text: "🔍 Search Projects", message: "Find me Excel projects" },
-        { text: "⭐ Why Choose EXES", message: "Why should I choose EXES?" }
+        { text: "⭐ Why Choose dericBI", message: "Why should I choose dericBI?" }
       ],
       'services': [
         { text: "💰 Get Quote", message: "How do I get a price quote?" },
@@ -644,7 +644,7 @@ class EAIChatbot {
       ],
       'about': [
         { text: "👨‍💻 About Founder", message: "Tell me about Deric Marangu" },
-        { text: "🏢 Company Story", message: "What's the story behind EXES?" },
+        { text: "🏢 Company Story", message: "What's the story behind dericBI?" },
         { text: "📊 View Projects", message: "Show me your best work" }
       ],
       'terms': [
@@ -678,14 +678,14 @@ class EAIChatbot {
       container.style.opacity = '1';
       
       // Remove notification pulse when opened
-      toggleBtn.classList.remove('eai-has-suggestion');
-      toggleBtn.title = 'EAI - Your Intelligent Assistant';
+      toggleBtn.classList.remove('DAI-has-suggestion');
+      toggleBtn.title = 'DAI - Your Intelligent Assistant';
       
       document.getElementById('chatbot-input').focus();
       
       // Track opening in agentic memory
       this.agenticMemory.interactionHistory.push({
-        action: 'opened_eai',
+        action: 'opened_DAI',
         timestamp: Date.now(),
         context: this.userContext
       });
@@ -885,7 +885,7 @@ class EAIChatbot {
     if (this.isNegation(message)) {
       this.conversationContext.awaitingFollowup = false;
       return {
-        text: "No problem! What else can I help you with today? Feel free to ask about anything EXES-related.",
+        text: "No problem! What else can I help you with today? Feel free to ask about anything dericBI-related.",
         action: null
       };
     }
@@ -947,9 +947,9 @@ class EAIChatbot {
     let greetingText;
     
     if (this.userSession.returningUser && this.currentConversation.length === 1) {
-      greetingText = `🎉 **Welcome back!** I'm EAI, your EXES assistant. Good to see you again!`;
+      greetingText = `🎉 **Welcome back!** I'm DAI, your dericBI assistant. Good to see you again!`;
     } else {
-      greetingText = `👋 **Hello! I'm EAI**, your intelligent guide to EXES Analytics. We turn data chaos into clear insights!`;
+      greetingText = `👋 **Hello! I'm DAI**, your intelligent guide to dericBI Analytics. We turn data chaos into clear insights!`;
     }
     
     return {
@@ -982,7 +982,7 @@ class EAIChatbot {
     
     // Default service response
     return {
-      text: "💼 **EXES Services Overview**:\n• Excel cleanup & automation\n• Data analysis & insights\n• PowerBI dashboard creation\n• Database setup & tracking\n\nWe turn your data problems into business solutions!",
+      text: "💼 **dericBI Services Overview**:\n• Excel cleanup & automation\n• Data analysis & insights\n• PowerBI dashboard creation\n• Database setup & tracking\n\nWe turn your data problems into business solutions!",
       action: null,
       followUp: "Which service interests you most? I can provide more details!"
     };
@@ -1044,7 +1044,7 @@ class EAIChatbot {
     
     if (message.includes('founder') || message.includes('deric') || message.includes('ceo')) {
       return {
-        text: "👨‍💻 **Meet Our Founder**: Deric Marangu - CEO and founder of EXES. Business Information Technology student, data analytics expert, and passionate about turning data chaos into clarity!",
+        text: "👨‍💻 **Meet Our Founder**: Deric Marangu - CEO and founder of dericBI. Business Information Technology student, data analytics expert, and passionate about turning data chaos into clarity!",
         action: () => window.location.href = 'about.html',
         followUp: "Want to see some of Deric's best project work?"
       };
@@ -1052,14 +1052,14 @@ class EAIChatbot {
     
     if (message.includes('about') || message.includes('company')) {
       return {
-        text: "🏢 **About EXES**: We're Kenya's premier data analytics company, specializing in Excel cleanup, dashboard creation, and data-driven insights. 40+ successful projects and counting!",
+        text: "🏢 **About dericBI**: We're Kenya's premier data analytics company, specializing in Excel cleanup, dashboard creation, and data-driven insights. 40+ successful projects and counting!",
         action: () => window.location.href = 'about.html',
         followUp: "Interested in seeing our portfolio or learning about our services?"
       };
     }
     
     return {
-      text: "🏢 **EXES Business Info**: Founded by Deric Marangu, we're data analytics specialists helping businesses make better decisions. What would you like to know more about?",
+      text: "🏢 **dericBI Business Info**: Founded by Deric Marangu, we're data analytics specialists helping businesses make better decisions. What would you like to know more about?",
       action: null
     };
   }
@@ -1103,7 +1103,7 @@ class EAIChatbot {
     const encouragingResponses = [
       "🤗 **I'm here to help!** I can guide you through our website, explain services, or connect you with our team. What specific area interests you?",
       "💡 **Let me assist you!** Try asking about our projects, services, pricing, or how to use website features.",
-      "😊 **I'd love to help!** What would you like to know about EXES? Our work, services, or team?"
+      "😊 **I'd love to help!** What would you like to know about dericBI? Our work, services, or team?"
     ];
     
     const randomResponse = encouragingResponses[Math.floor(Math.random() * encouragingResponses.length)];
@@ -1342,7 +1342,7 @@ class EAIChatbot {
     // Business queries
     if (this.containsPatterns(message, this.knowledgeBase.business.patterns)) {
       if (message.includes('about') || message.includes('company')) {
-        return { text: this.knowledgeBase.business.responses.about_exes, action: null };
+        return { text: this.knowledgeBase.business.responses.about_dericbi, action: null };
       } else if (message.includes('experience')) {
         return { text: this.knowledgeBase.business.responses.experience, action: null };
       } else if (message.includes('location')) {
@@ -1356,15 +1356,15 @@ class EAIChatbot {
     if (this.isComplexQuery(message)) {
       const complexResponses = [
         {
-          text: "🤝 **That's a sophisticated question!** Our data experts would love to dive deep into this with you. Complex projects deserve personalized attention! Please contact us at EXESanalytics@hotmail.com or WhatsApp 0791360805.",
+          text: "🤝 **That's a sophisticated question!** Our data experts would love to dive deep into this with you. Complex projects deserve personalized attention! Please contact us at dericmarangu@gmail.com or WhatsApp 0791360805.",
           action: () => this.suggestExpertConsultation()
         },
         {
-          text: "🔬 **Advanced Requirements Detected!** This sounds like it needs our senior team's expertise. Let me connect you with someone who can give you detailed insights! Reach out to EXESanalytics@hotmail.com or WhatsApp 0791360805.",
+          text: "🔬 **Advanced Requirements Detected!** This sounds like it needs our senior team's expertise. Let me connect you with someone who can give you detailed insights! Reach out to dericmarangu@gmail.com or WhatsApp 0791360805.",
           action: () => this.suggestHumanContact()
         },
         {
-          text: "💡 **Great question!** This goes beyond what I can cover in a chat. Our analysts would be excited to discuss your specific requirements in detail! Contact EXESanalytics@hotmail.com or WhatsApp 0791360805.",
+          text: "💡 **Great question!** This goes beyond what I can cover in a chat. Our analysts would be excited to discuss your specific requirements in detail! Contact dericmarangu@gmail.com or WhatsApp 0791360805.",
           action: () => this.suggestHumanContact()
         }
       ];
@@ -1398,7 +1398,7 @@ class EAIChatbot {
 
     if (isPositive) {
       const positiveResponses = [
-        "😊 **Thank you!** We're glad you're having a positive experience! Is there anything specific I can help you find or learn about EXES?",
+        "😊 **Thank you!** We're glad you're having a positive experience! Is there anything specific I can help you find or learn about dericBI ?",
         "🌟 **That's wonderful to hear!** We work hard to provide excellent service. What would you like to explore next?",
         "💚 **We appreciate the kind words!** Let me know if you have any questions about our projects or services!"
       ];
@@ -1407,7 +1407,7 @@ class EAIChatbot {
 
     if (isNegative) {
       return {
-        text: "😔 **I'm sorry you're having trouble!** Let me connect you with our team who can address any concerns and help resolve issues quickly. Please reach out to EXESanalytics@hotmail.com or WhatsApp 0791360805.",
+        text: "😔 **I'm sorry you're having trouble!** Let me connect you with our team who can address any concerns and help resolve issues quickly. Please reach out to dericmarangu@gmail.com or WhatsApp 0791360805.",
         action: () => this.suggestHumanContact()
       };
     }
@@ -1427,7 +1427,7 @@ class EAIChatbot {
         "🤝 **Want to connect?** Ask about our consultation process, project timelines, or the fastest way to reach us!"
       ],
       'about': [
-        "👨‍💻 **Learning about EXES?** Ask about our founder Deric Marangu, our company story, or what makes us different!",
+        "👨‍💻 **Learning about dericBI?** Ask about our founder Deric Marangu, our company story, or what makes us different!",
         "🏢 **Getting to know us?** I can share more about our experience, mission, or team background!"
       ]
     };
@@ -1443,12 +1443,12 @@ class EAIChatbot {
     // Add helpful suggestions based on common intent
     if (message.length > 50) {
       return {
-        text: randomFallback + "\n\n💬 **For detailed questions like yours**, our human experts can provide much better answers! Please contact EXESanalytics@hotmail.com or WhatsApp 0791360805.",
+        text: randomFallback + "\n\n💬 **For detailed questions like yours**, our human experts can provide much better answers! Please contact dericmarangu@gmail.com or WhatsApp 0791360805.",
         action: () => this.suggestHumanContact()
       };
     }
 
-    return { text: randomFallback + " If this doesn't answer your question, please contact EXESanalytics@hotmail.com or WhatsApp 0791360805 for more help.", action: null };
+    return { text: randomFallback + " If this doesn't answer your question, please contact dericmarangu@gmail.com or WhatsApp 0791360805 for more help.", action: null };
   }
 
   containsPatterns(message, patterns) {
@@ -1468,7 +1468,7 @@ class EAIChatbot {
       const actionButton = action ? `<button class="action-button" onclick="(${action.toString()})()">Take Action</button>` : '';
       messageDiv.innerHTML = `
         <div class="flex items-start gap-2">
-          <img src="assets/img/logo.png" alt="EXES" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5">
+          <img src="assets/img/logo.png" alt="dericBI" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5">
           <div class="message-content">
             ${this.formatMarkdown(content)}
             ${actionButton}
@@ -1495,7 +1495,7 @@ class EAIChatbot {
     typingDiv.className = 'bot-message';
     typingDiv.innerHTML = `
       <div class="flex items-start gap-2">
-        <img src="assets/img/logo.png" alt="EXES" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5">
+        <img src="assets/img/logo.png" alt="dericBI" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5">
         <div class="message-content">
           <div class="flex gap-1">
             <div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></div>
@@ -1526,7 +1526,7 @@ class EAIChatbot {
 
   suggestHumanContact() {
     setTimeout(() => {
-      this.addMessage("📞 **Let's connect you with our team:**\n\n• **WhatsApp**: 0791360805 (Fastest response)\n• **Email**: EXESanalytics@hotmail.com\n• **Contact Form**: More detailed inquiries\n\n💬 **Tip**: WhatsApp gets the quickest responses!", 'bot', 
+      this.addMessage("📞 **Let's connect you with our team:**\n\n• **WhatsApp**: 0791360805 (Fastest response)\n• **Email**: dericmarangu@gmail.com\n• **Contact Form**: More detailed inquiries\n\n💬 **Tip**: WhatsApp gets the quickest responses!", 'bot', 
         () => window.open('https://wa.me/0791360805', '_blank'));
     }, 500);
   }
@@ -1570,12 +1570,12 @@ class EAIChatbot {
     // Personalize based on previous interactions
     if (history.length > 5) {
       const commonContext = this.getMostCommonContext(history);
-      return `🧠 **Welcome back to EAI!** I see you often explore our ${commonContext} section. Ready to dive deeper today?`;
+      return `🧠 **Welcome back to DAI!** I see you often explore our ${commonContext} section. Ready to dive deeper today?`;
     }
     
     // Personalize based on preferences
     if (preferences.python > 2) {
-      return "🧠 **Hello Python enthusiast!** EAI here - I remember you're interested in our data science projects. What would you like to explore today?";
+      return "🧠 **Hello Python enthusiast!** DAI here - I remember you're interested in our data science projects. What would you like to explore today?";
     }
     
     return null; // Use default greeting
@@ -1594,7 +1594,7 @@ class EAIChatbot {
   }
 }
 
-// Initialize EAI when page loads
+// Initialize DAI when page loads
 document.addEventListener('DOMContentLoaded', () => {
-  window.eaiChatbot = new EAIChatbot();
+  window.DAIChatbot = new DAIChatbot();
 });
