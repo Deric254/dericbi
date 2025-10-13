@@ -952,25 +952,37 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
     });
   });
 
-  document.querySelectorAll(`#${thumbsId} .thumb-download`).forEach((btn, i) => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      btn.innerHTML = '<i class="fas fa-spinner animate-spin text-[8px]"></i>';
-      btn.disabled = true;
-      const type = btn.getAttribute('data-media-type');
-      const src = btn.getAttribute('data-media-src');
-      if (type === 'video') {
-        downloadVideo(src, `${cs.title}_${serial}_video`).finally(() => {
-          btn.innerHTML = '<i class="fas fa-download text-[8px]"></i>';
-          btn.disabled = false;
-        });
-      } else {
-        downloadImage(src, `${cs.title}_${serial}_image_${i + 1 - (cs.video ? 1 : 0)}`).finally(() => {
-          btn.innerHTML = '<i class="fas fa-download text-[8px]"></i>';
-          btn.disabled = false;
-        });
-      }
-    });
+  // Setup thumbnail download buttons with direct DOM access
+  thumbElems.forEach((thumbDiv, i) => {
+    const downloadBtn = thumbDiv.querySelector('.thumb-download');
+    if (downloadBtn) {
+      downloadBtn.style.cursor = 'pointer';
+      downloadBtn.style.zIndex = '999';
+      downloadBtn.style.pointerEvents = 'auto';
+      
+      downloadBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        
+        downloadBtn.innerHTML = '<i class="fas fa-spinner animate-spin text-[8px]"></i>';
+        downloadBtn.disabled = true;
+        
+        const type = downloadBtn.getAttribute('data-media-type');
+        const src = downloadBtn.getAttribute('data-media-src');
+        
+        if (type === 'video') {
+          downloadVideo(src, `${cs.title}_${serial}_video`).finally(() => {
+            downloadBtn.innerHTML = '<i class="fas fa-download text-[8px]"></i>';
+            downloadBtn.disabled = false;
+          });
+        } else {
+          downloadImage(src, `${cs.title}_${serial}_image_${i + 1 - (cs.video ? 1 : 0)}`).finally(() => {
+            downloadBtn.innerHTML = '<i class="fas fa-download text-[8px]"></i>';
+            downloadBtn.disabled = false;
+          });
+        }
+      });
+    }
   });
 
   rotateLeftBtn.onclick = () => {
