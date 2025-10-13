@@ -40,6 +40,44 @@ Visual representation of the new layout and features.
 - Layout structure
 - Animation flows
 
+### **6. ISSUES_FIXED.md**
+Documentation of issues resolved during implementation.
+- Footer coverage by sticky bar
+- Documentation organization
+- Technical fixes applied
+
+### **7. TOAST_NOTIFICATION_UPDATE.md**
+Details of the sticky bar to toast notification conversion.
+- Replacement rationale
+- Toast implementation
+- UX improvements
+
+### **8. TOAST_AND_WHITESPACE_FIXES.md**
+Fixes for toast trigger timing and whitespace issues.
+- Toast trigger optimization (50px)
+- Section spacing adjustments
+- Decorative divider addition
+
+### **9. CUSTOM_TRAINING_CARD.md**
+Documentation for custom training promotional card.
+- Card placement between sections
+- WhatsApp integration
+- Pre-filled message template
+
+### **10. ALIGNMENT_IMPROVEMENTS.md**
+FAQ/Pricing section alignment enhancements.
+- Column flex structure improvements
+- Consistent card spacing
+- Responsive alignment fixes
+
+### **11. TESTIMONIALS_CAROUSEL_UPDATE.md** ⭐ NEW
+Testimonials section carousel conversion and enhancements.
+- Static grid to interactive carousel
+- Added 2 new testimonials (5 total)
+- Brand name update (EXES → dericBI)
+- Navigation controls and auto-slide
+- Pause-on-hover functionality
+
 ---
 
 ## 🚀 Quick Start

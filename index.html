@@ -840,9 +840,9 @@ window.addEventListener('load', function() {
   </div>
 </section>
 
-<!-- ⭐ Enhanced Testimonials Section (NEW) -->
-<section class="w-full bg-gradient-to-br from-blue-50 to-green-50 py-8 xs:py-10 sm:py-12 px-4 fade-in-up">
-  <div class="max-w-6xl mx-auto">
+<!-- ⭐ What Our Clients Say (Carousel Testimonials Section) -->
+<section class="w-full bg-gradient-to-br from-blue-50 to-green-50 py-6 xs:py-8 sm:py-10 md:py-12 px-4 fade-in-up">
+  <div class="max-w-7xl mx-auto">
     <!-- Header -->
     <div class="text-center mb-6 xs:mb-8">
       <h3 class="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-800 mb-2 xs:mb-3">What Our Clients Say</h3>
@@ -852,63 +852,130 @@ window.addEventListener('load', function() {
       <p class="text-gray-600 text-sm xs:text-base font-medium">5.0 rating from 50+ happy clients</p>
     </div>
     
-    <!-- Testimonials Grid (2 cards on desktop, stack on mobile) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 xs:gap-5 sm:gap-6 mb-6">
-      
-      <!-- Testimonial Card 1: Sarah M. -->
-      <div class="bg-white p-5 xs:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 fade-in-up delay-1">
-        <div class="flex items-center gap-3 xs:gap-4 mb-4">
-          <div class="w-10 h-10 xs:w-12 xs:h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-            <span class="text-green-600 font-bold text-lg xs:text-xl">SM</span>
+    <!-- Testimonials Carousel -->
+    <div class="relative">
+      <!-- Carousel Container -->
+      <div class="overflow-hidden relative">
+        <div id="testimonialCarousel" class="flex transition-transform duration-500 ease-in-out">
+          
+          <!-- Testimonial Card 1: Sarah M. -->
+          <div class="w-full flex-shrink-0 px-2">
+            <div class="bg-white p-5 xs:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div class="flex items-center gap-3 xs:gap-4 mb-4">
+                <div class="w-10 h-10 xs:w-12 xs:h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-green-600 font-bold text-lg xs:text-xl">SM</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-bold text-gray-800 text-sm xs:text-base truncate">Sarah M.</div>
+                  <div class="text-xs xs:text-sm text-gray-500 truncate">Retail Business Owner</div>
+                </div>
+              </div>
+              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"dericBI transformed our messy sales data into clear insights. Revenue increased 40% in 3 months!"</p>
+              <div class="flex text-yellow-400 text-sm xs:text-base">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
           </div>
-          <div class="flex-1 min-w-0">
-            <div class="font-bold text-gray-800 text-sm xs:text-base truncate">Sarah M.</div>
-            <div class="text-xs xs:text-sm text-gray-500 truncate">Retail Business Owner</div>
+          
+          <!-- Testimonial Card 2: John K. -->
+          <div class="w-full flex-shrink-0 px-2">
+            <div class="bg-white p-5 xs:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div class="flex items-center gap-3 xs:gap-4 mb-4">
+                <div class="w-10 h-10 xs:w-12 xs:h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-blue-600 font-bold text-lg xs:text-xl">JK</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-bold text-gray-800 text-sm xs:text-base truncate">John K.</div>
+                  <div class="text-xs xs:text-sm text-gray-500 truncate">Restaurant Chain Manager</div>
+                </div>
+              </div>
+              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"Professional PowerBI dashboard delivered in 48 hours. Exactly what we needed!"</p>
+              <div class="flex text-yellow-400 text-sm xs:text-base">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
           </div>
-        </div>
-        <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"EXES transformed our messy sales data into clear insights. Revenue increased 40% in 3 months!"</p>
-        <div class="flex text-yellow-400 text-sm xs:text-base">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-      </div>
-      
-      <!-- Testimonial Card 2: John K. -->
-      <div class="bg-white p-5 xs:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 fade-in-up delay-2">
-        <div class="flex items-center gap-3 xs:gap-4 mb-4">
-          <div class="w-10 h-10 xs:w-12 xs:h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-            <span class="text-blue-600 font-bold text-lg xs:text-xl">JK</span>
+
+          <!-- Testimonial Card 3: Mary L. -->
+          <div class="w-full flex-shrink-0 px-2">
+            <div class="bg-white p-5 xs:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div class="flex items-center gap-3 xs:gap-4 mb-4">
+                <div class="w-10 h-10 xs:w-12 xs:h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-purple-600 font-bold text-lg xs:text-xl">ML</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-bold text-gray-800 text-sm xs:text-base truncate">Mary L.</div>
+                  <div class="text-xs xs:text-sm text-gray-500 truncate">SME Owner</div>
+                </div>
+              </div>
+              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"From Excel chaos to automated tracking system. dericBI's expertise saved us hours daily."</p>
+              <div class="flex text-yellow-400 text-sm xs:text-base">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
           </div>
-          <div class="flex-1 min-w-0">
-            <div class="font-bold text-gray-800 text-sm xs:text-base truncate">John K.</div>
-            <div class="text-xs xs:text-sm text-gray-500 truncate">Restaurant Chain</div>
+
+          <!-- Testimonial Card 4: Peter W. (NEW) -->
+          <div class="w-full flex-shrink-0 px-2">
+            <div class="bg-white p-5 xs:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div class="flex items-center gap-3 xs:gap-4 mb-4">
+                <div class="w-10 h-10 xs:w-12 xs:h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-orange-600 font-bold text-lg xs:text-xl">PW</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-bold text-gray-800 text-sm xs:text-base truncate">Peter W.</div>
+                  <div class="text-xs xs:text-sm text-gray-500 truncate">E-Commerce Founder</div>
+                </div>
+              </div>
+              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"The SQL database setup was flawless. Now we track inventory in real-time. Game changer for our business!"</p>
+              <div class="flex text-yellow-400 text-sm xs:text-base">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
           </div>
-        </div>
-        <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"Professional PowerBI dashboard delivered in 48 hours. Exactly what we needed!"</p>
-        <div class="flex text-yellow-400 text-sm xs:text-base">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+          <!-- Testimonial Card 5: Grace N. (NEW) -->
+          <div class="w-full flex-shrink-0 px-2">
+            <div class="bg-white p-5 xs:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+              <div class="flex items-center gap-3 xs:gap-4 mb-4">
+                <div class="w-10 h-10 xs:w-12 xs:h-12 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span class="text-pink-600 font-bold text-lg xs:text-xl">GN</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="font-bold text-gray-800 text-sm xs:text-base truncate">Grace N.</div>
+                  <div class="text-xs xs:text-sm text-gray-500 truncate">Pharmacy Owner</div>
+                </div>
+              </div>
+              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"Tujengane Data Basics helped my team understand our sales patterns. Now we make better purchasing decisions!"</p>
+              <div class="flex text-yellow-400 text-sm xs:text-base">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <!-- Testimonial Card 3: Mary L. -->
-      <div class="bg-white p-5 xs:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 fade-in-up delay-3 md:col-span-2 md:max-w-lg md:mx-auto">
-        <div class="flex items-center gap-3 xs:gap-4 mb-4">
-          <div class="w-10 h-10 xs:w-12 xs:h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-            <span class="text-purple-600 font-bold text-lg xs:text-xl">ML</span>
-          </div>
-          <div class="flex-1 min-w-0">
-            <div class="font-bold text-gray-800 text-sm xs:text-base truncate">Mary L.</div>
-            <div class="text-xs xs:text-sm text-gray-500 truncate">SME Owner</div>
-          </div>
-        </div>
-        <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"From Excel chaos to automated tracking system. Deric's expertise saved us hours daily."</p>
-        <div class="flex text-yellow-400 text-sm xs:text-base">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
+      <!-- Navigation Buttons -->
+      <button onclick="prevTestimonial()" class="absolute left-2 xs:left-0 top-1/2 -translate-y-1/2 bg-white hover:bg-yellow-100 text-gray-800 w-10 h-10 xs:w-12 xs:h-12 rounded-full shadow-lg hover:shadow-xl transition-colors flex items-center justify-center z-10">
+        <i class="fas fa-chevron-left text-sm xs:text-base"></i>
+      </button>
+      <button onclick="nextTestimonial()" class="absolute right-2 xs:right-0 top-1/2 -translate-y-1/2 bg-white hover:bg-yellow-100 text-gray-800 w-10 h-10 xs:w-12 xs:h-12 rounded-full shadow-lg hover:shadow-xl transition-colors flex items-center justify-center z-10">
+        <i class="fas fa-chevron-right text-sm xs:text-base"></i>
+      </button>
+
+      <!-- Dots Indicator -->
+      <div class="flex justify-center gap-2 mt-6">
+        <button onclick="goToTestimonial(0)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-800 transition-all"></button>
+        <button onclick="goToTestimonial(1)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 transition-all"></button>
+        <button onclick="goToTestimonial(2)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 transition-all"></button>
+        <button onclick="goToTestimonial(3)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 transition-all"></button>
+        <button onclick="goToTestimonial(4)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 transition-all"></button>
       </div>
     </div>
     
     <!-- View More Button -->
-    <div class="text-center">
+    <div class="text-center mt-6">
       <a href="my-projects.html" class="inline-flex items-center gap-2 bg-white hover:bg-yellow-100 text-gray-800 px-5 xs:px-6 py-2.5 xs:py-3 rounded-lg font-semibold shadow-md hover:shadow-xl transition-all border border-gray-300 hover:border-yellow-400 text-sm xs:text-base">
         <i class="fas fa-trophy text-yellow-500"></i> 
         <span>See All Success Stories</span>
@@ -1041,46 +1108,6 @@ window.addEventListener('load', function() {
   </div>
 </section>
 
-<!-- ⭐ Custom Training CTA Card (fills visual gap) -->
-<div class="w-full bg-gradient-to-br from-yellow-50 via-orange-50 to-yellow-100 border-t border-b border-yellow-200">
-  <div class="max-w-7xl mx-auto px-4 py-4 xs:py-5 sm:py-6">
-    <div class="bg-white rounded-xl shadow-lg p-4 xs:p-5 sm:p-6 border-2 border-yellow-300 hover:border-yellow-400 transition-all hover:shadow-xl">
-      <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-        <!-- Icon -->
-        <div class="flex-shrink-0 w-14 h-14 xs:w-16 xs:h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
-          <i class="fas fa-chalkboard-teacher text-white text-2xl xs:text-3xl"></i>
-        </div>
-        
-        <!-- Content -->
-        <div class="flex-1 text-center sm:text-left">
-          <h3 class="text-lg xs:text-xl font-bold text-gray-800 mb-1 flex items-center justify-center sm:justify-start gap-2">
-            <span>🎓 Need Custom Training?</span>
-          </h3>
-          <p class="text-sm xs:text-base text-gray-600 mb-3">
-            Tailored Excel, PowerBI, SQL, or Python training for your team. <strong>From KSh 5,000/session</strong>.
-          </p>
-          <div class="flex flex-wrap gap-2 justify-center sm:justify-start">
-            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-semibold">✓ On-site or Remote</span>
-            <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-semibold">✓ Custom Curriculum</span>
-            <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full font-semibold">✓ Certificate Provided</span>
-          </div>
-        </div>
-
-        <!-- CTA Button -->
-        <div class="flex-shrink-0">
-          <a href="https://wa.me/254791360805?text=Hi%20dericBI!%20I'm%20interested%20in%20custom%20training%20for%20my%20team.%20Here%20are%20the%20details:%0A%0A📊%20Training%20Topic:%20%0A👥%20Number%20of%20Participants:%20%0A📅%20Preferred%20Schedule:%20%0A📍%20Location%20(On-site/Remote):%20%0A%0ALooking%20forward%20to%20your%20response!" 
-             target="_blank" 
-             class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black font-bold px-5 xs:px-6 py-3 xs:py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 text-sm xs:text-base whitespace-nowrap">
-            <i class="fab fa-whatsapp text-xl"></i>
-            <span>Request Training</span>
-            <i class="fas fa-arrow-right text-sm"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
   <!-- ✅ Embedded EXES Add-ons -->
   <section class="bg-gradient-to-br from-gray-100 via-white to-green-50 py-4 xs:py-6 sm:py-8 md:py-10 px-4 text-sm w-full">
   <div class="mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 w-full max-w-7xl">
@@ -1130,10 +1157,40 @@ window.addEventListener('load', function() {
                 </div>
               </div>
             </div>
+
+            <!-- ⭐ Custom Training Card (in FAQ) -->
+            <div class="bg-gradient-to-br from-yellow-50 via-orange-50 to-yellow-100 rounded-xl shadow-md p-5 border-2 border-yellow-300 hover:border-yellow-400 transition-all hover:shadow-lg">
+              <div class="flex gap-3 items-start">
+                <div class="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex-shrink-0">
+                  <i class="fas fa-chalkboard-teacher text-white text-lg"></i>
+                </div>
+                <div class="flex-1">
+                  <h4 class="font-semibold text-gray-800 mb-1 flex items-center gap-1.5">
+                    <span>🎓 Need Custom Training?</span>
+                  </h4>
+                  <p class="text-gray-700 text-sm mb-2">
+                    Tailored Excel, PowerBI, SQL, or Python training for your team. <strong class="text-orange-600">From KSh 5,000/session</strong>.
+                  </p>
+                  <div class="flex flex-wrap gap-1.5 mb-3">
+                    <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">✓ On-site/Remote</span>
+                    <span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-semibold">✓ Custom Curriculum</span>
+                    <span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-semibold">✓ Certificate</span>
+                  </div>
+                  <a href="https://wa.me/254791360805?text=Hi%20dericBI!%20I'm%20interested%20in%20custom%20training%20for%20my%20team.%20Here%20are%20the%20details:%0A%0A📊%20Training%20Topic:%20%0A👥%20Number%20of%20Participants:%20%0A📅%20Preferred%20Schedule:%20%0A📍%20Location%20(On-site/Remote):%20%0A%0ALooking%20forward%20to%20your%20response!" 
+                     target="_blank" 
+                     class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black font-semibold px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all hover:scale-105 text-sm">
+                    <i class="fab fa-whatsapp text-base"></i>
+                    <span>Request Training</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
         <!-- Corporates Card moved here, aligned bottom -->
-        <div class="mt-4 xs:mt-5 sm:mt-6">
+        <div class="mt-5">
           <div class="bg-gradient-to-br from-purple-50 via-white to-purple-100 rounded-xl shadow-md p-5 border border-purple-100">
             <span class="font-bold text-[#2563EB] text-lg flex items-center gap-2"><i class="fas fa-building"></i> Corporates</span>
             <ul class="mt-2 space-y-2 text-gray-700">
@@ -1146,11 +1203,11 @@ window.addEventListener('load', function() {
         </div>
       </div>
       <!-- Pricing: Modern Card -->
-      <div>
+      <div class="flex flex-col h-full">
         <h3 class="text-2xl font-bold mb-6 text-[#49A078] flex items-center gap-2">
           <i class="fas fa-tags text-[#2563EB] bg-white rounded-full shadow px-2 py-1"></i> Pricing
         </h3>
-        <ul class="space-y-5">
+        <ul class="space-y-5 flex-1">
           <li class="bg-gradient-to-br from-blue-50 via-white to-blue-100 rounded-xl shadow-md p-5 border border-blue-100">
             <span class="font-bold text-[#2563EB] text-lg flex items-center gap-2"><i class="fas fa-chart-bar"></i> Analytics Packages</span>
             <div class="mt-2 space-y-4 text-gray-700">
@@ -1421,43 +1478,63 @@ window.addEventListener('load', function() {
     document.getElementById('scrollProgress').style.width = scrolled + '%';
   });
 
-  // Testimonial carousel with pause-on-hover (LEGACY - can be removed since we upgraded testimonials)
-let currentSlide = 0;
-const totalSlides = 3;
+  // ⭐ Testimonial Carousel Script (5 testimonials)
+let currentTestimonial = 0;
+const totalTestimonials = 5;
 let testimonialInterval;
 
-function goToSlide(slideIndex) {
-  currentSlide = slideIndex;
-  const slider = document.getElementById('testimonialSlider');
-  slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+function goToTestimonial(index) {
+  currentTestimonial = index;
+  const carousel = document.getElementById('testimonialCarousel');
+  carousel.style.transform = `translateX(-${currentTestimonial * 100}%)`;
   
   // Update dots
-  document.querySelectorAll('.testimonial-dot').forEach((dot, index) => {
-    dot.classList.toggle('active', index === currentSlide);
-    dot.style.backgroundColor = index === currentSlide ? '#49A078' : '#d1d5db';
+  document.querySelectorAll('.testimonial-dot').forEach((dot, i) => {
+    if (i === currentTestimonial) {
+      dot.classList.remove('bg-gray-300');
+      dot.classList.add('bg-gray-800');
+    } else {
+      dot.classList.remove('bg-gray-800');
+      dot.classList.add('bg-gray-300');
+    }
   });
 }
 
-// Start auto-slide
-function startTestimonialSlider() {
-  testimonialInterval = setInterval(() => {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    goToSlide(currentSlide);
-  }, 5000); // Change every 5 seconds (increased from 4s for better readability)
+function nextTestimonial() {
+  currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+  goToTestimonial(currentTestimonial);
+  resetAutoSlide();
 }
 
-// Pause on hover for better UX
-const testimonialSection = document.querySelector('#testimonialSlider').parentElement.parentElement;
+function prevTestimonial() {
+  currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
+  goToTestimonial(currentTestimonial);
+  resetAutoSlide();
+}
+
+function resetAutoSlide() {
+  clearInterval(testimonialInterval);
+  startTestimonialAutoSlide();
+}
+
+function startTestimonialAutoSlide() {
+  testimonialInterval = setInterval(() => {
+    nextTestimonial();
+  }, 5000); // Change every 5 seconds
+}
+
+// Pause auto-slide on hover
+const testimonialSection = document.getElementById('testimonialCarousel').parentElement.parentElement;
 testimonialSection.addEventListener('mouseenter', () => {
   clearInterval(testimonialInterval);
 });
 
 testimonialSection.addEventListener('mouseleave', () => {
-  startTestimonialSlider();
+  startTestimonialAutoSlide();
 });
 
-// Start the slider
-startTestimonialSlider();
+// Start auto-slide
+startTestimonialAutoSlide();
 
 // EAI chatbot is loaded via chatbot.js - no additional chat widget needed
 </script>
