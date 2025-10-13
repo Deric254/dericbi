@@ -2,13 +2,51 @@
 <html lang="en" class="overflow-x-hidden">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <title>EXES – My Projects</title>
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="Discover the journey behind EXES – from concept to empowering businesses with data-driven insights by Deric Marangu." />
   <meta name="keywords" content="Deric Marangu, EXES journey, data analytics Kenya, Excel cleanup, business insights" />
   <meta name="author" content="Deric Marangu" />
+
+  <!-- Enhanced Open Graph Meta -->
+  <meta property="og:title" content="EXES – My Projects" />
+  <meta property="og:description" content="Discover the journey behind EXES – from concept to empowering businesses with data-driven insights by Deric Marangu." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://dericbi-analytics.netlify.app/My-projects.html" />
+  <meta property="og:image" content="https://dericbi-analytics.netlify.app/assets/img/logo.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="EXES – My Projects" />
+  <meta name="twitter:description" content="Discover the journey behind EXES – from concept to empowering businesses with data-driven insights by Deric Marangu." />
+  <meta name="twitter:image" content="https://dericbi-analytics.netlify.app/assets/img/logo.png" />
+
+  <!-- Structured Data for Local Business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "dericBI Analytics",
+    "description": "Professional data analysis and Excel cleanup services",
+    "telephone": "+254791360805",
+    "email": "dericmarangu@gmail.com",
+    "founder": {
+      "@type": "Person",
+      "name": "Deric Marangu"
+    },
+    "serviceArea": {
+      "@type": "Place",
+      "name": "Kenya"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/deric-marangu-134340297/",
+      "https://www.facebook.com/dericbi/",
+      "https://www.instagram.com/dericmarangu/"
+    ]
+  }
+  </script>
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
@@ -22,6 +60,17 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          screens: {
+            'xs': '375px',
+          },
+        }
+      }
+    }
+  </script>
 
   <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
@@ -32,7 +81,9 @@
   <meta name="format-detection" content="telephone=no">
 
   <!-- EXES Chatbot -->
+  <link rel="stylesheet" href="assets/css/social_links.css">
   <script src="assets/js/chatbot.js"></script>
+  <script src="assets/js/social_links.js"></script>
 
   <!-- Custom Styles -->
   <style>
@@ -235,41 +286,34 @@ img:not([alt]) {
         margin-right: 0.5rem;
       }
     }
-    
     /* Prevent content overflow */
     .case-container {
       overflow-x: hidden;
     }
-    
     /* Ensure project cards don't overflow */
     .bg-white {
       box-sizing: border-box;
     }
-    
     /* Additional mobile optimizations */
     @media (max-width: 768px) {
       .space-y-12 > * + * {
         margin-top: 2rem !important;
       }
     }
-    
     /* Very small screen optimizations */
     @media (max-width: 360px) {
       /* Hide brand name on very small screens */
       .brand-text {
         display: none;
       }
-      
       /* Tighter spacing */
       .gap-3 {
         gap: 0.5rem;
       }
-      
       /* Smaller fonts */
       .text-xs {
         font-size: 0.65rem;
       }
-      
       /* Ensure hamburger menu is visible */
       #menu-toggle {
         display: block !important;
@@ -277,13 +321,128 @@ img:not([alt]) {
         font-size: 1.25rem !important;
       }
     }
+    /* Navigation Links Hover Glow */
+    .nav-link {
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #facc15;
+      text-shadow: 0 0 4px rgba(250, 204, 21, 0.4);
+    }
+    /* Footer links styling */
+    .footer-link {
+      position: relative;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    .footer-link:hover {
+      color: #49A078;
+      transform: translateY(-1px);
+    }
+    /* Improved appearance for social icons */
+    .group {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    }
+    .group:hover {
+      transform: translateY(-2px);
+      z-index: 5;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.1);
+      filter: brightness(1.05);
+    }
+    .group:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      filter: brightness(0.98);
+    }
+    /* Enhance all clickable elements */
+    a:not(.group):not(.nav-link):not(.footer-link) {
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    a:not(.group):not(.nav-link):not(.footer-link):hover {
+      filter: brightness(1.05);
+      text-decoration: underline;
+    }
+    /* Extra responsive utilities for smallest screens */
+    @media (max-width: 360px) {
+      .text-xs {
+        font-size: 0.65rem;
+      }
+      .h-14, .w-14 {
+        height: 3rem;
+        width: 3rem;
+      }
+      .gap-3 {
+        gap: 0.5rem;
+      }
+      .py-2 {
+        padding-top: 0.35rem;
+        padding-bottom: 0.35rem;
+      }
+      .px-3 {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      .flex {
+        flex-wrap: wrap;
+      }
+      /* Better icon/text ratio on small screens */
+      .text-3xl.xs\:text-4xl {
+        font-size: 1.75rem !important;
+      }
+      .gap-1 {
+        gap: 0.375rem !important;
+      }
+      .text-xs {
+        font-weight: 500;
+      }
+    }
+    /* Add subtle borders to help distinguish elements when congested */
+    @media (max-width: 480px) {
+      .grid > a, .grid > div {
+        border-width: 1px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        margin-bottom: 4px;
+      }
+    }
+    /* Safe area for notched phones */
+    @supports(padding: max(0px)) {
+      body {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+    }
+    /* Prevent content overflow */
+    * {
+      box-sizing: border-box;
+      max-width: 100vw;
+    }
+    /* Improve element distinction */
+    .grid > a, .grid > div {
+      position: relative;
+      z-index: 1;
+    }
+    /* Enhanced readability for text within grid items */
+    .grid a span, .grid div span {
+      display: block;
+      width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    /* Prevent text overflow */
+    .text-overflow-ellipsis {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
   </style>
 </head>
 
-<body class="bg-[#EDF7F1] text-gray-800 min-h-screen flex flex-col">
+<body class="bg-white text-gray-800 flex flex-col min-h-screen overflow-x-hidden w-full max-w-[100vw]">
 <!-- Responsive Navbar -->
-<nav class="bg-[#49A078] text-white px-4 py-3 shadow-md sticky top-0 z-50">
-  <div class="container mx-auto flex items-center justify-between gap-4">
+<nav class="bg-[#49A078] text-white px-2 xs:px-3 sm:px-4 py-2 xs:py-3 shadow-lg sticky top-0 z-50 w-full bg-gradient-to-r from-[#49A078] to-[#3D8069]" role="navigation" aria-label="Main Navigation">
+  <div class="w-full max-w-7xl mx-auto flex items-center justify-between gap-2 xs:gap-3 sm:gap-4">
     <!-- Logo & Brand -->
     <div class="flex items-center gap-2 xs:gap-3 shrink-0">
       <img src="assets/img/logo.png" 
@@ -292,11 +451,11 @@ img:not([alt]) {
       <div class="font-bold text-xl xs:text-2xl leading-none brand-text">
         <span>deric</span><span class="text-[#facc15]">BI</span>
       </div>
-      <!-- ✅ Extra Links for Small Screens -->
-      <div class="hidden xs:flex gap-1 xs:gap-2 sm:gap-3 ml-1 xs:ml-2 sm:ml-3 md:hidden">
-        <a href="index.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Home</a>
-        <a href="services.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Services</a>
-        <a href="My-projects.html" class="nav-link text-[10px] xs:text-xs tracking-wide">Projects</a>
+      <!-- Extra Links for Small Screens -->
+      <div class="flex gap-1 xs:gap-2 sm:gap-3 ml-2 xs:ml-3 sm:ml-4 md:hidden">
+        <a href="index.html" class="nav-link text-xs tracking-wide">Home</a>
+        <a href="services.html" class="nav-link text-xs tracking-wide">Services</a>
+        <a href="My-projects.html" class="nav-link text-xs tracking-wide">Projects</a>
       </div>
     </div>
     <!-- Scrolling Text (Visible on medium+) -->
@@ -305,7 +464,7 @@ img:not([alt]) {
         • We Analyze, You Decide • We Analyze, You Decide • We Analyze, You Decide • We Analyze, You Decide •
       </div>
     </div>
-    <!-- ✅ Desktop Nav Links -->
+    <!-- Desktop Nav Links -->
     <ul class="hidden md:flex gap-6 text-sm font-medium items-center shrink-0">
       <li><a href="index.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Home</a></li>
       <li><a href="services.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Services</a></li>
@@ -315,10 +474,10 @@ img:not([alt]) {
       <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms & Conditions</a></li>
       <li><a href="https://tujengane.netlify.app/" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Tujengane</a></li>
     </ul>
-    <!-- ✅ Hamburger Menu -->
+    <!-- Hamburger Menu -->
     <button id="menu-toggle" class="block md:hidden text-2xl xs:text-3xl focus:outline-none ml-1 xs:ml-2 sm:ml-3 shrink-0 bg-[#3D8069]/50 hover:bg-[#3D8069]/70 p-1 rounded-md shadow-md transition-all">☰</button>
   </div>
-  <!-- ✅ Mobile Menu -->
+  <!-- Mobile Menu -->
   <div id="mobile-menu" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out flex-col bg-[#3e8865] px-2 xs:px-3 sm:px-4 w-full shadow-inner">
     <a href="index.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Home</a>
     <a href="services.html" class="nav-link block py-3 border-b border-green-300/50 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Services</a>
@@ -329,18 +488,6 @@ img:not([alt]) {
     <a href="https://tujengane.netlify.app/" class="nav-link block py-3 hover:bg-[#367659]/50 rounded-md my-1 px-2 transition-all">Tujengane</a>
   </div>
 </nav>
-
-<!-- CSS -->
-<style>
-/* Navigation Links Hover Glow */
-.nav-link {
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-.nav-link:hover {
-  color: #facc15;
-  text-shadow: 0 0 4px rgba(250, 204, 21, 0.4);
-}
-</style>
 
 <!-- JS -->
 <script>
@@ -582,8 +729,6 @@ function renderProjects(projects, container) {
         thumbsArr.push({ type: 'video', src: cs.video, poster: images[0] || '' });
       }
     }
-    // Only add images as thumbnails if there are no videos for this project
-    // Always add images as thumbnails, even if there are videos
     images.forEach(img => thumbsArr.push({ type: 'image', src: img }));
     const isVideo = thumbsArr.length > 0 && thumbsArr[0].type === 'video';
 
@@ -1181,76 +1326,84 @@ window.addEventListener('scroll', () => {
 backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+// Newsletter toggle
+function toggleNewsletter() {
+  const newsletter = document.getElementById('newsletterSignup');
+  newsletter.classList.toggle('hidden');
+}
 </script>
-<footer class="bg-[#DFF3EA] py-4 px-1 xs:px-2 sm:px-4 text-sm text-gray-600 mt-auto border-t border-green-300">
-  <div class="flex flex-col md:flex-row items-center justify-between gap-4 max-w-7xl mx-auto">
-    <div class="flex items-center gap-2 xs:gap-3">
-      <img src="assets/img/logo.png" alt="dericBI Logo" class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover shadow-md" />
+
+<!-- Footer -->
+<footer class="bg-gradient-to-b from-white to-[#DFF3EA] py-3 xs:py-4 px-2 xs:px-3 sm:px-4 text-sm text-gray-600 mt-auto border-t border-green-300 w-full shadow-inner">
+  <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 xs:gap-4">
+    <!-- Footer Logo and Tagline -->
+    <div class="flex items-center gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm hover:shadow-md transition-all border border-green-100">
+      <img src="assets/img/logo.png" 
+           alt="dericBI Logo" 
+           class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover shadow-md" />
       <div class="flex flex-col leading-tight">
-        <span class="font-bold text-xl xs:text-2xl leading-none">
-          <span>deric</span><span class="text-[#facc15]">BI</span>
-        </span>
-        <span class="text-xs italic text-gray-500 -mt-1">We analyze. You decide.</span>
+        <div class="font-extrabold text-xl text-gray-800 tracking-wide">
+          <span>deric</span><span class="text-[#facc15] text-[22px] drop-shadow-lg font-black">BI</span>
+        </div>
+        <span class="text-xs italic text-gray-500 -mt-1 bg-gradient-to-r from-gray-500 to-gray-700 bg-clip-text text-transparent font-medium">We analyze. You decide.</span>
       </div>
     </div>
-    <div class="flex flex-col items-center text-center">
+    <!-- Copyright & Links Stacked -->
+    <div class="flex flex-col items-center text-center bg-white/70 p-2 rounded-xl shadow-sm border border-green-100">
       <div class="text-xs sm:text-sm text-gray-500">
-        &copy; 2025 dericBI – Built by 
-        <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link">Deric Marangu</a>. All rights reserved.
+        &copy; 2025 <span>deric</span><span class="text-[#facc15] font-bold drop-shadow-sm">BI</span> – Built by 
+        <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-medium hover:text-[#49A078] transition-colors underline decoration-dotted hover:decoration-solid">Deric Marangu</a>. All rights reserved.
       </div>
-      <div class="flex gap-4 mt-1">
-        <a href="about.html" class="footer-link">About Us</a>
-        <a href="terms.html" class="footer-link">Terms & Conditions</a>
-        <a href="https://dericbi-streamlit.netlify.app/" target="_blank" class="footer-link font-bold text-[#49A078]">Try Yourself</a>
-        <button onclick="toggleNewsletter()" class="footer-link text-xs">
+      <div class="flex flex-wrap justify-center gap-2 xs:gap-3 sm:gap-4 mt-1">
+        <a href="about.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">About Us</a>
+        <a href="terms.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">Terms & Conditions</a>
+        <a href="https://dericbi-app.streamlit.app/" target="_blank" class="footer-link font-bold text-[#49A078] text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">Try Yourself</a>
+        <button onclick="toggleNewsletter()" class="footer-link text-xs bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">
           <i class="fas fa-envelope mr-1"></i>Newsletter
         </button>
       </div>
-      <div id="newsletterSignup" class="hidden mt-2 w-full max-w-xs">
+      <!-- Hidden Newsletter Signup -->
+      <div id="newsletterSignup" class="hidden mt-2 w-full max-w-xs bg-white rounded-lg p-2 shadow-md border border-green-200">
         <div class="flex text-xs">
-          <input type="email" placeholder="Your email..." class="flex-1 px-2 py-1 text-xs border border-gray-300 rounded-l focus:outline-none focus:ring-1 focus:ring-[#49A078]">
-          <button class="bg-[#49A078] text-white px-3 py-1 rounded-r text-xs hover:bg-[#3e8865] transition">
+          <input type="email" placeholder="Your email..." 
+            class="flex-1 px-2 py-1 text-xs border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-[#49A078] shadow-inner">
+          <button class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white px-3 py-1 rounded-r text-xs hover:from-[#3e8865] hover:to-[#357255] transition shadow-sm hover:shadow">
             <i class="fas fa-paper-plane"></i>
           </button>
         </div>
-        <p class="text-xs text-gray-400 mt-1">Monthly insights & tips</p>
+        <p class="text-xs text-gray-600 mt-1 font-medium">Monthly insights & tips</p>
       </div>
     </div>
-    <div class="flex items-center gap-3">
-      <div class="flex flex-col items-end text-right">
-        <div class="flex items-center gap-2">
-          <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-semibold text-sm">Deric Marangu</a>
-          <div class="flex gap-2">
-            <a href="https://wa.me/254791360805" target="_blank" class="footer-link"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:dericmarangu@gmail.com" class="footer-link" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://web.facebook.com/deric.aldertrax" target="_blank" class="footer-link"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.facebook.com/dericbi/" target="_blank" class="footer-link" title="dericBI Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" class="footer-link"><i class="fab fa-linkedin"></i></a>
-            <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link"><i class="fab fa-instagram"></i></a>
-          </div>
+    <!-- Social + Founder -->
+    <div class="flex items-center justify-between gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm border border-green-100">
+      <!-- Profile image next to name -->
+      <div class="flex items-center gap-2 xs:gap-3">
+        <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link rounded-full p-1 bg-white hover:bg-green-50 shadow-sm hover:shadow-md transition-all">
+          <img src="assets/img/deric.png" alt="Deric's Photo" class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover border-2 border-[#49A078]/30 hover:border-[#49A078] transition-all" />
+        </a>
+        <div class="flex flex-col">
+          <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-semibold text-sm hover:text-[#49A078]">Deric Marangu</a>
+          <p class="text-xs italic text-gray-600">
+            CEO and Founder of 
+            <a href="https://dericbi.netlify.app/" target="_blank" class="footer-link font-semibold hover:text-[#49A078]">
+              <span>deric</span><span class="text-[#facc15] text-[15px] font-bold drop-shadow-md">BI</span>
+            </a>
+          </p>
         </div>
-        <p class="text-xs italic text-gray-600">
-          CEO and Founder of 
-          <a href="https://dericbi-analytics.netlify.app/" target="_blank" class="footer-link font-semibold"><span>deric</span><span class="text-[#facc15]">BI</span></a>
-        </p>
       </div>
-      <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link rounded-full">
-        <img src="assets/img/deric.png" alt="Deric's Photo" class="h-12 w-12 rounded-full object-cover shadow-md" />
-      </a>
+      <!-- Social media icons in a more compact, right-aligned container -->
+      <div class="flex flex-wrap justify-end gap-1">
+        <a href="https://wa.me/254791360805" target="_blank" class="footer-link bg-green-100 hover:bg-green-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-whatsapp text-green-600"></i></a>
+        <a href="mailto:dericmarangu@gmail.com" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="Email"><i class="fas fa-envelope text-blue-600"></i></a>
+        <a href="https://web.facebook.com/deric.aldertrax" target="_blank" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-facebook text-blue-600"></i></a>
+        <a href="https://www.facebook.com/exes.125107/" target="_blank" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="dericBI Facebook"><i class="fab fa-facebook text-blue-600"></i></a>
+        <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" class="footer-link bg-blue-700 hover:bg-blue-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-linkedin text-white"></i></a>
+        <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link bg-black hover:bg-gray-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-twitter text-white"></i></a>
+        <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link bg-pink-100 hover:bg-pink-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-instagram text-pink-600"></i></a>
+      </div>
     </div>
   </div>
-<style>
-.footer-link {
-  color: inherit;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-.footer-link:hover {
-  color: #facc15;
-  text-shadow: 0 0 4px rgba(250, 204, 21, 0.5);
-}
-</style>
 </footer>
 </body>
-</html>
 </html>
