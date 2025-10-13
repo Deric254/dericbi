@@ -105,10 +105,10 @@
           async src="//gc.zgo.at/count.js"></script>
 </head>
 
-<body class="bg-white text-gray-800 min-h-screen flex flex-col break-words">
+<body class="bg-white text-gray-800 min-h-screen flex flex-col">
 
-<!-- ✅ Responsive Navbar -->
-<nav class="bg-[#49A078] text-white px-2 xs:px-3 sm:px-4 py-2 xs:py-3 shadow-lg sticky top-0 z-50 w-full bg-gradient-to-r from-[#49A078] to-[#3D8069]" role="navigation" aria-label="Main Navigation">
+<!-- ✅ Responsive Navbar - Fixed at Top -->
+<nav class="bg-[#49A078] text-white px-2 xs:px-3 sm:px-4 py-2 xs:py-3 shadow-lg fixed top-0 left-0 right-0 z-50 w-full bg-gradient-to-r from-[#49A078] to-[#3D8069]" role="navigation" aria-label="Main Navigation">
   <div class="w-full max-w-7xl mx-auto flex items-center justify-between gap-2 xs:gap-3 sm:gap-4">
 
     <!-- ✅ Logo & Brand -->
@@ -322,6 +322,12 @@ window.addEventListener('load', function() {
   }, 4000);
 });
 </script>
+
+<!-- Main Content Wrapper - Grows to push footer down -->
+<main class="flex-1 flex flex-col w-full">
+
+<!-- Spacer for Fixed Navbar -->
+<div class="h-14 xs:h-16 sm:h-20"></div>
 
 <!-- ✅ Animated Welcome Banner -->
 <section class="relative bg-gradient-to-r from-[#2563EB] via-[#1e40af] to-[#2563EB] overflow-hidden border-t-4 border-[#facc15] shadow-lg h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px]">
@@ -638,8 +644,8 @@ window.addEventListener('load', function() {
           <span class="text-gray-700 text-sm mb-1">Master essential computer skills for work and life.</span>
           <span class="text-xs text-gray-500 mb-2">Covers Windows, Office, internet, email, and basic troubleshooting. Perfect for beginners and business owners.</span>
           <div class="flex gap-2 flex-wrap mt-1">
-            <a href="https://chat.whatsapp.com/HrYrcCRLcVUKNXCehfzioZ" target="_blank" class="bg-[#25D366] hover:bg-[#128C7E] text-white px-3 py-1 rounded font-semibold text-xs flex items-center gap-1"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
-            <a href="https://tujengane.netlify.app/tujengane%20computer%20literacy/computerliteracy" target="_blank" class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-3 py-1 rounded font-semibold text-xs">Course Page</a>
+            <a href="https://chat.whatsapp.com/HrYrcCRLcVUKNXCehfzioZ" target="_blank" class="bg-[#25D366] hover:bg-[#128C7E] text-white px-4 py-2.5 rounded-3xl font-bold text-sm flex items-center gap-1.5 shadow-md hover:shadow-lg transition-all"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
+            <a href="https://tujengane.netlify.app/tujengane%20computer%20literacy/computerliteracy" target="_blank" class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-4 py-2.5 rounded-3xl font-bold text-sm shadow-md hover:shadow-lg transition-all">Course Page</a>
           </div>
         </div>
       </div>
@@ -656,8 +662,8 @@ window.addEventListener('load', function() {
           <span class="text-gray-700 text-sm mb-1">Start your digital journey with foundational computer knowledge.</span>
           <span class="text-xs text-gray-500 mb-2">Learn mouse, keyboard, files, folders, and simple navigation. Ideal for total beginners and youth.</span>
           <div class="flex gap-2 flex-wrap mt-1">
-            <a href="https://tujengane.netlify.app/computer%20basicss/computerbasicss.html" target="_blank" class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-3 py-1 rounded font-semibold text-xs">Course Page</a>
-            <button disabled class="bg-gray-300 text-gray-500 px-3 py-1 rounded font-semibold text-xs flex items-center gap-1 cursor-not-allowed opacity-70"><i class="fab fa-whatsapp"></i> WhatsApp (Upcoming)</button>
+            <a href="https://tujengane.netlify.app/computer%20basicss/computerbasicss.html" target="_blank" class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-4 py-2.5 rounded-3xl font-bold text-sm shadow-md hover:shadow-lg transition-all">Course Page</a>
+            <button disabled class="bg-gray-300 text-gray-600 px-4 py-2.5 rounded-3xl font-bold text-sm flex items-center gap-1.5 cursor-not-allowed opacity-60 shadow-sm"><i class="fab fa-whatsapp"></i> WhatsApp (Upcoming)</button>
           </div>
         </div>
       </div>
@@ -674,8 +680,8 @@ window.addEventListener('load', function() {
           <span class="text-gray-700 text-sm mb-1">Learn the essentials of working with data for business and personal growth.</span>
           <span class="text-xs text-gray-500 mb-2">Covers data collection, cleaning, storage, and sharing. No experience needed—great for small businesses and students.</span>
           <div class="flex gap-2 flex-wrap mt-1">
-            <a href="https://chat.whatsapp.com/DHO6xjyr8xu6x5opHRG7fl" target="_blank" class="bg-[#25D366] hover:bg-[#128C7E] text-white px-3 py-1 rounded font-semibold text-xs flex items-center gap-1"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
-            <a href="https://tujengane.netlify.app/tujengane%20data%20basics/databasics" target="_blank" class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-3 py-1 rounded font-semibold text-xs">Course Page</a>
+            <a href="https://chat.whatsapp.com/DHO6xjyr8xu6x5opHRG7fl" target="_blank" class="bg-[#25D366] hover:bg-[#128C7E] text-white px-4 py-2.5 rounded-3xl font-bold text-sm flex items-center gap-1.5 shadow-md hover:shadow-lg transition-all"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
+            <a href="https://tujengane.netlify.app/tujengane%20data%20basics/databasics" target="_blank" class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-4 py-2.5 rounded-3xl font-bold text-sm shadow-md hover:shadow-lg transition-all">Course Page</a>
           </div>
         </div>
       </div>
@@ -692,8 +698,8 @@ window.addEventListener('load', function() {
           <span class="text-gray-700 text-sm mb-1">Advance your analytics expertise with practical, professional lessons.</span>
           <span class="text-xs text-gray-500 mb-2">Learn Excel, PowerBI, SQL, and real-world analytics projects. For aspiring analysts and professionals.</span>
           <div class="flex gap-2 flex-wrap mt-1">
-            <a href="https://chat.whatsapp.com/BRpUgo7QD8rFtvOslAveNS" target="_blank" class="bg-[#25D366] hover:bg-[#128C7E] text-white px-3 py-1 rounded font-semibold text-xs flex items-center gap-1"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
-            <a href="https://tujengane.netlify.app/tujengane%20analyst%20pro/analystpro" target="_blank" class="bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-3 py-1 rounded font-semibold text-xs">Course Page</a>
+            <a href="https://chat.whatsapp.com/BRpUgo7QD8rFtvOslAveNS" target="_blank" class="bg-[#25D366] hover:bg-[#128C7E] text-white px-4 py-2.5 rounded-3xl font-bold text-sm flex items-center gap-1.5 shadow-md hover:shadow-lg transition-all"><i class="fab fa-whatsapp"></i> WhatsApp Group</a>
+            <a href="https://tujengane.netlify.app/tujengane%20analyst%20pro/analystpro" target="_blank" class="bg-[#7C3AED] hover:bg-[#6D28D9] text-white px-4 py-2.5 rounded-3xl font-bold text-sm shadow-md hover:shadow-lg transition-all">Course Page</a>
           </div>
         </div>
       </div>
@@ -1018,8 +1024,11 @@ window.addEventListener('load', function() {
     </div>
   </section>
 
-<!-- ✅ Footer -->
-<footer class="bg-gradient-to-b from-white to-[#DFF3EA] py-3 xs:py-4 px-2 xs:px-3 sm:px-4 text-sm text-gray-600 mt-auto border-t border-green-300 w-full shadow-inner">
+<!-- Close Main Content Wrapper -->
+</main>
+
+<!-- ✅ Footer - Always at Bottom -->
+<footer class="bg-gradient-to-b from-white to-[#DFF3EA] py-3 xs:py-4 px-2 xs:px-3 sm:px-4 text-sm text-gray-600 border-t border-green-300 w-full shadow-inner mt-auto">
   <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 xs:gap-4">
 
 <!-- ✅ Footer Logo and Tagline -->
