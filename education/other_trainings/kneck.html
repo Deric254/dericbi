@@ -1,0 +1,2090 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>KNEC — Online Exam (Training Demo)</title>
+<style>
+  :root{
+    --bg:#f4f6f8; --panel:#ffffff; --knc:#004a99; --accent:#d19a0c; --muted:#6b7280; --dark:#0b1220;
+  }
+  *{box-sizing:border-box;font-family:Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  body{margin:0;background:linear-gradient(180deg,#e9eef6 0%, #f4f6f8 100%);color:var(--dark);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+  .wrap{width:100%;max-width:980px;background:var(--panel);border-radius:8px;box-shadow:0 8px 28px rgba(9,30,66,0.08);overflow:hidden}
+  header{display:flex;align-items:center;gap:16px;padding:18px 22px;background:linear-gradient(90deg, rgba(0,74,153,0.06), transparent)}
+  .knc-mark{width:56px;height:56px;border-radius:6px;background:linear-gradient(180deg,var(--knc),#123e6b);display:grid;place-items:center;color:#fff;font-weight:800}
+  .title{font-size:16px;margin:0}
+  .subtitle{font-size:12px;color:var(--muted);margin-top:4px}
+  .head-right{margin-left:auto;text-align:right;font-size:13px;color:var(--muted)}
+  main{display:flex;gap:20px;padding:18px}
+  .left{flex:1;min-width:320px}
+  .panel{background:transparent;padding:12px}
+  .card{background:#fff;border-radius:6px;padding:14px;box-shadow:0 2px 6px rgba(11,18,32,0.04);border:1px solid rgba(11,18,32,0.03)}
+  label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+  input[type="text"], input[type="password"]{width:100%;padding:10px;border-radius:6px;border:1px solid #e6e9ee;background:#fbfdff}
+  button{cursor:pointer;border:0;padding:10px 14px;border-radius:6px;background:var(--knc);color:#fff;font-weight:600}
+  .btn-secondary{background:#f3f8ff;color:var(--knc);border:1px solid #d1e1f7}
+  .btn-warn{background:#ffefcf;color:#a35700;border:1px solid #ffe0a1}
+  .btn-small{padding:6px 10px;font-size:12px}
+  .muted{color:var(--muted);font-size:13px}
+  .exam-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .timer-box{display:flex;align-items:center;gap:12px}
+  .time{background:#f3f8ff;border:1px solid rgba(0,74,153,0.06);padding:8px 12px;border-radius:6px;font-weight:700;color:var(--knc)}
+  .progress{margin-top:12px;height:8px;background:#eef3fb;border-radius:999px;overflow:hidden}
+  .progbar{height:100%;background:linear-gradient(90deg,var(--knc),var(--accent));width:0%}
+  .question{margin-top:12px}
+  .question h3{margin:0;font-size:15px}
+  .choices{margin-top:10px;display:flex;flex-direction:column;gap:8px}
+  .choice{display:flex;align-items:center;gap:10px;padding:10px;border-radius:6px;border:1px solid #eef3fb;background:#fbfdff;cursor:pointer}
+  .choice input{transform:scale(1.1)}
+  .controls{display:flex;justify-content:space-between;gap:10px;margin-top:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(44px,1fr));gap:8px;margin-top:10px}
+  .grid button{padding:8px;border-radius:6px;border:1px solid #e6e9ee;background:#fff}
+  .grid button.answered{background:linear-gradient(90deg,var(--knc),var(--accent));color:#fff;border:0}
+  .grid button.flagged{background:#fff;color:#a35700;border:2px solid var(--accent)}
+  .grid button.flagged.answered{background:linear-gradient(45deg,var(--knc),var(--accent));color:#fff;border:0}
+  .receipt{padding:12px;border-radius:6px;background:#fff;border:1px solid #eef3fb}
+  .center{display:grid;place-items:center;padding:28px}
+  .steps{display:flex;justify-content:space-between;margin-bottom:20px;position:relative}
+  .steps:after{content:'';position:absolute;top:14px;left:0;right:0;height:2px;background:#eef3fb;z-index:1}
+  .step{background:#fff;border:2px solid #eef3fb;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;z-index:2;font-size:14px;font-weight:600;color:var(--muted)}
+  .step.active{background:var(--knc);color:#fff;border-color:var(--knc)}
+  .step.done{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .warning-bar{padding:4px 8px;background:#ffefcf;color:#a35700;font-size:12px;text-align:center}
+  .security-badge{display:flex;align-items:center;gap:6px;background:#f3f8ff;padding:6px 10px;border-radius:4px;font-size:12px;color:var(--knc)}
+  .security-badge.secure:before{content:'✓';font-weight:bold}
+  .security-badge.alert{background:#ffefcf;color:#a35700}
+  .security-badge.alert:before{content:'!';font-weight:bold}
+  .fullscreen-notice{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.8);color:#fff;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:100;text-align:center}
+  .fullscreen-notice.visible{display:flex}
+  .violation-log{background:#fff1f1;color:#e11d48;border-left:4px solid #e11d48;padding:8px 12px;font-size:12px;margin-top:10px;max-width:90%;max-height:40vh;overflow-y:auto;text-align:left}
+  .violation-log-item{margin:4px 0;padding:4px 0;border-bottom:1px solid rgba(225,29,72,0.2)}
+  .text-input{background:#fff;border:1px solid #eef3fb;padding:8px;border-radius:6px;min-height:80px;width:100%}
+  .question img{max-width:100%;margin:12px 0;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,0.1);border:1px solid #eef3fb}
+  .section-nav{display:flex;gap:8px;margin-top:12px;border-bottom:1px solid #eef3fb;padding-bottom:12px;flex-wrap:wrap}
+  .section-nav button{background:transparent;color:var(--muted);border:1px solid #eef3fb;padding:8px 10px;font-size:13px;white-space:nowrap}
+  .section-nav button.active{background:var(--knc);color:#fff;border:none}
+  .loader{width:40px;height:40px;border:4px solid #eef3fb;border-top-color:var(--knc);border-radius:50%;animation:spin 1s linear infinite}
+  @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+  @media (max-width:880px){ main{flex-direction:column} .head-right{text-align:left} }
+  /* Camera related styles */
+  .camera-container{position:relative;width:100%;margin:12px 0;border-radius:8px;overflow:hidden;border:1px solid #e6e9ee}
+  .camera-feed{width:100%;height:auto;display:block;background:#f4f6f8}
+  .camera-overlay{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.1)}
+  .camera-button{background:var(--knc);color:#fff;border:none;border-radius:50%;width:50px;height:50px;font-size:18px;cursor:pointer;display:grid;place-items:center}
+  .camera-status{padding:8px;background:#f3f8ff;border-radius:6px;margin-top:8px;font-size:13px;color:var(--muted)}
+  .camera-status.error{background:#fff1f1;color:#e11d48}
+  .camera-status.success{background:#ecfdf5;color:#059669}
+  .snapshot-container{display:flex;gap:12px;margin:12px 0}
+  .snapshot-image{width:120px;height:90px;object-fit:cover;border-radius:6px;border:2px solid #eef3fb}
+  .verification-badge{display:inline-block;padding:4px 8px;border-radius:4px;font-weight:600;font-size:12px}
+  .verification-badge.verified{background:#ecfdf5;color:#059669}
+  .verification-badge.unverified{background:#fff1f1;color:#e11d48}
+  .camera-controls{display:flex;gap:8px;margin-top:8px}
+</style>
+</head>
+<body>
+  <div class="wrap" role="application" aria-labelledby="apptitle">
+    <header>
+      <div class="knc-mark" aria-hidden="true">KNEC</div>
+      <div>
+        <h1 id="apptitle" class="title">KNEC — Online Exam (Training)</h1>
+        <div class="subtitle">Kenya National Examinations Council — Digital Skills Assessment</div>
+      </div>
+      <div class="head-right">
+        <div id="session" style="font-weight:700">PRIMARY 4 — ENGLISH PAPER 1</div>
+        <div class="muted" style="margin-top:4px">Training copy — NOT connected to KNEC systems</div>
+      </div>
+    </header>
+
+    <div class="warning-bar" id="warning-message"></div>
+
+    <main>
+      <section class="left">
+        <!-- STEP INDICATOR -->
+        <div class="steps" id="step-indicator">
+          <div class="step active" id="step1">1</div>
+          <div class="step" id="step2">2</div>
+          <div class="step" id="step3">3</div>
+          <div class="step" id="step4">4</div>
+        </div>
+
+        <!-- 1. SYSTEM CHECK -->
+        <div id="systemCheckCard" class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700">System Check</div>
+              <div class="muted" style="margin-top:6px">Verifying your system compatibility with KNEC exam environment.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:18px">
+            <div class="security-badge secure" id="browser-check">Browser compatibility check</div>
+            <div class="security-badge secure" id="network-check" style="margin-top:8px">Network connectivity check</div>
+            <div class="security-badge secure" id="screen-check" style="margin-top:8px">Screen resolution check</div>
+            <div class="security-badge secure" id="plugins-check" style="margin-top:8px">Browser plugins check</div>
+            <div class="security-badge" id="camera-check" style="margin-top:8px">Camera access check</div>
+            
+            <div style="margin-top:20px;display:flex;justify-content:space-between;">
+              <div class="muted">Please wait while we verify your system...</div>
+              <div>
+                <div class="loader" id="system-loader"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. INVIGILATOR VERIFICATION -->
+        <div id="invigilatorCard" class="card" style="display:none">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700">Invigilator Verification</div>
+              <div class="muted" style="margin-top:6px">Invigilator must verify candidate identity before proceeding.</div>
+            </div>
+          </div>
+
+          <div style="margin-top:18px">
+            <div style="padding:12px;border:1px dashed #e6e9ee;border-radius:6px;margin-bottom:16px">
+              <div style="font-weight:600">Invigilator Instructions:</div>
+              <ol style="margin-top:6px;padding-left:20px;color:var(--muted);font-size:13px">
+                <li>Verify candidate ID matches the attendance register</li>
+                <li>Take a photo of the candidate using the camera below</li>
+                <li>Confirm the captured photo matches the candidate and ID photo</li>
+                <li>Ensure candidate is seated at the assigned station</li>
+                <li>Enter your invigilator PIN to authorize exam start</li>
+              </ol>
+            </div>
+
+            <!-- Camera verification -->
+            <div class="camera-status" id="camera-status">Click "Start Camera" to begin verification</div>
+            <div class="camera-container" id="camera-container">
+              <video id="camera-feed" class="camera-feed" autoplay playsinline></video>
+              <div class="camera-overlay">
+                <button id="camera-button" class="camera-button">📷</button>
+              </div>
+            </div>
+            
+            <!-- Snapshot display -->
+            <div class="snapshot-container" id="snapshot-container" style="display:none">
+              <img id="captured-photo" class="snapshot-image" alt="Candidate photo" />
+              <div>
+                <div class="verification-badge unverified" id="verification-status">Needs Verification</div>
+                <div class="camera-controls">
+                  <button id="retake-photo" class="btn-secondary btn-small">Retake Photo</button>
+                  <button id="confirm-photo" class="btn-small">Confirm ID Match</button>
+                </div>
+              </div>
+            </div>
+
+            <label for="invPin" style="margin-top:16px">Invigilator PIN</label>
+            <div style="display:flex;gap:12px">
+              <input id="invPin" type="password" placeholder="Enter 6-digit PIN" maxlength="6" />
+              <button id="verifyPin">Verify</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. CANDIDATE LOGIN -->
+        <div id="loginCard" class="card" style="display:none">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:700">Candidate Login</div>
+              <div class="muted" style="margin-top:6px">Type candidate details exactly as on the attendance list.</div>
+            </div>
+            <div class="muted" style="font-size:13px">Exam duration: <strong id="durLabel">45 min</strong></div>
+          </div>
+
+          <div style="margin-top:12px">
+            <label for="candName">Candidate name</label>
+            <input id="candName" type="text" placeholder="Full name" autocomplete="off" />
+
+            <div style="display:flex;gap:12px;margin-top:10px">
+              <div style="flex:1">
+                <label for="candReg">Index number</label>
+                <input id="candReg" type="text" placeholder="e.g. 1234567" />
+              </div>
+              <div style="width:160px;align-self:end">
+                <button id="startBtn" style="width:100%">Start Exam</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. INSTRUCTIONS -->
+        <div id="instructionsCard" class="card" style="display:none">
+          <div style="font-weight:700">Exam Instructions</div>
+          <div class="muted" style="margin-top:6px" id="examInstructions">Please read these instructions carefully before beginning.</div>
+
+          <div style="margin-top:14px;padding:14px;border-radius:6px;background:#f9fafc">
+            <h3 style="margin:0;font-size:15px">PRIMARY 4 — ENGLISH PAPER 1</h3>
+            
+            <ol style="margin-top:10px;padding-left:20px;color:var(--dark)">
+              <li>This paper contains <strong>20 multiple choice questions</strong>. For this demo, we show only 5 questions.</li>
+              <li>You have <strong>30 minutes</strong> to complete the paper.</li>
+              <li>Answer ALL questions in this paper.</li>
+              <li>You can navigate between questions using the Next and Previous buttons.</li>
+              <li>You can flag questions to review later by clicking the flag button.</li>
+              <li>Your answers are automatically saved when selected.</li>
+              <li>Use the question palette on the right to quickly jump to any question.</li>
+              <li>Once you click "Submit Paper", you cannot change your answers.</li>
+              <li>Do not attempt to leave the exam window or switch to another application.</li>
+              <li>If you experience technical issues, contact your instructor for assistance.</li>
+            </ol>
+          </div>
+
+          <div style="margin-top:18px;display:flex;justify-content:space-between;align-items:center">
+            <div class="security-badge secure">Secure exam environment active</div>
+            <button id="beginExamBtn">I understand, Begin Exam</button>
+          </div>
+        </div>
+
+        <!-- 5. EXAM -->
+        <div id="examCard" class="card" style="display:none">
+          <div class="exam-top">
+            <div>
+              <div style="font-weight:700" id="examTitle">PRIMARY 4 — ENGLISH PAPER 1</div>
+              <div class="muted" id="candInfo">Candidate: — • Index: —</div>
+            </div>
+            <div class="timer-box">
+              <div class="muted" style="font-size:13px">Time remaining</div>
+              <div class="time" id="timeLeft">30:00</div>
+            </div>
+          </div>
+
+          <div class="section-nav" id="section-nav">
+            <button class="active" data-section="section1">Section 1: Basic Knowledge</button>
+            <button data-section="section2">Section 2: Computer Knowledge</button>
+            <button data-section="section3">Section 3: Software Applications</button>
+            <button data-section="section4">Section 4: Internet</button>
+            <button data-section="section5">Section 5: Hardware</button>
+            <button data-section="section6">Section 6: Essay</button>
+            <button data-section="section7">Section 7: Image Analysis</button>
+          </div>
+
+          <div class="progress" aria-hidden="true">
+            <div class="progbar" id="progbar" style="width:0%"></div>
+          </div>
+
+          <div id="questionArea" class="question" aria-live="polite"></div>
+
+          <div class="controls">
+            <div>
+              <button id="prevBtn" class="btn-secondary btn-small">Previous</button>
+              <button id="flagBtn" class="btn-warn btn-small">Flag for Review</button>
+              <button id="nextBtn" class="btn-secondary btn-small">Next</button>
+            </div>
+            <div>
+              <button id="submitBtn">Submit Paper</button>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+            <div class="security-badge secure">Auto-save enabled • Do not refresh</div>
+            <div class="muted" id="statusCount">Answered: 0 / 0</div>
+          </div>
+        </div>
+
+        <!-- FINISH - SUBMISSION CONFIRMATION -->
+        <div id="confirmSubmitCard" class="card" style="display:none">
+          <div style="text-align:center;padding:14px">
+            <div style="font-weight:700;font-size:18px">Confirm Submission</div>
+            <div class="muted" style="margin:10px 0 18px">Are you sure you want to submit your answers?</div>
+            
+            <div style="padding:12px;margin:0 auto 18px;max-width:300px;background:#f9fafc;border-radius:6px">
+              <div id="confirm-stats" style="text-align:left">
+                <div>Total questions: <strong>35</strong></div>
+                <div style="margin-top:4px">Answered: <strong id="confirm-answered">0</strong></div>
+                <div style="margin-top:4px">Unanswered: <strong id="confirm-unanswered">0</strong></div>
+                <div style="margin-top:4px">Flagged for review: <strong id="confirm-flagged">0</strong></div>
+              </div>
+            </div>
+            
+            <div style="display:flex;gap:10px;justify-content:center">
+              <button id="cancelSubmit" class="btn-secondary">Return to Exam</button>
+              <button id="confirmSubmit">Confirm Submission</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBMITTING -->
+        <div id="submittingCard" class="card" style="display:none">
+          <div class="center" style="padding:30px">
+            <div class="loader"></div>
+            <div style="margin-top:16px;font-weight:600">Submitting your answers...</div>
+            <div class="muted" style="margin-top:8px">Please do not close the browser or refresh the page.</div>
+          </div>
+        </div>
+
+        <!-- FINISH - RESULTS -->
+        <div id="finishCard" class="card" style="display:none">
+          <div class="center">
+            <div class="receipt" id="receipt" style="width:100%;max-width:400px">
+              <div style="font-weight:700;text-align:center;font-size:18px">Submission Accepted</div>
+              <div style="text-align:center;margin:10px 0;padding:10px 0;border-bottom:1px solid #eef3fb">
+                <div class="muted" id="resInfo">Candidate: — • Index: —</div>
+                <div style="margin-top:8px;font-size:14px">Paper: <strong>PRIMARY 4 — ENGLISH PAPER 1</strong></div>
+              </div>
+              
+              <div style="margin-top:14px;text-align:center">
+                <div style="font-size:24px">Score: <strong id="resScore">0%</strong></div>
+                <div class="muted" id="resSummary" style="margin-top:6px">Correct: 0 • Attempted: 0 • Total: 0</div>
+              </div>
+              
+              <div style="margin-top:20px;display:flex;gap:8px;justify-content:center">
+                <button id="printBtn" class="btn-warn btn-small">Log Out</button>
+                <button id="reviewBtn" class="btn-small">Review Answers</button>
+                <button id="newBtn" class="btn-secondary btn-small">Start New</button>
+              </div>
+              
+              <div class="muted" style="margin-top:16px;font-size:12px;text-align:center;padding-top:10px;border-top:1px solid #eef3fb">
+                This is a training copy. For real exams use the official KNEC portal and follow invigilation procedures.
+                <div style="margin-top:4px">Submission ID: KNC-<span id="submission-id">2354789</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ANSWER REVIEW -->
+        <div id="reviewCard" class="card" style="display:none">
+          <div style="font-weight:700">Answer Review</div>
+          <div class="muted" style="margin-top:6px">Review of your submitted answers</div>
+          
+          <div style="margin-top:14px" id="answer-review-area"></div>
+          
+          <div style="margin-top:16px;display:flex;justify-content:center">
+            <button id="backToResultsBtn" class="btn-secondary">Back to Results</button>
+          </div>
+        </div>
+      </section>
+
+      <aside style="width:300px">
+        <!-- SYSTEM CHECK SIDEBAR -->
+        <div class="card" id="system-check-sidebar">
+          <div style="font-weight:700">System Requirements</div>
+          <div class="muted" style="margin-top:6px;font-size:12px">The KNEC exam requires:</div>
+          <ul style="padding-left:18px;margin-top:8px;color:var(--muted);font-size:13px">
+            <li>Modern browser (Chrome/Firefox/Edge)</li>
+            <li>Stable internet connection</li>
+            <li>Screen resolution at least 1024x768</li>
+            <li>No blocked cookies or popups</li>
+            <li>No unauthorized extensions</li>
+          </ul>
+        </div>
+
+        <!-- INVIGILATOR SIDEBAR -->
+        <div class="card" id="invigilator-sidebar" style="display:none">
+          <div style="font-weight:700">Invigilator Panel</div>
+          <div class="muted" style="margin-top:6px;font-size:12px">For training purposes only</div>
+          <div style="margin-top:12px;padding:10px;background:#f9fafc;border-radius:6px;font-size:13px">
+            <div>Demo PIN: <strong>123456</strong></div>
+            <div style="margin-top:4px">Center Code: <strong>KNC-001</strong></div>
+            <div style="margin-top:4px">Session ID: <strong>P4-ENG-2023-T1</strong></div>
+          </div>
+        </div>
+
+        <!-- EXAM SIDEBAR -->
+        <div class="card" id="exam-sidebar" style="display:none">
+          <div style="font-weight:700">Question Palette</div>
+          <div class="muted" style="margin-top:4px;margin-bottom:8px;font-size:12px">
+            <span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--knc)"></span> Answered
+            <span style="display:inline-block;width:12px;height:12px;border-radius:50%;border:2px solid var(--accent);margin-left:8px"></span> Flagged
+          </div>
+          
+          <div class="grid" id="qGrid"></div>
+
+          <div style="margin-top:14px">
+            <div style="font-weight:700;font-size:13px">Invigilator checklist</div>
+            <ul style="padding-left:18px;margin-top:8px;color:var(--muted);font-size:13px">
+              <li>Confirm identity & index number</li>
+              <li>Start the candidate and watch the timer</li>
+              <li>Allow navigation; do not assist with answers</li>
+              <li>Click Submit once when finished</li>
+            </ul>
+          </div>
+          
+          <div style="margin-top:14px">
+            <div style="font-weight:700;font-size:13px">Identity Verification</div>
+            <div id="verification-report" class="security-badge secure" style="margin-top:8px;width:100%;box-sizing:border-box;">Identity verified</div>
+          </div>
+          
+          <div style="margin-top:14px">
+            <div style="font-weight:700;font-size:13px">Exam Security</div>
+            <div class="security-badge secure" style="margin-top:8px">Browser locked</div>
+            <div class="security-badge secure" style="margin-top:6px">Screen monitoring active</div>
+            <div id="focus-alert" class="security-badge secure" style="margin-top:6px">Focus maintained</div>
+          </div>
+        </div>
+
+        <!-- RESULTS SIDEBAR -->
+        <div class="card" id="results-sidebar" style="display:none">
+          <div style="font-weight:700">Result Information</div>
+          <div class="muted" style="margin-top:6px;font-size:12px">For training purposes only</div>
+          <div style="margin-top:12px">
+            <div style="padding:10px;background:#f9fafc;border-radius:6px;font-size:13px">
+              <div>Session: <strong>P4-ENG-2023-T1</strong></div>
+              <div style="margin-top:4px">Date: <strong id="exam-date">Oct 11, 2023</strong></div>
+              <div style="margin-top:4px">Duration: <strong>30 minutes</strong></div>
+              <div style="margin-top:4px">Status: <strong style="color:#22c55e">Complete</strong></div>
+            </div>
+            
+            <div style="margin-top:14px;padding:10px;background:#f9fafc;border-radius:6px;font-size:13px">
+              <div style="font-weight:600">Question Statistics:</div>
+              <div style="margin-top:6px">Total Questions: <strong>35</strong></div>
+              <div style="margin-top:4px">Answered: <strong id="stats-answered">0</strong></div>
+              <div style="margin-top:4px">Correct: <strong id="stats-correct">0</strong></div>
+              <div style="margin-top:4px">Incorrect: <strong id="stats-incorrect">0</strong></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <!-- Fullscreen Notice -->
+  <div class="fullscreen-notice" id="fullscreen-notice">
+    <div style="font-size:24px;margin-bottom:16px">⚠️ Warning: Exam Security Violation</div>
+    <div style="font-size:18px;margin-bottom:24px">You have left the secure exam environment!</div>
+    <div style="font-size:14px;max-width:400px;text-align:center;margin-bottom:20px">
+      Please remain in fullscreen mode for the best assessment experience.
+      The incident has been logged with details including time and nature of violation.
+    </div>
+    
+    <div class="violation-log" id="violation-log">
+      <div style="font-weight:bold;margin-bottom:6px">Violation Log (All incidents are reported to exam authorities)</div>
+      <!-- Violation log items will be added here dynamically -->
+    </div>
+    
+    <button id="return-to-exam" style="background:#d19a0c;margin-top:20px">Return to Exam</button>
+  </div>
+
+<script>
+/* CONFIG */
+const DURATION_MIN = 45; // increased for more questions
+const QUESTIONS = [
+  // Basic Knowledge Section
+  {id:1, section:"section1", q:"1. Who is the President of Kenya?", choices:["William Ruto","Uhuru Kenyatta","Mwai Kibaki","Daniel arap Moi"], answer:0},
+  {id:2, section:"section1", q:"2. 7 + 5 = ?", choices:["10","11","12","13"], answer:2},
+  {id:3, section:"section1", q:"3. Which of these is a vegetable?", choices:["Banana","Carrot","Mango","Bread"], answer:1},
+  {id:4, section:"section1", q:"4. The Sun rises from the _____.", choices:["West","East","North","South"], answer:1},
+  {id:5, section:"section1", q:"5. Which animal gives us milk?", choices:["Goat","Lion","Eagle","Snake"], answer:0},
+  
+  // Computer Knowledge Section
+  {id:6, section:"section2", q:"6. Which device is used for inputting data into a computer?", choices:["Monitor","Keyboard","Printer","Projector"], answer:1},
+  {id:7, section:"section2", q:"7. What does CPU stand for?", choices:["Central Processing Unit","Computer Personal Unit","Central Processor Utility","Computer Processing Upgrade"], answer:0},
+  {id:8, section:"section2", q:"8. Which of these is a storage device?", choices:["Speaker","Mouse","Hard Drive","Monitor"], answer:2},
+  {id:9, section:"section2", q:"9. The software used to browse the internet is called:", choices:["Operating System","Antivirus","Web Browser","Spreadsheet"], answer:2},
+  {id:10, section:"section2", q:"10. What is the main function of an operating system?", choices:["Edit text documents","Manage hardware and software resources","Create presentations","Calculate numerical data"], answer:1},
+  
+  // Software Applications Section
+  {id:11, section:"section3", q:"11. Which program is used to create spreadsheets?", choices:["Microsoft Word","Microsoft Excel","Microsoft PowerPoint","Microsoft Paint"], answer:1},
+  {id:12, section:"section3", q:"12. True or False: Microsoft PowerPoint is primarily used for text editing.", choices:["True","False"], answer:1},
+  {id:13, section:"section3", q:"13. What file extension is commonly used for PDF documents?", choices:[".txt",".doc",".pdf",".xls"], answer:2},
+  {id:14, section:"section3", q:"14. In Microsoft Word, the shortcut CTRL+S is used to:", choices:["Save","Select All","Spell Check","Search"], answer:0},
+  {id:15, section:"section3", q:"15. What is the function of CTRL+Z in most applications?", choices:["Zoom","Redo","Copy","Undo"], answer:3},
+  
+  // Internet and Communication
+  {id:16, section:"section4", q:"16. What does URL stand for?", choices:["Universal Resource Locator","Uniform Resource Locator","United Resource Link","Universal Remote Link"], answer:1},
+  {id:17, section:"section4", q:"17. Which of these is a valid email address format?", choices:["www.example@com","user@example","user@example.com","@example.com"], answer:2},
+  {id:18, section:"section4", q:"18. What is the purpose of an email attachment?", choices:["To secure the email","To send files with an email","To create a backup of the email","To verify the sender's identity"], answer:1},
+  {id:19, section:"section4", q:"19. Which of these is NOT a web browser?", choices:["Google Chrome","Mozilla Firefox","Internet Explorer","Microsoft Office"], answer:3},
+  {id:20, section:"section4", q:"20. What does HTTP stand for?", choices:["HyperText Transfer Protocol","High Tech Transfer Process","HyperText Technical Processing","HyperTool Transfer Protocol"], answer:0},
+  
+  // Hardware Section
+  {id:21, section:"section5", q:"21. Which component stores data permanently even when the computer is turned off?", choices:["RAM","CPU","Hard Drive","Monitor"], answer:2},
+  {id:22, section:"section5", q:"22. What unit of measurement is used for storage capacity?", choices:["Hertz","Pixel","Byte","Voltage"], answer:2},
+  {id:23, section:"section5", q:"23. Which of these is an output device?", choices:["Keyboard","Mouse","Scanner","Speaker"], answer:3},
+  {id:24, section:"section5", q:"24. What does RAM stand for?", choices:["Read Access Memory","Random Access Memory","Remote Access Module","Read-only Access Memory"], answer:1},
+  {id:25, section:"section5", q:"25. Which of these is NOT a pointing device?", choices:["Mouse","Touchpad","Joystick","Printer"], answer:3},
+  
+  // Text Entry Questions
+  {id:26, section:"section6", q:"26. Write a short essay explaining what a computer virus is, how it spreads, and at least three ways to protect your computer from virus infections.", type:"text", answer:"Any comprehensive explanation of computer viruses and protection methods"},
+  {id:27, section:"section6", q:"27. Describe the purpose of passwords in digital security. Explain what makes a strong password and why using different passwords for different accounts is recommended.", type:"text", answer:"Any valid explanation about password security principles"},
+  {id:28, section:"section6", q:"28. Compare and contrast cloud storage versus local storage. Discuss advantages and disadvantages of each approach with at least two examples.", type:"text", answer:"Any balanced comparison of cloud vs local storage with examples"},
+  {id:29, section:"section6", q:"29. Explain the concept of phishing in cybersecurity. Describe how to identify phishing attempts and what steps to take if you suspect you've received a phishing message.", type:"text", answer:"Any comprehensive explanation of phishing and protection strategies"},
+  {id:30, section:"section6", q:"30. Discuss the importance of software updates. Why should users regularly update their operating systems and applications? What risks might outdated software pose?", type:"text", answer:"Any thorough explanation of software update importance and risks"},
+  
+  // Image-based Questions
+  {id:31, section:"section7", q:"31. Look at the image below. Which computer component is shown?", image:"../assets/dash1.JPG", choices:["Motherboard","Hard Drive","Graphics Card","Power Supply"], answer:0},
+  {id:32, section:"section7", q:"32. What is the function of the highlighted icon in the image?", image:"../assets/dash2.JPG", choices:["Start a program","Close a window","Save a file","Print a document"], answer:2},
+  {id:33, section:"section7", q:"33. Identify the type of connection port shown in the image?", image:"../assets/logo.png", choices:["HDMI","USB","VGA","Ethernet"], answer:1},
+  {id:34, section:"section7", q:"34. What type of chart is displayed in the image below?", image:"../assets/dash1.JPG", choices:["Bar Chart","Pie Chart","Line Graph","Scatter Plot"], answer:0},
+  {id:35, section:"section7", q:"35. Based on the logo shown below, which of these best describes the organization?", image:"../assets/Tujengane Digital Skills Logo.png", choices:["Financial Institution","Educational Platform","Government Agency","Social Media Company"], answer:1}
+];
+
+/* STATE */
+let state = {
+  step: 1,  // Current step in the exam process
+  started: false,
+  timeLeft: DURATION_MIN*60,
+  current: 0,
+  answers: {}, // id -> selected index
+  flagged: {}, // id -> true/false
+  candidate: '',
+  indexNo: '',
+  timer: null,
+  submitted: false,
+  activeSection: 'section1',
+  focusLost: 0,
+  warningShown: false,
+  // System requirements state
+  systemRequirements: null,
+  requirementsFailed: false,
+  networkError: false,
+  networkMonitoringInterval: null,
+  // Camera related state
+  candidatePhotoVerified: false,
+  candidatePhotoData: null,
+  cameraPermissionGranted: false,
+  cameraStream: null,
+  identityVerifications: [], // Array to store timestamps and results of identity verifications
+  lastVerificationTime: null
+};
+
+/* ELEMENTS */
+// Cards
+const systemCheckCard = document.getElementById('systemCheckCard');
+const invigilatorCard = document.getElementById('invigilatorCard');
+const loginCard = document.getElementById('loginCard');
+const instructionsCard = document.getElementById('instructionsCard');
+const examCard = document.getElementById('examCard');
+const confirmSubmitCard = document.getElementById('confirmSubmitCard');
+const submittingCard = document.getElementById('submittingCard');
+const finishCard = document.getElementById('finishCard');
+const reviewCard = document.getElementById('reviewCard');
+
+// Sidebars
+const systemCheckSidebar = document.getElementById('system-check-sidebar');
+const invigilatorSidebar = document.getElementById('invigilator-sidebar');
+const examSidebar = document.getElementById('exam-sidebar');
+const resultsSidebar = document.getElementById('results-sidebar');
+
+// Steps
+const stepIndicators = [
+  document.getElementById('step1'),
+  document.getElementById('step2'),
+  document.getElementById('step3'),
+  document.getElementById('step4')
+];
+
+// System check elements
+const browserCheck = document.getElementById('browser-check');
+const networkCheck = document.getElementById('network-check');
+const screenCheck = document.getElementById('screen-check');
+const pluginsCheck = document.getElementById('plugins-check');
+const systemLoader = document.getElementById('system-loader');
+
+// Invigilator verification
+const invPin = document.getElementById('invPin');
+const verifyPin = document.getElementById('verifyPin');
+
+// Login elements
+const startBtn = document.getElementById('startBtn');
+const candName = document.getElementById('candName');
+const candReg = document.getElementById('candReg');
+const durLabel = document.getElementById('durLabel');
+
+// Instructions elements
+const beginExamBtn = document.getElementById('beginExamBtn');
+
+// Exam elements
+const timeLeftEl = document.getElementById('timeLeft');
+const qArea = document.getElementById('questionArea');
+const progbar = document.getElementById('progbar');
+const qGrid = document.getElementById('qGrid');
+const statusCount = document.getElementById('statusCount');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const flagBtn = document.getElementById('flagBtn');
+const submitBtn = document.getElementById('submitBtn');
+const sectionNavButtons = document.querySelectorAll('#section-nav button');
+const focusAlert = document.getElementById('focus-alert');
+const warningMessage = document.getElementById('warning-message');
+
+// Confirm submission elements
+const confirmAnswered = document.getElementById('confirm-answered');
+const confirmUnanswered = document.getElementById('confirm-unanswered');
+const confirmFlagged = document.getElementById('confirm-flagged');
+const cancelSubmit = document.getElementById('cancelSubmit');
+const confirmSubmit = document.getElementById('confirmSubmit');
+
+// Finish elements
+const resInfo = document.getElementById('resInfo');
+const resScore = document.getElementById('resScore');
+const resSummary = document.getElementById('resSummary');
+const submissionId = document.getElementById('submission-id');
+const statsAnswered = document.getElementById('stats-answered');
+const statsCorrect = document.getElementById('stats-correct');
+const statsIncorrect = document.getElementById('stats-incorrect');
+const printBtn = document.getElementById('printBtn');
+const reviewBtn = document.getElementById('reviewBtn');
+const newBtn = document.getElementById('newBtn');
+
+// Review elements
+const answerReviewArea = document.getElementById('answer-review-area');
+const backToResultsBtn = document.getElementById('backToResultsBtn');
+
+// Fullscreen notice
+const fullscreenNotice = document.getElementById('fullscreen-notice');
+const returnToExam = document.getElementById('return-to-exam');
+
+// Set exam date
+document.getElementById('exam-date').textContent = new Date().toLocaleDateString('en-US', {
+  year: 'numeric', 
+  month: 'short', 
+  day: 'numeric'
+});
+
+/* INIT UI */
+durLabel.textContent = DURATION_MIN + ' min';
+timeLeftEl.textContent = formatTime(state.timeLeft);
+
+// Initialize UI
+initializeSystemCheck();
+
+/* UTIL */
+function formatTime(s){ 
+  const mm = String(Math.floor(s/60)).padStart(2,'0'); 
+  const ss = String(s%60).padStart(2,'0'); 
+  return mm+':'+ss; 
+}
+
+function save(){ 
+  const p = {
+    step: state.step,
+    answers: state.answers,
+    flagged: state.flagged,
+    timeLeft: state.timeLeft,
+    started: state.started,
+    candidate: state.candidate,
+    indexNo: state.indexNo,
+    submitted: state.submitted,
+    activeSection: state.activeSection,
+    current: state.current,
+    // Save camera verification state
+    candidatePhotoVerified: state.candidatePhotoVerified,
+    candidatePhotoData: state.candidatePhotoData,
+    identityVerifications: state.identityVerifications,
+    lastVerificationTime: state.lastVerificationTime,
+    cameraPermissionGranted: state.cameraPermissionGranted
+  }; 
+  localStorage.setItem('kn_exam_demo',JSON.stringify(p)); 
+}
+
+function load(){ 
+  try{ 
+    const r = JSON.parse(localStorage.getItem('kn_exam_demo')); 
+    if(r){ 
+      state.step = r.step || 1;
+      state.answers = r.answers || {}; 
+      state.flagged = r.flagged || {};
+      state.timeLeft = ('timeLeft' in r) ? r.timeLeft : state.timeLeft;
+      state.started = !!r.started;
+      state.candidate = r.candidate || '';
+      state.indexNo = r.indexNo || '';
+      state.submitted = !!r.submitted;
+      state.activeSection = r.activeSection || 'section1';
+      state.current = r.current || 0;
+      
+      // Load camera verification state
+      state.candidatePhotoVerified = !!r.candidatePhotoVerified;
+      state.candidatePhotoData = r.candidatePhotoData || null;
+      state.identityVerifications = r.identityVerifications || [];
+      state.lastVerificationTime = r.lastVerificationTime || null;
+      state.cameraPermissionGranted = !!r.cameraPermissionGranted;
+      
+      // If photo was already taken, show it
+      if (state.candidatePhotoData && capturedPhoto) {
+        capturedPhoto.src = state.candidatePhotoData;
+        snapshotContainer.style.display = 'flex';
+        if (state.candidatePhotoVerified && verificationStatus) {
+          verificationStatus.textContent = "ID Verified ✓";
+          verificationStatus.className = "verification-badge verified";
+        }
+      }
+    } 
+  } catch(e){
+    console.error('Error loading saved state:', e);
+  } 
+}
+
+function clearSave(){ localStorage.removeItem('kn_exam_demo'); }
+
+function updateStep(step) {
+  state.step = step;
+  
+  // Update step indicators
+  stepIndicators.forEach((indicator, index) => {
+    // Our steps are now 1-based
+    const stepValue = parseInt(indicator.textContent);
+    
+    if (stepValue < step) {
+      indicator.classList.remove('active');
+      indicator.classList.add('done');
+    } else if (stepValue === step) {
+      indicator.classList.add('active');
+      indicator.classList.remove('done');
+    } else {
+      indicator.classList.remove('active', 'done');
+    }
+  });
+  
+  // Enable fullscreen when entering exam (step 4)
+  if (step === 4) {
+    requestFullscreen();
+    
+    // Add fullscreen requirement to security checks
+    const fsCheck = setInterval(() => {
+      if (state.step === 4 && state.started && !state.submitted) {
+        checkFullscreenState();
+      } else {
+        clearInterval(fsCheck);
+      }
+    }, 2000);
+  }
+  
+  // Hide all cards and sidebars
+  [systemCheckCard, loginCard, instructionsCard, examCard, confirmSubmitCard, submittingCard, finishCard, reviewCard].forEach(card => {
+    card.style.display = 'none';
+  });
+  
+  [systemCheckSidebar, examSidebar, resultsSidebar].forEach(sidebar => {
+    sidebar.style.display = 'none';
+  });
+  
+  // Show appropriate card and sidebar based on step
+  switch(step) {
+    case 1: // System Check
+      systemCheckCard.style.display = 'block';
+      systemCheckSidebar.style.display = 'block';
+      break;
+    case 2: // Candidate Login
+      loginCard.style.display = 'block';
+      break;
+    case 3: // Instructions
+      instructionsCard.style.display = 'block';
+      examSidebar.style.display = 'block';
+      break;
+    case 4: // Exam
+      examCard.style.display = 'block';
+      examSidebar.style.display = 'block';
+      break;
+  }
+  
+  save();
+}
+
+/* RENDER */
+function renderGrid(){ 
+  qGrid.innerHTML = '';
+  
+  // Filter questions by active section if in exam mode
+  const displayQuestions = state.step === 4 
+    ? QUESTIONS.filter(q => q.section === state.activeSection || !q.section)
+    : QUESTIONS;
+  
+  displayQuestions.forEach((q, i) => { 
+    const btn = document.createElement('button'); 
+    btn.textContent = q.id;
+    
+    if (state.answers[q.id] !== undefined) btn.classList.add('answered');
+    if (state.flagged[q.id]) btn.classList.add('flagged');
+    
+    btn.addEventListener('click', () => { 
+      // Find the index in the full QUESTIONS array
+      const fullIndex = QUESTIONS.findIndex(question => question.id === q.id);
+      state.current = fullIndex;
+      state.activeSection = q.section || 'section1';
+      updateSectionNav();
+      renderQuestion();
+    });
+    
+    qGrid.appendChild(btn); 
+  });
+  
+  updateStatus();
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[state.current];
+  if (!q) return;
+  
+  qArea.innerHTML = '';
+  
+  // Question title
+  const h = document.createElement('h3');
+  h.textContent = q.q;
+  qArea.appendChild(h);
+  
+  // If there's an image
+  if (q.image) {
+    const img = document.createElement('img');
+    img.src = q.image;
+    img.alt = 'Question image';
+    img.style.maxWidth = '100%';
+    img.style.marginTop = '10px';
+    img.style.borderRadius = '4px';
+    qArea.appendChild(img);
+  }
+  
+  // Question type handling
+  if (q.type === 'text') {
+    // Text entry question
+    const textarea = document.createElement('textarea');
+    textarea.className = 'text-input';
+    textarea.placeholder = 'Type your answer here...';
+    textarea.value = state.answers[q.id] || '';
+    textarea.addEventListener('input', () => {
+      state.answers[q.id] = textarea.value;
+      save();
+      renderGrid();
+      updateStatus();
+    });
+    qArea.appendChild(textarea);
+  } else {
+    // Multiple choice question
+    const choices = document.createElement('div');
+    choices.className = 'choices';
+    
+    q.choices.forEach((c, idx) => {
+      const lab = document.createElement('label');
+      lab.className = 'choice';
+      
+      const radio = document.createElement('input');
+      radio.type = 'radio';
+      radio.name = 'opt';
+      radio.value = idx;
+      
+      if (state.answers[q.id] === idx) radio.checked = true;
+      
+      radio.addEventListener('change', () => {
+        state.answers[q.id] = idx;
+        save();
+        renderGrid();
+        updateStatus();
+      });
+      
+      lab.appendChild(radio);
+      const span = document.createElement('span');
+      span.textContent = c;
+      lab.appendChild(span);
+      choices.appendChild(lab);
+    });
+    
+    qArea.appendChild(choices);
+  }
+  
+  // Update flag button state
+  if (state.flagged[q.id]) {
+    flagBtn.textContent = 'Unflag Question';
+    flagBtn.classList.add('btn-warn');
+  } else {
+    flagBtn.textContent = 'Flag for Review';
+    flagBtn.classList.remove('btn-warn');
+  }
+  
+  // Update UI elements
+  document.getElementById('examTitle').textContent = 'PRIMARY 4 — ENGLISH PAPER 1';
+  document.getElementById('candInfo').textContent = `Candidate: ${state.candidate} • Index: ${state.indexNo}`;
+  
+  updateStatus();
+  updateSectionNav();
+}
+
+function updateStatus() {
+  // Count total questions per section
+  const displayQuestions = state.step === 4 
+    ? QUESTIONS.filter(q => q.section === state.activeSection || !q.section)
+    : QUESTIONS;
+  
+  // Get unique question IDs for the section
+  const uniqueQuestionIds = new Set();
+  displayQuestions.forEach(q => uniqueQuestionIds.add(q.id));
+  
+  const totalQuestions = uniqueQuestionIds.size;
+  
+  // Count answered questions
+  const answeredCount = Object.keys(state.answers).length;
+  
+  // Count unique answered questions in the current section
+  const answeredIds = new Set();
+  displayQuestions.forEach(q => {
+    if (state.answers[q.id] !== undefined) {
+      answeredIds.add(q.id);
+    }
+  });
+  const displayAnswered = answeredIds.size;
+  
+  // Update progress bar
+  const pct = totalQuestions > 0 ? Math.round(100 * (displayAnswered / totalQuestions)) : 0;
+  progbar.style.width = pct + '%';
+  
+  // Update status text
+  statusCount.textContent = `Answered: ${displayAnswered} / ${totalQuestions}`;
+  
+  // Count flagged questions
+  const flaggedCount = Object.keys(state.flagged).filter(id => state.flagged[id]).length;
+  
+  // Update confirmation stats if visible
+  if (confirmSubmitCard.style.display !== 'none') {
+    confirmAnswered.textContent = answeredCount;
+    confirmUnanswered.textContent = 35 - answeredCount; // Hardcoded total of 35 unique questions
+    confirmFlagged.textContent = flaggedCount;
+  }
+}
+
+function updateSectionNav() {
+  sectionNavButtons.forEach(button => {
+    if (button.dataset.section === state.activeSection) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
+    }
+  });
+}
+
+/* TIMER */
+function startTimer() {
+  if (state.timer) clearInterval(state.timer);
+  state.timer = setInterval(() => {
+    if (state.timeLeft <= 0) { 
+      clearInterval(state.timer);
+      autoSubmit(true);
+      return;
+    }
+    state.timeLeft--;
+    timeLeftEl.textContent = formatTime(state.timeLeft);
+    
+    // Trigger random identity verification every ~5 minutes (with randomness)
+    // In this demo, we'll trigger it more frequently for testing purposes
+    if (state.timeLeft % 60 === 0 && Math.random() > 0.5) {
+      takeRandomVerificationPhoto();
+    }
+    
+    save();
+  }, 1000);
+}
+
+/* CAMERA FUNCTIONALITY */
+// DOM Elements
+const cameraFeed = document.getElementById('camera-feed');
+const cameraButton = document.getElementById('camera-button');
+const cameraStatus = document.getElementById('camera-status');
+const cameraContainer = document.getElementById('camera-container');
+const snapshotContainer = document.getElementById('snapshot-container');
+const capturedPhoto = document.getElementById('captured-photo');
+const verificationStatus = document.getElementById('verification-status');
+const retakePhotoBtn = document.getElementById('retake-photo');
+const confirmPhotoBtn = document.getElementById('confirm-photo');
+
+// Start camera stream
+async function startCamera() {
+  try {
+    cameraStatus.textContent = "Requesting camera permission...";
+    cameraStatus.className = "camera-status";
+    
+    // Request camera access with desired constraints
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: {
+        width: { ideal: 640 },
+        height: { ideal: 480 },
+        facingMode: "user" // Front camera
+      },
+      audio: false
+    });
+    
+    // Set the stream as the video source
+    cameraFeed.srcObject = stream;
+    state.cameraStream = stream;
+    state.cameraPermissionGranted = true;
+    
+    // Update UI
+    cameraButton.textContent = "📸";
+    cameraStatus.textContent = "Camera active. Click the button to take a photo.";
+    cameraStatus.className = "camera-status success";
+    
+    save();
+    
+  } catch (err) {
+    console.error("Error accessing camera:", err);
+    cameraStatus.textContent = "Camera access denied or not available. Please enable camera access.";
+    cameraStatus.className = "camera-status error";
+    cameraButton.textContent = "🔄";
+  }
+}
+
+// Capture photo from camera feed
+function capturePhoto() {
+  if (!state.cameraStream) {
+    startCamera();
+    return;
+  }
+  
+  try {
+    // Create a canvas element to capture the current frame
+    const canvas = document.createElement('canvas');
+    canvas.width = cameraFeed.videoWidth;
+    canvas.height = cameraFeed.videoHeight;
+    
+    // Draw the current video frame on the canvas
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(cameraFeed, 0, 0, canvas.width, canvas.height);
+    
+    // Convert to data URL and store in state
+    const photoData = canvas.toDataURL('image/jpeg');
+    state.candidatePhotoData = photoData;
+    
+    // Display the captured image
+    capturedPhoto.src = photoData;
+    snapshotContainer.style.display = 'flex';
+    
+    // Update status
+    cameraStatus.textContent = "Photo captured. Please verify identity match.";
+    save();
+    
+  } catch (err) {
+    console.error("Error capturing photo:", err);
+    cameraStatus.textContent = "Failed to capture photo. Please try again.";
+    cameraStatus.className = "camera-status error";
+  }
+}
+
+// Confirm photo matches ID
+function confirmPhotoIdentity() {
+  state.candidatePhotoVerified = true;
+  verificationStatus.textContent = "ID Verified ✓";
+  verificationStatus.className = "verification-badge verified";
+  
+  state.identityVerifications.push({
+    timestamp: new Date().toISOString(),
+    type: 'initial',
+    verified: true
+  });
+  
+  cameraStatus.textContent = "Identity verified. You may proceed with the invigilator PIN.";
+  cameraStatus.className = "camera-status success";
+  
+  // Stop the camera stream to save resources
+  stopCameraStream();
+  save();
+}
+
+// Stop camera stream
+function stopCameraStream() {
+  if (state.cameraStream) {
+    state.cameraStream.getTracks().forEach(track => track.stop());
+    cameraFeed.srcObject = null;
+    state.cameraStream = null;
+  }
+}
+
+// Take random verification photos during exam
+function takeRandomVerificationPhoto() {
+  // Check if it's been at least 3 minutes since last verification
+  const now = Date.now();
+  if (!state.lastVerificationTime || (now - state.lastVerificationTime > 180000)) {
+    if (state.cameraPermissionGranted) {
+      // Show a brief notification
+      const notif = document.createElement('div');
+      notif.textContent = "Identity verification in progress...";
+      notif.style.position = "fixed";
+      notif.style.top = "10px";
+      notif.style.right = "10px";
+      notif.style.padding = "8px 12px";
+      notif.style.background = "rgba(0,0,0,0.7)";
+      notif.style.color = "#fff";
+      notif.style.borderRadius = "4px";
+      notif.style.zIndex = "1000";
+      document.body.appendChild(notif);
+      
+      // Update verification report in sidebar
+      const verificationReport = document.getElementById('verification-report');
+      if (verificationReport) {
+        verificationReport.textContent = "Verifying identity...";
+        verificationReport.classList.remove("secure");
+        verificationReport.classList.add("alert");
+      }
+      
+      // Start camera, take photo, and verify automatically
+      startCamera().then(() => {
+        setTimeout(() => {
+          capturePhoto();
+          
+          // Compare with initial photo (simplified for demo)
+          const verified = true; // In a real exam this would compare the images
+          
+          state.identityVerifications.push({
+            timestamp: new Date().toISOString(),
+            type: 'random',
+            verified: verified
+          });
+          
+          state.lastVerificationTime = now;
+          save();
+          
+          // Update verification status in sidebar
+          if (verificationReport) {
+            const lastCheck = new Date().toLocaleTimeString();
+            if (verified) {
+              verificationReport.textContent = `Identity verified ✓ (${lastCheck})`;
+              verificationReport.classList.add("secure");
+              verificationReport.classList.remove("alert");
+            } else {
+              verificationReport.textContent = `⚠️ Verification failed (${lastCheck})`;
+              verificationReport.classList.remove("secure");
+              verificationReport.classList.add("alert");
+              
+              // In a real exam, this would trigger an alert to the invigilator
+              warningMessage.textContent = '⚠️ Warning: Identity verification failed. Please call the invigilator.';
+            }
+          }
+          
+          // Remove notification and stop camera after 2 seconds
+          setTimeout(() => {
+            document.body.removeChild(notif);
+            stopCameraStream();
+          }, 2000);
+        }, 1000);
+      });
+    }
+  }
+}
+
+/* INITIALIZATION FUNCTIONS */
+function initializeSystemCheck() {
+  const cameraCheck = document.getElementById('camera-check');
+  const systemRequirements = {
+    browser: false,
+    network: false,
+    screen: false,
+    plugins: false,
+    camera: false
+  };
+  let requirementsFailed = false;
+  
+  // Actually perform system checks instead of just simulating
+  
+  // Browser compatibility check
+  setTimeout(() => {
+    try {
+      // Check for modern browser features needed for exam
+      const hasRequiredFeatures = 
+        'localStorage' in window && 
+        'fetch' in window && 
+        'Promise' in window && 
+        'URLSearchParams' in window &&
+        'mediaDevices' in navigator;
+      
+      if (hasRequiredFeatures) {
+        // Check browser is not too old
+        const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+        const isFirefox = /Firefox/.test(navigator.userAgent);
+        const isEdge = /Edg/.test(navigator.userAgent);
+        const isSafari = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
+        
+        if (isChrome || isFirefox || isEdge || isSafari) {
+          browserCheck.textContent = "✓ Browser compatibility verified";
+          browserCheck.classList.add("secure");
+          systemRequirements.browser = true;
+        } else {
+          browserCheck.textContent = "⚠ Unsupported browser detected";
+          browserCheck.classList.add("alert");
+          requirementsFailed = true;
+        }
+      } else {
+        browserCheck.textContent = "⚠ Browser missing required features";
+        browserCheck.classList.add("alert");
+        requirementsFailed = true;
+      }
+    } catch (err) {
+      browserCheck.textContent = "⚠ Browser check failed";
+      browserCheck.classList.add("alert");
+      requirementsFailed = true;
+    }
+    
+    // Network connectivity check
+    setTimeout(() => {
+      // Use fetch to test actual connection to internet
+      const testConnectivity = async () => {
+        try {
+          const start = Date.now();
+          // Try to fetch a small file to test actual connectivity
+          // Using a common reliable endpoint (we'll just check if fetch works)
+          const response = await fetch('https://www.google.com/favicon.ico', { 
+            mode: 'no-cors',
+            cache: 'no-store',
+            headers: { 'Cache-Control': 'no-cache' }
+          });
+          const latency = Date.now() - start;
+          
+          if (latency < 1000) {
+            networkCheck.textContent = `✓ Network connectivity verified (${latency}ms)`;
+            networkCheck.classList.add("secure");
+            systemRequirements.network = true;
+          } else {
+            networkCheck.textContent = `⚠ Network latency high (${latency}ms)`;
+            networkCheck.classList.add("alert");
+            requirementsFailed = true;
+          }
+        } catch (err) {
+          networkCheck.textContent = "⚠ Network connectivity issue";
+          networkCheck.classList.add("alert");
+          requirementsFailed = true;
+        }
+      };
+      
+      testConnectivity();
+      
+      // Screen resolution check
+      setTimeout(() => {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        
+        if (width >= 1024 && height >= 768) {
+          screenCheck.textContent = `✓ Screen resolution verified (${width}x${height})`;
+          screenCheck.classList.add("secure");
+          systemRequirements.screen = true;
+        } else {
+          screenCheck.textContent = `⚠ Screen too small (${width}x${height})`;
+          screenCheck.classList.add("alert");
+          requirementsFailed = true;
+        }
+        
+        // Browser plugins/settings check
+        setTimeout(() => {
+          // Check cookies enabled
+          const cookiesEnabled = navigator.cookieEnabled;
+          
+          // Check localStorage works
+          let localStorageWorks = false;
+          try {
+            localStorage.setItem('knec_test', 'test');
+            if (localStorage.getItem('knec_test') === 'test') {
+              localStorageWorks = true;
+            }
+            localStorage.removeItem('knec_test');
+          } catch (e) {
+            localStorageWorks = false;
+          }
+          
+          // Check if page is in an iframe (potential security issue)
+          const isFramed = window !== window.top;
+          
+          if (cookiesEnabled && localStorageWorks && !isFramed) {
+            pluginsCheck.textContent = "✓ Browser environment verified";
+            pluginsCheck.classList.add("secure");
+            systemRequirements.plugins = true;
+          } else {
+            let issues = [];
+            if (!cookiesEnabled) issues.push("cookies disabled");
+            if (!localStorageWorks) issues.push("storage blocked");
+            if (isFramed) issues.push("running in frame");
+            
+            pluginsCheck.textContent = `⚠ Browser environment issues (${issues.join(', ')})`;
+            pluginsCheck.classList.add("alert");
+            requirementsFailed = true;
+          }
+          
+          // Camera access check
+          setTimeout(() => {
+            // Try to access the camera
+            navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+              .then((stream) => {
+                // Camera access successful
+                cameraCheck.textContent = "✓ Camera access verified";
+                cameraCheck.classList.add("secure");
+                systemRequirements.camera = true;
+                
+                // Remember that we have camera permission
+                state.cameraPermissionGranted = true;
+                
+                // Stop the camera stream immediately
+                stream.getTracks().forEach(track => track.stop());
+                
+                completeSystemCheck();
+              })
+              .catch((err) => {
+                // Camera access failed
+                cameraCheck.textContent = "⚠ Camera access not available";
+                cameraCheck.classList.add("alert");
+                requirementsFailed = true;
+                
+                completeSystemCheck(true);
+              });
+          }, 800);
+        }, 800);
+      }, 700);
+    }, 600);
+  }, 1000);
+  
+  function completeSystemCheck(cameraIssue = false) {
+    systemLoader.style.display = "none";
+    
+    // Count failures
+    const failures = Object.values(systemRequirements).filter(v => !v).length;
+    
+    if (failures > 0) {
+      // Create error summary
+      const errorSummary = document.createElement("div");
+      errorSummary.className = "camera-status error";
+      errorSummary.style.marginTop = "16px";
+      errorSummary.style.marginBottom = "16px";
+      errorSummary.innerHTML = `<strong>ERROR: System requirements not met (${failures} issues)</strong>`;
+      systemLoader.parentNode.appendChild(errorSummary);
+      
+      // Add specific error details
+      if (!systemRequirements.browser) {
+        const browserError = document.createElement("div");
+        browserError.className = "camera-status error";
+        browserError.style.marginTop = "8px";
+        browserError.innerHTML = `
+          <strong>Browser issue:</strong> Please use the latest version of Chrome, Firefox, Edge, or Safari.
+          <div style="margin-top:4px;font-size:12px;">Current browser: ${navigator.userAgent}</div>
+        `;
+        systemLoader.parentNode.appendChild(browserError);
+      }
+      
+      if (!systemRequirements.network) {
+        const networkError = document.createElement("div");
+        networkError.className = "camera-status error";
+        networkError.style.marginTop = "8px";
+        networkError.innerHTML = `
+          <strong>Network issue:</strong> Your internet connection appears unstable. Please ensure you have a reliable connection.
+          <div style="margin-top:4px;font-size:12px;">For real exams, network interruptions may be flagged as potential violations.</div>
+        `;
+        systemLoader.parentNode.appendChild(networkError);
+      }
+      
+      if (!systemRequirements.screen) {
+        const screenError = document.createElement("div");
+        screenError.className = "camera-status error";
+        screenError.style.marginTop = "8px";
+        screenError.innerHTML = `
+          <strong>Screen resolution issue:</strong> Your screen resolution is too small (minimum required: 1024x768).
+          <div style="margin-top:4px;font-size:12px;">Current resolution: ${window.innerWidth}x${window.innerHeight}</div>
+        `;
+        systemLoader.parentNode.appendChild(screenError);
+      }
+      
+      if (!systemRequirements.plugins) {
+        const pluginsError = document.createElement("div");
+        pluginsError.className = "camera-status error";
+        pluginsError.style.marginTop = "8px";
+        pluginsError.innerHTML = `
+          <strong>Browser configuration issue:</strong> Please ensure cookies are enabled and no privacy extensions are blocking storage.
+          <div style="margin-top:4px;font-size:12px;">If using private/incognito mode, please switch to normal browsing mode.</div>
+        `;
+        systemLoader.parentNode.appendChild(pluginsError);
+      }
+      
+      if (!systemRequirements.camera) {
+        const cameraError = document.createElement("div");
+        cameraError.className = "camera-status error";
+        cameraError.style.marginTop = "8px";
+        cameraError.innerHTML = `
+          <strong>Camera access issue:</strong> Camera access is required for candidate identity verification.
+          <div style="margin-top:4px;font-size:12px;">
+            Please check your browser settings and ensure camera permissions are enabled for this site.
+            <ul style="margin-top:4px;padding-left:20px;">
+              <li>Check if camera is being used by another application</li>
+              <li>Ensure browser has permission to access camera</li>
+              <li>Try refreshing the page after enabling permissions</li>
+            </ul>
+          </div>
+        `;
+        systemLoader.parentNode.appendChild(cameraError);
+      }
+      
+      // Show how to proceed anyway (for training purposes)
+      const overrideNote = document.createElement("div");
+      overrideNote.className = "camera-status";
+      overrideNote.style.marginTop = "16px";
+      overrideNote.style.background = "#fff3cd";
+      overrideNote.style.color = "#856404";
+      overrideNote.innerHTML = `
+        <strong>Training Mode Note:</strong> In a real KNEC exam, you would be required to resolve all issues before proceeding.
+        <div style="margin-top:4px;font-size:12px;">For training purposes only, you may continue despite these warnings.</div>
+      `;
+      systemLoader.parentNode.appendChild(overrideNote);
+    } else {
+      // All requirements passed
+      const successMessage = document.createElement("div");
+      successMessage.className = "camera-status success";
+      successMessage.style.marginTop = "16px";
+      successMessage.innerHTML = `
+        <strong>✓ All system requirements met.</strong>
+        <div style="margin-top:4px;font-size:12px;">Your system is ready for the KNEC exam.</div>
+      `;
+      systemLoader.parentNode.appendChild(successMessage);
+    }
+    
+    // Add continue button
+    const continueBtn = document.createElement("button");
+    continueBtn.textContent = failures > 0 ? "Continue Anyway (Training Mode)" : "Continue";
+    continueBtn.style.marginTop = "20px";
+    
+    continueBtn.addEventListener("click", () => {
+      // Store system requirements status for later reference
+      state.systemRequirements = systemRequirements;
+      state.requirementsFailed = requirementsFailed;
+      save();
+      updateStep(2); // Move directly to candidate login
+    });
+    
+    systemLoader.parentNode.appendChild(continueBtn);
+  }
+  
+  // Initialize the grid for exam preview
+  renderGrid();
+}
+
+/* FULLSCREEN FUNCTIONS */
+function requestFullscreen() {
+  const docEl = document.documentElement;
+  
+  if (docEl.requestFullscreen) {
+    docEl.requestFullscreen();
+  } else if (docEl.mozRequestFullScreen) { // Firefox
+    docEl.mozRequestFullScreen();
+  } else if (docEl.webkitRequestFullscreen) { // Chrome, Safari and Opera
+    docEl.webkitRequestFullscreen();
+  } else if (docEl.msRequestFullscreen) { // IE/Edge
+    docEl.msRequestFullscreen();
+  }
+}
+
+function exitFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) {
+    document.msExitFullscreen();
+  }
+}
+
+function isFullscreen() {
+  return !!(
+    document.fullscreenElement ||
+    document.mozFullScreenElement ||
+    document.webkitFullscreenElement ||
+    document.msFullscreenElement
+  );
+}
+
+function checkFullscreenState() {
+  if (!isFullscreen() && state.step === 4) {
+    // Not in fullscreen while in exam
+    fullscreenNotice.style.display = 'flex';
+    logViolation('Left fullscreen mode');
+  } else {
+    fullscreenNotice.style.display = 'none';
+  }
+}
+
+/* EVENT HANDLERS */
+
+// Camera related event handlers
+cameraButton.addEventListener('click', () => {
+  if (!state.cameraStream) {
+    startCamera();
+  } else {
+    capturePhoto();
+  }
+});
+
+retakePhotoBtn.addEventListener('click', () => {
+  snapshotContainer.style.display = 'none';
+  startCamera(); // Restart the camera
+});
+
+confirmPhotoBtn.addEventListener('click', () => {
+  confirmPhotoIdentity();
+});
+
+// Invigilator verification removed
+
+// Candidate login
+startBtn.addEventListener('click', () => {
+  const name = candName.value.trim();
+  const idx = candReg.value.trim();
+  if (!name || !idx) {
+    alert('Please type candidate name and index number.');
+    return;
+  }
+  
+  state.candidate = name;
+  state.indexNo = idx;
+  updateStep(3); // Move to instructions
+  save();
+});
+
+// Begin exam after instructions
+beginExamBtn.addEventListener('click', () => {
+  state.started = true;
+  state.timeLeft = DURATION_MIN * 60;
+  updateStep(4); // Move to exam
+  renderGrid();
+  renderQuestion();
+  startTimer();
+  save();
+  
+  // Set up focus monitoring for exam security
+  setupFocusMonitoring();
+});
+
+// Navigation buttons
+prevBtn.addEventListener('click', () => {
+  if (state.current > 0) {
+    state.current--;
+    renderQuestion();
+    save();
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  if (state.current < QUESTIONS.length - 1) {
+    state.current++;
+    renderQuestion();
+    save();
+  }
+});
+
+// Flag button
+flagBtn.addEventListener('click', () => {
+  const q = QUESTIONS[state.current];
+  state.flagged[q.id] = !state.flagged[q.id];
+  renderQuestion();
+  renderGrid();
+  save();
+});
+
+// Section navigation
+sectionNavButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    state.activeSection = button.dataset.section;
+    
+    // Find first question in this section
+    const firstQuestion = QUESTIONS.findIndex(q => q.section === state.activeSection);
+    if (firstQuestion >= 0) {
+      state.current = firstQuestion;
+    }
+    
+    updateSectionNav();
+    renderQuestion();
+    renderGrid();
+    save();
+  });
+});
+
+// Submit button
+submitBtn.addEventListener('click', () => {
+  // Show confirmation dialog
+  examCard.style.display = 'none';
+  confirmSubmitCard.style.display = 'block';
+  
+  // Update confirmation stats
+  updateStatus();
+});
+
+// Cancel submission
+cancelSubmit.addEventListener('click', () => {
+  confirmSubmitCard.style.display = 'none';
+  examCard.style.display = 'block';
+});
+
+// Confirm submission
+confirmSubmit.addEventListener('click', () => {
+  console.log("Confirm submission clicked");
+  
+  // Hide confirmation dialog and show loading
+  confirmSubmitCard.style.display = 'none';
+  submittingCard.style.display = 'block';
+  
+  // Simulate submission process with delay
+  setTimeout(() => {
+    console.log("Submission timeout completed");
+    submittingCard.style.display = 'none';
+    autoSubmit(false);
+  }, 2000);
+});
+
+// Review answers button
+reviewBtn.addEventListener('click', () => {
+  renderReviewAnswers();
+  finishCard.style.display = 'none';
+  reviewCard.style.display = 'block';
+});
+
+// Back to results button
+backToResultsBtn.addEventListener('click', () => {
+  reviewCard.style.display = 'none';
+  finishCard.style.display = 'block';
+});
+
+// Return to exam from fullscreen warning
+returnToExam.addEventListener('click', () => {
+  fullscreenNotice.classList.remove('visible');
+});
+
+// Log out and new exam buttons
+printBtn.addEventListener('click', () => {
+  // Clear the saved state
+  clearSave();
+  
+  // Exit fullscreen if in fullscreen mode
+  if (isFullscreen()) {
+    exitFullscreen();
+  }
+  
+  // Redirect to index page after a short delay to ensure fullscreen exit completes
+  setTimeout(() => {
+    window.location.href = '../index.html';
+  }, 200);
+});
+
+newBtn.addEventListener('click', () => {
+  if (confirm('Start a new session?')) {
+    clearSave();
+    location.reload();
+  }
+});
+
+// Exit button to return to main page
+exitBtn.addEventListener('click', () => {
+  if (isFullscreen()) {
+    exitFullscreen();
+  }
+  setTimeout(() => {
+    window.location.href = '../index.html';
+  }, 200);
+});
+
+/* FOCUS AND NETWORK MONITORING */
+function setupFocusMonitoring() {
+  // Initialize violations log if not present
+  if (!state.violations) {
+    state.violations = [];
+  }
+  
+  // Add violation to log
+  function logViolation(type, details) {
+    const violation = {
+      type: type,
+      timestamp: new Date().toISOString(),
+      details: details
+    };
+    
+    state.violations.push(violation);
+    
+    // Update the violation log in the UI if it's visible
+    updateViolationLog();
+    
+    // Save to localStorage
+    save();
+    
+    return violation;
+  }
+  
+  // Update the violation log display
+  function updateViolationLog() {
+    const violationLog = document.getElementById('violation-log');
+    if (!violationLog) return;
+    
+    // Clear existing entries (except the title)
+    while (violationLog.childNodes.length > 1) {
+      violationLog.removeChild(violationLog.lastChild);
+    }
+    
+    // Add each violation to the log
+    state.violations.forEach((violation, index) => {
+      const date = new Date(violation.timestamp);
+      const timeStr = date.toLocaleTimeString();
+      
+      const logItem = document.createElement('div');
+      logItem.className = 'violation-log-item';
+      
+      let violationText = '';
+      switch (violation.type) {
+        case 'focus':
+          violationText = `[${timeStr}] Focus lost: Window/tab switched`;
+          break;
+        case 'keyboard':
+          violationText = `[${timeStr}] Prohibited key combination: ${violation.details}`;
+          break;
+        case 'network':
+          violationText = `[${timeStr}] Network issue: Connection interrupted`;
+          break;
+        case 'fullscreen':
+          violationText = `[${timeStr}] Fullscreen exited`;
+          break;
+        default:
+          violationText = `[${timeStr}] ${violation.type}: ${violation.details}`;
+      }
+      
+      logItem.textContent = violationText;
+      violationLog.appendChild(logItem);
+    });
+  }
+  
+  // Network connectivity monitoring
+  state.networkMonitoringInterval = setInterval(() => {
+    if (state.started && !state.submitted) {
+      // Test network connectivity (fetching a small resource)
+      fetch('https://www.google.com/favicon.ico', { 
+        mode: 'no-cors',
+        cache: 'no-store',
+        headers: { 'Cache-Control': 'no-cache' }
+      })
+      .then(() => {
+        // Network is connected - restore normal state if there was an error
+        if (state.networkError) {
+          state.networkError = false;
+          warningMessage.textContent = '';
+          
+          const networkAlert = document.getElementById('network-alert');
+          if (networkAlert) {
+            networkAlert.textContent = 'Network connection stable';
+            networkAlert.classList.add('secure');
+            networkAlert.classList.remove('alert');
+          }
+        }
+      })
+      .catch(() => {
+        // Network error - display warning
+        state.networkError = true;
+        warningMessage.textContent = '⚠️ Warning: Network connectivity issues detected. This incident is being logged.';
+        
+        // Log the network violation
+        logViolation('network', 'Connection lost');
+        
+        const networkAlert = document.getElementById('network-alert');
+        if (networkAlert) {
+          networkAlert.textContent = '⚠️ Network connection lost';
+          networkAlert.classList.remove('secure');
+          networkAlert.classList.add('alert');
+        } else {
+          // Add network alert to security section in sidebar if it doesn't exist
+          const securitySection = document.querySelector('#exam-sidebar div:last-child');
+          if (securitySection) {
+            const alert = document.createElement('div');
+            alert.id = 'network-alert';
+            alert.className = 'security-badge alert';
+            alert.style.marginTop = '8px';
+            alert.textContent = '⚠️ Network connection lost';
+            securitySection.appendChild(alert);
+          }
+        }
+      });
+    }
+  }, 30000); // Check every 30 seconds
+
+  // Monitor window focus
+  window.addEventListener('blur', () => {
+    if (state.started && !state.submitted) {
+      state.focusLost++;
+      
+      // Log the violation
+      logViolation('focus', `Window focus lost (#${state.focusLost})`);
+      
+      // Show focus warning in sidebar
+      focusAlert.textContent = '⚠️ Focus lost';
+      focusAlert.classList.remove('secure');
+      focusAlert.classList.add('alert');
+      
+      // Show fullscreen warning after brief delay
+      if (!state.warningShown) {
+        setTimeout(() => {
+          fullscreenNotice.classList.add('visible');
+          updateViolationLog();
+        }, 500);
+        
+        state.warningShown = true;
+      }
+      
+      // Show warning message in header bar
+      if (state.focusLost > 1) {
+        warningMessage.textContent = `⚠️ Warning: You have left the exam window ${state.focusLost} times. All incidents are reported.`;
+      } else {
+        warningMessage.textContent = '⚠️ Warning: You left the exam window. This incident has been reported.';
+      }
+    }
+  });
+  
+  window.addEventListener('focus', () => {
+    if (state.started && !state.submitted) {
+      // Restore focus indicator
+      focusAlert.textContent = 'Focus maintained';
+      focusAlert.classList.add('secure');
+      focusAlert.classList.remove('alert');
+      
+      // Close fullscreen warning if visible
+      fullscreenNotice.classList.remove('visible');
+      state.warningShown = false;
+    }
+  });
+  
+  // Monitor keyboard shortcuts that could be used to cheat
+  window.addEventListener('keydown', (e) => {
+    if (state.started && !state.submitted) {
+      // Check for common shortcuts that might be used for cheating
+      const isCtrl = e.ctrlKey || e.metaKey;
+      
+      // Prevent common shortcuts
+      if (
+        // Print or Save
+        (isCtrl && (e.key === 'p' || e.key === 's')) ||
+        // View Source
+        (isCtrl && e.key === 'u') ||
+        // Developer Tools
+        (e.key === 'F12' || (isCtrl && e.shiftKey && e.key === 'i')) ||
+        // Copy, Cut
+        (isCtrl && (e.key === 'c' || e.key === 'x' || e.key === 'v'))
+      ) {
+        e.preventDefault();
+        
+        // Log the violation
+        const combo = [];
+        if (e.ctrlKey) combo.push('Ctrl');
+        if (e.metaKey) combo.push('Meta');
+        if (e.shiftKey) combo.push('Shift');
+        if (e.altKey) combo.push('Alt');
+        combo.push(e.key);
+        
+        logViolation('keyboard', combo.join('+'));
+        
+        // Show warning
+        warningMessage.textContent = `⚠️ Warning: Prohibited keyboard shortcut (${combo.join('+')}) detected. This incident has been reported.`;
+        
+        // Show the violation in fullscreen notice
+        if (!state.warningShown) {
+          fullscreenNotice.classList.add('visible');
+          updateViolationLog();
+          state.warningShown = true;
+        }
+      }
+    }
+  });
+  
+  // Monitor fullscreen changes
+  document.addEventListener('fullscreenchange', () => {
+    if (state.started && !state.submitted) {
+      if (!document.fullscreenElement) {
+        // Exited fullscreen
+        logViolation('fullscreen', 'Exited fullscreen mode');
+        
+        warningMessage.textContent = '⚠️ Warning: Fullscreen mode exited. This incident has been reported.';
+        
+        // Show the violation in fullscreen notice
+        if (!state.warningShown) {
+          fullscreenNotice.classList.add('visible');
+          updateViolationLog();
+          state.warningShown = true;
+        }
+      }
+    }
+  });
+  
+  // Monitor right-click (potential for context menu)
+  document.addEventListener('contextmenu', (e) => {
+    if (state.started && !state.submitted) {
+      e.preventDefault();
+      
+      logViolation('mouse', 'Right-click detected');
+      
+      warningMessage.textContent = '⚠️ Warning: Right-click is not allowed in the exam environment. This incident has been reported.';
+    }
+  });
+}
+
+/* RENDER REVIEW ANSWERS */
+function renderReviewAnswers() {
+  answerReviewArea.innerHTML = '';
+  
+  // Create review of all questions and answers
+  QUESTIONS.forEach((q, index) => {
+    const questionDiv = document.createElement('div');
+    questionDiv.style.marginBottom = '20px';
+    questionDiv.style.padding = '14px';
+    questionDiv.style.borderRadius = '6px';
+    questionDiv.style.background = '#f9fafc';
+    
+    // Question text
+    const qText = document.createElement('div');
+    qText.style.fontWeight = '600';
+    qText.textContent = q.q;
+    questionDiv.appendChild(qText);
+    
+    // Your answer
+    const answerDiv = document.createElement('div');
+    answerDiv.style.marginTop = '8px';
+    
+    // Different handling based on question type
+    if (q.type === 'text') {
+      answerDiv.innerHTML = `<div>Your answer: <span style="font-style:italic">${state.answers[q.id] || 'Not answered'}</span></div>`;
+    } else {
+      const userAnswer = state.answers[q.id] !== undefined ? q.choices[state.answers[q.id]] : 'Not answered';
+      const correctAnswer = q.choices[q.answer];
+      
+      answerDiv.innerHTML = `
+        <div>Your answer: <span style="font-weight:600;color:${state.answers[q.id] === q.answer ? '#22c55e' : '#ef4444'}">${userAnswer}</span></div>
+        <div style="margin-top:4px">Correct answer: <span style="font-weight:600;color:#22c55e">${correctAnswer}</span></div>
+      `;
+    }
+    
+    questionDiv.appendChild(answerDiv);
+    answerReviewArea.appendChild(questionDiv);
+  });
+}
+
+function autoSubmit(timeout = false) {
+  console.log("autoSubmit called");
+  
+  if (state.submitted) {
+    console.log("Already submitted, showing results");
+    displayResults();
+    return;
+  }
+  
+  state.submitted = true;
+  state.started = false;
+  
+  // Clear all timers and intervals
+  if (state.timer) clearInterval(state.timer);
+  if (state.networkMonitoringInterval) clearInterval(state.networkMonitoringInterval);
+  
+  // Calculate results
+  let correct = 0, attempted = 0, incorrect = 0;
+  
+  // Use a Set to track unique question IDs
+  const uniqueQuestionIds = new Set();
+  
+  QUESTIONS.forEach(q => {
+    uniqueQuestionIds.add(q.id);
+    const a = state.answers[q.id];
+    if (a !== undefined) {
+      attempted++;
+      if (q.type === 'text' || a === q.answer) {
+        correct++;
+      } else {
+        incorrect++;
+      }
+    }
+  });
+  
+  const total = 35; // Hardcoding the total as we know there are 35 unique questions
+  const pct = Math.round(100 * (correct / total));
+  
+  // Store results in state for later use
+  state.results = {
+    correct: correct,
+    attempted: attempted,
+    incorrect: incorrect,
+    total: total,
+    pct: pct
+  };
+  
+  displayResults();
+  
+  // Save state
+  save();
+  
+  console.log("Submission completed successfully");
+}
+
+// New function to display results (separated from calculation)
+function displayResults() {
+  console.log("Displaying results");
+  
+  try {
+    // Get results from state
+    const results = state.results || { correct: 0, attempted: 0, incorrect: 0, total: 0, pct: 0 };
+    
+    // Hide exam and show results
+    if (examCard) examCard.style.display = 'none';
+    if (examSidebar) examSidebar.style.display = 'none';
+    if (finishCard) finishCard.style.display = 'block';
+    if (resultsSidebar) resultsSidebar.style.display = 'block';
+    
+    // Update result information
+    if (resInfo) resInfo.textContent = `Candidate: ${state.candidate} • Index: ${state.indexNo}`;
+    if (resScore) resScore.textContent = results.pct + '%';
+    if (resSummary) resSummary.textContent = `Correct: ${results.correct} • Attempted: ${results.attempted} • Total: ${results.total}`;
+    
+    // Update sidebar statistics
+    if (statsAnswered) statsAnswered.textContent = results.attempted;
+    if (statsCorrect) statsCorrect.textContent = results.correct;
+    if (statsIncorrect) statsIncorrect.textContent = results.incorrect;
+    
+    // Generate random submission ID if not already set
+    if (submissionId && !submissionId.textContent.match(/\d{7}/)) {
+      submissionId.textContent = Math.floor(Math.random() * 9000000) + 1000000;
+    }
+  } catch (error) {
+    console.error("Error displaying results:", error);
+    alert("Your exam has been submitted. There was an issue displaying results.");
+  }
+  
+  save();
+  // clearSave(); // We'll keep the data for review capability
+}
+
+/* FULLSCREEN EVENT HANDLERS */
+document.addEventListener('fullscreenchange', checkFullscreenState);
+document.addEventListener('mozfullscreenchange', checkFullscreenState);
+document.addEventListener('webkitfullscreenchange', checkFullscreenState);
+document.addEventListener('msfullscreenchange', checkFullscreenState);
+
+// Return to exam button in fullscreen notice
+returnToExam.addEventListener('click', () => {
+  requestFullscreen();
+});
+
+/* LOAD SAVED STATE */
+load();
+
+// Resume from saved state
+if (state.step > 1) {
+  updateStep(state.step);
+  
+  // If in exam mode and not submitted, restart timer
+  if (state.step === 4 && state.started && !state.submitted) {
+    renderGrid();
+    renderQuestion();
+    startTimer();
+    // Ensure fullscreen mode is active
+    requestFullscreen();
+  }
+  
+  // If submitted, show results
+  if (state.submitted) {
+    console.log("Resuming from submitted state");
+    setTimeout(() => displayResults(), 500);
+  }
+  
+  // Populate login fields if available
+  if (state.candidate) candName.value = state.candidate;
+  if (state.indexNo) candReg.value = state.indexNo;
+} else {
+  // Start fresh at system check
+  updateStep(1);
+}
+
+/* UX: prevent accidental refresh and double-submit */
+window.addEventListener('beforeunload', function(e) {
+  if (state.started && !state.submitted) {
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'F5' || ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'r')) {
+    e.preventDefault();
+  }
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+/* Complete Computer Literacy Responsive Implementation for Analyst Pro */
+
+/* Main Mobile Responsive Section - Exact Computer Literacy Pattern */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none !important;
+    }
+    .sidebar.active {
+        display: block !important;
+        position: fixed;
+        left: 0;
+        top: 60px;
+        width: 280px;
+        height: calc(100vh - 60px);
+        z-index: 1000;
+        background: rgba(73, 160, 120, 0.95);
+        backdrop-filter: blur(10px);
+        overflow-y: auto;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .main-content, .max-w-5xl, .max-w-4xl, .slide-container-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        min-height: 0 !important;
+        height: calc(100vh - 110px) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: stretch !important;
+        align-items: stretch !important;
+        overflow-x: hidden !important;
+    }
+    .slide-number-display {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 10vh !important;
+        min-height: 40px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 1.1rem !important;
+        background: #fffbe6 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        z-index: 2 !important;
+        padding: 0.5rem !important;
+        text-align: center !important;
+        line-height: 1.2 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
+
+    .slide-number-display.hidden {
+        display: none !important;
+    }
+    .slide {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem !important;
+        height: auto !important;
+        max-height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        flex: 1 1 auto !important;
+        background: linear-gradient(135deg, #ffffff, #e6fffa) !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+    .slide-content {
+        padding: 1rem !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        min-height: 0 !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        text-align: center !important;
+        gap: 1.5rem !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        box-sizing: border-box !important;
+    }
+    .slide-content h2 {
+        font-size: 1.75rem !important;
+        margin-bottom: 1rem !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        line-height: 1.3 !important;
+        text-align: center !important;
+        max-width: 100% !important;
+    }
+    .slide-content p {
+        font-size: 1.1rem !important;
+        line-height: 1.7 !important;
+        margin-bottom: 1rem !important;
+        max-width: 100% !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    .navigation {
+        position: relative !important;
+        bottom: 0 !important;
+        top: auto !important;
+        transform: none !important;
+        left: 0 !important;
+        right: 0 !important;
+        flex-direction: row !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        padding: 0.5rem 0 !important;
+        justify-content: center !important;
+        align-items: center !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        z-index: 2 !important;
+        box-sizing: border-box !important;
+    }
+    .nav-btn {
+        width: 30% !important;
+        min-width: 100px !important;
+        max-width: 180px !important;
+        padding: 0.7rem !important;
+        font-size: 1.1rem !important;
+        border-radius: 0.5rem !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        background: #49A078 !important;
+        color: white !important;
+        font-weight: 600 !important;
+        border: none !important;
+        transition: all 0.3s ease !important;
+        cursor: pointer !important;
+        text-align: center !important;
+    }
+    
+    .nav-btn:hover {
+        background: #3e8865 !important;
+        transform: translateY(-2px) !important;
+    }
+    
+    .nav-btn:disabled {
+        background: #9ca3af !important;
+        cursor: not-allowed !important;
+        transform: none !important;
+    }
+    
+    .footer {
+        height: 50px !important;
+        padding: 0.5rem !important;
+        font-size: 0.75rem !important;
+    }
+    
+    .footer .container {
+        gap: 0.5rem !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+    
+    .footer-logo span {
+        font-size: 0.8rem !important;
+    }
+    
+    .footer-socials {
+        gap: 0.75rem !important;
+    }
+    
+    .footer-link {
+        font-size: 0.9rem !important;
+    }
+    
+    /* Additional elements */
+    .slogan-container { 
+        display: none !important; 
+    }
+    
+    .footer-home-link {
+        display: inline-block !important;
+        font-weight: 600;
+        color: #256d4f !important;
+        background: #fff;
+        border-radius: 6px;
+        padding: 0.3em 1.1em;
+        margin-left: auto;
+        margin-right: 0.1em;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        border: 1px solid #49A078;
+        order: 99;
+        min-width: 60px;
+        text-align: center;
+    }
+    
+    .footer-home-link:hover { 
+        background: #49A078; 
+        color: #fff !important; 
+    }
+}
+
+/* Desktop view */
+@media (min-width: 769px) {
+    .footer-home-link { 
+        display: none !important; 
+    }
+}
