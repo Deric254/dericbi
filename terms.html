@@ -247,22 +247,22 @@ a:not(.group):not(.nav-link):not(.footer-link):hover {
 
 <!-- ✅ Responsive Navbar -->
 <nav class="bg-[#49A078] text-white px-2 xs:px-3 sm:px-4 py-2 xs:py-3 shadow-lg fixed top-0 left-0 right-0 z-50 w-full bg-gradient-to-r from-[#49A078] to-[#3D8069] border-b border-gray-300" role="navigation" aria-label="Main Navigation">
-  <div class="w-full max-w-7xl mx-auto flex items-center justify-between gap-2 xs:gap-3 sm:gap-4">
+  <div class="w-full max-w-7xl mx-auto flex items-center justify-between gap-1 xs:gap-2 sm:gap-3 md:gap-4">
 
     <!-- ✅ Logo & Brand -->
-    <div class="flex items-center gap-2 xs:gap-3 shrink-0">
+    <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3 shrink-0 min-w-0">
       <img src="assets/img/logo.png" 
            alt="dericBI Logo" 
-           class="h-10 w-10 xs:h-12 xs:w-12 sm:h-16 sm:w-16 rounded-full object-cover shadow-md" />
-      <div class="font-bold text-xl xs:text-2xl leading-none">
+           class="h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 rounded-full object-cover shadow-md flex-shrink-0" />
+      <div class="font-bold text-lg xs:text-xl sm:text-2xl leading-none whitespace-nowrap">
         <span>deric</span><span class="text-[#facc15]">BI</span>
       </div>
 
       <!-- ✅ Extra Links for Small Screens -->
-      <div class="flex gap-1 xs:gap-2 sm:gap-3 ml-2 xs:ml-3 sm:ml-4 md:hidden">
-        <a href="index.html" class="nav-link text-xs tracking-wide px-2 py-1 rounded-lg bg-white/10 shadow-md border border-white/30 hover:bg-white/20 hover:border-white/50 hover:shadow-lg transition-all">Home</a>
-        <a href="services.html" class="nav-link text-xs tracking-wide px-2 py-1 rounded-lg bg-white/10 shadow-md border border-white/30 hover:bg-white/20 hover:border-white/50 hover:shadow-lg transition-all">Services</a>
-        <a href="My-projects.html" class="nav-link text-xs tracking-wide px-2 py-1 rounded-lg bg-white/10 shadow-md border border-white/30 hover:bg-white/20 hover:border-white/50 hover:shadow-lg transition-all">Projects</a>
+      <div class="hidden xs:flex gap-1 sm:gap-2 ml-1 xs:ml-2 sm:ml-3 md:hidden">
+        <a href="index.html" class="nav-link text-[10px] xs:text-xs tracking-wide px-1.5 xs:px-2 py-1 rounded-lg bg-white/10 shadow-md border border-white/30 hover:bg-white/20 hover:border-white/50 hover:shadow-lg transition-all whitespace-nowrap">Home</a>
+        <a href="services.html" class="nav-link text-[10px] xs:text-xs tracking-wide px-1.5 xs:px-2 py-1 rounded-lg bg-white/10 shadow-md border border-white/30 hover:bg-white/20 hover:border-white/50 hover:shadow-lg transition-all whitespace-nowrap">Services</a>
+        <a href="My-projects.html" class="nav-link text-[10px] xs:text-xs tracking-wide px-1.5 xs:px-2 py-1 rounded-lg bg-white/10 shadow-md border border-white/30 hover:bg-white/20 hover:border-white/50 hover:shadow-lg transition-all whitespace-nowrap">Projects</a>
       </div>
     </div>
 
