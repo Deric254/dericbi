@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://dericmarangu-portfolio.netlify.app/sitemap.xml
