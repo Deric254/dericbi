@@ -771,8 +771,11 @@ window.addEventListener('load', function() {
   <div class="max-w-7xl mx-auto">
     <div class="flex items-center justify-center gap-3 mb-4 xs:mb-6 sm:mb-8">
       <h3 class="text-xl xs:text-2xl sm:text-3xl font-bold text-center text-gray-800">Why Choose dericBI?</h3>
+      <button onclick="toggleWhyChoose()" class="md:hidden bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded-lg text-sm font-semibold transition-all">
+        <span id="whyChooseToggleText">Show ▼</span>
+      </button>
     </div>
-    <div id="whyChooseContent" class="grid grid-cols-1 md:grid-cols-3 gap-4 xs:gap-5 sm:gap-6">
+    <div id="whyChooseContent" class="grid grid-cols-1 md:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 hidden md:grid">
       
       <!-- Card 1: Speed -->
       <div class="bg-white p-4 xs:p-5 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 fade-in-up delay-1">
@@ -1120,8 +1123,11 @@ window.addEventListener('load', function() {
   <div class="mx-auto w-full max-w-7xl">
     <div class="flex items-center justify-center gap-3 mb-6">
       <h2 class="text-3xl font-bold text-center">How It Works</h2>
+      <button onclick="toggleHowItWorks()" class="md:hidden bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg text-sm font-semibold transition-all">
+        <span id="howItWorksToggleText">Show ▼</span>
+      </button>
     </div>
-    <div id="howItWorksContent" class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left w-full">
+    <div id="howItWorksContent" class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left w-full hidden md:grid">
       <!-- Step 1: Upload -->
       <div class="flex flex-col items-start">
         <div class="text-4xl mb-2">📤</div>
@@ -1170,8 +1176,11 @@ window.addEventListener('load', function() {
             <h3 class="text-2xl font-bold text-[#2563EB] flex items-center gap-2 flex-1">
               <i class="fas fa-question-circle text-[#49A078] bg-white rounded-full shadow px-2 py-1"></i> FAQs
             </h3>
+            <button onclick="toggleFAQSection()" class="md:hidden bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm font-semibold transition-all">
+              <span id="faqToggleText">Show ▼</span>
+            </button>
           </div>
-          <div id="faqContent" class="space-y-5">
+          <div id="faqContent" class="space-y-5 hidden md:block">
             <!-- FAQ 1: Excel -->
             <div class="bg-gradient-to-br from-green-50 via-white to-green-100 rounded-xl shadow-md border border-green-100 p-5 flex gap-4 items-start">
               <div class="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-green-300 to-green-500">
@@ -1597,6 +1606,51 @@ startTestimonialAutoSlide();
 
 // EAI chatbot is loaded via chatbot.js - no additional chat widget needed
 
+// ✅ Toggle How It Works section (mobile only)
+function toggleHowItWorks() {
+  const content = document.getElementById('howItWorksContent');
+  const toggleText = document.getElementById('howItWorksToggleText');
+  
+  if (content.classList.contains('hidden')) {
+    content.classList.remove('hidden');
+    content.classList.add('grid');
+    toggleText.textContent = 'Hide ▲';
+  } else {
+    content.classList.add('hidden');
+    content.classList.remove('grid');
+    toggleText.textContent = 'Show ▼';
+  }
+}
+
+// ✅ Toggle Why Choose dericBI section (mobile only)
+function toggleWhyChoose() {
+  const content = document.getElementById('whyChooseContent');
+  const toggleText = document.getElementById('whyChooseToggleText');
+  
+  if (content.classList.contains('hidden')) {
+    content.classList.remove('hidden');
+    content.classList.add('grid');
+    toggleText.textContent = 'Hide ▲';
+  } else {
+    content.classList.add('hidden');
+    content.classList.remove('grid');
+    toggleText.textContent = 'Show ▼';
+  }
+}
+
+// ✅ Toggle FAQ section (mobile only - one level, no nested collapsing)
+function toggleFAQSection() {
+  const content = document.getElementById('faqContent');
+  const toggleText = document.getElementById('faqToggleText');
+  
+  if (content.classList.contains('hidden')) {
+    content.classList.remove('hidden');
+    toggleText.textContent = 'Hide ▲';
+  } else {
+    content.classList.add('hidden');
+    toggleText.textContent = 'Show ▼';
+  }
+}
 </script>
 
 <!-- EAI Chatbot is automatically initialized via chatbot.js -->
