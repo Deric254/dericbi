@@ -1,47 +1,38 @@
-/* ✅ Chatbot positioning - DO NOT override z-index from chatbot.js */
+/* Only adjust chatbot position */
 #chatbot-toggle {
   position: fixed !important;
   bottom: 5rem !important; /* Move it higher to avoid overlapping with footer links */
   right: 1rem !important;
-  /* z-index is set in chatbot.js to 9999 - don't override */
-  pointer-events: auto !important;
+  z-index: 5 !important; /* Lower z-index so it doesn't block other elements */
+  pointer-events: auto !important; /* Ensure it only captures its own clicks */
 }
 
 #chatbot-container {
   position: fixed !important;
   bottom: 5rem !important; /* Move it higher to match toggle button */
   right: 1rem !important;
-  /* z-index is set in chatbot.js to 9999 - don't override */
+  z-index: 10 !important; /* Higher than toggle but still low enough not to interfere */
 }
 
-/* ✅ Footer elements should be lower than chatbot */
-footer {
-  position: relative;
-  z-index: 1 !important; /* Keep footer below chatbot */
-  will-change: auto; /* Prevent flickering */
-  backface-visibility: hidden; /* Prevent flickering */
-  transform: translateZ(0); /* Force GPU acceleration, prevent flickering */
-}
-
-/* ✅ Social links and footer links - lower z-index than chatbot */
-.footer-link, 
-a[href*="instagram"], 
+/* Fix for social links to ensure they're clickable */
+.footer-link,
+a[href*="instagram"],
 a[href*="facebook"],
 a[href*="linkedin"],
 a[href*="twitter"],
 a[href*="wa.me"],
 .group {
-  position: relative;
-  z-index: 2; /* Higher than footer but lower than chatbot */
-  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 20 !important; /* Higher than chatbot */
+  pointer-events: auto !important; /* Ensure clicks register */
 }
 
-/* ✅ Contact page social grid */
+/* Specifically for contact page social grid */
 .w-full.grid.grid-cols-2,
 .w-full.grid.grid-cols-3,
 .w-full.grid.grid-cols-6 {
   position: relative;
-  z-index: 2; /* Same as footer links */
+  z-index: 30; /* Higher than chatbot */
 }
 
 /* ✅ Responsive adjustment for mobile */
@@ -75,13 +66,9 @@ a[href*="wa.me"]::before {
   pointer-events: none; /* Don't block clicks, let parent handle them */
 }
 
-/* Make chatbot components have restricted pointer events and GPU acceleration */
-#chatbot-toggle,
-#chatbot-container {
+/* Make chatbot components have restricted pointer events */
+#chatbot-toggle {
   pointer-events: auto;
-  will-change: transform, opacity; /* GPU acceleration hint */
-  backface-visibility: hidden; /* Prevent flickering */
-  transform: translateZ(0); /* Force GPU layer */
 }
 
 /* Ensures no other elements can accidentally block clicks */
@@ -91,7 +78,7 @@ body::after {
   position: fixed;
   bottom: 0;
   right: 0;
-  height: 100px; 
+  height: 100px;
   width: 100px;
-  z-index: -10; /* Very low z-index, behind everything */
+  z-index: 1; /* Very low z-index */
 }

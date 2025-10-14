@@ -378,7 +378,7 @@ class DAIChatbot {
       </div>
 
       <!-- DAI Container -->
-      <div id="chatbot-container" class="fixed bottom-3 right-3 w-64 sm:w-72 md:w-80 max-w-[calc(100vw-1.5rem)] z-[9999] transform translate-y-full opacity-0 transition-all duration-300 ease-out">
+      <div id="chatbot-container" class="fixed bottom-3 right-3 w-64 sm:w-72 md:w-72 lg:w-80 max-w-[calc(100vw-1.5rem)] z-[9999] transform translate-y-full opacity-0 transition-all duration-300 ease-out">
         <div class="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden backdrop-blur-sm">
           
           <!-- Header -->
@@ -399,7 +399,7 @@ class DAIChatbot {
           </div>
 
           <!-- Chat Messages -->
-          <div id="chatbot-messages" class="h-48 sm:h-56 md:h-64 overflow-y-auto p-2 sm:p-2.5 space-y-1.5 sm:space-y-2 bg-gradient-to-b from-gray-50 to-white">
+          <div id="chatbot-messages" class="h-48 sm:h-52 md:h-56 lg:h-60 overflow-y-auto p-2 sm:p-2.5 space-y-1.5 sm:space-y-2 bg-gradient-to-b from-gray-50 to-white">
             <div class="bot-message">
               <div class="flex items-start gap-1.5 sm:gap-2">
                 <img src="assets/img/logo.png" alt="dericBI" class="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-gray-200 mt-0.5 shrink-0">
