@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tujengane Digital Skills – Curriculum Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to Tujengane Digital Skills. Explore our curriculum packages for data skills, analytics, and computer literacy.">
+    <!-- Security meta tags (conservative, non-breaking defaults) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval' ; style-src 'self' https: 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https: wss:; font-src 'self' https: data:; frame-src 'self' https:; object-src 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to-br, #f0fdfa, #d9f99d);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .layout {
+            display: flex;
+            flex: 1;
+            min-height: 0;
+            gap: 0.5rem;
+            padding: 0.5rem;
+        }
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(135deg, #49A078, #3e8865);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .sidebar-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .sidebar-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .sidebar-item a {
+            color: #b45309;
+            background: #fffbe6;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            transition: background 0.3s, color 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(250,204,21,0.08);
+        }
+        .sidebar-item a:hover, .sidebar-item a:focus {
+            color: #256d4f;
+            background: #facc15;
+            text-decoration: none;
+            outline: none;
+            transform: translateX(5px);
+        }
+        .sidebar-item p {
+            color: #e5e7eb;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+        .sidebar-footer {
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: #e5e7eb;
+        }
+        .main-content {
+            flex: 1;
+            background: linear-gradient(145deg, #ffffff, #f1f5f9);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 1rem;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+            min-width: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .main-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, rgba(73, 160, 120, 0.1), transparent 70%);
+            z-index: 0;
+        }
+        .hero-section {
+            background: linear-gradient(90deg, #49A078, #3e8865);
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        .hero-section h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .hero-section p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .curriculum-card {
+            background: #ffffff;
+            border-radius: 0.5rem;
+            padding: 0.7rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(73, 160, 120, 0.1);
+            position: relative;
+            z-index: 1;
+            margin-bottom: 0.7rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 120px;
+        }
+        .curriculum-card:hover {
+            /* No movement on hover; only subtle shadow change for focus */
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            z-index: 2;
+        }
+        .curriculum-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        /* compact grid layout to shorten vertical length */
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 0.7rem;
+            align-items: stretch;
+        }
+        /* make descriptions shorter visually and fix invalid font-size */
+        .curriculum-desc {
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .curriculum-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-top: auto; /* push actions to bottom so cards align */
+        }
+        .share-link {
+            display: inline-block;
+            background: transparent;
+            color: #256d4f;
+            padding: 0.35rem 0.6rem;
+            border-radius: 0.4rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            border: 1px solid rgba(37,109,79,0.06);
+        }
+        .share-link:hover { background:#f0fdf4; }
+    /* kept for larger screens default spacing */
+    .curriculum-desc { margin-bottom: 1rem; }
+        .curriculum-price {
+            color: #49A078;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .curriculum-link {
+            display: inline-block;
+            background: #fffbe6;
+            color: #b45309;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(250,204,21,0.08);
+            transition: background 0.3s, color 0.2s, transform 0.2s;
+        }
+        .curriculum-link:hover, .curriculum-link:focus {
+            background: #facc15;
+            color: #256d4f;
+            text-decoration: none;
+            outline: none;
+            /* no scaling */
+        }
+        .free-badge {
+            display: inline-block;
+            background: #facc15;
+            color: #92400e;
+            font-weight: 800;
+            padding: 0.18rem 0.5rem;
+            border-radius: 9999px;
+            margin-left: 0.5rem;
+            font-size: 0.75rem;
+            vertical-align: middle;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+        .premium-badge {
+            display: inline-block;
+            background: #ef4444;
+            color: #ffffff;
+            font-weight: 800;
+            padding: 0.15rem 0.45rem;
+            border-radius: 9999px;
+            margin-left: 0.5rem;
+            font-size: 0.75rem;
+            vertical-align: middle;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+        /* Responsive tweaks for yellow links */
+        @media (max-width: 768px) {
+            .sidebar-item a, .curriculum-link {
+                font-size: 0.95rem;
+                padding: 0.5rem 0.5rem;
+            }
+        }
+        .hamburger {
+            display: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            background: #49A078;
+            border: none;
+            color: white;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+        }
+        .slogan-container {
+            flex: 1 1 0%;
+            position: relative;
+            overflow: hidden;
+            min-width: 0;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+        }
+        .slogan-marquee-track {
+            display: flex;
+            width: max-content;
+            position: absolute;
+            left: 0; /* anchor to left to avoid pushing content off-screen on small devices */
+            top: 0;
+            height: 100%;
+            animation: marquee-loop 12s linear infinite;
+            will-change: transform;
+        }
+        .slogan-marquee {
+            white-space: nowrap;
+            color: #facc15;
+            font-weight: bold;
+            font-size: 1rem;
+            display: inline-block;
+            padding-right: 3rem; /* space between repeats */
+        }
+        @keyframes marquee-loop {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .footer {
+            background: #DFF3EA;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            text-align: center;
+        }
+        .footer-link {
+            color: #49A078;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+        .footer-link:hover {
+            color: #3e8865;
+        }
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin: 0.5rem 0;
+        }
+        /* Custom Training Scrollable Styles */
+        .trainings-scroll-area {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        .trainings-scroll-area::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        .training-card {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .training-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .training-card {
+                flex: 0 0 260px;
+                min-height: 220px;
+            }
+            .scroll-control {
+                width: 26px;
+                height: 26px;
+            }
+        }
+        @media (max-width: 480px) {
+            .training-card {
+                flex: 0 0 calc(100% - 10px);
+                min-height: 200px;
+            }
+        }
+        @media (max-width: 1024px) {
+            .sidebar { display: none !important; }
+            .layout { flex-direction: column; padding: 0.5rem; gap: 0.5rem; }
+            .main-content { border-radius: 0.5rem; padding: 0.7rem; gap: 0.7rem; }
+            .slogan-marquee { font-size: 0.9rem; }
+            .curriculum-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+        }
+        @media (max-width: 768px) {
+            .sidebar { display: none !important; }
+            .hamburger { display: none !important; }
+            .main-content { padding: 0.5rem; gap: 0.5rem; }
+            .hero-section { padding: 0.7rem; }
+            .hero-section h1 { font-size: 1.75rem; }
+            .hero-section p { font-size: 0.9rem; }
+            .curriculum-title { font-size: 1.25rem; }
+            .curriculum-desc { font-size: 0.85rem; }
+            .curriculum-price { font-size: 0.8rem; }
+            .curriculum-link { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+            .curriculum-card { padding: 0.5rem; min-height: 100px; }
+            .curriculum-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+            section, .footer { margin-left: 0; margin-right: 0; }
+            .hamburger { display: block; }
+            .nav-links { display: none; }
+            .nav-links.mobile-active {
+                display: flex;
+                flex-direction: column;
+                background: #49A078;
+                position: absolute;
+                top: 3.5rem;
+                right: 1rem;
+                border-radius: 0.75rem;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+                z-index: 100;
+            }
+            .nav-links.mobile-active a {
+                padding: 0.75rem 1.5rem;
+                color: white;
+                font-size: 0.9rem;
+            }
+            .slogan-container { display: none; }
+
+            /* Defensive guard: ensure marquee does not force horizontal overflow */
+            .slogan-marquee-track { max-width: 100%; overflow: hidden; }
+            .footer-socials {
+                gap: 0.5rem;
+                margin: 0.25rem 0;
+            }
+            .footer-link { font-size: 0.9rem; }
+            .footer-logo { flex-direction: column; align-items: center; }
+            .footer-copyright { text-align: center; }
+        }
+        @media (max-width: 768px) and (orientation: landscape) {
+            /* Removed: redundant, handled by previous rule */
+        }
+        @media (max-width: 480px) {
+            .main-content { padding: 0.3rem; gap: 0.3rem; }
+            .hero-section { padding: 0.5rem; }
+            .curriculum-card { padding: 0.3rem; min-height: 80px; }
+            .footer { padding: 0.5rem; }
+            .footer-socials { flex-wrap: wrap; }
+            .curriculum-grid { grid-template-columns: 1fr; gap: 0.3rem; }
+        }
+    </style>
+    <style>
+    /* Conservative global touch feedback (no motion): color + shadow on :active for buttons/links */
+    :root { -webkit-tap-highlight-color: transparent; }
+    a.curriculum-link, .curriculum-card a, .curriculum-actions a, .curriculum-actions button, .nav-btn, button, .share-link, a.unified-cta {
+        transition: background-color 120ms ease, box-shadow 120ms ease, color 120ms ease;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+    a.curriculum-link:active, .curriculum-card a:active, .curriculum-actions a:active, .curriculum-actions button:active, .nav-btn:active, button:active, .share-link:active, a.unified-cta:active {
+        filter: brightness(0.96);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.16) !important;
+    }
+    /* Ensure focus outlines are visible but gentle */
+    a.curriculum-link:focus, button:focus, .nav-btn:focus, .unified-cta:focus { outline: 3px solid rgba(73,160,120,0.14); outline-offset: 2px; }
+    </style>
+</head>
+<body>
+    <nav class="bg-[#49A078] text-white px-6 py-4 shadow-lg">
+        <div class="container mx-auto flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <img src="assets/logo.png" alt="Tujengane Digital Skills Logo" class="h-10 w-10 rounded-full object-cover shadow-md border-2 border-white" style="border-radius:9999px;">
+                <span class="font-bold text-xl tracking-tight">Tujengane Digital Skills</span>
+            </div>
+            <div class="slogan-container">
+                <div class="slogan-marquee-track">
+                    <div class="slogan-marquee">Empowering Your Future with Essential Digital Skills – Join Us Today!</div>
+                    <div class="slogan-marquee">Empowering Your Future with Essential Digital Skills – Join Us Today!</div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button class="hamburger" id="hamburger-btn"><i class="fas fa-bars"></i></button>
+                <ul class="nav-links flex gap-4 text-sm font-medium items-center shrink-0" id="nav-links">
+                    <li><a href="index.html" class="nav-link hover:text-[#facc15] transition-colors">Home</a></li>
+                    <li><a href="https://exesbi.netlify.app" class="nav-link hover:text-[#facc15] transition-colors" target="_blank" rel="noopener noreferrer">EXES BI</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="layout">
+        <aside class="sidebar" id="mainSidebar">
+            <div class="sidebar-content">
+                <div class="sidebar-item">
+                    <a href="Tujengane data basics/databasics.html" style="display:flex;align-items:center;gap:0.5rem;"><i class="fas fa-database"></i>
+                        <span>Data Basics</span>
+                        <span class="free-badge" style="margin-left:auto;">FREE</span>
+                    </a>
+                    <p>Learn to capture and manage clean data. Free for all beginners.</p>
+                </div>
+                <div class="sidebar-item">
+                    <a href="Tujengane analyst pro/analystpro.html" style="display:flex;align-items:center;gap:0.5rem;"><i class="fas fa-chart-pie"></i>
+                        <span>Analyst Pro</span>
+                        <span class="premium-badge" style="margin-left:auto;">PREMIUM</span>
+                    </a>
+                    <p>Master advanced analytics and BI for KES 100 per session.</p>
+                </div>
+                <div class="sidebar-item">
+                    <a href="computer basicss/computerbasicss.html" style="display:flex;align-items:center;gap:0.5rem;"><i class="fas fa-laptop"></i>
+                        <span>Computer Basics</span>
+                        <span class="free-badge" style="margin-left:auto;">FREE</span>
+                    </a>
+                    <p>Core computer skills for beginners — navigation, email, and productivity.</p>
+                </div>
+                <div class="sidebar-item">
+                    <a href="Tujengane computer literacy/computerliteracy.html" style="display:flex;align-items:center;gap:0.5rem;"><i class="fas fa-laptop-code"></i>
+                        <span>Computer Literacy</span>
+                        <span class="premium-badge" style="margin-left:auto;">PREMIUM</span>
+                    </a>
+                    <p>Essential skills for students and professionals, KES 100 per session.</p>
+                </div>
+                <div class="sidebar-item">
+                    <a href="#custom-training-section" style="display:flex;align-items:center;gap:0.5rem;background:#facc15;color:#92400e;">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Custom Trainings</span>
+                        <span style="margin-left:auto;background:#92400e;color:#fff;padding:0.15rem 0.45rem;border-radius:0.25rem;font-size:0.7rem;">NEW</span>
+                    </a>
+                    <p>Specialized training programs and simulations for specific skills.</p>
+                </div>
+                <div class="sidebar-item">
+                    <a href="https://exesbi.netlify.app" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe-africa"></i> EXES BI Platform</a>
+                    <p>Explore our advanced business intelligence platform.</p>
+                </div>
+                <div class="sidebar-item">
+                    <a href="https://wa.me/254791360805" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Contact Us via WhatsApp</a>
+                    <p>Reach out for inquiries or support via WhatsApp.</p>
+                </div>
+                <div class="sidebar-item" style="margin-top:0.5rem;">
+                    <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" rel="noopener noreferrer"><i class="fas fa-user"></i> About the Author</a>
+                    <p>Learn more about Deric Marangu, the Founder  of ExesBI and Tujengane Digital Skills.</p>
+                </div>
+                <!-- Compact mission / vision / core values — small, readable, no layout change -->
+                <!-- Featured Training Section -->
+                <div class="sidebar-item" style="margin-top:0.5rem;background: rgba(250,204,21,0.15);border:1px solid rgba(250,204,21,0.3);">
+                    <div style="font-weight:800;display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;color:#facc15;">
+                        <i class="fas fa-star"></i><span>Featured Training</span>
+                    </div>
+                    <a href="other_trainings/kneck.html" style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+                        <div style="background:#facc15;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                            <i class="fas fa-user-graduate" style="color:#92400e;font-size:14px;"></i>
+                        </div>
+                        <span>KNEC Exam Simulation</span>
+                        <span class="free-badge" style="margin-left:auto;font-size:0.7rem;">NEW</span>
+                    </a>
+                    <p style="margin-top:0.5rem;">Experience a realistic KNEC online exam with full camera verification and security features.</p>
+                    <div style="margin-top:0.5rem;display:flex;justify-content:space-between;align-items:center;">
+                        <a href="other_trainings/kneck.html" style="color:#facc15;font-size:0.8rem;font-weight:700;display:flex;align-items:center;gap:0.3rem;">
+                            <span>Try now</span>
+                            <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+                        </a>
+                        <a href="#" class="share-link" data-share-url="other_trainings/kneck.html" style="background:rgba(255,255,255,0.1);color:#fff;border:none;padding:0.3rem 0.5rem;font-size:0.75rem;">
+                            <i class="fas fa-share-alt"></i> Share
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-item" style="margin-top:0.5rem; padding:0.75rem;">
+                    <div style="font-weight:800;display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;"><i class="fas fa-bullseye"></i><span>Our Purpose</span></div>
+                    <div style="font-size:0.82rem;color:rgba(229,231,235,0.95);line-height:1.15;">Mission: Equip learners with practical digital skills that create income and opportunity.</div>
+                    <div style="font-size:0.82rem;color:rgba(229,231,235,0.95);margin-top:0.45rem;line-height:1.15;">Vision: Thriving communities empowered by accessible tech education.</div>
+                    <div style="font-size:0.82rem;color:rgba(229,231,235,0.95);margin-top:0.45rem;line-height:1.15;">Core: Practical learning · Community support · Real outcomes</div>
+                </div>
+            </div>
+        </aside>
+        <main class="main-content">
+    <script>
+    // Fallback: forcibly hide sidebar on all small screens (portrait or landscape)
+    function forceHideSidebar() {
+        var sidebar = document.getElementById('mainSidebar');
+        if (sidebar && window.innerWidth <= 1024) {
+            sidebar.style.display = 'none';
+        } else if (sidebar) {
+            sidebar.style.display = '';
+        }
+    }
+    window.addEventListener('DOMContentLoaded', forceHideSidebar);
+    window.addEventListener('resize', forceHideSidebar);
+    </script>
+            <div class="w-full relative z-10">
+                <!-- Mobile-first conversion-focused hero -->
+                <section class="hero-section" aria-labelledby="hero-title">
+                    <h1 id="hero-title" style="font-size:1.5rem;line-height:1.05;">Learn Digital Skills. Earn More. Grow Faster.</h1>
+                    <p style="margin-top:0.6rem;opacity:0.95;font-weight:600;">Join thousands mastering tech for income and impact.</p>
+                    <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+                        <a id="primaryCta_data" href="Tujengane data basics/databasics.html" class="curriculum-link" style="background:#ffffff;color:#256d4f;font-weight:800;padding:0.75rem 1rem;border-radius:0.6rem;box-shadow:0 6px 18px rgba(37,109,79,0.12);">Start Data Basics</a>
+                        <a id="primaryCta_comp" href="computer basicss/computerbasicss.html" class="curriculum-link" style="background:#ffffff;color:#256d4f;font-weight:800;padding:0.75rem 1rem;border-radius:0.6rem;box-shadow:0 6px 18px rgba(37,109,79,0.12);">Start Computer Basics</a>
+                        <a id="whatsappData" href="https://chat.whatsapp.com/DHO6xjyr8xu6x5opHRG7fl" target="_blank" rel="noopener noreferrer" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.18);padding:0.35rem 0.6rem;border-radius:6px;font-weight:700;">Join Data Basics WhatsApp</a>
+                        <!-- hero copy links removed per request -->
+                    </div>
+                </section>
+
+                <!-- Quick value bullets -->
+                <section style="margin-top:1rem;display:flex;gap:0.5rem;flex-direction:column;">
+                    <div style="display:flex;gap:0.6rem;align-items:flex-start;"><i class="fas fa-bolt" style="color:#facc15;font-size:1.1rem;margin-top:4px;"></i><div><strong>Fast & practical</strong><div style="color:#4b5563;font-size:0.95rem;">Short modules focused on income-generating skills.</div></div></div>
+                    <div style="display:flex;gap:0.6rem;align-items:flex-start;"><i class="fas fa-users" style="color:#49A078;font-size:1.1rem;margin-top:4px;"></i><div><strong>Community support</strong><div style="color:#4b5563;font-size:0.95rem;">WhatsApp cohorts & peer learning.</div></div></div>
+                    <div style="display:flex;gap:0.6rem;align-items:flex-start;"><i class="fas fa-certificate" style="color:#ef4444;font-size:1.1rem;margin-top:4px;"></i><div><strong>Recognized outcomes</strong><div style="color:#4b5563;font-size:0.95rem;">Completion support & practical certification.</div></div></div>
+                </section>
+
+                <!-- Curriculum preview compact -->
+                <section id="start" style="margin-top:1rem;">
+                    <h2 style="font-size:1.05rem;font-weight:800;margin-bottom:0.5rem;">Quick curriculum preview</h2>
+                    <div class="curriculum-grid">
+                        <div class="curriculum-card" style="padding:1rem;min-height:140px;box-sizing:border-box;width:100%;">
+                            <a class="card-link" href="Tujengane data basics/databasics.html" style="color:inherit;text-decoration:none;">
+                                <div class="curriculum-title" style="font-size:1.15rem;"><i class="fas fa-database"></i>&nbsp;Data Basics <span class="free-badge" style="margin-left:0.5rem;">FREE</span></div>
+                                <div class="curriculum-desc" style="font-size:0.95rem;">Capture, clean, and store data — practical, hands-on exercises.</div>
+                            </a>
+                            <div class="curriculum-actions" style="margin-top:0.6rem;">
+                                <a href="Tujengane data basics/databasics.html" class="curriculum-link">Open</a>
+                                <a href="#" class="share-link" data-share-url="Tujengane data basics/databasics.html" style="margin-left:0.5rem;">Share</a>
+                            </div>
+                        </div>
+                        <div class="curriculum-card" style="padding:1rem;min-height:140px;box-sizing:border-box;width:100%;">
+                            <a class="card-link" href="Tujengane analyst pro/analystpro.html" style="color:inherit;text-decoration:none;">
+                                <div class="curriculum-title" style="font-size:1.15rem;"><i class="fas fa-chart-pie"></i>&nbsp;Analyst Pro <span class="premium-badge" style="margin-left:0.5rem;">PREMIUM</span></div>
+                                <div class="curriculum-desc" style="font-size:0.95rem;">13 modules × 13 slides — Excel, Power BI, BI storytelling and real projects.</div>
+                            </a>
+                            <div class="curriculum-actions" style="margin-top:0.6rem;">
+                                <a href="Tujengane analyst pro/analystpro.html" class="curriculum-link">Open</a>
+                                <a href="#" class="share-link" data-share-url="Tujengane analyst pro/analystpro.html" style="margin-left:0.5rem;">Share</a>
+                            </div>
+                        </div>
+                        <div class="curriculum-card" style="padding:1rem;min-height:140px;box-sizing:border-box;width:100%;">
+                            <a class="card-link" href="computer basicss/computerbasicss.html" style="color:inherit;text-decoration:none;">
+                                <div class="curriculum-title" style="font-size:1.15rem;"><i class="fas fa-laptop"></i>&nbsp;Computer Basics <span class="free-badge" style="margin-left:0.5rem;">FREE</span></div>
+                                <div class="curriculum-desc" style="font-size:0.95rem;">Core computer skills: navigation, email, productivity, and practical AI tips.</div>
+                            </a>
+                            <div class="curriculum-actions" style="margin-top:0.6rem;">
+                                <a href="computer basicss/computerbasicss.html" class="curriculum-link">Open</a>
+                                <a href="#" class="share-link" data-share-url="computer basicss/computerbasicss.html" style="margin-left:0.5rem;">Share</a>
+                            </div>
+                        </div>
+                        <div class="curriculum-card" style="padding:1rem;min-height:140px;">
+                            <a class="card-link" href="Tujengane computer literacy/computerliteracy.html" style="color:inherit;text-decoration:none;">
+                                <div class="curriculum-title" style="font-size:1.15rem;"><i class="fas fa-laptop-code"></i>&nbsp;Computer Literacy <span class="premium-badge" style="margin-left:0.5rem;">PREMIUM</span></div>
+                                <div class="curriculum-desc" style="font-size:0.95rem;">Essential skills for students and professionals — typing, internet, apps, and study tools.</div>
+                            </a>
+                            <div class="curriculum-actions" style="margin-top:0.6rem;">
+                                <a href="Tujengane computer literacy/computerliteracy.html" class="curriculum-link">Open</a>
+                                <a href="#" class="share-link" data-share-url="Tujengane computer literacy/computerliteracy.html" style="margin-left:0.5rem;">Share</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:0.6rem;display:flex;gap:0.5rem;align-items:center;">
+                        <a href="computer basicss/computerbasicss.html" class="curriculum-link" style="padding:0.6rem 0.85rem;">Start Learning Now</a>
+                        <a href="Tujengane analyst pro/analystpro.html" class="curriculum-link" style="padding:0.6rem 0.85rem;">View Analyst Pro</a>
+                    </div>
+                </section>
+
+                <!-- Custom Training Section with Scrollable List -->
+                <section id="custom-training-section" style="margin-top:1.5rem;">
+                    <h2 style="font-size:1.25rem;font-weight:800;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.5rem;">
+                        <i class="fas fa-graduation-cap" style="color:#49A078;"></i>
+                        Custom Training Programs
+                    </h2>
+                    <div style="background:linear-gradient(145deg, #f9fafb, #f0fdfa);padding:0.8rem;border-radius:0.8rem;margin-bottom:1rem;border:1px solid rgba(73, 160, 120, 0.1);">
+                        <p style="font-size:0.95rem;color:#374151;">
+                            Specialized training programs designed for unique learning needs and specific competencies.
+                            Browse our growing collection of simulations and practical exercises.
+                        </p>
+                    </div>
+                    
+                    <!-- Scrollable Training Cards Container -->
+                    <div class="custom-trainings-container" style="position:relative;margin-bottom:1rem;">
+                        <!-- Scroll Controls -->
+                        <button id="scroll-left" class="scroll-control" style="position:absolute;left:-12px;top:50%;transform:translateY(-50%);background:#49A078;color:white;width:30px;height:30px;border-radius:50%;border:none;box-shadow:0 2px 8px rgba(0,0,0,0.1);z-index:10;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                            <i class="fas fa-chevron-left" style="font-size:12px;"></i>
+                        </button>
+                        <button id="scroll-right" class="scroll-control" style="position:absolute;right:-12px;top:50%;transform:translateY(-50%);background:#49A078;color:white;width:30px;height:30px;border-radius:50%;border:none;box-shadow:0 2px 8px rgba(0,0,0,0.1);z-index:10;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                            <i class="fas fa-chevron-right" style="font-size:12px;"></i>
+                        </button>
+                        
+                        <!-- Scrollable Area -->
+                        <div class="trainings-scroll-area" style="display:flex;gap:14px;overflow-x:auto;padding:0.5rem;scroll-behavior:smooth;scrollbar-width:thin;-webkit-overflow-scrolling:touch;padding-bottom:1rem;position:relative;">
+                            <!-- KNEC Exam Simulation -->
+                            <div class="training-card" style="flex:0 0 300px;background:white;border-radius:0.7rem;padding:1rem;box-shadow:0 4px 12px rgba(0,0,0,0.05);border-top:4px solid #facc15;display:flex;flex-direction:column;min-height:240px;position:relative;transition:transform 0.3s,box-shadow 0.3s;">
+                                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.7rem;">
+                                    <div style="background:#facc15;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                                        <i class="fas fa-user-graduate" style="color:#92400e;font-size:16px;"></i>
+                                    </div>
+                                    <h3 style="font-size:1.1rem;font-weight:700;margin:0;color:#1f2937;">KNEC Exam Simulation</h3>
+                                </div>
+                                <div style="flex-grow:1;">
+                                    <p style="font-size:0.9rem;color:#4b5563;margin-bottom:0.5rem;line-height:1.5;">Experience a realistic KNEC online exam environment with:</p>
+                                    <ul style="font-size:0.9rem;color:#4b5563;padding-left:1.2rem;margin:0.5rem 0;">
+                                        <li>Camera identity verification</li>
+                                        <li>Fullscreen security enforcement</li>
+                                        <li>Timed assessments</li>
+                                        <li>Network monitoring</li>
+                                    </ul>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:0.5rem;margin-top:1rem;">
+                                    <a href="other_trainings/kneck.html" class="curriculum-link" style="display:flex;align-items:center;gap:0.4rem;flex:1;justify-content:center;">
+                                        <i class="fas fa-external-link-alt" style="font-size:0.8rem;"></i> Open Simulation
+                                    </a>
+                                    <a href="#" class="share-link" data-share-url="other_trainings/kneck.html" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;padding:0;">
+                                        <i class="fas fa-share-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Computer Proficiency Assessment -->
+                            <div class="training-card" style="flex:0 0 300px;background:white;border-radius:0.7rem;padding:1rem;box-shadow:0 4px 12px rgba(0,0,0,0.05);border-top:4px solid #0ea5e9;display:flex;flex-direction:column;min-height:240px;position:relative;transition:transform 0.3s,box-shadow 0.3s;">
+                                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.7rem;">
+                                    <div style="background:#0ea5e9;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                                        <i class="fas fa-desktop" style="color:#fff;font-size:16px;"></i>
+                                    </div>
+                                    <h3 style="font-size:1.1rem;font-weight:700;margin:0;color:#1f2937;">Computer Proficiency</h3>
+                                    <span style="background:#e5e7eb;color:#4b5563;font-weight:600;padding:0.2rem 0.5rem;border-radius:999px;font-size:0.7rem;">COMING SOON</span>
+                                </div>
+                                <div style="flex-grow:1;">
+                                    <p style="font-size:0.9rem;color:#4b5563;margin-bottom:0.5rem;line-height:1.5;">Test your computer skills with interactive assessments covering:</p>
+                                    <ul style="font-size:0.9rem;color:#4b5563;padding-left:1.2rem;margin:0.5rem 0;">
+                                        <li>Office applications</li>
+                                        <li>File management</li>
+                                        <li>Email communication</li>
+                                        <li>Web research</li>
+                                    </ul>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:0.5rem;margin-top:1rem;">
+                                    <button disabled class="curriculum-link" style="display:flex;align-items:center;gap:0.4rem;flex:1;justify-content:center;opacity:0.7;cursor:not-allowed;background:#e5e7eb;color:#6b7280;">
+                                        Coming Soon
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Excel Skills Assessment -->
+                            <div class="training-card" style="flex:0 0 300px;background:white;border-radius:0.7rem;padding:1rem;box-shadow:0 4px 12px rgba(0,0,0,0.05);border-top:4px solid #22c55e;display:flex;flex-direction:column;min-height:240px;position:relative;transition:transform 0.3s,box-shadow 0.3s;">
+                                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.7rem;">
+                                    <div style="background:#22c55e;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                                        <i class="fas fa-file-excel" style="color:#fff;font-size:16px;"></i>
+                                    </div>
+                                    <h3 style="font-size:1.1rem;font-weight:700;margin:0;color:#1f2937;">Excel Skills Assessment</h3>
+                                    <span style="background:#e5e7eb;color:#4b5563;font-weight:600;padding:0.2rem 0.5rem;border-radius:999px;font-size:0.7rem;">COMING SOON</span>
+                                </div>
+                                <div style="flex-grow:1;">
+                                    <p style="font-size:0.9rem;color:#4b5563;margin-bottom:0.5rem;line-height:1.5;">Demonstrate your Excel proficiency through practical exercises:</p>
+                                    <ul style="font-size:0.9rem;color:#4b5563;padding-left:1.2rem;margin:0.5rem 0;">
+                                        <li>Data analysis</li>
+                                        <li>Formula mastery</li>
+                                        <li>PivotTables</li>
+                                        <li>Data visualization</li>
+                                    </ul>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:0.5rem;margin-top:1rem;">
+                                    <button disabled class="curriculum-link" style="display:flex;align-items:center;gap:0.4rem;flex:1;justify-content:center;opacity:0.7;cursor:not-allowed;background:#e5e7eb;color:#6b7280;">
+                                        Coming Soon
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Web Development Basics -->
+                            <div class="training-card" style="flex:0 0 300px;background:white;border-radius:0.7rem;padding:1rem;box-shadow:0 4px 12px rgba(0,0,0,0.05);border-top:4px solid #8b5cf6;display:flex;flex-direction:column;min-height:240px;position:relative;transition:transform 0.3s,box-shadow 0.3s;">
+                                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.7rem;">
+                                    <div style="background:#8b5cf6;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                                        <i class="fas fa-code" style="color:#fff;font-size:16px;"></i>
+                                    </div>
+                                    <h3 style="font-size:1.1rem;font-weight:700;margin:0;color:#1f2937;">Web Development</h3>
+                                    <span style="background:#e5e7eb;color:#4b5563;font-weight:600;padding:0.2rem 0.5rem;border-radius:999px;font-size:0.7rem;">COMING SOON</span>
+                                </div>
+                                <div style="flex-grow:1;">
+                                    <p style="font-size:0.9rem;color:#4b5563;margin-bottom:0.5rem;line-height:1.5;">Learn web development fundamentals with interactive lessons:</p>
+                                    <ul style="font-size:0.9rem;color:#4b5563;padding-left:1.2rem;margin:0.5rem 0;">
+                                        <li>HTML structure</li>
+                                        <li>CSS styling</li>
+                                        <li>JavaScript basics</li>
+                                        <li>Responsive design</li>
+                                    </ul>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:0.5rem;margin-top:1rem;">
+                                    <button disabled class="curriculum-link" style="display:flex;align-items:center;gap:0.4rem;flex:1;justify-content:center;opacity:0.7;cursor:not-allowed;background:#e5e7eb;color:#6b7280;">
+                                        Coming Soon
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Database Fundamentals -->
+                            <div class="training-card" style="flex:0 0 300px;background:white;border-radius:0.7rem;padding:1rem;box-shadow:0 4px 12px rgba(0,0,0,0.05);border-top:4px solid #f97316;display:flex;flex-direction:column;min-height:240px;position:relative;transition:transform 0.3s,box-shadow 0.3s;">
+                                <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.7rem;">
+                                    <div style="background:#f97316;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                                        <i class="fas fa-database" style="color:#fff;font-size:16px;"></i>
+                                    </div>
+                                    <h3 style="font-size:1.1rem;font-weight:700;margin:0;color:#1f2937;">Database Fundamentals</h3>
+                                    <span style="background:#e5e7eb;color:#4b5563;font-weight:600;padding:0.2rem 0.5rem;border-radius:999px;font-size:0.7rem;">COMING SOON</span>
+                                </div>
+                                <div style="flex-grow:1;">
+                                    <p style="font-size:0.9rem;color:#4b5563;margin-bottom:0.5rem;line-height:1.5;">Master database concepts with practical exercises:</p>
+                                    <ul style="font-size:0.9rem;color:#4b5563;padding-left:1.2rem;margin:0.5rem 0;">
+                                        <li>SQL queries</li>
+                                        <li>Database design</li>
+                                        <li>Data relationships</li>
+                                        <li>Basic administration</li>
+                                    </ul>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:0.5rem;margin-top:1rem;">
+                                    <button disabled class="curriculum-link" style="display:flex;align-items:center;gap:0.4rem;flex:1;justify-content:center;opacity:0.7;cursor:not-allowed;background:#e5e7eb;color:#6b7280;">
+                                        Coming Soon
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Indicator Dots -->
+                    <div id="scroll-indicators" class="scroll-indicators" style="display:flex;justify-content:center;gap:6px;margin:0.5rem 0 1rem;">
+                        <!-- Dots will be inserted via JavaScript -->
+                    </div>
+                    
+                    <div style="text-align:center;margin-top:0.8rem;">
+                        <a href="https://wa.me/254791360805?text=Hello%2C%20I'm%20interested%20in%20requesting%20a%20custom%20training%20program.%20Could%20you%20please%20provide%20more%20information%3F" target="_blank" rel="noopener noreferrer" class="curriculum-link" style="display:inline-flex;align-items:center;gap:0.4rem;background:#49A078;color:white;padding:0.5rem 1.2rem;">
+                            <i class="fab fa-whatsapp"></i> Request Custom Training
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Starter kit section removed (delivery handled via WhatsApp/in-program communication) -->
+
+                <!-- Playful Testimonials -->
+                <section style="margin-top:1rem;">
+                    <h3 style="font-size:1rem;font-weight:800;margin-bottom:0.6rem;">Success stories ✨</h3>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.6rem;">
+                        <div style="background:#ffffff;padding:0.8rem;border-radius:0.75rem;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+                            <div style="font-weight:800;">Grace — Hustler ✨</div>
+                            <div style="color:#4b5563;margin-top:0.4rem;font-size:0.95rem;">From zero to dashboards — built 3 dashboards and pocketed an extra KES 20k/month. Who knew charts could pay rent? 💸📊</div>
+                        </div>
+                        <div style="background:#ffffff;padding:0.8rem;border-radius:0.75rem;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+                            <div style="font-weight:800;">John — SME owner 🚀</div>
+                            <div style="color:#4b5563;margin-top:0.4rem;font-size:0.95rem;">Data Basics sorted my stock chaos. Sales jumped 18% — my team calls me 'The Tracker' now. 📈🔥</div>
+                        </div>
+                        <div style="background:#ffffff;padding:0.8rem;border-radius:0.75rem;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+                            <div style="font-weight:800;">Amina — Student 🎓</div>
+                            <div style="color:#4b5563;margin-top:0.4rem;font-size:0.95rem;">Learnt Excel tricks that shaved off hours of homework. Now I finish early and freelance on the side — hello extra income! ✍️💼</div>
+                        </div>
+                    </div>
+                    <div style="margin-top:0.6rem;display:flex;gap:0.5rem;align-items:center;">
+                        <div style="font-weight:700;color:#0f172a;">Have a win? Share it!</div>
+                        <a href="https://wa.me/254791360805?text=I%27ve%20got%20a%20win%20to%20share%20from%20Tujengane" target="_blank" rel="noopener noreferrer" class="curriculum-link">Share your win on WhatsApp</a>
+                    </div>
+                </section>
+
+                <!-- Trust badges (authentic) -->
+                <section style="margin-top:1rem;display:flex;gap:0.6rem;align-items:center;flex-wrap:wrap;">
+                    <div style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;background:#fff;border-radius:0.5rem;box-shadow:0 6px 12px rgba(0,0,0,0.04);">
+                        <i class="fas fa-file-excel" style="color:#217346;font-size:18px"></i>
+                        <span style="font-weight:700;color:#374151;">Excel</span>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;background:#fff;border-radius:0.5rem;box-shadow:0 6px 12px rgba(0,0,0,0.04);">
+                        <i class="fas fa-chart-line" style="color:#0ea5a4;font-size:18px"></i>
+                        <span style="font-weight:700;color:#374151;">Power BI</span>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.6rem;background:#fff;border-radius:0.5rem;box-shadow:0 6px 12px rgba(0,0,0,0.04);">
+                        <i class="fas fa-robot" style="color:#8b5cf6;font-size:18px"></i>
+                        <span style="font-weight:700;color:#374151;">AI ready</span>
+                    </div>
+                </section>
+
+                <!-- Clean dashboard mock images with CTA -->
+                <section class="dashboards-grid-section" style="margin-top:1.2rem;width:100%;">
+                    <div class="dashboards-grid" style="display:grid;grid-template-columns:repeat(2, 1fr);gap:1.2rem;width:100%;">
+                        <div class="dashboard-card" style="background:#fffbe6;border-radius:1rem;box-shadow:0 2px 8px rgba(250,204,21,0.08);padding:0.7rem 1rem;display:flex;flex-direction:column;align-items:center;">
+                            <img src="assets/dash1.JPG" alt="Dashboard 1" style="width:100%;border-radius:0.7rem;box-shadow:0 2px 8px rgba(250,204,21,0.10);margin-bottom:0.7rem;object-fit:cover;">
+                            <a href="https://exesbi.netlify.app/my-projects.html" class="curriculum-link" style="background:#49A078;color:#fff;padding:0.5rem 1.1rem;font-weight:700;border-radius:0.5rem;box-shadow:0 2px 8px rgba(73,160,120,0.10);margin-top:0.3rem;width:100%;text-align:center;">See More Dashboards</a>
+                        </div>
+                        <div class="dashboard-card" style="background:#f0fdfa;border-radius:1rem;box-shadow:0 2px 8px rgba(73,160,120,0.08);padding:0.7rem 1rem;display:flex;flex-direction:column;align-items:center;">
+                            <img src="assets/dash2.JPG" alt="Dashboard 2" style="width:100%;border-radius:0.7rem;box-shadow:0 2px 8px rgba(73,160,120,0.10);margin-bottom:0.7rem;object-fit:cover;">
+                            <a href="https://exesbi.netlify.app/my-projects.html" class="curriculum-link" style="background:#256d4f;color:#fff;padding:0.5rem 1.1rem;font-weight:700;border-radius:0.5rem;box-shadow:0 2px 8px rgba(73,160,120,0.10);margin-top:0.3rem;width:100%;text-align:center;">See More Dashboards</a>
+                        </div>
+                    </div>
+                    <style>
+                    @media (max-width: 900px) {
+                        .dashboards-grid { grid-template-columns:1fr !important; }
+                    }
+                    .dashboards-grid-section { width:100%; }
+                    .dashboard-card img { max-height:220px; }
+                    </style>
+                </section>
+
+                <!-- compact CTA footer inside main content -->
+
+                <!-- EXESBI Links Section for Large Screens -->
+
+                <!-- compact CTA footer inside main content (now last) -->
+                <section style="margin-top:2rem;display:flex;gap:0.6rem;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+                    <div style="font-weight:800;color:#0f172a;">Ready to start?</div>
+                    <div style="display:flex;gap:0.5rem;">
+                        <a href="Tujengane data basics/databasics.html" class="curriculum-link" style="padding:0.6rem 0.9rem;">Start Data Basics</a>
+                        <a href="computer basicss/computerbasicss.html" class="curriculum-link" style="padding:0.6rem 0.9rem;">Start Computer Basics</a>
+                    </div>
+                </section>
+                <!-- lightweight inline scripts for CTA behavior; small and fast -->
+                <script>
+                    // Starter kit delivery is via WhatsApp (real delivery). No fake downloads.
+                    var joinBtn = document.getElementById('joinWABtn');
+                    if (joinBtn) {
+                        joinBtn.addEventListener('click', function(){
+                            // prefills the WhatsApp message for starter kit request
+                            // nothing else to do here; WhatsApp link is target=_blank
+                        });
+                    }
+                </script>
+                <script>
+                // Show EXESBI links section only on large screens
+                function showExesbiLinksSection() {
+                    var exesbiSection = document.getElementById('exesbiLinksSection');
+                    if (exesbiSection) {
+                        if (window.innerWidth > 1024) {
+                            exesbiSection.style.display = 'flex';
+                        } else {
+                            exesbiSection.style.display = 'none';
+                        }
+                    }
+                }
+                window.addEventListener('DOMContentLoaded', showExesbiLinksSection);
+                window.addEventListener('resize', showExesbiLinksSection);
+                </script>
+
+                <!-- lightweight inline scripts for CTA behavior; small and fast -->
+                <script>
+                    // Starter kit delivery is via WhatsApp (real delivery). No fake downloads.
+                    var joinBtn = document.getElementById('joinWABtn');
+                    if (joinBtn) {
+                        joinBtn.addEventListener('click', function(){
+                            // prefills the WhatsApp message for starter kit request
+                            // nothing else to do here; WhatsApp link is target=_blank
+                        });
+                    }
+                </script>
+            </main>
+    </div>
+    <footer class="footer">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3 footer-logo">
+                <img src="assets/logo.png" alt="Tujengane Digital Skills Logo" class="h-10 w-10 rounded-full object-cover shadow-md border-2 border-white" style="border-radius:9999px;">
+                <span class="font-extrabold text-lg text-gray-800 tracking-wide">Tujengane Digital Skills</span>
+            </div>
+            <div class="footer-socials">
+                <a href="https://wa.me/254791360805" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:dericmarangu@gmail.com" class="footer-link" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://web.facebook.com/deric.aldertrax" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.facebook.com/exes.125107/" target="_blank" rel="noopener noreferrer" class="footer-link" title="EXES Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/Dericmwiti" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/dericmarangu/" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="text-xs text-gray-500 footer-copyright">
+                &copy; 2025 TDS powered by EXES BI – Developed by <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-[#49A078] hover:underline">Deric Marangu</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navLinks = document.getElementById('nav-links');
+        hamburgerBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('mobile-active');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-active');
+            });
+        });
+    </script>
+    <!-- Toast for share feedback -->
+    <div id="toast" aria-live="polite" style="position:fixed;right:1rem;bottom:1rem;background:#256d4f;color:#fff;padding:0.75rem 1rem;border-radius:0.6rem;box-shadow:0 8px 20px rgba(0,0,0,0.18);opacity:0;transform:translateY(8px);transition:all 260ms ease;z-index:1200;"></div>
+    <script>
+        // Custom Training Scrollable Container
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollArea = document.querySelector('.trainings-scroll-area');
+            const scrollLeftBtn = document.getElementById('scroll-left');
+            const scrollRightBtn = document.getElementById('scroll-right');
+            const scrollIndicators = document.getElementById('scroll-indicators');
+            
+            if (scrollArea && scrollLeftBtn && scrollRightBtn && scrollIndicators) {
+                const cards = scrollArea.querySelectorAll('.training-card');
+                const cardWidth = 314; // 300px card + 14px gap
+                
+                // Create indicator dots
+                cards.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.classList.add('scroll-indicator-dot');
+                    dot.style.width = '8px';
+                    dot.style.height = '8px';
+                    dot.style.borderRadius = '50%';
+                    dot.style.background = index === 0 ? '#49A078' : '#e5e7eb';
+                    dot.style.transition = 'background-color 0.3s';
+                    dot.style.cursor = 'pointer';
+                    
+                    dot.addEventListener('click', () => {
+                        scrollArea.scrollLeft = index * cardWidth;
+                    });
+                    
+                    scrollIndicators.appendChild(dot);
+                });
+                
+                // Update active dot based on scroll position
+                scrollArea.addEventListener('scroll', () => {
+                    const scrollPos = scrollArea.scrollLeft;
+                    const activeIndex = Math.round(scrollPos / cardWidth);
+                    
+                    const dots = scrollIndicators.querySelectorAll('.scroll-indicator-dot');
+                    dots.forEach((dot, index) => {
+                        dot.style.background = index === activeIndex ? '#49A078' : '#e5e7eb';
+                    });
+                });
+                
+                // Scroll buttons functionality
+                scrollLeftBtn.addEventListener('click', () => {
+                    scrollArea.scrollBy({
+                        left: -cardWidth,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                scrollRightBtn.addEventListener('click', () => {
+                    scrollArea.scrollBy({
+                        left: cardWidth,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                // Show/hide scroll buttons based on scroll position
+                function updateScrollButtons() {
+                    if (scrollArea.scrollLeft <= 10) {
+                        scrollLeftBtn.style.opacity = '0.5';
+                    } else {
+                        scrollLeftBtn.style.opacity = '1';
+                    }
+                    
+                    if (scrollArea.scrollLeft >= scrollArea.scrollWidth - scrollArea.clientWidth - 10) {
+                        scrollRightBtn.style.opacity = '0.5';
+                    } else {
+                        scrollRightBtn.style.opacity = '1';
+                    }
+                }
+                
+                scrollArea.addEventListener('scroll', updateScrollButtons);
+                updateScrollButtons(); // Initial check
+                
+                // Add touch-friendly scrolling for mobile devices
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+                
+                scrollArea.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    scrollArea.style.cursor = 'grabbing';
+                    startX = e.pageX - scrollArea.offsetLeft;
+                    scrollLeft = scrollArea.scrollLeft;
+                });
+                
+                scrollArea.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    scrollArea.style.cursor = 'grab';
+                });
+                
+                scrollArea.addEventListener('mouseup', () => {
+                    isDown = false;
+                    scrollArea.style.cursor = 'grab';
+                });
+                
+                scrollArea.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - scrollArea.offsetLeft;
+                    const walk = (x - startX) * 2; // Scroll speed
+                    scrollArea.scrollLeft = scrollLeft - walk;
+                });
+                
+                // Set initial cursor style
+                scrollArea.style.cursor = 'grab';
+            }
+        });
+    
+        // Fun share: copy module link and show playful toast
+        const toast = document.getElementById('toast');
+        function showToast(msg) {
+            if (!toast) return;
+            toast.textContent = msg;
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateY(0)';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(8px)';
+            }, 2800);
+        }
+
+        document.querySelectorAll('.share-link').forEach(btn => {
+            btn.addEventListener('click', async function (e) {
+                e.preventDefault();
+                const raw = this.getAttribute('data-share-url') || this.getAttribute('href') || window.location.href;
+                const url = new URL(raw, window.location.href).href;
+
+                // Try Web Share API for mobile devices, but still copy so user has link
+                if (navigator.share) {
+                    try {
+                        await navigator.share({ title: document.title, url });
+                        showToast('Shared via your phone — nice! 📱');
+                        return;
+                    } catch (err) {
+                        // ignore and fallback to copy
+                    }
+                }
+
+                try {
+                    await navigator.clipboard.writeText(url);
+                    showToast('Link copied — it\'s time to share with friends! 📣');
+                } catch (err) {
+                    // fallback copy using in-page modal (avoids native prompt with origin text)
+                    try {
+                        var copyModal = document.createElement('div');
+                        copyModal.style.cssText = 'position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);z-index:1201;padding:12px;';
+
+                        var inner = document.createElement('div');
+                        inner.style.cssText = 'background:#fff;padding:14px;border-radius:10px;max-width:520px;width:100%;box-shadow:0 8px 30px rgba(0,0,0,0.25);';
+
+                        var title = document.createElement('div');
+                        title.style.fontWeight = '800';
+                        title.style.marginBottom = '8px';
+                        title.textContent = 'Copy link';
+
+                        var row = document.createElement('div');
+                        row.style.cssText = 'display:flex;gap:8px;align-items:center;';
+
+                        var inputEl = document.createElement('input');
+                        inputEl.id = 'copyUrlInput';
+                        inputEl.value = url;
+                        inputEl.style.cssText = 'flex:1;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:0.95rem;';
+
+                        var copyBtn = document.createElement('button');
+                        copyBtn.id = 'copyUrlBtn';
+                        copyBtn.textContent = 'Copy';
+                        copyBtn.style.cssText = 'background:#49A078;color:#fff;border:0;padding:8px 12px;border-radius:6px;cursor:pointer';
+
+                        row.appendChild(inputEl);
+                        row.appendChild(copyBtn);
+
+                        var footer = document.createElement('div');
+                        footer.style.cssText = 'display:flex;justify-content:flex-end;margin-top:10px;';
+                        var closeBtn = document.createElement('button');
+                        closeBtn.id = 'copyClose';
+                        closeBtn.textContent = 'Close';
+                        closeBtn.style.cssText = 'background:transparent;border:0;color:#666;cursor:pointer';
+                        footer.appendChild(closeBtn);
+
+                        inner.appendChild(title);
+                        inner.appendChild(row);
+                        inner.appendChild(footer);
+                        copyModal.appendChild(inner);
+                        document.body.appendChild(copyModal);
+
+                        inputEl.select();
+
+                        copyBtn.addEventListener('click', function(){
+                            try { navigator.clipboard.writeText(inputEl.value); showToast('Link copied — paste it to share!'); } catch(e){ try { inputEl.select(); document.execCommand('copy'); showToast('Link copied — paste it to share!'); } catch(err){ showToast('Unable to copy link — try manually: ' + inputEl.value); } }
+                            copyModal.remove();
+                        });
+                        closeBtn.addEventListener('click', function(){ copyModal.remove(); });
+                    } catch (e) {
+                        showToast('Unable to copy link — try manually: ' + url);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

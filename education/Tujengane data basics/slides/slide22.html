@@ -1,0 +1,67 @@
+<div class="slide-content">
+    <h2 class="text-4xl font-extrabold text-[#49A078] mb-4">Ready to Level Up?</h2>
+    <p class="text-lg text-gray-700 mb-6">You've completed Tujengane Data Basics! What's next?</p>
+    <ul class="highlight-list space-y-3 text-left max-w-md mx-auto">
+        <li class="bg-gray-100 p-3 rounded-lg">
+            <a href="https://chat.whatsapp.com/BRpUgo7QD8rFtvOslAveNS" target="_blank" class="text-[#256d4f] font-semibold hover:text-[#49A078]" style="text-decoration:none;">Join Analyst Pro WhatsApp Group</a>
+            <div class="tooltip">Connect for advanced analytics</div>
+        </li>
+        <li class="bg-gray-100 p-3 rounded-lg">
+            <a href="https://chat.whatsapp.com/HrYrcCRLcVUKNXCehfzioZ" target="_blank" class="text-[#256d4f] font-semibold hover:text-[#49A078]" style="text-decoration:none;">Join Computer Literacy WhatsApp Group</a>
+            <div class="tooltip">Connect for digital skills</div>
+        </li>
+    </ul>
+    <div class="flex gap-3 justify-center mt-4" style="align-items:center;">
+        <!-- Unified CTA styles: same size, same padding. No transform animations; active uses color + subtle shadow only -->
+        <a href="../../Tujengane Computer Literacy/computerliteracy.html" target="_blank" class="unified-cta" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;padding:0.8rem 1.1rem;border-radius:10px;background:#ffffff;color:#256d4f;font-weight:800;box-shadow:0 6px 18px rgba(37,109,79,0.12);min-width:180px;">Join Premium Class</a>
+        <button class="unified-cta" style="display:inline-flex;align-items:center;justify-content:center;padding:0.8rem 1.1rem;border-radius:10px;background:#49A078;color:#fff;font-weight:800;box-shadow:0 6px 18px rgba(37,109,79,0.12);min-width:180px;border:0;">Finalize Data Basics</button>
+    </div>
+    <!-- Summary paragraph removed by request (2025-09-13): avoided language that may appear overly casual or unprofessional. -->
+    <style>
+        /* Local small feedback for CTAs: no movement, only color/shadow to indicate press on touch devices */
+        .unified-cta { -webkit-tap-highlight-color: transparent; touch-action: manipulation; transition: background-color 120ms ease, box-shadow 120ms ease; }
+        .unified-cta:active { box-shadow: 0 4px 10px rgba(0,0,0,0.18); filter: brightness(0.95); }
+        .unified-cta:focus { outline: 3px solid rgba(73,160,120,0.18); outline-offset: 2px; }
+        /* Ensure links look like buttons on small screens */
+        @media (max-width: 640px) { .unified-cta { min-width:140px; padding:0.75rem 1rem; font-size:0.95rem; } }
+    </style>
+    <div class="slide-interactive-tip" id="slideTip22">Click any link above to join the WhatsApp groups and continue your journey!</div>
+</div>
+<audio id="cheerAudioSlide22" src="../assets/audio/cheer.mp3" preload="auto"></audio>
+<script>
+    let confettiInterval;
+    function startCelebration() {
+        if (!confettiInterval) {
+            confettiInterval = setInterval(() => {
+                if (typeof confetti === "function") {
+                    confetti({
+                        particleCount: 60,
+                        spread: 90,
+                        origin: { y: 0.6 }
+                    });
+                }
+            }, 900);
+        }
+        // Play cheer sound in loop
+        const cheerAudio = document.getElementById('cheerAudioSlide22');
+        if (cheerAudio) {
+            cheerAudio.loop = true;
+            cheerAudio.volume = 0.7;
+            cheerAudio.play().catch(()=>{});
+        }
+    }
+    function stopCelebration() {
+        if (confettiInterval) {
+            clearInterval(confettiInterval);
+            confettiInterval = null;
+        }
+        const cheerAudio = document.getElementById('cheerAudioSlide22');
+        if (cheerAudio) {
+            cheerAudio.pause();
+            cheerAudio.currentTime = 0;
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        startCelebration();
+    });
+</script>
