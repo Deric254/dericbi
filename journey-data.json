@@ -1,6 +1,22 @@
  
 [
+  {
+  
+  "serial": "Project 46",
+    "title": "SME Performance Dashboard – 2024",
+    "date": "2024-12-31",
+    "description": "<strong>Problem Statement:</strong> SMEs need a unified view of performance across Retail, Service, and Manufacturing personas to drive growth and reduce risk.<br><br><strong>Business Objective:</strong> Build an Excel dashboard for 2024 that visualizes revenue, expenses, reinvestment, ROI, net profit distribution, and churn risk, supporting executive decision-making.<br><br><strong>My Approach:</strong> I designed a decision-ready dashboard with dynamic filters, strategic KPIs, and multi-layered charts (revenue vs expense, reinvestment vs ROI, persona-based profit, churn analysis).<br><br><strong>Key Insights:</strong><br>1️⃣ Reveals profit distribution by persona.<br>2️⃣ Highlights churn risk and retention opportunities.<br>3️⃣ Tracks reinvestment impact on ROI.<br><br><strong>Impact:</strong> This dashboard enables leaders to make data-driven decisions, optimize SME performance, and target growth opportunities.",
+  "tools": "Excel",
+  "projectLink": "downloads/SMESAVE.xlsx",
+  "images": [
+    "assets/projects/smes engine/excel/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/smes engine/excel/vri6DiOxfU.mp4"
+  ]
+},
 {
+  
   "serial": "Project 45",
   "title": "Student GPA Performance Dashboard",
   "date": "2025-10-01",
