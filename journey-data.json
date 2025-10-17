@@ -1,23 +1,21 @@
- 
 [
-   {
-  
-  "serial": "Project 47",
-    "title": "",
-    "date": "",
-    "description": "",
-  "tools": "Excel",
-  "projectLink": "downloads/milk_collection.xlsx",
-  "images": [
-    "assets/projects/training farmers/dash.JPG"
-  ],
-  "video": [
-    "assets/projects/training farmers/wgI6jmlkth.mp4"
-  ]
-},
   {
-  
-  "serial": "Project 46",
+    "serial": "Project 47",
+    "title": "Education Training Impact on Farmer Production and Payment",
+    "date": "2025-10-17",
+  "description": "<strong>Problem Statement:</strong> It is unclear how farmer education/training programs influence milk production and payments across farmer tiers.<br><br><strong>Business Objective:</strong> Use Excel to evaluate the impact of training on production and income, and deliver a dashboard that informs decisions on training investments.<br><br><strong>My Approach:</strong> Cleaned and analyzed a dataset of 100K farmer records in Excel to compare trained vs untrained farmers across categories (Small, Average, Top 1%). Built clear visualizations for production volume, payment distribution, and average performance.<br><br><strong>Key Insights:</strong><br>1️⃣ Trained farmers demonstrate higher average production and payments across most categories.<br>2️⃣ The Top 1% show the largest gains, while Small and Average tiers also record measurable improvements.<br><br><strong>Impact:</strong> The dashboard highlights a clear positive correlation between training attendance and both productivity and income, supporting further investment in farmer education.",
+    "tools": "Excel",
+    "projectLink": "downloads/milk_collection.xlsx",
+    "images": [
+      "assets/projects/training farmers/dash.JPG"
+    ],
+    "video": [
+      "assets/projects/training farmers/wgI6jmlkth.mp4"
+    ]
+  },
+  {
+    
+    "serial": "Project 46",
     "title": "SME Performance Dashboard – 2024",
     "date": "2025-10-16",
     "description": "<strong>Problem Statement:</strong> SMEs need a unified view of performance across Retail, Service, and Manufacturing personas to drive growth and reduce risk.<br><br><strong>Business Objective:</strong> Build an Excel dashboard for 2024 that visualizes revenue, expenses, reinvestment, ROI, net profit distribution, and churn risk, supporting executive decision-making.<br><br><strong>My Approach:</strong> I designed a decision-ready dashboard with dynamic filters, strategic KPIs, and multi-layered charts (revenue vs expense, reinvestment vs ROI, persona-based profit, churn analysis).<br><br><strong>Key Insights:</strong><br>1️⃣ Reveals profit distribution by persona.<br>2️⃣ Highlights churn risk and retention opportunities.<br>3️⃣ Tracks reinvestment impact on ROI.<br><br><strong>Impact:</strong> This dashboard enables leaders to make data-driven decisions, optimize SME performance, and target growth opportunities.",
