@@ -1,5 +1,20 @@
  
 [
+   {
+  
+  "serial": "Project 47",
+    "title": "",
+    "date": "",
+    "description": "",
+  "tools": "Excel",
+  "projectLink": "downloads/milk_collection.xlsx",
+  "images": [
+    "assets/projects/training farmers/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/training farmers/wgI6jmlkth.mp4"
+  ]
+},
   {
   
   "serial": "Project 46",
