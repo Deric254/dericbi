@@ -14,25 +14,38 @@
   z-index: 10 !important; /* Higher than toggle but still low enough not to interfere */
 }
 
+/* Ensure chatbot container doesn't block clicks when hidden.
+   JS toggles inline styles: transform: translateY(0) / translateY(100%) and opacity: 1 / 0.
+   Use attribute selectors to enable pointer-events only when the container is visibly open. */
+#chatbot-container {
+  pointer-events: none !important;
+}
+#chatbot-container[style*="translateY(0)"],
+#chatbot-container[style*="opacity: 1"],
+#chatbot-container[style*="translateY(0)"][style*="opacity: 1"] {
+  pointer-events: auto !important;
+}
+
 /* Fix for social links to ensure they're clickable */
-.footer-link,
-a[href*="instagram"],
-a[href*="facebook"],
-a[href*="linkedin"],
-a[href*="twitter"],
-a[href*="wa.me"],
-.group {
+.contact-page .footer-link,
+.contact-page a[href*="instagram"],
+.contact-page a[href*="facebook"],
+.contact-page a[href*="linkedin"],
+.contact-page a[href*="twitter"],
+.contact-page a[href*="wa.me"],
+.contact-page .group {
   position: relative !important;
-  z-index: 20 !important; /* Higher than chatbot */
+  /* Scoped to contact page only: ensure social links are above the chatbot components (chatbot uses z-index ~9999) */
+  z-index: 10001 !important; /* Raised above chatbot on contact page only */
   pointer-events: auto !important; /* Ensure clicks register */
 }
 
 /* Specifically for contact page social grid */
-.w-full.grid.grid-cols-2,
-.w-full.grid.grid-cols-3,
-.w-full.grid.grid-cols-6 {
+.contact-page .w-full.grid.grid-cols-2,
+.contact-page .w-full.grid.grid-cols-3,
+.contact-page .w-full.grid.grid-cols-6 {
   position: relative;
-  z-index: 30; /* Higher than chatbot */
+  z-index: 10002; /* Keep the grid above chatbot (slightly above individual links) on contact page only */
 }
 
 /* ✅ Responsive adjustment for mobile */
@@ -72,13 +85,17 @@ a[href*="wa.me"]::before {
 }
 
 /* Ensures no other elements can accidentally block clicks */
+/* Remove the fixed bottom-right helper element so it doesn't accidentally block social icons on small screens */
 body::after {
-  content: '';
-  display: block;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  height: 100px;
-  width: 100px;
-  z-index: 1; /* Very low z-index */
+  display: none !important;
+  pointer-events: none !important;
+  content: none !important;
+}
+
+/* Prevent any chatbot click-shield injected by JS from blocking socials. The script may create
+   an element with id 'chatbot-click-shield' — ensure it never intercepts clicks. */
+#chatbot-click-shield {
+  display: none !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
 }
