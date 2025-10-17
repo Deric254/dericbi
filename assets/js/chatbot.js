@@ -369,7 +369,7 @@ class DAIChatbot {
   createChatbotHTML() {
     const chatbotHTML = `
       <!-- DAI Toggle Button -->
-      <div id="chatbot-toggle" class="fixed bottom-3 right-3 z-[9999]">
+  <div id="chatbot-toggle" class="fixed bottom-3 right-3 z-40">
         <button class="bg-gradient-to-r from-[#49A078] to-[#3e8865] hover:from-[#3e8865] hover:to-[#2f6b52] text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg flex items-center justify-center transition-all transform hover:scale-105 relative group">
           <i class="fas fa-robot text-base sm:text-lg"></i>
           <div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse"></div>
@@ -378,7 +378,7 @@ class DAIChatbot {
       </div>
 
       <!-- DAI Container -->
-      <div id="chatbot-container" class="fixed bottom-3 right-3 w-64 sm:w-72 md:w-72 lg:w-80 max-w-[calc(100vw-1.5rem)] z-[9999] transform translate-y-full opacity-0 transition-all duration-300 ease-out">
+  <div id="chatbot-container" class="fixed bottom-3 right-3 w-56 sm:w-64 md:w-64 lg:w-72 max-w-[calc(90vw)] z-30 transform translate-y-full opacity-0 transition-all duration-300 ease-out" style="max-height: 70vh;">
         <div class="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden backdrop-blur-sm">
           
           <!-- Header -->
