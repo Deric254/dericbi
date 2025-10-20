@@ -1,18 +1,18 @@
 [
-  {
-    "serial": "Project 47",
-    "title": "Education Training Impact on Farmer Production and Payment",
-    "date": "2025-10-17",
-  "description": "<strong>Problem Statement:</strong> It is unclear how farmer education/training programs influence milk production and payments across farmer tiers.<br><br><strong>Business Objective:</strong> Use Excel to evaluate the impact of training on production and income, and deliver a dashboard that informs decisions on training investments.<br><br><strong>My Approach:</strong> Cleaned and analyzed a dataset of 100K farmer records in Excel to compare trained vs untrained farmers across categories (Small, Average, Top 1%). Built clear visualizations for production volume, payment distribution, and average performance.<br><br><strong>Key Insights:</strong><br>1️⃣ Trained farmers demonstrate higher average production and payments across most categories.<br>2️⃣ The Top 1% show the largest gains, while Small and Average tiers also record measurable improvements.<br><br><strong>Impact:</strong> The dashboard highlights a clear positive correlation between training attendance and both productivity and income, supporting further investment in farmer education.",
-    "tools": "Excel",
-    "projectLink": "downloads/milk_collection.xlsx",
-    "images": [
-      "assets/projects/training farmers/dash.JPG"
-    ],
-    "video": [
-      "assets/projects/training farmers/wgI6jmlkth.mp4"
-    ]
-  },
+{
+  "serial": "Project 47",
+  "title": "Pricing Sensitivity Dashboard – SME Insights",
+  "date": "2025-10-20",
+  "description": "<strong>Problem Statement:</strong> Small and medium enterprises (SMEs) lacks visibility into how pricing and promotions affected product sales across income segments and regions.<br><br><strong>Business Objective:</strong> Develop a Power BI dashboard to evaluate price sensitivity, customer behavior, and promotional code effectiveness, helping SMEs make informed pricing and marketing decisions.<br><br><strong>My Approach:</strong> Collected and cleaned product sales data in Power BI, covering key essentials such as Detergent, Sugar, Tea Leaves, and Cooking Oil. Built an interactive dashboard with filters for Region and Customer Segment, and KPIs for price, units sold, and total revenue. Visualized price elasticity, promo impact, and customer contribution to uncover buying patterns.<br><br><strong>Key Insights:</strong><br>1️⃣ Middle-income customers contributed over 60% of total sales, showing strong engagement and brand loyalty.<br>2️⃣ Promo codes significantly boosted performance in Nairobi, indicating high responsiveness to discounts.<br>3️⃣ Essential goods like Tea Leaves and Tomato Paste led in total units sold, suggesting stable demand despite price variations.<br><br><strong>Impact:</strong> The dashboard empowers SMEs with a data-driven understanding of price-performance dynamics, guiding smarter decisions on pricing strategy, customer targeting, and promotion planning.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/Wb16uBQxeE?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
+  "tools": "Power BI",
+  "projectLink": "downloads/pricing sensitivity.pbix",
+  "images": [
+    "assets/projects/pricing sensitivity/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/pricing sensitivity/pricesensititvity.mp4"
+  ]
+},
   {
     
     "serial": "Project 46",
