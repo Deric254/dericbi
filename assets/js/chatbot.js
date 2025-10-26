@@ -354,7 +354,7 @@ class DAIChatbot {
         responses: {
           'tech_stack': "💻 **dericBI Tech Stack**:\n\n**Frontend**: HTML, TailwindCSS, JavaScript\n**Analytics**: Python, SQL, Power BI, Excel\n**Data Processing**: Pandas, NumPy, Matplotlib, Seaborn\n**Dashboards**: Power BI, Excel, Python visualizations\n**Storage**: Google Drive, Google Sheets\n**Hosting**: GitHub Pages, Netlify\n**Communication**: WhatsApp, Email, Google Forms",
           
-          'streamlit_app': "🧪 **Try Yourself Platform**: Our interactive Streamlit application (https://exes-ebi.streamlit.app/) lets you:\n• Test data analysis features\n• Preview dashboard capabilities\n• Experience our tools firsthand\n• See sample analytics in action\n\nPerfect for exploring what dericBI can do for your data!",
+          'streamlit_app': "🧪 **Try Yourself Platform**: Our interactive Streamlit application (https://dericbi.streamlit.app/) lets you:\n• Test data analysis features\n• Preview dashboard capabilities\n• Experience our tools firsthand\n• See sample analytics in action\n\nPerfect for exploring what dericBI can do for your data!",
           
           'tujengane_programs': "🎓 **Tujengane Education Programs**:\n\n**1. Data Basics** (Free):\n• Data collection, cleaning, storage\n• Basic Excel and database concepts\n• WhatsApp Group: Business & student support\n\n**2. Analyst Pro** (Paid):\n• Excel, PowerBI, SQL, Python\n• Real-world analytics projects\n• Professional certification track\n\nBoth programs help you become data-literate!",
           
@@ -1095,7 +1095,7 @@ class DAIChatbot {
     if (message.includes('streamlit') || message.includes('try yourself')) {
       return {
         text: "🧪 **Try Our Analytics Tool**: Experience our data analysis capabilities firsthand with our interactive Streamlit app!",
-        action: () => window.open('https://exes-ebi.streamlit.app/', '_blank'),
+        action: () => window.open('https://dericbi.streamlit.app/', '_blank'),
         followUp: "After trying it, let me know if you'd like similar analysis for your data!"
       };
     }
@@ -1336,7 +1336,7 @@ class DAIChatbot {
       if (message.includes('streamlit') || message.includes('try yourself')) {
         return { 
           text: this.knowledgeBase.products_systems.responses.streamlit_app,
-          action: () => window.open('https://exes-ebi.streamlit.app/', '_blank')
+          action: () => window.open('https://dericbi.streamlit.app/', '_blank')
         };
       } else if (message.includes('tujengane') || message.includes('education') || message.includes('course')) {
         return { 
