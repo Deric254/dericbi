@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Tools - dericBI</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .tool { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        button { background: #49A078; color: white; padding: 10px 15px; border: none; border-radius: 3px; cursor: pointer; }
+        button:hover { background: #3e8865; }
+        input, textarea { width: 100%; padding: 8px; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>🔍 dericBI SEO Tools</h1>
+
+    <div class="tool">
+        <h3>Google Search Console URL Inspection</h3>
+        <p>Test your URLs in Google Search Console:</p>
+        <button onclick="openGSC()">Open Google Search Console</button>
+        <p><small>Submit your sitemap: https://dericbi.netlify.app/sitemap.xml</small></p>
+    </div>
+
+    <div class="tool">
+        <h3>Check Current Rankings</h3>
+        <p>Monitor your search rankings for key terms:</p>
+        <ul>
+            <li>"dericBI" - Brand search</li>
+            <li>"data analytics Kenya" - Service search</li>
+            <li>"Excel PowerBI Kenya" - Technology search</li>
+            <li>"Deric Marangu" - Personal brand</li>
+        </ul>
+        <button onclick="checkRankings()">Check Rankings (Manual)</button>
+    </div>
+
+    <div class="tool">
+        <h3>Backlink Analysis</h3>
+        <p>Build backlinks from:</p>
+        <ul>
+            <li>Kenyan business directories</li>
+            <li>Tech blogs and forums</li>
+            <li>Social media profiles</li>
+            <li>Local business listings</li>
+        </ul>
+    </div>
+
+    <div class="tool">
+        <h3>Content Optimization Checklist</h3>
+        <ul>
+            <li>✅ Brand name "dericBI" in title and H1</li>
+            <li>✅ Meta description under 160 characters</li>
+            <li>✅ Keywords in content and meta tags</li>
+            <li>✅ Fast loading speed</li>
+            <li>✅ Mobile-friendly design</li>
+            <li>✅ Sitemap submitted</li>
+            <li>✅ Social media profiles linked</li>
+        </ul>
+    </div>
+
+    <script>
+        function openGSC() {
+            window.open('https://search.google.com/search-console', '_blank');
+        }
+
+        function checkRankings() {
+            const keywords = ['dericBI', 'data analytics Kenya', 'Excel PowerBI Kenya', 'Deric Marangu'];
+            keywords.forEach(keyword => {
+                window.open(`https://www.google.com/search?q=${encodeURIComponent(keyword)}`, '_blank');
+            });
+        }
+    </script>
+</body>
+</html>
