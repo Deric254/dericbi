@@ -1014,6 +1014,30 @@ class DAIChatbot {
       };
     }
     
+    if (message.includes('powerbi') || message.includes('power bi')) {
+      return {
+        text: "📊 **PowerBI Dashboard Service**: We create stunning, interactive business intelligence dashboards! Features include real-time data visualization, automated updates, and mobile-friendly designs.\n\nStarting from $100 depending on complexity.",
+        action: null,
+        followUp: "Want to see some PowerBI dashboard examples from our portfolio?"
+      };
+    }
+    
+    if (message.includes('sql')) {
+      return {
+        text: "🗄️ **SQL Database Service**: We handle database design, query optimization, and data extraction! Perfect for businesses needing structured data management and reporting.\n\nStarting from $50 depending on requirements.",
+        action: null,
+        followUp: "Interested in seeing our SQL project examples?"
+      };
+    }
+    
+    if (message.includes('python')) {
+      return {
+        text: "🐍 **Python Analytics Service**: Advanced data analysis using Python! We provide statistical analysis, machine learning insights, and automated reporting scripts.\n\nStarting from $50 depending on complexity.",
+        action: null,
+        followUp: "Want to explore our Python analysis projects?"
+      };
+    }
+    
     // Default service response
     return {
       text: "💼 **dericBI Services Overview**:\n• Excel cleanup & automation\n• Data analysis & insights\n• PowerBI dashboard creation\n• Database setup & tracking\n\nWe turn your data problems into business solutions!",
@@ -1200,8 +1224,12 @@ class DAIChatbot {
     const foundTerm = searchTerms.find(term => normalizedInput.includes(term));
     if (foundTerm) {
       const matches = this.projectsData.filter(project => {
-        const searchText = `${project.title} ${project.description} ${project.tools?.join(' ')}`.toLowerCase();
-        return searchText.includes(foundTerm);
+        const toolsText = Array.isArray(project.tools) ? project.tools.join(' ') : (project.tools || '');
+        const searchText = `${project.title} ${project.description} ${toolsText}`.toLowerCase();
+        // Check for exact match or normalized match (handle spaces)
+        const normalizedSearchText = searchText.replace(/\s+/g, '');
+        const normalizedFoundTerm = foundTerm.replace(/\s+/g, '');
+        return searchText.includes(foundTerm) || normalizedSearchText.includes(normalizedFoundTerm);
       });
       
       if (matches.length > 0) {
@@ -1221,11 +1249,13 @@ class DAIChatbot {
   formatProjectSearchResults(projects, searchTerm) {
     if (projects.length === 1) {
       const project = projects[0];
-      return `🎯 **Found: ${project.title}**\n\n📊 **Project ${project.number}**\n🛠️ **Tools:** ${project.tools?.join(', ') || 'Not specified'}\n📝 **Description:** ${project.description || 'No description available'}\n\n📍 **View this project**: Visit the "My Journey" page to see more details and download files!`;
+      const toolsText = Array.isArray(project.tools) ? project.tools.join(', ') : (project.tools || 'Not specified');
+      return `🎯 **Found: ${project.title}**\n\n📊 **Project ${project.number}**\n🛠️ **Tools:** ${toolsText}\n📝 **Description:** ${project.description || 'No description available'}\n\n📍 **View this project**: Visit the "My Journey" page to see more details and download files!`;
     } else {
-      const projectList = projects.map(p => 
-        `• **Project ${p.number}**: ${p.title} (${p.tools?.join(', ') || 'Multiple tools'})`
-      ).join('\n');
+      const projectList = projects.map(p => {
+        const toolsText = Array.isArray(p.tools) ? p.tools.join(', ') : (p.tools || 'Multiple tools');
+        return `• **Project ${p.number}**: ${p.title} (${toolsText})`;
+      }).join('\n');
       
       return `📊 **Found ${projects.length} projects matching "${searchTerm}":**\n\n${projectList}\n\n📍 **View all projects**: Visit the "My Journey" page to explore these projects in detail!`;
     }
