@@ -230,8 +230,8 @@ class DAIChatbot {
           'powerbi_dashboards': "💼 **PowerBI Dashboards**: Professional interactive dashboards with real-time data visualization, automated updates, and mobile compatibility. Perfect for executive reporting and business intelligence.",
           'setup_services': "🔧 **Data Setup Services**: Don't have data yet? We set up tracking systems from scratch including sales tracking, inventory management, customer databases, and automated reporting systems.",
           'process': "� **Our Simple 4-Step Process**:\n\n1️⃣ **Send Data**: Upload your files or describe your needs\n2️⃣ **We Analyze**: Our experts clean and analyze your data\n3️⃣ **Get Results**: Receive clean data and actionable insights\n4️⃣ **Make Decisions**: Use data-driven insights to grow your business",
-          'pricing_structure': "💰 **Our Pricing Structure**:\n\n• **Excel Cleanup**: Starting from $15-77 (depending on complexity)\n• **Data Analysis**: $38-192 (based on dataset size and depth)\n• **PowerBI Dashboards**: $62-231 (interactive dashboards)\n• **Complete Setup**: $115-385 (full system implementation)\n\n💡 **Volume Discounts Available!** Contact us for custom quotes.",
-          'value_proposition': "🎯 **Why Choose dericBI?**\n\n• **Stop Revenue Leaks**: Most businesses lose money through untracked decisions - we fix that\n• **Turn KSh 1M into KSh 10M**: Our analytics help clients achieve 10x growth\n• **40+ Successful Projects**: Proven track record across various industries\n• **Fast Turnaround**: Most projects completed within 3-7 days\n• **Affordable Rates**: Starting from just KSh 2,000",
+          'pricing_structure': "💰 **Our Pricing Structure**:\n\n• **Excel Cleanup**: $15-50 (depending on complexity)\n• **Data Analysis**: $50-100 (based on dataset size and depth)\n• **PowerBI Dashboards**: $100-200 (interactive dashboards)\n• **Complete Setup**: $500 (full system implementation)\n\n💡 **Volume Discounts Available!** Contact us for custom quotes.",
+          'value_proposition': "🎯 **Why Choose dericBI?**\n\n• **Stop Revenue Leaks**: Most businesses lose money through untracked decisions - we fix that\n• **Turn $1M into $10M**: Our analytics help clients achieve 10x growth\n• **40+ Successful Projects**: Proven track record across various industries\n• **Fast Turnaround**: Most projects completed within 3-7 days\n• **Affordable Rates**: Starting from $15",
           'contact_options': "📞 **Get Started Today**:\n\n• **WhatsApp**: +254791360805 (Fastest response)\n• **Email**: deric.analytics@gmail.com\n• **Have Data?** → https://forms.gle/krViHXVaJKP2JARZ7\n• **Need Setup?** → https://forms.gle/Uzq3L9wtm5yM6KEX7"
         }
       },
@@ -356,7 +356,7 @@ class DAIChatbot {
           
           'streamlit_app': "🧪 **Try Yourself Platform**: Our interactive Streamlit application (https://dericbi.streamlit.app/) lets you:\n• Test data analysis features\n• Preview dashboard capabilities\n• Experience our tools firsthand\n• See sample analytics in action\n\nPerfect for exploring what dericBI can do for your data!",
           
-          'tujengane_programs': "🎓 **Tujengane Education Programs**:\n\n**1. Data Basics** (Free):\n• Data collection, cleaning, storage\n• Basic Excel and database concepts\n• WhatsApp Group: Business & student support\n\n**2. Analyst Pro** (Paid):\n• Excel, PowerBI, SQL, Python\n• Real-world analytics projects\n• Professional certification track\n\nBoth programs help you become data-literate!",
+          'tujengane_programs': "🎓 **Tujengane Education Programs**:\n\n**1. Data Basics** (FREE):\n• Data collection, cleaning, storage\n• Basic Excel and database concepts\n• WhatsApp Group: Business & student support\n\n**2. Digital Literacy** ($10 per module):\n• Computer skills for business and personal growth\n• Direct WhatsApp access - no forms required\n\n**3. Analyst Pro** ($10 per module):\n• Excel, PowerBI, SQL, Python\n• Real-world analytics projects\n• Professional certification track\n\n**💰 Complete Package**: $100 for all education services!\n\nAll programs help you become data-literate!",
           
           'analysis_tools': "🛠️ **Our Analysis Arsenal**:\n\n**Python**: Advanced statistical analysis, machine learning\n**Excel**: Data cleaning, pivot tables, dashboards\n**Power BI**: Interactive business intelligence dashboards\n**SQL**: Database querying, data extraction\n**Google Sheets**: Collaborative data management\n**Matplotlib/Seaborn**: Professional data visualizations",
           
@@ -992,7 +992,7 @@ class DAIChatbot {
       this.conversationContext.awaitingFollowup = true;
       this.conversationContext.contextData = { pricingQuery: true };
       return {
-        text: "💰 **Our Service Pricing**:\n\n• **Excel Cleanup**: $15-77\n• **Data Analysis**: $38-192\n• **PowerBI Dashboards**: $62-231\n• **Complete Setup**: $115-385\n\nPrices vary based on complexity and data size.",
+        text: "💰 **Our Service Pricing**:\n\n• **Excel Cleanup**: $15-50\n• **Data Analysis**: $50-100\n• **PowerBI Dashboards**: $100-200\n• **Complete Setup**: $500\n\nPrices vary based on complexity and data size.",
         action: null,
         followUp: "Would you like a personalized quote for your specific needs? I can connect you with our team!"
       };
@@ -1008,7 +1008,7 @@ class DAIChatbot {
     
     if (message.includes('excel')) {
       return {
-        text: "✨ **Excel Cleanup Service**: We transform messy spreadsheets into organized, analysis-ready data! This includes removing duplicates, standardizing formats, creating formulas, and building summary reports.\n\nStarting from just KSh 2,000 depending on complexity.",
+        text: "✨ **Excel Cleanup Service**: We transform messy spreadsheets into organized, analysis-ready data! This includes removing duplicates, standardizing formats, creating formulas, and building summary reports.\n\nStarting from $15 depending on complexity.",
         action: null,
         followUp: "Interested in seeing some Excel project examples?"
       };
