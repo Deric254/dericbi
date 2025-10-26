@@ -187,7 +187,7 @@ class DAIChatbot {
     this.knowledgeBase = {
       // Navigation help
       navigation: {
-        patterns: ['where', 'find', 'navigate', 'go to', 'locate', 'page', 'section', 'how to access', 'link to', 'menu', 'what is on', 'homepage', 'contact page', 'about page', 'terms page', 'projects page', 'services page'],
+        patterns: ['where', 'find', 'navigate', 'go to', 'locate', 'page', 'section', 'how to access', 'link to', 'menu', 'what is on', 'homepage', 'contact page', 'about page', 'terms page', 'projects page', 'services page', 'portfolio page', 'main page', 'landing page', 'home', 'navigation', 'site map', 'sitemap', 'browse', 'explore', 'check out', 'look at', 'view', 'see', 'show me', 'take me to', 'redirect', 'visit', 'access', 'reach', 'get to', 'how do i get to', 'where can i find', 'how to navigate', 'website layout', 'site structure'],
         responses: {
           'projects': {
             text: "🎯 You can find our projects on the **Projects** page! Click the 'Projects' link in the navigation menu or",
@@ -222,7 +222,7 @@ class DAIChatbot {
 
       // Service-related questions
       services: {
-        patterns: ['price', 'cost', 'service', 'excel', 'data', 'analysis', 'dashboard', 'cleanup', 'quote', 'budget', 'rates', 'affordable', 'how much', 'pricing', 'fees', 'charges', 'what do you offer', 'your services', 'powerbi', 'power bi', 'setup', 'tracking', 'payment', 'pay', 'mpesa', 'crypto', 'paypal', 'till'],
+        patterns: ['price', 'cost', 'service', 'excel', 'data', 'analysis', 'dashboard', 'cleanup', 'quote', 'budget', 'rates', 'affordable', 'how much', 'pricing', 'fees', 'charges', 'what do you offer', 'your services', 'powerbi', 'power bi', 'setup', 'tracking', 'payment', 'pay', 'mpesa', 'crypto', 'paypal', 'till', 'hire', 'work with you', 'get your services', 'data cleaning', 'data processing', 'spreadsheet', 'database', 'reporting', 'visualization', 'charts', 'graphs', 'business intelligence', 'bi', 'analytics', 'insights', 'data science', 'statistics', 'consulting', 'consultant', 'expert', 'professional', 'specialist', 'data expert', 'excel expert', 'powerbi expert', 'data consultant', 'business analytics', 'data visualization', 'automated reports', 'custom dashboards', 'data transformation', 'data management', 'data organization', 'data quality', 'data validation', 'data integration', 'etl', 'data pipeline', 'data warehouse', 'data modeling', 'data mining', 'predictive analytics', 'machine learning', 'ai', 'artificial intelligence', 'data strategy', 'data governance', 'data architecture'],
         responses: {
           'excel_cleanup': "✨ **Excel Cleanup Service**: We fix messy spreadsheets, remove duplicates, standardize formats, and make your data analysis-ready. This includes organizing data, creating automated formulas, and building summary dashboards. Perfect for businesses with chaotic data!",
           'data_analysis': "📊 **Data Analysis**: We turn your raw data into actionable insights with statistical analysis, trend identification, and business recommendations. We find hidden patterns, identify profit opportunities, track key performance metrics, and generate actionable insights that drive business decisions.",
@@ -238,7 +238,7 @@ class DAIChatbot {
 
       // Technical questions
       technical: {
-        patterns: ['how', 'what', 'why', 'zoom', 'filter', 'search', 'download', 'tool', 'feature', 'use', 'work', 'tutorial', 'guide', 'instructions', 'website features', 'how to download', 'how to zoom'],
+        patterns: ['how', 'what', 'why', 'zoom', 'filter', 'search', 'download', 'tool', 'feature', 'use', 'work', 'tutorial', 'guide', 'instructions', 'website features', 'how to download', 'how to zoom', 'help', 'assist', 'support', 'learn', 'understand', 'explain', 'teach', 'train', 'demo', 'demonstration', 'example', 'sample', 'walkthrough', 'step by step', 'guide me', 'show me how', 'tell me how', 'explain how', 'how does', 'what is', 'how can i', 'how do i', 'how to', 'how does it work', 'what does it do', 'functionality', 'capabilities', 'features', 'tools', 'interface', 'ui', 'user interface', 'navigation', 'controls', 'buttons', 'menus', 'options', 'settings', 'configuration', 'customization', 'personalization'],
         responses: {
           'zoom': "🔍 **Image Zoom**: Double-click any project image to zoom fullscreen. On mobile, double-tap. Press ESC or click the X to close. This works on all image previews across the site.",
           'filter': "🎛️ **Project Filtering**: Use the filter buttons (Excel, PowerBI, Python, SQL) above the projects to see specific types. The search box helps find projects by name. Available on the Projects page.",
@@ -249,7 +249,7 @@ class DAIChatbot {
 
       // Business questions
       business: {
-        patterns: ['business', 'company', 'experience', 'about', 'who', 'founded', 'location', 'ceo', 'founder', 'deric', 'marangu', 'team', 'mission', 'values', 'history', 'credentials', 'portfolio'],
+        patterns: ['business', 'company', 'experience', 'about', 'who', 'founded', 'location', 'ceo', 'founder', 'deric', 'marangu', 'team', 'mission', 'values', 'history', 'credentials', 'portfolio', 'background', 'story', 'journey', 'expertise', 'skills', 'qualifications', 'certifications', 'awards', 'achievements', 'success', 'track record', 'case studies', 'testimonials', 'reviews', 'clients', 'customers', 'partners', 'collaborations', 'projects completed', 'years of experience', 'industry experience', 'specialization', 'focus', 'expertise areas', 'core competencies', 'strengths', 'advantages', 'unique selling points', 'usp', 'differentiators', 'what makes you different', 'why choose you', 'company culture', 'work environment', 'team size', 'company size', 'growth', 'expansion', 'milestones', 'achievements', 'recognition', 'awards', 'certifications', 'licenses', 'accreditations'],
         responses: {
           'about_dericbi': "🏢 **About dericBI**: We're a Kenyan data analytics company founded by our CEO Deric Marangu. We specialize in making messy data beautiful and actionable. Our mission is to empower businesses with clear insights. Check the About page for more.",
           'experience': "👨‍💼 **Our Experience**: 40+ completed projects across various industries. We've helped businesses clean Excel files, create dashboards, and gain insights from their data. Our CEO Deric Marangu leads with years of expertise in data analysis and dashboard creation.",
@@ -270,7 +270,7 @@ class DAIChatbot {
 
       // Project search patterns
       project_search: {
-        patterns: ['project', 'portfolio', 'show me', 'find project', 'search project', 'case study', 'example', 'work', 'samples', 'demonstration', 'demo', 'your projects', 'what projects'],
+        patterns: ['project', 'portfolio', 'show me', 'find project', 'search project', 'case study', 'example', 'work', 'samples', 'demonstration', 'demo', 'your projects', 'what projects', 'examples', 'case studies', 'success stories', 'client work', 'past work', 'completed projects', 'project examples', 'work samples', 'portfolio pieces', 'featured work', 'best work', 'recent projects', 'project gallery', 'project showcase', 'work examples', 'client projects', 'industry examples', 'sector examples', 'business examples', 'data projects', 'analytics projects', 'dashboard examples', 'visualization examples', 'excel projects', 'powerbi projects', 'python projects', 'sql projects', 'data cleaning examples', 'analysis examples', 'reporting examples', 'business intelligence examples', 'real world examples', 'practical examples', 'live examples', 'working examples', 'project demonstrations', 'project walkthroughs'],
         responses: {
           'search_help': "🔍 **Project Search**: I can help you find specific projects! Try:\n• **By number**: \"Show me project 3\" or \"Find project 1.1\"\n• **By topic**: \"Student projects\", \"COVID analysis\"\n• **By tool**: \"Python projects\", \"PowerBI dashboards\", \"SQL projects\"",
           'no_results': "😔 **No projects found** matching your criteria. Try searching for:\n• **Tools**: Excel, PowerBI, Python, SQL\n• **Topics**: Student, COVID, E-commerce, Finance\n• **Numbers**: Project 1, Project 3.1, etc.",
@@ -332,7 +332,7 @@ class DAIChatbot {
 
       // FAQ responses
       faq: {
-        patterns: ['faq', 'help', 'support', 'question', 'common questions', 'issues', 'troubleshoot', 'how does it work', 'process'],
+        patterns: ['faq', 'help', 'support', 'question', 'common questions', 'issues', 'troubleshoot', 'how does it work', 'process', 'frequently asked questions', 'frequent questions', 'common issues', 'how to', 'guide', 'tutorial', 'instructions', 'steps', 'procedure', 'what happens', 'how long', 'timeline', 'expectations', 'what to expect', 'requirements', 'prerequisites', 'qualifications', 'eligibility', 'who can join', 'how much', 'cost', 'pricing questions', 'payment questions', 'refund', 'guarantee', 'warranty', 'terms', 'conditions', 'policies', 'rules', 'guidelines', 'standards', 'quality', 'assurance', 'certification', 'credentials', 'experience', 'background', 'portfolio', 'references', 'testimonials', 'reviews', 'feedback', 'satisfaction', 'success rate', 'results', 'outcomes', 'benefits', 'advantages', 'features', 'capabilities', 'limitations', 'restrictions', 'constraints', 'availability', 'schedule', 'timing', 'deadlines', 'delivery', 'turnaround', 'completion', 'duration', 'timeframe', 'milestones', 'progress', 'updates', 'communication', 'contact methods', 'support channels', 'help desk', 'customer service', 'technical support', 'assistance', 'guidance', 'advice', 'recommendations', 'suggestions', 'tips', 'best practices', 'tricks', 'hacks', 'shortcuts', 'optimization', 'improvement', 'enhancement', 'upgrades', 'updates', 'maintenance', 'upkeep', 'monitoring', 'tracking', 'reporting', 'analytics', 'insights', 'metrics', 'kpis', 'performance', 'efficiency', 'effectiveness', 'roi', 'return on investment', 'value', 'worth', 'investment', 'budget', 'costs', 'expenses', 'fees', 'charges', 'rates', 'pricing', 'quotes', 'estimates', 'proposals', 'contracts', 'agreements', 'terms of service', 'privacy policy', 'data protection', 'security', 'confidentiality', 'trust', 'reliability', 'dependability', 'consistency', 'accuracy', 'precision', 'quality assurance', 'standards compliance', 'certifications', 'accreditations', 'licenses', 'permissions', 'approvals', 'endorsements'],
         responses: {
           'general_help': "❓ **I'm here to help!** I can assist with:\n\n• **Navigation**: Find specific pages or features\n• **Services**: Learn about what we offer\n• **Projects**: Browse our portfolio\n• **Contact**: Connect with our team\n\nWhat would you like to know more about? If it's beyond my scope, feel free to contact dericmarangu@gmail.com or WhatsApp 0791360805."
         }
@@ -350,7 +350,7 @@ class DAIChatbot {
 
       // Products and Systems
       products_systems: {
-        patterns: ['products', 'systems', 'tools', 'platforms', 'technology', 'streamlit', 'tujengane', 'what tools', 'tech stack', 'software', 'applications'],
+        patterns: ['products', 'systems', 'tools', 'platforms', 'technology', 'streamlit', 'tujengane', 'what tools', 'tech stack', 'software', 'applications', 'solutions', 'offerings', 'capabilities', 'resources', 'assets', 'frameworks', 'libraries', 'programming', 'coding', 'development', 'data tools', 'analytics tools', 'visualization tools', 'business tools', 'productivity tools', 'automation tools', 'integration tools', 'data platforms', 'cloud services', 'saas', 'software as a service', 'web applications', 'mobile apps', 'desktop apps', 'api', 'apis', 'integrations', 'connectors', 'plugins', 'extensions', 'add-ons', 'modules', 'components', 'features', 'functionality', 'capabilities', 'solutions', 'services offered', 'product catalog', 'technology stack', 'tech ecosystem', 'digital tools', 'smart tools', 'intelligent systems', 'ai tools', 'ml tools', 'data science tools'],
         responses: {
           'tech_stack': "💻 **dericBI Tech Stack**:\n\n**Frontend**: HTML, TailwindCSS, JavaScript\n**Analytics**: Python, SQL, Power BI, Excel\n**Data Processing**: Pandas, NumPy, Matplotlib, Seaborn\n**Dashboards**: Power BI, Excel, Python visualizations\n**Storage**: Google Drive, Google Sheets\n**Hosting**: GitHub Pages, Netlify\n**Communication**: WhatsApp, Email, Google Forms",
           
