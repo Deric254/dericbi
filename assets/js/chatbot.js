@@ -222,7 +222,7 @@ class DAIChatbot {
 
       // Service-related questions
       services: {
-        patterns: ['price', 'cost', 'service', 'excel', 'data', 'analysis', 'dashboard', 'cleanup', 'quote', 'budget', 'rates', 'affordable', 'how much', 'pricing', 'fees', 'charges', 'what do you offer', 'your services', 'powerbi', 'power bi', 'setup', 'tracking'],
+        patterns: ['price', 'cost', 'service', 'excel', 'data', 'analysis', 'dashboard', 'cleanup', 'quote', 'budget', 'rates', 'affordable', 'how much', 'pricing', 'fees', 'charges', 'what do you offer', 'your services', 'powerbi', 'power bi', 'setup', 'tracking', 'payment', 'pay', 'mpesa', 'crypto', 'paypal', 'till'],
         responses: {
           'excel_cleanup': "✨ **Excel Cleanup Service**: We fix messy spreadsheets, remove duplicates, standardize formats, and make your data analysis-ready. This includes organizing data, creating automated formulas, and building summary dashboards. Perfect for businesses with chaotic data!",
           'data_analysis': "📊 **Data Analysis**: We turn your raw data into actionable insights with statistical analysis, trend identification, and business recommendations. We find hidden patterns, identify profit opportunities, track key performance metrics, and generate actionable insights that drive business decisions.",
@@ -230,7 +230,7 @@ class DAIChatbot {
           'powerbi_dashboards': "💼 **PowerBI Dashboards**: Professional interactive dashboards with real-time data visualization, automated updates, and mobile compatibility. Perfect for executive reporting and business intelligence.",
           'setup_services': "🔧 **Data Setup Services**: Don't have data yet? We set up tracking systems from scratch including sales tracking, inventory management, customer databases, and automated reporting systems.",
           'process': "� **Our Simple 4-Step Process**:\n\n1️⃣ **Send Data**: Upload your files or describe your needs\n2️⃣ **We Analyze**: Our experts clean and analyze your data\n3️⃣ **Get Results**: Receive clean data and actionable insights\n4️⃣ **Make Decisions**: Use data-driven insights to grow your business",
-          'pricing_structure': "💰 **Our Pricing Structure**:\n\n• **Excel Cleanup**: Starting from KSh 2,000-10,000 (depending on complexity)\n• **Data Analysis**: KSh 5,000-25,000 (based on dataset size and depth)\n• **PowerBI Dashboards**: KSh 8,000-30,000 (interactive dashboards)\n• **Complete Setup**: KSh 15,000-50,000 (full system implementation)\n\n💡 **Volume Discounts Available!** Contact us for custom quotes.",
+          'pricing_structure': "💰 **Our Pricing Structure**:\n\n• **Excel Cleanup**: Starting from $15-77 (depending on complexity)\n• **Data Analysis**: $38-192 (based on dataset size and depth)\n• **PowerBI Dashboards**: $62-231 (interactive dashboards)\n• **Complete Setup**: $115-385 (full system implementation)\n\n💡 **Volume Discounts Available!** Contact us for custom quotes.",
           'value_proposition': "🎯 **Why Choose dericBI?**\n\n• **Stop Revenue Leaks**: Most businesses lose money through untracked decisions - we fix that\n• **Turn KSh 1M into KSh 10M**: Our analytics help clients achieve 10x growth\n• **40+ Successful Projects**: Proven track record across various industries\n• **Fast Turnaround**: Most projects completed within 3-7 days\n• **Affordable Rates**: Starting from just KSh 2,000",
           'contact_options': "📞 **Get Started Today**:\n\n• **WhatsApp**: +254791360805 (Fastest response)\n• **Email**: deric.analytics@gmail.com\n• **Have Data?** → https://forms.gle/krViHXVaJKP2JARZ7\n• **Need Setup?** → https://forms.gle/Uzq3L9wtm5yM6KEX7"
         }
@@ -992,9 +992,17 @@ class DAIChatbot {
       this.conversationContext.awaitingFollowup = true;
       this.conversationContext.contextData = { pricingQuery: true };
       return {
-        text: "💰 **Our Service Pricing**:\n\n• **Excel Cleanup**: KSh 2,000-10,000\n• **Data Analysis**: KSh 5,000-25,000\n• **PowerBI Dashboards**: KSh 8,000-30,000\n• **Complete Setup**: KSh 15,000-50,000\n\nPrices vary based on complexity and data size.",
+        text: "💰 **Our Service Pricing**:\n\n• **Excel Cleanup**: $15-77\n• **Data Analysis**: $38-192\n• **PowerBI Dashboards**: $62-231\n• **Complete Setup**: $115-385\n\nPrices vary based on complexity and data size.",
         action: null,
         followUp: "Would you like a personalized quote for your specific needs? I can connect you with our team!"
+      };
+    }
+    
+    if (message.includes('payment') || message.includes('pay') || message.includes('mpesa') || message.includes('crypto') || message.includes('paypal') || message.includes('till')) {
+      return {
+        text: "💳 **Payment Methods**: We accept M-Pesa, Till numbers, crypto payments (USDT, BTC, ETH), PayPal, and other methods. Contact us for crypto or PayPal details!\n\n📱 **M-Pesa/Till**: Pay directly to our number\n💰 **Crypto**: Secure blockchain payments\n📧 **PayPal**: For international clients\n\nOur WhatsApp: +254791360805",
+        action: () => window.open('https://wa.me/254791360805?text=Hi%20Deric,%20I%20need%20payment%20details%20for%20your%20services', '_blank'),
+        followUp: "Would you like me to open WhatsApp so you can contact our team directly?"
       };
     }
     
