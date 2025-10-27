@@ -17,6 +17,10 @@
 #  Content-Disposition: attachment
 #  X-Content-Type-Options: nosniff
 
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+
 # Security hardening (optional global)
 /*
   X-Frame-Options: SAMEORIGIN
