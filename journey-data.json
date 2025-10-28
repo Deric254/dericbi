@@ -1,4 +1,19 @@
 [
+      {
+  "serial": "Project 50",
+  "title": "",
+  "date": "",
+  "description": "",
+  "tools": "Excel",
+  "projectLink": "downloads/milk_collection.xlsx",
+  "images": [
+    "assets/projects/training farmers/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/training farmers/wgI6jmlkth.mp4",
+    "assets/projects/training farmers/EXCEL_d2Oak2POE1.mp4"
+  ]
+},
     {
   "serial": "Project 49",
   "title": "Kenya Food Waste Analysis Dashboard",
