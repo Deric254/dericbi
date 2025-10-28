@@ -1,4 +1,18 @@
 [
+    {
+  "serial": "Project 49",
+  "title": "Kenya Food Waste Analysis Dashboard",
+  "date": "2025-10-28",
+  "description": "<strong>Problem Statement:</strong> Food waste is a critical issue in Kenya, especially highlighted during discussions on AI and Africa's future, where a UN speaker mentioned its severity. Despite hunger crises, significant food resources are lost annually.<br><br><strong>Business Objective:</strong> Visualize Kenya's food waste data from 1991–2024 using UN FAO data to uncover shocking trends and raise awareness about this hidden crisis affecting lives and economies.<br><br><strong>My Approach:</strong> I analyzed UN FAO datasets in Power BI, creating an interactive dashboard that breaks down food waste by year, commodity, and economic impact. The dashboard highlights peak waste years, major contributors, and monetary losses to drive actionable insights for policymakers and businesses.<br><br><strong>Key Insights:</strong><br>1️⃣ 2016 recorded the highest waste: 78.46M tonnes (13.93% of total production)<br>2️⃣ Meat alone accounts for 158.80M tonnes (28.2% of total waste)<br>3️⃣ Peppers follow with 46.42M tonnes (13.93% of waste)<br>4️⃣ Despite 2023 hunger crisis, food worth $3.39M was lost that year<br>5️⃣ Food waste reveals hidden realities beyond business — directly impacting lives and sustainability<br><br><strong>Impact:</strong> This dashboard demonstrates how data analysis can expose critical social issues, not just business metrics. It provides evidence for policy changes, awareness campaigns, and targeted interventions to reduce waste and address hunger in Kenya. The visualization turns raw UN data into compelling stories that can influence decision-makers and inspire action.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"downloads/fao.pbix\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Download Power BI File</strong></a>",
+  "tools": "Power BI",
+  "projectLink": "downloads/fao.pbix",
+  "images": [
+    "assets/projects/fao/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/fao/fao.mp4"
+  ]
+},
   {
   "serial": "Project 48",
   "title": "DericBI Analytics Engine",
