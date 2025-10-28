@@ -1,9 +1,9 @@
 [
       {
   "serial": "Project 50",
-  "title": "",
-  "date": "",
-  "description": "",
+  "title": "Milk Collection Training Impact Analysis",
+  "date": "2025-10-28",
+  "description": "<strong>Problem Statement:</strong> Farmers and agricultural stakeholders need evidence of how training programs impact milk production to allocate resources effectively.<br><br><strong>Business Objective:</strong> Demonstrate through data analysis that trained farmers significantly outperform untrained ones in milk production, justifying investments in training.<br><br><strong>My Approach:</strong> Analyzed milk collection data in Excel, comparing production metrics between farmers who attended training and those who did not. Created visualizations to highlight the production disparities.<br><br><strong>Key Insights:</strong><br>1️⃣ Trained farmers' production far outnumbers that of untrained farmers<br>2️⃣ Training programs lead to substantial yield improvements<br>3️⃣ Investment in farmer education yields measurable productivity gains<br><br><strong>Impact:</strong> This analysis provides compelling evidence for scaling training initiatives, helping agricultural organizations and policymakers prioritize education for sustainable farming improvements.",
   "tools": "Excel",
   "projectLink": "downloads/milk_collection.xlsx",
   "images": [
