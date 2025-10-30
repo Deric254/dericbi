@@ -1,9 +1,9 @@
 [
        {
   "serial": "Project 51",
-  "title": "",
+  "title": "Live Shopkeeper Business Dashboard",
   "date": "2025-10-29",
-  "description": "",
+  "description": "<strong>Problem Statement:</strong> Shopkeepers often lack real-time visibility into their business operations, relying on manual tracking that leads to delayed decisions and missed opportunities.<br><br><strong>Business Objective:</strong> Develop a live dashboard that allows shopkeepers to monitor their business metrics in real-time on computers or phones, providing an objective view for data-driven decision-making.<br><br><strong>My Approach:</strong> Created an Excel-based live dashboard that connects to business data sources, updates automatically, and displays key performance indicators such as sales trends, inventory levels, and revenue metrics. The dashboard is designed for easy access on multiple devices.<br><br><strong>Key Insights:</strong><br>1️⃣ Real-time sales tracking reveals peak hours and customer patterns<br>2️⃣ Inventory alerts prevent stockouts and overstock situations<br>3️⃣ Revenue visualization highlights profitable products and periods<br>4️⃣ Mobile-friendly design enables on-the-go business monitoring<br><br><strong>Impact:</strong> This live dashboard empowers shopkeepers with immediate access to critical business data, enabling proactive decisions that improve operational efficiency and profitability.",
   "tools": "Excel",
   "projectLink": "downloads/shoplive.xlsx",
   "images": [
