@@ -7,7 +7,8 @@
   "tools": "Excel",
   "projectLink": "downloads/shoplive.xlsx",
   "images": [
-    "assets/projects/shoplive/dash.JPG"
+    "assets/projects/shoplive/dash.JPG",
+    "assets/projects/shoplive/data.JPG"
   ],
   "video": [
     "assets/projects/shoplive/live shop.mp4"
