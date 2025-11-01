@@ -3,14 +3,15 @@
   "serial": "Project 52",
   "title": "NGO impact assessment and Tracking dashboard",
   "date": "2025-11-01",
-  "description": "<strong>Problem Statement:</strong> NGOs often struggle to measure and communicate their impact effectively, leading to challenges in funding and support.<br><br><strong>Business Objective:</strong> Develop a comprehensive dashboard that tracks key performance indicators (KPIs) related to NGO activities, enabling better reporting and decision-making.<br><br><strong>My Approach:</strong> Created an Excel-based dashboard that consolidates data from various sources, including project reports, financial statements, and beneficiary feedback. The dashboard visualizes key metrics such as funds raised, projects completed, and beneficiary outcomes.<br><br><strong>Key Insights:</strong><br>1️⃣ Clear visualization of funding sources and allocation<br>2️⃣ Tracking of project milestones and outcomes<br>3️⃣ Integration of beneficiary feedback for continuous improvement<br>4️⃣ Enhanced reporting capabilities for stakeholders<br><br><strong>Impact:</strong> This dashboard empowers NGOs to demonstrate their impact more effectively, improving transparency and accountability, and ultimately leading to increased support and funding.",
+  "description": "<strong>Problem Statement:</strong> NGOs have CSV exports from project reports, finance systems, and beneficiary surveys but lack a simple, up-to-date view of core KPIs.<br><br><strong>Business Objective:</strong> Provide a lightweight Python dashboard that reads CSV files, computes essential KPIs, and updates visualizations so reporting is faster and simpler.<br><br><strong>My Approach:</strong> Load CSVs with pandas, do basic cleaning and aggregation, then refresh the Streamlit dashboard to show funds, projects, and beneficiary counts.<br><br><strong>Key Features:</strong><br>• CSV ingestion and basic validation<br>• KPI snapshots and time-series charts<br>• Simple filters and drill-down tables<br>• Exportable CSV/PDF summaries<br><br><strong>Impact:</strong> Replaced manual consolidation with a CSV-to-dashboard flow, reducing report prep time and making key metrics easier to access.<br><br>👉 <strong>Live demo:</strong> <a href=\"https://ngo-dericbi.onrender.com\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
   "tools": "Python",
   "projectLink": "downloads/NGO-impct tracker.zip",
+  "liveLink": "https://ngo-dericbi.onrender.com",
   "images": [
     "assets/projects/ngo/dash.png"
   ],
   "video": [
-    "assets/projects/ngo/go.mp4"
+    "assets/projects/ngo/ngo.mp4"
   ]
 },
        {
