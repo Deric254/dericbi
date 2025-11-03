@@ -1,4 +1,19 @@
 [
+      {
+  "serial": "Project 53",
+  "title": "Forex mirage",
+  "date": "2025-11-03",
+  "description": "<strong>Problem Statement:</strong> Retail FX traders are data‑blind: 78.9% lose, average monthly profit $39.88, and only ~22.7% survive. Analysis covers 1,000,000 traders from 2020–2024.<br><br><strong>Business Objective:</strong> Reveal true trader outcomes and systemic risks with a concise Power BI report to enable data‑driven decisions.<br><br><strong>My Approach:</strong> Analyze trader‑level P/L and deposits (2020–2024) across 1,000,000 traders; compute loss/survival rates, monthly profits, leverage distribution and broker concentration; surface flags for deposit‑driven growth and high‑leverage risk.<br><br><strong>Key Features:</strong> Yearly loss‑rate trend (2020–2024), net worth vs deposits flag, leverage distribution, survival pie, profit histogram, broker breakdown, and slicers for trader/account type.<br><br><strong>Impact:</strong> Forces objective assessment of trading performance. Presented by Deric Marungu — dericmarungu@gmail.com | +254791361365.",
+  "tools": "Power BI",
+  "projectLink": "downloads/forex mirage.pbix",
+  "liveLink": "https://app.powerbi.com/links/dpq9b3BkqS?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare",
+  "images": [
+    "assets/projects/cma/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/cma/forex mirage.mp4"
+  ]
+},
          {
   "serial": "Project 52",
   "title": "NGO impact assessment and Tracking dashboard",
