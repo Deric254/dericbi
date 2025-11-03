@@ -1,7 +1,7 @@
 [
 
          {
-  "serial": "Project 52",
+  "serial": "Project 53",
   "title": "NGO impact assessment and Tracking dashboard",
   "date": "2025-11-01",
   "description": "<strong>Problem Statement:</strong> NGOs have CSV exports from project reports, finance systems, and beneficiary surveys but lack a simple, up-to-date view of core KPIs.<br><br><strong>Business Objective:</strong> Provide a lightweight Python dashboard that reads CSV files, computes essential KPIs, and updates visualizations so reporting is faster and simpler.<br><br><strong>My Approach:</strong> Load CSVs with pandas, do basic cleaning and aggregation, then refresh the Streamlit dashboard to show funds, projects, and beneficiary counts.<br><br><strong>Key Features:</strong><br>• CSV ingestion and basic validation<br>• KPI snapshots and time-series charts<br>• Simple filters and drill-down tables<br>• Exportable CSV/PDF summaries<br><br><strong>Impact:</strong> Replaced manual consolidation with a CSV-to-dashboard flow, reducing report prep time and making key metrics easier to access.<br><br>👉 <strong>Live demo:</strong> <a href=\"https://ngo-dericbi.onrender.com\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
@@ -16,7 +16,7 @@
   ]
 },
        {
-  "serial": "Project 51",
+  "serial": "Project 52",
   "title": "Live Shopkeeper Business Dashboard",
   "date": "2025-10-29",
   "description": "<strong>Problem Statement:</strong> Shopkeepers often lack real-time visibility into their business operations, relying on manual tracking that leads to delayed decisions and missed opportunities.<br><br><strong>Business Objective:</strong> Develop a live dashboard that allows shopkeepers to monitor their business metrics in real-time on computers or phones, providing an objective view for data-driven decision-making.<br><br><strong>My Approach:</strong> Created an Excel-based live dashboard that connects to business data sources, updates automatically, and displays key performance indicators such as sales trends, inventory levels, and revenue metrics. The dashboard is designed for easy access on multiple devices.<br><br><strong>Key Insights:</strong><br>1️⃣ Real-time sales tracking reveals peak hours and customer patterns<br>2️⃣ Inventory alerts prevent stockouts and overstock situations<br>3️⃣ Revenue visualization highlights profitable products and periods<br>4️⃣ Mobile-friendly design enables on-the-go business monitoring<br><br><strong>Impact:</strong> This live dashboard empowers shopkeepers with immediate access to critical business data, enabling proactive decisions that improve operational efficiency and profitability.",
@@ -31,7 +31,7 @@
   ]
 },
       {
-  "serial": "Project 50",
+  "serial": "Project 51",
   "title": "Milk Collection Training Impact Analysis",
   "date": "2025-10-28",
   "description": "<strong>Problem Statement:</strong> Farmers and agricultural stakeholders need evidence of how training programs impact milk production to allocate resources effectively.<br><br><strong>Business Objective:</strong> Demonstrate through data analysis that trained farmers significantly outperform untrained ones in milk production, justifying investments in training.<br><br><strong>My Approach:</strong> Analyzed milk collection data in Excel, comparing production metrics between farmers who attended training and those who did not. Created visualizations to highlight the production disparities.<br><br><strong>Key Insights:</strong><br>1️⃣ Trained farmers' production far outnumbers that of untrained farmers<br>2️⃣ Training programs lead to substantial yield improvements<br>3️⃣ Investment in farmer education yields measurable productivity gains<br><br><strong>Impact:</strong> This analysis provides compelling evidence for scaling training initiatives, helping agricultural organizations and policymakers prioritize education for sustainable farming improvements.",
@@ -46,7 +46,7 @@
   ]
 },
     {
-  "serial": "Project 49",
+  "serial": "Project 50",
   "title": "Kenya Food Waste Analysis Dashboard",
   "date": "2025-10-28",
   "description": "<strong>Problem Statement:</strong> Food waste is a critical issue in Kenya, especially highlighted during discussions on AI and Africa's future, where a UN speaker mentioned its severity. Despite hunger crises, significant food resources are lost annually.<br><br><strong>Business Objective:</strong> Visualize Kenya's food waste data from 1991–2024 using UN FAO data to uncover shocking trends and raise awareness about this hidden crisis affecting lives and economies.<br><br><strong>My Approach:</strong> I analyzed UN FAO datasets in Power BI, creating an interactive dashboard that breaks down food waste by year, commodity, and economic impact. The dashboard highlights peak waste years, major contributors, and monetary losses to drive actionable insights for policymakers and businesses.<br><br><strong>Key Insights:</strong><br>1️⃣ 2016 recorded the highest waste: 78.46M tonnes (13.93% of total production)<br>2️⃣ Meat alone accounts for 158.80M tonnes (28.2% of total waste)<br>3️⃣ Peppers follow with 46.42M tonnes (13.93% of waste)<br>4️⃣ Despite 2023 hunger crisis, food worth $3.39M was lost that year<br>5️⃣ Food waste reveals hidden realities beyond business — directly impacting lives and sustainability<br><br><strong>Impact:</strong> This dashboard demonstrates how data analysis can expose critical social issues, not just business metrics. It provides evidence for policy changes, awareness campaigns, and targeted interventions to reduce waste and address hunger in Kenya. The visualization turns raw UN data into compelling stories that can influence decision-makers and inspire action.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/zb2CQxRPsT?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
@@ -60,7 +60,7 @@
   ]
 },
   {
-  "serial": "Project 48",
+  "serial": "Project 49",
   "title": "DericBI Analytics Engine",
   "date": "2025-10-26",
   "description": "<strong>Problem Statement:</strong> Business analysts need powerful, automated tools to process complex datasets, generate insights quickly, and deliver actionable recommendations to help businesses make data-driven decisions.<br><br><strong>Business Objective:</strong> Develop a comprehensive data analytics engine that automates data processing, analysis, and visualization workflows, enabling business analysts to perform better and deliver higher-value insights to clients.<br><br><strong>My Approach:</strong> Built a Python-based analytics engine with modular components for data ingestion, cleaning, analysis, and visualization. The engine features automated ETL processes, statistical analysis modules, machine learning capabilities, and interactive dashboard generation. It includes smart data profiling, anomaly detection, predictive modeling, and automated report generation.<br><br><strong>Key Features:</strong><br>a. Automated Data Processing: Handles multiple data formats (CSV, Excel, SQL, APIs)<br>b. Smart Analysis Engine: Statistical analysis, trend detection, correlation analysis<br>c. Interactive Visualizations: Automated chart and dashboard creation<br>d. Business Intelligence: KPI calculations, performance metrics, and insights generation<br>e. Report Automation: PDF/Excel report generation with executive summaries<br><br><strong>Key Insights:</strong><br>1️⃣ Processes data 10x faster than manual analysis methods<br>2️⃣ Identifies patterns and anomalies that manual analysis might miss<br>3️⃣ Generates standardized reports for consistent client deliverables<br>4️⃣ Reduces analysis time from days to hours for complex datasets<br>5️⃣ Provides actionable business recommendations based on data patterns<br><br><strong>Impact:</strong> This analytics engine empowers business analysts to handle larger datasets, deliver insights faster, and provide more comprehensive analysis to businesses. It transforms raw data into strategic business intelligence, enabling better decision-making and competitive advantages for clients.<br><br>👉 <strong>Engine Capabilities:</strong> Automated ETL, Statistical Analysis, ML Predictions, Interactive Dashboards, Report Generation, Business Intelligence<br><br>👉 <strong>Try the Analytics Engine:</strong> <a href=\"https://dericbi.streamlit.app/\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Streamlit App</strong></a>",
@@ -74,7 +74,7 @@
   ]
 },
 {
-  "serial": "Project 47",
+  "serial": "Project 48",
   "title": "Pricing Sensitivity Dashboard – SME Insights",
   "date": "2025-10-20",
   "description": "<strong>Problem Statement:</strong> Small and medium enterprises (SMEs) lacks visibility into how pricing and promotions affected product sales across income segments and regions.<br><br><strong>Business Objective:</strong> Develop a Power BI dashboard to evaluate price sensitivity, customer behavior, and promotional code effectiveness, helping SMEs make informed pricing and marketing decisions.<br><br><strong>My Approach:</strong> Collected and cleaned product sales data in Power BI, covering key essentials such as Detergent, Sugar, Tea Leaves, and Cooking Oil. Built an interactive dashboard with filters for Region and Customer Segment, and KPIs for price, units sold, and total revenue. Visualized price elasticity, promo impact, and customer contribution to uncover buying patterns.<br><br><strong>Key Insights:</strong><br>1️⃣ Middle-income customers contributed over 60% of total sales, showing strong engagement and brand loyalty.<br>2️⃣ Promo codes significantly boosted performance in Nairobi, indicating high responsiveness to discounts.<br>3️⃣ Essential goods like Tea Leaves and Tomato Paste led in total units sold, suggesting stable demand despite price variations.<br><br><strong>Impact:</strong> The dashboard empowers SMEs with a data-driven understanding of price-performance dynamics, guiding smarter decisions on pricing strategy, customer targeting, and promotion planning.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/Wb16uBQxeE?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
@@ -85,6 +85,21 @@
   ],
   "video": [
     "assets/projects/pricing sensitivity/pricesensititvity.mp4"
+  ]
+},
+        {
+  "serial": "Project 47",
+  "title": "Forex mirage",
+  "date": "2025-11-03",
+  "description": "<strong>Problem Statement:</strong> Retail FX traders are data‑blind: 78.9% lose, average monthly profit $39.88, and only ~22.7% survive. Analysis covers 1,000,000 traders from 2020–2024.<br><br><strong>Business Objective:</strong> Reveal true trader outcomes and systemic risks with a concise Power BI report to enable data‑driven decisions.<br><br><strong>My Approach:</strong> Analyze trader‑level P/L and deposits (2020–2024) across 1,000,000 traders; compute loss/survival rates, monthly profits, leverage distribution and broker concentration; surface flags for deposit‑driven growth and high‑leverage risk.<br><br><strong>Key Features:</strong> Yearly loss‑rate trend (2020–2024), net worth vs deposits flag, leverage distribution, survival pie, profit histogram, broker breakdown, and slicers for trader/account type.<br><br><strong>Impact:</strong> Forces objective assessment of trading performance. Presented by Deric Marungu — dericmarungu@gmail.com | +254791361365.<br><br>👉 <strong>Live report:</strong> <a href=\"https://app.powerbi.com/links/dpq9b3BkqS?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\">Open Report</a>",
+  "tools": "Power BI",
+  "projectLink": "downloads/forex mirage.pbix",
+  "liveLink": "https://app.powerbi.com/links/dpq9b3BkqS?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare",
+  "images": [
+    "assets/projects/cma/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/cma/forex mirage.mp4"
   ]
 },
   {
@@ -1127,21 +1142,7 @@
 
     ]
   },
-        {
-  "serial": "Project 53",
-  "title": "Forex mirage",
-  "date": "2025-11-03",
-  "description": "<strong>Problem Statement:</strong> Retail FX traders are data‑blind: 78.9% lose, average monthly profit $39.88, and only ~22.7% survive. Analysis covers 1,000,000 traders from 2020–2024.<br><br><strong>Business Objective:</strong> Reveal true trader outcomes and systemic risks with a concise Power BI report to enable data‑driven decisions.<br><br><strong>My Approach:</strong> Analyze trader‑level P/L and deposits (2020–2024) across 1,000,000 traders; compute loss/survival rates, monthly profits, leverage distribution and broker concentration; surface flags for deposit‑driven growth and high‑leverage risk.<br><br><strong>Key Features:</strong> Yearly loss‑rate trend (2020–2024), net worth vs deposits flag, leverage distribution, survival pie, profit histogram, broker breakdown, and slicers for trader/account type.<br><br><strong>Impact:</strong> Forces objective assessment of trading performance. Presented by Deric Marungu — dericmarungu@gmail.com | +254791361365.<br><br>👉 <strong>Live report:</strong> <a href=\"https://app.powerbi.com/links/dpq9b3BkqS?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\">Open Report</a>",
-  "tools": "Power BI",
-  "projectLink": "downloads/forex mirage.pbix",
-  "liveLink": "https://app.powerbi.com/links/dpq9b3BkqS?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare",
-  "images": [
-    "assets/projects/cma/dash.JPG"
-  ],
-  "video": [
-    "assets/projects/cma/forex mirage.mp4"
-  ]
-},
+
 
                                               {
     "serial": "Project 8.3",
