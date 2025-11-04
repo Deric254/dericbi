@@ -1,5 +1,21 @@
 [
 
+   {
+  "serial": "Project 54",
+  "title": "Meru county NG-CDF'S project tracking dashboard(demo)",
+  "date": "2025-11-04",
+  "description": "",
+  "tools": "Python",
+  "projectLink": "downloads/meru cdf.zip",
+  "liveLink": "",
+  "images": [
+    "assets/projects/meru/pg1.png",
+    "assets/projects/meru/pg2.png"
+  ],
+  "video": [
+    "assets/projects/meru/meru county.mp4"
+  ]
+},
          {
   "serial": "Project 53",
   "title": "NGO impact assessment and Tracking dashboard",
@@ -77,7 +93,7 @@
   "serial": "Project 48",
   "title": "Pricing Sensitivity Dashboard – SME Insights",
   "date": "2025-10-20",
-  "description": "<strong>Problem Statement:</strong> Small and medium enterprises (SMEs) lacks visibility into how pricing and promotions affected product sales across income segments and regions.<br><br><strong>Business Objective:</strong> Develop a Power BI dashboard to evaluate price sensitivity, customer behavior, and promotional code effectiveness, helping SMEs make informed pricing and marketing decisions.<br><br><strong>My Approach:</strong> Collected and cleaned product sales data in Power BI, covering key essentials such as Detergent, Sugar, Tea Leaves, and Cooking Oil. Built an interactive dashboard with filters for Region and Customer Segment, and KPIs for price, units sold, and total revenue. Visualized price elasticity, promo impact, and customer contribution to uncover buying patterns.<br><br><strong>Key Insights:</strong><br>1️⃣ Middle-income customers contributed over 60% of total sales, showing strong engagement and brand loyalty.<br>2️⃣ Promo codes significantly boosted performance in Nairobi, indicating high responsiveness to discounts.<br>3️⃣ Essential goods like Tea Leaves and Tomato Paste led in total units sold, suggesting stable demand despite price variations.<br><br><strong>Impact:</strong> The dashboard empowers SMEs with a data-driven understanding of price-performance dynamics, guiding smarter decisions on pricing strategy, customer targeting, and promotion planning.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/Wb16uBQxeE?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
+  "description": "<strong>Problem Statement:</strong> SMEs lack visibility into how pricing and promotions affect sales across segments and regions.<br><br><strong>Business Objective:</strong> Build a Power BI dashboard to measure price sensitivity and promo effectiveness for better pricing and marketing decisions.<br><br><strong>My Approach:</strong> Cleaned sales data and built an interactive dashboard with Region and Segment filters, plus KPIs for price, units, and revenue.<br><br><strong>Key Insights:</strong> Middle‑income customers drove ~60% of sales; promos lifted performance in Nairobi; essentials led unit sales.<br><br><strong>Impact:</strong> Enables SMEs to optimise pricing and promotions using clear, actionable metrics.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/Wb16uBQxeE?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\">🚀 Power BI Dashboard</a>",
   "tools": "Power BI",
   "projectLink": "downloads/pricing sensitivity.pbix",
   "images": [
