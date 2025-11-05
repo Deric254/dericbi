@@ -1,5 +1,20 @@
 [
 
+     {
+  "serial": "Project 55",
+  "title": "Presidential grade report",
+  "date": "2025-11-05",
+  "description": "",
+  "tools": "Python",
+  "projectLink": "downloads/pr report.zip",
+  "liveLink": "https://pr-dericbi.onrender.com",
+  "images": [
+    "assets/projects/pr report/dash.png"
+  ],
+  "video": [
+    "assets/projects/pr report/pr report.mp4"
+  ]
+},
    {
   "serial": "Project 54",
   "title": "Meru county NG-CDF'S project tracking dashboard(demo)",
