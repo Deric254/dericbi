@@ -4,7 +4,7 @@
   "serial": "Project 55",
   "title": "Presidential grade report",
   "date": "2025-11-05",
-  "description": "",
+  "description": "<strong>Problem Statement:</strong> Presidents require instant access to national economic indicators, GDPs, sectoral performance, and development metrics without relying on delayed briefings.<br><br><strong>Business Objective:</strong> Develop a dashboard providing a real-time overview of the country's economic and developmental landscape for informed decision-making.<br><br><strong>My Approach:</strong> Created a Python-based dashboard aggregating key national data, enabling at-a-glance visibility into economic trends and sectoral developments.<br><br><strong>Key Features:</strong><br>• National GDP tracking and trends<br>• Sectoral performance breakdowns<br>• Economic indicators and development metrics<br>• Real-time data visualization for quick insights<br><br><strong>Impact:</strong> Empowers presidential decision-making with live data, putting national development insights at hand.<br><br>👉 <strong>Live demo:</strong> <a href=\"https://pr-dericbi.onrender.com\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
   "tools": "Python",
   "projectLink": "downloads/pr report.zip",
   "liveLink": "https://pr-dericbi.onrender.com",
