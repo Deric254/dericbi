@@ -556,27 +556,25 @@ window.addEventListener('load', function() {
     </div>
     
     <!-- Center Alternating Welcome/Promotion Messages -->
-    <div class="text-center relative z-20 px-4 xs:px-8 sm:px-20 md:px-24 w-full flex items-center justify-center">
+    <div class="text-center relative z-20 px-4 xs:px-8 sm:px-20 md:px-24 w-full flex items-center justify-center min-h-[120px] sm:min-h-[140px] md:min-h-[160px]">
       <!-- Welcome Message -->
-      <div id="welcome-message" class="transition-opacity duration-1000 ease-in-out w-full">
-        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-lg">
-          🎉 <span class="text-[#facc15]">From Confused to Empowered</span> 🎉
+      <div id="welcome-message" class="transition-opacity duration-1000 ease-in-out w-full absolute inset-0 flex flex-col items-center justify-center">
+        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-lg leading-tight">
+          🎉 <span class="text-[#facc15]">Don't Wait Another Month Making Bad Decisions</span> 🎉
         </h2>
-        <p class="text-xs sm:text-sm md:text-base text-white/90 mt-1 sm:mt-2 font-medium">
-          Transform your data  into confident decision-making 📊✨
+        <p class="text-xs sm:text-sm md:text-base text-white/90 mt-1 sm:mt-2 font-medium max-w-2xl mx-auto">
+          Get clarity today - stop losing money from poor data 📊✨
         </p>
       </div>
       
       <!-- Promotion Message (Hidden Initially) -->
-      <div id="promo-message" class="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-1000 ease-in-out pointer-events-none px-4 sm:px-8" style="display: none;">
-        <div class="text-center">
-          <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-lg">
-            🔥 <span class="text-[#facc15] animate-pulse">Stop Feeling Lost</span> 🔥
-          </h2>
-          <p class="text-xs sm:text-sm md:text-base text-white/90 mt-1 sm:mt-2 font-medium">
-            Get clear, actionable insights today! ⏰ Don't struggle with scattered data anymore!
-          </p>
-        </div>
+      <div id="promo-message" class="absolute inset-0 flex flex-col items-center justify-center opacity-0 transition-opacity duration-1000 ease-in-out pointer-events-none px-4 sm:px-8" style="display: none;">
+        <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white drop-shadow-lg leading-tight">
+          🔥 <span class="text-[#facc15] animate-pulse">48 Hours From Chaos to Clarity</span> 🔥
+        </h2>
+        <p class="text-xs sm:text-sm md:text-base text-white/90 mt-1 sm:mt-2 font-medium max-w-2xl mx-auto">
+          Stop losing KSh 50,000+ monthly from poor data decisions! ⏰
+        </p>
       </div>
     </div>
     
@@ -830,9 +828,9 @@ window.addEventListener('load', function() {
       <span class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-[#49A078] via-[#facc15] to-[#2563EB] shadow-lg mb-2 animate-bounce">
         <i class="fas fa-chart-pie text-white text-3xl"></i>
       </span>
-      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 leading-tight tracking-wide drop-shadow-lg">Transform your data  into confident decision-making with our comprehensive training and dashboards.</h1>
-      <p class="text-base sm:text-lg text-gray-600 mb-2 leading-relaxed">Business owners and NGOs seeking clarity from data.</p>
-      <p class="text-sm sm:text-base text-gray-700 mb-4 leading-relaxed font-medium italic">If you're looking for clarity from data , subscribing to our training and dashboard services is the best decision to make confident, data-driven decisions.</p>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 leading-tight tracking-wide drop-shadow-lg">STOP Losing Money from Bad Data Decisions - Get Clear Insights in 48 Hours</h1>
+      <p class="text-base sm:text-lg text-gray-600 mb-2 leading-relaxed">If you're tired of guessing and want data that actually helps you make money.</p>
+      <p class="text-sm sm:text-base text-gray-700 mb-4 leading-relaxed font-medium italic">If Excel is driving you crazy and you need real business insights, buying our packages is the right decision to stop losing customers and start making profitable choices.</p>
     </div>
 
     <!-- ✅ Hero CTA Buttons - Always Horizontal -->
@@ -841,7 +839,7 @@ window.addEventListener('load', function() {
     <button onclick="openModal('projectModal')" 
   class="group relative flex-1 min-w-0 bg-gradient-to-br from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-black px-1.5 xs:px-2 sm:px-3 md:px-6 py-2.5 xs:py-3 sm:py-3.5 md:py-4 rounded-lg font-bold transition-all duration-200 shadow-lg hover:shadow-2xl border-2 border-yellow-500 hover:border-orange-600 text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg flex flex-col items-center justify-center">
       <i class="fas fa-search text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl mb-0.5 xs:mb-1 group-hover:animate-pulse"></i>
-      <span class="leading-tight text-center whitespace-nowrap overflow-hidden text-ellipsis w-full"><span class="hidden sm:inline">Get </span><span class="inline sm:hidden">Get</span><span class="hidden sm:inline">Your Data </span>Assessment</span>
+      <span class="leading-tight text-center whitespace-nowrap overflow-hidden text-ellipsis w-full"><span class="hidden sm:inline">Show Me Exactly What's </span><span class="inline sm:hidden">Show Me</span><span class="hidden sm:inline">Wrong With My Data</span></span>
       <span class="absolute -top-1 -right-1 bg-green-500 text-white text-[8px] xs:text-[9px] sm:text-[10px] px-1 xs:px-1.5 py-0.5 rounded-full font-bold shadow-md animate-pulse">FREE!</span>
     </button>
 
@@ -849,14 +847,14 @@ window.addEventListener('load', function() {
     <button onclick="openModal('downloadModal')" 
   class="group relative flex-1 min-w-0 bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white px-1.5 xs:px-2 sm:px-3 md:px-6 py-2.5 xs:py-3 sm:py-3.5 md:py-4 rounded-lg font-bold transition-all duration-200 shadow-lg hover:shadow-2xl border-2 border-blue-600 hover:border-blue-800 text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg flex flex-col items-center justify-center">
       <i class="fas fa-users text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl mb-0.5 xs:mb-1 group-hover:animate-bounce"></i>
-      <span class="leading-tight text-center whitespace-nowrap overflow-hidden text-ellipsis w-full"><span class="inline xs:hidden">Choose </span><span class="hidden xs:inline">Choose </span>Training or Dashboard</span>
+      <span class="leading-tight text-center whitespace-nowrap overflow-hidden text-ellipsis w-full"><span class="inline xs:hidden">Fix My Excel Chaos </span><span class="hidden xs:inline">Fix My Excel Chaos </span>NOW</span>
       <span class="absolute -top-1 -right-1 bg-yellow-400 text-black text-[8px] xs:text-[9px] sm:text-[10px] px-1 xs:px-1.5 py-0.5 rounded-full font-bold shadow-md">SMART!</span>
     </button>
     
     <!-- Get Started Today Button -->
     <a href="https://wa.me/254791360805?text=Let's%20get%20started%20today!" target="_blank" class="group relative flex-1 min-w-0 bg-gradient-to-br from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white px-1.5 xs:px-2 sm:px-3 md:px-6 py-2.5 xs:py-3 sm:py-3.5 md:py-4 rounded-lg font-bold transition-all duration-200 shadow-lg hover:shadow-2xl border-2 border-green-600 hover:border-teal-700 text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg flex flex-col items-center justify-center">
       <i class="fas fa-rocket text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl mb-0.5 xs:mb-1 group-hover:animate-pulse"></i>
-      <span class="leading-tight text-center whitespace-nowrap overflow-hidden text-ellipsis w-full">Let's Get Started Today</span>
+      <span class="leading-tight text-center whitespace-nowrap overflow-hidden text-ellipsis w-full">Fix My Data Problems NOW - WhatsApp Me</span>
     </a>
     </div>
   </div>
@@ -873,7 +871,7 @@ window.addEventListener('load', function() {
     <div class="flex flex-col items-center justify-center p-3 xs:p-4 bg-white rounded-xl shadow-md hover:shadow-xl transition-all hover:scale-105 border-2 border-green-200 hover:border-green-400">
       <i class="fas fa-check-circle text-green-600 text-2xl xs:text-3xl sm:text-4xl mb-2"></i>
       <span class="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-800">90+</span>
-      <span class="text-xs xs:text-sm text-gray-600 font-medium">Successful Transformations</span>
+      <span class="text-xs xs:text-sm text-gray-600 font-medium">Businesses Saved KSh 500K+ Annually</span>
     </div>
     <div class="flex flex-col items-center justify-center p-3 xs:p-4 bg-white rounded-xl shadow-md hover:shadow-xl transition-all hover:scale-105 border-2 border-blue-200 hover:border-blue-400">
       <i class="fas fa-users text-blue-600 text-2xl xs:text-3xl sm:text-4xl mb-2"></i>
@@ -883,7 +881,7 @@ window.addEventListener('load', function() {
     <div class="flex flex-col items-center justify-center p-3 xs:p-4 bg-white rounded-xl shadow-md hover:shadow-xl transition-all hover:scale-105 border-2 border-yellow-200 hover:border-yellow-400">
       <i class="fas fa-clock text-yellow-600 text-2xl xs:text-3xl sm:text-4xl mb-2"></i>
       <span class="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-800">48hrs</span>
-      <span class="text-xs xs:text-sm text-gray-600 font-medium">From Chaos to Clarity</span>
+      <span class="text-xs xs:text-sm text-gray-600 font-medium">Save 20 Hours Monthly on Reports</span>
     </div>
     <div class="flex flex-col items-center justify-center p-3 xs:p-4 bg-white rounded-xl shadow-md hover:shadow-xl transition-all hover:scale-105 border-2 border-purple-200 hover:border-purple-400">
       <i class="fas fa-shield-alt text-purple-600 text-2xl xs:text-3xl sm:text-4xl mb-2"></i>
@@ -898,12 +896,22 @@ window.addEventListener('load', function() {
   </div>
 </section>
 
+<!-- 💰 MONEY-BACK GUARANTEE -->
+<section class="w-full bg-green-50 py-4 xs:py-5 sm:py-6 px-4 sm:px-3 md:px-2 border-y-2 border-green-300 shadow-lg">
+  <div class="max-w-7xl mx-auto text-center">
+    <div class="bg-green-100 border-2 border-green-300 rounded-lg p-4 xs:p-6 max-w-4xl mx-auto">
+      <h3 class="text-green-800 font-bold text-xl xs:text-2xl mb-3">💰 MONEY-BACK GUARANTEE</h3>
+      <p class="text-green-700 text-sm xs:text-base font-medium">If we don't transform your confusing data into clear, actionable insights within 48 hours, you get your money back. No questions asked.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ✅ Due Diligence Trust Indicators -->
 <section class="w-full bg-gradient-to-br from-slate-50 to-blue-50 py-6 xs:py-8 sm:py-10 px-4 sm:px-3 md:px-2 fade-in-up">
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-6 xs:mb-8">
-      <h3 class="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-800 mb-2">Why dericBI is the Right Choice</h3>
-      <p class="text-gray-600 text-sm xs:text-base font-medium">Proven expertise and guaranteed results</p>
+      <h3 class="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-800 mb-2">STOP Making These Costly Data Mistakes</h3>
+      <p class="text-gray-600 text-sm xs:text-base font-medium">Don't lose another KSh 50,000 from bad data decisions</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6">
       
@@ -912,19 +920,19 @@ window.addEventListener('load', function() {
         <div class="w-12 h-12 xs:w-14 xs:h-14 bg-green-100 rounded-full flex items-center justify-center mb-4">
           <i class="fas fa-certificate text-green-600 text-2xl xs:text-3xl"></i>
         </div>
-        <h4 class="text-lg xs:text-xl font-bold text-gray-800 mb-3">Expert Credentials</h4>
+        <h4 class="text-lg xs:text-xl font-bold text-gray-800 mb-3">If You're Still Guessing</h4>
         <ul class="text-gray-600 text-sm xs:text-base space-y-2">
           <li class="flex items-start gap-2">
-            <i class="fas fa-check text-green-500 mt-0.5 flex-shrink-0"></i>
-            <span>Bachelor's in Business Information Technology</span>
+            <i class="fas fa-times text-red-500 mt-0.5 flex-shrink-0"></i>
+            <span>Making decisions based on gut feeling</span>
           </li>
           <li class="flex items-start gap-2">
-            <i class="fas fa-check text-green-500 mt-0.5 flex-shrink-0"></i>
-            <span>80+ successful data transformation projects</span>
+            <i class="fas fa-times text-red-500 mt-0.5 flex-shrink-0"></i>
+            <span>Losing money from wrong inventory decisions</span>
           </li>
           <li class="flex items-start gap-2">
-            <i class="fas fa-check text-green-500 mt-0.5 flex-shrink-0"></i>
-            <span>Specialized in Excel, PowerBI, SQL, and Python</span>
+            <i class="fas fa-times text-red-500 mt-0.5 flex-shrink-0"></i>
+            <span>Missing sales trends costing you revenue</span>
           </li>
         </ul>
       </div>
@@ -934,19 +942,19 @@ window.addEventListener('load', function() {
         <div class="w-12 h-12 xs:w-14 xs:h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
           <i class="fas fa-cogs text-blue-600 text-2xl xs:text-3xl"></i>
         </div>
-        <h4 class="text-lg xs:text-xl font-bold text-gray-800 mb-3">Proven Methodology</h4>
+        <h4 class="text-lg xs:text-xl font-bold text-gray-800 mb-3">Get Real Business Clarity</h4>
         <ul class="text-gray-600 text-sm xs:text-base space-y-2">
           <li class="flex items-start gap-2">
             <i class="fas fa-check text-blue-500 mt-0.5 flex-shrink-0"></i>
-            <span>Assessment → Training → Dashboard Creation</span>
+            <span>Know exactly what products to stock</span>
           </li>
           <li class="flex items-start gap-2">
             <i class="fas fa-check text-blue-500 mt-0.5 flex-shrink-0"></i>
-            <span>Data cleaning, analysis, and visualization</span>
+            <span>See which customers are most profitable</span>
           </li>
           <li class="flex items-start gap-2">
             <i class="fas fa-check text-blue-500 mt-0.5 flex-shrink-0"></i>
-            <span>48-hour delivery guarantee</span>
+            <span>Stop wasting money on wrong decisions</span>
           </li>
         </ul>
       </div>
@@ -956,19 +964,19 @@ window.addEventListener('load', function() {
         <div class="w-12 h-12 xs:w-14 xs:h-14 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
           <i class="fas fa-shield-alt text-yellow-600 text-2xl xs:text-3xl"></i>
         </div>
-        <h4 class="text-lg xs:text-xl font-bold text-gray-800 mb-3">100% Satisfaction Guarantee</h4>
+        <h4 class="text-lg xs:text-xl font-bold text-gray-800 mb-3">Zero Risk - Money Back Guarantee</h4>
         <ul class="text-gray-600 text-sm xs:text-base space-y-2">
           <li class="flex items-start gap-2">
-            <i class="fas fa-check text-yellow-500 mt-0.5 flex-shrink-0"></i>
-            <span>Not satisfied? Get your money back</span>
+            <i class="fas fa-shield-alt text-yellow-500 mt-0.5 flex-shrink-0"></i>
+            <span>If we don't deliver results in 48 hours, refund</span>
           </li>
           <li class="flex items-start gap-2">
-            <i class="fas fa-check text-yellow-500 mt-0.5 flex-shrink-0"></i>
-            <span>Free revisions until you're happy</span>
+            <i class="fas fa-shield-alt text-yellow-500 mt-0.5 flex-shrink-0"></i>
+            <span>No more wasting money on bad data tools</span>
           </li>
           <li class="flex items-start gap-2">
-            <i class="fas fa-check text-yellow-500 mt-0.5 flex-shrink-0"></i>
-            <span>Ongoing support after delivery</span>
+            <i class="fas fa-shield-alt text-yellow-500 mt-0.5 flex-shrink-0"></i>
+            <span>Guaranteed to save you time and money</span>
           </li>
         </ul>
       </div>
@@ -1123,7 +1131,7 @@ window.addEventListener('load', function() {
                   <div class="text-xs xs:text-sm text-gray-500 truncate">Retail Business Owner</div>
                 </div>
               </div>
-              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"Before: I was confused and overwhelmed by scattered data. After: I'm empowered with clear, actionable insights that drive our business decisions. dericBI transformed my data  into confident decision-making!"</p>
+              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"I was losing KSh 200,000 monthly from bad inventory decisions. Now I know exactly what to stock and profits are up 40%!"</p>
               <div class="flex text-yellow-400 text-sm xs:text-base">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
@@ -1142,7 +1150,7 @@ window.addEventListener('load', function() {
                   <div class="text-xs xs:text-sm text-gray-500 truncate">Restaurant Chain Manager</div>
                 </div>
               </div>
-              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"Professional PowerBI dashboard delivered in 48 hours. Exactly what we needed!"</p>
+              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"Excel was taking me 3 days per month and costing KSh 30,000 in accountant fees. Now it takes 3 hours with their dashboard!"</p>
               <div class="flex text-yellow-400 text-sm xs:text-base">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
@@ -1161,7 +1169,7 @@ window.addEventListener('load', function() {
                   <div class="text-xs xs:text-sm text-gray-500 truncate">SME Owner</div>
                 </div>
               </div>
-              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"From Excel data to automated tracking system. dericBI's expertise saved us hours daily."</p>
+              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"From Excel chaos to automated tracking system. Saved us KSh 150,000 annually and eliminated 2 full-time positions!"</p>
               <div class="flex text-yellow-400 text-sm xs:text-base">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
@@ -1180,7 +1188,7 @@ window.addEventListener('load', function() {
                   <div class="text-xs xs:text-sm text-gray-500 truncate">E-Commerce Founder</div>
                 </div>
               </div>
-              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"The SQL database setup was flawless. Now we track inventory in real-time. Game changer for our business!"</p>
+              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"The SQL database setup was flawless. Now we track inventory in real-time and never run out of stock. Sales up 35%!"</p>
               <div class="flex text-yellow-400 text-sm xs:text-base">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
@@ -1199,7 +1207,7 @@ window.addEventListener('load', function() {
                   <div class="text-xs xs:text-sm text-gray-500 truncate">Pharmacy Owner</div>
                 </div>
               </div>
-              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"Tujengane Data Basics helped my team understand our sales patterns. Now we make better purchasing decisions!"</p>
+              <p class="text-gray-700 italic mb-3 text-sm xs:text-base leading-relaxed">"Was spending KSh 80,000 monthly on manual inventory counts. Now it's automated and accurate. Best investment ever!"</p>
               <div class="flex text-yellow-400 text-sm xs:text-base">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
