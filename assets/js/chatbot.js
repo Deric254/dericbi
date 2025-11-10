@@ -54,6 +54,7 @@ class DAIChatbot {
     setInterval(() => {
       if (!this.isOpen) {
         this.considerProactiveSuggestion();
+        this.enhancedProactiveSuggestions(); // Add enhanced agentic suggestions
       }
     }, 60000); // Every minute
   }
@@ -224,21 +225,21 @@ class DAIChatbot {
       services: {
         patterns: ['price', 'cost', 'service', 'excel', 'data', 'analysis', 'dashboard', 'cleanup', 'quote', 'budget', 'rates', 'affordable', 'how much', 'pricing', 'fees', 'charges', 'what do you offer', 'your services', 'powerbi', 'power bi', 'setup', 'tracking', 'payment', 'pay', 'mpesa', 'crypto', 'paypal', 'till', 'hire', 'work with you', 'get your services', 'data cleaning', 'data processing', 'spreadsheet', 'database', 'reporting', 'visualization', 'charts', 'graphs', 'business intelligence', 'bi', 'analytics', 'insights', 'data science', 'statistics', 'consulting', 'consultant', 'expert', 'professional', 'specialist', 'data expert', 'excel expert', 'powerbi expert', 'data consultant', 'business analytics', 'data visualization', 'automated reports', 'custom dashboards', 'data transformation', 'data management', 'data organization', 'data quality', 'data validation', 'data integration', 'etl', 'data pipeline', 'data warehouse', 'data modeling', 'data mining', 'predictive analytics', 'machine learning', 'ai', 'artificial intelligence', 'data strategy', 'data governance', 'data architecture'],
         responses: {
-          'excel_cleanup': "✨ **Excel Cleanup Service**: We fix messy spreadsheets, remove duplicates, standardize formats, and make your data analysis-ready. This includes organizing data, creating automated formulas, and building summary dashboards. Perfect for businesses with chaotic data!",
-          'data_analysis': "📊 **Data Analysis**: We turn your raw data into actionable insights with statistical analysis, trend identification, and business recommendations. We find hidden patterns, identify profit opportunities, track key performance metrics, and generate actionable insights that drive business decisions.",
-          'dashboard': "📈 **Dashboard Creation**: Beautiful, interactive dashboards in Excel, PowerBI, or Python that help you monitor your business metrics in real-time. Features include real-time data visualization, interactive business reports, automated data updates, and mobile-friendly dashboards.",
-          'powerbi_dashboards': "💼 **PowerBI Dashboards**: Professional interactive dashboards with real-time data visualization, automated updates, and mobile compatibility. Perfect for executive reporting and business intelligence.",
-          'setup_services': "🔧 **Data Setup Services**: Don't have data yet? We set up tracking systems from scratch including sales tracking, inventory management, customer databases, and automated reporting systems.",
-          'process': "🚀 **Our Simple 4-Step Process**:\n\n1️⃣ **Send Data**: Upload your files or describe your needs\n2️⃣ **We Analyze**: Our experts clean and analyze your data\n3️⃣ **Get Results**: Receive clean data and actionable insights\n4️⃣ **Make Decisions**: Use data-driven insights to grow your business",
-          'pricing_structure': "💰 **Our Pricing Structure (Kenyan Shillings)**:\n\n• **Excel Cleanup**: KSh 2,600\n• **Data Analysis**: KSh 2,600\n• **PowerBI Dashboards**: KSh 2,600\n• **Custom Python Dashboards**: KSh 3,000\n• **Complete Package**: KSh 5,000 (Save KSh 600!)\n\n💡 **FREE Data Setup Consultation Available!**\n📞 Contact us for volume discounts and custom quotes.",
-          'value_proposition': "🎯 **Why Choose dericBI?**\n\n• **Stop Revenue Leaks**: Most businesses lose money through untracked decisions - we fix that\n• **Turn $1M into $10M**: Our analytics help clients achieve 10x growth\n• **40+ Successful Projects**: Proven track record across various industries\n• **Fast Turnaround**: Most projects completed within 3-7 days\n• **Affordable Rates**: Starting from KSh 2,600",
-          'contact_options': "📞 **Get Started Today**:\n\n• **WhatsApp**: +254791360805 (Fastest response)\n• **Email**: deric.analytics@gmail.com\n• **Have Data?** → https://forms.gle/krViHXVaJKP2JARZ7\n• **Need Setup?** → https://forms.gle/Uzq3L9wtm5yM6KEX7",
+          'excel_cleanup': "We specialize in transforming messy spreadsheets into clean, analysis-ready data! Our Excel cleanup service includes:\n\n🧹 Removing duplicates and fixing inconsistencies\n📐 Standardizing formats and layouts\n📊 Organizing data logically for better analysis\n⚡ Creating automated formulas and calculations\n📈 Building summary dashboards and reports\n\nPerfect for businesses struggling with chaotic data that costs time and money!",
+          'data_analysis': "We turn your raw data into actionable business insights! Our data analysis service covers:\n\n📈 Statistical analysis to understand your numbers\n🔍 Trend identification and pattern recognition\n💡 Business recommendations based on data\n🎯 Profit opportunity identification\n📊 Key performance metric tracking\n📋 Actionable insights that drive decisions\n\nWe find the hidden opportunities in your data that can transform your business!",
+          'dashboard': "Beautiful, interactive dashboards that bring your data to life! We create dashboards in Excel, PowerBI, or Python that include:\n\n📊 Real-time data visualization\n📱 Interactive business reports\n🔄 Automated data updates\n📱 Mobile-friendly designs\n🎨 Professional, easy-to-understand layouts\n\nMonitor your business metrics at a glance and make data-driven decisions instantly!",
+          'powerbi_dashboards': "Professional PowerBI dashboards that deliver enterprise-level business intelligence! These include:\n\n📊 Real-time data visualization\n🔄 Automated updates\n📱 Mobile compatibility\n🎯 Executive reporting capabilities\n🔗 Integration with multiple data sources\n📈 Advanced analytics and insights\n\nPerfect for serious business intelligence and executive decision-making!",
+          'setup_services': "Don't have data systems yet? We can set up complete tracking systems from scratch! This includes:\n\n📊 Sales tracking and monitoring\n📦 Inventory management systems\n👥 Customer database setup\n📋 Automated reporting systems\n🔄 Real-time data collection\n📈 Performance dashboards\n\nGet a complete data infrastructure that grows with your business!",
+          'process': "Our process is simple and straightforward - just 4 easy steps:\n\n1️⃣ Send Data - Upload your files or tell us what you need\n2️⃣ We Analyze - Our experts clean and analyze your data\n3️⃣ Get Results - Receive clean data and actionable insights\n4️⃣ Make Decisions - Use data-driven insights to grow your business\n\nMost projects are completed within 3-7 days, and we keep you updated throughout!",
+          'pricing_structure': "Our pricing is straightforward and affordable! All prices in Kenyan Shillings:\n\n🧹 Excel Cleanup - KSh 2,600\n📊 Data Analysis - KSh 2,600\n💼 PowerBI Dashboards - KSh 2,600\n🐍 Custom Python Dashboards - KSh 3,000\n📦 Complete Package - KSh 5,000 (Save KSh 600!)\n\n💡 FREE data setup consultation available!\n📞 Contact us for volume discounts and custom quotes.",
+          'value_proposition': "Here's why businesses choose dericBI for their data needs:\n\n🎯 Stop Revenue Leaks - Most businesses lose money through untracked decisions\n💰 Turn $1M into $10M - Our analytics help clients achieve 10x growth\n📊 40+ Successful Projects - Proven track record across industries\n⚡ Fast Turnaround - Most projects completed in 3-7 days\n💸 Affordable Rates - Starting from just KSh 2,600\n\nWe're not just service providers - we're your data transformation partners!",
+          'contact_options': "Ready to get started? Here are the best ways to reach us:\n\n📱 WhatsApp: +254791360805 (Fastest response - usually within minutes)\n📧 Email: deric.analytics@gmail.com\n📋 Have Data? Use our form: https://forms.gle/krViHXVaJKP2JARZ7\n🔧 Need Setup? Use our setup form: https://forms.gle/Uzq3L9wtm5yM6KEX7\n\nWe respond quickly and can start working on your project right away!",
 
           // Enhanced service knowledge
-          'service_benefits': "🎯 **Service Benefits**:\n\n• **Excel Cleanup**: Save 10+ hours/week on manual data work\n• **Data Analysis**: Uncover hidden opportunities worth thousands\n• **PowerBI Dashboards**: Real-time business monitoring\n• **Complete Setup**: Full data infrastructure in one package\n\nAll services include consultation and follow-up support!",
-          'service_guarantees': "🛡️ **Our Guarantees**:\n\n• **Quality Assurance**: All work reviewed by senior analysts\n• **Data Security**: Your data is encrypted and never shared\n• **Satisfaction Guarantee**: We'll fix any issues at no extra cost\n• **Confidentiality**: NDA available for sensitive projects\n• **Free Revisions**: Unlimited fixes within 30 days",
-          'industry_expertise': "🏭 **Industry Expertise**:\n\n• **Retail & E-commerce**: Sales analysis, inventory optimization\n• **Healthcare**: Patient data analysis, resource allocation\n• **Finance**: Risk assessment, portfolio analysis\n• **Education**: Student performance, enrollment trends\n• **Manufacturing**: Supply chain optimization, quality control\n• **Agriculture**: Crop yield analysis, market trends\n• **Real Estate**: Property valuation, market analysis\n• **Government**: Public data analysis, policy insights\n\n40+ projects across these sectors!",
-          'technical_capabilities': "⚡ **Technical Capabilities**:\n\n• **Data Sources**: Excel, CSV, SQL databases, APIs, Google Sheets\n• **Analysis Tools**: Python (Pandas, NumPy, Scikit-learn), SQL, Excel\n• **Visualization**: Power BI, Tableau, Python (Matplotlib, Seaborn, Plotly)\n• **Cloud Integration**: Google Drive, OneDrive, AWS, Azure\n• **Automation**: Scheduled reports, real-time dashboards\n• **Security**: Encrypted data handling, secure file transfers"
+          'service_benefits': "Our services deliver real, measurable benefits for your business:\n\n🧹 Excel Cleanup - Save 10+ hours per week on manual data work\n📊 Data Analysis - Uncover hidden opportunities worth thousands\n💼 PowerBI Dashboards - Real-time business monitoring and insights\n🔧 Complete Setup - Full data infrastructure in one comprehensive package\n\nEvery service includes consultation, implementation, and follow-up support!",
+          'service_guarantees': "We stand behind our work with strong guarantees:\n\n✅ Quality Assurance - All work reviewed by senior analysts\n🔒 Data Security - Your data is encrypted and never shared\n😊 Satisfaction Guarantee - We'll fix any issues at no extra cost\n🤐 Confidentiality - NDA available for sensitive projects\n🔄 Free Revisions - Unlimited fixes within 30 days\n\nYour success and security are our top priorities!",
+          'industry_expertise': "We have experience across many industries and sectors:\n\n🛒 Retail & E-commerce - Sales analysis and inventory optimization\n🏥 Healthcare - Patient data analysis and resource allocation\n💰 Finance - Risk assessment and portfolio analysis\n🎓 Education - Student performance and enrollment trends\n🏭 Manufacturing - Supply chain optimization and quality control\n🌾 Agriculture - Crop yield analysis and market trends\n🏠 Real Estate - Property valuation and market analysis\n🏛️ Government - Public data analysis and policy insights\n\nWith 40+ successful projects, we understand the unique challenges of each sector!",
+          'technical_capabilities': "Our technical toolkit covers everything you need:\n\n📊 Data Sources - Excel, CSV, SQL databases, APIs, Google Sheets\n🛠️ Analysis Tools - Python (Pandas, NumPy, Scikit-learn), SQL, Excel\n📈 Visualization - Power BI, Tableau, Python (Matplotlib, Seaborn, Plotly)\n☁️ Cloud Integration - Google Drive, OneDrive, AWS, Azure\n🔄 Automation - Scheduled reports and real-time dashboards\n🔒 Security - Encrypted data handling and secure file transfers\n\nWe use the best tools for each specific project to deliver optimal results!",
         }
       },
 
@@ -399,9 +400,9 @@ class DAIChatbot {
       education_learning: {
         patterns: ['learn', 'education', 'training', 'courses', 'classes', 'tutorials', 'teach', 'study', 'school', 'university', 'certification', 'skills', 'knowledge', 'expertise', 'development', 'growth', 'improvement', 'advancement', 'career', 'professional development', 'skill building', 'capacity building', 'knowledge transfer', 'mentoring', 'coaching', 'guidance', 'instruction', 'curriculum', 'syllabus', 'learning path', 'roadmap'],
         responses: {
-          'learning_opportunities': "🎓 **Learning Opportunities**:\n\n• **Tujengane Data Basics**: FREE data literacy program\n• **Digital Literacy**: $10/module computer skills\n• **Analyst Pro**: $10/module advanced analytics\n• **Custom Training**: Tailored corporate programs\n• **One-on-One Coaching**: Personalized mentoring\n• **Group Workshops**: Interactive learning sessions\n• **Certification Programs**: Industry-recognized credentials\n• **Career Support**: Job placement and resume enhancement\n\nBuild your data analytics career with us!",
-          'skill_development': "🚀 **Skill Development Path**:\n\n**Level 1 - Foundations**:\n• Data collection and cleaning\n• Basic Excel and spreadsheets\n• Introduction to databases\n\n**Level 2 - Intermediate**:\n• Statistical analysis\n• Data visualization\n• Basic SQL queries\n\n**Level 3 - Advanced**:\n• Python programming\n• Machine learning basics\n• Advanced dashboard creation\n\n**Level 4 - Expert**:\n• Big data analytics\n• Predictive modeling\n• Enterprise solutions\n\nWe guide you through every level!",
-          'career_support': "💼 **Career Support**:\n\n• **Job Placement**: Connect with data analytics roles\n• **Portfolio Building**: Professional project examples\n• **Resume Enhancement**: Highlight your new skills\n• **Interview Preparation**: Technical and behavioral coaching\n• **Networking**: Connect with industry professionals\n• **Certification**: Recognized qualifications\n• **Mentorship**: Ongoing guidance and support\n\nFrom beginner to data professional in months!"
+          'learning_opportunities': "Great question! We offer several learning programs to help you build your data analytics skills. Here's what we have available:\n\n📚 Tujengane Data Basics - Our free introductory program for data literacy\n💻 Digital Literacy - $10 per module for essential computer skills\n📊 Analyst Pro - $10 per module for advanced analytics techniques\n🎯 Custom Training - Tailored programs for your organization's specific needs\n👨‍🏫 One-on-One Coaching - Personalized mentoring sessions\n👥 Group Workshops - Interactive learning in small groups\n📜 Certification Programs - Industry-recognized credentials\n💼 Career Support - Job placement assistance and resume building\n\nWhether you're just starting out or looking to advance your career, we can guide you every step of the way!",
+          'skill_development': "We have a structured learning path that takes you from beginner to expert. Here's how we break it down:\n\n🌱 Level 1 - Foundations\n   • Data collection and cleaning basics\n   • Essential Excel and spreadsheet skills\n   • Introduction to database concepts\n\n📈 Level 2 - Intermediate\n   • Statistical analysis techniques\n   • Data visualization principles\n   • Basic SQL query writing\n\n🚀 Level 3 - Advanced\n   • Python programming for data analysis\n   • Machine learning fundamentals\n   • Advanced dashboard creation\n\n⭐ Level 4 - Expert\n   • Big data analytics strategies\n   • Predictive modeling techniques\n   • Enterprise-level solutions\n\nWe provide personalized guidance and hands-on projects at each level to ensure you build real-world skills!",
+          'career_support': "Beyond just teaching skills, we help you build a successful career in data analytics. Our comprehensive support includes:\n\n🎯 Job Placement - We connect you with relevant data analytics positions\n📁 Portfolio Building - Help you create professional project showcases\n📄 Resume Enhancement - Optimize your resume to highlight your new skills\n💬 Interview Preparation - Practice both technical and behavioral interviews\n🤝 Networking - Connect you with industry professionals and mentors\n📜 Certification - Guide you through recognized qualifications\n👨‍🏫 Mentorship - Ongoing guidance and career advice\n\nMany of our students land their dream jobs within months of completing our programs!",
         }
       },
 
@@ -409,9 +410,9 @@ class DAIChatbot {
       technical_specs: {
         patterns: ['specifications', 'specs', 'capabilities', 'limits', 'maximum', 'capacity', 'scale', 'performance', 'speed', 'efficiency', 'requirements', 'prerequisites', 'compatibility', 'supported', 'formats', 'file types', 'data types', 'volume', 'size', 'dimensions', 'constraints', 'limitations', 'boundaries', 'thresholds', 'benchmarks', 'standards', 'protocols', 'integrations', 'connectors', 'apis', 'endpoints'],
         responses: {
-          'data_limits': "📏 **Data Processing Limits**:\n\n• **Excel Files**: Up to 1M rows, 16K columns\n• **CSV Files**: Unlimited rows (memory dependent)\n• **Database Tables**: Millions of records\n• **API Data**: Rate-limited by source (we optimize)\n• **File Size**: Up to 500MB per file\n• **Concurrent Projects**: Up to 5 simultaneous\n• **Storage**: Unlimited cloud storage included\n• **Backup**: Automatic daily backups\n\nContact us for enterprise-scale solutions!",
-          'system_requirements': "💻 **System Requirements**:\n\n**For Our Services**:\n• Any modern computer with internet\n• No special software required\n• We handle all processing in the cloud\n\n**For Downloads**:\n• Excel: 2010 or later recommended\n• Power BI: Free desktop version available\n• Python: Anaconda distribution (if running locally)\n\n**For Education Programs**:\n• WhatsApp access for group learning\n• Computer with internet connection\n• No prior experience required",
-          'integration_capabilities': "🔗 **Integration Capabilities**:\n\n• **Cloud Storage**: Google Drive, OneDrive, Dropbox\n• **Databases**: MySQL, PostgreSQL, SQL Server, SQLite\n• **APIs**: REST, GraphQL, SOAP endpoints\n• **Business Systems**: ERP, CRM, POS integrations\n• **Cloud Platforms**: AWS, Azure, Google Cloud\n• **Communication**: Slack, Teams, WhatsApp automation\n• **Reporting**: Scheduled email/PDF reports\n• **Alerts**: Real-time notification systems\n\nWe connect your data wherever it lives!"
+          'data_limits': "We can handle large datasets efficiently! Here's what we typically work with:\n\n📊 Excel Files - Up to 1 million rows and 16,000 columns\n📄 CSV Files - Unlimited rows (limited by your computer's memory)\n🗄️ Database Tables - Millions of records across various database types\n🔌 API Data - Whatever the source allows (we optimize for rate limits)\n💾 File Size - Up to 500MB per individual file\n⚡ Concurrent Projects - Up to 5 projects running simultaneously\n☁️ Storage - Unlimited cloud storage for your processed data\n🔄 Backup - Automatic daily backups of all your work\n\nFor enterprise-scale needs beyond these limits, we can discuss custom solutions!",
+          'system_requirements': "Don't worry about technical requirements - we've made it simple! Here's what you need:\n\n💻 For Our Services:\n   • Any modern computer with internet access\n   • No special software installation required\n   • We handle all the heavy processing in the cloud\n\n📥 For Downloads:\n   • Excel 2010 or later (recommended for best experience)\n   • Power BI Desktop (free download available)\n   • Python with Anaconda (only if you want to run code locally)\n\n🎓 For Education Programs:\n   • WhatsApp access for group learning sessions\n   • Basic computer with internet connection\n   • Zero prior experience needed - we teach everything!\n\nEverything is designed to work on your existing setup!",
+          'integration_capabilities': "We connect your data wherever it lives! Our integration capabilities include:\n\n☁️ Cloud Storage - Google Drive, OneDrive, Dropbox\n🗄️ Databases - MySQL, PostgreSQL, SQL Server, SQLite\n🔌 APIs - REST, GraphQL, SOAP endpoints\n🏢 Business Systems - ERP, CRM, POS integrations\n🌐 Cloud Platforms - AWS, Azure, Google Cloud\n💬 Communication - Slack, Teams, WhatsApp automation\n📧 Reporting - Scheduled email and PDF reports\n🚨 Alerts - Real-time notification systems\n\nNo matter where your data is stored, we can access it and turn it into insights!",
         }
       },
 
@@ -419,9 +420,9 @@ class DAIChatbot {
       global_presence: {
         patterns: ['global', 'international', 'worldwide', 'international clients', 'countries', 'regions', 'overseas', 'foreign', 'abroad', 'remote', 'distance', 'time zones', 'languages', 'currency', 'payment methods', 'shipping', 'delivery', 'logistics', 'international business', 'cross border', 'multinational', 'global market', 'world economy', 'international trade'],
         responses: {
-          'international_clients': "🌍 **International Client Base**:\n\n• **East Africa**: Kenya, Tanzania, Uganda (primary market)\n• **West Africa**: Nigeria, Ghana (growing presence)\n• **Southern Africa**: South Africa, Botswana\n• **Europe**: UK, Germany, Netherlands\n• **North America**: USA, Canada\n• **Middle East**: UAE, Saudi Arabia\n• **Asia**: India, Singapore\n\nServing clients in 15+ countries across 4 continents!",
-          'remote_work': "🏠 **Remote Work Excellence**:\n\n• **Time Zone Flexibility**: 24/7 availability across time zones\n• **Cloud Collaboration**: Real-time project sharing\n• **Secure Communication**: Encrypted video calls and chats\n• **Digital Delivery**: Instant file sharing and downloads\n• **Global Payments**: Multiple currency and payment options\n• **Cultural Adaptation**: Understanding local business contexts\n• **Language Support**: English primary, multilingual team\n• **Quality Assurance**: Same standards worldwide\n\nDistance is no barrier to quality service!",
-          'payment_international': "💰 **International Payment Options**:\n\n• **Cryptocurrency**: USDT, BTC, ETH, BNB (fastest)\n• **PayPal**: For international clients\n• **Wire Transfer**: Bank-to-bank for large projects\n• **Western Union**: Cash pickup worldwide\n• **Mobile Money**: M-Pesa, Airtel Money\n• **Local Banking**: Country-specific options\n• **Currency**: USD, EUR, GBP, KES, and more\n\nNo payment method too obscure for us!"
+          'international_clients': "We're proud to serve clients around the world! Our international presence spans:\n\n🌍 East Africa - Kenya, Tanzania, Uganda (our primary market)\n🌍 West Africa - Nigeria, Ghana (rapidly growing)\n🌍 Southern Africa - South Africa, Botswana\n🌍 Europe - UK, Germany, Netherlands\n🌍 North America - USA, Canada\n🌍 Middle East - UAE, Saudi Arabia\n🌍 Asia - India, Singapore\n\nThat's clients in over 15 countries across 4 continents! We understand different business cultures and can adapt our services accordingly.",
+          'remote_work': "Distance is never a barrier with our remote work approach! We excel at serving clients worldwide through:\n\n🕐 Time Zone Flexibility - 24/7 availability across all time zones\n☁️ Cloud Collaboration - Real-time project sharing and updates\n🔒 Secure Communication - Encrypted video calls and messaging\n📤 Digital Delivery - Instant file sharing and downloads\n💳 Global Payments - Multiple currency and payment options\n🌐 Cultural Adaptation - Understanding local business contexts\n🗣️ Language Support - English as primary, with multilingual team\n✅ Quality Assurance - Same high standards everywhere\n\nWhether you're next door or across the ocean, you get the same exceptional service!",
+          'payment_international': "We make international payments simple and flexible! Here are your options:\n\n₿ Cryptocurrency - USDT, BTC, ETH, BNB (fastest processing)\n💳 PayPal - Perfect for international clients\n🏦 Wire Transfer - Bank-to-bank for large enterprise projects\n🌐 Western Union - Cash pickup worldwide\n📱 Mobile Money - M-Pesa, Airtel Money\n🏪 Local Banking - Country-specific banking options\n💱 Currencies - USD, EUR, GBP, KES, and many more\n\nNo matter where you are, we have a payment method that works for you!",
         }
       }
     };
@@ -640,6 +641,50 @@ class DAIChatbot {
           transform: scale(1.05);
         }
         
+        /* Agentic Action Button Styles */
+        .action-buttons-container {
+          display: flex;
+          gap: 8px;
+          margin-top: 12px;
+          flex-wrap: wrap;
+        }
+        
+        .action-button {
+          padding: 8px 12px;
+          border: none;
+          border-radius: 6px;
+          font-size: 12px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          text-align: center;
+          min-width: 80px;
+        }
+        
+        .confirm-button {
+          background: linear-gradient(135deg, #10b981, #059669);
+          color: white;
+          box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+        
+        .confirm-button:hover {
+          background: linear-gradient(135deg, #059669, #047857);
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+        }
+        
+        .cancel-button {
+          background: linear-gradient(135deg, #ef4444, #dc2626);
+          color: white;
+          box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+        
+        .cancel-button:hover {
+          background: linear-gradient(135deg, #dc2626, #b91c1c);
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+        }
+        
         /* Message animation */
         .bot-message, .user-message {
           animation: messageSlideIn 0.3s ease-out;
@@ -816,6 +861,11 @@ class DAIChatbot {
     
     // Add user message to chat
     this.addMessage(message, 'user');
+    
+    // Check for agentic actions first (automatic navigation/downloads)
+    if (this.detectAndOfferActions(message)) {
+      return; // Don't process further if agentic action was offered
+    }
     
     // Show typing indicator
     this.showTypingIndicator();
@@ -1647,6 +1697,176 @@ class DAIChatbot {
     button.textContent = buttonText;
     button.onclick = () => window.location.href = url;
     return button;
+  }
+
+  // Enhanced Agentic Capabilities - Automatic Actions
+  performAutomaticNavigation(url, pageName, reason = '') {
+    const confirmationMessage = `🤖 **DAI Agentic Action**: I can automatically take you to the ${pageName} page${reason ? ` ${reason}` : ''}. Would you like me to navigate there now?`;
+
+    this.addMessage(confirmationMessage, 'bot', () => {
+      // Create action buttons for user choice
+      const container = document.createElement('div');
+      container.className = 'action-buttons-container';
+
+      const yesButton = document.createElement('button');
+      yesButton.className = 'action-button confirm-button';
+      yesButton.innerHTML = '✅ Yes, take me there';
+      yesButton.onclick = () => {
+        this.addMessage(`🚀 **Navigating to ${pageName}...**`, 'bot');
+        setTimeout(() => {
+          window.location.href = url;
+        }, 1000);
+      };
+
+      const noButton = document.createElement('button');
+      noButton.className = 'action-button cancel-button';
+      noButton.innerHTML = '❌ No, thanks';
+      noButton.onclick = () => {
+        this.addMessage(`👍 No problem! I won't navigate automatically. You can still click the buttons above if you change your mind.`, 'bot');
+      };
+
+      container.appendChild(yesButton);
+      container.appendChild(noButton);
+
+      // Add the buttons to the last message
+      const lastMessage = document.querySelector('.chat-messages .message:last-child .message-content');
+      if (lastMessage) {
+        lastMessage.appendChild(container);
+      }
+    });
+  }
+
+  performAutomaticDownload(projectName, downloadUrl, fileType = 'project') {
+    const confirmationMessage = `🤖 **DAI Agentic Action**: I can automatically download the ${fileType} "${projectName}" for you. This will start the download immediately. Would you like me to proceed?`;
+
+    this.addMessage(confirmationMessage, 'bot', () => {
+      // Create action buttons for user choice
+      const container = document.createElement('div');
+      container.className = 'action-buttons-container';
+
+      const yesButton = document.createElement('button');
+      yesButton.className = 'action-button confirm-button';
+      yesButton.innerHTML = '✅ Yes, download it';
+      yesButton.onclick = () => {
+        this.addMessage(`⬇️ **Starting download of "${projectName}"...**`, 'bot');
+
+        // Create a temporary link and trigger download
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = projectName;
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        setTimeout(() => {
+          this.addMessage(`✅ **Download completed!** The ${fileType} "${projectName}" should now be in your downloads folder.`, 'bot');
+        }, 1500);
+      };
+
+      const noButton = document.createElement('button');
+      noButton.className = 'action-button cancel-button';
+      noButton.innerHTML = '❌ No, thanks';
+      noButton.onclick = () => {
+        this.addMessage(`👍 No problem! I won't download automatically. You can still download manually from the Projects page.`, 'bot');
+      };
+
+      container.appendChild(yesButton);
+      container.appendChild(noButton);
+
+      // Add the buttons to the last message
+      const lastMessage = document.querySelector('.chat-messages .message:last-child .message-content');
+      if (lastMessage) {
+        lastMessage.appendChild(container);
+      }
+    });
+  }
+
+  // Enhanced Agentic Behavior - Detect and Offer Actions
+  detectAndOfferActions(userMessage) {
+    const message = userMessage.toLowerCase();
+
+    // Navigation intents
+    if (message.includes('take me to') || message.includes('go to') || message.includes('navigate to') || message.includes('show me')) {
+      if (message.includes('project') || message.includes('portfolio') || message.includes('work')) {
+        this.performAutomaticNavigation('my-projects.html', 'Projects', 'to explore our portfolio');
+        return true;
+      }
+      if (message.includes('service') || message.includes('pricing') || message.includes('cost')) {
+        this.performAutomaticNavigation('services.html', 'Services', 'to see our offerings and pricing');
+        return true;
+      }
+      if (message.includes('contact') || message.includes('reach') || message.includes('talk')) {
+        this.performAutomaticNavigation('contact.html', 'Contact', 'to get in touch with us');
+        return true;
+      }
+      if (message.includes('about') || message.includes('team') || message.includes('deric')) {
+        this.performAutomaticNavigation('about.html', 'About', 'to learn about our team');
+        return true;
+      }
+    }
+
+    // Download intents
+    if (message.includes('download') || message.includes('get file') || message.includes('save project')) {
+      // Try to find a matching project from the loaded data
+      if (this.projectsData && this.projectsData.length > 0) {
+        const projectKeywords = message.split(' ').filter(word =>
+          word.length > 2 && !['download', 'get', 'file', 'save', 'project', 'the', 'and', 'for', 'with'].includes(word)
+        );
+
+        for (const project of this.projectsData) {
+          const projectTitle = project.title?.toLowerCase() || '';
+          const projectDescription = project.description?.toLowerCase() || '';
+
+          if (projectKeywords.some(keyword =>
+            projectTitle.includes(keyword) || projectDescription.includes(keyword)
+          )) {
+            // Found a matching project - offer to download it
+            this.performAutomaticDownload(
+              project.title || 'Project',
+              project.downloadUrl || '#',
+              'project files'
+            );
+            return true;
+          }
+        }
+      }
+    }
+
+    return false;
+  }
+
+  // Enhanced Proactive Suggestions with Automatic Actions
+  enhancedProactiveSuggestions() {
+    const timeOnPage = Date.now() - this.userSession.currentTime.getTime();
+    const context = this.userContext;
+
+    // Offer automatic actions based on context and time
+    if (timeOnPage > 15000 && timeOnPage < 30000) { // Between 15-30 seconds
+      const actionSuggestions = {
+        'homepage': () => this.performAutomaticNavigation('my-projects.html', 'Projects', 'to see our amazing work'),
+        'services': () => this.performAutomaticNavigation('contact.html', 'Contact', 'to discuss your project needs'),
+        'projects': () => {
+          // Offer to download a featured project
+          if (this.projectsData && this.projectsData.length > 0) {
+            const featuredProject = this.projectsData[0]; // First project as featured
+            this.performAutomaticDownload(
+              featuredProject.title || 'Featured Project',
+              featuredProject.downloadUrl || '#',
+              'featured project'
+            );
+          }
+        }
+      };
+
+      if (actionSuggestions[context]) {
+        setTimeout(() => {
+          if (!this.isOpen) {
+            actionSuggestions[context]();
+          }
+        }, Math.random() * 5000 + 2000); // Random delay between 2-7 seconds
+      }
+    }
   }
 
   suggestHumanContact() {
