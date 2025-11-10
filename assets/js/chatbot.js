@@ -173,7 +173,7 @@ class DAIChatbot {
     const contexts = {
       'index.html': 'homepage',
       'services.html': 'services',
-      'My-projects.html': 'projects',
+      'my-projects.html': 'projects',
       'contact.html': 'contact',
       'about.html': 'about',
       'terms.html': 'terms'
@@ -191,7 +191,7 @@ class DAIChatbot {
         responses: {
           'projects': {
             text: "🎯 You can find our projects on the **Projects** page! Click the 'Projects' link in the navigation menu or",
-            action: () => this.suggestNavigation('My-projects.html', 'View Projects')
+            action: () => this.suggestNavigation('my-projects.html', 'View Projects')
           },
           'services': {
             text: "💼 Our services are detailed on the **Services** page. We offer Excel cleanup, data analysis, dashboard creation, and more! The page explains how we help businesses stop leaking profits through better data management.",
@@ -203,7 +203,7 @@ class DAIChatbot {
           },
           'download': {
             text: "📁 You can download project files from the **Projects** page. Each project has download options for individual images or complete project files.",
-            action: () => this.suggestNavigation('My-projects.html', 'Go to Downloads')
+            action: () => this.suggestNavigation('my-projects.html', 'Go to Downloads')
           },
           'about': {
             text: "👨‍💻 Learn more about us on the **About** page, including our founder and CEO Deric Marangu, his background in Business Information Technology, and our mission to turn data chaos into clarity.",
@@ -230,8 +230,8 @@ class DAIChatbot {
           'powerbi_dashboards': "💼 **PowerBI Dashboards**: Professional interactive dashboards with real-time data visualization, automated updates, and mobile compatibility. Perfect for executive reporting and business intelligence.",
           'setup_services': "🔧 **Data Setup Services**: Don't have data yet? We set up tracking systems from scratch including sales tracking, inventory management, customer databases, and automated reporting systems.",
           'process': "🚀 **Our Simple 4-Step Process**:\n\n1️⃣ **Send Data**: Upload your files or describe your needs\n2️⃣ **We Analyze**: Our experts clean and analyze your data\n3️⃣ **Get Results**: Receive clean data and actionable insights\n4️⃣ **Make Decisions**: Use data-driven insights to grow your business",
-          'pricing_structure': "💰 **Our Pricing Structure**:\n\n• **Excel Cleanup**: $15-50 (depending on complexity)\n• **Data Analysis**: $50-100 (based on dataset size and depth)\n• **PowerBI Dashboards**: $100-200 (interactive dashboards)\n• **Complete Setup**: $500 (full system implementation)\n\n💡 **Volume Discounts Available!** Contact us for custom quotes.",
-          'value_proposition': "🎯 **Why Choose dericBI?**\n\n• **Stop Revenue Leaks**: Most businesses lose money through untracked decisions - we fix that\n• **Turn $1M into $10M**: Our analytics help clients achieve 10x growth\n• **40+ Successful Projects**: Proven track record across various industries\n• **Fast Turnaround**: Most projects completed within 3-7 days\n• **Affordable Rates**: Starting from $15",
+          'pricing_structure': "💰 **Our Pricing Structure (Kenyan Shillings)**:\n\n• **Excel Cleanup**: KSh 2,600\n• **Data Analysis**: KSh 2,600\n• **PowerBI Dashboards**: KSh 2,600\n• **Custom Python Dashboards**: KSh 3,000\n• **Complete Package**: KSh 5,000 (Save KSh 600!)\n\n💡 **FREE Data Setup Consultation Available!**\n📞 Contact us for volume discounts and custom quotes.",
+          'value_proposition': "🎯 **Why Choose dericBI?**\n\n• **Stop Revenue Leaks**: Most businesses lose money through untracked decisions - we fix that\n• **Turn $1M into $10M**: Our analytics help clients achieve 10x growth\n• **40+ Successful Projects**: Proven track record across various industries\n• **Fast Turnaround**: Most projects completed within 3-7 days\n• **Affordable Rates**: Starting from KSh 2,600",
           'contact_options': "📞 **Get Started Today**:\n\n• **WhatsApp**: +254791360805 (Fastest response)\n• **Email**: deric.analytics@gmail.com\n• **Have Data?** → https://forms.gle/krViHXVaJKP2JARZ7\n• **Need Setup?** → https://forms.gle/Uzq3L9wtm5yM6KEX7",
 
           // Enhanced service knowledge
@@ -260,11 +260,11 @@ class DAIChatbot {
           'about_dericbi': "🏢 **About dericBI**: We're a Kenyan data analytics company founded by our CEO Deric Marangu. We specialize in making messy data beautiful and actionable. Our mission is to empower businesses with clear insights. Check the About page for more.",
           'experience': "👨‍💼 **Our Experience**: 40+ completed projects across various industries. We've helped businesses clean Excel files, create dashboards, and gain insights from their data. Our CEO Deric Marangu leads with years of expertise in data analysis and dashboard creation.",
           'location': "📍 **Location**: We're based in Kenya but serve clients globally. All consultations and project deliveries can be done remotely. Contact us anytime!",
-          'founder': "👨‍💻 **Founder and CEO**: Deric Marangu - Experienced data analyst passionate about turning data chaos into clarity. Born June 11, 2001, in Meru, Kenya. Bachelor's in Business Information Technology from Kirinyaga University (expected 2025). Skilled in SQL, Python, Power BI, Excel. Check his portfolio and credentials on the About page!",
+          'founder': "👨‍💻 **Founder and CEO**: Deric Marangu - Experienced data analyst passionate about turning data chaos into clarity. Born June 11, 2001, in Meru, Kenya. Bachelor's in Business Information Technology from Kirinyaga University (2025). Skilled in SQL, Python, Power BI, Excel. Check his portfolio and credentials on the About page!",
           'mission_values': "🎯 **Our Mission & Values**:\n\n**Mission**: Transform data chaos into business clarity and growth\n**Vision**: Become Kenya's #1 data analytics partner\n\n**Values**:\n• **Excellence**: Highest quality in every deliverable\n• **Innovation**: Cutting-edge solutions for modern problems\n• **Integrity**: Honest, transparent business practices\n• **Empowerment**: Teaching clients to understand their data\n• **Accessibility**: Making data analytics affordable for all businesses",
-          'company_history': "📈 **Company History**:\n\n• **2023**: Founded by Deric Marangu in Meru, Kenya\n• **2024**: Completed first 20+ projects, established reputation\n• **2025**: Launched Tujengane education programs, expanded services\n• **Present**: 40+ successful projects, growing client base\n\nFrom student projects to enterprise solutions, we've grown through consistent quality and client satisfaction.",
+          'company_history': "📈 **Company History**:\n\n• **2023**: Founded by Deric Marangu in Meru, Kenya\n• **2024**: Completed first 20+ projects, established reputation\n• **2025**: Launched Tujengane education programs, expanded services, reached 40+ successful projects\n• **Present**: Growing client base, expanding educational initiatives\n\nFrom student projects to enterprise solutions, we've grown through consistent quality and client satisfaction.",
           'success_stories': "🏆 **Success Stories**:\n\n• **Retail Client**: Increased sales by 35% through inventory optimization\n• **Healthcare Provider**: Reduced patient wait times by 40% with resource allocation analytics\n• **E-commerce Business**: Improved conversion rates by 25% with customer behavior insights\n• **Manufacturing Firm**: Cut operational costs by 30% through supply chain analysis\n• **Educational Institution**: Enhanced student performance tracking and intervention strategies\n\nThese are just a few examples from our portfolio!",
-          'market_position': "🌍 **Market Position**:\n\n• **Kenya's Leading Data Analytics Firm**: #1 in Nairobi region\n• **40+ Successful Projects**: Proven track record\n• **Multi-Industry Expertise**: Retail, healthcare, finance, education\n• **Affordable Pricing**: Starting at $15 vs industry average $500+\n• **Fast Delivery**: 3-7 day turnaround vs industry 2-4 weeks\n• **Client Satisfaction**: 98% repeat business rate\n• **Innovation Leader**: First in Kenya to offer integrated education + consulting",
+          'market_position': "🌍 **Market Position**:\n\n• **Kenya's Leading Data Analytics Firm**: #1 in Nairobi region\n• **40+ Successful Projects**: Proven track record\n• **Multi-Industry Expertise**: Retail, healthcare, finance, education\n• **Affordable Pricing**: Starting at KSh 2,600 vs industry average KSh 50,000+\n• **Fast Delivery**: 3-7 day turnaround vs industry 2-4 weeks\n• **Client Satisfaction**: 98% repeat business rate\n• **Innovation Leader**: First in Kenya to offer integrated education + consulting",
           'future_plans': "🚀 **Future Plans**:\n\n• **AI Integration**: Machine learning capabilities for predictive analytics\n• **Platform Development**: Launch of dericBI Analytics Platform\n• **Global Expansion**: International client acquisition\n• **Education Scaling**: Tujengane program expansion to 1000+ students\n• **Partnerships**: Strategic alliances with tech companies\n• **Certification**: Industry-recognized data analytics certifications\n\nWe're building the future of data analytics in Africa!"
         }
       },
@@ -1053,7 +1053,7 @@ class DAIChatbot {
       this.conversationContext.awaitingFollowup = true;
       this.conversationContext.contextData = { pricingQuery: true };
       return {
-        text: "💰 **Our Service Pricing**:\n\n• **Excel Cleanup**: $15-50\n• **Data Analysis**: $50-100\n• **PowerBI Dashboards**: $100-200\n• **Complete Setup**: $500\n\nPrices vary based on complexity and data size.",
+        text: "💰 **Our Service Pricing**:\n\n• **Excel Cleanup**: KSh 2,600\n• **Data Analysis**: KSh 2,600\n• **PowerBI Dashboards**: KSh 2,600\n• **Custom Python Dashboards**: KSh 3,000\n• **Complete Package**: KSh 5,000\n\nPrices in Kenyan Shillings. Contact us for volume discounts!",
         action: null,
         followUp: "Would you like a personalized quote for your specific needs? I can connect you with our team!"
       };
@@ -1069,7 +1069,7 @@ class DAIChatbot {
     
     if (message.includes('excel')) {
       return {
-        text: "✨ **Excel Cleanup Service**: We transform messy spreadsheets into organized, analysis-ready data! This includes removing duplicates, standardizing formats, creating formulas, and building summary reports.\n\nStarting from $15 depending on complexity.",
+        text: "✨ **Excel Cleanup Service**: We transform messy spreadsheets into organized, analysis-ready data! This includes removing duplicates, standardizing formats, creating formulas, and building summary reports.\n\n**Price**: KSh 2,600",
         action: null,
         followUp: "Interested in seeing some Excel project examples?"
       };
@@ -1077,7 +1077,7 @@ class DAIChatbot {
     
     if (message.includes('powerbi') || message.includes('power bi')) {
       return {
-        text: "📊 **PowerBI Dashboard Service**: We create stunning, interactive business intelligence dashboards! Features include real-time data visualization, automated updates, and mobile-friendly designs.\n\nStarting from $100 depending on complexity.",
+        text: "📊 **PowerBI Dashboard Service**: We create stunning, interactive business intelligence dashboards! Features include real-time data visualization, automated updates, and mobile-friendly designs.\n\n**Price**: KSh 2,600",
         action: null,
         followUp: "Want to see some PowerBI dashboard examples from our portfolio?"
       };
@@ -1085,7 +1085,7 @@ class DAIChatbot {
     
     if (message.includes('sql')) {
       return {
-        text: "🗄️ **SQL Database Service**: We handle database design, query optimization, and data extraction! Perfect for businesses needing structured data management and reporting.\n\nStarting from $50 depending on requirements.",
+        text: "🗄️ **SQL Database Service**: We handle database design, query optimization, and data extraction! Perfect for businesses needing structured data management and reporting.\n\n**Price**: KSh 2,600",
         action: null,
         followUp: "Interested in seeing our SQL project examples?"
       };
@@ -1093,7 +1093,7 @@ class DAIChatbot {
     
     if (message.includes('python')) {
       return {
-        text: "🐍 **Python Analytics Service**: Advanced data analysis using Python! We provide statistical analysis, machine learning insights, and automated reporting scripts.\n\nStarting from $50 depending on complexity.",
+        text: "🐍 **Python Analytics Service**: Advanced data analysis using Python! We provide statistical analysis, machine learning insights, and automated reporting scripts.\n\n**Price**: KSh 3,000",
         action: null,
         followUp: "Want to explore our Python analysis projects?"
       };
@@ -1114,7 +1114,7 @@ class DAIChatbot {
     if (message.includes('project')) {
       return {
         text: "🎯 **Projects Page**: Find all our portfolio work! Click the 'Projects' link in the navigation menu to explore 40+ completed projects with filtering and search options.",
-        action: () => window.location.href = 'My-projects.html',
+        action: () => window.location.href = 'my-projects.html',
         followUp: "Want me to help you find specific types of projects?"
       };
     }
