@@ -16,9 +16,9 @@
 },
       {
   "serial": "Project 56",
-  "title": "",
+  "title": "Retail Outlet Performance Dashboard — Sales, Costs & Regional Insights",
   "date": "2025-11-12",
-  "description": "",
+  "description": "<strong>Problem Statement:</strong> Retail managers and executives often struggle to get a unified view of sales performance, product revenue, and regional distribution across multiple channels and customer segments.<br><br><strong>Business Objective:</strong> Build a clean Excel dashboard that summarizes total sales, costs, gross profits, and revenue breakdowns by product, region, and category — enabling fast decision-making and performance tracking.<br><br><strong>My Approach:</strong> Consolidated raw sales data into structured tables, applied formulas for cost and profit calculations, and designed interactive visuals using Excel charts and slicers. Filters allow users to drill down by customer segment and sales channel.<br><br><strong>Key Features:</strong><br>• Monthly revenue line chart (Jan–Oct)<br>• Product revenue bar chart with top performers<br>• Category breakdown pie chart (Electronics, Home, Accessories)<br>• Regional revenue comparison (Nairobi, Mombasa, Kisumu, Uasin Gishu)<br>• KPI cards for total sales, costs, gross profit, and revenue<br>• Slicers for customer segment and sales channel<br><br><strong>Impact:</strong> Gives business owners and executives a 360° view of their retail performance, helping them identify top-selling products, optimize regional strategies, and track profitability with forensic clarity.",
   "tools": "Excel",
   "projectLink": "downloads/sales.xlsx",
   "liveLink": "",
