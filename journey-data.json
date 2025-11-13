@@ -1,9 +1,9 @@
 [
         {
   "serial": "Project 57",
-  "title": "",
+  "title": "Education Outcomes Dashboard — UNICEF EOF",
   "date": "2025-11-13",
-  "description": "",
+  "description": "<strong>Problem Statement:</strong> NGOs and education partners often collect literacy, numeracy, and attendance data but struggle to connect it with intervention costs and efficiency.<br><br><strong>Business Objective:</strong> Provide a forensic Power BI dashboard that shows before vs after student outcomes, links them to intervention types, and calculates both cost per student and cost per improved student.<br><br><strong>My Approach:</strong> Model raw student records in Power BI, create calculated measures for improvement achieved, and design NGO-branded visuals with KPI cards, slicers, and a clean 2x2 chart layout.<br><br><strong>Key Features:</strong><br>• Literacy, numeracy, and attendance before vs after charts<br>• KPI cards for average cost per student and cost per improved student<br>• Slicers for intervention, grade, age, and dropout filters<br>• Conditional formatting in forensic tables to highlight improvement vs decline<br>• NGO-ready titles, fonts, and colors for clarity and impact<br><br><strong>Impact:</strong> Enables NGOs and executives to see 360° clarity on education interventions, proving how every $120 tutoring spend translates into measurable student gains and efficiency ratios.<br><br>👉 <strong>Live demo:</strong> <a href=\"https://app.powerbi.com/links/5Ovy3oYnA7?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
   "tools": "Power BI",
   "projectLink": "downloads/ED_uoutcomes.pbix",
   "liveLink": "https://app.powerbi.com/links/5Ovy3oYnA7?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare",
