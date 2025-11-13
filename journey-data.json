@@ -1,4 +1,34 @@
 [
+        {
+  "serial": "Project 57",
+  "title": "",
+  "date": "2025-11-13",
+  "description": "",
+  "tools": "Power BI",
+  "projectLink": "downloads/ED_uoutcomes.pbix",
+  "liveLink": "https://app.powerbi.com/links/5Ovy3oYnA7?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare",
+  "images": [
+    "assets/projects/unicef/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/unicef/unicef.mp4"
+  ]
+},
+      {
+  "serial": "Project 56",
+  "title": "",
+  "date": "2025-11-12",
+  "description": "",
+  "tools": "Excel",
+  "projectLink": "downloads/sales.xlsx",
+  "liveLink": "",
+  "images": [
+    "assets/projects/sales project/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/sales project/sales.mp4"
+  ]
+},
 
      {
   "serial": "Project 55",
