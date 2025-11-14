@@ -110,6 +110,14 @@
     }
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+    * { font-display: swap; }
+  </style>
+  <link rel="preload" href="assets/css/style.css" as="style" />
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://wa.me" />
+  <link rel="preconnect" href="https://forms.gle" />
   
   <!-- Custom Styles -->
   <link rel="stylesheet" href="assets/css/style.css?v=20251114">
@@ -325,8 +333,8 @@ a:not(.group):not(.nav-link):not(.footer-link):hover {
 
   <!-- ✅ dericBI Chatbot -->
   <link rel="stylesheet" href="assets/css/social_links.css">
-  <script src="assets/js/chatbot.js?v=20251114"></script>
-  <script src="assets/js/social_links.js?v=20251114"></script>
+  <script src="assets/js/chatbot.js?v=20251114" defer></script>
+  <script src="assets/js/social_links.js?v=20251114" defer></script>
 </head>
 <body class="contact-page bg-white text-gray-800 flex flex-col min-h-screen overflow-x-hidden w-full max-w-[100vw]">
 
@@ -338,6 +346,8 @@ a:not(.group):not(.nav-link):not(.footer-link):hover {
     <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3 shrink-0 min-w-0">
       <img src="assets/img/logo.png" 
            alt="dericBI Logo" 
+           loading="lazy"
+           width="64" height="64"
            class="h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 rounded-full object-cover shadow-md flex-shrink-0" />
       <div class="font-bold text-lg xs:text-xl sm:text-2xl leading-none whitespace-nowrap">
         <span>deric</span><span class="text-[#facc15]">BI</span>
@@ -649,6 +659,8 @@ function toggleNewsletter() {
 <div class="flex items-center gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm hover:shadow-md transition-all border border-green-100">
   <img src="assets/img/logo.png" 
        alt="dericBI Logo" 
+       loading="lazy"
+       width="48" height="48"
        class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover shadow-md" />
   <div class="flex flex-col leading-tight">
     <div class="font-extrabold text-xl text-gray-800 tracking-wide">
@@ -690,7 +702,7 @@ function toggleNewsletter() {
       <!-- Profile image next to name -->
       <div class="flex items-center gap-2 xs:gap-3">
         <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link rounded-full p-1 bg-white hover:bg-green-50 shadow-sm hover:shadow-md transition-all">
-          <img src="assets/img/deric.png" alt="Deric's Photo" class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover border-2 border-[#49A078]/30 hover:border-[#49A078] transition-all" />
+          <img src="assets/img/deric.png" alt="Deric's Photo" loading="lazy" width="40" height="40" class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover border-2 border-[#49A078]/30 hover:border-[#49A078] transition-all" />
         </a>
         <div class="flex flex-col">
           <a href="https://dericmarangu-portfolio.netlify.app/" target="_blank" class="footer-link font-semibold text-sm hover:text-[#49A078]">Deric Marangu</a>
