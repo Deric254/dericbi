@@ -1,9 +1,9 @@
 [
           {
   "serial": "Project 58",
-  "title": "",
-  "date": "2025-11-14",
-  "description": "",
+            "title": "Non-governmental organization five years spending dashboard report",
+            "date": "2025-11-15",
+            "description": "<strong>Problem Statement:</strong> NGOs need a clear overview of multi-year spending, donor contributions, and project distribution across Africa.<br><br><strong>Business Objective:</strong> Provide a comprehensive dashboard summarizing total expenditure, project count, regional disbursements, donor type shares, and category allocations for strategic decision-making.<br><br><strong>My Approach:</strong> Developed an interactive dashboard with filters for month and budget type, visualizing regional expenditure, annual disbursements, donor type shares per year, and category share breakdown.<br><br><strong>Key Features:</strong><br>• Total expenditure and project count KPIs<br>• Regional expenditure bar chart (Central, East, North, Southern, West Africa)<br>• Disbursements by year (2020–2025) line chart<br>• Donor type share per year stacked bar chart<br>• Category share pie chart (Education, Agriculture, Health, Livelihoods, Wash)<br>• Month and budget type filters for dynamic analysis<br><br><strong>Impact:</strong> Enables NGOs and stakeholders to track spending, donor trends, and project focus areas, supporting transparency and data-driven resource allocation.",
   "tools": "Excel",
   "projectLink": "downloads/ngo_donor.xlsx",
   "liveLink": "",
@@ -11,7 +11,7 @@
     "assets/projects/donor/dash.JPG"
   ],
   "video": [
-    "assets/projects/donor/ngo_donor.mp4"
+              "assets/projects/donor/ngo_donor.mp4"
 
   ]
 },
