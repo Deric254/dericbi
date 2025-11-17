@@ -1,9 +1,9 @@
 [
             {
   "serial": "Project 59",
-            "title": "",
+            "title": "AI Hype vs Reality Analysis Dashboard",
             "date": "2025-11-16",
-            "description": "",
+            "description": "<strong>Problem Statement:</strong> Organizations struggle to distinguish between AI marketing hype and practical business applications.<br><br><strong>Business Objective:</strong> Create a comprehensive dashboard analyzing AI adoption trends, comparing industry hype against real-world implementation success.<br><br><strong>My Approach:</strong> Developed an interactive Power BI dashboard tracking AI technology adoption, market trends, and measurable business impact across different sectors.<br><br><strong>Key Features:</strong><br>• AI adoption rates by industry sector<br>• Hype vs reality comparison metrics<br>• Implementation success rate analysis<br>• Technology readiness scoring<br>• ROI projections for AI investments<br>• Trend analysis over time<br><br><strong>Impact:</strong> Enables executives to make data-driven decisions about AI investments by separating marketing claims from proven business value and measurable ROI.",
   "tools": "Power BI",
   "projectLink": "downloads/aihype.pbix",
   "liveLink": "",
@@ -1451,18 +1451,5 @@
       "assets/projects/webDevSystems/gym/login.JPG",
       "assets/projects/webDevSystems/gym/forgotpass.JPG"
     ]
-},
-{
-    "serial": "Project 59",
-    "title": "AI Hype vs Reality Dashboard",
-    "date": "2025-11-17",
-    "description": "<strong>Problem Statement:</strong> Businesses struggle to separate AI marketing hype from practical applications.<br><br><strong>Business Objective:</strong> Create a dashboard that analyzes AI adoption trends, compares hype vs reality, and provides actionable insights for implementation.<br><br><strong>My Approach:</strong> Developed an interactive dashboard analyzing AI technology adoption, market trends, and real-world implementation success rates.<br><br><strong>Key Features:</strong><br>• AI adoption rate by industry<br>• Hype vs reality comparison charts<br>• Implementation success metrics<br>• Technology readiness assessment<br>• ROI projections for AI investments<br><br><strong>Impact:</strong> Helps executives make informed decisions about AI investments by separating marketing claims from proven business value.",
-    "tools": "Power BI",
-    "projectLink": "downloads/ai_hype.pbix",
-    "liveLink": "",
-    "images": [
-      "assets/projects/ai hype/dash.JPG"
-    ],
-    "video": []
 }
 ]
