@@ -1,4 +1,19 @@
 [
+            {
+  "serial": "Project 59",
+            "title": "",
+            "date": "2025-11-16",
+            "description": "",
+  "tools": "Power BI",
+  "projectLink": "downloads/aihype.pbix",
+  "liveLink": "",
+  "images": [
+    "assets/projects/ai hype/dash.JPG"
+  ],
+  "video": [
+              "assets/projects/ai hype/ai hype.mp4"
+  ]
+},
           {
   "serial": "Project 58",
             "title": "Non-governmental organization five years spending dashboard report",
@@ -1436,5 +1451,18 @@
       "assets/projects/webDevSystems/gym/login.JPG",
       "assets/projects/webDevSystems/gym/forgotpass.JPG"
     ]
+},
+{
+    "serial": "Project 59",
+    "title": "AI Hype vs Reality Dashboard",
+    "date": "2025-11-17",
+    "description": "<strong>Problem Statement:</strong> Businesses struggle to separate AI marketing hype from practical applications.<br><br><strong>Business Objective:</strong> Create a dashboard that analyzes AI adoption trends, compares hype vs reality, and provides actionable insights for implementation.<br><br><strong>My Approach:</strong> Developed an interactive dashboard analyzing AI technology adoption, market trends, and real-world implementation success rates.<br><br><strong>Key Features:</strong><br>• AI adoption rate by industry<br>• Hype vs reality comparison charts<br>• Implementation success metrics<br>• Technology readiness assessment<br>• ROI projections for AI investments<br><br><strong>Impact:</strong> Helps executives make informed decisions about AI investments by separating marketing claims from proven business value.",
+    "tools": "Power BI",
+    "projectLink": "downloads/ai_hype.pbix",
+    "liveLink": "",
+    "images": [
+      "assets/projects/ai hype/dash.JPG"
+    ],
+    "video": []
 }
 ]
