@@ -427,6 +427,13 @@
       }
     }
 
+    /* Hide quick action icons on small devices except hire me */
+    @media (max-width: 768px) {
+      .quick-action-hide {
+        display: none !important;
+      }
+    }
+
     /* Ensure main content isn't overlapped */
     main {
       position: relative;
@@ -695,13 +702,13 @@
     <i class="fas fa-user-tie text-purple-500 text-lg group-hover:scale-110 transition-transform duration-300"></i>
     <span class="pour-text">Hire Me</span>
   </button>
-  <a href="https://wa.me/254791360805?text=hey%20deric%20iam%20new%20in%20dericbi%20guide%20me" target="_blank" class="group bg-white/90 backdrop-blur-sm hover:bg-green-50 rounded-full p-3 shadow-lg border border-white/50 transition-all duration-300 hover:scale-110">
+  <a href="https://wa.me/254791360805?text=hey%20deric%20iam%20new%20in%20dericbi%20guide%20me" target="_blank" class="quick-action-hide group bg-white/90 backdrop-blur-sm hover:bg-green-50 rounded-full p-3 shadow-lg border border-white/50 transition-all duration-300 hover:scale-110">
     <i class="fab fa-whatsapp text-green-500 text-lg group-hover:scale-110 transition-transform duration-300"></i>
   </a>
-  <a href="my-projects.html" class="group bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-3 shadow-lg border border-white/50 transition-all duration-300 hover:scale-110">
+  <a href="my-projects.html" class="quick-action-hide group bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-3 shadow-lg border border-white/50 transition-all duration-300 hover:scale-110">
     <i class="fas fa-folder-open text-blue-500 text-lg group-hover:scale-110 transition-transform duration-300"></i>
   </a>
-  <a href="contact.html" class="group bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-3 shadow-lg border border-white/50 transition-all duration-300 hover:scale-110">
+  <a href="contact.html" class="quick-action-hide group bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-3 shadow-lg border border-white/50 transition-all duration-300 hover:scale-110">
     <i class="fas fa-envelope text-purple-500 text-lg group-hover:scale-110 transition-transform duration-300"></i>
   </a>
 </div>
