@@ -1,7 +1,7 @@
 [
             {
   "serial": "Project 60",
-            "title": "Startup Zone Performance Dashboard",
+            "title": "Startup  Performance Dashboard",
             "date": "2025-11-18",
             "description": "<strong>Problem Statement:</strong> Startups need comprehensive tracking of key performance metrics including revenue, user engagement, and pipeline management.<br><br><strong>Business Objective:</strong> Develop a dashboard providing real-time insights into startup operations, revenue streams, and growth metrics.<br><br><strong>My Approach:</strong> Created an interactive Power BI dashboard visualizing revenue by channel, monthly expenses, active users, and sales pipeline.<br><br><strong>Key Features:</strong><br>• Revenue inflow and channel breakdown<br>• Monthly revenue and expenses tracking<br>• Active user analytics<br>• Sales pipeline visualization<br>• Startup events data integration<br><br><strong>Impact:</strong> Empowers startup founders and investors with data-driven insights for strategic decision-making and growth optimization.",
   "tools": "Power BI",
