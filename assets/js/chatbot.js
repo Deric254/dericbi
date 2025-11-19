@@ -231,8 +231,8 @@ class DAIChatbot {
           'powerbi_dashboards': "Professional PowerBI dashboards that deliver enterprise-level business intelligence! These include:\n\n📊 Real-time data visualization\n🔄 Automated updates\n📱 Mobile compatibility\n🎯 Executive reporting capabilities\n🔗 Integration with multiple data sources\n📈 Advanced analytics and insights\n\nPerfect for serious business intelligence and executive decision-making!",
           'setup_services': "Don't have data systems yet? We can set up complete tracking systems from scratch! This includes:\n\n📊 Sales tracking and monitoring\n📦 Inventory management systems\n👥 Customer database setup\n📋 Automated reporting systems\n🔄 Real-time data collection\n📈 Performance dashboards\n\nGet a complete data infrastructure that grows with your business!",
           'process': "Our process is simple and straightforward - just 4 easy steps:\n\n1️⃣ Send Data - Upload your files or tell us what you need\n2️⃣ We Analyze - Our experts clean and analyze your data\n3️⃣ Get Results - Receive clean data and actionable insights\n4️⃣ Make Decisions - Use data-driven insights to grow your business\n\nMost projects are completed within 3-7 days, and we keep you updated throughout!",
-          'pricing_structure': "Our pricing is straightforward and affordable! All prices in Kenyan Shillings:\n\n🧹 Excel Cleanup - KSh 2,600\n📊 Data Analysis - KSh 2,600\n💼 PowerBI Dashboards - KSh 2,600\n🐍 Custom Python Dashboards - KSh 3,000\n📦 Complete Package - KSh 5,000 (Save KSh 600!)\n\n💡 FREE data setup consultation available!\n📞 Contact us for volume discounts and custom quotes.",
-          'value_proposition': "Here's why businesses choose dericBI for their data needs:\n\n🎯 Stop Revenue Leaks - Most businesses lose money through untracked decisions\n💰 Turn $1M into $10M - Our analytics help clients achieve 10x growth\n📊 40+ Successful Projects - Proven track record across industries\n⚡ Fast Turnaround - Most projects completed in 3-7 days\n💸 Affordable Rates - Starting from just KSh 2,600\n\nWe're not just service providers - we're your data transformation partners!",
+          'pricing_structure': "Our pricing is straightforward and affordable! All prices in US Dollars:\n\n🧹 Excel Cleanup - $20\n📊 Data Analysis - $20\n💼 PowerBI Dashboards - $20\n🐍 Custom Python Dashboards - $23\n📦 Complete Package - $38 (Save $5!)\n\n💡 FREE data setup consultation available!\n📞 Contact us for volume discounts and custom quotes.",
+          'value_proposition': "Here's why businesses choose dericBI for their data needs:\n\n🎯 Stop Revenue Leaks - Most businesses lose money through untracked decisions\n💰 Turn $1M into $10M - Our analytics help clients achieve 10x growth\n📊 40+ Successful Projects - Proven track record across industries\n⚡ Fast Turnaround - Most projects completed in 3-7 days\n💸 Affordable Rates - Starting from just $20\n\nWe're not just service providers - we're your data transformation partners!",
           'contact_options': "Ready to get started? Here are the best ways to reach us:\n\n📱 WhatsApp: +254791360805 (Fastest response - usually within minutes)\n📧 Email: deric.analytics@gmail.com\n📋 Have Data? Use our form: https://forms.gle/krViHXVaJKP2JARZ7\n🔧 Need Setup? Use our setup form: https://forms.gle/Uzq3L9wtm5yM6KEX7\n\nWe respond quickly and can start working on your project right away!",
 
           // Enhanced service knowledge
@@ -1103,7 +1103,7 @@ class DAIChatbot {
       this.conversationContext.awaitingFollowup = true;
       this.conversationContext.contextData = { pricingQuery: true };
       return {
-        text: "💰 **Our Service Pricing**:\n\n• **Excel Cleanup**: KSh 2,600\n• **Data Analysis**: KSh 2,600\n• **PowerBI Dashboards**: KSh 2,600\n• **Custom Python Dashboards**: KSh 3,000\n• **Complete Package**: KSh 5,000\n\nPrices in Kenyan Shillings. Contact us for volume discounts!",
+        text: "💰 **Our Service Pricing**:\n\n• **Excel Cleanup**: $20\n• **Data Analysis**: $20\n• **PowerBI Dashboards**: $20\n• **Custom Python Dashboards**: $23\n• **Complete Package**: $38\n\nPrices in US Dollars. Contact us for volume discounts!",
         action: null,
         followUp: "Would you like a personalized quote for your specific needs? I can connect you with our team!"
       };
@@ -1119,7 +1119,7 @@ class DAIChatbot {
     
     if (message.includes('excel')) {
       return {
-        text: "✨ **Excel Cleanup Service**: We transform messy spreadsheets into organized, analysis-ready data! This includes removing duplicates, standardizing formats, creating formulas, and building summary reports.\n\n**Price**: KSh 2,600",
+        text: "✨ **Excel Cleanup Service**: We transform messy spreadsheets into organized, analysis-ready data! This includes removing duplicates, standardizing formats, creating formulas, and building summary reports.\n\n**Price**: $20",
         action: null,
         followUp: "Interested in seeing some Excel project examples?"
       };
