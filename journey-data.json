@@ -1,5 +1,21 @@
 [
             {
+  "serial": "Project 61",
+            "title": "Sacco Loan Default Analysis Dashboard",
+            "date": "2025-11-20",
+            "description": "<strong>Problem Statement:</strong> Why people default on loans while others pay effortlessly? Understanding loan repayment patterns in Sacco operations.<br><br><strong>Business Objective:</strong> Analyze FY24 data to identify factors affecting loan repayment and develop strategies for FY25.<br><br><strong>My Approach:</strong> Created an interactive Power BI dashboard analyzing loan default patterns, digital adoption impact, and segment performance.<br><br><strong>Key Features:</strong><br>• Digital adoption analysis (73.5% repayment rate)<br>• Segment performance (Salaried vs Students)<br>• Branch insights (Meru, Nairobi)<br>• Loan book vs savings analysis (3bn vs 2bn)<br><br><strong>Impact:</strong> Provides actionable insights for targeted financial education, digital marketing campaigns, and lending policy updates.",
+  "tools": "Power BI",
+  "projectLink": "downloads/sacco.pbix",
+  "liveLink": "",
+  "images": [
+    "assets/projects/sacco/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/sacco/guide.mp4",
+    "assets/projects/sacco/Sacco.mp4"
+  ]
+},
+            {
   "serial": "Project 60",
             "title": "Startup  Performance Dashboard",
             "date": "2025-11-18",
@@ -666,7 +682,7 @@
     "serial": "Project 21.1",
     "title": "Mpesa analytics",
     "date": "2025-13-08",
-    "description": "<strong>Problem Statement:</strong> Understanding Mpesa transaction efficiency, fraud patterns, and channel performance is critical for optimizing mobile money operations.<br><br><strong>Business Objective:</strong> Deliver actionable insights to improve Mpesa channel operations, monitor transaction types, and identify fraud patterns.<br><br><strong>My Approach:</strong> I used SQL to process and analyze Mpesa transaction logs, focusing on efficiency metrics, fraud detection, and channel performance.<br><br><strong>Key Insights:</strong><br>1️⃣ Some transaction types show higher fraud risk.<br>2️⃣ Channel efficiency changes by year and month.<br>3️⃣ Data reveals seasonal transaction peaks.<br><br><strong>Business Recommendations:</strong><br>✅ Strengthen monitoring for high-risk transactions.<br>✅ Optimize service channels based on performance data.<br>✅ Use analytics to guide operational improvements.",
+    "description": "<strong>Problem Statement:</strong> Understanding Mpesa transaction efficiency, fraud patterns, and channel performance is critical for optimizing mobile money operations.<br><br><strong>Business Objective:</strong> Deliver actionable insights to improve Mpesa channel operations, monitor transaction types, and identify fraud patterns.<br><br><strong>My Approach:</strong> I used SQL to process and analyze Mpesa transaction logs, focusing on efficiency metrics, fraud detection, and channel performance.<br><br><strong>Key Insights:</strong><br>1️⃣ Some transaction types show higher fraud risk.<br>2️⃣ Channel efficiency changes by year and month.<br>3️⃣ Data reveals seasonal transaction peaks.<br><br><strong>Business Recommendations:</strong> Strengthen monitoring for high-risk transactions, optimize service channels based on performance data, and use analytics to guide operational improvements.",
     "tools": "SQL",
     "projectLink": "downloads/mpesa-analytics.sql",
     "images": [
@@ -682,7 +698,7 @@
     "serial": "project 21",
     "title": "Mpesa analytics",
     "date": "2025-13-08",
-    "description": "<strong>Problem Statement:</strong> There is a need for a dashboard to visualize and analyze Mpesa transaction data for channel insights.<br><br><strong>Business Objective:</strong> Provide an Excel-based dashboard for tracking transaction volumes, types, and quarterly trends.<br><br><strong>My Approach:</strong> I used Excel to build interactive dashboards and reports from Mpesa transaction data, highlighting transaction patterns and seasonal trends.<br><br><strong>Key Insights:</strong><br>1️⃣ Transaction volumes and types vary by quarter.<br>2️⃣ Certain periods show increased activity.<br>3️⃣ Excel dashboards make it easy to spot trends and optimize operations.<br><br><strong>Business Recommendations:</strong><br>✅ Focus on high-activity periods.<br>✅ Adjust operations based on quarterly trends.<br>✅ Use dashboard insights for strategic planning.",
+    "description": "<strong>Problem Statement:</strong> There is a need for a dashboard to visualize and analyze Mpesa transaction data for channel insights.<br><br><strong>Business Objective:</strong> Provide an Excel-based dashboard for tracking transaction volumes, types, and quarterly trends.<br><br><strong>My Approach:</strong> I used Excel to build interactive dashboards and reports from Mpesa transaction data, highlighting transaction patterns and seasonal trends.<br><br><strong>Key Insights:</strong><br>1️⃣ Transaction volumes and types vary by quarter.<br>2️⃣ Certain periods show increased activity.<br>3️⃣ Excel dashboards make it easy to spot trends and optimize operations.<br><br><strong>Business Recommendations:</strong> Focus on high-activity periods, adjust operations based on quarterly trends, and use dashboard insights for strategic planning.",
     "tools": "Excel",
     "projectLink": "downloads/Mpesa.xlsx",
     "images": [
@@ -700,7 +716,7 @@
     "serial": "Project 20.1",
     "title": "BodaBoda routes analytics",
     "date": "2025-12-08",
-    "description": "<strong>Problem Statement:</strong> BodaBoda riders face unpredictable fares, frequent accidents, and high maintenance costs on different routes and times.<br><br><strong>Business Objective:</strong> Help riders choose safer and more profitable routes, reduce accidents, and manage costs better.<br><br><strong>My Approach:</strong> I used Python to study trip data, weather, fares, and accident records because it is great for data analysis.<br><br><strong>Key Insights:</strong><br>1️⃣ Morning and evening trips earn higher fares.<br>2️⃣ Rainy weather leads to more accidents.<br>3️⃣ Some routes have higher maintenance costs.<br><br><strong>Business Recommendations:</strong><br>✅ Focus on safer routes during bad weather.<br>✅ Adjust fares for busy times.<br>✅ Plan maintenance for risky routes.",
+    "description": "<strong>Problem Statement:</strong> BodaBoda riders face unpredictable fares, frequent accidents, and high maintenance costs on different routes and times.<br><br><strong>Business Objective:</strong> Help riders choose safer and more profitable routes, reduce accidents, and manage costs better.<br><br><strong>My Approach:</strong> I used Python to study trip data, weather, fares, and accident records because it is great for data analysis.<br><br><strong>Key Insights:</strong><br>1️⃣ Morning and evening trips earn higher fares.<br>2️⃣ Rainy weather leads to more accidents.<br>3️⃣ Some routes have higher maintenance costs.<br><br><strong>Business Recommendations:</strong> Focus on safer routes during bad weather, adjust fares for busy times, and plan maintenance for risky routes.",
     "tools": "Python",
     "projectLink": "downloads/bodaboda.py",
     "images": [
@@ -720,7 +736,7 @@
     "serial": "Project 20",
     "title": "BodaBoda routes analytics",
     "date": "2025-12-08",
-    "description": "<strong>Problem Statement:</strong> BodaBoda businesses do not know which routes are most profitable or when accidents happen most.<br><br><strong>Business Objective:</strong> Make route planning, fare setting, and safety decisions easier using data.<br><br><strong>My Approach:</strong> I built PowerBI dashboards to show trip numbers, fare averages, and accident times because PowerBI makes visuals easy.<br><br><strong>Key Insights:</strong><br>1️⃣ Night trips have more accidents.<br>2️⃣ Afternoon fares are steady.<br>3️⃣ Route choice affects safety and earnings.<br><br><strong>Business Recommendations:</strong><br>✅ Improve safety for night rides.<br>✅ Promote afternoon trips.<br>✅ Use dashboard data for better planning.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/HHAe5RLfIc?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
+    "description": "<strong>Problem Statement:</strong> BodaBoda businesses do not know which routes are most profitable or when accidents happen most.<br><br><strong>Business Objective:</strong> Make route planning, fare setting, and safety decisions easier using data.<br><br><strong>My Approach:</strong> I built PowerBI dashboards to show trip numbers, fare averages, and accident times because PowerBI makes visuals easy.<br><br><strong>Key Insights:</strong><br>1️⃣ Night trips have more accidents.<br>2️⃣ Afternoon fares are steady.<br>3️⃣ Route choice affects safety and earnings.<br><br><strong>Business Recommendations:</strong> Improve safety for night rides, promote afternoon trips, and use dashboard data for better planning.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/HHAe5RLfIc?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
     "tools": "PowerBI",
     "projectLink": "downloads/bodaboda.pbix",
     "images": [
@@ -735,7 +751,7 @@
     "serial": "Project 19.1",
     "title": "Supermarket Analytics",
     "date": "2025-11-08",
-    "description": "<strong>Problem Statement:</strong> Supermarkets find it hard to deliver quickly, keep sales steady all year, and manage product categories.<br><br><strong>Business Objective:</strong> Make deliveries faster, increase sales in slow months, and improve product mix.<br><br><strong>My Approach:</strong> I used SQL to check delivery times, monthly sales, and category trends because SQL handles large data well.<br><br><strong>Key Insights:</strong><br>1️⃣ Delivery times change with the season.<br>2️⃣ Sales are highest in some months.<br>3️⃣ Top categories always sell best.<br><br><strong>Business Recommendations:</strong><br>✅ Speed up deliveries in slow months.<br>✅ Promote weaker categories.<br>✅ Use sales data to plan inventory.",
+    "description": "<strong>Problem Statement:</strong> Supermarkets find it hard to deliver quickly, keep sales steady all year, and manage product categories.<br><br><strong>Business Objective:</strong> Make deliveries faster, increase sales in slow months, and improve product mix.<br><br><strong>My Approach:</strong> I used SQL to check delivery times, monthly sales, and category trends because SQL handles large data well.<br><br><strong>Key Insights:</strong><br>1️⃣ Delivery times change with the season.<br>2️⃣ Sales are highest in some months.<br>3️⃣ Top categories always sell best.<br><br><strong>Business Recommendations:</strong> Speed up deliveries in slow months, promote weaker categories, and use sales data to plan inventory.",
     "tools": "SQL",
     "projectLink": "downloads/supermarket.sql",
     "images": [
@@ -792,7 +808,7 @@
     "serial": "Project 18",
     "title": "Hardware Store Analytics",
     "date": "2025-08-08",
-    "description": "<strong>Problem Statement:</strong> Hardware stores want to know how to increase sales and improve customer satisfaction.<br><br><strong>Business Objective:</strong> Boost revenue, enhance customer experience, and streamline operations.<br><br><strong>My Approach:</strong> I used Python to analyze sales trends, customer feedback, and operational data because Python has advanced analytical capabilities.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales are closely tied to product availability.<br>2️⃣ Customer satisfaction drops when deliveries are late.<br>3️⃣ Promotions can significantly boost sales.<br><br><strong>Business Recommendations:</strong><br>✅ Improve inventory management.<br>✅ Ensure timely deliveries.<br>✅ Design attractive promotions.",
+    "description": "<strong>Problem Statement:</strong> Hardware stores want to know how to increase sales and improve customer satisfaction.<br><br><strong>Business Objective:</strong> Boost revenue, enhance customer experience, and streamline operations.<br><br><strong>My Approach:</strong> I used Python to analyze sales trends, customer feedback, and operational data because Python has advanced analytical capabilities.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales are closely tied to product availability.<br>2️⃣ Customer satisfaction drops when deliveries are late.<br>3️⃣ Promotions can significantly boost sales.<br><br><strong>Business Recommendations:</strong> Improve inventory management, ensure timely deliveries, and design attractive promotions.",
     "tools": "Python",
     "projectLink": "downloads/hardware.py",
     "images": [
@@ -806,7 +822,7 @@
     "serial": "Project 17.3",
     "title": "Walmart Retail Analytics",
     "date": "2025-08-07",
-    "description": "<strong>Problem Statement:</strong> Walmart needs to understand how economic factors affect its sales and operations.<br><br><strong>Business Objective:</strong> Improve sales forecasting, optimize pricing, and enhance promotional strategies.<br><br><strong>My Approach:</strong> I used SQL to analyze sales data in relation to economic indicators like CPI and fuel prices because SQL is efficient with large data sets.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales drop when fuel prices are high.<br>2️⃣ Lower CPI correlates with higher sales.<br>3️⃣ Promotions are more effective during certain economic conditions.<br><br><strong>Business Recommendations:</strong><br>✅ Adjust pricing and promotions based on economic forecasts.<br>✅ Monitor fuel prices closely.",
+    "description": "<strong>Problem Statement:</strong> Walmart needs to understand how economic factors affect its sales and operations.<br><br><strong>Business Objective:</strong> Improve sales forecasting, optimize pricing, and enhance promotional strategies.<br><br><strong>My Approach:</strong> I used SQL to analyze sales data in relation to economic indicators like CPI and fuel prices because SQL is efficient with large data sets.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales drop when fuel prices are high.<br>2️⃣ Lower CPI correlates with higher sales.<br>3️⃣ Promotions are more effective during certain economic conditions.<br><br><strong>Business Recommendations:</strong> Adjust pricing and promotions based on economic forecasts, monitor fuel prices closely.",
     "tools": "SQL",
     "projectLink": "downloads/walmat sales.sql",
     "images": [
@@ -826,7 +842,7 @@
     "serial": "Project 17.2",
     "title": "Walmart Retail Analytics",
     "date": "2025-08-06",
-    "description": "<strong>Problem Statement:</strong> Walmart wants to visualize its sales data for better decision-making.<br><br><strong>Business Objective:</strong> Create interactive dashboards for real-time sales monitoring and analysis.<br><br><strong>My Approach:</strong> I developed PowerBI dashboards to display sales data visually because PowerBI is interactive and user-friendly.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales peak during holidays.<br>2️⃣ Weekends have higher sales volumes.<br>3️⃣ Online sales are growing rapidly.<br><br><strong>Business Recommendations:</strong><br>✅ Focus on online sales growth.<br>✅ Prepare for seasonal demand.<br>✅ Analyze weekend sales patterns.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/QkPkjArfvm?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
+    "description": "<strong>Problem Statement:</strong> Walmart wants to visualize its sales data for better decision-making.<br><br><strong>Business Objective:</strong> Create interactive dashboards for real-time sales monitoring and analysis.<br><br><strong>My Approach:</strong> I developed PowerBI dashboards to display sales data visually because PowerBI is interactive and user-friendly.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales peak during holidays.<br>2️⃣ Weekends have higher sales volumes.<br>3️⃣ Online sales are growing rapidly.<br><br><strong>Business Recommendations:</strong> Focus on online sales growth, prepare for seasonal demand, and analyze weekend sales patterns.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/QkPkjArfvm?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
     "tools": "PowerBI",
     "projectLink": "downloads/Walmat sales dashboard.pbix",
     "images": [
@@ -840,7 +856,7 @@
     "serial": "Project 17.1",
     "title": "Walmart Retail Analytics",
     "date": "2025-08-05",
-    "description": "<strong>Problem Statement:</strong> Walmart needs to analyze how economic changes impact its retail business.<br><br><strong>Business Objective:</strong> Enhance strategic planning and improve financial performance.<br><br><strong>My Approach:</strong> I conducted a detailed analysis of sales data against economic indicators using Excel because Excel is powerful and easy to use.<br><br><strong>Key Insights:</strong><br>1️⃣ Economic downturns lead to reduced sales.<br>2️⃣ Price sensitivity varies across different customer segments.<br>3️⃣ Promotional discounts are crucial during holidays.<br><br><strong>Business Recommendations:</strong><br>✅ Tailor marketing strategies to economic conditions.<br>✅ Optimize pricing.<br>✅ Increase promotional activities during peak seasons.",
+    "description": "<strong>Problem Statement:</strong> Walmart needs to analyze how economic changes impact its retail business.<br><br><strong>Business Objective:</strong> Enhance strategic planning and improve financial performance.<br><br><strong>My Approach:</strong> I conducted a detailed analysis of sales data against economic indicators using Excel because Excel is powerful and easy to use.<br><br><strong>Key Insights:</strong><br>1️⃣ Economic downturns lead to reduced sales.<br>2️⃣ Price sensitivity varies across different customer segments.<br>3️⃣ Promotional discounts are crucial during holidays.<br><br><strong>Business Recommendations:</strong> Tailor marketing strategies to economic conditions, optimize pricing, increase promotional activities during peak seasons.",
     "tools": "Excel",
     "projectLink": "downloads/WalmartSales.xlsx",
     "images": [
@@ -856,7 +872,7 @@
     "serial": "Project 17",
     "title": "Walmart Retail Analytics",
     "date": "2025-08-04",
-    "description": "<strong>Problem Statement:</strong> Walmart wants to improve its sales strategies based on economic trends.<br><br><strong>Business Objective:</strong> Increase sales and market share while optimizing pricing strategies.<br><br><strong>My Approach:</strong> I analyzed sales and economic data using Python to find trends and correlations because Python is great for data analysis.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales are highly elastic to price changes.<br>2️⃣ Economic indicators can predict sales trends.<br>3️⃣ Competitor pricing affects Walmart's sales volume.<br><br><strong>Business Recommendations:</strong><br>✅ Implement dynamic pricing.<br>✅ Monitor economic indicators closely.<br>✅ Adjust marketing strategies based on competitor actions.",
+    "description": "<strong>Problem Statement:</strong> Walmart wants to improve its sales strategies based on economic trends.<br><br><strong>Business Objective:</strong> Increase sales and market share while optimizing pricing strategies.<br><br><strong>My Approach:</strong> I analyzed sales and economic data using Python to find trends and correlations because Python is great for data analysis.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales are highly elastic to price changes.<br>2️⃣ Economic indicators can predict sales trends.<br>3️⃣ Competitor pricing affects Walmart's sales volume.<br><br><strong>Business Recommendations:</strong> Implement dynamic pricing, monitor economic indicators closely, adjust marketing strategies based on competitor actions.",
     "tools": "Python",
     "projectLink": "downloads/walmat_sales_advanced analysis.py",
     "images": [
@@ -877,7 +893,7 @@
     "serial": "Project 16",
     "title": "Personal Finance Analytics",
     "date": "2025-08-03",
-    "description": "<strong>Problem Statement:</strong> Individuals struggle to manage their finances and plan for the future.<br><br><strong>Business Objective:</strong> Provide insights that lead to better financial decisions and improved savings.<br><br><strong>My Approach:</strong> I analyzed personal finance data using Excel to identify spending patterns and savings opportunities because Excel is accessible and powerful.<br><br><strong>Key Insights:</strong><br>1️⃣ Many individuals save less than 10% of their income.<br>2️⃣ High expenditure on non-essential items.<br>3️⃣ Lack of investment in growth assets.<br><br><strong>Business Recommendations:</strong><br>✅ Increase savings rate.<br>✅ Reduce unnecessary expenses.<br>✅ Start investing in assets that appreciate.",
+    "description": "<strong>Problem Statement:</strong> Individuals struggle to manage their finances and plan for the future.<br><br><strong>Business Objective:</strong> Provide insights that lead to better financial decisions and improved savings.<br><br><strong>My Approach:</strong> I analyzed personal finance data using Excel to identify spending patterns and savings opportunities because Excel is accessible and powerful.<br><br><strong>Key Insights:</strong><br>1️⃣ Many individuals save less than 10% of their income.<br>2️⃣ High expenditure on non-essential items.<br>3️⃣ Lack of investment in growth assets.<br><br><strong>Business Recommendations:</strong> Increase savings rate, reduce unnecessary expenses, start investing in assets that appreciate.",
     "tools": "Excel",
     "projectLink": "downloads/budget .xlsx",
     "images": [
@@ -890,7 +906,7 @@
     "serial": "Project 15.3",
     "title": "Retail Shop Analytics",
     "date": "2025-07-31",
-    "description": "<strong>Problem Statement:</strong> Retail shops need to understand their sales dynamics and customer preferences better.<br><br><strong>Business Objective:</strong> Increase sales, improve inventory management, and enhance customer satisfaction.<br><br><strong>My Approach:</strong> I used Python to analyze sales data, customer feedback, and inventory levels because Python has advanced analytical capabilities.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales are highly dependent on product availability.<br>2️⃣ Customer satisfaction is linked to timely deliveries.<br>3️⃣ Promotions and discounts drive higher sales volumes.<br><br><strong>Business Recommendations:</strong><br>✅ Optimize inventory to prevent stockouts.<br>✅ Ensure efficient delivery processes.<br>✅ Design attractive promotional offers.",
+    "description": "<strong>Problem Statement:</strong> Retail shops need to understand their sales dynamics and customer preferences better.<br><br><strong>Business Objective:</strong> Increase sales, improve inventory management, and enhance customer satisfaction.<br><br><strong>My Approach:</strong> I used Python to analyze sales data, customer feedback, and inventory levels because Python has advanced analytical capabilities.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales are highly dependent on product availability.<br>2️⃣ Customer satisfaction is linked to timely deliveries.<br>3️⃣ Promotions and discounts drive higher sales volumes.<br><br><strong>Business Recommendations:</strong> Optimize inventory to prevent stockouts, ensure efficient delivery processes, design attractive promotional offers.",
     "tools": "Python",
     "projectLink": "downloads/dirty csv analysis.py",
     "images": [
@@ -905,7 +921,7 @@
     "serial": "Project 15.2",
     "title": "Retail Shop Analytics",
     "date": "2025-07-29",
-    "description": "<strong>Problem Statement:</strong> Retail shops want to improve their operational efficiency and sales performance.<br><br><strong>Business Objective:</strong> Enhance sales, optimize inventory, and improve customer service.<br><br><strong>My Approach:</strong> I conducted a detailed analysis of sales and operational data using SQL because SQL is efficient with large data sets.<br><br><strong>Key Insights:</strong><br>1️⃣ Top-selling products are not always restocked in time.<br>2️⃣ Customer complaints are higher when deliveries are delayed.<br>3️⃣ Sales promotions significantly impact revenue.<br><br><strong>Business Recommendations:</strong><br>✅ Improve stock replenishment processes.<br>✅ Enhance delivery tracking.<br>✅ Create targeted sales promotions.",
+    "description": "<strong>Problem Statement:</strong> Retail shops want to improve their operational efficiency and sales performance.<br><br><strong>Business Objective:</strong> Enhance sales, optimize inventory, and improve customer service.<br><br><strong>My Approach:</strong> I conducted a detailed analysis of sales and operational data using SQL because SQL is efficient with large data sets.<br><br><strong>Key Insights:</strong><br>1️⃣ Top-selling products are not always restocked in time.<br>2️⃣ Customer complaints are higher when deliveries are delayed.<br>3️⃣ Sales promotions significantly impact revenue.<br><br><strong>Business Recommendations:</strong> Improve stock replenishment processes, enhance delivery tracking, create targeted sales promotions.",
     "tools": "SQL",
     "projectLink": "downloads/SQL  queries learning.sql",
     "images": [
@@ -921,7 +937,7 @@
     "serial": "Project 15.1",
     "title": "Retail Shop Analytics",
     "date": "2025-07-29",
-    "description": "<strong>Problem Statement:</strong> Retail shops are facing a crisis with declining sales and customer dissatisfaction.<br><br><strong>Business Objective:</strong> Identify issues and implement solutions to restore profitability and customer trust.<br><br><strong>My Approach:</strong> I analyzed sales data and customer feedback using Excel to identify key issues because Excel is powerful and easy to use.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales have been declining for four consecutive quarters.<br>2️⃣ Customer complaints have increased, especially regarding product availability.<br>3️⃣ Promotional campaigns have low engagement.<br><br><strong>Business Recommendations:</strong><br>✅ Revamp the product range.<br>✅ Improve stock availability.<br>✅ Design more appealing promotional campaigns.",
+    "description": "<strong>Problem Statement:</strong> Retail shops are facing a crisis with declining sales and customer dissatisfaction.<br><br><strong>Business Objective:</strong> Identify issues and implement solutions to restore profitability and customer trust.<br><br><strong>My Approach:</strong> I analyzed sales data and customer feedback using Excel to identify key issues because Excel is powerful and easy to use.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales have been declining for four consecutive quarters.<br>2️⃣ Customer complaints have increased, especially regarding product availability.<br>3️⃣ Promotional campaigns have low engagement.<br><br><strong>Business Recommendations:</strong> Revamp the product range, improve stock availability, design more appealing promotional campaigns.",
     "tools": "Excel",
     "projectLink": "downloads/retailshop15.xlsx",
     "images": [
@@ -935,7 +951,7 @@
     "serial": "Project 15",
     "title": "Retail Shop Analytics",
     "date": "2025-07-28",
-    "description": "<strong>Problem Statement:</strong> Retail shops need to recover from declining performance and identify growth opportunities.<br><br><strong>Business Objective:</strong> Monitor performance, identify issues, and track recovery strategies.<br><br><strong>My Approach:</strong> I developed an interactive PowerBI dashboard to track key performance indicators because PowerBI is interactive and user-friendly.<br><br><strong>Key Insights:</strong><br>1️⃣ Q1 sales were significantly lower than expected.<br>2️⃣ Customer feedback indicates dissatisfaction with product availability.<br>3️⃣ Promotional emails have low open and click-through rates.<br><br><strong>Business Recommendations:</strong><br>✅ Improve product availability.<br>✅ Enhance email marketing strategies.<br>✅ Consider rebranding to attract more customers.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/aG9DqIbckD?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
+    "description": "<strong>Problem Statement:</strong> Retail shops need to recover from declining performance and identify growth opportunities.<br><br><strong>Business Objective:</strong> Monitor performance, identify issues, and track recovery strategies.<br><br><strong>My Approach:</strong> I developed an interactive PowerBI dashboard to track key performance indicators because PowerBI is interactive and user-friendly.<br><br><strong>Key Insights:</strong><br>1️⃣ Q1 sales were significantly lower than expected.<br>2️⃣ Customer feedback indicates dissatisfaction with product availability.<br>3️⃣ Promotional emails have low open and click-through rates.<br><br><strong>Business Recommendations:</strong> Improve product availability, enhance email marketing strategies, consider rebranding to attract more customers.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/aG9DqIbckD?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
     "tools": "PowerBI",
     "projectLink": "downloads/retailshop15.1.pbix",
     "images": [
@@ -988,7 +1004,7 @@
     "serial": "Project 1.4",
     "title": "Student Academic Performance Analytics",
     "date": "2025-06-06",
-    "description": "<strong>Problem Statement:</strong> Schools need a comprehensive understanding of student performance to improve educational outcomes.<br><br><strong>Business Objective:</strong> Extract actionable insights from academic data to guide school improvement strategies.<br><br><strong>My Approach:</strong> I used SQL to analyze student performance data across different dimensions because SQL is efficient with large data sets.<br><br><strong>Key Insights:</strong><br>1️⃣ Performance varies significantly across different subjects.<br>2️⃣ Students with higher parental involvement tend to perform better.<br>3️⃣ There is a need for targeted interventions in specific subjects.<br><br><strong>Business Recommendations:</strong><br>✅ Engage parents more in the educational process.<br>✅ Provide additional support in challenging subjects.<br>✅ Monitor progress closely.",
+    "description": "<strong>Problem Statement:</strong> Schools need a comprehensive understanding of student performance to improve educational outcomes.<br><br><strong>Business Objective:</strong> Extract actionable insights from academic data to guide school improvement strategies.<br><br><strong>My Approach:</strong> I used SQL to analyze student performance data across different dimensions because SQL is efficient with large data sets.<br><br><strong>Key Insights:</strong><br>1️⃣ Performance varies significantly across different subjects.<br>2️⃣ Students with higher parental involvement tend to perform better.<br>3️⃣ There is a need for targeted interventions in specific subjects.<br><br><strong>Business Recommendations:</strong> Engage parents more in the educational process, provide additional support in challenging subjects, monitor progress closely.",
     "tools": "SQL",
     "projectLink": "downloads/student_performance.sql",
     "images": [
@@ -1001,7 +1017,7 @@
     "serial": "Project 2",
     "title": "Bicycle Retail Business Analytics",
     "date": "2025-06-10",
-    "description": "<strong>Problem Statement:</strong> A local bicycle shop wants to increase sales and improve customer satisfaction.<br><br><strong>Business Objective:</strong> Identify sales trends, understand customer preferences, and optimize inventory.<br><br><strong>My Approach:</strong> I analyzed sales data using Excel to identify patterns and trends because Excel has powerful analytical tools and is easy to use.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales are highest in the summer months.<br>2️⃣ Customers prefer purchasing bicycles during weekends.<br>3️⃣ There is a growing demand for electric bicycles.<br><br><strong>Business Recommendations:</strong><br>✅ Increase marketing efforts during summer.<br>✅ Offer promotions on weekends.<br>✅ Consider stocking more electric bicycles.",
+    "description": "<strong>Problem Statement:</strong> A local bicycle shop wants to increase sales and improve customer satisfaction.<br><br><strong>Business Objective:</strong> Identify sales trends, understand customer preferences, and optimize inventory.<br><br><strong>My Approach:</strong> I analyzed sales data using Excel to identify patterns and trends because Excel has powerful analytical tools and is easy to use.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales are highest in the summer months.<br>2️⃣ Customers prefer purchasing bicycles during weekends.<br>3️⃣ There is a growing demand for electric bicycles.<br><br><strong>Business Recommendations:</strong> Increase marketing efforts during summer, offer promotions on weekends, consider stocking more electric bicycles.",
     "tools": "Excel",
     "projectLink": "downloads/bikesalesproject2.xlsx",
     "images": [
@@ -1012,7 +1028,7 @@
     "serial": "Project 3.0",
     "title": "E-commerce Marketplace Analytics",
     "date": "2025-06-15",
-    "description": "<strong>Problem Statement:</strong> An online store wants to understand its customer base and improve sales strategies.<br><br><strong>Business Objective:</strong> Gain insights into customer behavior, identify high-value segments, and optimize marketing efforts.<br><br><strong>My Approach:</strong> I used SQL to analyze customer and sales data to uncover trends and patterns because SQL is efficient with large data sets.<br><br><strong>Key Insights:</strong><br>1️⃣ Repeat customers contribute to 40% of total sales.<br>2️⃣ Customers acquired through referrals have a higher lifetime value.<br>3️⃣ Sales promotions significantly impact purchasing decisions.<br><br><strong>Business Recommendations:</strong><br>✅ Implement a customer loyalty program.<br>✅ Encourage referrals.<br>✅ Design targeted sales promotions.",
+    "description": "<strong>Problem Statement:</strong> An online store wants to understand its customer base and improve sales strategies.<br><br><strong>Business Objective:</strong> Gain insights into customer behavior, identify high-value segments, and optimize marketing efforts.<br><br><strong>My Approach:</strong> I used SQL to analyze customer and sales data to uncover trends and patterns because SQL is efficient with large data sets.<br><br><strong>Key Insights:</strong><br>1️⃣ Repeat customers contribute to 40% of total sales.<br>2️⃣ Customers acquired through referrals have a higher lifetime value.<br>3️⃣ Sales promotions significantly impact purchasing decisions.<br><br><strong>Business Recommendations:</strong> Implement a customer loyalty program, encourage referrals, design targeted sales promotions.",
     "tools": "SQL",
     "projectLink": "downloads/amazonsales3.0.xlsx",
     "images": [
@@ -1024,7 +1040,7 @@
     "serial": "Project 3.1",
     "title": "E-commerce Marketplace Analytics",
     "date": "2025-06-15",
-    "description": "<strong>Problem Statement:</strong> The management of an e-commerce platform needs a clear understanding of market trends and customer preferences.<br><br><strong>Business Objective:</strong> Provide actionable insights that drive sales growth and improve customer satisfaction.<br><br><strong>My Approach:</strong> I developed PowerBI dashboards to visualize sales and customer data because PowerBI is interactive and user-friendly.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales are highest during the holiday season.<br>2️⃣ Customers prefer free shipping options.<br>3️⃣ Product reviews significantly influence purchasing decisions.<br><br><strong>Business Recommendations:</strong><br>✅ Offer free shipping promotions.<br>✅ Encourage customer reviews.<br>✅ Prepare for seasonal demand spikes.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/aP4A-MQWAU?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
+    "description": "<strong>Problem Statement:</strong> The management of an e-commerce platform needs a clear understanding of market trends and customer preferences.<br><br><strong>Business Objective:</strong> Provide actionable insights that drive sales growth and improve customer satisfaction.<br><br><strong>My Approach:</strong> I developed PowerBI dashboards to visualize sales and customer data because PowerBI is interactive and user-friendly.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales are highest during the holiday season.<br>2️⃣ Customers prefer free shipping options.<br>3️⃣ Product reviews significantly influence purchasing decisions.<br><br><strong>Business Recommendations:</strong> Offer free shipping promotions, encourage customer reviews, prepare for seasonal demand spikes.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/aP4A-MQWAU?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
     "tools": "PowerBI",
     "projectLink": "downloads/bigamazonsales.pbix",
     "images": [
@@ -1036,7 +1052,7 @@
     "serial": "Project 4.0",
     "title": "Grocery Delivery Business Analytics",
     "date": "2025-06-20",
-    "description": "<strong>Problem Statement:</strong> A grocery delivery service wants to optimize its operations and improve customer satisfaction.<br><br><strong>Business Objective:</strong> Increase delivery efficiency, enhance product offerings, and boost customer retention.<br><br><strong>My Approach:</strong> I used SQL to analyze delivery times, customer feedback, and sales data because SQL handles complex queries and large data sets well.<br><br><strong>Key Insights:</strong><br>1️⃣ Delivery times are longer during peak hours.<br>2️⃣ Customers value fresh produce and timely deliveries.<br>3️⃣ There is potential to expand the product range based on customer feedback.<br><br><strong>Business Recommendations:</strong><br>✅ Optimize delivery schedules.<br>✅ Ensure product freshness.<br>✅ Consider expanding the product range.",
+    "description": "<strong>Problem Statement:</strong> A grocery delivery service wants to optimize its operations and improve customer satisfaction.<br><br><strong>Business Objective:</strong> Increase delivery efficiency, enhance product offerings, and boost customer retention.<br><br><strong>My Approach:</strong> I used SQL to analyze delivery times, customer feedback, and sales data because SQL handles complex queries and large data sets well.<br><br><strong>Key Insights:</strong><br>1️⃣ Delivery times are longer during peak hours.<br>2️⃣ Customers value fresh produce and timely deliveries.<br>3️⃣ There is potential to expand the product range based on customer feedback.<br><br><strong>Business Recommendations:</strong> Optimize delivery schedules, ensure product freshness, consider expanding the product range.",
     "tools": "Excel",
     "projectLink": "downloads/blinkitanalysis4.0.xlsx",
     "images": [
@@ -1047,7 +1063,7 @@
     "serial": "Project 4.2",
     "title": "Grocery Delivery Business Analytics",
     "date": "2025-06-20",
-    "description": "<strong>Problem Statement:</strong> The management of a grocery delivery service needs real-time insights into business performance.<br><br><strong>Business Objective:</strong> Provide a dashboard that tracks key metrics and identifies areas for improvement.<br><br><strong>My Approach:</strong> I developed a PowerBI dashboard to visualize key performance indicators because PowerBI is interactive and user-friendly.<br><br><strong>Key Insights:</strong><br>1️⃣ Real-time tracking of delivery times and customer feedback.<br>2️⃣ Identification of top-selling products and categories.<br>3️⃣ Monitoring of promotional campaign performance.<br><br><strong>Business Recommendations:</strong><br>✅ Use the dashboard for data-driven decision-making.<br>✅ Optimize product offerings.<br>✅ Improve marketing strategies.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/6MIOxz6iHu?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
+    "description": "<strong>Problem Statement:</strong> The management of a grocery delivery service needs real-time insights into business performance.<br><br><strong>Business Objective:</strong> Provide a dashboard that enables real-time monitoring and analysis of investment portfolios.<br><br><strong>My Approach:</strong> I developed a PowerBI dashboard to visualize key performance indicators because PowerBI is interactive and user-friendly.<br><br><strong>Key Insights:</strong><br>1️⃣ Real-time tracking of delivery times and customer feedback.<br>2️⃣ Identification of top-selling products and categories.<br>3️⃣ Monitoring of promotional campaign performance.<br><br><strong>Business Recommendations:</strong> Use the dashboard for data-driven decision-making, optimize product offerings, and improve marketing strategies.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/6MIOxz6iHu?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
     "tools": "PowerBI",
     "projectLink": "downloads/blinkitanalysis4.2.pbix",
     "images": [
@@ -1058,7 +1074,7 @@
     "serial": "Project 4.3",
     "title": "Grocery Delivery Business Analytics",
     "date": "2025-06-20",
-    "description": "<strong>Problem Statement:</strong> A grocery delivery startup wants to understand the factors that influence its success.<br><br><strong>Business Objective:</strong> Identify key success factors and areas for improvement.<br><br><strong>My Approach:</strong> I conducted a detailed analysis of operational and sales data using Python because Python has advanced analytical capabilities.<br><br><strong>Key Insights:</strong><br>1️⃣ Successful outlets have higher customer satisfaction scores.<br>2️⃣ Timely deliveries are crucial for customer retention.<br>3️⃣ There is a strong correlation between order accuracy and customer feedback.<br><br><strong>Business Recommendations:</strong>✅ Focus on improving customer satisfaction.<br>✅ Ensure timely and accurate deliveries.<br>✅ Consider expanding to new locations.",
+    "description": "<strong>Problem Statement:</strong> A grocery delivery startup wants to understand the factors that influence its success.<br><br><strong>Business Objective:</strong> Identify key success factors and areas for improvement.<br><br><strong>My Approach:</strong> I conducted a detailed analysis of operational and sales data using Python because Python has advanced analytical capabilities.<br><br><strong>Key Insights:</strong><br>1️⃣ Successful outlets have higher customer satisfaction scores.<br>2️⃣ Timely deliveries are crucial for customer retention.<br>3️⃣ There is a strong correlation between order accuracy and customer feedback.<br><br><strong>Business Recommendations:</strong> Focus on improving customer satisfaction, ensure timely and accurate deliveries, consider expanding to new locations.",
     "tools": "Python",
     "projectLink": "downloads/Blinkit_data_Analysis_python.py",
     "images": [
@@ -1074,7 +1090,7 @@
     "serial": "Project 4.4",
     "title": "Grocery Delivery Business Analytics",
     "date": "2025-06-20",
-    "description": "<strong>Problem Statement:</strong> The management of a grocery delivery service needs to analyze its operational data to identify improvement areas.<br><br><strong>Business Objective:</strong> Extract actionable insights from operational data to enhance efficiency and customer satisfaction.<br><br><strong>My Approach:</strong> I used SQL to analyze operational data and identify trends and patterns because SQL is efficient with large data sets.<br><br><strong>Key Insights:</strong><br>1️⃣ Delivery performance varies significantly across different times of the day.<br>2️⃣ Customer feedback is crucial for service improvement.<br>3️⃣ There is potential to optimize delivery routes and schedules.<br><br><strong>Business Recommendations:</strong><br>✅ Optimize delivery routes.<br>✅ Improve communication with customers.<br>✅ Use data analytics for continuous improvement.",
+    "description": "<strong>Problem Statement:</strong> The management of a grocery delivery service needs to analyze its operational data to identify improvement areas.<br><br><strong>Business Objective:</strong> Extract actionable insights from operational data to enhance efficiency and customer satisfaction.<br><br><strong>My Approach:</strong> I used SQL to analyze operational data and identify trends and patterns because SQL is efficient with large data sets.<br><br><strong>Key Insights:</strong><br>1️⃣ Delivery performance varies significantly across different times of the day.<br>2️⃣ Customer feedback is crucial for service improvement.<br>3️⃣ There is potential to optimize delivery routes and schedules.<br><br><strong>Business Recommendations:</strong> Optimize delivery routes, improve communication with customers, use data analytics for continuous improvement.",
     "tools": "SQL",
     "projectLink": "downloads/blinkit_project.sql",
     "images": [
@@ -1090,7 +1106,7 @@
     "serial": "Project 5.0",
     "title": "Small E-commerce Business Analytics",
     "date": "2025-06-25",
-    "description": "<strong>Problem Statement:</strong> A small online business wants to identify growth opportunities and improve sales performance.<br><br><strong>Business Objective:</strong> Increase sales, expand customer base, and optimize product offerings.<br><br><strong>My Approach:</strong> I analyzed sales and customer data using Excel to identify trends and opportunities because Excel has powerful analytical tools and is easy to use.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales are highly dependent on effective marketing strategies.<br>2️⃣ Customer retention is linked to product quality and service.<br>3️⃣ There is potential to expand into new market segments.<br><br><strong>Business Recommendations:</strong>✅ Enhance marketing efforts.<br>✅ Improve product quality.<br>✅ Explore new market opportunities.",
+    "description": "<strong>Problem Statement:</strong> A small online business wants to identify growth opportunities and improve sales performance.<br><br><strong>Business Objective:</strong> Increase sales, expand customer base, and optimize product offerings.<br><br><strong>My Approach:</strong> I analyzed sales and customer data using Excel to identify trends and opportunities because Excel has powerful analytical tools and is easy to use.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales are highly dependent on effective marketing strategies.<br>2️⃣ Customer retention is linked to product quality and service.<br>3️⃣ There is potential to expand into new market segments.<br><br><strong>Business Recommendations:</strong> Enhance marketing efforts, improve product quality, explore new market opportunities.",
     "tools": "Excel",
     "projectLink": "downloads/miniecommerceanalysis5.0.xlsx",
     "images": [
@@ -1102,7 +1118,7 @@
     "serial": "Project 5.1",
     "title": "Small E-commerce Business Analytics",
     "date": "2025-06-25",
-    "description": "<strong>Problem Statement:</strong> The management of a small e-commerce business needs real-time insights into sales and customer behavior.<br><br><strong>Business Objective:</strong> Provide a dashboard that tracks key metrics and identifies areas for improvement.<br><br><strong>My Approach:</strong> I developed a PowerBI dashboard to visualize key performance indicators because PowerBI is interactive and user-friendly.<br><br><strong>Key Insights:</strong><br>1️⃣ Real-time tracking of sales and customer interactions.<br>2️⃣ Identification of top-selling products and categories.<br>3️⃣ Monitoring of customer feedback and satisfaction levels.<br><br><strong>Business Recommendations:</strong>✅ Use the dashboard for data-driven decision-making.<br>✅ Optimize product offerings.<br>✅ Improve customer service strategies.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/SatY9h1nqd?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
+    "description": "<strong>Problem Statement:</strong> The management of a small e-commerce business needs real-time insights into sales and customer behavior.<br><br><strong>Business Objective:</strong> Provide a dashboard that tracks key metrics and identifies areas for improvement.<br><br><strong>My Approach:</strong> I developed a PowerBI dashboard to visualize key performance indicators because PowerBI is interactive and user-friendly.<br><br><strong>Key Insights:</strong><br>1️⃣ Real-time tracking of sales and customer interactions.<br>2️⃣ Identification of top-selling products and categories.<br>3️⃣ Monitoring of customer feedback and satisfaction levels.<br><br><strong>Business Recommendations:</strong> Use the dashboard for data-driven decision-making, optimize product offerings, and improve customer service strategies.<br><br>👉 <strong>Explore the dashboard:</strong> <a href=\"https://app.powerbi.com/links/SatY9h1nqd?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Power BI Dashboard</strong></a>",
     "tools": "PowerBI",
     "projectLink": "downloads/miniecommerceanalysis5.1.pbix",
     "images": [
@@ -1113,7 +1129,7 @@
     "serial": "Project 5.2",
     "title": "Small E-commerce Business Analytics",
     "date": "2025-06-25",
-    "description": "<strong>Problem Statement:</strong> Small e-commerce businesses need to understand their sales data to identify growth opportunities.<br><br><strong>Business Objective:</strong> Extract actionable insights from sales data to drive business growth.<br><br><strong>My Approach:</strong> I conducted a detailed analysis of sales data using Python because Python has advanced analytical capabilities.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales are seasonal and vary by product category.<br>2️⃣ Customer demographics influence purchasing behavior.<br>3️⃣ Effective marketing strategies can significantly boost sales.<br><br><strong>Business Recommendations:</strong>✅ Tailor marketing strategies to target demographics.<br>✅ Optimize product offerings based on seasonality.<br>✅ Monitor sales trends closely.",
+    "description": "<strong>Problem Statement:</strong> Small e-commerce businesses need to understand their sales data to identify growth opportunities.<br><br><strong>Business Objective:</strong> Extract actionable insights from sales data to drive business growth.<br><br><strong>My Approach:</strong> I conducted a detailed analysis of sales data using Python because Python has advanced analytical capabilities.<br><br><strong>Key Insights:</strong><br>1️⃣ Sales are seasonal and vary by product category.<br>2️⃣ Customer demographics influence purchasing behavior.<br>3️⃣ Effective marketing strategies can significantly boost sales.<br><br><strong>Business Recommendations:</strong> Tailor marketing strategies to target demographics, optimize product offerings based on seasonality, monitor sales trends closely.",
     "tools": "Python",
     "projectLink": "downloads/E-Commerce Sales Analysis.py",
     "images": [
@@ -1125,22 +1141,6 @@
   },
                             {
     "serial": "Project 5.3",
-    "title": "Small E-commerce Business Analytics",
-    "date": "2025-06-25",
-    "description": "<strong>Problem Statement:</strong> There is a need to analyze transactional data to uncover insights that can drive business growth for small e-commerce businesses.<br><br><strong>Business Objective:</strong> Provide a detailed analysis of sales transactions to identify trends and opportunities.<br><br><strong>My Approach:</strong> I used SQL to analyze transactional data and generate insights because SQL is efficient with large data sets.<br><br><strong>Key Insights:</strong><br>1️⃣ Top-selling products and categories were identified.<br>2️⃣ Sales trends over time showed clear seasonality.<br>3️⃣ Customer segments with the highest lifetime value were determined.<br><br><strong>Business Recommendations:</strong>✅ Focus on high-margin products.<br>✅ Plan for seasonal fluctuations in demand.<br>✅ Tailor marketing efforts to high-value customer segments.",
-    "tools": "SQL",
-    "projectLink": "downloads/eCommerce _mini_project.sql",
-    "images": [
-      "assets/projects/E-comerce_mini/sql/revenue by category.JPG",
-       "assets/projects/E-comerce_mini/sql/revenue by product.JPG",
-        "assets/projects/E-comerce_mini/sql/revenue by region.JPG",
-         "assets/projects/E-comerce_mini/sql/revenuebyage.JPG",
-          "assets/projects/E-comerce_mini/sql/revenuebycategory.JPG",
-           "assets/projects/E-comerce_mini/sql/totalrevenue.JPG"
-    ]
-  },
-                              {
-    "serial": "Project 6.0",
     "title": "Investment Portfolio Analytics",
     "date": "2025-07-01",
     "description": "<strong>Problem Statement:</strong> Investors need to understand how to optimize their portfolios for better returns.<br><br><strong>Business Objective:</strong> Provide insights that lead to improved investment strategies and portfolio performance.<br><br><strong>My Approach:</strong> I analyzed portfolio and market data using Excel to identify trends and optimization opportunities because Excel has powerful analytical tools and is easy to use.<br><br><strong>Key Insights:</strong><br>1️⃣ Diversification reduces risk without sacrificing returns.<br>2️⃣ Regular portfolio rebalancing improves performance.<br>3️⃣ Understanding market trends is crucial for timing investments.<br><br><strong>Business Recommendations:</strong> Diversify investments, rebalance portfolios regularly, and stay informed about market trends.",
