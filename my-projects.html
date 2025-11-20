@@ -4,19 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   
-  <script src="https://cdn.amplitude.com/script/5a606w6w3841a994768853dd53f10382.js"></script><script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('5a606w6w3841a994768853dd53f10382', {"fetchRemoteConfig":true,"autocapture":true});</script>
+  <!-- Defer analytics loading to improve page load speed -->
+  <script defer src="https://cdn.amplitude.com/script/5a606w6w3841a994768853dd53f10382.js"></script>
+  <script defer>
+    window.addEventListener('load', function() {
+      if (window.amplitude) {
+        window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
+        window.amplitude.init('5a606w6w3841a994768853dd53f10382', {"fetchRemoteConfig":true,"autocapture":true});
+      }
+    });
+  </script>
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJM885LMLJ"></script>
+  <!-- Google tag (gtag.js) - Deferred -->
+<script defer src="https://www.googletagmanager.com/gtag/js?id=G-ZJM885LMLJ"></script>
 
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-ZJM885LMLJ');
+<script defer>
+  window.addEventListener('load', function() {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZJM885LMLJ');
+  });
 </script>
-<script data-goatcounter="https://deric-exes-analytics.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script defer data-goatcounter="https://deric-exes-analytics.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
   <!-- ✅ Page Title -->
 <title>Data Analytics Projects | dericBI Portfolio</title>
 
@@ -93,6 +103,8 @@
 }
 </script>
 
+  <!-- Preload critical resources for faster loading -->
+  <link rel="preload" href="journey-data.json" as="fetch" crossorigin="anonymous">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
@@ -302,6 +314,56 @@ img:not([alt]) {
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 10;
+    }
+    
+    /* Performance optimizations */
+    img, video {
+      content-visibility: auto;
+    }
+    
+    /* Prevent layout shift for images */
+    img[loading="lazy"] {
+      min-height: 100px;
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    
+    img[loading="lazy"].loaded {
+      background: none;
+      animation: none;
+    }
+    
+    /* Optimize video loading */
+    video[preload="none"] {
+      background: #000;
+    }
+    
+    /* Ensure play icon doesn't reappear */
+    .video-thumb-main svg.hidden-play {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    
+    /* Prevent play icon from showing on paused video */
+    video[controls]::-webkit-media-controls-overlay-play-button {
+      display: none !important;
+    }
+    
+    /* Once video is activated, change cursor */
+    .video-thumb-main.video-active {
+      cursor: default !important;
+    }
+    
+    .video-thumb-main.video-active svg {
+      display: none !important;
     }
     /* Hamburger Menu */
     #menu-toggle {
@@ -777,153 +839,236 @@ function renderProjects(projects, container) {
     return;
   }
 
-  projects.forEach((cs, index) => {
-    const serial = cs.serial || `Project ${index + 1}`;
-    const images = cs.images || [];
-    const mainImgId = `main-img-${index}`;
-    const thumbsId = `thumbs-${index}`;
-    const prevBtnId = `rotate-left-${index}`;
-    const nextBtnId = `rotate-right-${index}`;
-    const zoomBtnId = `zoom-${index}`;
-    const zoomWrapperId = `zoom-wrapper-${index}`;
-    const projectId = serial.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-    let thumbsArr = [];
-    if (cs.video) {
-      if (Array.isArray(cs.video)) {
-        cs.video.forEach(v => thumbsArr.push({ type: 'video', src: v, poster: images[0] || '' }));
-      } else {
-        thumbsArr.push({ type: 'video', src: cs.video, poster: images[0] || '' });
+  // Render projects in batches to improve performance
+  const batchSize = 25; // Increased from 20 for even faster initial load
+  let currentBatch = 0;
+  
+  const renderBatch = () => {
+    const start = currentBatch * batchSize;
+    const end = Math.min(start + batchSize, projects.length);
+    
+    // Use DocumentFragment for better performance
+    const fragment = document.createDocumentFragment();
+    
+    // Show progress
+    const percentComplete = Math.round((end / projects.length) * 100);
+    console.log(`📊 Rendering projects ${start + 1}-${end} of ${projects.length} (${percentComplete}%)`);
+    
+    for (let index = start; index < end; index++) {
+      const cs = projects[index];
+      const serial = cs.serial || `Project ${index + 1}`;
+      const images = cs.images || [];
+      const mainImgId = `main-img-${index}`;
+      const thumbsId = `thumbs-${index}`;
+      const prevBtnId = `rotate-left-${index}`;
+      const nextBtnId = `rotate-right-${index}`;
+      const zoomBtnId = `zoom-${index}`;
+      const zoomWrapperId = `zoom-wrapper-${index}`;
+      const projectId = serial.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+      let thumbsArr = [];
+      
+      if (cs.video) {
+        if (Array.isArray(cs.video)) {
+          cs.video.forEach(v => thumbsArr.push({ type: 'video', src: v, poster: images[0] || '' }));
+        } else {
+          thumbsArr.push({ type: 'video', src: cs.video, poster: images[0] || '' });
+        }
       }
-    }
-    images.forEach(img => thumbsArr.push({ type: 'image', src: img }));
-    const isVideo = thumbsArr.length > 0 && thumbsArr[0].type === 'video';
+      images.forEach(img => thumbsArr.push({ type: 'image', src: img }));
+      const isVideo = thumbsArr.length > 0 && thumbsArr[0].type === 'video';
 
-    const card = document.createElement("div");
-    card.className = "bg-white p-6 rounded-xl shadow-md border border-gray-200 space-y-4";
-    card.id = `project-${projectId}`;
-    card.innerHTML = `
-      <div class="flex items-center justify-between">
-        <div class="text-xs text-gray-400">${serial}</div>
-        <div class="flex gap-1">
-          ${categorizeByTool(cs).map(cat => {
-            const icons = {
-              excel: '<i class="fas fa-file-excel text-green-600" title="Excel"></i>',
-              powerbi: '<i class="fas fa-chart-bar text-yellow-600" title="PowerBI"></i>',
-              python: '<i class="fab fa-python text-blue-600" title="Python"></i>',
-              sql: '<i class="fas fa-database text-gray-600" title="SQL"></i>',
-              other: '<i class="fas fa-cogs text-purple-600" title="Other Tools"></i>'
-            };
-            return `<span class="text-sm">${icons[cat] || ''}</span>`;
-          }).join('')}
+      const card = document.createElement("div");
+      card.className = "bg-white p-6 rounded-xl shadow-md border border-gray-200 space-y-4";
+      card.id = `project-${projectId}`;
+      card.innerHTML = `
+        <div class="flex items-center justify-between">
+          <div class="text-xs text-gray-400">${serial}</div>
+          <div class="flex gap-1">
+            ${categorizeByTool(cs).map(cat => {
+              const icons = {
+                excel: '<i class="fas fa-file-excel text-green-600" title="Excel"></i>',
+                powerbi: '<i class="fas fa-chart-bar text-yellow-600" title="PowerBI"></i>',
+                python: '<i class="fab fa-python text-blue-600" title="Python"></i>',
+                sql: '<i class="fas fa-database text-gray-600" title="SQL"></i>',
+                other: '<i class="fas fa-cogs text-purple-600" title="Other Tools"></i>'
+              };
+              return `<span class="text-sm">${icons[cat] || ''}</span>`;
+            }).join('')}
+          </div>
         </div>
-      </div>
-      <h2 class="text-xl font-bold text-[#2D3142]">${cs.title}</h2>
+        <h2 class="text-xl font-bold text-[#2D3142]">${cs.title}</h2>
 
-      <p class="text-sm text-gray-500">📅 ${cs.date}</p>
-      <div class="flex flex-col md:flex-row gap-6">
-        <div class="w-full md:w-1/2 relative">
-          <div class="absolute z-20 right-2 top-2 flex gap-2">
-            <button id="${prevBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100 ${isVideo ? 'hidden' : ''}" title="Rotate Left">
-              <i class="fas fa-undo-alt"></i>
-            </button>
-            <button id="${nextBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100 ${isVideo ? 'hidden' : ''}" title="Rotate Right">
-              <i class="fas fa-redo-alt"></i>
-            </button>
-            <button id="${zoomBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100" title="Zoom">
-              <i class="fas fa-expand"></i>
-            </button>
-            <button id="download-img-${index}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100" title="Download">
-              <i class="fas fa-download"></i>
-            </button>
-          </div>
-          <div id="${zoomWrapperId}" class="relative transition-all duration-300 ease-in-out">
-            ${
-              thumbsArr.length > 0 && thumbsArr[0].type === 'video'
-                ? `<div id="${mainImgId}" class="w-full h-[380px] flex items-center justify-center rounded-xl border border-[#2563EB] cursor-pointer video-thumb-main relative" style="box-shadow:0 0 0 3px #facc15; background:transparent;">
-                    <video src="${thumbsArr[0].src}" poster="${thumbsArr[0].poster || ''}" class="main-video-element" style="width:100%;height:100%;object-fit:contain;border-radius:12px;pointer-events:none;filter:brightness(0.95);" preload="metadata"></video>
-                    <svg class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none" width="68" height="68" viewBox="0 0 68 68" fill="none" style="opacity:0.92;">
-                      <circle cx="34" cy="34" r="32" fill="#111" fill-opacity="0.85" stroke="#fff" stroke-width="3"/>
-                      <polygon points="30,22 50,34 30,46" fill="#fff" stroke="#111" stroke-width="2"/>
-                    </svg>
-                  </div>`
-                : `<img id="${mainImgId}" src="${images[0] || 'assets/img/placeholder.png'}" alt="${cs.title}" loading="lazy" class="w-full h-[380px] object-contain rounded-xl border border-gray-300 bg-white transition-transform duration-300" style="transform: rotate(0deg);" />`
-            }
-          </div>
-          ${thumbsArr.length > 1 ? `
-            <div id="${thumbsId}" class="flex flex-wrap gap-3 mt-4">
+        <p class="text-sm text-gray-500">📅 ${cs.date}</p>
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="w-full md:w-1/2 relative">
+            <div class="absolute z-20 right-2 top-2 flex gap-2">
+              <button id="${prevBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100 ${isVideo ? 'hidden' : ''}" title="Rotate Left">
+                <i class="fas fa-undo-alt"></i>
+              </button>
+              <button id="${nextBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100 ${isVideo ? 'hidden' : ''}" title="Rotate Right">
+                <i class="fas fa-redo-alt"></i>
+              </button>
+              <button id="${zoomBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100" title="Zoom">
+                <i class="fas fa-expand"></i>
+              </button>
+              <button id="download-img-${index}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100" title="Download">
+                <i class="fas fa-download"></i>
+              </button>
+            </div>
+            <div id="${zoomWrapperId}" class="relative transition-all duration-300 ease-in-out">
               ${
-                thumbsArr.map((thumb, i) =>
-                  thumb.type === 'video'
-                    ? `<div class="relative group">
-                        <div class="w-20 h-20 rounded-lg overflow-hidden border-2 border-[#facc15] shadow-lg cursor-pointer thumb-video-thumb ${i === 0 ? 'thumb-active' : ''}" style="background:#222; position:relative;">
-                          <video src="${thumb.src}" poster="${thumb.poster}" class="w-full h-full object-cover pointer-events-none" style="border-radius:8px;"></video>
-                          <span class="absolute top-1 left-1 bg-[#facc15] text-[#2563EB] px-2 py-0.5 rounded text-[10px] font-bold shadow">VIDEO</span>
-
-                          <button class="thumb-download absolute -top-1 -right-1 bg-[#49A078] text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#3e8865]" 
-                                  data-media-type="video" data-media-src="${thumb.src}" title="Download Video">
-                            <i class="fas fa-download text-[8px]"></i>
-                          </button>
-                        </div>
-                      </div>`
-                    : `<div class="relative group">
-                        <img src="${thumb.src}" data-index="${i}" alt="Thumb ${i + 1}" loading="lazy" class="w-20 h-20 object-cover rounded-lg cursor-pointer transition-all border border-gray-200 hover:ring-2 hover:ring-green-500 ${i === 0 && !isVideo ? 'thumb-active' : ''}" />
-                        <button class="thumb-download absolute -top-1 -right-1 bg-[#49A078] text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#3e8865]" 
-                                data-media-type="image" data-media-src="${thumb.src}" title="Download Image">
-                          <i class="fas fa-download text-[8px]"></i>
-                        </button>
-                      </div>`
-                ).join('')
+                thumbsArr.length > 0 && thumbsArr[0].type === 'video'
+                  ? `<div id="${mainImgId}" class="w-full h-[380px] flex items-center justify-center rounded-xl border border-[#2563EB] cursor-pointer video-thumb-main relative" style="box-shadow:0 0 0 3px #facc15; background:transparent;">
+                      <video src="${thumbsArr[0].src}" poster="${thumbsArr[0].poster || ''}" class="main-video-element" style="width:100%;height:100%;object-fit:contain;border-radius:12px;pointer-events:none;filter:brightness(0.95);" preload="none" loading="lazy"></video>
+                      <svg class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none" width="68" height="68" viewBox="0 0 68 68" fill="none" style="opacity:0.92;">
+                        <circle cx="34" cy="34" r="32" fill="#111" fill-opacity="0.85" stroke="#fff" stroke-width="3"/>
+                        <polygon points="30,22 50,34 30,46" fill="#fff" stroke="#111" stroke-width="2"/>
+                      </svg>
+                    </div>`
+                  : `<img id="${mainImgId}" src="${images[0] || 'assets/img/placeholder.png'}" alt="${cs.title}" loading="lazy" decoding="async" class="w-full h-[380px] object-contain rounded-xl border border-gray-300 bg-white transition-transform duration-300" style="transform: rotate(0deg);" />`
               }
             </div>
-          ` : ''}
-        </div>
-        <div class="w-full md:w-1/2 space-y-2">
-          <p class="text-gray-700 text-sm leading-relaxed">${cs.description}</p>
-          <p class="text-sm"><strong>Tools Used:</strong> ${cs.tools}</p>
-          <div class="mt-4 p-3 bg-gray-50 rounded-lg border">
-            <div class="flex items-center justify-between">
-              <div>
-                <h4 class="text-sm font-semibold text-gray-800">📁 Full Project Download</h4>
-                <p class="text-xs text-gray-600">Get complete project files and documentation</p>
+            ${thumbsArr.length > 1 ? `
+              <div id="${thumbsId}" class="flex flex-wrap gap-3 mt-4">
+                ${
+                  thumbsArr.map((thumb, i) =>
+                    thumb.type === 'video'
+                      ? `<div class="relative group">
+                          <div class="w-20 h-20 rounded-lg overflow-hidden border-2 border-[#facc15] shadow-lg cursor-pointer thumb-video-thumb ${i === 0 ? 'thumb-active' : ''}" style="background:#222; position:relative;">
+                            <video src="${thumb.src}" poster="${thumb.poster}" class="w-full h-full object-cover pointer-events-none" style="border-radius:8px;" preload="none" loading="lazy"></video>
+                            <span class="absolute top-1 left-1 bg-[#facc15] text-[#2563EB] px-2 py-0.5 rounded text-[10px] font-bold shadow">VIDEO</span>
+
+                            <button class="thumb-download absolute -top-1 -right-1 bg-[#49A078] text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#3e8865]" 
+                                    data-media-type="video" data-media-src="${thumb.src}" title="Download Video">
+                              <i class="fas fa-download text-[8px]"></i>
+                            </button>
+                          </div>
+                        </div>`
+                      : `<div class="relative group">
+                          <img src="${thumb.src}" data-index="${i}" alt="Thumb ${i + 1}" loading="lazy" decoding="async" class="w-20 h-20 object-cover rounded-lg cursor-pointer transition-all border border-gray-200 hover:ring-2 hover:ring-green-500 ${i === 0 && !isVideo ? 'thumb-active' : ''}" />
+                          <button class="thumb-download absolute -top-1 -right-1 bg-[#49A078] text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#3e8865]" 
+                                  data-media-type="image" data-media-src="${thumb.src}" title="Download Image">
+                            <i class="fas fa-download text-[8px]"></i>
+                          </button>
+                        </div>`
+                  ).join('')
+                }
               </div>
-              <button id="download-project-${index}" class="bg-[#49A078] text-white px-3 py-1 rounded-md text-xs hover:bg-[#3e8865] transition-colors relative">
-                <i class="fas fa-download mr-1"></i>Download
-                <div class="download-loading absolute inset-0 flex items-center justify-center bg-[#49A078] bg-opacity-80 rounded-md">
-                  <i class="fas fa-spinner animate-spin text-white"></i>
+            ` : ''}
+          </div>
+          <div class="w-full md:w-1/2 space-y-2">
+            <p class="text-gray-700 text-sm leading-relaxed">${cs.description}</p>
+            <p class="text-sm"><strong>Tools Used:</strong> ${cs.tools}</p>
+            <div class="mt-4 p-3 bg-gray-50 rounded-lg border">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h4 class="text-sm font-semibold text-gray-800">📁 Full Project Download</h4>
+                  <p class="text-xs text-gray-600">Get complete project files and documentation</p>
                 </div>
+                <button id="download-project-${index}" class="bg-[#49A078] text-white px-3 py-1 rounded-md text-xs hover:bg-[#3e8865] transition-colors relative">
+                  <i class="fas fa-download mr-1"></i>Download
+                  <div class="download-loading absolute inset-0 flex items-center justify-center bg-[#49A078] bg-opacity-80 rounded-md">
+                    <i class="fas fa-spinner animate-spin text-white"></i>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <!-- Share Button -->
+            <div class="mt-4">
+              <button onclick="shareProject('${projectId}', '${cs.title}')" class="share-btn">
+                <i class="fas fa-share-alt mr-1"></i>Share Project
               </button>
             </div>
           </div>
-          <!-- Share Button -->
-          <div class="mt-4">
-            <button onclick="shareProject('${projectId}', '${cs.title}')" class="share-btn">
-              <i class="fas fa-share-alt mr-1"></i>Share Project
-            </button>
-          </div>
         </div>
-      </div>
-    `;
-    container.appendChild(card);
+      `;
+      fragment.appendChild(card);
 
-    // Initialize interaction logic
-    setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, prevBtnId, nextBtnId, zoomBtnId, zoomWrapperId, projectId);
-    // Add play icon click logic for video main thumb
-    if (thumbsArr.length > 0 && thumbsArr[0].type === 'video') {
-      const mainThumb = card.querySelector('.video-thumb-main');
-      if (mainThumb) {
-        mainThumb.addEventListener('click', function() {
-          const svgIcon = mainThumb.querySelector('svg');
-          const videoEl = mainThumb.querySelector('video');
-          if (svgIcon && videoEl) {
-            svgIcon.style.display = 'none';
-            videoEl.style.pointerEvents = 'auto';
-            videoEl.setAttribute('controls', '');
-            videoEl.play();
+      // Initialize interaction logic
+      // Defer this to after DOM insertion for better performance
+      setTimeout(() => {
+        setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, prevBtnId, nextBtnId, zoomBtnId, zoomWrapperId, projectId);
+      }, 0);
+      
+      // Add play icon click logic for video main thumb
+      if (thumbsArr.length > 0 && thumbsArr[0].type === 'video') {
+        setTimeout(() => {
+          const mainThumb = card.querySelector('.video-thumb-main');
+          if (mainThumb) {
+            let videoActivated = false; // Flag to prevent multiple activations
+            
+            const activateVideo = function(e) {
+              if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+              
+              if (videoActivated) return; // Already activated, ignore
+              
+              const svgIcon = mainThumb.querySelector('svg');
+              const videoEl = mainThumb.querySelector('video');
+              
+              if (svgIcon && videoEl) {
+                videoActivated = true; // Mark as activated
+                
+                // Mark the container as video-active
+                mainThumb.classList.add('video-active');
+                mainThumb.style.cursor = 'default';
+                
+                // Pause all other videos before playing this one
+                pauseAllVideosExcept(videoEl);
+                
+                // Permanently hide the play icon with multiple methods
+                svgIcon.classList.add('hidden-play');
+                svgIcon.style.display = 'none';
+                svgIcon.style.visibility = 'hidden';
+                svgIcon.style.opacity = '0';
+                svgIcon.style.pointerEvents = 'none';
+                
+                // Remove the click listener to prevent re-triggering
+                mainThumb.removeEventListener('click', activateVideo);
+                
+                videoEl.style.pointerEvents = 'auto';
+                videoEl.setAttribute('controls', '');
+                videoEl.setAttribute('preload', 'metadata');
+                
+                // Small delay to ensure DOM updates before playing
+                setTimeout(() => {
+                  if (svgIcon.parentNode) {
+                    svgIcon.remove(); // Remove it completely
+                  }
+                  videoEl.play().catch(err => {
+                    console.error('Video play failed:', err);
+                  });
+                }, 50);
+              }
+            };
+            
+            mainThumb.addEventListener('click', activateVideo);
           }
-        });
+        }, 0);
       }
     }
-  });
+    
+    // Append all cards at once for better performance
+    container.appendChild(fragment);
+    
+    currentBatch++;
+    
+    // Continue rendering if there are more projects
+    if (end < projects.length) {
+      // Render next batch immediately using requestAnimationFrame for smooth rendering
+      requestAnimationFrame(() => {
+        renderBatch();
+      });
+    } else {
+      // All projects rendered
+      console.log('✅ All projects rendered successfully!');
+    }
+  };
+  
+  // Start rendering the first batch
+  renderBatch();
 }
 
 function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, prevBtnId, nextBtnId, zoomBtnId, zoomWrapperId, projectId) {
@@ -958,6 +1103,16 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
     `;
     updateRotationButtons();
     setupMediaInteractions();
+    
+    // If it's a video, add play event listener to pause other videos
+    if (activeThumb.type === 'video') {
+      const videoEl = document.getElementById(mainImgId);
+      if (videoEl) {
+        videoEl.addEventListener('play', function() {
+          pauseAllVideosExcept(videoEl);
+        });
+      }
+    }
   };
 
   downloadImgBtn.onclick = () => {
@@ -1080,6 +1235,18 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
             <i class="fas fa-times"></i>
           </button>
         `;
+        
+        // If it's a video in zoom mode, pause all other videos
+        if (activeThumb.type === 'video') {
+          const zoomedVideo = zoomWrapper.querySelector('video');
+          if (zoomedVideo) {
+            pauseAllVideosExcept(zoomedVideo);
+            zoomedVideo.addEventListener('play', function() {
+              pauseAllVideosExcept(zoomedVideo);
+            });
+          }
+        }
+        
         const closeZoomBtn = document.getElementById(`close-zoom-${index}`);
         const newMedia = zoomWrapper.querySelector('img, video');
         closeZoomBtn.onclick = closeZoom;
@@ -1157,15 +1324,111 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
 let allProjects = [];
 let filteredProjects = [];
 
-fetch('journey-data.json')
-  .then(res => res.json())
-  .then(data => {
+// Global function to pause all videos except the one being played
+function pauseAllVideosExcept(currentVideo) {
+  const allVideos = document.querySelectorAll('video');
+  let pausedCount = 0;
+  
+  allVideos.forEach(video => {
+    if (video !== currentVideo && !video.paused) {
+      video.pause();
+      pausedCount++;
+      console.log('⏸️ Paused video:', video.src);
+      
+      // Visual feedback: briefly highlight the video that was paused
+      const videoContainer = video.closest('.w-full');
+      if (videoContainer) {
+        videoContainer.style.transition = 'opacity 0.3s ease';
+        videoContainer.style.opacity = '0.5';
+        setTimeout(() => {
+          videoContainer.style.opacity = '1';
+        }, 300);
+      }
+    }
+  });
+  
+  if (pausedCount > 0) {
+    console.log(`✅ Paused ${pausedCount} video(s) to play the selected one`);
+  }
+}
+
+// Show loading state
+const container = document.getElementById('case-container');
+container.innerHTML = `
+  <div class="text-center py-12">
+    <div class="animate-spin rounded-full h-16 w-16 border-4 border-[#49A078] border-t-transparent mx-auto mb-4"></div>
+    <h3 class="text-xl font-semibold text-gray-600 mb-2">Loading Projects...</h3>
+    <p class="text-gray-500">Please wait while we fetch the latest projects</p>
+  </div>
+`;
+
+// Fetch with timeout and retry logic
+const fetchWithTimeout = (url, timeout = 8000) => { // Reduced from 10s to 8s
+  return Promise.race([
+    fetch(url),
+    new Promise((_, reject) => 
+      setTimeout(() => reject(new Error('Request timeout')), timeout)
+    )
+  ]);
+};
+
+const loadProjects = async (retryCount = 0) => {
+  const startTime = performance.now();
+  
+  try {
+    const response = await fetchWithTimeout('journey-data.json', 8000);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    const loadTime = performance.now() - startTime;
+    
     allProjects = data;
     filteredProjects = data;
-    updateProjectCounts();
-    renderProjects(filteredProjects, document.getElementById('case-container'));
-    handleDeepLink();
-  });
+    
+    // Start rendering immediately without waiting for counts
+    requestAnimationFrame(() => {
+      renderProjects(filteredProjects, container);
+    });
+    
+    // Update counts asynchronously
+    setTimeout(() => {
+      updateProjectCounts();
+      handleDeepLink();
+    }, 0);
+    
+    // Track successful load
+    console.log(`✅ Successfully loaded ${allProjects.length} projects in ${loadTime.toFixed(0)}ms`);
+    
+  } catch (error) {
+    console.error('Error loading projects:', error);
+    
+    // Retry up to 3 times
+    if (retryCount < 3) {
+      console.log(`Retrying... (Attempt ${retryCount + 1}/3)`);
+      setTimeout(() => loadProjects(retryCount + 1), 2000);
+    } else {
+      // Show error message after all retries failed
+      container.innerHTML = `
+        <div class="text-center py-12">
+          <i class="fas fa-exclamation-triangle text-red-500 text-4xl mb-4"></i>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Failed to Load Projects</h3>
+          <p class="text-gray-600 mb-4">We're having trouble loading the projects. Please try again.</p>
+          <button onclick="location.reload()" class="bg-[#49A078] hover:bg-[#3e8865] text-white px-6 py-3 rounded-lg font-semibold transition">
+            <i class="fas fa-redo mr-2"></i>Reload Page
+          </button>
+          <p class="text-sm text-gray-500 mt-4">Error: ${error.message}</p>
+          <p class="text-sm text-gray-500">If problem persists, contact: <a href="tel:+254791360805" class="text-[#49A078] font-semibold">+254791360805</a></p>
+        </div>
+      `;
+    }
+  }
+};
+
+// Start loading
+loadProjects();
 
 function categorizeByTool(project) {
   const tools = project.tools ? project.tools.toLowerCase() : '';
@@ -1509,6 +1772,77 @@ function toggleNewsletter() {
 </footer>
 
 <!-- Enhanced Analytics Tracking -->
-<script src="assets/js/analytics-tracking.js?v=20251114"></script>
+<script defer src="assets/js/analytics-tracking.js?v=20251114"></script>
+
+<!-- Performance Optimization Script -->
+<script>
+  // Intersection Observer for lazy loading images only when visible
+  let imageObserver;
+  
+  if ('IntersectionObserver' in window) {
+    imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+          }
+          observer.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '50px' // Load images 50px before they enter viewport
+    });
+  }
+  
+  // Global event delegation for video play events - ensures only one video plays at a time
+  document.addEventListener('play', function(e) {
+    if (e.target.tagName === 'VIDEO') {
+      pauseAllVideosExcept(e.target);
+    }
+  }, true); // Use capture phase to catch all play events
+  
+  // Optimize image loading
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mark images as loaded when they finish loading
+    const observeImages = () => {
+      const images = document.querySelectorAll('img[loading="lazy"]');
+      images.forEach(img => {
+        if (img.complete) {
+          img.classList.add('loaded');
+        } else {
+          img.addEventListener('load', () => img.classList.add('loaded'));
+          img.addEventListener('error', () => img.classList.add('loaded')); // Remove shimmer even on error
+        }
+      });
+    };
+    
+    // Initial check
+    observeImages();
+    
+    // Re-check when new images are added (e.g., during filtering)
+    const observer = new MutationObserver(observeImages);
+    const container = document.getElementById('case-container');
+    if (container) {
+      observer.observe(container, { childList: true, subtree: true });
+    }
+  });
+  
+  // Log performance metrics
+  if ('performance' in window) {
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        const perfData = performance.getEntriesByType('navigation')[0];
+        if (perfData) {
+          console.log('📊 Page Load Performance:');
+          console.log(`  DOM Content Loaded: ${(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart).toFixed(2)}ms`);
+          console.log(`  Total Load Time: ${(perfData.loadEventEnd - perfData.loadEventStart).toFixed(2)}ms`);
+          console.log(`  DOM Interactive: ${(perfData.domInteractive - perfData.fetchStart).toFixed(2)}ms`);
+        }
+      }, 0);
+    });
+  }
+</script>
 </body>
 </html>
