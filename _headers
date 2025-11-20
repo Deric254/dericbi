@@ -1,3 +1,9 @@
+# Optimize JSON loading with compression and caching
+/journey-data.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=300, must-revalidate
+  X-Content-Type-Options: nosniff
+
 # Force browser download for Python & SQL source files
 /downloads/*.py
   Content-Type: application/octet-stream

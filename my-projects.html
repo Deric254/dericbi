@@ -840,11 +840,24 @@ function renderProjects(projects, container) {
   }
 
   // Render projects in batches to improve performance
-  const batchSize = 25; // Increased from 20 for even faster initial load
+  // First batch is smaller for instant display, then larger batches
   let currentBatch = 0;
   
+  const getBatchSize = (batchNum) => {
+    if (batchNum === 0) return 5; // Show first 5 INSTANTLY
+    if (batchNum === 1) return 10; // Then next 10
+    return 20; // Then 20 at a time
+  };
+  
   const renderBatch = () => {
-    const start = currentBatch * batchSize;
+    const batchSize = getBatchSize(currentBatch);
+    let start = 0;
+    
+    // Calculate start position based on previous batch sizes
+    for (let i = 0; i < currentBatch; i++) {
+      start += getBatchSize(i);
+    }
+    
     const end = Math.min(start + batchSize, projects.length);
     
     // Use DocumentFragment for better performance
@@ -1324,6 +1337,52 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
 let allProjects = [];
 let filteredProjects = [];
 
+// Cache configuration
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
+// Global function to try loading from cache
+function tryLoadFromCache() {
+  const cachedData = localStorage.getItem('dericbi-projects-cache');
+  const cacheTime = localStorage.getItem('dericbi-projects-cache-time');
+  
+  if (cachedData && cacheTime) {
+    const age = Date.now() - parseInt(cacheTime);
+    if (age < CACHE_DURATION) {
+      try {
+        const parsedCache = JSON.parse(cachedData);
+        allProjects = parsedCache;
+        filteredProjects = parsedCache;
+        console.log('📦 Loaded from cache:', allProjects.length, 'projects');
+        
+        // Render cached data immediately
+        const container = document.getElementById('case-container');
+        if (container) {
+          renderProjects(filteredProjects, container);
+          updateProjectCounts();
+          
+          // Show cache indicator
+          container.insertAdjacentHTML('afterbegin', `
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4 text-sm text-blue-800">
+              <i class="fas fa-bolt mr-2"></i>Showing cached content - Loading latest updates...
+            </div>
+          `);
+          
+          // Still fetch fresh data in background
+          setTimeout(() => loadProjects(0, true), 100);
+          return true; // Cache loaded successfully
+        }
+      } catch (e) {
+        console.error('Cache parse error:', e);
+        localStorage.removeItem('dericbi-projects-cache');
+        localStorage.removeItem('dericbi-projects-cache-time');
+      }
+    } else {
+      console.log('Cache expired, fetching fresh data');
+    }
+  }
+  return false; // No cache or cache failed
+}
+
 // Global function to pause all videos except the one being played
 function pauseAllVideosExcept(currentVideo) {
   const allVideos = document.querySelectorAll('video');
@@ -1352,18 +1411,8 @@ function pauseAllVideosExcept(currentVideo) {
   }
 }
 
-// Show loading state
-const container = document.getElementById('case-container');
-container.innerHTML = `
-  <div class="text-center py-12">
-    <div class="animate-spin rounded-full h-16 w-16 border-4 border-[#49A078] border-t-transparent mx-auto mb-4"></div>
-    <h3 class="text-xl font-semibold text-gray-600 mb-2">Loading Projects...</h3>
-    <p class="text-gray-500">Please wait while we fetch the latest projects</p>
-  </div>
-`;
-
-// Fetch with timeout and retry logic
-const fetchWithTimeout = (url, timeout = 8000) => { // Reduced from 10s to 8s
+// Fetch with timeout for slow networks
+const fetchWithTimeout = (url, timeout = 15000) => {
   return Promise.race([
     fetch(url),
     new Promise((_, reject) => 
@@ -1372,23 +1421,98 @@ const fetchWithTimeout = (url, timeout = 8000) => { // Reduced from 10s to 8s
   ]);
 };
 
-const loadProjects = async (retryCount = 0) => {
+// Track loading time
+let loadStartTime = Date.now();
+let loadTimer = null;
+
+// Load projects from server
+const loadProjects = async (retryCount = 0, isBackgroundUpdate = false) => {
   const startTime = performance.now();
+  const container = document.getElementById('case-container');
+  
+  if (!container) {
+    console.error('Container element not found!');
+    return;
+  }
+  
+  // Show loading state (skip if background update)
+  if (!isBackgroundUpdate) {
+    container.innerHTML = `
+      <div class="text-center py-12">
+        <div class="animate-spin rounded-full h-16 w-16 border-4 border-[#49A078] border-t-transparent mx-auto mb-4"></div>
+        <h3 class="text-xl font-semibold text-gray-600 mb-2">Loading Projects...</h3>
+        <p class="text-gray-500" id="load-status">Connecting to server...</p>
+        <div class="mt-4 w-full max-w-md mx-auto">
+          <div class="bg-gray-200 rounded-full h-2">
+            <div id="load-progress" class="bg-[#49A078] h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+          <p class="text-xs text-gray-400 mt-2" id="load-timer">0s</p>
+        </div>
+      </div>
+    `;
+    
+    // Start timer
+    loadTimer = setInterval(() => {
+      const elapsed = ((Date.now() - loadStartTime) / 1000).toFixed(1);
+      const timerEl = document.getElementById('load-timer');
+      if (timerEl) timerEl.textContent = `${elapsed}s`;
+    }, 100);
+  }
   
   try {
-    const response = await fetchWithTimeout('journey-data.json', 8000);
+    const statusEl = document.getElementById('load-status');
+    const progressEl = document.getElementById('load-progress');
+    
+    if (statusEl && !isBackgroundUpdate) statusEl.textContent = 'Downloading project data...';
+    if (progressEl && !isBackgroundUpdate) progressEl.style.width = '20%';
+    
+    const response = await fetchWithTimeout('journey-data.json', 15000);
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     
+    if (statusEl && !isBackgroundUpdate) statusEl.textContent = 'Processing data...';
+    if (progressEl && !isBackgroundUpdate) progressEl.style.width = '60%';
+    
     const data = await response.json();
     const loadTime = performance.now() - startTime;
+    
+    // Save to cache
+    try {
+      localStorage.setItem('dericbi-projects-cache', JSON.stringify(data));
+      localStorage.setItem('dericbi-projects-cache-time', Date.now().toString());
+      console.log('💾 Saved to cache');
+    } catch (e) {
+      console.warn('Cache save failed:', e);
+    }
+    
+    if (statusEl && !isBackgroundUpdate) statusEl.textContent = 'Rendering projects...';
+    if (progressEl && !isBackgroundUpdate) progressEl.style.width = '80%';
     
     allProjects = data;
     filteredProjects = data;
     
-    // Start rendering immediately without waiting for counts
+    // Clear loading timer
+    if (loadTimer) {
+      clearInterval(loadTimer);
+      loadTimer = null;
+    }
+    
+    if (progressEl && !isBackgroundUpdate) progressEl.style.width = '100%';
+    
+    // If background update, just update silently
+    if (isBackgroundUpdate) {
+      const cacheNotice = container.querySelector('.bg-blue-50');
+      if (cacheNotice) {
+        cacheNotice.innerHTML = '<i class="fas fa-check-circle mr-2 text-green-600"></i>Updated to latest version';
+        setTimeout(() => cacheNotice.remove(), 3000);
+      }
+      console.log('🔄 Background update complete');
+      return;
+    }
+    
+    // Render projects immediately
     requestAnimationFrame(() => {
       renderProjects(filteredProjects, container);
     });
@@ -1399,36 +1523,56 @@ const loadProjects = async (retryCount = 0) => {
       handleDeepLink();
     }, 0);
     
-    // Track successful load
     console.log(`✅ Successfully loaded ${allProjects.length} projects in ${loadTime.toFixed(0)}ms`);
     
   } catch (error) {
     console.error('Error loading projects:', error);
     
-    // Retry up to 3 times
+    // Clear loading timer
+    if (loadTimer) {
+      clearInterval(loadTimer);
+      loadTimer = null;
+    }
+    
+    // Retry logic for slow networks
     if (retryCount < 3) {
-      console.log(`Retrying... (Attempt ${retryCount + 1}/3)`);
-      setTimeout(() => loadProjects(retryCount + 1), 2000);
+      const delay = (retryCount + 1) * 3000; // 3s, 6s, 9s delays
+      console.log(`Retrying... (Attempt ${retryCount + 1}/3) in ${delay/1000}s`);
+      
+      container.innerHTML = `
+        <div class="text-center py-12">
+          <i class="fas fa-wifi text-yellow-500 text-4xl mb-4"></i>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Slow Connection Detected</h3>
+          <p class="text-gray-600 mb-4">Retrying... (Attempt ${retryCount + 1}/3)</p>
+          <div class="animate-spin rounded-full h-8 w-8 border-2 border-[#49A078] border-t-transparent mx-auto"></div>
+        </div>
+      `;
+      
+      setTimeout(() => loadProjects(retryCount + 1), delay);
     } else {
-      // Show error message after all retries failed
+      // Show error after all retries
       container.innerHTML = `
         <div class="text-center py-12">
           <i class="fas fa-exclamation-triangle text-red-500 text-4xl mb-4"></i>
           <h3 class="text-xl font-semibold text-gray-800 mb-2">Failed to Load Projects</h3>
-          <p class="text-gray-600 mb-4">We're having trouble loading the projects. Please try again.</p>
+          <p class="text-gray-600 mb-2">We're having trouble loading the projects.</p>
+          <p class="text-sm text-gray-500 mb-4">This might be due to a slow or unstable connection.</p>
           <button onclick="location.reload()" class="bg-[#49A078] hover:bg-[#3e8865] text-white px-6 py-3 rounded-lg font-semibold transition">
             <i class="fas fa-redo mr-2"></i>Reload Page
           </button>
-          <p class="text-sm text-gray-500 mt-4">Error: ${error.message}</p>
-          <p class="text-sm text-gray-500">If problem persists, contact: <a href="tel:+254791360805" class="text-[#49A078] font-semibold">+254791360805</a></p>
+          <p class="text-xs text-gray-400 mt-4">Error: ${error.message}</p>
+          <p class="text-sm text-gray-500 mt-2">If problem persists, contact: <a href="tel:+254791360805" class="text-[#49A078] font-semibold">+254791360805</a></p>
         </div>
       `;
     }
   }
 };
 
-// Start loading
-loadProjects();
+// Initialize: Try cache first, fallback to fresh load
+if (!tryLoadFromCache()) {
+  console.log('No cache available, loading fresh data');
+  loadProjects();
+}
 
 function categorizeByTool(project) {
   const tools = project.tools ? project.tools.toLowerCase() : '';
@@ -1776,6 +1920,19 @@ function toggleNewsletter() {
 
 <!-- Performance Optimization Script -->
 <script>
+  // Register Service Worker for caching and faster repeat visits
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('✅ Service Worker registered:', registration.scope);
+        })
+        .catch(error => {
+          console.log('❌ Service Worker registration failed:', error);
+        });
+    });
+  }
+  
   // Intersection Observer for lazy loading images only when visible
   let imageObserver;
   
