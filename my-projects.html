@@ -1710,29 +1710,92 @@ function downloadImage(url, filename) {
 }
 
 function downloadVideo(url, filename) {
-  // For large video files, use direct link instead of fetch to avoid timeout
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = filename.replace(/[^a-z0-9_-]/gi, '_') + '.mp4';
-  link.setAttribute('target', '_blank');
-  link.setAttribute('rel', 'noopener noreferrer');
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  // Show loading toast
+  const loadingToast = document.createElement('div');
+  loadingToast.className = 'fixed bottom-4 right-4 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in';
+  loadingToast.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Preparing video download...';
+  document.body.appendChild(loadingToast);
   
-  // Show download started message
-  const toast = document.createElement('div');
-  toast.className = 'fixed bottom-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in';
-  toast.innerHTML = '<i class="fas fa-download mr-2"></i>Download started! Check your browser downloads.';
-  document.body.appendChild(toast);
-  
-  setTimeout(() => {
-    toast.style.transition = 'opacity 0.3s';
-    toast.style.opacity = '0';
-    setTimeout(() => document.body.removeChild(toast), 300);
-  }, 3000);
-  
-  return Promise.resolve();
+  // Use fetch with streaming for large files
+  return fetch(url)
+    .then(response => {
+      if (!response.ok) throw new Error('Download failed');
+      
+      const contentLength = response.headers.get('content-length');
+      const total = parseInt(contentLength, 10);
+      let loaded = 0;
+      
+      const reader = response.body.getReader();
+      const chunks = [];
+      
+      return new ReadableStream({
+        start(controller) {
+          function push() {
+            reader.read().then(({ done, value }) => {
+              if (done) {
+                controller.close();
+                return;
+              }
+              loaded += value.length;
+              chunks.push(value);
+              
+              // Update progress
+              if (total) {
+                const percent = Math.round((loaded / total) * 100);
+                loadingToast.innerHTML = `<i class="fas fa-download mr-2"></i>Downloading... ${percent}%`;
+              }
+              
+              controller.enqueue(value);
+              push();
+            }).catch(err => {
+              console.error('Stream error:', err);
+              controller.error(err);
+            });
+          }
+          push();
+        }
+      });
+    })
+    .then(stream => new Response(stream))
+    .then(response => response.blob())
+    .then(blob => {
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename.replace(/[^a-z0-9_-]/gi, '_') + '.mp4';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Clean up
+      setTimeout(() => URL.revokeObjectURL(link.href), 100);
+      
+      // Show success
+      loadingToast.className = 'fixed bottom-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+      loadingToast.innerHTML = '<i class="fas fa-check mr-2"></i>Download complete!';
+      
+      setTimeout(() => {
+        loadingToast.style.transition = 'opacity 0.3s';
+        loadingToast.style.opacity = '0';
+        setTimeout(() => {
+          if (loadingToast.parentNode) document.body.removeChild(loadingToast);
+        }, 300);
+      }, 2000);
+    })
+    .catch(error => {
+      console.error('Download failed:', error);
+      
+      // Show error
+      loadingToast.className = 'fixed bottom-4 right-4 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+      loadingToast.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Download failed. <a href="' + url + '" download class="underline ml-2">Try direct link</a>';
+      
+      setTimeout(() => {
+        loadingToast.style.transition = 'opacity 0.3s';
+        loadingToast.style.opacity = '0';
+        setTimeout(() => {
+          if (loadingToast.parentNode) document.body.removeChild(loadingToast);
+        }, 300);
+      }, 5000);
+    });
 }
 
 function showAllProjects() {
