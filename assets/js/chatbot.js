@@ -872,9 +872,9 @@ class DAIChatbot {
     
     // Process message with context awareness
     const processingDelay = this.calculateProcessingDelay(message);
-    setTimeout(() => {
+    setTimeout(async () => {
       this.hideTypingIndicator();
-      const response = this.generateContextualResponse(message);
+      const response = await this.generateContextualResponse(message);
       
       // Add bot response to conversation history
       this.currentConversation.push({
@@ -923,12 +923,12 @@ class DAIChatbot {
   }
 
   // Generate contextual response with conversation flow
-  generateContextualResponse(userMessage) {
+  async generateContextualResponse(userMessage) {
     const message = userMessage.toLowerCase().trim();
     
     // Check for conversation continuity first
     if (this.conversationContext.awaitingFollowup) {
-      return this.handleFollowUpResponse(message);
+      return await this.handleFollowUpResponse(message);
     }
     
     // Handle short responses and confirmations
@@ -987,11 +987,11 @@ class DAIChatbot {
     }
     
     // Default fallback with conversation flow
-    return this.handleFallbackResponse(message);
+    return await this.handleFallbackResponse(message);
   }
   
   // Handle follow-up responses in conversation
-  handleFollowUpResponse(message) {
+  async handleFollowUpResponse(message) {
     const lastTopic = this.conversationContext.lastTopic;
     
     if (this.isConfirmation(message)) {
@@ -1029,7 +1029,7 @@ class DAIChatbot {
     
     // If it's a new question, treat it as such but maintain some context
     this.conversationContext.awaitingFollowup = false;
-    return this.generateContextualResponse(message);
+    return await this.generateContextualResponse(message);
   }
   
   // Handle short responses like "yes", "no", "ok", etc.
@@ -1268,7 +1268,47 @@ class DAIChatbot {
   }
   
   // Fallback response handler
-  handleFallbackResponse(message) {
+  async handleFallbackResponse(message) {
+    console.log('🤖 DAI: Triggering fallback response for:', message);
+    
+    // FORCE TEST: If message contains "test ai", always try HF
+    if (message.toLowerCase().includes('test ai')) {
+      console.log('🤖 DAI: FORCE TEST MODE - bypassing normal logic');
+      try {
+        const hfResponse = await this.generateHuggingFaceResponse(message);
+        return {
+          text: `🤖 **AI TEST RESPONSE:** ${hfResponse}`,
+          action: null,
+          followUp: null
+        };
+      } catch (error) {
+        return {
+          text: `🤖 **AI TEST FAILED:** ${error.message}`,
+          action: null,
+          followUp: null
+        };
+      }
+    }
+    
+    // Try Hugging Face API first for enhanced responses
+    try {
+      console.log('🤖 DAI: Attempting Hugging Face API call...');
+      const hfResponse = await this.generateHuggingFaceResponse(message);
+      if (hfResponse && hfResponse.trim().length > 10) {
+        console.log('🤖 DAI: Hugging Face API SUCCESS! Response:', hfResponse);
+        return {
+          text: `🤖 **AI Enhanced Response:** ${hfResponse}`,
+          action: null,
+          followUp: null
+        };
+      } else {
+        console.log('🤖 DAI: Hugging Face response too short or empty');
+      }
+    } catch (error) {
+      console.log('🤖 DAI: Hugging Face API FAILED:', error.message);
+    }
+    
+    console.log('🤖 DAI: Using fallback response');
     const encouragingResponses = [
       "🤗 **I'm here to help!** I can guide you through our website, explain services, or connect you with our team. What specific area interests you?",
       "💡 **Let me assist you!** Try asking about our projects, services, pricing, or how to use website features.",
@@ -1936,6 +1976,56 @@ class DAIChatbot {
     });
     
     return Object.keys(contexts).reduce((a, b) => contexts[a] > contexts[b] ? a : b);
+  }
+
+  // Generate response using Hugging Face API
+  async generateHuggingFaceResponse(message) {
+    try {
+      // Get recent conversation history (last 3 exchanges)
+      const recentHistory = this.currentConversation.slice(-6); // 3 user-bot pairs
+      const pastUserInputs = [];
+      const generatedResponses = [];
+      
+      for (let i = 0; i < recentHistory.length; i += 2) {
+        if (recentHistory[i] && recentHistory[i].type === 'user') {
+          pastUserInputs.push(recentHistory[i].message);
+        }
+        if (recentHistory[i + 1] && recentHistory[i + 1].type === 'bot') {
+          generatedResponses.push(recentHistory[i + 1].message);
+        }
+      }
+      
+      const response = await fetch('https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer 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',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          inputs: {
+            past_user_inputs: pastUserInputs,
+            generated_responses: generatedResponses,
+            text: `You are DAI, an intelligent chatbot for dericBI, a professional data analytics company. We specialize in Excel dashboards, PowerBI reports, Python data analysis, SQL databases, and business intelligence solutions. Our CEO is Deric Marangu. We offer data cleaning, visualization, analytics services, and have a portfolio of 50+ projects. User question: ${message}`
+          },
+          parameters: {
+            max_length: 150,
+            temperature: 0.7
+          }
+        })
+      });
+      
+      if (!response.ok) throw new Error('API failed');
+      
+      const data = await response.json();
+      if (data && data.generated_text) {
+        return data.generated_text;
+      }
+      
+      throw new Error('No response');
+    } catch (error) {
+      console.log('Hugging Face API failed:', error);
+      throw error;
+    }
   }
 }
 
