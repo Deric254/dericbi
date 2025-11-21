@@ -810,7 +810,7 @@ class DAIChatbot {
       container.style.opacity = '1';
       
       // Remove notification pulse when opened
-      toggleBtn.classList.remove('DAI-has-suggestion');
+      toggleBtn.classList.remove('dai-has-suggestion');
       toggleBtn.title = 'DAI - Your Intelligent Assistant';
       
       document.getElementById('chatbot-input').focus();
@@ -1317,9 +1317,23 @@ class DAIChatbot {
     
     const randomResponse = encouragingResponses[Math.floor(Math.random() * encouragingResponses.length)];
     
+    // Add agentic action based on current context
+    let action = null;
+    const contextActions = {
+      'homepage': () => this.suggestNavigation('my-projects.html', 'Explore Our Projects'),
+      'projects': () => this.suggestNavigation('contact.html', 'Get a Quote'),
+      'services': () => this.suggestNavigation('contact.html', 'Contact Us for Services'),
+      'contact': () => this.suggestHumanContact(),
+      'about': () => this.suggestNavigation('my-projects.html', 'See Our Work')
+    };
+    
+    if (contextActions[this.userContext]) {
+      action = contextActions[this.userContext];
+    }
+    
     return {
       text: randomResponse,
-      action: null,
+      action: action,
       followUp: "Feel free to ask anything - from technical questions to business inquiries!"
     };
   }
@@ -1741,6 +1755,11 @@ class DAIChatbot {
 
   // Enhanced Agentic Capabilities - Automatic Actions
   performAutomaticNavigation(url, pageName, reason = '') {
+    // Open chatbot if closed for agentic action
+    if (!this.isOpen) {
+      this.toggleChatbot();
+    }
+
     const confirmationMessage = `🤖 **DAI Agentic Action**: I can automatically take you to the ${pageName} page${reason ? ` ${reason}` : ''}. Would you like me to navigate there now?`;
 
     this.addMessage(confirmationMessage, 'bot', () => {
@@ -1777,6 +1796,11 @@ class DAIChatbot {
   }
 
   performAutomaticDownload(projectName, downloadUrl, fileType = 'project') {
+    // Open chatbot if closed for agentic action
+    if (!this.isOpen) {
+      this.toggleChatbot();
+    }
+
     const confirmationMessage = `🤖 **DAI Agentic Action**: I can automatically download the ${fileType} "${projectName}" for you. This will start the download immediately. Would you like me to proceed?`;
 
     this.addMessage(confirmationMessage, 'bot', () => {
