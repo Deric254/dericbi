@@ -107,7 +107,7 @@
   "description": "<strong>Problem Statement:</strong> Career paths in tech are expanding, but many professionals lack clarity on role expectations and market value.<br><br><strong>Business Objective:</strong> Compare key roles in IT and data — including Data Analyst, Data Scientist, Software Engineer, and Cybersecurity Analyst — across salary, demand, and strategic relevance.<br><br><strong>My Approach:</strong> Built a benchmarking dashboard using Gemini to visualize compensation ladders, entry barriers, market trends, and role attributes. Integrated radar charts and bar graphs for clarity.<br><br><strong>Key Features:</strong><br>• Salary comparison: Analyst ($65K) vs Scientist ($95K) vs Engineer ($90K) vs Cybersecurity ($75K)<br>• Entry barrier and stress benchmarks<br>• Market demand: Stable vs Emerging vs Critical Shortage<br>• Remote flexibility and automation risk<br><br><strong>Impact:</strong> Helps professionals, recruiters, and educators evaluate career fit and future-proof roles in the evolving tech landscape.",
   "tools": "Gemini, Infographic Design",
   "projectLink": "downloads/infographics/rolebench.pbix",
-  "liveLink": "",
+  "liveLink": "https://dericbigemini.netlify.app/benchmark/benchmark",
   "images": [
     "assets/projects/infographics/dash1.JPG",
     "assets/projects/infographics/bench1.png",
@@ -125,7 +125,7 @@
   "description": "<strong>Problem Statement:</strong> As AI automates routine tasks like data cleaning and querying, strategic roles in data are becoming more valuable.<br><br><strong>Business Objective:</strong> Map the evolution of data analyst roles — from L1 Reporter to Strategy Partner — and highlight the rising importance of data strategy, storytelling, and business impact.<br><br><strong>My Approach:</strong> Designed a career evolution dashboard using Gemini to compare task allocation, growth trajectory, and skill requirements across roles like Visual Analyst, Data Scientist, and Strategy Partner.<br><br><strong>Key Features:</strong><br>• Task shift: From reporting to modeling and strategic planning<br>• Career trajectory: Strategy Partner shows 10x+ ROI and lowest automation risk<br>• Skill benchmarks: Business acumen, storytelling, modeling proficiency<br>• Role Shift and Impact Mapping tools<br><br><strong>Impact:</strong> Demonstrates how data strategy will outpace traditional analyst roles as AI takes over operational tasks. Guides professionals toward high-impact, future-proof career paths.",
   "tools": "Gemini, Infographic Design",
   "projectLink": "downloads/infographics/careerdash.pbix",
-  "liveLink": "",
+  "liveLink": "https://dericbigemini.netlify.app/path/path",
   "images": [
     "assets/projects/infographics/dash1.JPG",
     "assets/projects/infographics/path1.png",
