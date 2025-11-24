@@ -1,23 +1,5 @@
 
 [
-  {
-  "serial": "Project 63A",
-  "title": "Role Benchmarks — Analyst vs Scientist",
-  "date": "2025-11-24",
-  "description": "<strong>Problem Statement:</strong> Career decisions in data often lack clarity. Many professionals struggle to compare roles meaningfully.<br><br><strong>Business Objective:</strong> Provide a visual benchmarking tool to compare Data Analyst and Data Scientist roles across salary, stress, entry barrier, and market demand.<br><br><strong>My Approach:</strong> Designed infographic dashboards using Power BI to visualize salary ladders, radar charts, and role attributes. Integrated contact and portfolio links for outreach.<br><br><strong>Key Features:</strong><br>• Senior salary gap: $60K advantage for Data Scientist<br>• Entry barrier: Analyst (4/10) vs Scientist (9/10)<br>• Radar chart: Stress, Math, Entry barrier, Flexibility<br>• Market demand: Stable vs Emerging<br><br><strong>Impact:</strong> Helps professionals and recruiters evaluate career fit and role expectations with clarity.",
-  "tools": "Power BI, Infographic Design",
-  "projectLink": "downloads/infographics/rolebench.pbix",
-  "liveLink": "",
-  "images": [
-    "assets/projects/infographics/dash1.JPG",
-    "assets/projects/infographics/bench1.png",
-    "assets/projects/infographics/bench2.png"
-  ],
-  "video": [
-    "assets/projects/infographics/infographics.mp4"
-  ]
-},
-
               {
   "serial": "Project 62",
              "title": "Liquidity Pulse — SME Finance Insights",
