@@ -1,6 +1,7 @@
 [
-            {
-  "serial": "Project 61",
+
+  {
+  "serial": "Project 62",
             "title": "Sacco Loan Default Analysis Dashboard",
             "date": "2025-11-20",
             "description": "<strong>Problem Statement:</strong> Why people default on loans while others pay effortlessly? Understanding loan repayment patterns in Sacco operations.<br><br><strong>Business Objective:</strong> Analyze FY24 data to identify factors affecting loan repayment and develop strategies for FY25.<br><br><strong>My Approach:</strong> Created an interactive Power BI dashboard analyzing loan default patterns, digital adoption impact, and segment performance.<br><br><strong>Key Features:</strong><br>• Digital adoption analysis (73.5% repayment rate)<br>• Segment performance (Salaried vs Students)<br>• Branch insights (Meru, Nairobi)<br>• Loan book vs savings analysis (3bn vs 2bn)<br><br><strong>Impact:</strong> Provides actionable insights for targeted financial education, digital marketing campaigns, and lending policy updates.",
@@ -17,7 +18,7 @@
   ]
 },
             {
-  "serial": "Project 60",
+  "serial": "Project 61",
             "title": "Startup  Performance Dashboard",
             "date": "2025-11-18",
             "description": "<strong>Problem Statement:</strong> Startups need comprehensive tracking of key performance metrics including revenue, user engagement, and pipeline management.<br><br><strong>Business Objective:</strong> Develop a dashboard providing real-time insights into startup operations, revenue streams, and growth metrics.<br><br><strong>My Approach:</strong> Created an interactive Power BI dashboard visualizing revenue by channel, monthly expenses, active users, and sales pipeline.<br><br><strong>Key Features:</strong><br>• Revenue inflow and channel breakdown<br>• Monthly revenue and expenses tracking<br>• Active user analytics<br>• Sales pipeline visualization<br>• Startup events data integration<br><br><strong>Impact:</strong> Empowers startup founders and investors with data-driven insights for strategic decision-making and growth optimization.",
@@ -38,7 +39,7 @@
   ]
 },
             {
-  "serial": "Project 59",
+  "serial": "Project 60",
             "title": "AI Hype vs Reality Analysis Dashboard",
             "date": "2025-11-16",
             "description": "<strong>Problem Statement:</strong> Organizations struggle to distinguish between AI marketing hype and practical business applications.<br><br><strong>Business Objective:</strong> Create a comprehensive dashboard analyzing AI adoption trends, comparing industry hype against real-world implementation success.<br><br><strong>My Approach:</strong> Developed an interactive Power BI dashboard tracking AI technology adoption, market trends, and measurable business impact across different sectors.<br><br><strong>Key Features:</strong><br>• AI adoption rates by industry sector<br>• Hype vs reality comparison metrics<br>• Implementation success rate analysis<br>• Technology readiness scoring<br>• ROI projections for AI investments<br>• Trend analysis over time<br><br><strong>Impact:</strong> Enables executives to make data-driven decisions about AI investments by separating marketing claims from proven business value and measurable ROI.",
@@ -53,7 +54,7 @@
   ]
 },
           {
-  "serial": "Project 58",
+  "serial": "Project 59",
             "title": "Non-governmental organization five years spending dashboard report",
             "date": "2025-11-15",
             "description": "<strong>Problem Statement:</strong> NGOs need a clear overview of multi-year spending, donor contributions, and project distribution across Africa.<br><br><strong>Business Objective:</strong> Provide a comprehensive dashboard summarizing total expenditure, project count, regional disbursements, donor type shares, and category allocations for strategic decision-making.<br><br><strong>My Approach:</strong> Developed an interactive dashboard with filters for month and budget type, visualizing regional expenditure, annual disbursements, donor type shares per year, and category share breakdown.<br><br><strong>Key Features:</strong><br>• Total expenditure and project count KPIs<br>• Regional expenditure bar chart (Central, East, North, Southern, West Africa)<br>• Disbursements by year (2020–2025) line chart<br>• Donor type share per year stacked bar chart<br>• Category share pie chart (Education, Agriculture, Health, Livelihoods, Wash)<br>• Month and budget type filters for dynamic analysis<br><br><strong>Impact:</strong> Enables NGOs and stakeholders to track spending, donor trends, and project focus areas, supporting transparency and data-driven resource allocation.",
@@ -68,7 +69,7 @@
   ]
 },
         {
-  "serial": "Project 57",
+  "serial": "Project 58",
   "title": "Education Outcomes Dashboard — UNICEF EOF",
   "date": "2025-11-13",
   "description": "<strong>Problem Statement:</strong> NGOs and education partners often collect literacy, numeracy, and attendance data but struggle to connect it with intervention costs and efficiency.<br><br><strong>Business Objective:</strong> Provide a forensic Power BI dashboard that shows before vs after student outcomes, links them to intervention types, and calculates both cost per student and cost per improved student.<br><br><strong>My Approach:</strong> Model raw student records in Power BI, create calculated measures for improvement achieved, and design NGO-branded visuals with KPI cards, slicers, and a clean 2x2 chart layout.<br><br><strong>Key Features:</strong><br>• Literacy, numeracy, and attendance before vs after charts<br>• KPI cards for average cost per student and cost per improved student<br>• Slicers for intervention, grade, age, and dropout filters<br>• Conditional formatting in forensic tables to highlight improvement vs decline<br>• NGO-ready titles, fonts, and colors for clarity and impact<br><br><strong>Impact:</strong> Enables NGOs and executives to see 360° clarity on education interventions, proving how every $120 tutoring spend translates into measurable student gains and efficiency ratios.<br><br>👉 <strong>Live demo:</strong> <a href=\"https://app.powerbi.com/links/5Ovy3oYnA7?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
@@ -84,7 +85,7 @@
   ]
 },
       {
-  "serial": "Project 56",
+  "serial": "Project 57",
   "title": "Retail Outlet Performance Dashboard — Sales, Costs & Regional Insights",
   "date": "2025-11-12",
   "description": "<strong>Problem Statement:</strong> Retail managers and executives often struggle to get a unified view of sales performance, product revenue, and regional distribution across multiple channels and customer segments.<br><br><strong>Business Objective:</strong> Build a clean Excel dashboard that summarizes total sales, costs, gross profits, and revenue breakdowns by product, region, and category — enabling fast decision-making and performance tracking.<br><br><strong>My Approach:</strong> Consolidated raw sales data into structured tables, applied formulas for cost and profit calculations, and designed interactive visuals using Excel charts and slicers. Filters allow users to drill down by customer segment and sales channel.<br><br><strong>Key Features:</strong><br>• Monthly revenue line chart (Jan–Oct)<br>• Product revenue bar chart with top performers<br>• Category breakdown pie chart (Electronics, Home, Accessories)<br>• Regional revenue comparison (Nairobi, Mombasa, Kisumu, Uasin Gishu)<br>• KPI cards for total sales, costs, gross profit, and revenue<br>• Slicers for customer segment and sales channel<br><br><strong>Impact:</strong> Gives business owners and executives a 360° view of their retail performance, helping them identify top-selling products, optimize regional strategies, and track profitability with forensic clarity.",
@@ -98,6 +99,43 @@
     "assets/projects/sales project/sales.mp4"
   ]
 },
+
+  {
+  "serial": "Project 56A",
+  "title": "Benchmarking Careers in Data",
+  "date": "2025-11-24",
+  "description": "<strong>Problem Statement:</strong> Career paths in tech are expanding, but many professionals lack clarity on role expectations and market value.<br><br><strong>Business Objective:</strong> Compare key roles in IT and data — including Data Analyst, Data Scientist, Software Engineer, and Cybersecurity Analyst — across salary, demand, and strategic relevance.<br><br><strong>My Approach:</strong> Built a benchmarking dashboard using Gemini to visualize compensation ladders, entry barriers, market trends, and role attributes. Integrated radar charts and bar graphs for clarity.<br><br><strong>Key Features:</strong><br>• Salary comparison: Analyst ($65K) vs Scientist ($95K) vs Engineer ($90K) vs Cybersecurity ($75K)<br>• Entry barrier and stress benchmarks<br>• Market demand: Stable vs Emerging vs Critical Shortage<br>• Remote flexibility and automation risk<br><br><strong>Impact:</strong> Helps professionals, recruiters, and educators evaluate career fit and future-proof roles in the evolving tech landscape.",
+  "tools": "Gemini, Infographic Design",
+  "projectLink": "downloads/infographics/rolebench.pbix",
+  "liveLink": "",
+  "images": [
+    "assets/projects/infographics/dash1.JPG",
+    "assets/projects/infographics/bench1.png",
+    "assets/projects/infographics/bench2.png"
+  ],
+  "video": [
+    "assets/projects/infographics/infographics.mp4"
+  ]
+}
+,
+{
+  "serial": "Project 56B",
+  "title": "Shifting Roles in Data Careers",
+  "date": "2025-11-24",
+  "description": "<strong>Problem Statement:</strong> As AI automates routine tasks like data cleaning and querying, strategic roles in data are becoming more valuable.<br><br><strong>Business Objective:</strong> Map the evolution of data analyst roles — from L1 Reporter to Strategy Partner — and highlight the rising importance of data strategy, storytelling, and business impact.<br><br><strong>My Approach:</strong> Designed a career evolution dashboard using Gemini to compare task allocation, growth trajectory, and skill requirements across roles like Visual Analyst, Data Scientist, and Strategy Partner.<br><br><strong>Key Features:</strong><br>• Task shift: From reporting to modeling and strategic planning<br>• Career trajectory: Strategy Partner shows 10x+ ROI and lowest automation risk<br>• Skill benchmarks: Business acumen, storytelling, modeling proficiency<br>• Role Shift and Impact Mapping tools<br><br><strong>Impact:</strong> Demonstrates how data strategy will outpace traditional analyst roles as AI takes over operational tasks. Guides professionals toward high-impact, future-proof career paths.",
+  "tools": "Gemini, Infographic Design",
+  "projectLink": "downloads/infographics/careerdash.pbix",
+  "liveLink": "",
+  "images": [
+    "assets/projects/infographics/dash1.JPG",
+    "assets/projects/infographics/path1.png",
+    "assets/projects/infographics/path2.png"
+  ],
+  "video": [
+    "assets/projects/infographics/infographics.mp4"
+  ]
+}
+,
 
      {
   "serial": "Project 55",
