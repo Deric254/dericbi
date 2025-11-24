@@ -1,20 +1,4 @@
-
 [
-              {
-  "serial": "Project 62",
-             "title": "Liquidity Pulse — SME Finance Insights",
-             "date": "2025-11-24",
-            "description": "<strong>Problem Statement:</strong> Africa faces a $155B SME financing gap. Businesses have demand, invoices, and purchase orders — but lack liquidity.<br><br><strong>Business Objective:</strong> Visualize platform performance across approvals, capital flow, repayment quality, and inclusion to support investor confidence and strategic scaling.<br><br><strong>My Approach:</strong> Developed an interactive Power BI dashboard using real platform data — applications, approvals, repayments, and investor activity — to reveal trends and guide decisions.<br><br><strong>Key Features:</strong><br>• Approval rate tracking (73.6%)<br>• Funding speed analysis (Avg 5.8 days)<br>• Repayment performance (95.3% on-time)<br>• Inclusion metrics (Youth/Women-owned: 65%)<br>• Sector allocation insights (Manufacturing, Agri, Retail)<br><br><strong>Impact:</strong> Enables leadership and investors to monitor liquidity flow, assess portfolio health, and scale inclusion with confidence. Turns raw data into strategic clarity.",
-  "tools": "Power BI",
-   "projectLink": "downloads/mtaji.pbix",
-  "liveLink": "",
- "images": [
-    "assets/projects/mtaji/dash.JPG"
-  ],
- "video": [
-    "assets/projects/mtaji/Mtaji.mp4"
-  ]
-},
             {
   "serial": "Project 61",
             "title": "Sacco Loan Default Analysis Dashboard",
