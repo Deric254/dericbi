@@ -1,0 +1,8 @@
+{
+  "name": "exesbi-site",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "@netlify/plugin-speedcurve": "^1.1.0"
+  }
+}
