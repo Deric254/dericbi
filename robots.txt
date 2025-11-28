@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://dericbi.netlify.app/sitemap.xml
+Sitemap: https://dericbi.vercel.app/sitemap.xml
