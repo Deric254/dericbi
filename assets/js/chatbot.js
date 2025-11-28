@@ -1213,7 +1213,7 @@ class DAIChatbot {
     
     if (message.includes('founder') || message.includes('deric') || message.includes('ceo')) {
       return {
-        text: "👨‍💻 **Meet Our Founder**: Deric Marangu - CEO and founder of dericBI. Business Information Technology student, data analytics expert, and passionate about turning data chaos into clarity!",
+        text: "👨‍💻 **Meet Our Founder**: Deric Marangu - CEO and founder of dericBI. Business Information Technology , data analytics expert, and passionate about turning data chaos into clarity!",
         action: () => window.location.href = 'about.html',
         followUp: "Want to see some of Deric's best project work?"
       };
