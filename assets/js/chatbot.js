@@ -364,7 +364,7 @@ class DAIChatbot {
       products_systems: {
         patterns: ['products', 'systems', 'tools', 'platforms', 'technology', 'streamlit', 'tujengane', 'what tools', 'tech stack', 'software', 'applications', 'solutions', 'offerings', 'capabilities', 'resources', 'assets', 'frameworks', 'libraries', 'programming', 'coding', 'development', 'data tools', 'analytics tools', 'visualization tools', 'business tools', 'productivity tools', 'automation tools', 'integration tools', 'data platforms', 'cloud services', 'saas', 'software as a service', 'web applications', 'mobile apps', 'desktop apps', 'api', 'apis', 'integrations', 'connectors', 'plugins', 'extensions', 'add-ons', 'modules', 'components', 'features', 'functionality', 'capabilities', 'solutions', 'services offered', 'product catalog', 'technology stack', 'tech ecosystem', 'digital tools', 'smart tools', 'intelligent systems', 'ai tools', 'ml tools', 'data science tools'],
         responses: {
-          'tech_stack': "💻 **dericBI Tech Stack**:\n\n**Frontend**: HTML, TailwindCSS, JavaScript\n**Analytics**: Python, SQL, Power BI, Excel\n**Data Processing**: Pandas, NumPy, Matplotlib, Seaborn\n**Dashboards**: Power BI, Excel, Python visualizations\n**Storage**: Google Drive, Google Sheets\n**Hosting**: GitHub Pages, Netlify\n**Communication**: WhatsApp, Email, Google Forms",
+          'tech_stack': "💻 **dericBI Tech Stack**:\n\n**Frontend**: HTML, TailwindCSS, JavaScript\n**Analytics**: Python, SQL, Power BI, Excel\n**Data Processing**: Pandas, NumPy, Matplotlib, Seaborn\n**Dashboards**: Power BI, Excel, Python visualizations\n**Storage**: Google Drive, Google Sheets\n**Hosting**: GitHub Pages, vercel\n**Communication**: WhatsApp, Email, Google Forms",
           
           'streamlit_app': "🧪 **Try Yourself Platform**: Our interactive Streamlit application (https://dericbi.streamlit.app/) lets you:\n• Test data analysis features\n• Preview dashboard capabilities\n• Experience our tools firsthand\n• See sample analytics in action\n\nPerfect for exploring what dericBI can do for your data!",
           
@@ -1246,7 +1246,7 @@ class DAIChatbot {
     if (message.includes('tujengane') || message.includes('education')) {
       return {
         text: "🎓 **Tujengane Education**: Our data literacy programs! From free Data Basics to professional Analyst Pro courses.",
-        action: () => window.open('https://tujengane.netlify.app/', '_blank'),
+        action: () => window.open('https://dericbiskills.vercel.app/', '_blank'),
         followUp: "Interested in joining any specific program?"
       };
     }
@@ -1544,7 +1544,7 @@ class DAIChatbot {
       } else if (message.includes('tujengane') || message.includes('education') || message.includes('course')) {
         return { 
           text: this.knowledgeBase.products_systems.responses.tujengane_programs,
-          action: () => window.open('https://tujengane.netlify.app/', '_blank')
+          action: () => window.open('https://dericbiskills.vercel.app/', '_blank')
         };
       } else if (message.includes('tech stack') || message.includes('technology')) {
         return { text: this.knowledgeBase.products_systems.responses.tech_stack, action: null };
