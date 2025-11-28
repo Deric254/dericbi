@@ -1246,7 +1246,7 @@ class DAIChatbot {
     if (message.includes('tujengane') || message.includes('education')) {
       return {
         text: "🎓 **Tujengane Education**: Our data literacy programs! From free Data Basics to professional Analyst Pro courses.",
-        action: () => window.open('https://dericbiskills.vercel.app/', '_blank'),
+        action: () => window.open(window.SITE_CONFIG && window.SITE_CONFIG.TUJENGANE_URL ? window.SITE_CONFIG.TUJENGANE_URL : 'https://dericbiskills.vercel.app', '_blank'),
         followUp: "Interested in joining any specific program?"
       };
     }
@@ -1544,7 +1544,7 @@ class DAIChatbot {
       } else if (message.includes('tujengane') || message.includes('education') || message.includes('course')) {
         return { 
           text: this.knowledgeBase.products_systems.responses.tujengane_programs,
-          action: () => window.open('https://dericbiskills.vercel.app/', '_blank')
+          action: () => window.open(window.SITE_CONFIG && window.SITE_CONFIG.TUJENGANE_URL ? window.SITE_CONFIG.TUJENGANE_URL : 'https://dericbiskills.vercel.app', '_blank')
         };
       } else if (message.includes('tech stack') || message.includes('technology')) {
         return { text: this.knowledgeBase.products_systems.responses.tech_stack, action: null };
