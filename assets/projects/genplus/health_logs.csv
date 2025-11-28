@@ -1,0 +1,901 @@
+animal_id,date,condition,treatment,outcome
+A00001,2025-10-16,Foot Rot,Rest,Ongoing
+A00001,2025-10-04,Bloat,Vaccination,Died
+A00002,2025-02-10,Lameness,None,Ongoing
+A00002,2025-01-28,Mastitis,Vaccination,Recovered
+A00003,2025-06-24,Lameness,Rest,Died
+A00004,2025-06-17,Mastitis,None,Ongoing
+A00004,2025-08-19,FMD,Footbath,Ongoing
+A00004,2025-10-11,FMD,Vaccination,Recovered
+A00004,2025-10-27,None,Vaccination,Recovered
+A00005,2025-06-01,Foot Rot,None,Recovered
+A00005,2025-02-12,Bloat,Footbath,Ongoing
+A00005,2025-03-20,None,Vaccination,Ongoing
+A00005,2025-07-04,Mastitis,Antibiotics,Recovered
+A00005,2025-06-07,FMD,Drenching,Ongoing
+A00006,2025-03-09,Mastitis,Footbath,Ongoing
+A00007,2025-10-13,Lameness,Rest,Ongoing
+A00007,2025-02-22,Mastitis,Antibiotics,Ongoing
+A00007,2025-10-11,Mastitis,Rest,Died
+A00007,2025-06-16,FMD,Antibiotics,Ongoing
+A00008,2025-07-18,Mastitis,None,Died
+A00008,2025-05-05,Lameness,Rest,Recovered
+A00008,2025-07-14,Foot Rot,Footbath,Ongoing
+A00008,2025-06-04,Bloat,Vaccination,Recovered
+A00009,2025-03-27,FMD,Drenching,Ongoing
+A00010,2025-09-05,Mastitis,Drenching,Ongoing
+A00010,2025-05-07,None,None,Ongoing
+A00010,2025-04-11,FMD,Antibiotics,Recovered
+A00011,2025-01-04,FMD,Drenching,Died
+A00011,2025-07-14,Bloat,Vaccination,Ongoing
+A00011,2025-08-09,None,Rest,Recovered
+A00012,2025-06-14,Lameness,None,Recovered
+A00012,2025-09-03,Bloat,Footbath,Ongoing
+A00012,2025-06-13,Bloat,None,Died
+A00013,2025-10-22,Foot Rot,Drenching,Ongoing
+A00013,2025-05-24,FMD,Drenching,Recovered
+A00013,2025-10-16,Foot Rot,Rest,Died
+A00013,2025-04-03,None,Rest,Recovered
+A00014,2025-04-18,FMD,Drenching,Died
+A00014,2025-02-05,FMD,None,Ongoing
+A00014,2025-03-13,None,Drenching,Recovered
+A00014,2025-05-10,None,Footbath,Died
+A00015,2025-07-13,Mastitis,Vaccination,Died
+A00015,2025-09-03,Lameness,Vaccination,Died
+A00015,2025-09-17,None,Vaccination,Died
+A00015,2025-01-19,Bloat,None,Died
+A00016,2025-02-13,Mastitis,Footbath,Died
+A00016,2025-07-01,Foot Rot,None,Died
+A00016,2025-01-23,Lameness,None,Died
+A00016,2025-07-24,Bloat,Vaccination,Recovered
+A00016,2025-01-06,Mastitis,Drenching,Recovered
+A00017,2025-09-23,Lameness,Rest,Died
+A00017,2025-10-22,Foot Rot,Vaccination,Ongoing
+A00017,2025-07-20,FMD,None,Died
+A00017,2025-09-14,Foot Rot,Drenching,Recovered
+A00017,2025-09-05,Mastitis,Drenching,Ongoing
+A00018,2025-03-01,None,Footbath,Ongoing
+A00019,2025-06-25,FMD,Footbath,Died
+A00019,2025-09-05,Bloat,Vaccination,Recovered
+A00019,2025-08-13,None,None,Ongoing
+A00020,2025-02-04,Bloat,Antibiotics,Died
+A00020,2025-02-28,Mastitis,Drenching,Died
+A00020,2025-02-25,None,Footbath,Died
+A00021,2025-09-22,Foot Rot,Rest,Recovered
+A00021,2025-06-19,Lameness,Vaccination,Ongoing
+A00022,2025-07-27,None,Footbath,Recovered
+A00022,2025-08-10,FMD,Antibiotics,Died
+A00023,2025-04-12,FMD,Rest,Ongoing
+A00023,2025-07-19,Mastitis,None,Recovered
+A00023,2025-04-16,Bloat,None,Recovered
+A00023,2025-10-23,Mastitis,Rest,Recovered
+A00023,2025-07-07,Bloat,Footbath,Ongoing
+A00024,2025-05-15,None,Vaccination,Died
+A00025,2025-07-18,Lameness,Vaccination,Died
+A00025,2025-02-28,Bloat,Drenching,Ongoing
+A00025,2025-03-30,None,None,Ongoing
+A00026,2025-02-13,None,Footbath,Ongoing
+A00026,2025-03-02,Foot Rot,Drenching,Recovered
+A00026,2025-04-04,Bloat,None,Recovered
+A00026,2025-09-19,FMD,Vaccination,Died
+A00026,2025-03-12,Lameness,Vaccination,Ongoing
+A00027,2025-09-07,None,Rest,Died
+A00027,2025-03-30,Lameness,Footbath,Ongoing
+A00028,2025-03-13,Foot Rot,Drenching,Ongoing
+A00028,2025-01-28,Bloat,Antibiotics,Ongoing
+A00028,2025-03-11,Foot Rot,Vaccination,Died
+A00029,2025-09-11,FMD,None,Ongoing
+A00029,2025-08-01,None,Vaccination,Ongoing
+A00029,2025-03-27,Mastitis,Rest,Recovered
+A00029,2025-04-23,Bloat,Antibiotics,Ongoing
+A00029,2025-04-26,Lameness,Drenching,Recovered
+A00030,2025-10-17,None,Vaccination,Died
+A00030,2025-09-19,Mastitis,Rest,Recovered
+A00030,2025-05-18,Lameness,Drenching,Died
+A00030,2025-01-22,None,Vaccination,Died
+A00031,2025-08-06,Mastitis,None,Died
+A00031,2025-05-07,Bloat,Antibiotics,Ongoing
+A00032,2025-06-28,Mastitis,Vaccination,Recovered
+A00032,2025-05-02,Foot Rot,None,Died
+A00032,2025-06-29,None,Rest,Died
+A00033,2025-03-26,Lameness,Footbath,Recovered
+A00033,2025-04-16,Mastitis,Rest,Ongoing
+A00033,2025-09-30,Bloat,Rest,Died
+A00033,2025-03-28,Bloat,None,Ongoing
+A00034,2025-10-21,Bloat,Rest,Died
+A00034,2025-02-18,Foot Rot,Vaccination,Recovered
+A00034,2025-05-22,None,Footbath,Died
+A00035,2025-05-08,Foot Rot,None,Ongoing
+A00035,2025-05-07,None,Vaccination,Ongoing
+A00036,2025-10-23,None,Drenching,Died
+A00036,2025-08-01,FMD,Vaccination,Recovered
+A00037,2025-07-26,Lameness,None,Ongoing
+A00038,2025-08-21,FMD,Drenching,Died
+A00038,2025-01-02,None,Antibiotics,Died
+A00038,2025-08-23,None,None,Died
+A00039,2025-02-02,Lameness,Vaccination,Recovered
+A00039,2025-08-08,Foot Rot,Vaccination,Ongoing
+A00039,2025-06-15,Bloat,Drenching,Died
+A00040,2025-03-08,Lameness,Vaccination,Ongoing
+A00040,2025-01-25,Mastitis,Antibiotics,Died
+A00040,2025-08-24,Mastitis,Antibiotics,Recovered
+A00040,2025-08-14,FMD,Antibiotics,Ongoing
+A00040,2025-04-14,None,Footbath,Died
+A00041,2025-03-23,Bloat,Antibiotics,Died
+A00041,2025-07-04,Bloat,Antibiotics,Ongoing
+A00041,2025-03-26,Mastitis,Vaccination,Died
+A00042,2025-04-30,FMD,None,Recovered
+A00042,2025-02-18,Mastitis,Footbath,Ongoing
+A00042,2025-02-09,Foot Rot,Rest,Recovered
+A00043,2025-08-16,Mastitis,Antibiotics,Died
+A00043,2025-06-25,Mastitis,Vaccination,Died
+A00043,2025-03-09,FMD,Antibiotics,Recovered
+A00043,2025-07-16,Mastitis,None,Recovered
+A00043,2025-02-22,Bloat,Drenching,Ongoing
+A00044,2025-07-15,Foot Rot,None,Died
+A00044,2025-03-15,Mastitis,Rest,Died
+A00045,2025-03-26,FMD,Drenching,Died
+A00046,2025-03-19,FMD,Rest,Died
+A00046,2025-08-15,Foot Rot,Antibiotics,Recovered
+A00047,2025-03-05,Lameness,None,Ongoing
+A00047,2025-06-29,FMD,Drenching,Recovered
+A00048,2025-05-22,None,Antibiotics,Recovered
+A00048,2025-10-11,Lameness,Rest,Died
+A00049,2025-05-26,None,Antibiotics,Died
+A00049,2025-06-04,Foot Rot,Rest,Died
+A00049,2025-09-18,Foot Rot,None,Ongoing
+A00049,2025-06-01,None,Antibiotics,Recovered
+A00049,2025-09-11,FMD,Antibiotics,Recovered
+A00050,2025-02-06,Lameness,Antibiotics,Ongoing
+A00050,2025-06-12,Foot Rot,Vaccination,Died
+A00050,2025-08-04,Bloat,Rest,Died
+A00050,2025-03-30,FMD,Antibiotics,Recovered
+A00051,2025-02-04,Mastitis,Drenching,Recovered
+A00051,2025-01-21,Mastitis,Vaccination,Died
+A00051,2025-05-27,None,None,Died
+A00051,2025-08-01,FMD,None,Ongoing
+A00051,2025-02-12,None,Rest,Died
+A00052,2025-03-20,Bloat,Antibiotics,Ongoing
+A00052,2025-02-10,Lameness,Footbath,Recovered
+A00052,2025-10-02,Bloat,Vaccination,Died
+A00052,2025-02-03,Bloat,None,Ongoing
+A00052,2025-05-03,Mastitis,Footbath,Recovered
+A00053,2025-03-01,FMD,Rest,Died
+A00053,2025-01-29,Bloat,None,Died
+A00053,2025-03-31,Mastitis,Antibiotics,Died
+A00053,2025-03-12,None,Antibiotics,Recovered
+A00054,2025-06-27,Lameness,Rest,Died
+A00054,2025-05-13,Foot Rot,Drenching,Recovered
+A00054,2025-05-18,None,Antibiotics,Recovered
+A00054,2025-06-21,FMD,Drenching,Died
+A00055,2025-05-15,None,Rest,Died
+A00056,2025-09-12,FMD,Rest,Ongoing
+A00057,2025-09-13,Lameness,Footbath,Ongoing
+A00058,2025-05-11,Mastitis,Rest,Died
+A00058,2025-03-01,Foot Rot,None,Died
+A00059,2025-01-23,Mastitis,Footbath,Recovered
+A00060,2025-07-06,FMD,Footbath,Recovered
+A00060,2025-01-19,Lameness,None,Died
+A00060,2025-08-03,Foot Rot,Drenching,Recovered
+A00060,2025-08-02,None,Drenching,Ongoing
+A00061,2025-10-20,Bloat,Antibiotics,Died
+A00062,2025-04-02,Foot Rot,Rest,Recovered
+A00063,2025-02-05,FMD,Drenching,Ongoing
+A00063,2025-06-17,Mastitis,Rest,Ongoing
+A00063,2025-01-05,Bloat,Footbath,Ongoing
+A00063,2025-10-16,Bloat,None,Died
+A00064,2025-08-26,Bloat,Rest,Ongoing
+A00064,2025-04-11,None,Rest,Recovered
+A00065,2025-01-04,FMD,Antibiotics,Recovered
+A00065,2025-10-05,Bloat,None,Died
+A00066,2025-06-21,Mastitis,None,Ongoing
+A00067,2025-02-23,Foot Rot,Rest,Recovered
+A00067,2025-08-03,FMD,Antibiotics,Recovered
+A00067,2025-05-24,Mastitis,Antibiotics,Recovered
+A00068,2025-07-31,None,Drenching,Ongoing
+A00068,2025-02-13,Lameness,Antibiotics,Died
+A00068,2025-03-10,None,Vaccination,Recovered
+A00068,2025-10-18,Mastitis,Vaccination,Died
+A00068,2025-03-08,Foot Rot,Drenching,Ongoing
+A00069,2025-07-21,None,None,Ongoing
+A00069,2025-06-12,FMD,Drenching,Recovered
+A00069,2025-02-08,Foot Rot,Footbath,Died
+A00070,2025-03-21,Mastitis,Footbath,Ongoing
+A00071,2025-06-10,FMD,Antibiotics,Died
+A00071,2025-07-03,Foot Rot,Vaccination,Ongoing
+A00071,2025-08-26,Bloat,Antibiotics,Recovered
+A00071,2025-03-22,None,Drenching,Died
+A00072,2025-01-21,Foot Rot,Drenching,Recovered
+A00072,2025-02-16,None,Footbath,Ongoing
+A00072,2025-07-22,Lameness,Antibiotics,Died
+A00072,2025-06-03,Bloat,Footbath,Recovered
+A00072,2025-07-27,FMD,Rest,Died
+A00073,2025-05-08,Mastitis,Vaccination,Recovered
+A00073,2025-03-13,Mastitis,Antibiotics,Recovered
+A00073,2025-04-24,Foot Rot,Footbath,Ongoing
+A00073,2025-07-10,None,None,Died
+A00073,2025-02-13,Lameness,Rest,Ongoing
+A00074,2025-01-12,Mastitis,Footbath,Died
+A00075,2025-03-07,Mastitis,Drenching,Recovered
+A00075,2025-01-22,FMD,Antibiotics,Recovered
+A00075,2025-10-21,FMD,None,Ongoing
+A00075,2025-09-12,Mastitis,Vaccination,Died
+A00076,2025-03-30,Bloat,Footbath,Recovered
+A00076,2025-05-21,Bloat,Vaccination,Recovered
+A00076,2025-01-18,Lameness,Rest,Died
+A00076,2025-05-06,None,Drenching,Ongoing
+A00077,2025-10-09,FMD,Antibiotics,Recovered
+A00077,2025-05-24,FMD,Footbath,Ongoing
+A00077,2025-04-13,None,Rest,Recovered
+A00077,2025-10-06,Mastitis,Vaccination,Died
+A00078,2025-09-03,Lameness,Vaccination,Ongoing
+A00078,2025-10-17,Lameness,Drenching,Ongoing
+A00078,2025-05-19,Foot Rot,Antibiotics,Ongoing
+A00079,2025-04-23,Mastitis,Drenching,Recovered
+A00079,2025-08-30,Lameness,Drenching,Died
+A00079,2025-04-30,Foot Rot,Antibiotics,Recovered
+A00079,2025-05-04,Bloat,Rest,Died
+A00079,2025-01-29,Foot Rot,Rest,Ongoing
+A00080,2025-03-30,Foot Rot,Footbath,Died
+A00080,2025-06-12,None,None,Ongoing
+A00080,2025-01-15,None,None,Ongoing
+A00081,2025-10-16,Foot Rot,Rest,Recovered
+A00081,2025-09-10,Lameness,Drenching,Recovered
+A00081,2025-09-09,Mastitis,Antibiotics,Recovered
+A00081,2025-04-30,Lameness,Footbath,Recovered
+A00081,2025-09-27,FMD,Antibiotics,Ongoing
+A00082,2025-04-14,Foot Rot,Drenching,Died
+A00082,2025-04-01,Bloat,Antibiotics,Recovered
+A00082,2025-03-17,Lameness,None,Recovered
+A00082,2025-02-26,Lameness,Drenching,Recovered
+A00082,2025-07-11,None,None,Ongoing
+A00083,2025-02-21,Bloat,Drenching,Ongoing
+A00083,2025-03-11,Foot Rot,None,Ongoing
+A00083,2025-09-07,None,Drenching,Recovered
+A00083,2025-10-15,None,Rest,Ongoing
+A00083,2025-04-25,None,Rest,Recovered
+A00084,2025-06-07,None,None,Ongoing
+A00084,2025-03-07,Foot Rot,None,Recovered
+A00084,2025-10-21,FMD,Rest,Recovered
+A00084,2025-04-04,Lameness,Drenching,Died
+A00085,2025-10-17,Mastitis,Vaccination,Recovered
+A00085,2025-06-19,None,Antibiotics,Recovered
+A00086,2025-06-13,Foot Rot,None,Recovered
+A00086,2025-06-21,FMD,Antibiotics,Ongoing
+A00086,2025-04-18,Foot Rot,None,Recovered
+A00087,2025-05-12,Mastitis,None,Recovered
+A00087,2025-01-25,FMD,Vaccination,Died
+A00087,2025-08-03,Foot Rot,Vaccination,Ongoing
+A00088,2025-06-29,Lameness,Vaccination,Recovered
+A00088,2025-09-03,Lameness,None,Died
+A00088,2025-04-26,Foot Rot,Vaccination,Recovered
+A00088,2025-01-18,Bloat,Antibiotics,Ongoing
+A00089,2025-02-23,Mastitis,Drenching,Recovered
+A00089,2025-07-12,Foot Rot,None,Recovered
+A00089,2025-10-08,Mastitis,Drenching,Died
+A00090,2025-09-05,None,Antibiotics,Ongoing
+A00090,2025-03-26,Lameness,Vaccination,Recovered
+A00090,2025-01-28,Mastitis,Drenching,Recovered
+A00090,2025-04-08,FMD,None,Died
+A00090,2025-10-04,Bloat,None,Ongoing
+A00091,2025-05-02,Mastitis,Antibiotics,Ongoing
+A00091,2025-10-20,Lameness,Vaccination,Recovered
+A00091,2025-01-28,Bloat,Antibiotics,Ongoing
+A00092,2025-05-31,None,None,Died
+A00093,2025-04-13,Mastitis,Antibiotics,Recovered
+A00093,2025-03-29,None,Drenching,Recovered
+A00093,2025-08-31,Mastitis,Drenching,Ongoing
+A00093,2025-08-30,FMD,None,Ongoing
+A00094,2025-10-06,FMD,Footbath,Ongoing
+A00095,2025-07-09,Foot Rot,Vaccination,Recovered
+A00095,2025-05-15,FMD,Vaccination,Ongoing
+A00095,2025-04-26,Bloat,Rest,Recovered
+A00095,2025-03-19,None,None,Recovered
+A00096,2025-06-26,Lameness,Vaccination,Died
+A00097,2025-10-11,Mastitis,Vaccination,Died
+A00097,2025-08-03,Lameness,None,Ongoing
+A00098,2025-05-01,FMD,Drenching,Recovered
+A00098,2025-07-22,None,Antibiotics,Died
+A00098,2025-10-20,Lameness,Rest,Died
+A00098,2025-03-17,Mastitis,Vaccination,Recovered
+A00098,2025-03-27,Foot Rot,Footbath,Recovered
+A00099,2025-08-05,Mastitis,None,Ongoing
+A00100,2025-03-17,Lameness,Drenching,Ongoing
+A00100,2025-02-04,Mastitis,Vaccination,Died
+A00101,2025-10-10,Bloat,Drenching,Died
+A00101,2025-08-23,Mastitis,None,Died
+A00101,2025-10-28,Lameness,Vaccination,Recovered
+A00101,2025-08-01,Foot Rot,Footbath,Died
+A00102,2025-10-26,Mastitis,Antibiotics,Died
+A00102,2025-02-21,Bloat,Rest,Ongoing
+A00102,2025-07-30,Bloat,Vaccination,Died
+A00102,2025-09-06,Lameness,Rest,Ongoing
+A00102,2025-01-20,Foot Rot,Drenching,Ongoing
+A00103,2025-07-25,Mastitis,Vaccination,Ongoing
+A00103,2025-05-02,Mastitis,None,Ongoing
+A00104,2025-07-10,Mastitis,Drenching,Ongoing
+A00104,2025-06-09,Bloat,Vaccination,Died
+A00104,2025-02-20,Foot Rot,Footbath,Ongoing
+A00105,2025-06-14,Bloat,None,Ongoing
+A00105,2025-02-15,Foot Rot,Vaccination,Recovered
+A00105,2025-07-28,None,Vaccination,Died
+A00105,2025-07-11,Mastitis,Rest,Recovered
+A00106,2025-06-09,None,Rest,Ongoing
+A00107,2025-09-26,Lameness,Antibiotics,Recovered
+A00107,2025-04-09,Foot Rot,Antibiotics,Recovered
+A00108,2025-08-22,Mastitis,Drenching,Died
+A00109,2025-05-21,Bloat,Vaccination,Died
+A00109,2025-07-23,None,Antibiotics,Died
+A00110,2025-05-04,Bloat,Vaccination,Died
+A00111,2025-04-01,FMD,Rest,Died
+A00111,2025-06-29,Bloat,Footbath,Ongoing
+A00111,2025-02-16,Bloat,Antibiotics,Ongoing
+A00111,2025-01-26,Foot Rot,Rest,Recovered
+A00112,2025-04-26,None,Footbath,Ongoing
+A00112,2025-07-29,Lameness,Antibiotics,Died
+A00113,2025-08-31,Foot Rot,None,Recovered
+A00114,2025-01-05,Foot Rot,Drenching,Died
+A00114,2025-06-06,None,None,Died
+A00114,2025-05-21,FMD,Vaccination,Ongoing
+A00114,2025-08-24,Bloat,Footbath,Ongoing
+A00114,2025-06-04,None,Rest,Died
+A00115,2025-10-27,Mastitis,Antibiotics,Died
+A00115,2025-07-11,Lameness,None,Died
+A00115,2025-05-25,Bloat,None,Recovered
+A00115,2025-09-04,Mastitis,Drenching,Ongoing
+A00116,2025-05-22,Bloat,None,Died
+A00116,2025-06-02,Foot Rot,Footbath,Died
+A00116,2025-05-04,Mastitis,Rest,Ongoing
+A00117,2025-03-13,None,Antibiotics,Died
+A00117,2025-09-12,Bloat,Drenching,Ongoing
+A00117,2025-07-27,FMD,None,Recovered
+A00118,2025-10-20,Foot Rot,Drenching,Died
+A00118,2025-04-24,None,Rest,Died
+A00118,2025-09-01,None,Drenching,Died
+A00118,2025-06-03,Foot Rot,None,Died
+A00118,2025-04-03,Bloat,Antibiotics,Ongoing
+A00119,2025-05-13,None,Rest,Recovered
+A00119,2025-06-21,None,Antibiotics,Recovered
+A00120,2025-04-25,None,Drenching,Ongoing
+A00120,2025-06-19,Bloat,Drenching,Died
+A00120,2025-05-31,FMD,Antibiotics,Ongoing
+A00121,2025-10-26,Lameness,Rest,Recovered
+A00122,2025-04-10,Lameness,Antibiotics,Died
+A00122,2025-07-15,Lameness,Drenching,Ongoing
+A00122,2025-01-28,Foot Rot,Footbath,Recovered
+A00122,2025-06-25,FMD,Rest,Ongoing
+A00123,2025-06-11,None,Footbath,Recovered
+A00123,2025-09-07,Bloat,None,Recovered
+A00124,2025-01-30,Mastitis,Vaccination,Ongoing
+A00124,2025-04-18,Foot Rot,Rest,Recovered
+A00124,2025-09-08,Mastitis,Footbath,Died
+A00125,2025-08-08,FMD,Vaccination,Ongoing
+A00125,2025-07-16,Mastitis,Antibiotics,Died
+A00125,2025-04-13,None,Drenching,Recovered
+A00125,2025-06-14,Lameness,Footbath,Recovered
+A00126,2025-05-08,Foot Rot,None,Ongoing
+A00127,2025-03-08,Mastitis,Vaccination,Died
+A00127,2025-06-06,Foot Rot,Antibiotics,Recovered
+A00127,2025-06-02,Bloat,Vaccination,Died
+A00128,2025-09-26,Bloat,Vaccination,Died
+A00128,2025-03-10,Bloat,Vaccination,Ongoing
+A00128,2025-04-07,Foot Rot,Vaccination,Recovered
+A00128,2025-04-27,Foot Rot,None,Recovered
+A00128,2025-04-19,None,Antibiotics,Died
+A00129,2025-03-28,Mastitis,Drenching,Died
+A00129,2025-01-20,FMD,None,Ongoing
+A00129,2025-10-01,Lameness,Antibiotics,Died
+A00129,2025-01-25,None,Antibiotics,Died
+A00129,2025-01-11,Mastitis,None,Recovered
+A00130,2025-08-16,FMD,Antibiotics,Died
+A00130,2025-05-10,FMD,None,Recovered
+A00130,2025-04-16,None,None,Died
+A00130,2025-01-05,Bloat,Vaccination,Died
+A00131,2025-09-24,Bloat,Rest,Died
+A00132,2025-08-03,Mastitis,Rest,Died
+A00132,2025-03-02,Bloat,Antibiotics,Recovered
+A00133,2025-04-12,Lameness,Footbath,Ongoing
+A00133,2025-09-25,Foot Rot,Drenching,Died
+A00133,2025-07-29,Bloat,Footbath,Recovered
+A00133,2025-10-08,FMD,Footbath,Died
+A00134,2025-06-19,Foot Rot,Antibiotics,Recovered
+A00134,2025-02-15,Mastitis,Rest,Died
+A00134,2025-09-10,Foot Rot,Antibiotics,Died
+A00134,2025-02-08,None,None,Recovered
+A00135,2025-04-29,FMD,Drenching,Ongoing
+A00135,2025-08-26,Mastitis,Antibiotics,Recovered
+A00135,2025-01-21,Bloat,Drenching,Died
+A00136,2025-08-07,None,Antibiotics,Recovered
+A00136,2025-01-24,Mastitis,Footbath,Died
+A00136,2025-03-29,Bloat,Drenching,Ongoing
+A00137,2025-05-18,None,Antibiotics,Ongoing
+A00137,2025-06-25,Foot Rot,Antibiotics,Ongoing
+A00137,2025-07-24,FMD,Drenching,Ongoing
+A00137,2025-09-02,FMD,None,Recovered
+A00137,2025-02-27,Foot Rot,None,Died
+A00138,2025-03-23,Mastitis,Vaccination,Died
+A00139,2025-10-19,None,Vaccination,Recovered
+A00139,2025-07-14,Bloat,Rest,Recovered
+A00139,2025-03-08,FMD,Vaccination,Recovered
+A00139,2025-07-30,FMD,Antibiotics,Recovered
+A00140,2025-06-10,Mastitis,None,Died
+A00140,2025-09-26,None,Rest,Died
+A00140,2025-10-17,Foot Rot,None,Ongoing
+A00141,2025-09-25,None,None,Died
+A00141,2025-02-18,FMD,None,Died
+A00141,2025-05-08,FMD,Drenching,Died
+A00141,2025-07-17,Foot Rot,Rest,Died
+A00141,2025-01-28,Mastitis,None,Recovered
+A00142,2025-08-29,FMD,Footbath,Recovered
+A00142,2025-09-09,Bloat,Footbath,Ongoing
+A00142,2025-05-23,Mastitis,Rest,Recovered
+A00142,2025-10-09,None,Vaccination,Ongoing
+A00142,2025-05-01,Mastitis,Vaccination,Ongoing
+A00143,2025-08-18,Mastitis,Vaccination,Ongoing
+A00143,2025-06-11,Mastitis,Vaccination,Died
+A00143,2025-01-10,Mastitis,Vaccination,Ongoing
+A00143,2025-01-19,Lameness,Rest,Recovered
+A00143,2025-02-16,Lameness,Rest,Died
+A00144,2025-09-18,Lameness,Footbath,Died
+A00144,2025-08-22,Bloat,Drenching,Recovered
+A00144,2025-04-25,FMD,Drenching,Died
+A00145,2025-08-31,None,None,Ongoing
+A00145,2025-08-20,Mastitis,Antibiotics,Died
+A00145,2025-04-24,Mastitis,Drenching,Ongoing
+A00145,2025-05-30,Lameness,Rest,Ongoing
+A00145,2025-02-24,Mastitis,Footbath,Ongoing
+A00146,2025-07-29,Mastitis,Drenching,Died
+A00146,2025-04-11,Foot Rot,Antibiotics,Ongoing
+A00147,2025-08-23,Foot Rot,None,Ongoing
+A00147,2025-02-25,FMD,Antibiotics,Died
+A00148,2025-03-05,FMD,Vaccination,Died
+A00148,2025-09-16,Foot Rot,Vaccination,Recovered
+A00148,2025-09-29,None,Antibiotics,Died
+A00148,2025-08-10,Lameness,Vaccination,Died
+A00148,2025-04-01,None,Rest,Recovered
+A00149,2025-02-23,FMD,None,Died
+A00149,2025-06-14,Lameness,Vaccination,Ongoing
+A00150,2025-05-08,Bloat,Vaccination,Ongoing
+A00150,2025-05-31,FMD,Footbath,Recovered
+A00150,2025-07-31,Lameness,None,Died
+A00150,2025-09-20,Bloat,None,Died
+A00150,2025-06-10,None,None,Died
+A00151,2025-04-13,Foot Rot,Rest,Died
+A00151,2025-05-29,None,Drenching,Died
+A00152,2025-04-02,Lameness,Rest,Died
+A00152,2025-06-15,None,Antibiotics,Ongoing
+A00153,2025-09-03,Lameness,Rest,Died
+A00153,2025-08-02,None,None,Died
+A00153,2025-05-27,FMD,Antibiotics,Died
+A00153,2025-02-24,Mastitis,Vaccination,Recovered
+A00153,2025-01-28,None,Antibiotics,Recovered
+A00154,2025-03-24,Bloat,None,Ongoing
+A00154,2025-03-16,Mastitis,None,Ongoing
+A00154,2025-04-15,Lameness,Antibiotics,Ongoing
+A00155,2025-02-22,Lameness,None,Died
+A00155,2025-10-15,Foot Rot,None,Died
+A00155,2025-10-15,FMD,Footbath,Died
+A00155,2025-05-28,None,None,Recovered
+A00156,2025-07-18,FMD,None,Ongoing
+A00156,2025-10-10,Mastitis,Antibiotics,Died
+A00156,2025-05-09,Foot Rot,Rest,Ongoing
+A00156,2025-04-26,None,None,Died
+A00157,2025-10-07,None,Rest,Recovered
+A00157,2025-04-10,Bloat,Vaccination,Recovered
+A00157,2025-02-08,Foot Rot,Footbath,Died
+A00158,2025-03-03,FMD,Antibiotics,Ongoing
+A00158,2025-05-23,Lameness,Drenching,Recovered
+A00158,2025-03-24,Lameness,Drenching,Recovered
+A00158,2025-06-19,FMD,None,Recovered
+A00158,2025-01-21,Foot Rot,Drenching,Died
+A00159,2025-06-04,FMD,Rest,Died
+A00160,2025-02-07,None,Drenching,Died
+A00160,2025-04-23,Foot Rot,Rest,Recovered
+A00160,2025-09-16,Foot Rot,Vaccination,Died
+A00161,2025-07-26,Mastitis,Drenching,Recovered
+A00161,2025-04-20,None,Drenching,Ongoing
+A00161,2025-07-04,Bloat,Footbath,Died
+A00161,2025-09-29,FMD,Rest,Died
+A00161,2025-01-05,Mastitis,None,Ongoing
+A00162,2025-05-04,None,Rest,Died
+A00162,2025-05-05,Mastitis,None,Ongoing
+A00162,2025-07-15,Mastitis,Vaccination,Ongoing
+A00162,2025-10-04,None,Drenching,Recovered
+A00163,2025-07-11,Lameness,Rest,Ongoing
+A00163,2025-09-07,Mastitis,Drenching,Died
+A00163,2025-04-09,Bloat,Rest,Recovered
+A00163,2025-02-19,Foot Rot,Rest,Died
+A00163,2025-01-04,None,Antibiotics,Recovered
+A00164,2025-08-06,Mastitis,Footbath,Died
+A00164,2025-08-11,None,Antibiotics,Died
+A00165,2025-01-13,FMD,None,Ongoing
+A00165,2025-01-20,Mastitis,Antibiotics,Recovered
+A00166,2025-05-09,Lameness,Antibiotics,Died
+A00166,2025-04-27,Bloat,Vaccination,Ongoing
+A00167,2025-07-27,FMD,Drenching,Recovered
+A00167,2025-07-19,None,Antibiotics,Died
+A00167,2025-01-04,None,None,Died
+A00167,2025-02-02,None,Rest,Recovered
+A00168,2025-07-03,Lameness,Antibiotics,Ongoing
+A00169,2025-02-14,Bloat,Vaccination,Ongoing
+A00169,2025-07-22,None,Antibiotics,Ongoing
+A00169,2025-03-22,Lameness,Footbath,Recovered
+A00170,2025-10-07,Bloat,None,Recovered
+A00170,2025-06-02,None,None,Died
+A00170,2025-07-11,Mastitis,Rest,Died
+A00170,2025-03-14,Mastitis,Antibiotics,Recovered
+A00171,2025-07-21,Lameness,Rest,Recovered
+A00171,2025-06-06,Foot Rot,None,Died
+A00171,2025-06-26,Foot Rot,Vaccination,Died
+A00171,2025-09-20,Foot Rot,Footbath,Recovered
+A00171,2025-04-24,Lameness,Drenching,Recovered
+A00172,2025-04-03,None,Rest,Recovered
+A00173,2025-08-25,None,Rest,Recovered
+A00173,2025-05-29,None,Antibiotics,Ongoing
+A00173,2025-02-20,Foot Rot,None,Died
+A00173,2025-09-07,Bloat,Drenching,Recovered
+A00173,2025-05-01,Mastitis,Drenching,Died
+A00174,2025-04-10,Bloat,Vaccination,Ongoing
+A00175,2025-06-06,None,Rest,Recovered
+A00175,2025-10-17,Lameness,Drenching,Ongoing
+A00175,2025-08-08,Foot Rot,Antibiotics,Ongoing
+A00176,2025-04-24,None,None,Died
+A00176,2025-08-12,Bloat,Drenching,Recovered
+A00177,2025-09-03,FMD,Vaccination,Ongoing
+A00177,2025-06-06,FMD,Rest,Recovered
+A00177,2025-03-31,None,Rest,Recovered
+A00178,2025-03-13,Lameness,Footbath,Ongoing
+A00178,2025-02-09,None,Antibiotics,Recovered
+A00178,2025-09-17,None,Antibiotics,Died
+A00179,2025-07-27,Lameness,Footbath,Recovered
+A00179,2025-10-10,Bloat,Rest,Died
+A00179,2025-08-30,None,Footbath,Ongoing
+A00179,2025-07-20,Foot Rot,Rest,Died
+A00179,2025-05-29,Foot Rot,Vaccination,Died
+A00180,2025-02-16,FMD,Drenching,Died
+A00180,2025-01-06,None,Footbath,Died
+A00180,2025-03-26,Lameness,Footbath,Ongoing
+A00180,2025-03-23,Foot Rot,Rest,Died
+A00180,2025-03-16,None,None,Ongoing
+A00181,2025-01-21,Foot Rot,Vaccination,Recovered
+A00181,2025-02-02,Bloat,Drenching,Recovered
+A00181,2025-01-22,None,Footbath,Died
+A00182,2025-07-18,FMD,Vaccination,Recovered
+A00182,2025-01-21,None,Drenching,Recovered
+A00182,2025-09-24,None,Drenching,Died
+A00183,2025-10-24,Lameness,Rest,Recovered
+A00183,2025-07-12,None,Vaccination,Ongoing
+A00183,2025-10-28,None,Antibiotics,Died
+A00184,2025-07-12,Foot Rot,Rest,Ongoing
+A00184,2025-06-30,Bloat,Vaccination,Ongoing
+A00184,2025-01-04,Lameness,Footbath,Ongoing
+A00185,2025-04-28,Mastitis,Rest,Died
+A00185,2025-05-24,Foot Rot,Footbath,Recovered
+A00186,2025-07-05,Lameness,None,Recovered
+A00186,2025-04-28,FMD,Drenching,Died
+A00187,2025-09-04,None,Vaccination,Ongoing
+A00188,2025-03-24,None,Vaccination,Recovered
+A00188,2025-05-05,Mastitis,Footbath,Died
+A00189,2025-03-24,Foot Rot,None,Died
+A00189,2025-01-21,Lameness,Footbath,Recovered
+A00189,2025-03-27,Bloat,Footbath,Died
+A00189,2025-07-27,Lameness,Rest,Died
+A00189,2025-01-10,None,None,Died
+A00190,2025-02-13,Foot Rot,Vaccination,Died
+A00190,2025-08-30,FMD,Footbath,Recovered
+A00190,2025-07-30,Lameness,Footbath,Died
+A00191,2025-09-19,Bloat,Footbath,Died
+A00191,2025-06-25,FMD,Rest,Died
+A00192,2025-04-28,FMD,Vaccination,Recovered
+A00193,2025-01-09,Foot Rot,Rest,Died
+A00194,2025-03-18,Lameness,Antibiotics,Recovered
+A00194,2025-09-01,Lameness,Rest,Recovered
+A00194,2025-09-30,Lameness,Antibiotics,Recovered
+A00194,2025-09-04,None,Footbath,Died
+A00195,2025-01-01,None,None,Ongoing
+A00195,2025-09-25,FMD,Drenching,Recovered
+A00195,2025-09-29,FMD,Footbath,Ongoing
+A00195,2025-07-15,Bloat,Rest,Died
+A00195,2025-10-22,Mastitis,Vaccination,Recovered
+A00196,2025-09-02,Foot Rot,Antibiotics,Ongoing
+A00196,2025-10-06,FMD,Drenching,Recovered
+A00196,2025-01-03,None,None,Recovered
+A00197,2025-09-25,Mastitis,Rest,Recovered
+A00197,2025-07-12,None,Footbath,Died
+A00197,2025-06-11,FMD,Drenching,Recovered
+A00197,2025-03-21,FMD,None,Died
+A00197,2025-05-10,Bloat,Rest,Ongoing
+A00198,2025-07-07,Lameness,Drenching,Died
+A00198,2025-07-23,Foot Rot,Vaccination,Died
+A00198,2025-10-13,FMD,Footbath,Ongoing
+A00198,2025-10-14,Lameness,Vaccination,Ongoing
+A00198,2025-06-07,Lameness,Drenching,Died
+A00199,2025-03-12,None,Antibiotics,Died
+A00199,2025-04-28,FMD,None,Recovered
+A00199,2025-02-21,Foot Rot,Rest,Ongoing
+A00199,2025-06-23,Lameness,Rest,Died
+A00200,2025-03-24,FMD,None,Recovered
+A00201,2025-03-16,FMD,Rest,Ongoing
+A00202,2025-02-02,Bloat,Footbath,Ongoing
+A00203,2025-01-20,None,Vaccination,Ongoing
+A00204,2025-09-24,Bloat,None,Died
+A00204,2025-01-30,Foot Rot,None,Ongoing
+A00204,2025-08-13,Mastitis,Footbath,Died
+A00204,2025-09-23,Bloat,Footbath,Recovered
+A00204,2025-09-19,Lameness,None,Recovered
+A00205,2025-03-28,None,Antibiotics,Ongoing
+A00205,2025-05-03,None,Antibiotics,Recovered
+A00205,2025-02-14,Bloat,Vaccination,Ongoing
+A00205,2025-07-22,FMD,Rest,Recovered
+A00205,2025-09-23,Mastitis,None,Died
+A00206,2025-02-16,Lameness,Drenching,Died
+A00207,2025-10-26,Bloat,Drenching,Ongoing
+A00207,2025-04-26,Lameness,Footbath,Ongoing
+A00207,2025-07-26,Lameness,Antibiotics,Ongoing
+A00207,2025-03-31,FMD,Rest,Recovered
+A00207,2025-10-14,Mastitis,Rest,Ongoing
+A00208,2025-03-01,Lameness,Drenching,Died
+A00208,2025-10-22,Bloat,None,Ongoing
+A00208,2025-07-13,Lameness,Vaccination,Recovered
+A00209,2025-08-23,None,Vaccination,Died
+A00209,2025-01-15,FMD,Antibiotics,Ongoing
+A00209,2025-02-04,FMD,None,Recovered
+A00210,2025-06-11,FMD,Drenching,Died
+A00210,2025-10-02,Mastitis,None,Ongoing
+A00211,2025-05-28,Mastitis,Vaccination,Died
+A00211,2025-06-25,Mastitis,Rest,Recovered
+A00212,2025-06-10,Bloat,Footbath,Died
+A00212,2025-05-18,Foot Rot,None,Died
+A00212,2025-04-08,FMD,None,Recovered
+A00212,2025-05-01,None,Footbath,Ongoing
+A00213,2025-04-28,Foot Rot,Footbath,Died
+A00213,2025-07-02,Foot Rot,Antibiotics,Recovered
+A00214,2025-09-10,Lameness,Antibiotics,Died
+A00215,2025-09-04,Bloat,Rest,Ongoing
+A00216,2025-10-22,Bloat,Vaccination,Recovered
+A00216,2025-09-19,Bloat,Vaccination,Recovered
+A00216,2025-10-23,Foot Rot,Antibiotics,Died
+A00216,2025-08-05,FMD,Rest,Recovered
+A00217,2025-06-27,FMD,None,Recovered
+A00217,2025-08-23,Mastitis,None,Died
+A00217,2025-08-24,Bloat,None,Recovered
+A00217,2025-01-07,None,Footbath,Ongoing
+A00217,2025-10-25,Mastitis,Drenching,Ongoing
+A00218,2025-05-13,Foot Rot,Rest,Ongoing
+A00218,2025-05-02,Bloat,Vaccination,Died
+A00218,2025-06-25,Bloat,Footbath,Ongoing
+A00218,2025-08-06,Foot Rot,Vaccination,Died
+A00218,2025-07-10,Bloat,Vaccination,Ongoing
+A00219,2025-04-03,Lameness,Footbath,Died
+A00219,2025-04-28,Mastitis,None,Ongoing
+A00219,2025-05-01,Lameness,Vaccination,Ongoing
+A00219,2025-04-11,Foot Rot,None,Recovered
+A00220,2025-01-05,Foot Rot,Vaccination,Ongoing
+A00220,2025-03-10,None,Rest,Died
+A00220,2025-06-11,FMD,Drenching,Ongoing
+A00220,2025-10-15,Lameness,Antibiotics,Ongoing
+A00221,2025-03-25,Mastitis,Footbath,Ongoing
+A00222,2025-02-19,FMD,None,Ongoing
+A00222,2025-05-14,Bloat,Drenching,Died
+A00222,2025-10-13,Bloat,Drenching,Recovered
+A00222,2025-07-30,Mastitis,Drenching,Died
+A00223,2025-04-12,Lameness,Rest,Died
+A00223,2025-10-03,Foot Rot,Drenching,Ongoing
+A00223,2025-06-16,None,Rest,Ongoing
+A00223,2025-08-17,Mastitis,Vaccination,Died
+A00223,2025-05-27,FMD,None,Recovered
+A00224,2025-06-22,FMD,None,Died
+A00224,2025-10-20,FMD,Antibiotics,Recovered
+A00225,2025-06-25,Foot Rot,Drenching,Ongoing
+A00225,2025-05-30,None,Drenching,Died
+A00226,2025-05-19,FMD,Drenching,Died
+A00226,2025-10-28,Lameness,Vaccination,Ongoing
+A00226,2025-03-27,Foot Rot,Antibiotics,Recovered
+A00226,2025-05-01,None,Drenching,Died
+A00227,2025-04-18,Foot Rot,Vaccination,Recovered
+A00228,2025-02-02,FMD,Rest,Recovered
+A00229,2025-07-23,Lameness,Antibiotics,Recovered
+A00230,2025-03-21,Mastitis,None,Ongoing
+A00230,2025-06-08,Foot Rot,Footbath,Died
+A00230,2025-05-26,FMD,None,Recovered
+A00231,2025-09-27,Foot Rot,Antibiotics,Recovered
+A00231,2025-07-02,Bloat,Vaccination,Ongoing
+A00232,2025-05-20,Lameness,Vaccination,Recovered
+A00232,2025-10-04,Foot Rot,Rest,Died
+A00232,2025-08-22,None,None,Died
+A00232,2025-10-16,FMD,Rest,Died
+A00232,2025-10-01,Bloat,Drenching,Ongoing
+A00233,2025-04-27,Mastitis,Vaccination,Ongoing
+A00233,2025-07-07,FMD,Drenching,Recovered
+A00233,2025-06-05,Mastitis,Antibiotics,Died
+A00233,2025-03-11,Bloat,Drenching,Ongoing
+A00233,2025-10-01,Mastitis,None,Ongoing
+A00234,2025-06-03,Mastitis,Vaccination,Ongoing
+A00234,2025-04-29,Mastitis,Rest,Ongoing
+A00234,2025-04-07,FMD,Rest,Ongoing
+A00234,2025-07-22,Foot Rot,Footbath,Died
+A00235,2025-07-13,Foot Rot,Drenching,Recovered
+A00235,2025-08-05,None,Footbath,Died
+A00235,2025-05-20,Bloat,None,Died
+A00235,2025-09-30,Bloat,Vaccination,Recovered
+A00236,2025-04-04,Foot Rot,Drenching,Recovered
+A00237,2025-08-20,Bloat,None,Died
+A00237,2025-09-09,Foot Rot,Drenching,Recovered
+A00237,2025-03-19,Mastitis,Rest,Recovered
+A00237,2025-04-06,Mastitis,Drenching,Ongoing
+A00238,2025-08-13,None,Antibiotics,Recovered
+A00238,2025-02-16,Foot Rot,Antibiotics,Ongoing
+A00239,2025-06-25,FMD,Drenching,Ongoing
+A00239,2025-07-10,FMD,None,Recovered
+A00240,2025-02-11,Foot Rot,Antibiotics,Ongoing
+A00240,2025-07-20,Mastitis,Rest,Ongoing
+A00240,2025-04-03,Foot Rot,Drenching,Ongoing
+A00241,2025-03-04,None,Footbath,Ongoing
+A00242,2025-05-07,None,Antibiotics,Recovered
+A00242,2025-08-24,None,Antibiotics,Died
+A00242,2025-04-17,FMD,Vaccination,Died
+A00242,2025-06-09,Bloat,Footbath,Died
+A00243,2025-10-09,Lameness,Antibiotics,Ongoing
+A00244,2025-06-02,Foot Rot,Drenching,Recovered
+A00244,2025-04-22,Mastitis,Footbath,Died
+A00244,2025-08-11,Bloat,Antibiotics,Recovered
+A00244,2025-05-22,Lameness,Antibiotics,Ongoing
+A00245,2025-01-05,Mastitis,Rest,Died
+A00245,2025-09-01,None,Rest,Recovered
+A00246,2025-02-15,Foot Rot,Footbath,Ongoing
+A00246,2025-02-16,None,Rest,Ongoing
+A00246,2025-01-31,Mastitis,Drenching,Died
+A00247,2025-10-02,Mastitis,Footbath,Ongoing
+A00247,2025-04-30,Bloat,Rest,Died
+A00248,2025-08-13,None,Footbath,Recovered
+A00248,2025-07-13,Bloat,None,Recovered
+A00248,2025-05-09,Mastitis,Vaccination,Died
+A00249,2025-10-14,Bloat,Rest,Died
+A00249,2025-09-08,Foot Rot,Rest,Recovered
+A00249,2025-10-06,Bloat,Drenching,Died
+A00249,2025-08-28,Bloat,Rest,Died
+A00250,2025-02-05,Lameness,Footbath,Ongoing
+A00250,2025-06-01,Bloat,Rest,Ongoing
+A00251,2025-01-01,None,Rest,Ongoing
+A00251,2025-04-05,Mastitis,Rest,Ongoing
+A00251,2025-05-03,Bloat,None,Recovered
+A00251,2025-10-03,FMD,Footbath,Died
+A00252,2025-10-10,Foot Rot,Rest,Ongoing
+A00252,2025-06-15,FMD,None,Ongoing
+A00252,2025-02-26,Mastitis,Rest,Died
+A00252,2025-02-04,Mastitis,Footbath,Recovered
+A00253,2025-04-14,Mastitis,Vaccination,Recovered
+A00254,2025-01-17,Lameness,None,Ongoing
+A00255,2025-09-27,Lameness,None,Died
+A00255,2025-05-12,Mastitis,Drenching,Recovered
+A00255,2025-02-06,Mastitis,Footbath,Died
+A00255,2025-09-09,Mastitis,Vaccination,Died
+A00256,2025-07-04,Lameness,None,Ongoing
+A00257,2025-01-30,Lameness,Drenching,Died
+A00257,2025-01-21,None,Antibiotics,Ongoing
+A00257,2025-02-09,Foot Rot,Rest,Recovered
+A00258,2025-04-29,Lameness,Vaccination,Recovered
+A00259,2025-09-27,None,Footbath,Died
+A00259,2025-04-02,Lameness,None,Died
+A00260,2025-02-24,None,Rest,Ongoing
+A00260,2025-08-23,None,None,Ongoing
+A00260,2025-02-23,Foot Rot,Footbath,Died
+A00260,2025-07-25,Lameness,Drenching,Died
+A00261,2025-10-01,Lameness,Vaccination,Ongoing
+A00261,2025-06-11,Lameness,Drenching,Ongoing
+A00262,2025-08-09,None,Drenching,Died
+A00262,2025-05-04,Lameness,Rest,Recovered
+A00262,2025-07-12,Lameness,None,Ongoing
+A00262,2025-07-04,FMD,Vaccination,Ongoing
+A00263,2025-01-18,Bloat,Rest,Recovered
+A00264,2025-03-11,Bloat,Antibiotics,Ongoing
+A00264,2025-04-24,Foot Rot,Drenching,Recovered
+A00264,2025-05-22,Lameness,Rest,Died
+A00264,2025-10-20,Lameness,Footbath,Recovered
+A00264,2025-01-20,FMD,Drenching,Recovered
+A00265,2025-05-16,Bloat,Rest,Recovered
+A00265,2025-04-30,Bloat,Drenching,Recovered
+A00266,2025-07-24,Lameness,Footbath,Died
+A00266,2025-02-09,None,Drenching,Ongoing
+A00266,2025-03-30,FMD,None,Died
+A00266,2025-10-23,Mastitis,Rest,Died
+A00266,2025-06-03,Mastitis,None,Died
+A00267,2025-02-10,Mastitis,Drenching,Ongoing
+A00267,2025-08-11,FMD,Antibiotics,Recovered
+A00267,2025-01-06,None,None,Ongoing
+A00267,2025-01-28,Bloat,Rest,Recovered
+A00268,2025-10-04,Lameness,Footbath,Ongoing
+A00268,2025-09-15,None,Footbath,Recovered
+A00268,2025-01-26,None,None,Ongoing
+A00269,2025-10-22,Lameness,Antibiotics,Recovered
+A00269,2025-08-10,Bloat,Vaccination,Recovered
+A00269,2025-03-09,Bloat,Antibiotics,Ongoing
+A00269,2025-10-20,None,Antibiotics,Died
+A00270,2025-05-15,Mastitis,Vaccination,Died
+A00270,2025-08-11,None,Footbath,Recovered
+A00270,2025-09-04,Lameness,Footbath,Ongoing
+A00270,2025-07-22,None,Rest,Recovered
+A00271,2025-09-26,Foot Rot,Footbath,Recovered
+A00271,2025-05-17,FMD,Drenching,Died
+A00271,2025-10-22,Mastitis,Antibiotics,Died
+A00271,2025-07-31,FMD,Drenching,Ongoing
+A00271,2025-04-08,Bloat,Drenching,Died
+A00272,2025-06-06,Foot Rot,Drenching,Died
+A00273,2025-03-16,FMD,Antibiotics,Recovered
+A00273,2025-04-13,None,Drenching,Recovered
+A00273,2025-02-13,Mastitis,None,Recovered
+A00273,2025-05-05,Lameness,Footbath,Ongoing
+A00274,2025-06-25,None,Antibiotics,Ongoing
+A00275,2025-08-30,Mastitis,Drenching,Recovered
+A00275,2025-10-03,Foot Rot,Footbath,Died
+A00275,2025-09-25,Bloat,Rest,Ongoing
+A00275,2025-03-14,None,None,Died
+A00276,2025-07-12,Lameness,None,Died
+A00277,2025-05-11,Foot Rot,Antibiotics,Ongoing
+A00278,2025-05-19,Mastitis,Vaccination,Died
+A00278,2025-01-05,Mastitis,Vaccination,Died
+A00279,2025-07-04,Mastitis,Antibiotics,Ongoing
+A00279,2025-07-17,Foot Rot,Vaccination,Died
+A00279,2025-02-20,Bloat,Vaccination,Died
+A00280,2025-02-15,Foot Rot,Footbath,Died
+A00280,2025-08-23,Lameness,None,Recovered
+A00280,2025-01-21,Foot Rot,Rest,Ongoing
+A00280,2025-06-20,FMD,Vaccination,Died
+A00280,2025-03-22,Mastitis,Drenching,Died
+A00281,2025-07-01,None,Drenching,Recovered
+A00281,2025-09-14,Bloat,Antibiotics,Died
+A00281,2025-05-12,FMD,Antibiotics,Died
+A00282,2025-04-26,Foot Rot,Drenching,Ongoing
+A00282,2025-03-12,Mastitis,None,Ongoing
+A00282,2025-09-24,None,Rest,Died
+A00283,2025-08-02,Foot Rot,Rest,Recovered
+A00283,2025-08-07,Bloat,Rest,Ongoing
+A00284,2025-10-05,Foot Rot,Footbath,Died
+A00284,2025-03-12,Lameness,Rest,Died
+A00284,2025-04-14,Foot Rot,Drenching,Died
+A00284,2025-09-26,Foot Rot,Vaccination,Recovered
+A00285,2025-03-22,Bloat,Antibiotics,Died
+A00285,2025-09-30,None,Antibiotics,Recovered
+A00285,2025-06-12,Foot Rot,None,Recovered
+A00285,2025-06-13,FMD,Vaccination,Ongoing
+A00285,2025-08-15,None,None,Died
+A00286,2025-03-19,Foot Rot,Antibiotics,Recovered
+A00286,2025-04-05,Mastitis,Rest,Died
+A00286,2025-05-17,Lameness,Rest,Died
+A00287,2025-04-29,Foot Rot,None,Recovered
+A00287,2025-07-03,Mastitis,None,Ongoing
+A00288,2025-09-15,Lameness,Vaccination,Died
+A00288,2025-07-11,Foot Rot,Vaccination,Ongoing
+A00289,2025-03-12,Foot Rot,Footbath,Recovered
+A00289,2025-01-17,FMD,Antibiotics,Ongoing
+A00289,2025-07-31,Foot Rot,None,Died
+A00289,2025-04-14,Foot Rot,Antibiotics,Recovered
+A00290,2025-09-08,None,Drenching,Ongoing
+A00290,2025-05-07,FMD,Vaccination,Recovered
+A00290,2025-07-14,None,Drenching,Ongoing
+A00290,2025-10-20,Lameness,Rest,Died
+A00291,2025-09-24,Mastitis,Vaccination,Ongoing
+A00292,2025-05-06,Lameness,Rest,Ongoing
+A00293,2025-10-13,FMD,Rest,Died
+A00294,2025-04-08,Bloat,Vaccination,Ongoing
+A00295,2025-05-27,FMD,Footbath,Ongoing
+A00295,2025-05-31,Lameness,Antibiotics,Died
+A00295,2025-09-22,Foot Rot,Vaccination,Died
+A00296,2025-02-16,None,Rest,Recovered
+A00296,2025-04-03,Lameness,None,Died
+A00296,2025-03-11,FMD,Vaccination,Ongoing
+A00296,2025-08-19,Mastitis,Footbath,Ongoing
+A00297,2025-04-14,FMD,Antibiotics,Ongoing
+A00297,2025-06-15,None,None,Died
+A00297,2025-03-25,None,None,Recovered
+A00297,2025-02-16,Mastitis,None,Ongoing
+A00297,2025-07-05,Mastitis,Rest,Died
+A00298,2025-09-19,Lameness,Footbath,Ongoing
+A00298,2025-10-09,FMD,Antibiotics,Recovered
+A00298,2025-06-21,Lameness,None,Recovered
+A00298,2025-03-25,Foot Rot,Footbath,Died
+A00299,2025-08-03,Bloat,Drenching,Died
+A00300,2025-05-28,None,Footbath,Recovered
+A00300,2025-03-09,Foot Rot,Antibiotics,Died
+A00300,2025-05-10,Mastitis,Vaccination,Ongoing
+A00300,2025-09-13,Lameness,Antibiotics,Died
