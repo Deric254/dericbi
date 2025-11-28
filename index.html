@@ -56,6 +56,20 @@ document.head.appendChild(o)}initApollo();</script>
   }
   </script>
   <script src="https://cdn.amplitude.com/script/5a606w6w3841a994768853dd53f10382.js"></script><script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('5a606w6w3841a994768853dd53f10382', {"fetchRemoteConfig":true,"autocapture":true});</script>
+  <script async src="https://cdn.amplitude.com/script/5a606w6w3841a994768853dd53f10382.js"></script>
+  <script>
+    // Defer amplitude init until load to avoid blocking rendering
+    window.addEventListener('load', function() {
+      if (window.amplitude) {
+        try {
+          window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
+          window.amplitude.init('5a606w6w3841a994768853dd53f10382', {"fetchRemoteConfig":true,"autocapture":true});
+        } catch (e) {
+          console.warn('Amplitude init failed', e);
+        }
+      }
+    });
+  </script>
 
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJM885LMLJ"></script>
@@ -448,6 +462,13 @@ document.head.appendChild(o)}initApollo();</script>
     }
   </style>
 
+  <!-- Preconnect for critical third-party origins -->
+  <link rel="preconnect" href="https://cdn.amplitude.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://gc.zgo.at" crossorigin>
+  <!-- Preload the site logo to help LCP -->
+  <link rel="preload" as="image" href="assets/img/logo.png">
+
   <!-- ✅ Favicons -->
 <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
@@ -549,9 +570,10 @@ document.head.appendChild(o)}initApollo();</script>
     <!-- Logo -->
     <div class="mb-6 sm:mb-8 fade-in-up">
    <img src="assets/img/logo.png"
-     alt="dericBI Logo"
-     loading="lazy"
-     class="h-16 w-16 sm:h-20 sm:w-20 mx-auto mb-4 rounded-full object-cover shadow-lg ring-4 ring-[#49A078]/20" />
+       alt="dericBI Logo"
+       loading="lazy"
+       width="64" height="64"
+       class="h-16 w-16 sm:h-20 sm:w-20 mx-auto mb-4 rounded-full object-cover shadow-lg ring-4 ring-[#49A078]/20" />
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-2 leading-tight">
         Welcome to <span class="text-[#49A078]">deric</span><span class="text-[#facc15]">BI</span>
       </h1>

@@ -105,6 +105,13 @@
 
   <!-- Preload critical resources for faster loading -->
   <link rel="preload" href="journey-data.json" as="fetch" crossorigin="anonymous">
+  <!-- Preconnect for common third-party origins -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.amplitude.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://gc.zgo.at" crossorigin>
+  <!-- Preload site logo to help LCP -->
+  <link rel="preload" as="image" href="assets/img/logo.png">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
@@ -575,7 +582,8 @@ img:not([alt]) {
     <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3 shrink-0">
       <img src="assets/img/logo.png" 
            alt="dericBI Logo" 
-           class="h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 rounded-full object-cover shadow-md flex-shrink-0" />
+     width="64" height="64"
+     class="h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 rounded-full object-cover shadow-md flex-shrink-0" />
       <div class="font-bold text-lg xs:text-xl sm:text-2xl leading-none brand-text whitespace-nowrap">
         <span>deric</span><span class="text-[#facc15]">BI</span>
       </div>
