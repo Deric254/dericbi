@@ -1,4 +1,20 @@
 [
+    {
+  "serial": "Project 64",
+  "title": " ",
+  "date": "2025-11-27",
+  "description": "",
+  "tools": "Power BI",
+  "projectLink": "assets/projects/genplus/genplus.pbix",
+  "liveLink": "",
+  "images": [
+    "assets/projects/mtaji/dash.JPG",
+    "assets/projects/genplus/model.JPG"
+  ],
+  "video": [
+    "assets/projects/genplus/geneplus.mp4"
+  ]
+},
 
   {
   "serial": "Project 63",
