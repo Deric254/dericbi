@@ -1,5 +1,29 @@
 [
-{
+  {
+    "serial": "Project 65",
+    "title": "Marketing Campaign Suite — Multi-channel Analytics",
+    "date": "2025-11-28",
+    "description": "<strong>Problem Statement:</strong> Marketers need a consolidated view of campaign performance across channels to understand funnel drop-offs, attribution, and ROI.<br><br><strong>Business Objective:</strong> Build a multi-channel marketing analytics suite that brings together campaign, channel, and funnel metrics so teams can optimise spend and improve conversions.<br><br><strong>My Approach:</strong> Combined Power BI and Python analysis to clean campaign data, visualise funnel stages, and produce channel-level ROI and conversion insights. Deliverables include interactive dashboards and short walkthrough videos.<br><br><strong>Key Features:</strong><br>• Conversion funnel with drop-off rates by channel<br>• Channel ROI and cost-per-acquisition (CPA) metrics<br>• Time-to-convert distributions and cohort breakdowns<br>• Creative and landing page performance snapshots<br>• Exportable summaries for stakeholder reports",
+    "tools": "Power BI, Python",
+    "projectLink": "downloads/marketing_campaign_suite.pbix",
+    "liveLink": "",
+    "images": [
+      "assets/projects/marketing/dash1.JPG",
+      "assets/projects/marketing/dash2.JPG",
+      "assets/projects/marketing/dash3.JPG",
+      "assets/projects/marketing/dash4.JPG",
+      "assets/projects/marketing/python/dash.png",
+      "assets/projects/marketing/powerbi/dash.JPG"
+    ],
+    "video": [
+      "assets/projects/marketing/marketing.mp4",
+      "assets/projects/marketing/python/marketing.mp4",
+      "assets/projects/marketing/python/0H9kbT69zM.mp4",
+      "assets/projects/marketing/powerbi/marketing.mp4"
+    ]
+  },
+
+  {
   "serial": "Project 64",
   "title": "Daily inteligence dashboard ",
   "date": "2025-11-27",
