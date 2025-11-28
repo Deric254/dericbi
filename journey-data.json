@@ -1,9 +1,9 @@
 [
-    {
+{
   "serial": "Project 64",
-  "title": " ",
+  "title": "Daily inteligence dashboard ",
   "date": "2025-11-27",
-  "description": "",
+  "description": "<strong>Problem Statement:</strong> Farmers and agribusinesses struggle with fragmented records across feed, breeding, health, and milk production, making it difficult to track costs, monitor herd performance, and ensure cold chain reliability.<br><br><strong>Business Objective:</strong> Provide a unified intelligence dashboard that connects daily farm records into actionable insights — supporting better decisions in genetics, nutrition, health, and yield optimization.<br><br><strong>My Approach:</strong> Designed and implemented an interactive Power BI dashboard using real farm datasets — animals, feed records, breeding events, health logs, milk yields, and cold chain monitoring — to reveal trends and guide management decisions.<br><br><strong>Key Features:</strong><br>• Feed cost and consumption tracking by farmer<br>• Breeding success and AI attempt monitoring<br>• Health condition logs with treatment outcomes<br>• Milk yield analysis (liters, fat % trends)<br>• Cold chain temperature and alarm monitoring<br><br><strong>Impact:</strong> Enables farmers, executives, and agritech leaders to monitor herd performance, reduce costs, improve breeding efficiency, and safeguard milk quality. Turns raw farm data into strategic clarity for daily operations and long-term growth.",
   "tools": "Power BI",
   "projectLink": "downloads/genplus.pbix",
   "liveLink": "",
