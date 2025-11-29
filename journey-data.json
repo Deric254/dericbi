@@ -1,11 +1,8 @@
 [
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 {
 =======
-=======
->>>>>>> parent of 5a0b047 (Revert "Add Marketing Campaign Suite project to journey data")
 =======
 >>>>>>> parent of 5a0b047 (Revert "Add Marketing Campaign Suite project to journey data")
   {
@@ -21,7 +18,6 @@
       "assets/projects/marketing/dash2.JPG",
       "assets/projects/marketing/dash3.JPG",
 <<<<<<< HEAD
-<<<<<<< HEAD
       "assets/projects/marketing/dash4.JPG"
   
     ],
@@ -29,8 +25,6 @@
       "assets/projects/marketing/marketing.mp4"
      
 =======
-=======
->>>>>>> parent of 5a0b047 (Revert "Add Marketing Campaign Suite project to journey data")
       "assets/projects/marketing/dash4.JPG",
       "assets/projects/marketing/python/dash.png",
       "assets/projects/marketing/powerbi/dash.JPG"
@@ -40,19 +34,13 @@
       "assets/projects/marketing/python/marketing.mp4",
       "assets/projects/marketing/python/0H9kbT69zM.mp4",
       "assets/projects/marketing/powerbi/marketing.mp4"
-<<<<<<< HEAD
->>>>>>> parent of 5a0b047 (Revert "Add Marketing Campaign Suite project to journey data")
-=======
 >>>>>>> parent of 5a0b047 (Revert "Add Marketing Campaign Suite project to journey data")
     ]
   },
 
   {
 <<<<<<< HEAD
-<<<<<<< HEAD
 >>>>>>> parent of 75ef29e (Revert "Remove unused marketing asset references")
-=======
->>>>>>> parent of 5a0b047 (Revert "Add Marketing Campaign Suite project to journey data")
 =======
 >>>>>>> parent of 5a0b047 (Revert "Add Marketing Campaign Suite project to journey data")
   "serial": "Project 64",
