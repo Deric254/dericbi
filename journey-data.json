@@ -1,5 +1,21 @@
 [ 
-  
+{
+  "serial": "Project X",
+  "title": "Introduction to Deric and My Work",
+  "date": "2025-11-29",
+  "description": "<strong>Problem Statement:</strong> Need to provide a comprehensive introduction to my work, expertise, and analytical capabilities for potential clients and collaborators.<br><br><strong>Business Objective:</strong> Create an engaging presentation that showcases my professional journey, skills in data analysis, business intelligence, and project management capabilities.<br><br><strong>My Approach:</strong> Developed a personal introduction video and visual content that highlights my experience across various industries, analytical tools, and project delivery success stories. The content demonstrates my ability to transform complex data into actionable business insights.<br><br><strong>Key Features:</strong><br>• Personal introduction and professional background<br>• Portfolio overview across multiple industries<br>• Technical expertise demonstration<br>• Client success stories and case studies<br>• Analytical methodologies and approaches<br><br><strong>Impact:</strong> This introduction serves as a foundation for professional relationships, helping potential clients understand my capabilities and approach to solving business challenges through data-driven insights.",
+  "tools": "Video Production, Content Creation, Personal Branding",
+  "projectLink": "",
+  "liveLink": "",
+  "images": [
+    "assets/projects/intro/deric1.png",
+    "assets/projects/intro/deric2.png"
+  ],
+  "video": [
+    "assets/projects/intro/Intro.mp4"
+  ]
+},
+
 {
   "serial": "Project 65",
   "title": "Marketing Campaign Suite — Multi-channel Analytics",
