@@ -134,7 +134,6 @@
 
   <!-- ✅ dericBI Chatbot -->
   <link rel="stylesheet" href="assets/css/social_links.css">
-  <script src="assets/js/config.js?v=20251114"></script>
   <script src="assets/js/chatbot.js?v=20251114"></script>
   <script src="assets/js/social_links.js?v=20251114"></script>
 </head>
@@ -486,9 +485,9 @@ function toggleNewsletter() {
         </a>
         <div class="flex flex-col">
           <a href="https://dericmarangu.vercel.app/" target="_blank" class="footer-link font-semibold text-sm hover:text-[#49A078]">Deric Marangu</a>
-            <p class="text-xs italic text-gray-600">
+          <p class="text-xs italic text-gray-600">
             CEO and Founder of 
-            <a href="https://dericbi.vercel.app/" target="_blank" class="footer-link font-semibold hover:text-[#49A078]">
+            <a href=https://dericbi.vercel.app/" target="_blank" class="footer-link font-semibold hover:text-[#49A078]">
               <span>deric</span><span class="text-[#facc15] text-[15px] font-bold drop-shadow-md">BI</span>
             </a>
           </p>
@@ -516,32 +515,39 @@ function toggleNewsletter() {
 </button>
 
 <script>
-/* idempotent back-to-top initializer to avoid redeclaration errors */
-(function(){
-  if (window.__dericbi_bt_initialized) return;
-  window.__dericbi_bt_initialized = true;
-  var bt = document.getElementById('backToTop');
-  if (!bt) return;
-  var btHideTimeout = null;
+// Back to Top Button logic with 3-second timeout
+const backToTop = document.getElementById('backToTop');
+let hideTimeout;
 
-  function showBT(){
-    bt.style.display = 'flex';
-    bt.style.opacity = '0.9';
-    clearTimeout(btHideTimeout);
-    btHideTimeout = setTimeout(hideBT, 3000);
+// Show button on scroll and set timeout to hide it after 3 seconds
+window.addEventListener('scroll', () => {
+  // Clear any existing timeout to reset the timer on new scroll events
+  clearTimeout(hideTimeout);
+  
+  // Show the button when scrolled down
+  if (window.scrollY > 300) {
+    backToTop.style.display = 'flex';
+    backToTop.style.opacity = '0.9';
+    
+    // Set timeout to hide the button after 3 seconds
+    hideTimeout = setTimeout(() => {
+      backToTop.style.opacity = '0';
+      setTimeout(() => {
+        backToTop.style.display = 'none';
+      }, 300); // Wait for the opacity transition before hiding
+    }, 3000); // 3 seconds
+  } else {
+    // Hide immediately when at the top
+    backToTop.style.opacity = '0';
+    setTimeout(() => {
+      backToTop.style.display = 'none';
+    }, 300);
   }
-  function hideBT(){
-    bt.style.opacity = '0';
-    setTimeout(function(){ bt.style.display = 'none'; }, 300);
-  }
+});
 
-  window.addEventListener('scroll', function(){
-    clearTimeout(btHideTimeout);
-    if (window.scrollY > 300) showBT(); else hideBT();
-  });
-
-  bt.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
-})();
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 </script>
 
 <!-- Enhanced Analytics Tracking -->
