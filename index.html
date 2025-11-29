@@ -78,21 +78,7 @@ document.head.appendChild(o)}initApollo();</script>
     }
   }
   </script>
-  <script src="https://cdn.amplitude.com/script/5a606w6w3841a994768853dd53f10382.js"></script><script>window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));window.amplitude.init('5a606w6w3841a994768853dd53f10382', {"fetchRemoteConfig":true,"autocapture":true});</script>
-  <script async src="https://cdn.amplitude.com/script/5a606w6w3841a994768853dd53f10382.js"></script>
-  <script>
-    // Defer amplitude init until load to avoid blocking rendering
-    window.addEventListener('load', function() {
-      if (window.amplitude) {
-        try {
-          window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
-          window.amplitude.init('5a606w6w3841a994768853dd53f10382', {"fetchRemoteConfig":true,"autocapture":true});
-        } catch (e) {
-          console.warn('Amplitude init failed', e);
-        }
-      }
-    });
-  </script>
+  <!-- Analytics: Google Analytics Only (Clean & Professional) -->
 
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJM885LMLJ"></script>
@@ -636,9 +622,7 @@ document.head.appendChild(o)}initApollo();</script>
 
   <!-- Preconnect for critical third-party origins -->
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.amplitude.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="preconnect" href="https://gc.zgo.at" crossorigin>
   <!-- Preload the site logo to help LCP -->
   <link rel="preload" as="image" href="assets/img/logo.png">
 
@@ -666,9 +650,7 @@ document.head.appendChild(o)}initApollo();</script>
   <script src="assets/js/chatbot.js?v=20251114"></script>
   <script src="assets/js/social_links.js?v=20251114"></script>
 
-  <!-- ✅ GoatCounter Analytics -->
-  <script data-goatcounter="https://deric-exes-analytics.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+  <!-- Analytics: Single, clean Google Analytics implementation -->
 </head>
 
 <body class="bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] min-h-screen flex flex-col relative overflow-hidden">

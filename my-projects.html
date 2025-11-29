@@ -5,15 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   
   <!-- Defer analytics loading to improve page load speed -->
-  <script defer src="https://cdn.amplitude.com/script/5a606w6w3841a994768853dd53f10382.js"></script>
-  <script defer>
-    window.addEventListener('load', function() {
-      if (window.amplitude) {
-        window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1}));
-        window.amplitude.init('5a606w6w3841a994768853dd53f10382', {"fetchRemoteConfig":true,"autocapture":true});
-      }
-    });
-  </script>
+  <!-- Analytics: Google Analytics Only -->
 
   <!-- Google tag (gtag.js) - Deferred -->
 <script defer src="https://www.googletagmanager.com/gtag/js?id=G-ZJM885LMLJ"></script>
@@ -26,7 +18,7 @@
     gtag('config', 'G-ZJM885LMLJ');
   });
 </script>
-<script defer data-goatcounter="https://deric-exes-analytics.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
+<!-- Clean Analytics: Google Analytics Only -->
   <!-- ✅ Page Title -->
 <title>Data Analytics Projects | dericBI Portfolio</title>
 
@@ -107,7 +99,7 @@
   <link rel="preload" href="journey-data.json" as="fetch" crossorigin="anonymous">
   <!-- Preconnect for common third-party origins -->
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.amplitude.com" crossorigin>
+  <!-- Amplitude preconnect removed for clean analytics -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://gc.zgo.at" crossorigin>
   <!-- Preload site logo to help LCP -->
