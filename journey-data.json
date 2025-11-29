@@ -2,12 +2,12 @@
   
 {
   "serial": "Project 65",
-  "title": "Agritech Field Insights Dashboard",
-  "date": "2025-11-29",
-  "description": "<strong>Problem Statement:</strong> Smallholder farmers and agribusinesses lack a unified view of field performance across soil, weather, and yield data, making it hard to optimize inputs and plan harvests.<br><br><strong>Business Objective:</strong> Build a compact dashboard that brings together field telemetry, weather feeds, and yield estimates to inform input decisions and improve harvest predictability.<br><br><strong>My Approach:</strong> Integrated lightweight telemetry CSVs with weather APIs, modelled simple yield estimates in Python, and visualised key metrics in a Power BI report to support on-farm decision-making.<br><br><strong>Key Features:</strong><br>• Field-level yield estimates and trends<br>• Soil moisture and weather overlay<br>• Input cost vs expected yield KPIs<br>• Exportable field summaries for agronomists",
-  "tools": "Power BI, Python",
-  "projectLink": "downloads/agritech_insights.pbix",
-  "liveLink": "",
+  "title": "Marketing Campaign Suite — Multi-channel Analytics",
+  "date": "2025-11-28",
+  "description": "<strong>Problem Statement:</strong> Marketers need a consolidated view of campaign performance across channels to understand funnel drop-offs, attribution, and ROI.<br><br><strong>Business Objective:</strong> Build a multi-channel marketing analytics suite that brings together campaign, channel, and funnel metrics so teams can optimise spend and improve conversions.<br><br><strong>My Approach:</strong> Combined Power BI and Python analysis to clean campaign data, visualise funnel stages, and produce channel-level ROI and conversion insights. Deliverables include interactive dashboards and short walkthrough videos.<br><br><strong>Key Features:</strong><br>• Conversion funnel with drop-off rates by channel<br>• Channel ROI and cost-per-acquisition (CPA) metrics<br>• Time-to-convert distributions and cohort breakdowns<br>• Creative and landing page performance snapshots<br>• Exportable summaries for stakeholder reports<br><br><strong>Live Demo:</strong> <a href=\"https://infographics-pearl.vercel.app/digitalmarketing/Dm.html\" target=\"_blank\">View Project</a>",
+  "tools": "Web tools",
+  "projectLink": "",
+  "liveLink": "https://infographics-pearl.vercel.app/digitalmarketing/Dm.html",
   "images": [
     "assets/projects/marketing/dash1.JPG",
     "assets/projects/marketing/dash2.JPG",
@@ -17,7 +17,9 @@
   "video": [
     "assets/projects/marketing/marketing.mp4"
   ]
-},
+}
+
+,
 
 {
   "serial": "Project 64",
