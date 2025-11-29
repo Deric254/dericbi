@@ -1,0 +1,24 @@
+# Vercel Deployment Test Checklist
+
+## Quick Test Commands for PowerShell:
+
+# 1. Check essential files exist
+Test-Path "index.html", "vercel.json", "sitemap.xml", "robots.txt", "manifest.json"
+
+# 2. Verify git tracking
+git ls-files | Select-String -Pattern "\.(html|css|js|json|xml|txt|png|jpg|ico|webp)$"
+
+# 3. Test file sizes (Vercel limits)
+Get-ChildItem -Recurse | Where-Object {!$_.PSIsContainer} | Measure-Object -Property Length -Sum
+
+# 4. Check for .gitignore issues
+git status --porcelain
+
+# 5. Verify branch is up to date
+git fetch && git status
+
+## Test URLs after deployment:
+- https://yourdomain.vercel.app/
+- https://yourdomain.vercel.app/sitemap.xml
+- https://yourdomain.vercel.app/robots.txt
+- https://yourdomain.vercel.app/manifest.json
