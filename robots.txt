@@ -1,3 +1,20 @@
 User-agent: *
 Allow: /
+
+# Enhanced crawling directives
+Allow: /assets/
+Allow: /icon/
+Allow: /*.html
+Allow: /*.json
+Allow: /*.xml
+
+# Prioritize important pages for crawling
+Crawl-delay: 1
+
+# Sitemaps
 Sitemap: https://dericbi.vercel.app/sitemap.xml
+
+# Additional information
+# Site: dericBI - Deric BI Analytics Kenya
+# Owner: Deric Marangu
+# Contact: dericmarangu@gmail.com

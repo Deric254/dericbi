@@ -1,0 +1,26 @@
+/* TEAM */
+    Founder & Data Analytics Expert: Deric Marangu
+    Contact: dericmarangu@gmail.com
+    Twitter: @Dericmwiti
+    From: Nairobi, Kenya
+
+/* THANKS */
+    Clients from 15+ countries who trust dericBI
+    Business owners who transform their data into profits
+    Students learning data analytics skills
+
+/* SITE */
+    Last update: 2025/11/29
+    Language: English
+    Doctype: HTML5
+    IDE: VS Code
+    Framework: TailwindCSS
+    Analytics: Google Analytics, Amplitude
+    Standards: HTML5, CSS3, ES6+
+    Components: Responsive Design, PWA Ready
+    
+/* KEYWORDS */
+    dericBI, Deric BI, dericbi, DERICBI, DERIC BI, Deric Marangu
+    Data Analytics Kenya, Business Intelligence Kenya
+    PowerBI Training, Excel Analytics, Python Data Analysis
+    SQL Training, Dashboard Creation, Data Visualization
