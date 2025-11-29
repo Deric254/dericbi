@@ -25,7 +25,28 @@
 
 /sitemap.xml
   Content-Type: application/xml; charset=utf-8
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=3600, s-maxage=7200
+  X-Robots-Tag: index, follow
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600, s-maxage=7200
+  X-Robots-Tag: index, follow
+
+/manifest.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=86400
+  X-Robots-Tag: index, follow
+
+/humans.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
+
+# SEO optimized headers for HTML pages
+/*.html
+  Content-Type: text/html; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1
 
 # Security hardening (optional global)
 /*
@@ -33,6 +54,7 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=()
+  X-Robots-Tag: index, follow
 
 # Cache static assets for better performance
 /assets/css/*
