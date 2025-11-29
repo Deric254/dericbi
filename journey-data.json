@@ -8,9 +8,8 @@
   "projectLink": "https://dericmarangu.vercel.app",
   "liveLink": "https://dericmarangu.vercel.app",
   "images": [
-    
-    "assets/projects/intro/deric2.png",
-    "assets/projects/intro/deric1.png"
+    "assets/projects/intro/deric1.png",
+     "assets/projects/intro/deric2.png"
   ],
   "video": [
     "assets/projects/intro/Intro.mp4"
