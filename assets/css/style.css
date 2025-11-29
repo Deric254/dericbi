@@ -3,15 +3,22 @@
    All custom styles for responsiveness & UX
    ============================================ */
 
-/* ===== PREVENT LOADING FLASH ===== */
-img[loading="lazy"]:not(.loaded) {
-  background: #f0f0f0;
-  min-height: 100px;
+/* ===== IMPROVED IMAGE LOADING ===== */
+img[loading="lazy"] {
+  background: #f8f9fa;
+  transition: opacity 0.3s ease;
 }
 
-img[loading="lazy"].loaded {
-  background: transparent;
-  animation: fadeIn 0.3s ease-in;
+img[loading="lazy"]:not([src]) {
+  min-height: 100px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 @keyframes fadeIn {

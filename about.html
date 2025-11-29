@@ -111,8 +111,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
   
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20251114">
+  <link rel="stylesheet" href="assets/css/style.css?v=20251129">
   <link rel="stylesheet" href="assets/css/social_links.css?v=20251114">
+  
+  <!-- Image Loading Enhancement -->
+  <script src="assets/js/image-loader.js?v=20251129" defer></script>
+  <script src="assets/js/cache-helper.js?v=20251129" defer></script>
 
   <!-- ✅ Favicons -->
 <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
@@ -329,8 +333,10 @@ a:not(.group):not(.nav-link):not(.footer-link):hover {
     <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3 shrink-0">
    <img src="assets/img/logo.png?v=20251129" 
      alt="dericBI Logo" 
-     width="64" height="64" style="object-fit:cover;" 
-     class="h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 rounded-full shadow-md flex-shrink-0" />
+     width="64" height="64" 
+     style="object-fit:cover; object-position: center;" 
+     class="h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 rounded-full shadow-md flex-shrink-0" 
+     decoding="async" />
       <div class="font-bold text-lg xs:text-xl sm:text-2xl leading-none whitespace-nowrap">
         <span>deric</span><span class="text-[#facc15]">BI</span>
       </div>
@@ -485,7 +491,12 @@ document.addEventListener('click', (e) => {
     
     <div class="bg-white/90 p-4 md:p-6 rounded-xl shadow-md border border-green-100 flex flex-col md:flex-row items-center md:items-start gap-6">
       <div class="flex flex-col items-center shrink-0">
-  <img src="assets/img/deric.png?v=20251129" alt="Deric Marangu" loading="lazy" width="160" height="160" style="object-fit:cover;" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full shadow-lg hover:shadow-xl transition-all">
+  <img src="assets/img/deric.png?v=20251129" 
+        alt="Deric Marangu" 
+        width="160" height="160" 
+        style="object-fit:cover; object-position: center;" 
+        class="w-32 h-32 sm:w-40 sm:h-40 rounded-full shadow-lg hover:shadow-xl transition-all" 
+        decoding="async">
         <span class="bg-[#49A078] text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-sm mt-3">Founder & CEO</span>
       </div>
       
@@ -634,8 +645,10 @@ document.getElementById('fileNameInputAbout')?.addEventListener('keypress', func
 <div class="flex items-center gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm hover:shadow-md transition-all border border-green-100">
   <img src="assets/img/logo.png?v=20251129" 
     alt="dericBI Logo" 
-    width="48" height="48" style="object-fit:cover;" 
-    class="h-10 w-10 xs:h-12 xs:w-12 rounded-full shadow-md" />
+    width="48" height="48" 
+    style="object-fit:cover; object-position: center;" 
+    class="h-10 w-10 xs:h-12 xs:w-12 rounded-full shadow-md" 
+    decoding="async" />
   <div class="flex flex-col leading-tight">
     <div class="font-extrabold text-xl text-gray-800 tracking-wide">
       <span>deric</span><span class="text-[#facc15] text-[22px] drop-shadow-lg font-black">BI</span>
@@ -676,7 +689,12 @@ document.getElementById('fileNameInputAbout')?.addEventListener('keypress', func
       <!-- Profile image next to name -->
       <div class="flex items-center gap-2 xs:gap-3">
         <a href="https://dericmarangu.vercel.app/" target="_blank" class="footer-link rounded-full p-1 bg-white hover:bg-green-50 shadow-sm hover:shadow-md transition-all">
-          <img src="assets/img/deric.png?v=20251129" alt="Deric's Photo" width="48" height="48" style="object-fit:cover;" class="h-10 w-10 xs:h-12 xs:w-12 rounded-full border-2 border-[#49A078]/30 hover:border-[#49A078] transition-all" />
+          <img src="assets/img/deric.png?v=20251129" 
+            alt="Deric's Photo" 
+            width="48" height="48" 
+            style="object-fit:cover; object-position: center;" 
+            class="h-10 w-10 xs:h-12 xs:w-12 rounded-full border-2 border-[#49A078]/30 hover:border-[#49A078] transition-all" 
+            decoding="async" />
         </a>
         <div class="flex flex-col">
           <a href="https://dericmarangu.vercel.app/" target="_blank" class="footer-link font-semibold text-sm hover:text-[#49A078]">Deric Marangu</a>
