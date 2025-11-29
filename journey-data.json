@@ -1,7 +1,10 @@
 [
 <<<<<<< HEAD
+<<<<<<< HEAD
 {
 =======
+=======
+>>>>>>> parent of 5a0b047 (Revert "Add Marketing Campaign Suite project to journey data")
   {
     "serial": "Project 65",
     "title": "Marketing Campaign Suite — Multi-channel Analytics",
@@ -14,17 +17,32 @@
       "assets/projects/marketing/dash1.JPG",
       "assets/projects/marketing/dash2.JPG",
       "assets/projects/marketing/dash3.JPG",
+<<<<<<< HEAD
       "assets/projects/marketing/dash4.JPG"
   
     ],
     "video": [
       "assets/projects/marketing/marketing.mp4"
      
+=======
+      "assets/projects/marketing/dash4.JPG",
+      "assets/projects/marketing/python/dash.png",
+      "assets/projects/marketing/powerbi/dash.JPG"
+    ],
+    "video": [
+      "assets/projects/marketing/marketing.mp4",
+      "assets/projects/marketing/python/marketing.mp4",
+      "assets/projects/marketing/python/0H9kbT69zM.mp4",
+      "assets/projects/marketing/powerbi/marketing.mp4"
+>>>>>>> parent of 5a0b047 (Revert "Add Marketing Campaign Suite project to journey data")
     ]
   },
 
   {
+<<<<<<< HEAD
 >>>>>>> parent of 75ef29e (Revert "Remove unused marketing asset references")
+=======
+>>>>>>> parent of 5a0b047 (Revert "Add Marketing Campaign Suite project to journey data")
   "serial": "Project 64",
   "title": "Daily inteligence dashboard ",
   "date": "2025-11-27",
