@@ -3,18 +3,20 @@
   "serial": "Project X",
   "title": "Introduction to Deric and My Work",
   "date": "2025-11-29",
-  "description": "<strong>Problem Statement:</strong> Need to provide a comprehensive introduction to my work, expertise, and analytical capabilities for potential clients and collaborators.<br><br><strong>Business Objective:</strong> Create an engaging presentation that showcases my professional journey, skills in data analysis, business intelligence, and project management capabilities.<br><br><strong>My Approach:</strong> Developed a personal introduction video and visual content that highlights my experience across various industries, analytical tools, and project delivery success stories. The content demonstrates my ability to transform complex data into actionable business insights.<br><br><strong>Key Features:</strong><br>• Personal introduction and professional background<br>• Portfolio overview across multiple industries<br>• Technical expertise demonstration<br>• Client success stories and case studies<br>• Analytical methodologies and approaches<br><br><strong>Impact:</strong> This introduction serves as a foundation for professional relationships, helping potential clients understand my capabilities and approach to solving business challenges through data-driven insights.",
+  "description": "<strong>Problem Statement:</strong> In today’s rapidly evolving business ecosystem, decision-makers require partners who can convert fragmented data into forward-looking insights. I needed a powerful, enterprise-grade introduction that clearly articulates my value proposition, showcases my multidisciplinary capabilities, and positions me as a strategic enabler for organizations seeking data-driven growth.<br><br><strong>Business Objective:</strong> Deliver a high-impact presentation that operationalizes my professional narrative — demonstrating how I streamline information workflows, unlock performance efficiencies, and empower SMEs, NGOs, and educational institutions with actionable intelligence and modern digital strategies.<br><br><strong>My Approach:</strong> Designed a polished introduction asset leveraging dynamic video storytelling, strategic content architecture, and a crisp narrative framework. The content synthesizes my cross-industry experience, my BI toolset (Excel, Power BI, SQL, Python), and my track record of helping organizations enhance operational clarity, optimize processes, and strengthen their digital presence. The output positions me as a solutions-focused partner capable of driving measurable business outcomes.<br><br><strong>Key Features:</strong><br>• Executive-ready introduction outlining who I am and how I create value<br>• End-to-end portfolio overview demonstrating versatile project delivery<br>• Technical capability showcase across analytics, automation, and reporting<br>• Proven impact stories for SMEs, NGOs, and schools<br>• Frameworks that highlight my analytical methodologies and strategic thinking<br><br><strong>Impact:</strong> This introduction elevates my brand equity and supports pipeline acceleration by enabling prospects to quickly understand my competencies, work philosophy, and business impact. It acts as a conversion-driven touchpoint for decision-makers evaluating data-focused talent capable of catalyzing growth, efficiency, and innovation.",
   "tools": "Video Production, Content Creation, Personal Branding",
-  "projectLink": "",
-  "liveLink": "",
+  "projectLink": "https://dericmarangu.vercel.app",
+  "liveLink": "https://dericmarangu.vercel.app",
   "images": [
-    "assets/projects/intro/deric1.png",
-    "assets/projects/intro/deric2.png"
+    
+    "assets/projects/intro/deric2.png",
+    "assets/projects/intro/deric1.png"
   ],
   "video": [
     "assets/projects/intro/Intro.mp4"
   ]
-},
+}
+,
 
 {
   "serial": "Project 65",
