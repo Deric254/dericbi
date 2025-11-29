@@ -1,5 +1,24 @@
-[
+[ 
   
+{
+  "serial": "Project 65",
+  "title": "Agritech Field Insights Dashboard",
+  "date": "2025-11-29",
+  "description": "<strong>Problem Statement:</strong> Smallholder farmers and agribusinesses lack a unified view of field performance across soil, weather, and yield data, making it hard to optimize inputs and plan harvests.<br><br><strong>Business Objective:</strong> Build a compact dashboard that brings together field telemetry, weather feeds, and yield estimates to inform input decisions and improve harvest predictability.<br><br><strong>My Approach:</strong> Integrated lightweight telemetry CSVs with weather APIs, modelled simple yield estimates in Python, and visualised key metrics in a Power BI report to support on-farm decision-making.<br><br><strong>Key Features:</strong><br>• Field-level yield estimates and trends<br>• Soil moisture and weather overlay<br>• Input cost vs expected yield KPIs<br>• Exportable field summaries for agronomists",
+  "tools": "Power BI, Python",
+  "projectLink": "downloads/agritech_insights.pbix",
+  "liveLink": "",
+  "images": [
+    "assets/projects/marketing/dash1.JPG",
+    "assets/projects/marketing/dash2.JPG",
+    "assets/projects/marketing/dash3.JPG",
+    "assets/projects/marketing/dash4.JPG"
+  ],
+  "video": [
+    "assets/projects/marketing/marketing.mp4"
+  ]
+},
+
 {
   "serial": "Project 64",
   "title": "Daily inteligence dashboard ",
