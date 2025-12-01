@@ -4,7 +4,12 @@
   "outputDirectory": ".",
   "installCommand": null,
   "framework": null,
-
+  "rewrites": [
+    { "source": "/assets/(.*)", "destination": "/assets/$1" },
+    { "source": "/(.*\\.html)$", "destination": "/$1" },
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
   "headers": [
     {
       "source": "/sitemap.xml",
@@ -104,6 +109,33 @@
       ]
     }
   ],
-  "cleanUrls": false,
-  "trailingSlash": false
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/home.html",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html", 
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/services.html",
+      "permanent": true
+    },
+    {
+      "source": "/projects",
+      "destination": "/my-projects.html",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html",
+      "permanent": true
+    }
+  ]
 }
