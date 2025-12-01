@@ -38,6 +38,19 @@ self.addEventListener('activate', event => {
 
 // Fetch event - serve from cache, fall back to network
 self.addEventListener('fetch', event => {
+  // For navigation requests (page loads), prefer network to avoid serving
+  // any stale/cached redirect responses which can cause redirect loops in
+  // some browsers. This keeps asset caching for non-navigation requests.
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        // If network fails (offline), try to serve a cached page fallback
+        return caches.match('/index.html');
+      })
+    );
+    return; // do not continue to other handlers
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then(response => {
