@@ -113,11 +113,6 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/index.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
       "source": "/home",
       "destination": "/home.html",
       "permanent": true
