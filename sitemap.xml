@@ -4,13 +4,13 @@
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
     <loc>https://dericbi.vercel.app/</loc>
-    <lastmod>2025-11-29</lastmod>
+    <lastmod>2025-12-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://dericbi.vercel.app/assets/img/logo.png</image:loc>
-      <image:caption>dericBI - Data Analytics Services Kenya</image:caption>
-      <image:title>dericBI Logo</image:title>
+      <image:caption>dericBI Logo - Deric BI Data Analytics Services Kenya by Deric Marangu</image:caption>
+      <image:title>dericBI Logo - Transform Data Into Business Profits</image:title>
     </image:image>
   </url>
   <url>

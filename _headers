@@ -48,6 +48,20 @@
   Cache-Control: public, max-age=0, must-revalidate
   X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1
 
+# Enhanced homepage with proper OG image
+/index.html
+  Content-Type: text/html; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1
+  Link: <https://dericbi.vercel.app/assets/img/logo.png>; rel="image_src"
+
+# Ensure logo is always accessible and cacheable
+/assets/img/logo.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: index, follow
+
 # Security hardening (optional global)
 /*
   X-Frame-Options: SAMEORIGIN
