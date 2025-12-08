@@ -41,7 +41,7 @@
   "title": "F/Y 2024 Office Budget & Spend Control Dashboard",
   "date": "2024",
   "description": "<strong>Problem Statement:</strong> Office owners lack real-time visibility into spending versus budget across months and categories—leading to surprises, missed savings, and unmanaged overspend.<br><br><strong>Business Objective:</strong> Build an executive-grade Power BI dashboard that unifies budget, spend, and variance with clear trends and drilldowns to prevent overspend and justify decisions.<br><br><strong>My Approach:</strong> Model budget and actuals in Power BI with KPI cards, variance analytics, and month filters. Build forensic visuals for category contributions and event-level spend.<br><br><strong>Key Features:</strong><br>• KPI cards: budget, spending, deviation (e.g., 18.72M vs 14.51M; 4.21M deviation)<br>• Category charts: high-allocation lines, under/overspend hotspots<br>• Monthly variance trends catching problem months<br>• Event-level breakdown (Year-End Gala 1.42M; Retirement Party 1.22M; Trip to Japan 0.72M)<br>• Combined budget vs expenses vs variance chart<br><br><strong>Impact:</strong> Prevents overspend, redirects savings to priorities, and defends decisions with month-by-month variance evidence. Makes every shilling accountable.<br><br><strong>Live Demo:</strong> <a href=\"\" target=\"_blank\">View Project</a>",
-  "tools": "Power BI",
+  "tools": "excel",
   "projectLink": "downloads/OfficeExpenses.xlsx",
   "liveLink": "",
   "images": [
@@ -57,7 +57,7 @@
   "title": "Group-Native Finance Intelligence Suite",
   "date": "2024",
   "description": "<strong>Problem Statement:</strong> Community finance platforms collect group data—contributions, loans, repayments, gender inclusion, digital adoption—but struggle to unify it into one executive view.<br><br><strong>Business Objective:</strong> Build a forensic Power BI suite tracking group KPIs, financial flows, community impact, and digital adoption to scale trust, inclusion, and efficiency.<br><br><strong>My Approach:</strong> Four synchronized dashboards (Group KPIs, Contributions & Loans, Community Impact, Operations) with branded visuals, slicers, and forensic tables.<br><br><strong>Key Features:</strong><br>• KPI cards: contribution consistency, loan utilization, repayment rate, member count, women participation, digital adoption<br>• Monthly trends: contributions (KSh 35.3M), loans (KSh 23.9M)<br>• Community impact: businesses started (292), ripple beneficiaries (1.6K)<br>• Gender inclusion: 87% women, 13% men<br>• Group-wise charts: subscription revenue (KSh 570.3K), digital adoption (avg. 80.1%)<br><br><strong>Impact:</strong> Tracks group health, inclusion, and digital engagement—proving how every contribution and insight drives trust and sustainable growth.<br><br><strong>Live Demo:</strong> <a href=\"https://luma-dashboard.onrender.com\" target=\"_blank\">View Project</a>",
-  "tools": "Power BI",
+  "tools": "Python",
   "projectLink": "",
   "liveLink": "https://luma-dashboard.onrender.com",
   "images": [
