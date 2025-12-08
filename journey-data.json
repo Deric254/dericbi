@@ -42,13 +42,13 @@
   "date": "2024",
   "description": "<strong>Problem Statement:</strong> Most office owners approve budgets but lack real-time visibility into how spending tracks against plan across months and categories—leading to end-of-year surprises, missed savings, and unmanaged overspend in events, travel, and utilities.<br><br><strong>Business Objective:</strong> Provide an executive-grade Power BI dashboard that unifies budget, spend, and variance with clear monthly trends and category drilldowns, so office owners can prevent overspend, reallocate savings, and justify decisions with evidence.<br><br><strong>My Approach:</strong> Model budget lines and actuals in Power BI, align categories (salaries, rent, events, travel, utilities), and design a control panel with KPI cards, variance analytics, and month filters. Build forensic visuals for category contributions, monthly variance, and event-level spend to surface where money goes—and why.<br><br><strong>Key Features:</strong><br>• KPI cards for entire budget, total spending, and budget deviation (e.g., 18.72M budget vs 14.51M spend; 4.21M deviation)<br>• Category bar charts highlighting high-allocation lines (e.g., salaries near 10M) and under/overspend hotspots<br>• Monthly variance trend to catch problem months (e.g., negative variance in April and December)<br>• Event-level spend breakdown (e.g., Year-End Gala 1.42M; Retirement Party 1.22M; Trip to Japan 0.72M)<br>• Stacked monthly expenses by category with filters for Jan–Dec to see peaks and seasonal drivers<br>• Combined budget vs expenses vs variance chart for governance-ready decision support<br>• Clean, branded layout with slicers, conditional formatting, and export-ready views for board updates<br><br><strong>Impact:</strong> Gives office owners instant control: prevent overspend before it happens, redirect savings to priorities, and defend decisions with month-by-month variance evidence. By turning budgets into live guardrails, the dashboard makes every shilling accountable and every event explainable.<br><br>👉 <strong>Live demo:</strong> <a href=\"\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
   "tools": "Power BI",
-  "projectLink": "downloads/ziya/FY2024_OfficeBudgetSpend.pbix",
+  "projectLink": "downloads/OfficeExpenses.xlsx",
   "liveLink": "",
   "images": [
-    "assets/projects/ziya/office_management.jpeg"
+    "assets/projects/office expences/dash.JPG"
   ],
   "video": [
-    "assets/projects/ziya/office_overview.mp4"
+    "assets/projects/office expences/officemanagement .mp4"
   ]
 }
 ,
