@@ -52,6 +52,26 @@
   ]
 }
 ,
+{
+  "serial": "Project 59",
+  "title": "Group-Native Finance Intelligence Suite",
+  "date": "2024",
+  "description": "<strong>Problem Statement:</strong> Community finance platforms often collect group-level data—contributions, loans, repayments, gender inclusion, and digital adoption—but struggle to unify it into one executive-grade view that drives decisions and proves impact.<br><br><strong>Business Objective:</strong> Build a forensic Power BI dashboard suite that tracks group KPIs, financial flows, community impact, and digital adoption across time, enabling leaders to scale trust, inclusion, and operational efficiency.<br><br><strong>My Approach:</strong> Model raw group records into four synchronized dashboards: Group KPIs, Contributions & Loans, Community Impact, and Operations. Each dashboard includes branded visuals, slicers, and forensic tables designed for clarity, action, and leadership insight.<br><br><strong>Key Features:</strong><br>• KPI cards for contribution consistency, loan utilization, repayment rate, member count, women participation, and digital adoption<br>• Monthly trend charts for contributions (KSh 35.3M) and loans disbursed (KSh 23.9M)<br>• Community impact visuals showing businesses started (292) and ripple beneficiaries (1.6K)<br>• Gender inclusion donut chart (87% women, 13% men)<br>• Group-wise bar charts for subscription revenue (KSh 570.3K) and digital adoption rates (avg. 80.1%)<br>• Slicers for group name and date range (Jan 2023 to Nov 2024)<br>• Clean, branded layout with export-ready views for boardroom and field reports<br><br><strong>Impact:</strong> Enables community finance leaders to track group health, inclusion, and digital engagement—proving how every contribution, loan, and dashboard insight drives trust, growth, and sustainable impact.<br><br>👉 <strong>Live demo:</strong> <a href=\"https://luma-dashboard.onrender.com\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
+  "tools": "Power BI",
+  "projectLink": "downloads/ziya/GroupFinance_Intelligence.pbix",
+  "liveLink": "https://luma-dashboard.onrender.com",
+  "images": [
+    "assets/projects/ziya/group_kpis.jpeg",
+    "assets/projects/ziya/contributions_loans.jpeg",
+    "assets/projects/ziya/community_impact.jpeg",
+    "assets/projects/ziya/operations_dashboard.jpeg"
+  ],
+  "video": [
+    "assets/projects/ziya/groupfinance_overview.mp4",
+    "assets/projects/ziya/groupfinance_guide.mp4"
+  ]
+}
+,
 
 {
   "serial": "Project 65",
