@@ -18,6 +18,27 @@
 
 ,
 {
+  "serial": "Project 69",
+  "title": "LTV:CAC inteligence",
+  "date": "2025-12-11",
+  "description": "<strong>Problem Statement:</strong> Most businesses boast 10x revenue growth while blindly ignoring their LTV:CAC ratio—heading straight into a dark corner of unsustainable customer acquisition and cash burn without knowing it.<br><br><strong>Business Objective:</strong> Build an interactive dashboard that exposes the real profitability story behind customer acquisition—showing whether growth is building wealth or burning cash.<br><br><strong>My Approach:</strong> Designed an LTV:CAC intelligence suite using web visualization tools. Clean KPI cards, cohort breakdowns, and trend analysis reveal which customers are profitable and which acquisition channels drain resources.<br><br><strong>Key Features:</strong><br>• LTV:CAC ratio tracking with healthy/warning thresholds<br>• Customer acquisition cost breakdown by channel<br>• Lifetime value cohort analysis and retention curves<br>• Payback period calculations and profitability timeline<br>• Visual alerts for unsustainable growth patterns<br><br><strong>Impact:</strong> Helps business owners stop celebrating vanity metrics and start understanding true customer profitability—turning potential disasters into data-driven growth strategies.<br><br><strong>Live Demo:</strong> <a href=\"https://infographics-pearl.vercel.app/ltv.cac/Ltv_value.html\" target=\"_blank\">View Project</a>",
+  "tools": "Web tools",
+  "projectLink": "",
+  "liveLink": "https://infographics-pearl.vercel.app/ltv.cac/Ltv_value.html",
+  "images": [
+    "assets/projects/ltv/dash1.JPG",
+    "assets/projects/ltv/dash2.JPG",
+    "assets/projects/ltv/dash3.JPG",
+    "assets/projects/ltv/dash4.JPG",
+    "assets/projects/ltv/dash5.JPG",
+    "assets/projects/ltv/dash6.JPG"
+  ],
+  "video": [
+    "assets/projects/ltv/ltvnarrative.mp4"
+  ]
+}
+,
+{
   "serial": "Project 68",
   "title": "F/Y 2024 Community Groups Intelligence Suite",
   "date": "2024",
