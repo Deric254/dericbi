@@ -19,24 +19,30 @@
 ,
 {
   "serial": "Project 69",
-  "title": "LTV:CAC inteligence",
-  "date": "2025-12-11",
-  "description": "<strong>Problem :</strong> Most businesses boast 10x revenue growth while blindly ignoring their LTV:CAC ratio—heading straight into a dark corner of unsustainable customer acquisition and cash burn without knowing it.<br><br><strong>Business Objective:</strong> Build an interactive dashboard that exposes the real profitability story behind customer acquisition—showing whether growth is building wealth or burning cash.<br><br><strong>My Approach:</strong> Designed an LTV:CAC intelligence suite using web visualization tools. Clean KPI cards, cohort breakdowns, and trend analysis reveal which customers are profitable and which acquisition channels drain resources.<br><br><strong>Key Features:</strong><br>• LTV:CAC ratio tracking with healthy/warning thresholds<br>• Customer acquisition cost breakdown by channel<br>• Lifetime value cohort analysis and retention curves<br>• Payback period calculations and profitability timeline<br>• Visual alerts for unsustainable growth patterns<br><br><strong>Impact:</strong> Helps business owners stop celebrating vanity metrics and start understanding true customer profitability—turning potential disasters into data-driven growth strategies.<br><br><strong>Live Demo:</strong> <a href=\"https://infographics-pearl.vercel.app/ltv.cac/Ltv_value.html\" target=\"_blank\">View Project</a>",
-  "tools": "Web tools",
-  "projectLink": "",
-  "liveLink": "https://infographics-pearl.vercel.app/ltv.cac/Ltv_value.html",
+  "title": "Cabs Live ELT & Analytics ",
+  "date": "2025",
+  "description": "<strong>Problem :</strong> Taxi operators rely on scattered trip logs, manual summaries, and delayed reporting—making it impossible to see real-time revenue, driver performance, route profitability, or operational leaks.<br><br><strong>Business Objective:</strong> Build a fully automated ELT pipeline and live analytics cockpit that gives executives instant visibility into revenue, trips, drivers, routes, and payment behavior.<br><br><strong>My Approach:</strong> Designed a Python-based ELT engine (Historical + Today Live), a MySQL warehouse with clean tables, and a multi-page Dash analytics dashboard (Overview + Today Live) with branded KPIs, trends, and contribution insights.<br><br><strong>Key Features:</strong><br>• KPI cards: total revenue, total trips, active drivers, avg revenue per trip, avg distance<br>• Today Live KPIs: today's revenue, trips, active drivers, avg revenue per trip, total distance<br>• Trends: revenue over time, trips over time, hourly performance<br>• Contribution insights: top drivers, top routes, payment method behavior<br>• Fully automated ELT pipeline (staging → clean tables)<br>• Live MySQL queries powering real-time dashboards<br>• Executive branding: DericBI — Data in. Cash out.<br><br><strong>Impact:</strong> Replaces manual reporting with a real-time decision engine. Executives can now track revenue flow, driver productivity, route profitability, and daily performance instantly—unlocking operational clarity and faster decision-making.<br><br><strong>Live Control App:</strong> <a href=\"https://delight-cabs-control.onrender.com/\" target=\"_blank\">Control</a><br><strong>Live Analytics Dashboard:</strong> <a href=\"https://delight-cabs.onrender.com/\" target=\"_blank\">Analytics</a>",
+  "tools": "Python, Dash, MySQL, Plotly",
+  "projectLink": "downloads/delight_cabs_dashboard.zip",
+  "liveLink": "https://delight-cabs.onrender.com/",
   "images": [
-    "assets/projects/ltv/dash5.JPG",
-    "assets/projects/ltv/dash1.JPG",
-    "assets/projects/ltv/dash2.JPG",
-    "assets/projects/ltv/dash3.JPG",
-    "assets/projects/ltv/dash4.JPG",
-    "assets/projects/ltv/dash6.JPG"
+    "assets/projects/dellight/anal 1.JPG",
+    "assets/projects/dellight/anal2.JPG",
+    "assets/projects/dellight/anal3.JPG",
+    "assets/projects/dellight/anal4.JPG",
+    "assets/projects/dellight/clean data.JPG",
+    "assets/projects/dellight/code.JPG",
+    "assets/projects/dellight/count 2.JPG",
+    "assets/projects/dellight/count1.JPG",
+    "assets/projects/dellight/dash1.JPG",
+    "assets/projects/dellight/todayanal.JPG",
+    "assets/projects/dellight/trips.JPG"
   ],
   "video": [
-    "assets/projects/ltv/ltvnarrative.mp4"
+    "assets/projects/dellight/delight.mp4"
   ]
 }
+
 ,
 {
   "serial": "Project 68",
