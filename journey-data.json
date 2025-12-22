@@ -18,7 +18,7 @@
 
 ,
 {
-  "serial": "Project 71",
+  "serial": "Project 94",
   "title": "Training & Placement Impact Dashboard",
   "date": "2025",
   "description": "<strong>Problem:</strong> Training and placement programs often lack unified reporting, making it difficult for leaders to measure outcomes, track retention, and prove impact to stakeholders.<br><br><strong>Business Objective:</strong> Build a performance dashboard that consolidates worker training, placement, retention, and income uplift data into a single, interactive reporting system.<br><br><strong>My Approach:</strong> Designed an Excel-based model with structured inputs, pivot tables, and slicers to clean, calculate, and visualize program outcomes. Developed a dashboard that presents KPIs, funnels, regional comparisons, and program-specific insights in a clear, decision-ready format.<br><br><strong>Key Features:</strong><br>• KPIs: 898 trained, 754 placed, 51.99% retention<br>• Salary uplift: 35% average increase<br>• Benefits coverage: 67.7% of workers<br>• Literacy improvement: 72.4%<br>• Regional household income growth (Kiambu, Kisumu, Machakos, Mombasa, Nairobi)<br>• Program outcomes across Caregiving, Hospitality, Housekeeping, Nanny<br>• Interactive slicers for region, program, and completion status<br><br><strong>Impact:</strong> The dashboard demonstrates measurable worker transformation, supports executive decision-making, and provides donor-ready evidence of program success.",
