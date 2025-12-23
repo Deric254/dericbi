@@ -199,10 +199,10 @@
   "serial": "Project 62",
             "title": "Sacco Loan Default Analysis Dashboard",
             "date": "2025-11-20",
-            "description": "<strong>Problem :</strong> Why people default on loans while others pay effortlessly? Understanding loan repayment patterns in Sacco operations.<br><br><strong>Business Objective:</strong> Analyze FY24 data to identify factors affecting loan repayment and develop strategies for FY25.<br><br><strong>My Approach:</strong> Created an interactive Power BI dashboard analyzing loan default patterns, digital adoption impact, and segment performance.<br><br><strong>Key Features:</strong><br>• Digital adoption analysis (73.5% repayment rate)<br>• Segment performance (Salaried vs Students)<br>• Branch insights (Meru, Nairobi)<br>• Loan book vs savings analysis (3bn vs 2bn)<br><br><strong>Impact:</strong> Provides actionable insights for targeted financial education, digital marketing campaigns, and lending policy updates.",
+            "description": "<strong>Problem :</strong> Why people default on loans while others pay effortlessly? Understanding loan repayment patterns in Sacco operations.<br><br><strong>Business Objective:</strong> Analyze FY24 data to identify factors affecting loan repayment and develop strategies for FY25.<br><br><strong>My Approach:</strong> Created an interactive Power BI dashboard analyzing loan default patterns, digital adoption impact, and segment performance.<br><br><strong>Key Features:</strong><br>• Digital adoption analysis (73.5% repayment rate)<br>• Segment performance (Salaried vs Students)<br>• Branch insights (Meru, Nairobi)<br>• Loan book vs savings analysis (3bn vs 2bn)<br><br><strong>Impact:</strong> Provides actionable insights for targeted financial education, digital marketing campaigns, and lending policy updates.<br><br><strong>Live Demo:</strong> <a href=\"https://app.powerbi.com/groups/me/reports/d36ff3ef-777a-4648-b867-e37c7bc76c26?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 View Dashboard</strong></a>",
   "tools": "Power BI",
   "projectLink": "downloads/sacco.pbix",
-  "liveLink": "",
+  "liveLink": "https://app.powerbi.com/groups/me/reports/d36ff3ef-777a-4648-b867-e37c7bc76c26?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare",
   "images": [
     "assets/projects/sacco/dash.JPG"
   ],
