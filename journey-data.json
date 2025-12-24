@@ -18,6 +18,23 @@
 
 ,
 {
+  "serial": "Project 72",
+  "title": "Operations Dashboard 2025",
+  "date": "2025",
+  "description": "<strong>Problem:</strong> Executives often struggle to see where budgets are leaking or underperforming, with fragmented reports that don’t tell the full story.<br><br><strong>Business Objective:</strong> Build a decision-ready dashboard that consolidates departmental spending, targets, and variances into one interactive view.<br><br><strong>My Approach:</strong> Designed an Excel-based dashboard with slicers, KPI cards, and charts to track monthly spending, departmental variance, and budget performance. Structured the visuals to highlight overspending, underfunding, and seasonal spikes in a clear narrative format.<br><br><strong>Key Features:</strong><br>• KPI cards showing total spend, target, and variance<br>• Departmental bar chart comparing spend vs. target<br>• Variance pie chart for quick leak detection<br>• Monthly trend chart exposing seasonal surges<br>• Interactive slicers for category and month<br><br><br><strong>Impact:</strong> The dashboard surfaces Procurement overspending, Maintenance underfunding, and Transport stability, while revealing overall budget breach and seasonal spikes. It demonstrates how raw data can be turned into executive-ready insights.",
+  "tools": "Excel",
+  "projectLink": "downloads/ops.xlsx",
+  "liveLink": "",
+  "images": [
+    "assets/projects/ops/dash.jpg"
+  ],
+  "video": [
+    "assets/projects/ops/ops.mp4"
+  ]
+}
+
+,
+{
   "serial": "Project 71",
   "title": "Training & Placement Impact Dashboard",
   "date": "2025",
