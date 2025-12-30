@@ -15,8 +15,28 @@
     "assets/projects/intro/Intro.mp4"
   ]
 }
-
 ,
+{
+  "serial": "Project 73",
+  "title": "December Sales Analysis",
+  "date": "2025",
+  "description": "<strong>Problem:</strong> December 2025 exposed a massive data failure — KES 27.48B in dead stock against only KES 9.42B in sales, a gut failure rate of 75.42%. Executives couldn’t see clearly where products stalled, regions misallocated, and hype misread.<br><br><strong>Business Objective:</strong> Build a dashboard that surfaces dead stock, highlights misallocation, and reframes stocking decisions around real-time analytics instead of guesswork.<br><br><strong>My Approach:</strong> Designed an Excel-based dashboard with KPI cards, product category performance charts, regional sales breakdowns, enterprise market share, and daily sales trends. Structured the visuals to tell a compelling narrative: where stock was wasted, where demand peaked, and how poor data utilization cost billions.<br><br><strong>Key Features:</strong><br>• KPI cards showing total stock, sales, dead stock, and gut failure percentage<br>• Product performance charts comparing Electronics, Home & Kitchen, Sports, Toys, and Clothing<br>• Regional bar chart spotlighting Nairobi’s dominance and Eldoret/Kisumu’s underperformance<br>• Enterprise pie chart revealing fragmented market shares (Carrefour, Naivas, EastMart, QuickMart, Chandarana)<br>• Daily sales trend line chart exposing the Christmas Day spike (KES 592M) and post-holiday drop<br><br><strong>Impact:</strong> The dashboard reframed the conversation around smarter stocking, sharper forecasting, and real-time analytics. It quantified losses, revealed missteps, and demonstrated how raw retail data can be transformed into actionable insights that prevent billions in wasted stock.",
+  "tools": "Excel",
+  "projectLink": "downloads/post dec hype.xlsx",
+  "liveLink": "",
+  "images": [
+    "assets/projects/postdec/dash.JPG",
+    "assets/projects/postdec/Enterprise sales.JPG",
+    "assets/projects/postdec/kpi.JPG",
+    "assets/projects/postdec/products sales.JPG",
+    "assets/projects/postdec/regional sales.JPG",
+    "assets/projects/postdec/sales trend.JPG"
+  ],
+  "video": [
+    "assets/projects/postdec/postdec.mp4"
+  ]
+},
+
 {
   "serial": "Project 72",
   "title": "Operations Dashboard 2025",
