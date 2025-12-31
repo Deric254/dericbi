@@ -18,9 +18,9 @@
 ,
 {
   "serial": "Project 74",
-  "title": "Databricks Dashboard Project",
+  "title": "KeRRA 2023 Audit — Auditor General Insights",
   "date": "2025-12-31",
-  "description": "Live dashboard hosted on Databricks platform.",
+  "description": "<strong>Problem:</strong> The 2023 audit revealed billions in certified work left unpaid, with pending bills concentrated in routine projects. Risks were split between delivery delays and governance gaps, exposing everyday infrastructure to financial strain.<br><br><strong>Business Objective:</strong> Provide a live analytics dashboard that surfaces certified-but-unpaid dues, highlights risk concentration, and reframes accountability around real-time insights instead of fragmented reporting.<br><br><strong>My Approach:</strong> Built and hosted a Databricks dashboard using Auditor General’s report. It combines KPI cards, risk concentration visuals, delivery versus governance breakdowns, paid-versus-pending analysis, and certified-but-unpaid tracking. Each visual is designed to compress complexity into a clear narrative executives can act on.<br><br><strong>Key Features:</strong><br>• KPI cards showing portfolio value (KES 416.35B), certified work (KES 168.99B), paid amount (KES 69.17B), and pending bills (KES 52.64B)<br>• Risk concentration chart revealing 46% exposure in ongoing projects, with smaller shares in outstanding, completed, and mobilizing projects<br>• Delivery versus governance buckets separating execution risks from oversight failures<br>• Paid-versus-pending analysis spotlighting routine and ongoing projects as the largest financial pressure points<br>• Certified-but-unpaid dues visualization showing KES 85.84B delivered but awaiting payment<br><br><strong>Impact:</strong> The dashboard reframed the audit conversation around accountability and financial clarity. It quantified risks, revealed bottlenecks, and demonstrated how raw audit data can be transformed into actionable insights. By presenting the audit in a decision-ready format, it empowers executives to prioritize payments, strengthen governance, and safeguard infrastructure delivery.<br><br><strong>Explore Live:</strong> You can interact with the full dashboard here: <a href='https://dbc-4dbf7f37-5078.cloud.databricks.com/dashboardsv3/01f0e633bc971807a924c2e654da82d6/published?o=7474646196933627' target='_blank'>KeRRA 2023 Audit Dashboard</a>",
   "tools": "Databricks",
   "projectLink": "downloads/keradata.zip",
   "liveLink": "https://dbc-4dbf7f37-5078.cloud.databricks.com/dashboardsv3/01f0e633bc971807a924c2e654da82d6/published?o=7474646196933627",
@@ -32,6 +32,7 @@
     "assets/projects/kera/Kera.mp4"
   ]
 }
+
 ,
 {
   "title": "December Sales Analysis",
