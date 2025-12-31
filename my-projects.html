@@ -686,6 +686,10 @@ document.addEventListener('click', (e) => {
         class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
         <i class="fas fa-cogs mr-1"></i>Other <span id="count-other" class="ml-1">(0)</span>
       </button>
+      <button onclick="filterByTool('databricks')" id="filter-databricks" 
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        <i class="fas fa-cloud mr-1"></i>Databricks <span id="count-databricks" class="ml-1">(0)</span>
+      </button>
     </div>
   </div>
   <!-- Try Yourself Button -->
@@ -921,6 +925,7 @@ function renderProjects(projects, container) {
                 powerbi: '<i class="fas fa-chart-bar text-yellow-600" title="PowerBI"></i>',
                 python: '<i class="fab fa-python text-blue-600" title="Python"></i>',
                 sql: '<i class="fas fa-database text-gray-600" title="SQL"></i>',
+                databricks: '<i class="fas fa-cloud text-blue-500" title="Databricks"></i>',
                 other: '<i class="fas fa-cogs text-purple-600" title="Other Tools"></i>'
               };
               return `<span class="text-sm">${icons[cat] || ''}</span>`;
@@ -1605,13 +1610,14 @@ function categorizeByTool(project) {
   if (tools.includes('powerbi') || tools.includes('power bi')) categories.push('powerbi');
   if (tools.includes('python') || tools.includes('pandas')) categories.push('python');
   if (tools.includes('sql') || tools.includes('mysql')) categories.push('sql');
+  if (tools.includes('databricks')) categories.push('databricks');
   if (tools.includes('web') || tools === 'web tools') categories.push('other');
   if (categories.length === 0) categories.push('other');
   return categories;
 }
 
 function updateProjectCounts() {
-  const counts = { all: 0, excel: 0, powerbi: 0, python: 0, sql: 0, other: 0 };
+  const counts = { all: 0, excel: 0, powerbi: 0, python: 0, sql: 0, databricks: 0, other: 0 };
   allProjects.forEach(project => {
     categorizeByTool(project).forEach(cat => counts[cat]++);
   });
