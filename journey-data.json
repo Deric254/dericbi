@@ -15,6 +15,26 @@
     "assets/projects/intro/Intro.mp4"
   ]
 }
+
+,
+{
+  "serial": "Project 75",
+  "title": "Supermarket Sales — March 2024 (Executive Overview) ",
+  "date": "2026-01-04",
+  "description": "<strong>Problem:</strong> Supermarket executives struggle to see, in one view, which products, customers, and payment channels truly drive revenue — most reports are static, fragmented, and miss the story behind the numbers.<br><br><strong>Business Objective:</strong> Build an executive-ready Excel dashboard that turns raw transaction data into a clear revenue narrative: which categories lead or lag, how customers pay, and where growth or leakage hides.<br><br><strong>My Approach:</strong> Designed a pivot-driven Excel model with slicers for Customer Type, Gender, Product Category, and Date. Built KPI cards for total revenue, biggest and smallest sale, number of sales, units sold, and average sale value. Layered bar, pie, and line visuals to expose category performance, payment mix, gender contribution, and daily sales trends in one coherent story.<br><br><strong>Key Features:</strong><br>• KPI cards for total revenue, biggest sale, smallest sale, average sale, number of sales, and units sold<br>• Product category performance view highlighting top and bottom sellers (e.g., Vegetables vs. Beverages)<br>• Payment method breakdown (Cash, Mobile, Card, Undisclosed) to track the shift toward digital channels<br>• Customer type and gender performance visuals to understand who is driving revenue<br>• Daily sales trend line for March 2024 to time promotions and spot demand spikes<br>• Interactive slicers for Customer Type, Gender, Product Category, and Date to filter the entire story in seconds<br><br><strong>Impact:</strong> The dashboard surfaces Vegetables as the leading revenue category and Beverages as an underperformer, reveals that digital payments now rival cash, and shows members slightly edging visitors in revenue contribution. It turns a flat March 2024 dataset into an executive overview where decisions about pricing, promotions, and stocking can be made at a glance.", 
+  "tools": "Excel",
+  "projectLink": "downloads/supermarket_sales.xlsx",
+  "liveLink": " ",
+  "images": [
+    "assets/projects/supermarket data/dash.JPG",
+    "assets/projects/supermarket data/pivot.JPG",
+    "assets/projects/supermarket data/log.JPG",
+    "assets/projects/supermarket data/log.JPG"
+  ],
+  "video": [
+    "assets/projects/supermarket data/S.mp4"
+  ]
+}
 ,
 {
   "serial": "Project 74",
@@ -32,7 +52,6 @@
     "assets/projects/kera/Kera.mp4"
   ]
 }
-
 ,
 {
   "title": "December Sales Analysis",
