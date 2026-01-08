@@ -27,11 +27,11 @@
   "projectLink": "downloads/freshmart_marketing_db.sql",
   "liveLink": "https://github.com/dericmarangu/freshmart-intelligence",
   "images": [
+     "assets/projects/freshmart/kpis.JPG",
     "assets/projects/freshmart/categories.JPG",
-    "assets/projects/freshmart/kpis.JPG",
-    "assets/projects/freshmart/marketing_channels.JPG",
-    "assets/projects/freshmart/outlet_performance.JPG",
-    "assets/projects/freshmart/top_products.JPG"
+    "assets/projects/freshmart/marketing channels.JPG",
+    "assets/projects/freshmart/outlet performance.JPG",
+    "assets/projects/freshmart/top 10 products.JPG"
   ],
   "video": [
     "assets/projects/freshmart/freshmart.mp4"
@@ -670,7 +670,7 @@
   "serial": "Project 39",
   "title": "Electronics Shop Sales Analytics",
   "date": "2025-09-19",
-  "description": "<strong>Problem :</strong> Electronics retailers need to understand sales trends, product performance, and inventory health to maximize revenue.<br><br><strong>Business Objective:</strong> Build an Excel dashboard to analyze sales data, highlight top-selling products, and uncover actionable insights for business growth.<br><br><strong>My Approach:</strong> I used Excel to clean and analyze shop sales data, visualize product/category performance, and track inventory levels. The dashboard provides interactive views for management to drill down into sales by product and period. The walkthrough videos demonstrate dashboard features.<br><br><strong>Key Insights:</strong><br>1️⃣ Identified best-selling electronics and underperformers<br>2️⃣ Revealed sales peaks and seasonal trends<br>3️⃣ Highlighted inventory risks and opportunities<br><br><strong>Impact:</strong> The dashboard enables data-driven decisions, helping retailers maximize sales, optimize inventory, and plan effective promotions.",
+  "description": "<strong>Problem :</strong> Electronics retailers need to understand sales trends, product performance, and inventory health to maximize revenue.<br><br><strong>Business Objective:</strong> Build an Excel dashboard to analyze sales data, highlight top-selling products, and uncover actionable insights for business growth.<br><br><strong>My Approach:</strong> I used Excel to clean and analyze shop sales data, visualize product/category performance, and track inventory levels. The dashboard provides interactive views for management to drill down into sales by product and period. The walkthrough videos demonstrate dashboard features.<br><br><strong>Key Insights:</strong><br>br>1️⃣ Identified best-selling electronics and underperformers<br>2️⃣ Revealed sales peaks and seasonal trends<br>3️⃣ Highlighted inventory risks and opportunities<br><br><strong>Impact:</strong> The dashboard enables data-driven decisions, helping retailers maximize sales, optimize inventory, and plan effective promotions.",
   "tools": "Excel",
   "projectLink": "downloads/Electronics_shopdata.xlsx",
   "images": [
