@@ -17,6 +17,22 @@
 }
 
 ,
+{
+  "serial": "Project 77",
+  "title": "KCSE Results Analysis — (2015-2025)",
+  "date": "2026-01-10",
+  "description": "<strong>Problem:</strong> Education stakeholders lack unified insights into KCSE performance trends, subject-wise strengths and weaknesses, and regional disparities in student outcomes.<br><br><strong>Business Objective:</strong> Develop an executive-ready Excel dashboard that reveals performance narratives: grade distributions, subject performance, regional comparisons, and gender-based insights.<br><br><strong>My Approach:</strong> Constructed a pivot-driven Excel model with interactive slicers (Region, Gender, Subject, Year) and KPI cards (pass rates, mean grades, top performers).<br><br><strong>Key Features:</strong><br>• KPI cards: Overall pass rate, mean grade, number of candidates, top/bottom performing subjects<br>• Grade distribution: Breakdown by A, A-, B+, etc.<br>• Subject performance: Mathematics, English, Kiswahili, Sciences leading; Arts/Humanities varying<br>• Regional analysis: Nairobi/Central lead; North Eastern/Coast lag<br>• Gender comparison: Performance gaps and trends<br>• Yearly trends showing improvement areas<br>• Interactive filtering across all dimensions<br><br><strong>Impact:</strong> Highlights Mathematics as critical performance driver, regional disparities for targeted interventions, and gender insights for equity programs. Transforms raw exam data into strategic education decisions on curriculum, resources, and support.",
+  "tools": "Excel",
+  "projectLink": "downloads/kcse.xlsx",
+  "liveLink": "",
+  "images": [
+    "assets/projects/kcse/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/kcse/kcse.mp4"
+  ]
+}
+,
 
 {
   "serial": "Project 76",
