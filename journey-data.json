@@ -21,7 +21,7 @@
   "serial": "Project 77",
   "title": "KCSE Results Analysis — (2015-2025)",
   "date": "2026-01-10",
-  "description": "<strong>Problem:</strong> Education stakeholders lack unified insights into KCSE performance trends, subject-wise strengths and weaknesses, and regional disparities in student outcomes.<br><br><strong>Business Objective:</strong> Develop an executive-ready Excel dashboard that reveals performance narratives: grade distributions, subject performance, regional comparisons, and gender-based insights.<br><br><strong>My Approach:</strong> Constructed a pivot-driven Excel model with interactive slicers (Region, Gender, Subject, Year) and KPI cards (pass rates, mean grades, top performers).<br><br><strong>Key Features:</strong><br>• KPI cards: Overall pass rate, mean grade, number of candidates, top/bottom performing subjects<br>• Grade distribution: Breakdown by A, A-, B+, etc.<br>• Subject performance: Mathematics, English, Kiswahili, Sciences leading; Arts/Humanities varying<br>• Regional analysis: Nairobi/Central lead; North Eastern/Coast lag<br>• Gender comparison: Performance gaps and trends<br>• Yearly trends showing improvement areas<br>• Interactive filtering across all dimensions<br><br><strong>Impact:</strong> Highlights Mathematics as critical performance driver, regional disparities for targeted interventions, and gender insights for equity programs. Transforms raw exam data into strategic education decisions on curriculum, resources, and support.",
+  "description": "<strong>Problem:</strong> Education leaders lacked a unified, decade-long view of KCSE performance—how access, readiness, integrity, and TVET opportunity evolved from 2015 to 2025.<br><br><strong>Objective:</strong> Build an executive-ready dashboard that compresses 10 years of KCSE data into clear signals for policy, curriculum, and resource decisions.<br><br><strong>Approach:</strong> Developed a pivot-driven Excel model with interactive slicers (Year, Signal, Region) and KPI cards. Added video overlays for scroll-stopping insights and a Cabinet Secretary timeline for policy context.<br><br><strong>Highlights:</strong><br>• <strong>Totals (2015–2025):</strong> Unlucky cheaters: 32.53K; Grade E: 488.75K; TVET entry: 6.14M; University entry: 1.72M; Total candidates: 8.39M<br>• <strong>University entry trend:</strong> 0.17M (2015) → 0.09M (2016) → 0.27M (2025)<br>• <strong>Grade E trend:</strong> 30.4K (2015) → 55.8K (2025)<br>• <strong>Cheating incidents:</strong> Fluctuating peaks (2015, 2016, 2018, 2021, 2022)<br>• <strong>TVET eligibility:</strong> 0.32M (2015) → 0.67M (2025)<br>• <strong>Cabinet Secretaries:</strong> Amina Mohamed → Ezekiel Machogu → Fred Matiang’i → George Magoha → Julius Ogamba<br><br><strong>Impact:</strong> Delivers a decade narrative: access expanded, readiness lagged, integrity tightened, and TVET opportunity surged—equipping stakeholders with actionable direction for equity programs, curriculum focus (e.g., Mathematics), and targeted resource allocation.",
   "tools": "Excel",
   "projectLink": "downloads/kcse.xlsx",
   "liveLink": "",
@@ -32,6 +32,7 @@
     "assets/projects/kcse/kcse.mp4"
   ]
 }
+
 ,
 
 {
