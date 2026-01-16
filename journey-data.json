@@ -18,6 +18,25 @@
 
 ,
 {
+  "serial": "Project 79",
+  "title": "Meru trust deficit analysis",
+  "date": "2026-01-16",
+  "description": "<strong>Problem :</strong> Meru County has faced repeated impeachment attempts, each fueled by contradictions in fiscal discipline and delivery. Citizens and suppliers struggle with confidence as wage bills breach legal caps, development allocations fall below thresholds, and pending bills accumulate.<br><br><strong>Business Objective:</strong> Expose the hidden fuels of the trust deficit by analyzing FY2024/25 data. Build a clear, evidence-based narrative that links fiscal breaches and stalled projects to credibility collapse, and provide actionable recommendations for restoring trust.<br><br><strong>My Approach:</strong> Extracted, cleaned, and structured Meru County’s FY2024/25 budget, revenue, expenditure, and pending bills data into Excel. Designed sharp charts that highlight contradictions — wage bill vs legal cap, development absorption vs allocation, liquidity vs unpaid bills. Framed findings around Advocate Ndegwa Njiru’s impeachment statement to connect data with public perception.<br><br><strong>Key Features:</strong><br>• Clean structured fiscal dataset<br>• Charts exposing legal breaches and inefficiencies<br>• Narrative linking data to impeachment discourse<br>• Recommendations for compliance and transparency<br><br><strong>Impact:</strong> The analysis demonstrates how contradictions compound into a systemic trust deficit. It shows executives and leaders that data can serve as an early sensor of confidence breakdown, guiding reforms before crises escalate.<br><br><strong>Live Demo:</strong> <a href=\"https://meru-trust-deficit.onrender.com\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
+  "tools": "Python, Dash",
+  "projectLink": "downloads/meru 2024-2025.pdf",
+  "liveLink": "https://meru-trust-deficit.onrender.com",
+  "images": [
+    "assets/projects/meru_TD/dash.JPG",
+    "assets/projects/meru_TD/compensation to revenue.JPG",
+    "assets/projects/meru_TD/major categories.JPG",
+    "assets/projects/meru_TD/top sources of revenue.JPG",
+    "assets/projects/meru_TD/trend 19-2024.JPG"
+  ],
+  "video": [
+    "assets/projects/meru_TD/raw.mp4"
+  ]
+},
+{
   "serial": "Project 78",
   "title": "NBA Talent Acquisition Guide",
   "date": "2026-01-14",
