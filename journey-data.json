@@ -10,9 +10,9 @@
   "images": [
   
     "assets/projects/intro/profile 3.png",
-    "assets/projects/intro/dericbi.png",
     "assets/projects/intro/deric1.png",
-    "assets/projects/intro/deric2.png"
+    "assets/projects/intro/deric2.png",
+     "assets/projects/intro/dericbi.png"
   ],
   "video": [
     "assets/projects/intro/Intro.mp4"
