@@ -17,9 +17,22 @@
   "video": [
     "assets/projects/intro/Intro.mp4"
   ]
-}
-
-,
+},
+{
+  "serial": "Project 80",
+  "title": "Departmental Monitoring & Progress Dashboard",
+  "date": "2026-01-17",
+  "description": "<strong>Problem :</strong> Executives often face scattered reports that fail to connect budgets, progress, and risks. Without clarity, idle data becomes noise, and systemic issues remain hidden until they escalate into cash bleed and confidence loss.<br><br><strong>Business Objective:</strong> Build a one-page executive dashboard that tracks 10,000+ projects across regions, budgets, and departments. Provide leaders with a strategic lens to see what’s working, what’s lagging, and where accountability breaks down.<br><br><strong>My Approach:</strong> Structured departmental and regional project data into Power BI. Designed KPIs for total projects, average progress, budget, and issues flagged. Applied UN/OSESG-aligned color mapping to highlight completed, ongoing, and pending initiatives. Built bar charts, scatter plots, timelines, heatmaps, and distribution visuals to expose underperforming spend and systemic risks.<br><br><strong>Key Features:</strong><br>• KPI cards for instant executive insight<br>• Bar chart showing departmental progress<br>• Scatter plot mapping budget vs progress by region<br>• Timeline chart exposing delays vs completions<br>• Heatmap of issues across departments and regions<br>• Donut chart for status distribution<br><br><strong>Impact:</strong> The dashboard reframes data as diagnosis, not decoration. It demonstrates how structured visuals can expose accountability gaps, guide reforms, and stop financial leaks before they escalate. Executives gain clarity, confidence, and actionable signals from complex datasets.<br><br><strong>Live Demo:</strong> <a href=\"https://app.powerbi.com/links/3WjnQhFuZy?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
+  "tools": "Power BI",
+  "projectLink": "downloads/dmp.pbix",
+  "liveLink": "https://app.powerbi.com/links/3WjnQhFuZy?ctid=2ea12c3e-2664-43dc-831e-7780d1e3ba30&pbi_source=linkShare",
+  "images": [
+    "assets/projects/dmp/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/dmp/dmp.mp4"
+  ]
+},
 {
   "serial": "Project 79",
   "title": "Meru trust deficit analysis",
