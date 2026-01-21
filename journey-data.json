@@ -23,8 +23,8 @@
   "serial": "Project 81",
   "title": "The Retention Imperative – Engineering Loyalty in a $3.7 Trillion Attrition Economy",
   "date": "2026-01-21",
-  "description": "<strong>Problem :</strong> Global market volatility has pushed customer acquisition costs (CAC) to record highs, making growth-at-all-costs models unsustainable. Executives face a $3.7 Trillion attrition economy where churn silently erodes profitability.<br><br><strong>Business Objective:</strong> Engineer loyalty by embedding predictive retention analytics into executive dashboards. Provide leaders with visibility into churn risk signals, loyalty economics, and profit multipliers.<br><br><strong>My Approach:</strong> Structured retention data into Power BI, integrating benchmarks from Bain & Company, Qualtrics, and Gartner. Designed KPIs for churn rate, renewal paid rate, sentiment accuracy, and CAC vs retention cost. Applied behavioral risk signals (engagement decay, sentiment spikes, payment friction) into visual diagnostics.<br><br><strong>Key Features:</strong><br>• KPI cards quantifying global revenue at risk<br>• Bar charts comparing acquisition vs retention costs<br>• Scatter plots mapping loyalty vs profitability<br>• Timeline charts exposing churn events vs interventions<br>• Heatmaps of sentiment-driven churn signals<br>• Donut chart for retention distribution<br><br><strong>Impact:</strong> The dashboard reframes retention as the primary profitability lever. It demonstrates how predictive engineering can stop churn before escalation, protect revenue streams, and engineer loyalty in the attrition-driven economy.<br><br><strong>Live Demo:</strong> <a href=\"https://infographics-pearl.vercel.app/churn/churn.html\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
-  "tools": "Web tools",
+  "description": "<strong>Problem :</strong> Businesses face rising churn that silently drains $3.7 Trillion annually. Poor customer experiences and one‑and‑done behavior in e‑commerce (72%) make growth mathematically unsustainable.<br><br><strong>Business Objective:</strong> Build a retention dashboard that quantifies attrition, loyalty economics, and predictive churn signals. Provide leaders with a lens to see risk before it escalates.<br><br><strong>My Approach:</strong> Structured churn benchmarks, loyalty multipliers, and behavioral risk signals into Power BI. Integrated case studies from Amazon, Spotify, and Vodafone to show real‑world predictive interventions.<br><br><strong>Key Features:</strong><br>• Global churn benchmarks across sectors<br>• Loyalty economics comparing new vs existing customers<br>• Predictive radar of engagement, sentiment, and payment friction<br>• Case study evidence of automated intervention flows<br><br><strong>Impact:</strong> The dashboard reframes retention as profitability’s core lever. It exposes early warning signals, demonstrates loyalty’s multiplier effect, and equips executives to engineer precision saves in the attrition economy.<br><br><strong>Live Demo:</strong> <a href=\"https://infographics-pearl.vercel.app/churn/churn.html\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
+  "tools": "AI tools",
   "projectLink": "downloads/retention.pbix",
   "liveLink": "https://infographics-pearl.vercel.app/churn/churn.html",
   "images": [
@@ -38,6 +38,8 @@
     "assets/projects/retain/Ret.mp4"
   ]
 }
+
+
 
 ,
 
