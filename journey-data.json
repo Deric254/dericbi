@@ -18,6 +18,28 @@
     "assets/projects/intro/Intro.mp4"
   ]
 },
+
+{
+  "serial": "Project 81",
+  "title": "The Retention Imperative – Engineering Loyalty in a $3.7 Trillion Attrition Economy",
+  "date": "2026-01-21",
+  "description": "<strong>Abstract:</strong> As global market volatility increases, customer acquisition costs (CAC) have reached record highs, making traditional growth-at-all-costs models unsustainable. This white paper examines the current state of customer churn, quantifies the economic impact of attrition, and provides a data-driven framework for predictive retention engineering. By leveraging industry benchmarks from Bain & Company, Qualtrics, and Gartner, we demonstrate that a dedicated focus on retention is the primary driver of profitability in the 2026 economy.<br><br><strong>Global Economic Context:</strong> The 'Silent Killer' of modern business is no longer a lack of visibility, but the inability to retain existing users. Poor customer experiences are draining an estimated $3.7 Trillion from the global economy annually. Attrition is particularly visible in e-commerce, where 'one-and-done' behavior has reached 72%. For the average retail brand, the annual churn rate sits at 37%, meaning a third of the customer base must be replaced every year just to maintain status quo.<br><br><strong>Economics of Loyalty:</strong> It is between 5x and 25x more expensive to acquire a new customer than to retain an existing one. A mere 5% increase in retention correlates with a profit increase ranging from 25% to 95%. Loyalists spend an average of 67% more than first-time buyers, primarily due to established trust and reduced friction in the purchasing cycle.<br><br><strong>Predictive Intervention Framework:</strong> Success in 2026 is defined by 'Predictive Engineering'—the ability to intervene before a churn event occurs. Behavioral risk signals include:<br>• Engagement Decay: login frequency drop of >40% over 14 days<br>• Sentiment Spikes: keyword analysis flagging 'disappointed' or 'frustrated'<br>• Payment Friction: involuntary churn from failed billing attempts<br><br><strong>Case Studies:</strong><br>• Amazon: Predictive 'Subscribe & Save' behavior modeling<br>• Spotify: Engagement via 'Discover Weekly' algorithmic feeds<br>• Vodafone: 12% churn reduction via predictive routing (Nuance/Microsoft)<br><br><strong>Strategic Recommendation:</strong> To survive the attrition economy, businesses must move from reactive firefighting to data-driven precision. We recommend an immediate audit of customer behavioral data to identify 'Early Warning' signals.<br><br><strong>Impact:</strong> This project reframes retention as the core profitability lever. By embedding predictive analytics into executive dashboards, organizations can stop churn before it escalates, protect revenue streams, and engineer loyalty in an attrition-driven economy.<br><br><strong>Live Demo:</strong> <a href=\"https://infographics-pearl.vercel.app/churn/churn.html\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
+  "tools": "Power BI, Predictive Analytics",
+  "projectLink": "downloads/retention.pbix",
+  "liveLink": "https://infographics-pearl.vercel.app/churn/churn.html",
+  "images": [
+    "assets/projects/retain/dash.JPG",
+    "assets/projects/retain/dash2.JPG",
+    "assets/projects/retain/dash3.JPG",
+    "assets/projects/retain/dash4.JPG"
+  ],
+  "video": [
+    "assets/projects/retain/Retent2026.mp4",
+    "assets/projects/retain/Ret.mp4"
+  ]
+}
+,
+
 {
   "serial": "Project 80",
   "title": "Departmental Monitoring & Progress Dashboard",
@@ -465,10 +487,10 @@
   "serial": "Project 56A",
   "title": "Benchmarking Careers in Data",
   "date": "2025-11-24",
-  "description": "<strong>Problem :</strong> Career paths in tech are expanding, but many professionals lack clarity on role expectations and market value.<br><br><strong>Business Objective:</strong> Compare key roles in IT and data — including Data Analyst, Data Scientist, Software Engineer, and Cybersecurity Analyst — across salary, demand, and strategic relevance.<br><br><strong>My Approach:</strong> Built a benchmarking dashboard using Gemini to visualize compensation ladders, entry barriers, market trends, and role attributes. Integrated radar charts and bar graphs for clarity.<br><br><strong>Key Features:</strong><br>• Salary comparison: Analyst ($65K) vs Scientist ($95K) vs Engineer ($90K) vs Cybersecurity ($75K)<br>• Entry barrier and stress benchmarks<br>• Market demand: Stable vs Emerging vs Critical Shortage<br>• Remote flexibility and automation risk<br><br><strong>Impact:</strong> Helps professionals, recruiters, and educators evaluate career fit and future-proof roles in the evolving tech landscape.<br><br>👉 <strong>Live demo:</strong> <a href=\"https://infographics-pearl.vercel.app/benchmark/benchmark\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
+  "description": "<strong>Problem :</strong> Career paths in tech are expanding, but many professionals lack clarity on role expectations and market value.<br><br><strong>Business Objective:</strong> Compare key roles in IT and data — including Data Analyst, Data Scientist, Software Engineer, and Cybersecurity Analyst — across salary, demand, and strategic relevance.<br><br><strong>My Approach:</strong> Built a benchmarking dashboard using Gemini to visualize compensation ladders, entry barriers, market trends, and role attributes. Integrated radar charts and bar graphs for clarity.<br><br><strong>Key Features:</strong><br>• Salary comparison: Analyst ($65K) vs Scientist ($95K) vs Engineer ($90K) vs Cybersecurity ($75K)<br>• Entry barrier and stress benchmarks<br>• Market demand: Stable vs Emerging vs Critical Shortage<br>• Remote flexibility and automation risk<br><br><strong>Impact:</strong> Helps professionals, recruiters, and educators evaluate career fit and future-proof roles in the evolving tech landscape.<br><br>👉 <strong>Live demo:</strong> <a href=\"https://infographics-pearl.vercel.app/benchmark/benchmark.html\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
   "tools": "Gemini, Infographic Design",
   "projectLink": "",
-  "liveLink": "https://infographics-pearl.vercel.app/benchmark/benchmark",
+  "liveLink": "https://infographics-pearl.vercel.app/benchmark/benchmark.html",
   "images": [
     "assets/projects/infographics/dash1.JPG",
     "assets/projects/infographics/bench1.png",
@@ -483,10 +505,10 @@
   "serial": "Project 56B",
   "title": "Shifting Roles in Data Careers",
   "date": "2025-11-24",
-  "description": "<strong>Problem :</strong> As AI automates routine tasks like data cleaning and querying, strategic roles in data are becoming more valuable.<br><br><strong>Business Objective:</strong> Map the evolution of data analyst roles — from L1 Reporter to Strategy Partner — and highlight the rising importance of data strategy, storytelling, and business impact.<br><br><strong>My Approach:</strong> Designed a career evolution dashboard using Gemini to compare task allocation, growth trajectory, and skill requirements across roles like Visual Analyst, Data Scientist, and Strategy Partner.<br><br><strong>Key Features:</strong><br>• Task shift: From reporting to modeling and strategic planning<br>• Career trajectory: Strategy Partner shows 10x+ ROI and lowest automation risk<br>• Skill benchmarks: Business acumen, storytelling, modeling proficiency<br>• Role Shift and Impact Mapping tools<br><br><strong>Impact:</strong> Demonstrates how data strategy will outpace traditional analyst roles as AI takes over operational tasks. Guides professionals toward high-impact, future-proof career paths.<br><br>👉 <strong>Live demo:</strong> <a href=\"https://infographics-pearl.vercel.app/path/path\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
+  "description": "<strong>Problem :</strong> As AI automates routine tasks like data cleaning and querying, strategic roles in data are becoming more valuable.<br><br><strong>Business Objective:</strong> Map the evolution of data analyst roles — from L1 Reporter to Strategy Partner — and highlight the rising importance of data strategy, storytelling, and business impact.<br><br><strong>My Approach:</strong> Designed a career evolution dashboard using Gemini to compare task allocation, growth trajectory, and skill requirements across roles like Visual Analyst, Data Scientist, and Strategy Partner.<br><br><strong>Key Features:</strong><br>• Task shift: From reporting to modeling and strategic planning<br>• Career trajectory: Strategy Partner shows 10x+ ROI and lowest automation risk<br>• Skill benchmarks: Business acumen, storytelling, modeling proficiency<br>• Role Shift and Impact Mapping tools<br><br><strong>Impact:</strong> Demonstrates how data strategy will outpace traditional analyst roles as AI takes over operational tasks. Guides professionals toward high-impact, future-proof career paths.<br><br>👉 <strong>Live demo:</strong> <a href=\"https://infographics-pearl.vercel.app/path/path.html\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
   "tools": "Gemini, Infographic Design",
   "projectLink": "",
-  "liveLink": "https://infographics-pearl.vercel.app/path/path",
+  "liveLink": "https://infographics-pearl.vercel.app/path/path.html",
   "images": [
     "assets/projects/infographics/dash1.JPG",
     "assets/projects/infographics/path1.png",
