@@ -18,6 +18,41 @@
     "assets/projects/intro/Intro.mp4"
   ]
 },
+{
+  "serial": "Project 83",
+  "title": "Huduma — Service Insights",
+  "date": "2026-01-23",
+  "description": "<strong>Huduma:</strong> Dashboard and screenshots demonstrating service delivery metrics and citizen-facing KPIs.",
+  "tools": "Power BI, Python",
+  "projectLink": "",
+  "liveLink": "",
+  "images": [
+    "assets/projects/huduma/dash.JPG",
+    "assets/projects/huduma/dash2.JPG",
+    "assets/projects/huduma/dash3.JPG",
+    "assets/projects/huduma/dash4.JPG"
+  ],
+  "video": [
+    "assets/projects/huduma/HC.mp4"
+  ]
+},
+
+{
+  "serial": "Project 82",
+  "title": "Revenue Mirage",
+  "date": "2026-01-23",
+  "description": "<strong>Revmirage:</strong> A short showcase video and dashboard screenshots demonstrating product visuals and metrics.",
+  "tools": "AI tools",
+  "projectLink": "",
+  "liveLink": "",
+  "images": [
+    "assets/projects/Revmirage/dash.JPG",
+    "assets/projects/Revmirage/dash2.JPG"
+  ],
+  "video": [
+    "assets/projects/Revmirage/Revmirage.mp4"
+  ]
+},
 
 {
   "serial": "Project 81",
@@ -37,11 +72,7 @@
     "assets/projects/retain/Retent2026.mp4",
     "assets/projects/retain/Ret.mp4"
   ]
-}
-
-
-
-,
+},
 
 {
   "serial": "Project 80",
@@ -93,8 +124,7 @@
   "video": [
     "assets/projects/nbaoff/nbaproject.mp4"
   ]
-}
-,
+},
 
 {
   "serial": "Project 77",
@@ -110,9 +140,7 @@
   "video": [
     "assets/projects/kcse/kcse.mp4"
   ]
-}
-
-,
+},
 
 {
   "serial": "Project 76",
@@ -169,8 +197,7 @@
   "video": [
     "assets/projects/kera/Kera.mp4"
   ]
-}
-,
+},
 {
   "title": "December Sales Analysis",
   "date": "2025",
@@ -225,8 +252,7 @@
   "video": [
     "assets/projects/Jaza/jzc.mp4"
   ]
-}
-,
+},
 {
   "serial": "Project 70",
   "title": "Universal Data Reporting System",
@@ -245,7 +271,6 @@
     "assets/projects/URS/urs.mp4"
   ]
 }
-
 
 ,
 {
