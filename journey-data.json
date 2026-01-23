@@ -24,7 +24,7 @@
   "date": "2026-01-23",
   "description": "<strong>Huduma:</strong> Dashboard and screenshots demonstrating service delivery metrics and citizen-facing KPIs.",
   "tools": "Ai tools",
-  "projectLink": "",
+  "projectLink": "https://gemini.google.com/share/7632173878f0",
   "liveLink": "",
   "images": [
     "assets/projects/huduma/dash.JPG",
@@ -44,7 +44,7 @@
   "description": "<strong>Revmirage:</strong> A short showcase video and dashboard screenshots demonstrating product visuals and metrics.",
   "tools": "AI tools",
   "projectLink": "",
-  "liveLink": "",
+  "liveLink": "https://infographics-pearl.vercel.app/profitmirage/profitmirage.html",
   "images": [
     "assets/projects/Revmirage/dash.JPG",
     "assets/projects/Revmirage/dash2.JPG"
