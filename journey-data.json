@@ -24,7 +24,7 @@
   "date": "2026-01-23",
   "description": "<strong>Problem:</strong> Public service Leaders and consumers  need a  single executive view across 59+ Huduma service centres and 13.1M annual interactions .<br><br><strong>Objective:</strong> Deliver a clean dashboard that provides a simple, executive-friendly snapshot for faster decisions.<br><br><strong>Approach & features:</strong> KPI cards (national traffic, satisfaction), centre benchmarking, regional ranking grid, CSR tracker, and compliance/backlog alerts designed for rapid interpretation.<br><br><strong>Quick insights:</strong><br>• 13.1M annual interactions — national traffic baseline to prioritise resources<br>• Persistent backlogs at some centres — operational focus areas<br>• CSR activities tracked (blood drives, tree planting) to show community impact<br><br><strong>Live Demo:</strong> <a href=\"https://gemini.google.com/share/7632173878f0\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
   "tools": "React",
-  "projectLink": "https://gemini.google.com/share/7632173878f0",
+  "projectLink": "downloads/huduma2025.pdf",
   "liveLink": "https://gemini.google.com/share/7632173878f0",
   "images": [
     "assets/projects/huduma/dash.JPG",
@@ -43,7 +43,7 @@
   "date": "2026-01-23",
   "description": "<strong>Problem :</strong> High revenue figures often act as a 'mirage,' masking terminal structural failures. Many high-growth 'unicorns' prioritize market share over unit economics, essentially buying revenue at a loss through unsustainable Customer Acquisition Costs (CAC).<br><br><strong>Business Objective:</strong> Deconstruct the financial collapse of Peloton, WeWork, and Casper to expose common data-blindness patterns. Build a clear, evidence-based narrative that identifies structural decline 6-12 months before it hits the balance sheet.<br><br><strong>My Approach:</strong> Conducted a forensic autopsy of SEC filings (10-K/10-Q) and historical market data. Designed a technical dashboard using Tailwind and Chart.js to visualize the 'Efficiency Gap'—mapping maturity mismatches in leases and logistics traps in return rates to flag LTV/CAC ratios falling below the sustainability floor.<br><br><strong>Key Features:</strong><br>• Comparative fiscal autopsies of Peloton, WeWork, and Casper<br>• LTV:CAC 'Efficiency Gap' terminal interface<br>• Market Cap 'Death Spiral' trajectory mapping<br>• Diagnostic logs for real-time risk signaling<br><br><strong>Impact:</strong> The analysis serves as a defensive weapon for Boards and Founders. It demonstrates how BI-driven oversight distinguishes between temporary demand spikes and permanent behavioral shifts, guiding strategic survival before cash reserves are exhausted.<br><br><strong>Live Demo:</strong> <a href=\"https://infographics-pearl.vercel.app/profitmirage/profitmirage.html\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
   "tools": "AI tools",
-  "projectLink": "",
+  "projectLink": "downloads/Revmirage.pdf",
   "liveLink": "https://infographics-pearl.vercel.app/profitmirage/profitmirage.html",
   "images": [
     "assets/projects/Revmirage/dash.JPG",
