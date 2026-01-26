@@ -22,10 +22,10 @@
   "serial": "Project 84",
   "title": "Distory — Narrative Dashboard",
   "date": "2026-01-24",
-  "description": "<strong>Problem:</strong> Long, fragmented stories are hard to follow; stakeholders miss the narrative behind data when visuals lack structure.<br><br><strong>Objective:</strong> Build a concise, story‑led dashboard that stitches key events and KPIs into an easy-to-read narrative for rapid executive decisions.<br><br><strong>Approach:</strong> Cleaned and structured the source timelines, designed KPI cards and a chronological storyboard, and emphasised visual anchors (trend, snapshot, and call-to-action panels). Produced a short walkthrough video to guide first-time users.<br><br><strong>Impact:</strong> Transforms raw logs into a clear story: decision makers can scan the dashboard and understand the critical events, metrics, and recommended actions in under two minutes—improving response time and alignment across teams.<br><br><strong>Deliverables:</strong> Storyboarded dashboard (desktop + mobile), exportable snapshot report, and a 2–3 minute walkthrough video.",
+  "description": "<strong>Problem:</strong> Fragmented timelines and disconnected visuals make it hard for leaders to grasp the story and act quickly.<br><br><strong>Objective:</strong> Design a compact, story-first dashboard that sequences events, highlights critical KPIs, and surfaces clear recommended actions for busy executives.<br><br><strong>Approach:</strong> Consolidated timeline sources, designed a three-panel layout (Trend • Snapshot • Action), added concise KPI cards and contextual annotations, and produced a brief walkthrough to orient first-time users.<br><br><strong>Impact:</strong> Users can scan the dashboard and understand the core narrative and next steps in under two minutes — reducing response time and improving cross-team alignment.<br><br><strong>Live Demo:</strong> <a href=\"https://gemini.google.com/share/52514e8d2f92\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
   "tools": "gemini",
   "projectLink": "",
-  "liveLink": "",
+  "liveLink": "https://gemini.google.com/share/52514e8d2f92",
   "images": [
     "assets/projects/distory/dash.JPG",
     "assets/projects/distory/dash1.JPG",
