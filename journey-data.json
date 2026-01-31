@@ -20,10 +20,10 @@
 },
 {
   "serial": "Project 85",
-  "title": "System Efficiency audit  2025",
+  "title": "System Efficiency Audit 2025",
   "date": "2026-01-31",
-  "description": "",
-  "tools": "AI tools",
+  "description": "<strong>Problem :</strong>Key  system inefficiencies in deployments, bug fixes, downtime and customer impact are concealed by fragmented reporting and siloed systems..<br><br><strong>Business Objective:</strong> Create a unified audit that exposes inefficiency hotspots and quantifies their impact on reliability, engineering velocity, customer experience, and cost per user.<br><br><strong>My Approach:</strong> Consolidated five datasets (system events, bugs, deployments, customers, ops cost) into a single Power BI model; built a custom DateTable for drill‑downs; and designed a CTO‑grade dashboard with five KPIs and targeted visuals answering executive questions.<br><br><strong>Key Features:</strong><br>• KPI row: Downtime, Bug Resolution, Failure Rate, Customer Impact, Cost per User<br>• Heatmap for bug resolution by product and issue type<br>• Scatter plot linking complaints to churn<br>• Cost per user breakdown by category<br>• Executive Insight panel highlighting hidden inefficiencies<br><br><strong>Impact:</strong> Provides leadership with a clear radar of inefficiency drivers, enabling targeted interventions, reduced downtime, faster bug resolution, improved customer retention, and optimized cost allocation.<br><br><strong>Live Demo:</strong> <a href=\"https://app.powerbi.com/groups/me/reports/12a852f6-3103-4ccc-98b1-3dd300606147/ca39f042c8d1c89f48b4?experience=power-bi\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Dashboard</strong></a>",
+  "tools": "Power BI",
   "projectLink": "downloads/sysops.pbix",
   "liveLink": "https://app.powerbi.com/groups/me/reports/12a852f6-3103-4ccc-98b1-3dd300606147/ca39f042c8d1c89f48b4?experience=power-bi",
   "images": [
@@ -32,7 +32,8 @@
   "video": [
     "assets/projects/sysops/sysops.mp4"
   ]
-},
+}
+,
 {
   "serial": "Project 84",
   "title": "Digital media distotion  ",
