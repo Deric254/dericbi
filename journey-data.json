@@ -19,6 +19,21 @@
   ]
 },
 {
+  "serial": "Project 85",
+  "title": "System Efficiency audit  2025",
+  "date": "2026-01-31",
+  "description": "",
+  "tools": "AI tools",
+  "projectLink": "downloads/sysops.pbix",
+  "liveLink": "https://app.powerbi.com/groups/me/reports/12a852f6-3103-4ccc-98b1-3dd300606147/ca39f042c8d1c89f48b4?experience=power-bi",
+  "images": [
+    "assets/projects/sysops/dash.JPG"
+  ],
+  "video": [
+    "assets/projects/sysops/sysops.mp4"
+  ]
+},
+{
   "serial": "Project 84",
   "title": "Digital media distotion  ",
   "date": "2026-01-24",
