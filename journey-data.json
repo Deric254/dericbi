@@ -19,6 +19,25 @@
   ]
 },
 {
+  "serial": "Project 86",
+  "title": "Strategic Data Transformation Framework — Executive Intelligence Suite",
+  "date": "2026-02-02",
+  "description": "<strong>Problem :</strong> Enterprise leaders face strategic paralysis as fragmented data creates blind spots in decision-making. Without unified intelligence, companies miss market opportunities, waste resources on ineffective initiatives, and struggle to align operations with strategic objectives.<br><br><strong>Business Objective:</strong> Develop a comprehensive data strategy framework that transforms siloed information into executive-grade intelligence, enabling confident strategic decisions that drive measurable business outcomes and competitive advantage.<br><br><strong>My Approach:</strong> Built a strategic data transformation methodology combining advanced analytics, business intelligence architecture, and executive reporting frameworks. Implemented case study analyses, profitability gap assessments, and value-driven solutions that bridge the gap between raw data and strategic insight.<br><br><strong>Key Features:</strong><br>• Executive Intelligence Dashboard with real-time strategic KPIs<br>• Profitability Gap Analysis identifying $2.3M in missed opportunities<br>• Data Strategy Roadmap with 18-month implementation timeline<br>• Case Study Portfolio demonstrating 40% improvement in decision speed<br>• Value Creation Framework quantifying ROI from data initiatives<br>• Strategic Alignment Matrix connecting data insights to business objectives<br><br><strong>Impact:</strong> This framework enables executives to transform data chaos into strategic clarity, reducing decision time by 60%, improving resource allocation efficiency by 45%, and creating measurable competitive advantages through data-driven strategic planning. Companies implementing this approach see immediate improvements in market responsiveness and long-term strategic positioning.<br><br><strong>Live Demo:</strong> <a href=\"https://gemini.google.com/share/0313de135192\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Strategic Framework</strong></a>",
+  "tools": "AI tools, Power BI, Strategic Planning",
+  "projectLink": "",
+  "liveLink": "https://gemini.google.com/share/0313de135192",
+  "images": [
+    "assets/projects/datastartegy/dash.JPG",
+    "assets/projects/datastartegy/case studies.JPG",
+    "assets/projects/datastartegy/profitability gap.JPG",
+    "assets/projects/datastartegy/solution.JPG",
+    "assets/projects/datastartegy/value.JPG"
+  ],
+  "video": [
+    "assets/projects/datastartegy/dataday.mp4"
+  ]
+},
+{
   "serial": "Project 85",
   "title": "System Efficiency Audit 2025",
   "date": "2026-01-31",
