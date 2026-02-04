@@ -27,14 +27,14 @@
   "projectLink": "downloads/sha_investigation_report.pdf",
   "liveLink": "https://gemini.google.com/share/f269fb2b0539",
   "images": [
-    "assets/projects/shascandal/sha-scandal-thumbnail.png",
-    "assets/projects/shascandal/fraud-detection-dashboard.png",
-    "assets/projects/shascandal/network-analysis.png",
-    "assets/projects/shascandal/transaction-patterns.png",
-    "assets/projects/shascandal/risk-assessment.png"
+    "assets/projects/shascandal/dash.JPG",
+    "assets/projects/shascandal/fraud anatomy.JPG",
+    "assets/projects/shascandal/recovery.JPG",
+    "assets/projects/shascandal/timeline.JPG",
+    "assets/projects/shascandal/sysundersiege.JPG"
   ],
   "video": [
-    "assets/projects/shascandal/sha_investigation.mp4"
+    "assets/projects/shascandal/sha.mp4"
   ]
 },
 {
