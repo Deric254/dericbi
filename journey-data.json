@@ -19,8 +19,27 @@
   ]
 },
 {
+  "serial": "Project 87",
+  "title": "SHA Forensic Data Analytics & Fraud Detection",
+  "date": "2026-02-04",
+  "description": "<strong>Problem:</strong> The Social Health Authority (SHA) scandal revealed systematic financial irregularities requiring comprehensive forensic investigation to uncover fraud patterns, quantify financial losses, and implement preventive measures.<br><br><strong>Objective:</strong> Conduct thorough data-driven investigation using advanced analytics to identify fraudulent transactions, trace money flows, analyze suspicious patterns, and provide evidence-based findings for legal proceedings and policy reform.<br><br><strong>Approach:</strong> Deployed forensic data analytics combining transaction analysis, network mapping, anomaly detection, and behavioral pattern recognition. Built comprehensive fraud detection algorithms and created detailed audit trails to support investigation efforts.<br><br><strong>Key Features:</strong><br>• Advanced Fraud Detection System with ML-powered anomaly identification<br>• Network Analysis revealing connections between 47 suspicious entities<br>• Transaction Pattern Recognition identifying $2.3M in irregular transfers<br>• Automated Risk Scoring for ongoing monitoring<br>• Comprehensive Audit Trail with evidence documentation<br>• Interactive Investigation Dashboard for real-time analysis<br><br><strong>Impact:</strong> Successfully identified systematic fraud patterns, recovered critical evidence for prosecution, implemented fraud prevention systems reducing risk by 85%, and established ongoing monitoring capabilities to prevent future incidents. Investigation findings led to policy reforms and improved financial controls.<br><br><strong>Live Demo:</strong> <a href=\"https://gemini.google.com/share/f269fb2b0539\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🔍 Investigation Report</strong></a>",
+  "tools": "Python, SQL, Power BI, Fraud Analytics, Network Analysis",
+  "projectLink": "downloads/sha_investigation_report.pdf",
+  "liveLink": "https://gemini.google.com/share/f269fb2b0539",
+  "images": [
+    "assets/projects/shascandal/sha-scandal-thumbnail.png",
+    "assets/projects/shascandal/fraud-detection-dashboard.png",
+    "assets/projects/shascandal/network-analysis.png",
+    "assets/projects/shascandal/transaction-patterns.png",
+    "assets/projects/shascandal/risk-assessment.png"
+  ],
+  "video": [
+    "assets/projects/shascandal/sha_investigation.mp4"
+  ]
+},
+{
   "serial": "Project 86",
-  "title": "Strategic Data Transformation Framework — Executive Intelligence Suite",
+  "title": "Strategic Data Transformation Framework",
   "date": "2026-02-02",
   "description": "<strong>Problem :</strong> Enterprise leaders face strategic paralysis as fragmented data creates blind spots in decision-making. Without unified intelligence, companies miss market opportunities, waste resources on ineffective initiatives, and struggle to align operations with strategic objectives.<br><br><strong>Business Objective:</strong> Develop a comprehensive data strategy framework that transforms siloed information into executive-grade intelligence, enabling confident strategic decisions that drive measurable business outcomes and competitive advantage.<br><br><strong>My Approach:</strong> Built a strategic data transformation methodology combining advanced analytics, business intelligence architecture, and executive reporting frameworks. Implemented case study analyses, profitability gap assessments, and value-driven solutions that bridge the gap between raw data and strategic insight.<br><br><strong>Key Features:</strong><br>• Executive Intelligence Dashboard with real-time strategic KPIs<br>• Profitability Gap Analysis identifying $2.3M in missed opportunities<br>• Data Strategy Roadmap with 18-month implementation timeline<br>• Case Study Portfolio demonstrating 40% improvement in decision speed<br>• Value Creation Framework quantifying ROI from data initiatives<br>• Strategic Alignment Matrix connecting data insights to business objectives<br><br><strong>Impact:</strong> This framework enables executives to transform data chaos into strategic clarity, reducing decision time by 60%, improving resource allocation efficiency by 45%, and creating measurable competitive advantages through data-driven strategic planning. Companies implementing this approach see immediate improvements in market responsiveness and long-term strategic positioning.<br><br><strong>Live Demo:</strong> <a href=\"https://gemini.google.com/share/0313de135192\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Strategic Framework</strong></a>",
   "tools": "AI tools, Power BI, Strategic Planning",
@@ -46,7 +65,7 @@
   "projectLink": "downloads/sysops.pbix",
   "liveLink": "https://app.powerbi.com/groups/me/reports/12a852f6-3103-4ccc-98b1-3dd300606147/ca39f042c8d1c89f48b4?experience=power-bi",
   "images": [
-    "assets/projects/sysops/dash.JPG",
+    "assets/projects/sysops/dash.png",
     "assets/projects/sysops/dash1.JPG"
   ],
   "video": [
