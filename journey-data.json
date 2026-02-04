@@ -23,8 +23,8 @@
   "title": "SHA Healthcare System Analysis - The KSh 11 Billion Data Investigation",
   "date": "2026-02-04",
   "description": "<strong>Problem:</strong> The transition from NHIF to the Social Health Authority (SHA) promised a corruption-free era for Kenya's healthcare, but within six months, fraudulent claims bled the new fund dry despite a KSh 104 billion 'waterproof' IT system designed to prevent exactly this kind of fraud.<br><br><strong>Business Objective:</strong> Analyze the systematic breakdown of the Integrated Healthcare Information Technology System (IHTS) and investigate how KSh 11 billion was lost through sophisticated fraud schemes involving ghost patients, fictitious surgeries, and system manipulation.<br><br><strong>My Approach:</strong> Conducted comprehensive data analysis of healthcare claims, facility patterns, and system anomalies across the October 2024 - April 2025 period. Built interactive dashboards to visualize fraud vectors, timeline analysis, and recovery frameworks using advanced analytics and pattern recognition.<br><br><strong>Key Findings:</strong><br>• KSh 11 billion stolen in just 6 months (10% of total system cost)<br>• 1,000+ healthcare facilities suspended for fraudulent activities<br>• 100+ criminal files sent to DCI & DPP for prosecution<br>• 'Super Parent Anomaly': Single patient profile with 381 dependent children<br>• Sophisticated fraud network involving ghost patients and fictitious surgeries<br>• Critical system validation failures in the IHTS platform<br><br><strong>Impact:</strong> This analysis exposed fundamental flaws in the healthcare IT procurement process, revealed systematic fraud patterns requiring immediate intervention, and provided evidence-based recommendations for recovery operations. The investigation contributed to mass facility suspensions, criminal prosecutions, and systemic reforms to prevent future losses.<br><br><strong>Live Demo:</strong> <a href=\"https://gemini.google.com/share/f269fb2b0539\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>� Full Investigation Report</strong></a>",
-  "tools": "Python, SQL, Power BI, Fraud Analytics, Network Analysis",
-  "projectLink": "downloads/sha_investigation_report.pdf",
+  "tools": "gemini",
+  "projectLink": "",
   "liveLink": "https://gemini.google.com/share/f269fb2b0539",
   "images": [
     "assets/projects/shascandal/dash.JPG",
@@ -42,7 +42,7 @@
   "title": "Strategic Data Transformation Framework",
   "date": "2026-02-02",
   "description": "<strong>Problem :</strong> Enterprise leaders face strategic paralysis as fragmented data creates blind spots in decision-making. Without unified intelligence, companies miss market opportunities, waste resources on ineffective initiatives, and struggle to align operations with strategic objectives.<br><br><strong>Business Objective:</strong> Develop a comprehensive data strategy framework that transforms siloed information into executive-grade intelligence, enabling confident strategic decisions that drive measurable business outcomes and competitive advantage.<br><br><strong>My Approach:</strong> Built a strategic data transformation methodology combining advanced analytics, business intelligence architecture, and executive reporting frameworks. Implemented case study analyses, profitability gap assessments, and value-driven solutions that bridge the gap between raw data and strategic insight.<br><br><strong>Key Features:</strong><br>• Executive Intelligence Dashboard with real-time strategic KPIs<br>• Profitability Gap Analysis identifying $2.3M in missed opportunities<br>• Data Strategy Roadmap with 18-month implementation timeline<br>• Case Study Portfolio demonstrating 40% improvement in decision speed<br>• Value Creation Framework quantifying ROI from data initiatives<br>• Strategic Alignment Matrix connecting data insights to business objectives<br><br><strong>Impact:</strong> This framework enables executives to transform data chaos into strategic clarity, reducing decision time by 60%, improving resource allocation efficiency by 45%, and creating measurable competitive advantages through data-driven strategic planning. Companies implementing this approach see immediate improvements in market responsiveness and long-term strategic positioning.<br><br><strong>Live Demo:</strong> <a href=\"https://gemini.google.com/share/0313de135192\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Strategic Framework</strong></a>",
-  "tools": "AI tools, Power BI, Strategic Planning",
+  "tools": "gemini",
   "projectLink": "",
   "liveLink": "https://gemini.google.com/share/0313de135192",
   "images": [
@@ -78,7 +78,7 @@
   "title": "Digital media distotion  ",
   "date": "2026-01-24",
   "description": "<strong>Problem :</strong> Truth is loosing againist Virality , Government and  algorithims .....<br><br><strong>Business Objective:</strong> Create a storytelling approach that survives high-noise feeds and network blackouts.<br><br><strong>My Approach:</strong> Atomize long reports into 15‑second micro‑signals; publish text, audio and low‑res video simultaneously; and establish local peer custody for provenance.<br><br><strong>Key Features:</strong><br>• Micro‑signals optimised for noisy algorithms<br>• Multimodal publishing (text, audio, low‑res video)<br>• Peer custody and verifiable provenance<br>• Low‑bandwidth fallback assets for blackouts<br><br><strong>Impact:</strong> Keeps essential narratives discoverable in noisy feeds, resilient during throttling or blackouts, and harder to spoof by synthetic media.<br><br><strong>Live Demo:</strong> <a href=\"https://gemini.google.com/share/52514e8d2f92\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
-  "tools": "AI tools",
+  "tools": "gemini",
   "projectLink": "",
   "liveLink": "https://gemini.google.com/share/52514e8d2f92",
   "images": [
@@ -97,7 +97,7 @@
   "title": "Huduma — Service briefing ",
   "date": "2026-01-23",
   "description": "<strong>Problem:</strong> Public service Leaders and consumers  need a  single executive view across 59+ Huduma service centres and 13.1M annual interactions .<br><br><strong>Objective:</strong> Deliver a clean dashboard that provides a simple, executive-friendly snapshot for faster decisions.<br><br><strong>Approach & features:</strong> KPI cards (national traffic, satisfaction), centre benchmarking, regional ranking grid, CSR tracker, and compliance/backlog alerts designed for rapid interpretation.<br><br><strong>Quick insights:</strong><br>• 13.1M annual interactions — national traffic baseline to prioritise resources<br>• Persistent backlogs at some centres — operational focus areas<br>• CSR activities tracked (blood drives, tree planting) to show community impact<br><br><strong>Live Demo:</strong> <a href=\"https://gemini.google.com/share/7632173878f0\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
-  "tools": "AI tools",
+  "tools": "gemini",
   "projectLink": "downloads/huduma2025.pdf",
   "liveLink": "https://gemini.google.com/share/7632173878f0",
   "images": [
@@ -116,7 +116,7 @@
   "title": "Revenue Mirage",
   "date": "2026-01-23",
   "description": "<strong>Problem:</strong> Headline revenue can hide unsustainable unit economics — high CAC and poor retention disguise structural decline.<br><br><strong>Objective:</strong> Forensically analyze Peloton, WeWork, and Casper to surface recurring data-blindness and flag structural risk 6–12 months before balance-sheet stress.<br><br><strong>Approach:</strong> Audited SEC filings and market data and built an interactive dashboard (Tailwind + Chart.js) visualising an 'Efficiency Gap' (LTV:CAC) and market-cap decay to provide early warning signals.<br><br><strong>Impact:</strong> Equips boards and founders with concise, BI-driven signals to distinguish transient demand from lasting decline and take corrective action early.<br><br><strong>Live Demo:</strong> <a href=\"https://infographics-pearl.vercel.app/profitmirage/profitmirage.html\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
-  "tools": "AI tools",
+  "tools": "gemini",
   "projectLink": "downloads/Revmirage.pdf",
   "liveLink": "https://infographics-pearl.vercel.app/profitmirage/profitmirage.html",
   "images": [
@@ -133,7 +133,7 @@
   "title": "The Retention Imperative – Engineering Loyalty in a $3.7 Trillion Attrition Economy",
   "date": "2026-01-21",
   "description": "<strong>Problem :</strong> Businesses face rising churn that silently drains $3.7 Trillion annually. Poor customer experiences and one‑and‑done behavior in e‑commerce (72%) make growth mathematically unsustainable.<br><br><strong>Business Objective:</strong> Build a retention dashboard that quantifies attrition, loyalty economics, and predictive churn signals. Provide leaders with a lens to see risk before it escalates.<br><br><strong>My Approach:</strong> Structured churn benchmarks, loyalty multipliers, and behavioral risk signals into Power BI. Integrated case studies from Amazon, Spotify, and Vodafone to show real‑world predictive interventions.<br><br><strong>Key Features:</strong><br>• Global churn benchmarks across sectors<br>• Loyalty economics comparing new vs existing customers<br>• Predictive radar of engagement, sentiment, and payment friction<br>• Case study evidence of automated intervention flows<br><br><strong>Impact:</strong> The dashboard reframes retention as profitability’s core lever. It exposes early warning signals, demonstrates loyalty’s multiplier effect, and equips executives to engineer precision saves in the attrition economy.<br><br><strong>Live Demo:</strong> <a href=\"https://infographics-pearl.vercel.app/churn/churn.html\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Live Demo</strong></a>",
-  "tools": "AI tools",
+  "tools": "gemini",
   "projectLink": "downloads/retention.pbix",
   "liveLink": "https://infographics-pearl.vercel.app/churn/churn.html",
   "images": [
