@@ -19,6 +19,21 @@
   ]
 },
 {
+  "serial": "Project 88",
+  "title": "System User Engagement Analysis - The 15.7M User Investigation",
+  "date": "2026-02-12",
+  "description": "<strong>Problem:</strong> A tech platform with 15.7M registered users shows concerning engagement metrics with only 1.47M active users (9.4% engagement rate). Despite successful acquisition strategies, 78% of accounts are under one year old yet engagement paradoxically increases with account age, revealing a critical retention crisis.<br><br><strong>Business Objective:</strong> Conduct comprehensive user engagement analysis to identify retention bottlenecks and develop data-driven strategies to convert dormant users into active participants while optimizing lifecycle value for existing engaged users.<br><br><strong>My Approach:</strong> Performed in-depth cohort analysis, engagement pattern recognition, and churn prediction modeling to understand user behavior across different segments. Built interactive dashboards tracking user lifecycle stages, retention funnels, and engagement correlation with account age to inform strategic retention initiatives.<br><br><strong>Key Findings:</strong><br>• 90.6% user dormancy rate (14.23M inactive out of 15.7M total users)<br>• Strong correlation between account age and engagement levels<br>• 78% of accounts created within last 12 months showing low engagement<br>• Successful acquisition funnel masking severe retention deficiencies<br>• Critical need for lifecycle tracking and cohort-based retention strategies<br>• Churn monitoring gaps preventing proactive intervention<br><br><strong>Impact:</strong> This analysis revealed that while acquisition is functioning effectively, retention mechanisms are fundamentally broken. Recommendations prioritize implementing comprehensive lifecycle tracking, cohort analysis frameworks, and churn monitoring systems before increasing marketing spend. The investigation provides actionable insights to transform user engagement and maximize platform value.<br><br><strong>Live Demo:</strong> <a href=\"#\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🔍 User Engagement Analysis</strong></a>",
+  "tools": "excel",
+  "projectLink": "downloads/sysdiagnostics.xlsx",
+  "liveLink": "#",
+  "images": [
+    "assets/projects/sysdiagnostics/diagnostics.png"
+  ],
+  "video": [
+    "assets/projects/sysdiagnostics/sysdiagnostics.mp4"
+  ]
+},
+{
   "serial": "Project 87",
   "title": "SHA Healthcare System Analysis - The KSh 11 Billion Data Investigation",
   "date": "2026-02-04",
