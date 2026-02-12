@@ -19,6 +19,26 @@
   ]
 },
 {
+  "serial": "Project 89",
+  "title": "Ultra-Processed Food Health Impact Analysis - The Hidden Mortality Crisis",
+  "date": "2026-02-12",
+  "description": "<strong>Problem:</strong> Statistically, you are eating risk in the name of food. The global rise in ultra-processed food consumption is creating a hidden mortality crisis that transcends traditional weight-based health metrics, with every +10% increase in ultra-processed intake translating to +3% mortality risk regardless of BMI status.<br><br><strong>Business Objective:</strong> Conduct comprehensive data analysis to quantify the relationship between ultra-processed food consumption patterns and mortality rates across different populations, revealing the true health cost of modern dietary choices beyond conventional weight-focused approaches.<br><br><strong>My Approach:</strong> Analyzed extensive health datasets correlating ultra-processed food intake with mortality statistics across multiple countries. Built predictive models examining inflammation markers, hypertension patterns, and systemic stress signals in populations with varying dietary patterns, controlling for BMI and genetic factors.<br><br><strong>Key Findings:</strong><br>• Every +10% ultra-processed intake = +3% mortality risk increase<br>• 1 in 7 early deaths directly linked to diet patterns, not genetics<br>• 'Healthy BMI' populations still show inflammation and system stress<br>• Ultra-processed foods trigger hypertension regardless of weight status<br>• Health outcomes are fundamentally about total input quality, not quantity<br>• Genetic predisposition secondary to dietary pattern impact<br><br><strong>Impact:</strong> This analysis reveals that health is essentially a collection of total inputs, challenging conventional weight-centric health models. The investigation demonstrates that even individuals with healthy BMI experience significant health deterioration from ultra-processed food consumption, providing critical evidence for policy makers and health professionals to prioritize food quality over caloric quantity in public health initiatives.<br><br><strong>Live Demo:</strong> <a href=\"https://gemini.google.com/share/1f78f37b3bb2\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🍎 Health Impact Analysis</strong></a>",
+  "tools": "gemini",
+  "projectLink": "",
+  "liveLink": "https://gemini.google.com/share/1f78f37b3bb2",
+  "images": [
+    "assets/projects/upf/dash.JPG",
+    "assets/projects/upf/dash2.JPG",
+    "assets/projects/upf/dash3.JPG",
+    "assets/projects/upf/dash4.JPG",
+    "assets/projects/upf/dash5.JPG"
+  ],
+  "video": [
+    "assets/projects/upf/upf.mp4"
+  ]
+},
+
+{
   "serial": "Project 88",
   "title": "System User Engagement Analysis - The 15.7M User Investigation",
   "date": "2026-02-12",
@@ -33,6 +53,7 @@
     "assets/projects/sysdiagnostics/sysdiagnostics.mp4"
   ]
 },
+
 {
   "serial": "Project 87",
   "title": "SHA Healthcare System Analysis - The KSh 11 Billion Data Investigation",
