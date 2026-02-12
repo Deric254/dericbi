@@ -188,7 +188,7 @@
   "date": "2026-01-14",
   "description": "<strong>Problem:</strong> Executives and scouts lacked a unified, long-term view of what truly drives NBA success.<br><br><strong>Objective:</strong> Build an executive-ready dashboard that compresses 26 years of NBA player data (12,840 players) into clear signals for talent acquisition and scouting.<br><br><strong>Approach:</strong> Developed a pivot-driven Excel model with interactive slicers (Team, College, Country, Year) and KPI cards.<br><br><strong>Highlights:</strong><br>• Total players analyzed: 12.84K; Successful: 216 (2%)<br>• Top Teams: San Antonio Spurs (19), Los Angeles Lakers (17), Minnesota Timberwolves (17)<br>• Top Colleges: Kentucky (18), Wake Forest (16), Kansas (10)<br>• Top Countries: USA (123), US Virgin Islands (16), Spain (14)<br>• Success Metrics: Strongest correlation between scoring (PPG) and assists (APG)<br><br><strong>Impact:</strong> Success is rare (2%), elite players cluster in specific teams, colleges, and countries, and performance is driven by scoring + assists — equipping scouts and businesses with actionable insights.",
   "tools": "Excel",
-  "projectLink": "downloads/nba_success.xlsx",
+  "projectLink": "downloads/nba.xlsx",
   "liveLink": "",
   "images": [
     "assets/projects/nbaoff/dash.JPG",
