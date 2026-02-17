@@ -1,0 +1,40 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  uploads   Upload[]
+  reports   Report[]
+}
+
+model Upload {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  fileName   String
+  fileType   String
+  filePath   String
+  uploadedAt DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
+  reports    Report[]
+}
+
+model Report {
+  id           Int      @id @default(autoincrement())
+  userId       Int
+  uploadId     Int
+  reportPath   String
+  dashboardUrl String
+  generatedAt  DateTime @default(now())
+  user         User     @relation(fields: [userId], references: [id])
+  upload       Upload   @relation(fields: [uploadId], references: [id])
+}
