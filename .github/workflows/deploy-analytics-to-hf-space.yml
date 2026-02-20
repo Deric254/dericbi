@@ -1,0 +1,40 @@
+name: Deploy Analytics to Hugging Face Space
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add Hugging Face remote
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SPACE_REPO: ${{ secrets.HF_SPACE_REPO }}
+        run: |
+          if [ -z "$HF_TOKEN" ] || [ -z "$HF_SPACE_REPO" ]; then
+            echo "HF_TOKEN and HF_SPACE_REPO secrets are required"
+            exit 1
+          fi
+          git remote add hf "https://__token__:${HF_TOKEN}@huggingface.co/spaces/${HF_SPACE_REPO}"
+
+      - name: Build analytics subtree branch
+        run: |
+          git subtree split --prefix analytics -b analytics-deploy
+
+      - name: Push analytics to Hugging Face Space
+        run: |
+          git push hf analytics-deploy:main --force

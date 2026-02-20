@@ -1,6 +1,7 @@
 import dash
 from dash import html, dcc, Input, Output, no_update
 import dash_bootstrap_components as dbc
+import os
 from config.settings import DERICBI_LOGO, DERICBI_SLOGAN
 
 # Initialize Dash app with Bootstrap for premium styling
@@ -116,5 +117,8 @@ def ensure_default_route(pathname):
     return no_update
 
 if __name__ == "__main__":
- app.run(debug=True)
+    host = os.getenv("HOST", "0.0.0.0")
+    port = int(os.getenv("PORT", "7860"))
+    debug = os.getenv("DEBUG", "false").lower() == "true"
+    app.run(host=host, port=port, debug=debug)
 

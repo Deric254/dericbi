@@ -12,3 +12,4 @@ huggingface-hub
 openpyxl
 kaleido
 reportlab
+gunicorn
