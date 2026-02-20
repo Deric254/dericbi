@@ -36,52 +36,54 @@ layout = html.Div([
         ),
     ]),
 
-    # SQL Connector
-    html.Div([
-        html.Label("Connect to Database"),
-        dcc.Input(
-            id="db-connection-string",
-            type="text",
-            placeholder="Optional: paste full connection string (recommended for Neon)",
-            style={"width": "100%", "marginBottom": "8px"}
-        ),
-        html.Div(id="connection-parse-message", style={"marginBottom": "8px", "fontSize": "0.9rem"}),
+    # SQL Connector (collapsible)
+    html.Details([
+        html.Summary("Connect to Database", style={"cursor": "pointer", "fontWeight": "600"}),
         html.Div([
-            dcc.Dropdown(
-                id="db-type",
-                options=[
-                    {"label": "MySQL", "value": "mysql"},
-                    {"label": "PostgreSQL (Neon)", "value": "postgres"},
-                ],
-                value="mysql",
-                clearable=False,
-                style={"width": "260px", "display": "inline-block", "marginRight": "8px", "marginBottom": "8px"}
+            dcc.Input(
+                id="db-connection-string",
+                type="text",
+                placeholder="Optional: paste full connection string (recommended for Neon)",
+                style={"width": "100%", "marginBottom": "8px"}
             ),
-            dcc.Input(id="db-host", type="text", placeholder="Host (e.g. localhost or db.example.com)", style={"marginRight": "8px", "marginBottom": "8px"}),
-            dcc.Input(id="db-port", type="number", placeholder="Port", value=3306, style={"width": "110px", "marginRight": "8px", "marginBottom": "8px"}),
-            dcc.Input(id="db-user", type="text", placeholder="User", style={"marginRight": "8px", "marginBottom": "8px"}),
-            dcc.Input(id="db-pass", type="password", placeholder="Password", style={"marginRight": "8px", "marginBottom": "8px"}),
-            dcc.Input(id="db-name", type="text", placeholder="Database", style={"marginRight": "8px", "marginBottom": "8px"}),
-            dcc.Checklist(
-                id="db-ssl",
-                options=[{"label": " Use SSL (recommended for online DB)", "value": "ssl"}],
-                value=[],
-                style={"display": "inline-block", "marginBottom": "8px"}
+            html.Div(id="connection-parse-message", style={"marginBottom": "8px", "fontSize": "0.9rem"}),
+            html.Div([
+                dcc.Dropdown(
+                    id="db-type",
+                    options=[
+                        {"label": "MySQL", "value": "mysql"},
+                        {"label": "PostgreSQL (Neon)", "value": "postgres"},
+                    ],
+                    value="mysql",
+                    clearable=False,
+                    style={"width": "260px", "display": "inline-block", "marginRight": "8px", "marginBottom": "8px"}
+                ),
+                dcc.Input(id="db-host", type="text", placeholder="Host (e.g. localhost or db.example.com)", style={"marginRight": "8px", "marginBottom": "8px"}),
+                dcc.Input(id="db-port", type="number", placeholder="Port", value=3306, style={"width": "110px", "marginRight": "8px", "marginBottom": "8px"}),
+                dcc.Input(id="db-user", type="text", placeholder="User", style={"marginRight": "8px", "marginBottom": "8px"}),
+                dcc.Input(id="db-pass", type="password", placeholder="Password", style={"marginRight": "8px", "marginBottom": "8px"}),
+                dcc.Input(id="db-name", type="text", placeholder="Database", style={"marginRight": "8px", "marginBottom": "8px"}),
+                dcc.Checklist(
+                    id="db-ssl",
+                    options=[{"label": " Use SSL (recommended for online DB)", "value": "ssl"}],
+                    value=[],
+                    style={"display": "inline-block", "marginBottom": "8px"}
+                ),
+            ]),
+            dcc.Textarea(
+                id="db-query",
+                placeholder="Write SELECT query here, e.g. SELECT * FROM sales LIMIT 1000",
+                style={"width": "100%", "height": "120px", "marginTop": "8px"},
             ),
-        ]),
-        dcc.Textarea(
-            id="db-query",
-            placeholder="Write SELECT query here, e.g. SELECT * FROM sales LIMIT 1000",
-            style={"width": "100%", "height": "120px", "marginTop": "8px"},
-        ),
-        html.Div([
-            html.Button("Test Connection", id="test-db", n_clicks=0, style={"marginRight": "8px"}),
-            html.Button("Run Query", id="run-query", n_clicks=0),
-        ], style={"marginTop": "10px"}),
-        html.Div(
-            "MySQL default port: 3306. PostgreSQL/Neon default port: 5432. For Neon, use PostgreSQL + enable SSL.",
-            style={"marginTop": "8px", "fontSize": "0.9rem"}
-        )
+            html.Div([
+                html.Button("Test Connection", id="test-db", n_clicks=0, style={"marginRight": "8px"}),
+                html.Button("Run Query", id="run-query", n_clicks=0),
+            ], style={"marginTop": "10px"}),
+            html.Div(
+                "MySQL default port: 3306. PostgreSQL/Neon default port: 5432. For Neon, use PostgreSQL + enable SSL.",
+                style={"marginTop": "8px", "fontSize": "0.9rem"}
+            )
+        ], style={"marginTop": "10px"})
     ], style={"marginTop": "20px"}),
 
     # Preview Table

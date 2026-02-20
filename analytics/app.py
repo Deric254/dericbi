@@ -53,7 +53,8 @@ sidebar = html.Div(
 # Top header (matches sidebar formatting)
 header = html.Div(
     [
-        html.H4("DericBI Analytics Engine", className="mb-0"),
+        html.Div(className="analytics-header-left"),
+        html.H4("DericBI Analytics Engine", className="analytics-header-title mb-0"),
         html.Div(
             [
                 html.Img(
@@ -63,7 +64,7 @@ header = html.Div(
                 ),
                 html.Small(DERICBI_SLOGAN),
             ],
-            style={"display": "flex", "alignItems": "center"},
+            className="analytics-header-right",
         ),
     ],
     className="analytics-header",
@@ -73,9 +74,6 @@ header = html.Div(
         "left": "16rem",
         "right": 0,
         "height": "64px",
-        "display": "flex",
-        "alignItems": "center",
-        "justifyContent": "space-between",
         "padding": "0 1.25rem",
         "backgroundColor": "#3e8865",
         "color": "#ffffff",

@@ -506,13 +506,34 @@ input:focus, textarea:focus, select:focus, .form-control:focus, .form-select:foc
 .analytics-header {
     background-color: var(--exes-secondary-green) !important;
     border-bottom: 1px solid rgba(250, 204, 21, 0.45) !important;
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(31, 41, 55, 0.18);
 }
 
-.analytics-header h4 {
+.analytics-header-title {
     font-weight: 700;
     margin: 0;
+    letter-spacing: 0.4px;
+    justify-self: center;
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.analytics-header-left {
+    justify-self: start;
+}
+
+.analytics-header-right {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
 }
 
 .analytics-header small {
     opacity: 0.92;
+    font-weight: 500;
+    letter-spacing: 0.2px;
 }
