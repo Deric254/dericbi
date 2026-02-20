@@ -1,6 +1,7 @@
 import dash
 from dash import html, dcc, Input, Output, no_update
 import dash_bootstrap_components as dbc
+from config.settings import DERICBI_LOGO, DERICBI_SLOGAN
 
 # Initialize Dash app with Bootstrap for premium styling
 app = dash.Dash(
@@ -14,9 +15,14 @@ server = app.server
 # Sidebar navigation
 sidebar = html.Div(
     [
+        html.Img(
+            src=DERICBI_LOGO,
+            alt="DericBI Logo",
+            style={"height": "48px", "width": "auto", "marginBottom": "0.75rem"},
+        ),
         html.H2("DericBI", className="display-6"),
         html.Hr(),
-        html.P("Data in. Cash out.", className="lead"),
+        html.P(DERICBI_SLOGAN, className="lead"),
         dbc.Nav(
             [
                 dbc.NavLink("Ingestion", href="/ingestion", active="exact"),

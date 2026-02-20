@@ -10,7 +10,7 @@ HUGGINGFACE_MODEL = os.getenv("HUGGINGFACE_MODEL", "google/flan-t5-large")
 DB_CONNECTION_STRING = os.getenv("DB_CONNECTION_STRING", "postgresql://user:password@localhost:5432/dericbi_db")
 
 # Branding constants
-DERICBI_LOGO = "/assets/logo.png"
+DERICBI_LOGO = "https://dericbi.vercel.app/assets/img/logo.png"
 DERICBI_SLOGAN = "Data in. Cash out."
 DERICBI_CONTACT = {
     "website": "https://dericbi.vercel.app",
