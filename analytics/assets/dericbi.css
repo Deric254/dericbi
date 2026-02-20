@@ -454,7 +454,7 @@ input:focus, textarea:focus, select:focus, .form-control:focus, .form-select:foc
 }
 
 .analytics-sidebar {
-    background-color: var(--exes-primary-green) !important;
+    background-color: var(--exes-secondary-green) !important;
     border-right: 1px solid rgba(250, 204, 21, 0.45);
 }
 
