@@ -32,10 +32,12 @@ sidebar = html.Div(
                 dbc.NavLink("Insights", href="/insights", active="exact"),
                 dbc.NavLink("Reporting", href="/reporting", active="exact"),
             ],
+            className="analytics-sidebar-nav",
             vertical=True,
             pills=True,
         ),
     ],
+    className="analytics-sidebar",
     style={
         "position": "fixed",
         "top": 0,
@@ -43,8 +45,8 @@ sidebar = html.Div(
         "bottom": 0,
         "width": "16rem",
         "padding": "2rem 1rem",
-        "backgroundColor": "#111111",
-        "color": "white"
+        "backgroundColor": "#49A078",
+        "color": "#ffffff"
     },
 )
 

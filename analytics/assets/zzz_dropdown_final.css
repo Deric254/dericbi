@@ -77,3 +77,67 @@ div[class*="Select-arrow"],
 div[class*="Select-arrow-zone"] {
     color: #ffffff !important;
 }
+
+/* Main-system brand palette alignment */
+div[id="db-type"] div[class*="Select-control"],
+div[class*="dash-dropdown"] div[class*="Select-control"] {
+    background-color: #ffffff !important;
+    border-color: #e5e7eb !important;
+    color: #1f2937 !important;
+}
+
+div[id="db-type"] div[class*="Select-value-label"],
+div[id="db-type"] div[class*="Select-value"],
+div[class*="dash-dropdown"] div[class*="Select-value-label"],
+div[class*="dash-dropdown"] div[class*="Select-value"] {
+    background-color: #ffffff !important;
+    color: #1f2937 !important;
+}
+
+div[id="db-type"] div[class*="Select-option"],
+div[id="db-type"] div[class*="VirtualizedSelectOption"],
+div[id="db-type"] div[class*="Select-menu"] div,
+div[class*="dash-dropdown"] div[class*="Select-option"],
+div[class*="dash-dropdown"] div[class*="VirtualizedSelectOption"],
+div[class*="Select-menu"] div[class*="Select-option"],
+div[class*="Select-menu-outer"] div[class*="Select-option"] {
+    background-color: #ffffff !important;
+    color: #1f2937 !important;
+    border-color: #e5e7eb !important;
+    -webkit-text-fill-color: #1f2937 !important;
+}
+
+div[class*="Select-menu-outer"],
+div[class*="Select-menu"] {
+    background-color: #ffffff !important;
+    border-color: #e5e7eb !important;
+}
+
+div[class*="Select-option"][class*="is-focused"],
+div[class*="Select-option"]:hover {
+    background-color: rgba(250, 204, 21, 0.18) !important;
+    color: #1f2937 !important;
+    -webkit-text-fill-color: #1f2937 !important;
+}
+
+div[class*="Select-option"][class*="is-selected"] {
+    background-color: rgba(73, 160, 120, 0.18) !important;
+    color: #1f2937 !important;
+    -webkit-text-fill-color: #1f2937 !important;
+}
+
+div[class*="Select-option"] *,
+div[class*="Select-value"] *,
+div[class*="Select-menu"] * {
+    color: #1f2937 !important;
+    -webkit-text-fill-color: #1f2937 !important;
+}
+
+div[class*="Select-placeholder"] {
+    color: #6b7280 !important;
+}
+
+div[class*="Select-arrow"],
+div[class*="Select-arrow-zone"] {
+    color: #374151 !important;
+}
