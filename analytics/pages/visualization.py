@@ -62,6 +62,69 @@ layout = html.Div([
             value="none",
             placeholder="Select aggregation"
         ),
+        html.Label("Chart title"),
+        dcc.Input(id="viz-title", type="text", placeholder="Custom chart title (optional)", style={"width": "100%"}),
+        html.Div([
+            html.Div([
+                html.Label("X-axis label"),
+                dcc.Input(id="viz-x-label", type="text", placeholder="Custom X label", style={"width": "100%"}),
+            ], style={"flex": "1", "marginRight": "8px"}),
+            html.Div([
+                html.Label("Y-axis label"),
+                dcc.Input(id="viz-y-label", type="text", placeholder="Custom Y label", style={"width": "100%"}),
+            ], style={"flex": "1"}),
+        ], style={"display": "flex", "marginTop": "8px"}),
+        html.Label("Theme", style={"marginTop": "8px"}),
+        dcc.Dropdown(
+            id="viz-theme",
+            options=[
+                {"label": "Clean White", "value": "plotly_white"},
+                {"label": "Simple White", "value": "simple_white"},
+                {"label": "Professional Gray", "value": "seaborn"},
+                {"label": "Soft Grid", "value": "ggplot2"},
+                {"label": "Dark", "value": "plotly_dark"},
+            ],
+            value="plotly_white",
+            clearable=False,
+        ),
+        html.Label("Value label format", style={"marginTop": "8px"}),
+        dcc.Dropdown(
+            id="viz-value-format",
+            options=[
+                {"label": "Plain", "value": "plain"},
+                {"label": "K", "value": "k"},
+                {"label": "M", "value": "m"},
+                {"label": "B", "value": "b"},
+                {"label": "Currency", "value": "currency"},
+                {"label": "Percent", "value": "percent"},
+            ],
+            value="plain",
+            clearable=False,
+        ),
+        html.Label("Currency (if Currency format)"),
+        dcc.Dropdown(
+            id="viz-value-currency",
+            options=[
+                {"label": "USD", "value": "USD"},
+                {"label": "EUR", "value": "EUR"},
+                {"label": "GBP", "value": "GBP"},
+                {"label": "KES", "value": "KES"},
+                {"label": "INR", "value": "INR"},
+                {"label": "JPY", "value": "JPY"},
+            ],
+            value="USD",
+            clearable=False,
+        ),
+        dcc.Checklist(
+            id="viz-style-options",
+            options=[
+                {"label": "Show data labels", "value": "labels"},
+                {"label": "Convert bars/lines/histograms to %", "value": "percent"},
+                {"label": "Show legend", "value": "legend"},
+            ],
+            value=["legend"],
+            style={"marginTop": "8px"}
+        ),
         dcc.Checklist(
             id="viz-auto-toggle",
             options=[{"label": "Generate visuals for all columns", "value": "auto"}],
@@ -133,7 +196,22 @@ layout = html.Div([
 
     html.Div(id="visualization-message", style={"marginBottom": "10px", "color": "#00ffcc"}),
     html.Div(id="kpi-content", className="kpi-container"),
-    dcc.Graph(id="custom-visualization"),
+    dcc.Graph(
+        id="custom-visualization",
+        config={
+            "displaylogo": False,
+            "responsive": True,
+            "scrollZoom": True,
+            "editable": True,
+            "edits": {
+                "titleText": True,
+                "axisTitleText": True,
+                "legendText": True,
+                "annotationText": True,
+            },
+            "toImageButtonOptions": {"format": "png", "filename": "dericbi_visual", "scale": 2},
+        },
+    ),
     html.H4("All-Column Visualizations", style={"marginTop": "20px"}),
     html.Div(id="all-visualization-content", className="chart-grid")
 ])
@@ -162,7 +240,8 @@ def _detect_datetime_columns(df: pd.DataFrame, min_valid_ratio: float = 0.7) -> 
 
 
 def _build_custom_figure(df: pd.DataFrame, chart_type: str, x_col: str | None, y_col: str | None,
-                         color_col: str | None, size_col: str | None, aggregation: str):
+                         color_col: str | None, size_col: str | None, aggregation: str,
+                         normalize_percent: bool = False):
     working_df = df.copy()
 
     if chart_type == "heatmap":
@@ -200,13 +279,31 @@ def _build_custom_figure(df: pd.DataFrame, chart_type: str, x_col: str | None, y
         working_df = grouped
 
     if chart_type == "bar":
+        if normalize_percent and y_col and y_col in working_df.columns and pd.api.types.is_numeric_dtype(working_df[y_col]):
+            total = working_df[y_col].sum()
+            if total:
+                pct_col = f"{y_col}_pct"
+                working_df[pct_col] = (working_df[y_col] / total) * 100
+                y_col = pct_col
         return px.bar(working_df, x=x_col, y=y_col, color=color_col, title=f"Bar: {y_col or 'count'} by {x_col}")
     if chart_type == "line":
+        if normalize_percent and y_col and y_col in working_df.columns and pd.api.types.is_numeric_dtype(working_df[y_col]):
+            total = working_df[y_col].sum()
+            if total:
+                pct_col = f"{y_col}_pct"
+                working_df[pct_col] = (working_df[y_col] / total) * 100
+                y_col = pct_col
         return px.line(working_df, x=x_col, y=y_col, color=color_col, title=f"Line: {y_col or 'count'} by {x_col}")
     if chart_type == "scatter":
         return px.scatter(working_df, x=x_col, y=y_col, color=color_col, size=size_col, title=f"Scatter: {y_col} vs {x_col}")
     if chart_type == "histogram":
-        return px.histogram(working_df, x=x_col, color=color_col, title=f"Histogram: {x_col}")
+        return px.histogram(
+            working_df,
+            x=x_col,
+            color=color_col,
+            title=f"Histogram: {x_col}",
+            histnorm="percent" if normalize_percent else None,
+        )
     if chart_type == "box":
         return px.box(working_df, x=x_col, y=y_col, color=color_col, title=f"Box Plot: {y_col or x_col}")
     if chart_type == "violin":
@@ -218,6 +315,73 @@ def _build_custom_figure(df: pd.DataFrame, chart_type: str, x_col: str | None, y
         return px.pie(working_df, names=x_col, values=y_col, title=f"Pie: {y_col} share by {x_col}")
 
     return px.scatter(title="Unsupported chart type")
+
+
+def _format_value_for_label(value, value_format: str, currency: str) -> str:
+    numeric = pd.to_numeric(pd.Series([value]), errors="coerce").iloc[0]
+    if pd.isna(numeric):
+        return "N/A"
+    if value_format == "percent":
+        return f"{numeric:.2f}%"
+    return format_compact_number(float(numeric), number_format=value_format, currency=currency)
+
+
+def _style_figure(
+    figure: go.Figure,
+    chart_type: str,
+    title: str | None,
+    x_label: str | None,
+    y_label: str | None,
+    theme: str,
+    show_data_labels: bool,
+    show_legend: bool,
+    value_format: str,
+    currency: str,
+):
+    figure.update_layout(
+        template=theme or "plotly_white",
+        title=title or figure.layout.title.text,
+        legend_title_text="",
+        hovermode="closest",
+        margin=dict(l=40, r=20, t=60, b=40),
+        showlegend=show_legend,
+    )
+
+    if x_label:
+        figure.update_xaxes(title_text=x_label)
+    if y_label:
+        figure.update_yaxes(title_text=y_label)
+
+    if value_format in {"k", "m", "b"}:
+        figure.update_yaxes(tickformat=".2s")
+    elif value_format == "percent":
+        figure.update_yaxes(ticksuffix="%")
+
+    if chart_type == "pie":
+        if show_data_labels:
+            figure.update_traces(textinfo="label+percent", textposition="outside")
+        else:
+            figure.update_traces(textinfo="none")
+        return figure
+
+    if not show_data_labels:
+        figure.update_traces(text=None)
+        return figure
+
+    for trace in figure.data:
+        values = getattr(trace, "y", None)
+        if values is None:
+            continue
+        formatted_labels = [_format_value_for_label(v, value_format, currency) for v in values]
+        trace.text = formatted_labels
+        if chart_type == "line":
+            trace.textposition = "top center"
+        elif chart_type == "scatter":
+            trace.textposition = "top center"
+        else:
+            trace.textposition = "outside"
+
+    return figure
 
 
 def _apply_slicers(df: pd.DataFrame, slicer1_col: str | None, slicer1_values: list | None,
@@ -257,16 +421,31 @@ def _build_all_column_visuals(df: pd.DataFrame):
 
     for col in df.columns:
         if pd.api.types.is_numeric_dtype(df[col]):
-            visuals.append(dcc.Graph(figure=px.histogram(df, x=col, title=f"Distribution: {col}")))
+            visuals.append(
+                dcc.Graph(
+                    figure=px.histogram(df, x=col, title=f"Distribution: {col}"),
+                    config={"displaylogo": False, "responsive": True, "scrollZoom": True, "editable": True},
+                )
+            )
         elif col in datetime_cols:
             parsed = pd.to_datetime(df[col], errors="coerce")
             counts = parsed.dropna().dt.to_period("M").astype(str).value_counts().sort_index().reset_index()
             counts.columns = ["period", "count"]
-            visuals.append(dcc.Graph(figure=px.line(counts, x="period", y="count", title=f"Records over time: {col}")))
+            visuals.append(
+                dcc.Graph(
+                    figure=px.line(counts, x="period", y="count", title=f"Records over time: {col}"),
+                    config={"displaylogo": False, "responsive": True, "scrollZoom": True, "editable": True},
+                )
+            )
         else:
             counts = df[col].astype(str).fillna("N/A").value_counts().head(20).reset_index()
             counts.columns = [col, "count"]
-            visuals.append(dcc.Graph(figure=px.bar(counts, x=col, y="count", title=f"Top values: {col}")))
+            visuals.append(
+                dcc.Graph(
+                    figure=px.bar(counts, x=col, y="count", title=f"Top values: {col}"),
+                    config={"displaylogo": False, "responsive": True, "scrollZoom": True, "editable": True},
+                )
+            )
 
     return visuals
 
@@ -387,6 +566,13 @@ def update_kpi_definitions(add_clicks, clear_clicks, definitions, column, operat
     Input("viz-color", "value"),
     Input("viz-size", "value"),
     Input("viz-aggregation", "value"),
+    Input("viz-title", "value"),
+    Input("viz-x-label", "value"),
+    Input("viz-y-label", "value"),
+    Input("viz-theme", "value"),
+    Input("viz-value-format", "value"),
+    Input("viz-value-currency", "value"),
+    Input("viz-style-options", "value"),
     Input("viz-auto-toggle", "value"),
     Input("viz-slicer1-column", "value"),
     Input("viz-slicer1-values", "value"),
@@ -395,6 +581,7 @@ def update_kpi_definitions(add_clicks, clear_clicks, definitions, column, operat
     Input("viz-kpi-definitions", "data")
 )
 def render_visualizations(shared_dataset, chart_type, x_col, y_col, color_col, size_col, aggregation,
+                          chart_title, x_label, y_label, theme, value_format, value_currency, style_options,
                           auto_toggle, slicer1_col, slicer1_values, slicer2_col, slicer2_values, kpi_definitions):
     if not shared_dataset or not shared_dataset.get("records"):
         empty_fig = px.scatter(title="Upload data to start visualizing")
@@ -430,6 +617,11 @@ def render_visualizations(shared_dataset, chart_type, x_col, y_col, color_col, s
         kpi_cards = [html.Div([html.P("Add KPI definitions above to create custom KPI cards.")], className="kpi-card")]
 
     try:
+        style_options = style_options or []
+        show_data_labels = "labels" in style_options
+        normalize_percent = "percent" in style_options
+        show_legend = "legend" in style_options
+
         custom_figure = _build_custom_figure(
             df=df,
             chart_type=chart_type,
@@ -438,6 +630,19 @@ def render_visualizations(shared_dataset, chart_type, x_col, y_col, color_col, s
             color_col=(color_col or None),
             size_col=(size_col or None),
             aggregation=aggregation,
+            normalize_percent=normalize_percent,
+        )
+        custom_figure = _style_figure(
+            figure=custom_figure,
+            chart_type=chart_type,
+            title=chart_title,
+            x_label=x_label,
+            y_label=y_label,
+            theme=theme,
+            show_data_labels=show_data_labels,
+            show_legend=show_legend,
+            value_format=value_format or "plain",
+            currency=value_currency or "USD",
         )
     except Exception as exc:
         custom_figure = px.scatter(title=f"Visualization error: {exc}")
