@@ -5,12 +5,38 @@ import plotly.graph_objects as go
 import pandas as pd
 from services.export_utils import format_compact_number, visuals_to_html, visuals_to_pdf_bytes, figures_to_zip_bytes
 
+
+COLOR_PALETTES = {
+    "plotly": px.colors.qualitative.Plotly,
+    "safe": px.colors.qualitative.Safe,
+    "vivid": px.colors.qualitative.Vivid,
+    "bold": px.colors.qualitative.Bold,
+    "pastel": px.colors.qualitative.Pastel,
+    "dark24": px.colors.qualitative.Dark24,
+}
+
+INTERACTIVE_GRAPH_CONFIG = {
+    "displaylogo": False,
+    "responsive": True,
+    "scrollZoom": True,
+    "editable": True,
+    "edits": {
+        "titleText": True,
+        "axisTitleText": True,
+        "legendText": True,
+        "annotationText": True,
+        "shapePosition": True,
+    },
+    "toImageButtonOptions": {"format": "png", "filename": "dericbi_visual", "scale": 2},
+}
+
 dash.register_page(__name__, path="/visualization", name="Visualization & KPIs")
 
 layout = html.Div([
     html.H2("DericBI Analytics Engine - Visualization & KPIs", className="page-title"),
     dcc.Store(id="viz-kpi-definitions", storage_type="session", data=[]),
     dcc.Store(id="viz-figure-store", storage_type="session", data=[]),
+    dcc.Store(id="viz-user-charts", storage_type="session", data=[]),
 
     html.Div([
         html.H4("Slicers"),
@@ -35,6 +61,7 @@ layout = html.Div([
                 {"label": "Box", "value": "box"},
                 {"label": "Violin", "value": "violin"},
                 {"label": "Pie", "value": "pie"},
+                {"label": "Pareto", "value": "pareto"},
                 {"label": "Heatmap (numeric correlation)", "value": "heatmap"}
             ],
             value="bar",
@@ -87,6 +114,20 @@ layout = html.Div([
             value="plotly_white",
             clearable=False,
         ),
+        html.Label("Color palette", style={"marginTop": "8px"}),
+        dcc.Dropdown(
+            id="viz-palette",
+            options=[
+                {"label": "Plotly", "value": "plotly"},
+                {"label": "Safe", "value": "safe"},
+                {"label": "Vivid", "value": "vivid"},
+                {"label": "Bold", "value": "bold"},
+                {"label": "Pastel", "value": "pastel"},
+                {"label": "Dark24", "value": "dark24"},
+            ],
+            value="plotly",
+            clearable=False,
+        ),
         html.Label("Value label format", style={"marginTop": "8px"}),
         dcc.Dropdown(
             id="viz-value-format",
@@ -124,6 +165,18 @@ layout = html.Div([
             ],
             value=["legend"],
             style={"marginTop": "8px"}
+        ),
+        html.Label("Max categories/bars", style={"marginTop": "8px"}),
+        dcc.Slider(id="viz-max-bars", min=3, max=12, step=1, value=6),
+        html.Label("High-cardinality handling"),
+        dcc.Dropdown(
+            id="viz-category-reduction",
+            options=[
+                {"label": "Numeric bands (best for payments)", "value": "bins"},
+                {"label": "Top categories + Other", "value": "top_other"},
+            ],
+            value="bins",
+            clearable=False,
         ),
         dcc.Checklist(
             id="viz-auto-toggle",
@@ -196,22 +249,16 @@ layout = html.Div([
 
     html.Div(id="visualization-message", style={"marginBottom": "10px", "color": "#00ffcc"}),
     html.Div(id="kpi-content", className="kpi-container"),
+    html.Div([
+        html.Button("Add Current Chart", id="viz-save-chart", n_clicks=0),
+        html.Button("Clear Added Charts", id="viz-clear-saved-charts", n_clicks=0, style={"marginLeft": "8px"}),
+    ], style={"marginBottom": "10px"}),
     dcc.Graph(
         id="custom-visualization",
-        config={
-            "displaylogo": False,
-            "responsive": True,
-            "scrollZoom": True,
-            "editable": True,
-            "edits": {
-                "titleText": True,
-                "axisTitleText": True,
-                "legendText": True,
-                "annotationText": True,
-            },
-            "toImageButtonOptions": {"format": "png", "filename": "dericbi_visual", "scale": 2},
-        },
+        config=INTERACTIVE_GRAPH_CONFIG,
     ),
+    html.H4("Saved Custom Charts", style={"marginTop": "20px"}),
+    html.Div(id="saved-visualization-content", className="chart-grid"),
     html.H4("All-Column Visualizations", style={"marginTop": "20px"}),
     html.Div(id="all-visualization-content", className="chart-grid")
 ])
@@ -239,10 +286,65 @@ def _detect_datetime_columns(df: pd.DataFrame, min_valid_ratio: float = 0.7) -> 
     return detected
 
 
+def _reduce_to_max_categories(
+    df: pd.DataFrame,
+    x_col: str | None,
+    y_col: str | None,
+    aggregation: str,
+    max_bars: int,
+    reduction_mode: str,
+) -> tuple[pd.DataFrame, str | None, str | None]:
+    if not x_col or x_col not in df.columns:
+        return df, x_col, y_col
+
+    unique_count = df[x_col].nunique(dropna=False)
+    if unique_count <= max_bars:
+        return df, x_col, y_col
+
+    if reduction_mode == "bins" and y_col and y_col in df.columns and pd.api.types.is_numeric_dtype(df[y_col]):
+        numeric_series = pd.to_numeric(df[y_col], errors="coerce")
+        valid = numeric_series.dropna()
+        if valid.nunique() >= 2:
+            bins = min(max_bars, int(valid.nunique()))
+            band_col = f"{y_col}_band"
+            binned = pd.cut(numeric_series, bins=bins, include_lowest=True, duplicates="drop")
+            working = df.assign(**{band_col: binned.astype(str)})
+
+            if aggregation in {"sum", "mean", "min", "max"}:
+                out_col = f"{aggregation}_{y_col}"
+                grouped = working.groupby(band_col, dropna=False).agg(**{out_col: (y_col, aggregation)}).reset_index()
+                return grouped, band_col, out_col
+
+            grouped = working.groupby(band_col, dropna=False).size().reset_index(name="count")
+            return grouped, band_col, "count"
+
+    metric_col = None
+    if y_col and y_col in df.columns and pd.api.types.is_numeric_dtype(df[y_col]):
+        metric_col = y_col
+
+    if metric_col:
+        grouped = df.groupby(x_col, dropna=False)[metric_col].sum().reset_index(name=metric_col)
+        target_y = metric_col
+    else:
+        grouped = df.groupby(x_col, dropna=False).size().reset_index(name="count")
+        target_y = "count"
+
+    grouped = grouped.sort_values(target_y, ascending=False)
+    keep_count = max(max_bars - 1, 1)
+    top = grouped.head(keep_count).copy()
+    rest = grouped.iloc[keep_count:]
+    if not rest.empty:
+        other_value = rest[target_y].sum()
+        top = pd.concat([top, pd.DataFrame([{x_col: "Other", target_y: other_value}])], ignore_index=True)
+    return top, x_col, target_y
+
+
 def _build_custom_figure(df: pd.DataFrame, chart_type: str, x_col: str | None, y_col: str | None,
                          color_col: str | None, size_col: str | None, aggregation: str,
-                         normalize_percent: bool = False):
+                         normalize_percent: bool = False, max_bars: int = 6,
+                         category_reduction: str = "bins", color_palette: str = "plotly"):
     working_df = df.copy()
+    color_sequence = COLOR_PALETTES.get(color_palette, px.colors.qualitative.Plotly)
 
     if chart_type == "heatmap":
         numeric_df = working_df.select_dtypes(include="number")
@@ -253,7 +355,7 @@ def _build_custom_figure(df: pd.DataFrame, chart_type: str, x_col: str | None, y
     if not x_col and chart_type in {"bar", "line", "histogram", "box", "violin", "pie"}:
         x_col = working_df.columns[0]
 
-    if chart_type in {"bar", "line", "pie"} and x_col and aggregation != "none":
+    if chart_type in {"bar", "line", "pie", "pareto"} and x_col and aggregation != "none":
         if aggregation == "count":
             grouped = working_df.groupby(x_col, dropna=False).size().reset_index(name="count")
             y_col = "count"
@@ -278,6 +380,18 @@ def _build_custom_figure(df: pd.DataFrame, chart_type: str, x_col: str | None, y
                 y_col = agg_output_col
         working_df = grouped
 
+    if chart_type in {"bar", "line", "pie", "pareto"}:
+        working_df, x_col, y_col = _reduce_to_max_categories(
+            working_df,
+            x_col=x_col,
+            y_col=y_col,
+            aggregation=aggregation,
+            max_bars=max_bars,
+            reduction_mode=category_reduction,
+        )
+
+    safe_color_col = color_col if color_col and color_col in working_df.columns else None
+
     if chart_type == "bar":
         if normalize_percent and y_col and y_col in working_df.columns and pd.api.types.is_numeric_dtype(working_df[y_col]):
             total = working_df[y_col].sum()
@@ -285,7 +399,14 @@ def _build_custom_figure(df: pd.DataFrame, chart_type: str, x_col: str | None, y
                 pct_col = f"{y_col}_pct"
                 working_df[pct_col] = (working_df[y_col] / total) * 100
                 y_col = pct_col
-        return px.bar(working_df, x=x_col, y=y_col, color=color_col, title=f"Bar: {y_col or 'count'} by {x_col}")
+        return px.bar(
+            working_df,
+            x=x_col,
+            y=y_col,
+            color=safe_color_col,
+            title=f"Bar: {y_col or 'count'} by {x_col}",
+            color_discrete_sequence=color_sequence,
+        )
     if chart_type == "line":
         if normalize_percent and y_col and y_col in working_df.columns and pd.api.types.is_numeric_dtype(working_df[y_col]):
             total = working_df[y_col].sum()
@@ -293,26 +414,111 @@ def _build_custom_figure(df: pd.DataFrame, chart_type: str, x_col: str | None, y
                 pct_col = f"{y_col}_pct"
                 working_df[pct_col] = (working_df[y_col] / total) * 100
                 y_col = pct_col
-        return px.line(working_df, x=x_col, y=y_col, color=color_col, title=f"Line: {y_col or 'count'} by {x_col}")
+        return px.line(
+            working_df,
+            x=x_col,
+            y=y_col,
+            color=safe_color_col,
+            title=f"Line: {y_col or 'count'} by {x_col}",
+            color_discrete_sequence=color_sequence,
+            markers=True,
+        )
     if chart_type == "scatter":
-        return px.scatter(working_df, x=x_col, y=y_col, color=color_col, size=size_col, title=f"Scatter: {y_col} vs {x_col}")
+        safe_size_col = size_col if size_col and size_col in working_df.columns else None
+        return px.scatter(
+            working_df,
+            x=x_col,
+            y=y_col,
+            color=safe_color_col,
+            size=safe_size_col,
+            title=f"Scatter: {y_col} vs {x_col}",
+            color_discrete_sequence=color_sequence,
+        )
     if chart_type == "histogram":
         return px.histogram(
             working_df,
             x=x_col,
-            color=color_col,
+            color=safe_color_col,
             title=f"Histogram: {x_col}",
             histnorm="percent" if normalize_percent else None,
+            color_discrete_sequence=color_sequence,
         )
     if chart_type == "box":
-        return px.box(working_df, x=x_col, y=y_col, color=color_col, title=f"Box Plot: {y_col or x_col}")
+        return px.box(
+            working_df,
+            x=x_col,
+            y=y_col,
+            color=safe_color_col,
+            title=f"Box Plot: {y_col or x_col}",
+            color_discrete_sequence=color_sequence,
+        )
     if chart_type == "violin":
-        return px.violin(working_df, x=x_col, y=y_col, color=color_col, box=True, points="all", title=f"Violin Plot: {y_col or x_col}")
+        return px.violin(
+            working_df,
+            x=x_col,
+            y=y_col,
+            color=safe_color_col,
+            box=True,
+            points="all",
+            title=f"Violin Plot: {y_col or x_col}",
+            color_discrete_sequence=color_sequence,
+        )
     if chart_type == "pie":
         if not y_col or not pd.api.types.is_numeric_dtype(working_df[y_col]):
             pie_df = working_df.groupby(x_col, dropna=False).size().reset_index(name="count")
-            return px.pie(pie_df, names=x_col, values="count", title=f"Pie: share by {x_col}")
-        return px.pie(working_df, names=x_col, values=y_col, title=f"Pie: {y_col} share by {x_col}")
+            return px.pie(
+                pie_df,
+                names=x_col,
+                values="count",
+                title=f"Pie: share by {x_col}",
+                color_discrete_sequence=color_sequence,
+            )
+        return px.pie(
+            working_df,
+            names=x_col,
+            values=y_col,
+            title=f"Pie: {y_col} share by {x_col}",
+            color_discrete_sequence=color_sequence,
+        )
+    if chart_type == "pareto":
+        if not x_col or x_col not in working_df.columns:
+            return px.scatter(title="Choose an X column for Pareto chart")
+
+        if not y_col or y_col not in working_df.columns or not pd.api.types.is_numeric_dtype(working_df[y_col]):
+            pareto_df = working_df.groupby(x_col, dropna=False).size().reset_index(name="value")
+            y_col = "value"
+        else:
+            pareto_df = working_df.groupby(x_col, dropna=False)[y_col].sum().reset_index(name=y_col)
+
+        pareto_df = pareto_df.sort_values(y_col, ascending=False)
+        total = pareto_df[y_col].sum()
+        pareto_df["cumulative_pct"] = (pareto_df[y_col].cumsum() / total * 100) if total else 0
+
+        fig = go.Figure()
+        fig.add_trace(
+            go.Bar(
+                x=pareto_df[x_col],
+                y=pareto_df[y_col],
+                name="Value",
+                marker_color=color_sequence[0],
+            )
+        )
+        fig.add_trace(
+            go.Scatter(
+                x=pareto_df[x_col],
+                y=pareto_df["cumulative_pct"],
+                name="Cumulative %",
+                mode="lines+markers",
+                marker=dict(color="#facc15"),
+                yaxis="y2",
+            )
+        )
+        fig.update_layout(
+            title=f"Pareto: {y_col} by {x_col}",
+            yaxis=dict(title=y_col),
+            yaxis2=dict(title="Cumulative %", overlaying="y", side="right", range=[0, 100]),
+        )
+        return fig
 
     return px.scatter(title="Unsupported chart type")
 
@@ -333,6 +539,7 @@ def _style_figure(
     x_label: str | None,
     y_label: str | None,
     theme: str,
+    palette: str,
     show_data_labels: bool,
     show_legend: bool,
     value_format: str,
@@ -345,6 +552,7 @@ def _style_figure(
         hovermode="closest",
         margin=dict(l=40, r=20, t=60, b=40),
         showlegend=show_legend,
+        colorway=COLOR_PALETTES.get(palette, px.colors.qualitative.Plotly),
     )
 
     if x_label:
@@ -364,6 +572,13 @@ def _style_figure(
             figure.update_traces(textinfo="none")
         return figure
 
+    if chart_type == "heatmap":
+        if show_data_labels:
+            figure.update_traces(texttemplate="%{z}")
+        else:
+            figure.update_traces(texttemplate=None)
+        return figure
+
     if not show_data_labels:
         figure.update_traces(text=None)
         return figure
@@ -374,12 +589,13 @@ def _style_figure(
             continue
         formatted_labels = [_format_value_for_label(v, value_format, currency) for v in values]
         trace.text = formatted_labels
-        if chart_type == "line":
-            trace.textposition = "top center"
-        elif chart_type == "scatter":
-            trace.textposition = "top center"
-        else:
-            trace.textposition = "outside"
+        if "textposition" in getattr(trace, "_valid_props", {}):
+            if chart_type == "line":
+                trace.textposition = "top center"
+            elif chart_type == "scatter":
+                trace.textposition = "top center"
+            else:
+                trace.textposition = "outside"
 
     return figure
 
@@ -424,7 +640,7 @@ def _build_all_column_visuals(df: pd.DataFrame):
             visuals.append(
                 dcc.Graph(
                     figure=px.histogram(df, x=col, title=f"Distribution: {col}"),
-                    config={"displaylogo": False, "responsive": True, "scrollZoom": True, "editable": True},
+                    config=INTERACTIVE_GRAPH_CONFIG,
                 )
             )
         elif col in datetime_cols:
@@ -434,7 +650,7 @@ def _build_all_column_visuals(df: pd.DataFrame):
             visuals.append(
                 dcc.Graph(
                     figure=px.line(counts, x="period", y="count", title=f"Records over time: {col}"),
-                    config={"displaylogo": False, "responsive": True, "scrollZoom": True, "editable": True},
+                    config=INTERACTIVE_GRAPH_CONFIG,
                 )
             )
         else:
@@ -443,7 +659,7 @@ def _build_all_column_visuals(df: pd.DataFrame):
             visuals.append(
                 dcc.Graph(
                     figure=px.bar(counts, x=col, y="count", title=f"Top values: {col}"),
-                    config={"displaylogo": False, "responsive": True, "scrollZoom": True, "editable": True},
+                    config=INTERACTIVE_GRAPH_CONFIG,
                 )
             )
 
@@ -553,6 +769,51 @@ def update_kpi_definitions(add_clicks, clear_clicks, definitions, column, operat
         )
     return definitions
 
+
+@dash.callback(
+    Output("viz-user-charts", "data"),
+    Input("viz-save-chart", "n_clicks"),
+    Input("viz-clear-saved-charts", "n_clicks"),
+    State("viz-user-charts", "data"),
+    State("custom-visualization", "figure"),
+    State("viz-title", "value"),
+    prevent_initial_call=True,
+)
+def manage_saved_charts(save_clicks, clear_clicks, saved_charts, current_figure, chart_title):
+    action = ctx.triggered_id
+    saved_charts = saved_charts or []
+
+    if action == "viz-clear-saved-charts":
+        return []
+
+    if action == "viz-save-chart" and current_figure:
+        title = chart_title.strip() if chart_title and chart_title.strip() else current_figure.get("layout", {}).get("title", {}).get("text", "Custom Chart")
+        saved_charts.append({"title": title, "figure": current_figure})
+    return saved_charts
+
+
+@dash.callback(
+    Output("saved-visualization-content", "children"),
+    Input("viz-user-charts", "data"),
+)
+def render_saved_charts(saved_charts):
+    if not saved_charts:
+        return [html.Div([html.P("No saved charts yet. Build a chart and click 'Add Current Chart'.")], className="kpi-card")]
+
+    cards = []
+    for index, item in enumerate(saved_charts, start=1):
+        fig_dict = item.get("figure") if isinstance(item, dict) else None
+        if not fig_dict:
+            continue
+        title = item.get("title", f"Custom Chart {index}")
+        cards.append(
+            html.Div([
+                html.H5(title, style={"marginBottom": "8px"}),
+                dcc.Graph(figure=go.Figure(fig_dict), config=INTERACTIVE_GRAPH_CONFIG),
+            ], className="kpi-card", style={"padding": "14px"})
+        )
+    return cards
+
 @dash.callback(
     Output("visualization-message", "children"),
     Output("kpi-content", "children"),
@@ -570,10 +831,14 @@ def update_kpi_definitions(add_clicks, clear_clicks, definitions, column, operat
     Input("viz-x-label", "value"),
     Input("viz-y-label", "value"),
     Input("viz-theme", "value"),
+    Input("viz-palette", "value"),
     Input("viz-value-format", "value"),
     Input("viz-value-currency", "value"),
     Input("viz-style-options", "value"),
+    Input("viz-max-bars", "value"),
+    Input("viz-category-reduction", "value"),
     Input("viz-auto-toggle", "value"),
+    Input("viz-user-charts", "data"),
     Input("viz-slicer1-column", "value"),
     Input("viz-slicer1-values", "value"),
     Input("viz-slicer2-column", "value"),
@@ -581,8 +846,9 @@ def update_kpi_definitions(add_clicks, clear_clicks, definitions, column, operat
     Input("viz-kpi-definitions", "data")
 )
 def render_visualizations(shared_dataset, chart_type, x_col, y_col, color_col, size_col, aggregation,
-                          chart_title, x_label, y_label, theme, value_format, value_currency, style_options,
-                          auto_toggle, slicer1_col, slicer1_values, slicer2_col, slicer2_values, kpi_definitions):
+                          chart_title, x_label, y_label, theme, palette, value_format, value_currency, style_options,
+                          max_bars, category_reduction, auto_toggle, saved_user_charts,
+                          slicer1_col, slicer1_values, slicer2_col, slicer2_values, kpi_definitions):
     if not shared_dataset or not shared_dataset.get("records"):
         empty_fig = px.scatter(title="Upload data to start visualizing")
         return "No uploaded data found. Upload a dataset on the Ingestion page first.", [], empty_fig, [], []
@@ -631,6 +897,9 @@ def render_visualizations(shared_dataset, chart_type, x_col, y_col, color_col, s
             size_col=(size_col or None),
             aggregation=aggregation,
             normalize_percent=normalize_percent,
+            max_bars=int(max_bars or 6),
+            category_reduction=category_reduction or "bins",
+            color_palette=palette or "plotly",
         )
         custom_figure = _style_figure(
             figure=custom_figure,
@@ -639,6 +908,7 @@ def render_visualizations(shared_dataset, chart_type, x_col, y_col, color_col, s
             x_label=x_label,
             y_label=y_label,
             theme=theme,
+            palette=palette or "plotly",
             show_data_labels=show_data_labels,
             show_legend=show_legend,
             value_format=value_format or "plain",
@@ -651,6 +921,10 @@ def render_visualizations(shared_dataset, chart_type, x_col, y_col, color_col, s
     all_figures = [custom_figure]
     for graph_component in all_visuals:
         all_figures.append(go.Figure(graph_component.figure))
+    for saved in (saved_user_charts or []):
+        fig_dict = saved.get("figure") if isinstance(saved, dict) else None
+        if fig_dict:
+            all_figures.append(go.Figure(fig_dict))
     message = f"Loaded {len(df):,} rows and {len(df.columns)} columns after slicers. Visuals are fully dynamic."
 
     return message, kpi_cards, custom_figure, all_visuals, [fig.to_dict() for fig in all_figures]
