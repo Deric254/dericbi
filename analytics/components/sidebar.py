@@ -1,0 +1,35 @@
+from dash import html
+import dash_bootstrap_components as dbc
+
+def sidebar():
+    return html.Div(
+        [
+            html.H2("DericBI", className="display-6"),
+            html.Hr(),
+            html.P("Data in. Cash out.", className="lead"),
+            dbc.Nav(
+                [
+                    dbc.NavLink("Home", href="/", active="exact"),
+                    dbc.NavLink("Ingestion", href="/ingestion", active="exact"),
+                    dbc.NavLink("Cleaning", href="/cleaning", active="exact"),
+                    dbc.NavLink("Exploration", href="/exploration", active="exact"),
+                    dbc.NavLink("Visualization", href="/visualization", active="exact"),
+                    dbc.NavLink("Insights", href="/insights", active="exact"),
+                    dbc.NavLink("Reporting", href="/reporting", active="exact"),
+                ],
+                vertical=True,
+                pills=True,
+            ),
+        ],
+        style={
+            "position": "fixed",
+            "top": 0,
+            "left": 0,
+            "bottom": 0,
+            "width": "16rem",
+            "padding": "2rem 1rem",
+            "backgroundColor": "#111111",
+            "color": "white",
+            "overflowY": "auto"
+        },
+    )

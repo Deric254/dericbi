@@ -1,0 +1,359 @@
+/* Global Theme */
+body {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+label, p, h1, h2, h3, h4, h5, h6, span, li, div {
+    color: #e9f3ff;
+}
+
+/* Page Titles */
+.page-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #00c9ff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* KPI Cards */
+.kpi-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.kpi-card {
+    flex: 1;
+    min-width: 200px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease-in-out;
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+}
+
+.kpi-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffdd00;
+}
+
+/* Chart Grid */
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+}
+
+/* Sidebar */
+.display-6 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffdd00;
+}
+
+.lead {
+    font-size: 16px;
+    color: #00c9ff;
+}
+
+/* Buttons */
+button, .dash-button {
+    background: linear-gradient(90deg, #00c9ff, #92fe9d);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.45);
+}
+
+button:hover, .dash-button:hover {
+    background: linear-gradient(90deg, #92fe9d, #00c9ff);
+}
+
+/* Tables */
+.dash-table-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* Inputs */
+input, .dash-input, .dash-dropdown {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    padding: 8px;
+    color: #fff;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input, textarea, select, option, .form-control, .form-select {
+    background-color: #1f2a36 !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+input:focus, textarea:focus, select:focus, .form-control:focus, .form-select:focus {
+    background-color: #233142 !important;
+    color: #ffffff !important;
+    border-color: #00c9ff !important;
+    box-shadow: 0 0 0 0.15rem rgba(0, 201, 255, 0.25) !important;
+}
+
+/* Dash Dropdown (react-select) contrast fixes */
+.Select-control,
+.Select-menu-outer,
+.Select-menu,
+.Select-option,
+.Select-value,
+.Select-value-label,
+.Select--single > .Select-control .Select-value,
+.Select-placeholder,
+.Select-input > input {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+.Select-option {
+    font-weight: 400 !important;
+    opacity: 1 !important;
+}
+
+.Select-placeholder {
+    color: #111111 !important;
+}
+
+.Select-control {
+    border: 1px solid #cbd5e1 !important;
+}
+
+.Select-option.is-focused {
+    background-color: #e2e8f0 !important;
+    color: #000000 !important;
+    font-weight: 400 !important;
+    opacity: 1 !important;
+}
+
+.Select-option.is-selected {
+    background-color: #bae6fd !important;
+    color: #000000 !important;
+    font-weight: 500 !important;
+    opacity: 1 !important;
+}
+
+.VirtualizedSelectOption {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-weight: 400 !important;
+    opacity: 1 !important;
+}
+
+.Select-arrow,
+.Select-clear-zone,
+.Select-arrow-zone {
+    color: #000000 !important;
+}
+
+.Select--multi .Select-value,
+.Select--multi .Select-value-label,
+.Select-input,
+.Select-input > input,
+.VirtualizedSelectFocusedOption,
+.Select-noresults {
+    color: #000000 !important;
+}
+
+.VirtualizedSelectFocusedOption {
+    font-weight: 400 !important;
+    opacity: 1 !important;
+    background-color: #e2e8f0 !important;
+}
+
+/* Hard override for dropdown menu option text (all descendants) */
+.Select-menu-outer,
+.Select-menu-outer *,
+.Select-menu,
+.Select-menu *,
+.Select-option,
+.Select-option *,
+.VirtualizedSelectOption,
+.VirtualizedSelectOption *,
+.VirtualizedSelectFocusedOption,
+.VirtualizedSelectFocusedOption * {
+    color: #000000 !important;
+    font-weight: 400 !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+}
+
+/* Ensure selected multi tags still have black text */
+.Select--multi .Select-value,
+.Select--multi .Select-value * {
+    color: #000000 !important;
+}
+
+/* Checkbox-style dropdown panel (search + select all) */
+.react-dropdown-tree-select,
+.react-dropdown-tree-select *,
+.react-dropdown-tree-select .dropdown,
+.react-dropdown-tree-select .dropdown-content,
+.react-dropdown-tree-select .dropdown-content * {
+    color: #000000 !important;
+}
+
+.react-dropdown-tree-select .dropdown-content,
+.react-dropdown-tree-select .dropdown-content ul,
+.react-dropdown-tree-select .dropdown-content li,
+.react-dropdown-tree-select .tag-list,
+.react-dropdown-tree-select .tag-item {
+    background: #ffffff !important;
+}
+
+.react-dropdown-tree-select input,
+.react-dropdown-tree-select input::placeholder,
+.react-dropdown-tree-select .search input,
+.react-dropdown-tree-select .node label,
+.react-dropdown-tree-select .node .node-label,
+.react-dropdown-tree-select .select-all,
+.react-dropdown-tree-select .deselect-all {
+    color: #000000 !important;
+    opacity: 1 !important;
+}
+
+/* Dash DataTable contrast fixes */
+.dash-table-container .dash-spreadsheet-container,
+.dash-table-container .dash-spreadsheet-inner,
+.dash-table-container table {
+    background-color: #1f2a36 !important;
+    color: #ffffff !important;
+}
+
+.dash-table-container th {
+    background-color: #2a3b4f !important;
+    color: #ffffff !important;
+    border-color: #3b4f66 !important;
+}
+
+.dash-table-container td {
+    background-color: #1f2a36 !important;
+    color: #ffffff !important;
+    border-color: #314459 !important;
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+/* Insight Output */
+#insight-output {
+    font-size: 18px;
+    font-style: italic;
+    color: #00ffcc;
+}
+
+/* Cover Page Styling */
+.cover-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ffdd00;
+    margin-top: 20px;
+}
+
+.cover-slogan {
+    font-size: 20px;
+    font-weight: 500;
+    color: #00c9ff;
+    margin-top: 10px;
+}
+
+.report-cover {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    color: #fff;
+}
+
+/* FINAL DROPDOWN TEXT VISIBILITY - HIGHEST PRIORITY */
+body div.dash-dropdown .Select-option,
+body div.dash-dropdown .Select-menu .Select-option,
+body div.dash-dropdown .VirtualizedSelectOption,
+body div .Select-option,
+body div .Select-menu-outer .Select-option,
+body .Select-option,
+body .Select-option span,
+body .Select-option div {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+    font-weight: 400 !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+body div.dash-dropdown .Select-option.is-focused,
+body div .Select-option.is-focused,
+body .Select-option.is-focused span,
+body .Select-option.is-focused div {
+    background-color: #e2e8f0 !important;
+    color: #000000 !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+body div.dash-dropdown .Select-option.is-selected,
+body div .Select-option.is-selected,
+body .Select-option.is-selected span,
+body .Select-option.is-selected div {
+    background-color: #bae6fd !important;
+    color: #000000 !important;
+    font-weight: 500 !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* Force text content to be visible */
+.Select-menu .Select-option *,
+.VirtualizedSelectOption * {
+    color: #000000 !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 11 !important;
+}
+
+/* Selected value in control box */
+.Select-value-label,
+.Select-value-label *,
+.Select--single .Select-value {
+    color: #000000 !important;
+    opacity: 1 !important;
+    font-weight: 400 !important;
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* Dropdown menu container layering */
+.Select-menu-outer,
+.Select-menu {
+    z-index: 1000 !important;
+    position: relative !important;
+}

@@ -1,9 +1,0 @@
-<svg width="240" height="80" viewBox="0 0 240 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="240" height="80" rx="18" fill="#0F1111"/>
-  <path d="M20 56V24H34C40.6 24 46 29.4 46 36C46 42.6 40.6 48 34 48H28V56H20ZM28 40H34C36.2 40 38 38.2 38 36C38 33.8 36.2 32 34 32H28V40Z" fill="#F2B705"/>
-  <path d="M58 24H72C79.2 24 85 29.8 85 37C85 44.2 79.2 50 72 50H58V24ZM66 32V42H71.5C74.6 42 77 39.6 77 37C77 34.4 74.6 32 71.5 32H66Z" fill="#F5F4EF"/>
-  <path d="M100 56V24H108V48H124V56H100Z" fill="#F5F4EF"/>
-  <path d="M136 56V24H144V56H136Z" fill="#F5F4EF"/>
-  <path d="M156 56V24H170C177.2 24 183 29.8 183 37C183 44.2 177.2 50 170 50H156V56ZM164 32V42H169.5C172.6 42 175 39.6 175 37C175 34.4 172.6 32 169.5 32H164Z" fill="#F2B705"/>
-  <text x="192" y="50" font-family="Space Grotesk, Arial" font-size="16" fill="#F5F4EF">BI</text>
-</svg>
