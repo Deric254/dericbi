@@ -188,12 +188,15 @@ def _build_custom_figure(df: pd.DataFrame, chart_type: str, x_col: str | None, y
                 else:
                     numeric_y = numeric_candidates[0]
             if numeric_y:
+                agg_output_col = f"{aggregation}_{numeric_y}"
+                if agg_output_col == x_col:
+                    agg_output_col = f"{agg_output_col}_value"
                 grouped = (
-                    working_df.groupby(x_col, dropna=False)[numeric_y]
-                    .agg(aggregation)
+                    working_df.groupby(x_col, dropna=False)
+                    .agg(**{agg_output_col: (numeric_y, aggregation)})
                     .reset_index()
                 )
-                y_col = numeric_y
+                y_col = agg_output_col
         working_df = grouped
 
     if chart_type == "bar":
