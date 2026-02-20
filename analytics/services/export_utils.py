@@ -38,8 +38,7 @@ def format_compact_number(value: float, number_format: str = "plain", currency: 
     if number_format == "currency":
         return f"{prefix}{value:,.2f}"
 
-    # DEFAULT: always return with exactly 2 decimal places (no K/M/B abbreviations)
-    return f"{value:.2f}"
+    return f"{value:,.2f}"
 
 
 def build_exhaustive_report_data(df: pd.DataFrame, source_name: str = "dataset") -> dict:

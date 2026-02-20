@@ -632,110 +632,38 @@ def _compute_kpi_value(series: pd.Series, operation: str, top_n: int) -> float:
 
 
 def _build_all_column_visuals(df: pd.DataFrame):
-    """Build auto-generated charts for all columns with individual customization controls.
-    Returns (visuals_components, figures) tuple for UI display and export."""
     visuals = []
-    figures = []
     datetime_cols = _detect_datetime_columns(df)
 
-    for col_index, col in enumerate(df.columns, start=1):
-        # Create figure based on column type
-        try:
-            if pd.api.types.is_numeric_dtype(df[col]):
-                fig = px.histogram(df, x=col, title=f"Distribution: {col}")
-            elif col in datetime_cols:
-                parsed = pd.to_datetime(df[col], errors="coerce")
-                counts = parsed.dropna().dt.to_period("M").astype(str).value_counts().sort_index().reset_index()
-                counts.columns = ["period", "count"]
-                fig = px.line(counts, x="period", y="count", title=f"Records over time: {col}")
-            else:
-                counts = df[col].astype(str).fillna("N/A").value_counts().head(20).reset_index()
-                counts.columns = [col, "count"]
-                fig = px.bar(counts, x=col, y="count", title=f"Top values: {col}")
-
-            # Store figure for export
-            figures.append(fig)
-
-            # Create controls for this auto-chart
-            controls = html.Div([
-                html.Div([
-                    html.Label("Theme", style={"fontSize": "12px"}),
-                    dcc.Dropdown(
-                        id={"type": "auto-chart-theme", "index": col_index},
-                        options=[
-                            {"label": "Clean White", "value": "plotly_white"},
-                            {"label": "Simple White", "value": "simple_white"},
-                            {"label": "Professional Gray", "value": "seaborn"},
-                            {"label": "Soft Grid", "value": "ggplot2"},
-                            {"label": "Dark", "value": "plotly_dark"},
-                        ],
-                        value="plotly_white",
-                        clearable=False,
-                        style={"fontSize": "12px"}
-                    ),
-                ], style={"flex": "1", "marginRight": "8px"}),
-                html.Div([
-                    html.Label("Palette", style={"fontSize": "12px"}),
-                    dcc.Dropdown(
-                        id={"type": "auto-chart-palette", "index": col_index},
-                        options=[
-                            {"label": "Plotly", "value": "plotly"},
-                            {"label": "Safe", "value": "safe"},
-                            {"label": "Vivid", "value": "vivid"},
-                            {"label": "Bold", "value": "bold"},
-                            {"label": "Pastel", "value": "pastel"},
-                            {"label": "Dark24", "value": "dark24"},
-                        ],
-                        value="plotly",
-                        clearable=False,
-                        style={"fontSize": "12px"}
-                    ),
-                ], style={"flex": "1", "marginRight": "8px"}),
-                html.Div([
-                    html.Label("Format", style={"fontSize": "12px"}),
-                    dcc.Dropdown(
-                        id={"type": "auto-chart-value-format", "index": col_index},
-                        options=[
-                            {"label": "Plain", "value": "plain"},
-                            {"label": "K", "value": "k"},
-                            {"label": "M", "value": "m"},
-                            {"label": "B", "value": "b"},
-                            {"label": "Currency", "value": "currency"},
-                            {"label": "Percent", "value": "percent"},
-                        ],
-                        value="plain",
-                        clearable=False,
-                        style={"fontSize": "12px"}
-                    ),
-                ], style={"flex": "1", "marginRight": "8px"}),
-                html.Div([
-                    dcc.Checklist(
-                        id={"type": "auto-chart-style-options", "index": col_index},
-                        options=[
-                            {"label": "Show labels", "value": "labels"},
-                            {"label": "Show legend", "value": "legend"},
-                        ],
-                        value=["legend"],
-                        style={"fontSize": "12px", "display": "flex", "gap": "16px"}
-                    ),
-                ], style={"flex": "1"}),
-            ], style={"display": "flex", "padding": "8px", "backgroundColor": "#f5f5f5", "borderRadius": "4px", "marginBottom": "8px", "fontSize": "12px", "gap": "8px"})
-
+    for col in df.columns:
+        if pd.api.types.is_numeric_dtype(df[col]):
             visuals.append(
-                html.Div([
-                    controls,
-                    dcc.Graph(
-                        id={"type": "auto-chart-graph", "index": col_index},
-                        figure=fig,
-                        config=INTERACTIVE_GRAPH_CONFIG,
-                    ),
-                ], className="kpi-card", style={"padding": "14px"})
+                dcc.Graph(
+                    figure=px.histogram(df, x=col, title=f"Distribution: {col}"),
+                    config=INTERACTIVE_GRAPH_CONFIG,
+                )
             )
-        except Exception:
-            # Fallback for columns that fail visualization
-            pass
+        elif col in datetime_cols:
+            parsed = pd.to_datetime(df[col], errors="coerce")
+            counts = parsed.dropna().dt.to_period("M").astype(str).value_counts().sort_index().reset_index()
+            counts.columns = ["period", "count"]
+            visuals.append(
+                dcc.Graph(
+                    figure=px.line(counts, x="period", y="count", title=f"Records over time: {col}"),
+                    config=INTERACTIVE_GRAPH_CONFIG,
+                )
+            )
+        else:
+            counts = df[col].astype(str).fillna("N/A").value_counts().head(20).reset_index()
+            counts.columns = [col, "count"]
+            visuals.append(
+                dcc.Graph(
+                    figure=px.bar(counts, x=col, y="count", title=f"Top values: {col}"),
+                    config=INTERACTIVE_GRAPH_CONFIG,
+                )
+            )
 
-    return visuals, figures
+    return visuals
 
 
 @dash.callback(
@@ -878,92 +806,10 @@ def render_saved_charts(saved_charts):
         if not fig_dict:
             continue
         title = item.get("title", f"Custom Chart {index}")
-        
-        # Each saved chart gets full customization controls with pattern-matching IDs
-        controls = html.Div([
-            html.Div([
-                html.Div([
-                    html.Label("Title", style={"fontSize": "12px"}),
-                    dcc.Input(
-                        id={"type": "saved-chart-title", "index": index},
-                        type="text",
-                        value=title,
-                        style={"width": "100%", "fontSize": "12px"}
-                    ),
-                ], style={"flex": "1", "marginRight": "8px"}),
-                html.Div([
-                    html.Label("Theme", style={"fontSize": "12px"}),
-                    dcc.Dropdown(
-                        id={"type": "saved-chart-theme", "index": index},
-                        options=[
-                            {"label": "Clean White", "value": "plotly_white"},
-                            {"label": "Simple White", "value": "simple_white"},
-                            {"label": "Professional Gray", "value": "seaborn"},
-                            {"label": "Soft Grid", "value": "ggplot2"},
-                            {"label": "Dark", "value": "plotly_dark"},
-                        ],
-                        value="plotly_white",
-                        clearable=False,
-                        style={"fontSize": "12px"}
-                    ),
-                ], style={"flex": "1", "marginRight": "8px"}),
-                html.Div([
-                    html.Label("Palette", style={"fontSize": "12px"}),
-                    dcc.Dropdown(
-                        id={"type": "saved-chart-palette", "index": index},
-                        options=[
-                            {"label": "Plotly", "value": "plotly"},
-                            {"label": "Safe", "value": "safe"},
-                            {"label": "Vivid", "value": "vivid"},
-                            {"label": "Bold", "value": "bold"},
-                            {"label": "Pastel", "value": "pastel"},
-                            {"label": "Dark24", "value": "dark24"},
-                        ],
-                        value="plotly",
-                        clearable=False,
-                        style={"fontSize": "12px"}
-                    ),
-                ], style={"flex": "1", "marginRight": "8px"}),
-                html.Div([
-                    html.Label("Format", style={"fontSize": "12px"}),
-                    dcc.Dropdown(
-                        id={"type": "saved-chart-value-format", "index": index},
-                        options=[
-                            {"label": "Plain", "value": "plain"},
-                            {"label": "K", "value": "k"},
-                            {"label": "M", "value": "m"},
-                            {"label": "B", "value": "b"},
-                            {"label": "Currency", "value": "currency"},
-                            {"label": "Percent", "value": "percent"},
-                        ],
-                        value="plain",
-                        clearable=False,
-                        style={"fontSize": "12px"}
-                    ),
-                ], style={"flex": "1"}),
-            ], style={"display": "flex", "marginBottom": "8px", "gap": "8px"}),
-            html.Div([
-                dcc.Checklist(
-                    id={"type": "saved-chart-style-options", "index": index},
-                    options=[
-                        {"label": "Show labels", "value": "labels"},
-                        {"label": "Show legend", "value": "legend"},
-                    ],
-                    value=["legend"],
-                    style={"fontSize": "12px", "display": "flex", "gap": "16px"}
-                ),
-            ], style={"marginBottom": "8px"}),
-        ], style={"padding": "8px", "backgroundColor": "#f5f5f5", "borderRadius": "4px", "marginBottom": "8px", "fontSize": "12px"})
-        
         cards.append(
             html.Div([
                 html.H5(title, style={"marginBottom": "8px"}),
-                controls,
-                dcc.Graph(
-                    id={"type": "saved-chart-graph", "index": index},
-                    figure=go.Figure(fig_dict),
-                    config=INTERACTIVE_GRAPH_CONFIG
-                ),
+                dcc.Graph(figure=go.Figure(fig_dict), config=INTERACTIVE_GRAPH_CONFIG),
             ], className="kpi-card", style={"padding": "14px"})
         )
     return cards
@@ -1071,15 +917,10 @@ def render_visualizations(shared_dataset, chart_type, x_col, y_col, color_col, s
     except Exception as exc:
         custom_figure = px.scatter(title=f"Visualization error: {exc}")
 
-    # _build_all_column_visuals returns (visual_components, figures)
-    if auto_toggle and "auto" in auto_toggle:
-        all_visuals, auto_figures = _build_all_column_visuals(df)
-    else:
-        all_visuals, auto_figures = [], []
-    
+    all_visuals = _build_all_column_visuals(df) if auto_toggle and "auto" in auto_toggle else []
     all_figures = [custom_figure]
-    all_figures.extend(auto_figures)
-    
+    for graph_component in all_visuals:
+        all_figures.append(go.Figure(graph_component.figure))
     for saved in (saved_user_charts or []):
         fig_dict = saved.get("figure") if isinstance(saved, dict) else None
         if fig_dict:
@@ -1087,131 +928,6 @@ def render_visualizations(shared_dataset, chart_type, x_col, y_col, color_col, s
     message = f"Loaded {len(df):,} rows and {len(df.columns)} columns after slicers. Visuals are fully dynamic."
 
     return message, kpi_cards, custom_figure, all_visuals, [fig.to_dict() for fig in all_figures]
-
-
-@dash.callback(
-    Output({"type": "saved-chart-graph", "index": dash.ALL}, "figure"),
-    Input({"type": "saved-chart-title", "index": dash.ALL}, "value"),
-    Input({"type": "saved-chart-theme", "index": dash.ALL}, "value"),
-    Input({"type": "saved-chart-palette", "index": dash.ALL}, "value"),
-    Input({"type": "saved-chart-value-format", "index": dash.ALL}, "value"),
-    Input({"type": "saved-chart-style-options", "index": dash.ALL}, "value"),
-    State({"type": "saved-chart-graph", "index": dash.ALL}, "figure"),
-    prevent_initial_call=True
-)
-def update_saved_chart_styles(titles, themes, palettes, formats, style_options_list, figures):
-    """Apply styling changes to saved charts in real-time."""
-    if not figures or not any([x for x in [titles, themes, palettes]]):
-        return figures
-    
-    updated_figures = []
-    for i, fig_dict in enumerate(figures):
-        try:
-            fig = go.Figure(fig_dict)
-            title = titles[i] if i < len(titles) else None
-            theme = themes[i] if i < len(themes) else "plotly_white"
-            palette = palettes[i] if i < len(palettes) else "plotly"
-            value_format = formats[i] if i < len(formats) else "plain"
-            style_opts = style_options_list[i] if i < len(style_options_list) else []
-            
-            show_labels = "labels" in style_opts
-            show_legend = "legend" in style_opts
-            
-            # Apply minimal styling (user just changed controls)
-            fig.update_layout(
-                template=theme or "plotly_white",
-                showlegend=show_legend,
-                colorway=COLOR_PALETTES.get(palette, px.colors.qualitative.Plotly),
-            )
-            
-            if title:
-                fig.update_layout(title=title)
-            
-            # Re-apply data label formatting based on selected format
-            if show_labels and fig.data:
-                for trace in fig.data:
-                    try:
-                        if hasattr(trace, 'text'):
-                            text_values = trace.text if isinstance(trace.text, (list, tuple)) else [trace.text]
-                            formatted_texts = []
-                            for val in text_values:
-                                if val:
-                                    numeric = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
-                                    if not pd.isna(numeric):
-                                        formatted_texts.append(_format_value_for_label(numeric, value_format, "USD"))
-                                    else:
-                                        formatted_texts.append(str(val))
-                                else:
-                                    formatted_texts.append("")
-                            trace.text = formatted_texts
-                    except Exception:
-                        pass
-            
-            updated_figures.append(fig)
-        except Exception:
-            updated_figures.append(go.Figure(fig_dict))
-    
-    return updated_figures
-
-
-@dash.callback(
-    Output({"type": "auto-chart-graph", "index": dash.ALL}, "figure"),
-    Input({"type": "auto-chart-theme", "index": dash.ALL}, "value"),
-    Input({"type": "auto-chart-palette", "index": dash.ALL}, "value"),
-    Input({"type": "auto-chart-value-format", "index": dash.ALL}, "value"),
-    Input({"type": "auto-chart-style-options", "index": dash.ALL}, "value"),
-    State({"type": "auto-chart-graph", "index": dash.ALL}, "figure"),
-    prevent_initial_call=True
-)
-def update_auto_chart_styles(themes, palettes, formats, style_options_list, figures):
-    """Apply styling changes to auto-generated charts in real-time."""
-    if not figures or not any([x for x in [themes, palettes]]):
-        return figures
-    
-    updated_figures = []
-    for i, fig_dict in enumerate(figures):
-        try:
-            fig = go.Figure(fig_dict)
-            theme = themes[i] if i < len(themes) else "plotly_white"
-            palette = palettes[i] if i < len(palettes) else "plotly"
-            value_format = formats[i] if i < len(formats) else "plain"
-            style_opts = style_options_list[i] if i < len(style_options_list) else []
-            
-            show_labels = "labels" in style_opts
-            show_legend = "legend" in style_opts
-            
-            # Apply styling
-            fig.update_layout(
-                template=theme or "plotly_white",
-                showlegend=show_legend,
-                colorway=COLOR_PALETTES.get(palette, px.colors.qualitative.Plotly),
-            )
-            
-            # Re-apply data label formatting
-            if show_labels and fig.data:
-                for trace in fig.data:
-                    try:
-                        if hasattr(trace, 'text'):
-                            text_values = trace.text if isinstance(trace.text, (list, tuple)) else [trace.text]
-                            formatted_texts = []
-                            for val in text_values:
-                                if val:
-                                    numeric = pd.to_numeric(pd.Series([val]), errors="coerce").iloc[0]
-                                    if not pd.isna(numeric):
-                                        formatted_texts.append(_format_value_for_label(numeric, value_format, "USD"))
-                                    else:
-                                        formatted_texts.append(str(val))
-                                else:
-                                    formatted_texts.append("")
-                            trace.text = formatted_texts
-                    except Exception:
-                        pass
-            
-            updated_figures.append(fig)
-        except Exception:
-            updated_figures.append(go.Figure(fig_dict))
-    
-    return updated_figures
 
 
 def _deserialize_figures(serialized_figures: list | None) -> list[go.Figure]:
