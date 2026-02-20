@@ -50,6 +50,40 @@ sidebar = html.Div(
     },
 )
 
+# Top header (matches sidebar formatting)
+header = html.Div(
+    [
+        html.H4("DericBI Analytics Engine", className="mb-0"),
+        html.Div(
+            [
+                html.Img(
+                    src=DERICBI_LOGO,
+                    alt="DericBI Logo",
+                    style={"height": "26px", "width": "auto", "marginRight": "8px"},
+                ),
+                html.Small(DERICBI_SLOGAN),
+            ],
+            style={"display": "flex", "alignItems": "center"},
+        ),
+    ],
+    className="analytics-header",
+    style={
+        "position": "fixed",
+        "top": 0,
+        "left": "16rem",
+        "right": 0,
+        "height": "64px",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "space-between",
+        "padding": "0 1.25rem",
+        "backgroundColor": "#3e8865",
+        "color": "#ffffff",
+        "borderBottom": "1px solid rgba(250, 204, 21, 0.45)",
+        "zIndex": 1000,
+    },
+)
+
 # Content area
 content = html.Div(
     [
@@ -58,7 +92,8 @@ content = html.Div(
     style={
         "marginLeft": "18rem",
         "marginRight": "2rem",
-        "padding": "2rem 1rem"
+        "marginTop": "80px",
+        "padding": "1rem"
     },
 )
 
@@ -68,6 +103,7 @@ app.layout = html.Div([
     dcc.Store(id="shared-dataset", storage_type="session"),
     dcc.Store(id="shared-visual-config", storage_type="session"),
     sidebar,
+    header,
     content
 ])
 

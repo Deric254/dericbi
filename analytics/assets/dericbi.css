@@ -488,3 +488,31 @@ input:focus, textarea:focus, select:focus, .form-control:focus, .form-select:foc
     background-color: var(--exes-primary-yellow) !important;
     font-weight: 600;
 }
+
+.analytics-header,
+.analytics-header h1,
+.analytics-header h2,
+.analytics-header h3,
+.analytics-header h4,
+.analytics-header h5,
+.analytics-header h6,
+.analytics-header p,
+.analytics-header span,
+.analytics-header small,
+.analytics-header div {
+    color: #ffffff !important;
+}
+
+.analytics-header {
+    background-color: var(--exes-secondary-green) !important;
+    border-bottom: 1px solid rgba(250, 204, 21, 0.45) !important;
+}
+
+.analytics-header h4 {
+    font-weight: 700;
+    margin: 0;
+}
+
+.analytics-header small {
+    opacity: 0.92;
+}
