@@ -1,8 +1,7 @@
-// Service Worker for dericBI - Cache projects for faster loading
-const CACHE_NAME = 'dericbi-projects-v1';
+// Service Worker for dericBI - cache with fast updates
+const CACHE_NAME = 'dericbi-projects-v2';
 const urlsToCache = [
   '/journey-data.json',
-  '/my-projects.html',
   '/assets/css/style.css',
   '/assets/css/loading-states.css',
 ];
@@ -36,42 +35,53 @@ self.addEventListener('activate', event => {
   return self.clients.claim();
 });
 
-// Fetch event - serve from cache, fall back to network
+// Fetch event - prioritize fresh content for pages/scripts/styles
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Cache hit - return response
-        if (response) {
-          console.log('📦 Serving from cache:', event.request.url);
-          // Update cache in background
-          fetch(event.request).then(freshResponse => {
-            if (freshResponse && freshResponse.status === 200) {
-              caches.open(CACHE_NAME).then(cache => {
-                cache.put(event.request, freshResponse);
-              });
-            }
-          });
-          return response;
-        }
+  const request = event.request;
 
-        // Not in cache - fetch from network
-        return fetch(event.request).then(response => {
-          // Don't cache if not a valid response
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
+  if (request.method !== 'GET') {
+    return;
+  }
+
+  const url = new URL(request.url);
+  const isSameOrigin = url.origin === self.location.origin;
+  const isHTML = request.mode === 'navigate' || request.destination === 'document';
+  const isScriptOrStyle = request.destination === 'script' || request.destination === 'style';
+
+  // Network-first for HTML/JS/CSS so deployed updates show up quickly.
+  if (isSameOrigin && (isHTML || isScriptOrStyle)) {
+    event.respondWith(
+      fetch(request)
+        .then(networkResponse => {
+          if (networkResponse && networkResponse.status === 200) {
+            const responseToCache = networkResponse.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(request, responseToCache));
           }
+          return networkResponse;
+        })
+        .catch(() => caches.match(request))
+    );
+    return;
+  }
 
-          // Clone the response
-          const responseToCache = response.clone();
+  // Stale-while-revalidate for other GET assets
+  event.respondWith(
+    caches.match(request).then(cachedResponse => {
+      const networkFetch = fetch(request)
+        .then(networkResponse => {
+          if (
+            networkResponse &&
+            networkResponse.status === 200 &&
+            (networkResponse.type === 'basic' || isSameOrigin)
+          ) {
+            const responseToCache = networkResponse.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(request, responseToCache));
+          }
+          return networkResponse;
+        })
+        .catch(() => cachedResponse);
 
-          // Cache the fetched response for future use
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, responseToCache);
-          });
-
-          return response;
-        });
-      })
+      return cachedResponse || networkFetch;
+    })
   );
 });
