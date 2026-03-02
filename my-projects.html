@@ -690,6 +690,10 @@ document.addEventListener('click', (e) => {
         class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
         <i class="fas fa-cloud mr-1"></i>Databricks <span id="count-databricks" class="ml-1">(0)</span>
       </button>
+      <button onclick="filterByTool('quant')" id="filter-quant" 
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        <i class="fas fa-square-root-alt mr-1"></i>Quant <span id="count-quant" class="ml-1">(0)</span>
+      </button>
     </div>
   </div>
   <!-- Try Yourself Button -->
@@ -1611,13 +1615,14 @@ function categorizeByTool(project) {
   if (tools.includes('python') || tools.includes('pandas')) categories.push('python');
   if (tools.includes('sql') || tools.includes('mysql')) categories.push('sql');
   if (tools.includes('databricks')) categories.push('databricks');
+  if (tools.includes('quant') || tools.includes('quantitative')) categories.push('quant');
   if (tools.includes('web') || tools === 'web tools') categories.push('other');
   if (categories.length === 0) categories.push('other');
   return categories;
 }
 
 function updateProjectCounts() {
-  const counts = { all: 0, excel: 0, powerbi: 0, python: 0, sql: 0, databricks: 0, other: 0 };
+  const counts = { all: 0, excel: 0, powerbi: 0, python: 0, sql: 0, databricks: 0, quant: 0, other: 0 };
   allProjects.forEach(project => {
     categorizeByTool(project).forEach(cat => counts[cat]++);
   });
