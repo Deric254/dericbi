@@ -690,11 +690,15 @@ document.addEventListener('click', (e) => {
         class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
         <i class="fas fa-cloud mr-1"></i>Databricks <span id="count-databricks" class="ml-1">(0)</span>
       </button>
+      <button onclick="filterByTool('quant')" id="filter-quant" 
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        <i class="fas fa-square-root-alt mr-1"></i>Quant <span id="count-quant" class="ml-1">(0)</span>
+      </button>
     </div>
   </div>
   <!-- Try Yourself Button -->
   <div class="w-full mb-6 flex justify-end px-1">
-    <a href="https://dericbi.streamlit.app/" target="_blank"
+    <a href="https://huggingface.co/spaces/deric254/dericbi-analytics" target="_blank"
   class="bg-[#facc15] hover:bg-[#eab308] text-black px-5 py-2.5 rounded-lg font-semibold flex items-center gap-2 shadow transition"
       <i class="fas fa-flask"></i>Try Yourself
     </a>
@@ -728,7 +732,7 @@ document.addEventListener('click', (e) => {
           <i class="fas fa-download mr-1"></i>Download Files
           <span class="hidden group-hover:inline ml-1 text-[#facc15]">📁</span>
         </button>
-        <a href="https://dericbi.streamlit.app/" target="_blank"
+        <a href="https://huggingface.co/spaces/deric254/dericbi-analytics" target="_blank"
           class="bg-[#facc15] hover:bg-[#eab308] text-black px-3 py-2 rounded text-xs font-semibold transition flex items-center gap-1">
           <i class="fas fa-flask"></i>Try Yourself
         </a>
@@ -1611,13 +1615,14 @@ function categorizeByTool(project) {
   if (tools.includes('python') || tools.includes('pandas')) categories.push('python');
   if (tools.includes('sql') || tools.includes('mysql')) categories.push('sql');
   if (tools.includes('databricks')) categories.push('databricks');
+  if (tools.includes('quant') || tools.includes('quantitative')) categories.push('quant');
   if (tools.includes('web') || tools === 'web tools') categories.push('other');
   if (categories.length === 0) categories.push('other');
   return categories;
 }
 
 function updateProjectCounts() {
-  const counts = { all: 0, excel: 0, powerbi: 0, python: 0, sql: 0, databricks: 0, other: 0 };
+  const counts = { all: 0, excel: 0, powerbi: 0, python: 0, sql: 0, databricks: 0, quant: 0, other: 0 };
   allProjects.forEach(project => {
     categorizeByTool(project).forEach(cat => counts[cat]++);
   });
@@ -1936,7 +1941,7 @@ function toggleNewsletter() {
         <div class="font-extrabold text-xl text-gray-800 tracking-wide">
           <span>deric</span><span class="text-[#facc15] text-[22px] drop-shadow-lg font-black">BI</span>
         </div>
-        <span class="text-xs italic text-gray-500 -mt-1 bg-gradient-to-r from-gray-500 to-gray-700 bg-clip-text text-transparent font-medium">Data In, Cash Out</span>
+        <span class="text-xs italic text-gray-500 -mt-1 bg-gradient-to-r from-gray-500 to-gray-700 bg-clip-text text-transparent font-medium">Cut Through  Noise</span>
       </div>
     </div>
     <!-- Copyright & Links Stacked -->
@@ -1948,7 +1953,7 @@ function toggleNewsletter() {
       <div class="flex flex-wrap justify-center gap-2 xs:gap-3 sm:gap-4 mt-1">
         <a href="about.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">About Us</a>
         <a href="terms.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">T&C's</a>
-        <a href="https://dericbi.streamlit.app/" target="_blank" class="footer-link font-bold text-[#49A078] text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">Try Yourself</a>
+        <a href="https://huggingface.co/spaces/deric254/dericbi-analytics" target="_blank" class="footer-link font-bold text-[#49A078] text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">Try Yourself</a>
         <button onclick="toggleNewsletter()" class="footer-link text-xs bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">
           <i class="fas fa-envelope mr-1"></i>Newsletter
         </button>
