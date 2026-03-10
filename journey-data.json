@@ -19,6 +19,26 @@
   ]
 },
 {
+  "serial": "Project 90",
+  "title": "Stock Intel — NSE Kenya Intelligence Platform",
+  "date": "2026-03-09",
+  "description": "<strong>Problem:</strong> The Nairobi Securities Exchange has no free, intelligent, publicly accessible analytical layer. Retail investors are flying blind — making KES decisions with no PE ratios, no scoring models, no signal engine, nothing. The platforms that exist are either paywalled, outdated, or built for institutional desks that already know what they are doing. The average Kenyan investor opens a broker app, sees a price, and guesses.<br><br><strong>Business Objective:</strong> Build a full-stack, data-driven investment intelligence system for NSE Kenya — one that ingests live market data, scores every listed stock on a rigorous 60-point fundamental model, tracks portfolios in real time, and layers in a professional-grade gold trading signal engine. The goal was not a dashboard. The goal was an unfair advantage.<br><br><strong>My Approach:</strong> I engineered a complete data pipeline from scratch because none existed. NSE Kenya has no public API. Yahoo Finance does not cover it. I identified and integrated three live web sources — kenyanstocks.com for real-time bulk price scraping, afx.kwayisi.org for fundamental ratios, and Twelve Data for XAUUSD candle feeds — building a fault-tolerant cascade that tries each source in sequence, falls back to stale cache up to 7 days, and only shows reference data as an absolute last resort, clearly flagged. On top of that pipeline I built a 60-point scoring engine across six fundamental dimensions, a portfolio simulator with unrealized P&L and annualized return tracking, a multi-timeframe gold signal engine with ATR-based dynamic stop-loss and take-profit levels, and a full backtest module. The entire system is deployed free — FastAPI backend on Render with a self-ping keep-alive to prevent sleep, React frontend on Vercel.<br><br><strong>Key Findings & Features:</strong><br>• 60-point scoring model across Profitability, Dividend, Growth, Value, Asset Safety and Debt Safety<br>• Live NSE prices scraped from kenyanstocks.com — all 31+ stocks in a single bulk request<br>• Fundamental data (PE, EPS, ROE, Book Value, Dividends) from afx.kwayisi.org per stock<br>• Gold signal engine: multi-timeframe (H4 trend + H1 + M30 entry), EMA/MACD/RSI/ATR confluence<br>• ATR-based dynamic SL/TP with minimum 3:1 risk-reward enforced on every signal<br>• Full backtest engine with equity curve, win rate, profit factor and max drawdown stats<br>• Demo trade manager for paper trading gold signals before going live<br>• Portfolio tracker with unrealized P&L, realized P&L, annualized return and dividend tracking<br>• Data Status page showing live vs stale vs stub per ticker with one-click force refresh<br>• Self-healing backend — survives source failures, never shows a blank screen<br><br><strong>Impact:</strong> Stock Intel puts institutional-grade analysis in the hands of any Kenyan investor with a browser. A retail investor can now open a single screen, see every NSE stock ranked by fundamental quality, understand exactly why a stock scores the way it does, track their own portfolio against those scores, and run a gold trading strategy with a professional signal engine — all for free. For financial services companies, SACCO investment desks, or wealth management firms operating in East Africa, this is the analytical infrastructure that previously did not exist at any price point accessible to the market. The system is live, the data is real, and the edge is measurable.<br><br><strong>Live Demo:</strong> <a href=\"https://stock-intel-one.vercel.app\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>📈 Launch Stock Intel</strong></a>",
+  "tools": "quant",
+  "projectLink": "https://github.com/Deric254/Stocks",
+  "liveLink": "https://stock-intel-one.vercel.app",
+  "images": [
+    "assets/projects/quant/Screenshot (15).png",
+    "assets/projects/quant/Screenshot (16).png",
+    "assets/projects/quant/Screenshot (17).png",
+    "assets/projects/quant/Screenshot (18).png",
+    "assets/projects/quant/Screenshot (19).png",
+    "assets/projects/quant/Screenshot (20).png"
+  ],
+  "video": [
+    "assets/projects/stockintel/stockintel.mp4"
+  ]
+},
+{
   "serial": "Project 89",
   "title": "Ultra-Processed Food Health Impact Analysis - The Hidden Mortality Crisis",
   "date": "2026-02-12",
