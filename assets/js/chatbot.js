@@ -366,8 +366,6 @@ class DAIChatbot {
         responses: {
           'tech_stack': "💻 **dericBI Tech Stack**:\n\n**Frontend**: HTML, TailwindCSS, JavaScript\n**Analytics**: Python, SQL, Power BI, Excel\n**Data Processing**: Pandas, NumPy, Matplotlib, Seaborn\n**Dashboards**: Power BI, Excel, Python visualizations\n**Storage**: Google Drive, Google Sheets\n**Hosting**: GitHub Pages, vercel\n**Communication**: WhatsApp, Email, Google Forms",
           
-          'streamlit_app': "🧪 **Try Yourself Platform**: Our interactive Hugging Face Space (https://huggingface.co/spaces/deric254/dericbi-analytics) lets you:\n• Test data analysis features\n• Preview dashboard capabilities\n• Experience our tools firsthand\n• See sample analytics in action\n\nPerfect for exploring what dericBI can do for your data!",
-          
           'tujengane_programs': "🎓 **Tujengane Education Programs**:\n\n**1. Data Basics** (FREE):\n• Data collection, cleaning, storage\n• Basic Excel and database concepts\n• WhatsApp Group: Business & student support\n\n**2. Digital Literacy** ($10 per module):\n• Computer skills for business and personal growth\n• Direct WhatsApp access - no forms required\n\n**3. Analyst Pro** ($10 per module):\n• Excel, PowerBI, SQL, Python\n• Real-world analytics projects\n• Professional certification track\n\n**💰 Complete Package**: $100 for all education services!\n\nAll programs help you become data-literate!",
           
           'analysis_tools': "🛠️ **Our Analysis Arsenal**:\n\n**Python**: Advanced statistical analysis, machine learning\n**Excel**: Data cleaning, pivot tables, dashboards\n**Power BI**: Interactive business intelligence dashboards\n**SQL**: Database querying, data extraction\n**Google Sheets**: Collaborative data management\n**Matplotlib/Seaborn**: Professional data visualizations",
@@ -431,7 +429,7 @@ class DAIChatbot {
   createChatbotHTML() {
     const chatbotHTML = `
       <!-- DAI Toggle Button -->
-  <div id="chatbot-toggle" class="fixed bottom-3 right-3 z-40">
+  <div id="chatbot-toggle" class="fixed bottom-3 right-3 z-40" style="bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));">
         <button class="bg-gradient-to-r from-[#49A078] to-[#3e8865] hover:from-[#3e8865] hover:to-[#2f6b52] text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg flex items-center justify-center transition-all transform hover:scale-105 relative group">
           <i class="fas fa-robot text-base sm:text-lg"></i>
           <div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse"></div>
@@ -440,11 +438,11 @@ class DAIChatbot {
       </div>
 
       <!-- DAI Container -->
-  <div id="chatbot-container" class="fixed bottom-3 right-3 w-56 sm:w-64 md:w-64 lg:w-72 max-w-[calc(90vw)] z-30 transform translate-y-full opacity-0 transition-all duration-300 ease-out" style="max-height: 70vh;">
-        <div class="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden backdrop-blur-sm">
+  <div id="chatbot-container" class="fixed bottom-3 right-3 w-56 sm:w-64 md:w-64 lg:w-72 max-w-[calc(90vw)] z-30 transform translate-y-full opacity-0 transition-all duration-300 ease-out">
+        <div class="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden backdrop-blur-sm chatbot-panel">
           
           <!-- Header -->
-          <div class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white p-2 sm:p-2.5 flex items-center justify-between">
+          <div class="chatbot-header bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white p-2 sm:p-2.5 flex items-center justify-between">
             <div class="flex items-center gap-1.5 sm:gap-2">
               <img src="assets/img/logo.png" alt="dericBI Logo" class="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-white/30">
               <div>
@@ -461,7 +459,7 @@ class DAIChatbot {
           </div>
 
           <!-- Chat Messages -->
-          <div id="chatbot-messages" class="h-48 sm:h-52 md:h-56 lg:h-60 overflow-y-auto p-2 sm:p-2.5 space-y-1.5 sm:space-y-2 bg-gradient-to-b from-gray-50 to-white">
+          <div id="chatbot-messages" class="overflow-y-auto p-2 sm:p-2.5 space-y-1.5 sm:space-y-2 bg-gradient-to-b from-gray-50 to-white">
             <div class="bot-message">
               <div class="flex items-start gap-1.5 sm:gap-2">
                 <img src="assets/img/logo.png" alt="dericBI" class="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-gray-200 mt-0.5 shrink-0">
@@ -483,7 +481,7 @@ class DAIChatbot {
           </div>
 
           <!-- Input Area -->
-          <div class="p-2 sm:p-3 border-t border-gray-200 bg-white">
+          <div class="chatbot-input-area p-2 sm:p-3 border-t border-gray-200 bg-white">
             <div class="flex gap-1.5 sm:gap-2">
               <input 
                 type="text" 
@@ -531,6 +529,34 @@ class DAIChatbot {
         #chatbot-container {
           z-index: 9999 !important;
           position: fixed !important;
+        }
+
+        /* ✅ Never let the widget get clipped by mobile browser chrome or short
+           viewports: cap it to the SMALLEST possible viewport height (dvh),
+           clear the iOS home-indicator safe area, and lay it out as a column
+           so the header and input row always stay fully visible — only the
+           message list shrinks and scrolls internally if space is tight. */
+        #chatbot-container {
+          bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px)) !important;
+          max-height: min(70vh, 70dvh, calc(100dvh - 5rem));
+          display: flex;
+        }
+        .chatbot-panel {
+          display: flex;
+          flex-direction: column;
+          max-height: 100%;
+          min-height: 0;
+          width: 100%;
+        }
+        .chatbot-header,
+        .chatbot-input-area {
+          flex-shrink: 0;
+        }
+        #chatbot-messages {
+          flex: 1 1 auto;
+          min-height: 100px;
+          max-height: none !important;
+          height: auto !important;
         }
 
         .quick-action-btn {
@@ -1235,14 +1261,6 @@ class DAIChatbot {
   
   // Products query handler
   handleProductsQuery(message) {
-    if (message.includes('streamlit') || message.includes('try yourself')) {
-      return {
-        text: "🧪 **Try Our Analytics Tool**: Experience our data analysis capabilities firsthand with our interactive Hugging Face Space!",
-        action: () => window.open('https://huggingface.co/spaces/deric254/dericbi-analytics', '_blank'),
-        followUp: "After trying it, let me know if you'd like similar analysis for your data!"
-      };
-    }
-    
     if (message.includes('tujengane') || message.includes('education')) {
       return {
         text: "🎓 **Tujengane Education**: Our data literacy programs! From free Data Basics to professional Analyst Pro courses.",
@@ -1267,47 +1285,51 @@ class DAIChatbot {
     };
   }
   
+  // Ask the secure server-side AI proxy (api/chat.js) for a grounded answer.
+  // No API key ever touches the browser — the proxy holds it server-side.
+  // Returns null (never throws) if no provider is configured or all fail,
+  // so callers can fall straight through to the local knowledge base.
+  async queryAIAssistant(message) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 12000);
+    try {
+      const history = this.currentConversation.slice(-6).map(turn => ({
+        role: turn.type === 'bot' ? 'bot' : 'user',
+        content: turn.message
+      }));
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message, history, context: this.userContext || '' }),
+        signal: controller.signal
+      });
+      if (!response.ok) return null;
+      const data = await response.json();
+      return data && data.reply ? data.reply : null;
+    } catch (error) {
+      console.log('🤖 DAI: AI assistant unavailable, using built-in knowledge base:', error.message);
+      return null;
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
   // Fallback response handler
   async handleFallbackResponse(message) {
     console.log('🤖 DAI: Triggering fallback response for:', message);
-    
-    // FORCE TEST: If message contains "test ai", always try HF
-    if (message.toLowerCase().includes('test ai')) {
-      console.log('🤖 DAI: FORCE TEST MODE - bypassing normal logic');
-      try {
-        const hfResponse = await this.generateHuggingFaceResponse(message);
-        return {
-          text: `🤖 **AI TEST RESPONSE:** ${hfResponse}`,
-          action: null,
-          followUp: null
-        };
-      } catch (error) {
-        return {
-          text: `🤖 **AI TEST FAILED:** ${error.message}`,
-          action: null,
-          followUp: null
-        };
-      }
+
+    // Try the AI-enhanced answer first (grounded in full business context
+    // server-side). If it's unavailable for any reason, the built-in,
+    // hand-written knowledge base below always keeps the bot working.
+    const aiReply = await this.queryAIAssistant(message);
+    if (aiReply) {
+      return {
+        text: aiReply,
+        action: null,
+        followUp: "Feel free to ask anything else - from technical questions to business inquiries!"
+      };
     }
-    
-    // Try Hugging Face API first for enhanced responses
-    try {
-      console.log('🤖 DAI: Attempting Hugging Face API call...');
-      const hfResponse = await this.generateHuggingFaceResponse(message);
-      if (hfResponse && hfResponse.trim().length > 10) {
-        console.log('🤖 DAI: Hugging Face API SUCCESS! Response:', hfResponse);
-        return {
-          text: `🤖 **AI Enhanced Response:** ${hfResponse}`,
-          action: null,
-          followUp: null
-        };
-      } else {
-        console.log('🤖 DAI: Hugging Face response too short or empty');
-      }
-    } catch (error) {
-      console.log('🤖 DAI: Hugging Face API FAILED:', error.message);
-    }
-    
+
     console.log('🤖 DAI: Using fallback response');
     const encouragingResponses = [
       "🤗 **I'm here to help!** I can guide you through our website, explain services, or connect you with our team. What specific area interests you?",
@@ -1536,12 +1558,7 @@ class DAIChatbot {
 
     // Products and Systems queries
     if (this.containsPatterns(message, this.knowledgeBase.products_systems.patterns)) {
-      if (message.includes('streamlit') || message.includes('try yourself')) {
-        return { 
-          text: this.knowledgeBase.products_systems.responses.streamlit_app,
-          action: () => window.open('https://huggingface.co/spaces/deric254/dericbi-analytics', '_blank')
-        };
-      } else if (message.includes('tujengane') || message.includes('education') || message.includes('course')) {
+      if (message.includes('tujengane') || message.includes('education') || message.includes('course')) {
         return { 
           text: this.knowledgeBase.products_systems.responses.tujengane_programs,
           action: () => window.open(window.SITE_CONFIG && window.SITE_CONFIG.TUJENGANE_URL ? window.SITE_CONFIG.TUJENGANE_URL : 'https://dericbiskills.vercel.app', '_blank')
@@ -2002,55 +2019,6 @@ class DAIChatbot {
     return Object.keys(contexts).reduce((a, b) => contexts[a] > contexts[b] ? a : b);
   }
 
-  // Generate response using Hugging Face API
-  async generateHuggingFaceResponse(message) {
-    try {
-      // Get recent conversation history (last 3 exchanges)
-      const recentHistory = this.currentConversation.slice(-6); // 3 user-bot pairs
-      const pastUserInputs = [];
-      const generatedResponses = [];
-      
-      for (let i = 0; i < recentHistory.length; i += 2) {
-        if (recentHistory[i] && recentHistory[i].type === 'user') {
-          pastUserInputs.push(recentHistory[i].message);
-        }
-        if (recentHistory[i + 1] && recentHistory[i + 1].type === 'bot') {
-          generatedResponses.push(recentHistory[i + 1].message);
-        }
-      }
-      
-      const response = await fetch('https://api-inference.huggingface.co/models/facebook/blenderbot-400M-distill', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer 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',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          inputs: {
-            past_user_inputs: pastUserInputs,
-            generated_responses: generatedResponses,
-            text: `You are DAI, an intelligent chatbot for dericBI, a professional data analytics company. We specialize in Excel dashboards, PowerBI reports, Python data analysis, SQL databases, and business intelligence solutions. Our CEO is Deric Marangu. We offer data cleaning, visualization, analytics services, and have a portfolio of 50+ projects. User question: ${message}`
-          },
-          parameters: {
-            max_length: 150,
-            temperature: 0.7
-          }
-        })
-      });
-      
-      if (!response.ok) throw new Error('API failed');
-      
-      const data = await response.json();
-      if (data && data.generated_text) {
-        return data.generated_text;
-      }
-      
-      throw new Error('No response');
-    } catch (error) {
-      console.log('Hugging Face API failed:', error);
-      throw error;
-    }
-  }
 }
 
 // Initialize DAI when page loads

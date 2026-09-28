@@ -1,7 +1,8 @@
-# Analytics local artifacts
-analytics/node_modules/
-analytics/.next/
-analytics/prisma/dev.db
-
 # Optional npm debug logs
 npm-debug.log*
+
+# Local env files — never commit real API keys (see .env.example)
+.env
+.env.local
+.env*.local
+
