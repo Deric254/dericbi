@@ -50,11 +50,23 @@ class DAIChatbot {
       this.analyzeUserBehavior();
     }, 10000); // 10 seconds after load
 
+    // One-shot: offer a concrete, context-aware next step (navigate or
+    // download) once, early in the visit. This was previously nested
+    // inside the 60s interval below, so its own 15-30s time-window check
+    // could never actually land on a tick and silently never fired.
+    // Scheduling it directly fixes that. It still always asks for
+    // Yes/No confirmation before doing anything (see performAutomaticNavigation
+    // / performAutomaticDownload) — never acts without the visitor's click.
+    setTimeout(() => {
+      if (!this.isOpen) {
+        this.enhancedProactiveSuggestions();
+      }
+    }, 20000); // 20 seconds after load
+
     // Periodic intelligent suggestions
     setInterval(() => {
       if (!this.isOpen) {
         this.considerProactiveSuggestion();
-        this.enhancedProactiveSuggestions(); // Add enhanced agentic suggestions
       }
     }, 60000); // Every minute
   }
@@ -559,6 +571,32 @@ class DAIChatbot {
           height: auto !important;
         }
 
+        /* ✅ Desktop: the mobile-first sizing above tops out at 288px wide,
+           which is genuinely too small to read comfortably on a computer
+           screen. From tablet width up, give it real room and larger text. */
+        @media (min-width: 768px) {
+          #chatbot-container {
+            width: 22rem !important;
+            max-width: min(92vw, 22rem) !important;
+            max-height: min(78vh, 640px) !important;
+          }
+          .user-message .message-content,
+          .bot-message .message-content {
+            font-size: 14.5px;
+          }
+          .quick-action-btn {
+            font-size: 11.5px;
+            padding: 4px 8px;
+          }
+        }
+        @media (min-width: 1024px) {
+          #chatbot-container {
+            width: 25rem !important;
+            max-width: min(90vw, 25rem) !important;
+            max-height: min(80vh, 700px) !important;
+          }
+        }
+
         .quick-action-btn {
           background: linear-gradient(135deg, #f8fafc, #f1f5f9);
           color: #475569;
@@ -592,52 +630,47 @@ class DAIChatbot {
         .user-message .message-content {
           background: linear-gradient(135deg, #49A078, #3e8865);
           color: white;
-          padding: 6px 10px;
+          padding: 7px 11px;
           border-radius: 10px 10px 3px 10px;
           max-width: 75%;
-          font-size: 11px;
+          font-size: 13px;
           box-shadow: 0 2px 8px rgba(73, 160, 120, 0.2);
           word-wrap: break-word;
-          line-height: 1.4;
+          line-height: 1.45;
         }
 
         .bot-message .message-content {
           background: white;
           color: #374151;
-          padding: 6px 10px;
+          padding: 7px 11px;
           border-radius: 3px 10px 10px 10px;
           box-shadow: 0 2px 8px rgba(0,0,0,0.08);
           border: 1px solid #f3f4f6;
           max-width: 85%;
-          font-size: 11px;
+          font-size: 13px;
           word-wrap: break-word;
-          line-height: 1.4;
+          line-height: 1.45;
         }
 
         .action-button {
           background: linear-gradient(135deg, #49A078, #3e8865);
           color: white;
-          padding: 3px 6px;
-          border-radius: 5px;
-          font-size: 10px;
+          padding: 8px 12px;
+          border-radius: 6px;
+          font-size: 12px;
+          font-weight: 600;
           border: none;
           cursor: pointer;
-          margin-top: 3px;
-          transition: all 0.2s;
-          font-weight: 500;
-          line-height: 1.3;
+          margin-top: 4px;
+          transition: all 0.2s ease;
+          text-align: center;
+          min-width: 80px;
+          line-height: 1.35;
         }
         .action-button:hover {
           background: linear-gradient(135deg, #3e8865, #2f6b52);
           transform: translateY(-0.5px);
           box-shadow: 0 2px 8px rgba(73, 160, 120, 0.3);
-        }
-        
-        @media (min-width: 640px) {
-          .action-button {
-            padding: 3px 7px;
-            font-size: 10px;
-          }
         }
 
         #chatbot-messages::-webkit-scrollbar {
@@ -674,19 +707,7 @@ class DAIChatbot {
           margin-top: 12px;
           flex-wrap: wrap;
         }
-        
-        .action-button {
-          padding: 8px 12px;
-          border: none;
-          border-radius: 6px;
-          font-size: 12px;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          text-align: center;
-          min-width: 80px;
-        }
-        
+
         .confirm-button {
           background: linear-gradient(135deg, #10b981, #059669);
           color: white;
@@ -1331,32 +1352,31 @@ class DAIChatbot {
     }
 
     console.log('🤖 DAI: Using fallback response');
-    const encouragingResponses = [
-      "🤗 **I'm here to help!** I can guide you through our website, explain services, or connect you with our team. What specific area interests you?",
-      "💡 **Let me assist you!** Try asking about our projects, services, pricing, or how to use website features.",
-      "😊 **I'd love to help!** What would you like to know about dericBI? Our work, services, or team?"
-    ];
-    
-    const randomResponse = encouragingResponses[Math.floor(Math.random() * encouragingResponses.length)];
-    
-    // Add agentic action based on current context
-    let action = null;
-    const contextActions = {
-      'homepage': () => this.suggestNavigation('my-projects.html', 'Explore Our Projects'),
-      'projects': () => this.suggestNavigation('contact.html', 'Get a Quote'),
-      'services': () => this.suggestNavigation('contact.html', 'Contact Us for Services'),
-      'contact': () => this.suggestHumanContact(),
-      'about': () => this.suggestNavigation('my-projects.html', 'See Our Work')
-    };
-    
-    if (contextActions[this.userContext]) {
-      action = contextActions[this.userContext];
+    // Reuse the sentiment- and page-aware fallback logic (positive/negative
+    // tone detection + context-specific messaging) instead of a flat
+    // 3-response pool, so replies are more relevant even with no AI key set.
+    const fallback = this.getContextualFallback(message);
+
+    // Attach a concrete next-step action when the smarter fallback above
+    // didn't already pick one (e.g. a negative-sentiment reply already
+    // routes to human contact).
+    if (!fallback.action) {
+      const contextActions = {
+        'homepage': () => this.suggestNavigation('my-projects.html', 'Explore Our Projects'),
+        'projects': () => this.suggestNavigation('contact.html', 'Get a Quote'),
+        'services': () => this.suggestNavigation('contact.html', 'Contact Us for Services'),
+        'contact': () => this.suggestHumanContact(),
+        'about': () => this.suggestNavigation('my-projects.html', 'See Our Work')
+      };
+      if (contextActions[this.userContext]) {
+        fallback.action = contextActions[this.userContext];
+      }
     }
-    
+
     return {
-      text: randomResponse,
-      action: action,
-      followUp: "Feel free to ask anything - from technical questions to business inquiries!"
+      text: fallback.text,
+      action: fallback.action,
+      followUp: "Feel free to ask anything else - from technical questions to business inquiries!"
     };
   }
 
@@ -1446,180 +1466,6 @@ class DAIChatbot {
       
       return `📊 **Found ${projects.length} projects matching "${searchTerm}":**\n\n${projectList}\n\n📍 **View all projects**: Visit the "My Journey" page to explore these projects in detail!`;
     }
-  }
-
-  generateResponse(userMessage) {
-    const message = userMessage.toLowerCase();
-    
-    // Check for project search queries first (high priority)
-    const projectSearchResult = this.searchProjects(message);
-    if (projectSearchResult) {
-      return { text: projectSearchResult, action: null };
-    }
-    
-    // Handle greetings with enhanced logic
-    if (this.containsPatterns(message, this.knowledgeBase.greetings.patterns)) {
-      // Try agentic greeting first
-      const agenticGreeting = this.getAgenticGreeting();
-      if (agenticGreeting) {
-        return { text: agenticGreeting, action: null };
-      }
-      
-      // Fallback to standard greetings
-      const greetings = this.knowledgeBase.greetings.responses;
-      let selectedGreetings;
-
-      if (this.userSession.returningUser) {
-        selectedGreetings = greetings.returning_visitor;
-      } else {
-        selectedGreetings = greetings.first_visit;
-      }
-
-      const timeBased = greetings.time_based[this.userSession.timeOfDay] || [];
-      const allGreetings = [...selectedGreetings, ...timeBased];
-      const randomGreeting = allGreetings[Math.floor(Math.random() * allGreetings.length)];
-      return { text: randomGreeting, action: null };
-    }
-
-    // Handle FAQ/Help requests
-    if (this.containsPatterns(message, this.knowledgeBase.faq.patterns)) {
-      return { text: this.knowledgeBase.faq.responses.general_help, action: null };
-    }
-
-    // Context-aware responses based on current page
-    if (this.userContext === 'projects') {
-      if (message.includes('zoom')) {
-        return {
-          text: "🔍 **Project Image Zoom**: You're on the projects page! Double-click any project image to zoom it fullscreen. On mobile, double-tap. You can also use the zoom button (🔍) on each image. Press ESC or click the X to close zoom.",
-          action: null
-        };
-      }
-      if (message.includes('filter')) {
-        return {
-          text: "🎛️ **Smart Filtering**: Use the filter buttons above (Excel, PowerBI, Python, SQL, Other) to see specific project types. The search box lets you find projects by name or technology used!",
-          action: null
-        };
-      }
-    }
-
-    // Data Science specific queries
-    if (this.containsPatterns(message, this.knowledgeBase.data_science.patterns)) {
-      if (message.includes('machine learning') || message.includes('ai')) {
-        return { text: this.knowledgeBase.data_science.responses.advanced_analytics, action: null };
-      } else if (message.includes('visualization') || message.includes('chart')) {
-        return { text: this.knowledgeBase.data_science.responses.data_viz, action: null };
-      } else if (message.includes('statistics')) {
-        return { text: this.knowledgeBase.data_science.responses.statistics, action: null };
-      }
-    }
-
-    // Navigation queries
-    if (this.containsPatterns(message, this.knowledgeBase.navigation.patterns)) {
-      if (message.includes('project')) {
-        return this.knowledgeBase.navigation.responses.projects;
-      } else if (message.includes('service')) {
-        return this.knowledgeBase.navigation.responses.services;
-      } else if (message.includes('contact')) {
-        return this.knowledgeBase.navigation.responses.contact;
-      } else if (message.includes('download')) {
-        return this.knowledgeBase.navigation.responses.download;
-      } else if (message.includes('about') || message.includes('ceo') || message.includes('founder')) {
-        return this.knowledgeBase.navigation.responses.about;
-      } else if (message.includes('terms')) {
-        return this.knowledgeBase.navigation.responses.terms;
-      } else if (message.includes('home') || message.includes('main')) {
-        return this.knowledgeBase.navigation.responses.homepage;
-      }
-    }
-
-    // Service queries
-    if (this.containsPatterns(message, this.knowledgeBase.services.patterns)) {
-      if (message.includes('price') || message.includes('cost') || message.includes('quote')) {
-        return { 
-          text: this.knowledgeBase.services.responses.pricing_structure + "\n\n💬 **Want a quick quote?** Our team can give you a personalized estimate in minutes!", 
-          action: () => this.suggestQuoteContact()
-        };
-      } else if (message.includes('excel')) {
-        return { text: this.knowledgeBase.services.responses.excel_cleanup, action: null };
-      } else if (message.includes('dashboard') || message.includes('powerbi')) {
-        return { text: this.knowledgeBase.services.responses.dashboard, action: null };
-      } else if (message.includes('analysis')) {
-        return { text: this.knowledgeBase.services.responses.data_analysis, action: null };
-      } else if (message.includes('setup') || message.includes('tracking')) {
-        return { text: this.knowledgeBase.services.responses.setup_services, action: null };
-      } else if (message.includes('process') || message.includes('how it works')) {
-        return { text: this.knowledgeBase.services.responses.process, action: null };
-      } else if (message.includes('why choose') || message.includes('value')) {
-        return { text: this.knowledgeBase.services.responses.value_proposition, action: null };
-      } else if (message.includes('contact') || message.includes('get started')) {
-        return { text: this.knowledgeBase.services.responses.contact_options, action: null };
-      }
-    }
-
-    // Products and Systems queries
-    if (this.containsPatterns(message, this.knowledgeBase.products_systems.patterns)) {
-      if (message.includes('tujengane') || message.includes('education') || message.includes('course')) {
-        return { 
-          text: this.knowledgeBase.products_systems.responses.tujengane_programs,
-          action: () => window.open(window.SITE_CONFIG && window.SITE_CONFIG.TUJENGANE_URL ? window.SITE_CONFIG.TUJENGANE_URL : 'https://dericbiskills.vercel.app', '_blank')
-        };
-      } else if (message.includes('tech stack') || message.includes('technology')) {
-        return { text: this.knowledgeBase.products_systems.responses.tech_stack, action: null };
-      } else if (message.includes('tools') || message.includes('analysis tools')) {
-        return { text: this.knowledgeBase.products_systems.responses.analysis_tools, action: null };
-      } else if (message.includes('project types') || message.includes('categories')) {
-        return { text: this.knowledgeBase.products_systems.responses.project_categories, action: null };
-      }
-    }
-
-    // Technical queries
-    if (this.containsPatterns(message, this.knowledgeBase.technical.patterns)) {
-      if (message.includes('zoom')) {
-        return { text: this.knowledgeBase.technical.responses.zoom, action: null };
-      } else if (message.includes('filter')) {
-        return { text: this.knowledgeBase.technical.responses.filter, action: null };
-      } else if (message.includes('search')) {
-        return { text: this.knowledgeBase.technical.responses.search, action: null };
-      } else if (message.includes('download')) {
-        return { text: this.knowledgeBase.technical.responses.download, action: null };
-      }
-    }
-
-    // Business queries
-    if (this.containsPatterns(message, this.knowledgeBase.business.patterns)) {
-      if (message.includes('about') || message.includes('company')) {
-        return { text: this.knowledgeBase.business.responses.about_dericbi, action: null };
-      } else if (message.includes('experience')) {
-        return { text: this.knowledgeBase.business.responses.experience, action: null };
-      } else if (message.includes('location')) {
-        return { text: this.knowledgeBase.business.responses.location, action: null };
-      } else if (message.includes('founder') || message.includes('deric') || message.includes('ceo')) {
-        return { text: this.knowledgeBase.business.responses.founder, action: null };
-      }
-    }
-
-    // Complex queries - Enhanced handling
-    if (this.isComplexQuery(message)) {
-      const complexResponses = [
-        {
-          text: "🤝 **That's a sophisticated question!** Our data experts would love to dive deep into this with you. Complex projects deserve personalized attention! Please contact us at dericmarangu@gmail.com or WhatsApp 0791360805.",
-          action: () => this.suggestExpertConsultation()
-        },
-        {
-          text: "🔬 **Advanced Requirements Detected!** This sounds like it needs our senior team's expertise. Let me connect you with someone who can give you detailed insights! Reach out to dericmarangu@gmail.com or WhatsApp 0791360805.",
-          action: () => this.suggestHumanContact()
-        },
-        {
-          text: "💡 **Great question!** This goes beyond what I can cover in a chat. Our analysts would be excited to discuss your specific requirements in detail! Contact dericmarangu@gmail.com or WhatsApp 0791360805.",
-          action: () => this.suggestHumanContact()
-        }
-      ];
-      
-      return complexResponses[Math.floor(Math.random() * complexResponses.length)];
-    }
-
-    // Default fallback with more personality
-    return this.getContextualFallback(message);
   }
 
   isComplexQuery(message) {
