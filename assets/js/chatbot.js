@@ -1,6 +1,22 @@
 // DAI (dericBI Artificial Intelligence) - Advanced Chatbot System
+// Drop-in replacement for assets/js/chatbot.js
+// Hooks kept identical: class DAIChatbot, window.DAIChatbot, element IDs
+// (chatbot-toggle / chatbot-container / chatbot-close / chatbot-messages /
+// chatbot-input / chatbot-send / smart-suggestions / page-suggestions),
+// CSS classes, 'journey-data.json' and the '/api/chat' proxy.
 class DAIChatbot {
   constructor() {
+    // Single source of truth for contact details and links.
+    // Change a value here and every answer, button and link follows.
+    this.config = {
+      whatsappNumber: '254791360805',
+      whatsappDisplay: '+254791360805',
+      email: 'deric.analytics@gmail.com',
+      dataFormUrl: 'https://forms.gle/krViHXVaJKP2JARZ7',
+      setupFormUrl: 'https://forms.gle/Uzq3L9wtm5yM6KEX7',
+      tujenganeUrl: 'https://dericbiskills.vercel.app'
+    };
+
     this.isOpen = false;
     this.currentConversation = [];
     this.conversationContext = {
@@ -11,6 +27,9 @@ class DAIChatbot {
     };
     this.userContext = this.detectUserContext();
     this.projectsData = null;
+    this.pendingSuggestion = null;
+    this.timers = [];
+    this._rxCache = new Map();
     this.userSession = this.initializeUserSession();
     this.userInteractions = [];
     this.agenticMemory = this.initializeAgenticMemory();
@@ -25,57 +44,147 @@ class DAIChatbot {
     this.startAgenticBehavior(); // Initialize proactive AI behavior
   }
 
+  // ---------------------------------------------------------------------
+  // Small shared helpers
+  // ---------------------------------------------------------------------
+
+  storageGet(key, session = false) {
+    try {
+      return (session ? sessionStorage : localStorage).getItem(key);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  storageSet(key, value, session = false) {
+    try {
+      (session ? sessionStorage : localStorage).setItem(key, value);
+    } catch (e) {
+      /* storage unavailable (private mode / blocked) - safe to ignore */
+    }
+  }
+
+  escapeHtml(text) {
+    return String(text)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  waLink(text) {
+    const base = `https://wa.me/${this.config.whatsappNumber}`;
+    return text ? `${base}?text=${encodeURIComponent(text)}` : base;
+  }
+
+  openWhatsApp(text) {
+    window.open(this.waLink(text), '_blank', 'noopener');
+  }
+
+  getTujenganeUrl() {
+    return (window.SITE_CONFIG && window.SITE_CONFIG.TUJENGANE_URL) || this.config.tujenganeUrl;
+  }
+
+  // Whole-word / whole-phrase matching (plural-tolerant for longer terms) so
+  // "hi" does not match "this", "ai" does not match "email", "no" does not
+  // match "know", and so on.
+  wordRegex(term) {
+    let rx = this._rxCache.get(term);
+    if (!rx) {
+      const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const plural = term.length > 3 ? '(?:s|es)?' : '';
+      rx = new RegExp('(?:^|[^a-z0-9])' + escaped + plural + '(?![a-z0-9])', 'i');
+      this._rxCache.set(term, rx);
+    }
+    return rx;
+  }
+
+  containsPatterns(message, patterns) {
+    return patterns.some(pattern => this.wordRegex(pattern).test(message));
+  }
+
+  getProjectsList() {
+    return Array.isArray(this.projectsData) ? this.projectsData : [];
+  }
+
+  // ---------------------------------------------------------------------
+  // Memory, session and proactive behaviour
+  // ---------------------------------------------------------------------
+
   // Initialize AI memory system for personalized experience
   initializeAgenticMemory() {
-    const stored = localStorage.getItem('dai_memory');
-    const memory = stored ? JSON.parse(stored) : {
+    const defaults = {
       userPreferences: {},
       interactionHistory: [],
       commonQuestions: [],
       suggestedActions: [],
       lastActiveContext: null
     };
-    return memory;
+    try {
+      const stored = this.storageGet('dai_memory');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed && typeof parsed === 'object') {
+          return Object.assign({}, defaults, parsed, {
+            userPreferences: parsed.userPreferences || {},
+            interactionHistory: Array.isArray(parsed.interactionHistory) ? parsed.interactionHistory : []
+          });
+        }
+      }
+    } catch (e) {
+      /* corrupted memory - start fresh */
+    }
+    return defaults;
   }
 
-  // Save AI memory to localStorage
+  // Save AI memory to localStorage (history is capped so it never grows forever)
   saveAgenticMemory() {
-    localStorage.setItem('dai_memory', JSON.stringify(this.agenticMemory));
+    if (this.agenticMemory.interactionHistory.length > 50) {
+      this.agenticMemory.interactionHistory = this.agenticMemory.interactionHistory.slice(-50);
+    }
+    this.storageSet('dai_memory', JSON.stringify(this.agenticMemory));
   }
 
   // Start proactive AI behavior
   startAgenticBehavior() {
-    // Analyze user behavior after a delay
-    setTimeout(() => {
+    // Analyze user behavior once the visitor has been on the page 30s
+    // (the check inside needs >30s on page, so it must run after that mark).
+    this.timers.push(setTimeout(() => {
       this.analyzeUserBehavior();
-    }, 10000); // 10 seconds after load
+    }, 31000));
 
     // One-shot: offer a concrete, context-aware next step (navigate or
-    // download) once, early in the visit. This was previously nested
-    // inside the 60s interval below, so its own 15-30s time-window check
-    // could never actually land on a tick and silently never fired.
-    // Scheduling it directly fixes that. It still always asks for
-    // Yes/No confirmation before doing anything (see performAutomaticNavigation
-    // / performAutomaticDownload) — never acts without the visitor's click.
-    setTimeout(() => {
-      if (!this.isOpen) {
+    // download) once, early in the visit - at most once per browser session
+    // and only if the visitor hasn't already started chatting. It always asks
+    // for Yes/No confirmation before doing anything (see
+    // performAutomaticNavigation / performAutomaticDownload).
+    this.timers.push(setTimeout(() => {
+      if (!this.isOpen && this.userInteractions.length === 0) {
         this.enhancedProactiveSuggestions();
       }
-    }, 20000); // 20 seconds after load
+    }, 20000));
 
-    // Periodic intelligent suggestions
-    setInterval(() => {
+    // Periodic intelligent suggestions (notification pulse only)
+    this.timers.push(setInterval(() => {
       if (!this.isOpen) {
         this.considerProactiveSuggestion();
       }
-    }, 60000); // Every minute
+    }, 60000));
+
+    window.addEventListener('pagehide', () => {
+      this.timers.forEach(id => {
+        clearTimeout(id);
+        clearInterval(id);
+      });
+    });
   }
 
   // Analyze user behavior and adapt responses
   analyzeUserBehavior() {
     const timeOnPage = Date.now() - this.userSession.currentTime.getTime();
     const context = this.userContext;
-    
+
     // Store behavioral data
     this.agenticMemory.lastActiveContext = context;
     this.agenticMemory.interactionHistory.push({
@@ -83,12 +192,12 @@ class DAIChatbot {
       timeSpent: timeOnPage,
       timestamp: Date.now()
     });
-    
-    // Suggest contextual help if user seems inactive
-    if (timeOnPage > 30000 && !this.userSession.returningUser) {
+
+    // Suggest contextual help if a first-time visitor seems idle
+    if (timeOnPage > 30000 && !this.userSession.returningUser && this.userInteractions.length === 0) {
       this.suggestContextualHelp();
     }
-    
+
     this.saveAgenticMemory();
   }
 
@@ -115,7 +224,7 @@ class DAIChatbot {
     if (toggleBtn) {
       toggleBtn.classList.add('dai-has-suggestion');
       toggleBtn.title = `DAI has a suggestion: ${message}`;
-      
+
       // Store the suggestion for when user opens DAI
       this.pendingSuggestion = message;
     }
@@ -124,15 +233,15 @@ class DAIChatbot {
   // Consider proactive suggestions based on user context
   considerProactiveSuggestion() {
     const timeOnCurrentPage = Date.now() - this.userSession.currentTime.getTime();
-    
+
     // If user has been on page for a while, suggest help
     if (timeOnCurrentPage > 120000 && Math.random() < 0.3) { // 2 minutes, 30% chance
       const contextSuggestions = {
         'projects': "💡 I can help you find specific projects by technology or topic!",
-        'services': "💼 Want to know more about pricing or see project examples?", 
+        'services': "💼 Want to know more about pricing or see project examples?",
         'homepage': "🚀 Need a quick tour of our capabilities or have questions?"
       };
-      
+
       const suggestion = contextSuggestions[this.userContext];
       if (suggestion) {
         this.addNotificationPulse(suggestion);
@@ -143,17 +252,17 @@ class DAIChatbot {
   // Initialize user session for personalized greetings
   initializeUserSession() {
     const session = {
-      visitCount: parseInt(localStorage.getItem('dericbi_visit_count') || '0') + 1,
-      lastVisit: localStorage.getItem('dericbi_last_visit'),
+      visitCount: parseInt(this.storageGet('dericbi_visit_count') || '0', 10) + 1,
+      lastVisit: this.storageGet('dericbi_last_visit'),
       currentTime: new Date(),
       timeOfDay: this.getTimeOfDay(),
-      returningUser: localStorage.getItem('dericbi_visited') === 'true'
+      returningUser: this.storageGet('dericbi_visited') === 'true'
     };
-    
-    localStorage.setItem('dericbi_visit_count', session.visitCount.toString());
-    localStorage.setItem('dericbi_last_visit', session.currentTime.toISOString());
-    localStorage.setItem('dericbi_visited', 'true');
-    
+
+    this.storageSet('dericbi_visit_count', session.visitCount.toString());
+    this.storageSet('dericbi_last_visit', session.currentTime.toISOString());
+    this.storageSet('dericbi_visited', 'true');
+
     return session;
   }
 
@@ -171,7 +280,11 @@ class DAIChatbot {
   async loadProjectsData() {
     try {
       const response = await fetch('journey-data.json');
-      this.projectsData = await response.json();
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const data = await response.json();
+      this.projectsData = Array.isArray(data)
+        ? data
+        : (data && Array.isArray(data.projects) ? data.projects : []);
     } catch (error) {
       console.log('Projects data not available for search');
       this.projectsData = [];
@@ -181,29 +294,36 @@ class DAIChatbot {
   // Detect what page user is on for context
   detectUserContext() {
     const path = window.location.pathname;
-    const page = path.split('/').pop() || 'index.html';
-    
+    const last = path.split('/').pop() || '';
+    // Works with "services.html" and with clean URLs like "/services"
+    const page = last.replace(/\.html?$/i, '') || 'index';
+
     const contexts = {
-      'index.html': 'homepage',
-      'services.html': 'services',
-      'my-projects.html': 'projects',
-      'contact.html': 'contact',
-      'about.html': 'about',
-      'terms.html': 'terms'
+      'index': 'homepage',
+      'home': 'homepage',
+      'services': 'services',
+      'my-projects': 'projects',
+      'contact': 'contact',
+      'about': 'about',
+      'terms': 'terms'
     };
-    
+
     return contexts[page] || 'general';
   }
 
+  // ---------------------------------------------------------------------
   // Knowledge base for intelligent responses
+  // ---------------------------------------------------------------------
   loadKnowledgeBase() {
+    const c = this.config;
+
     this.knowledgeBase = {
       // Navigation help
       navigation: {
-        patterns: ['where', 'find', 'navigate', 'go to', 'locate', 'page', 'section', 'how to access', 'link to', 'menu', 'what is on', 'homepage', 'contact page', 'about page', 'terms page', 'projects page', 'services page', 'portfolio page', 'main page', 'landing page', 'home', 'navigation', 'site map', 'sitemap', 'browse', 'explore', 'check out', 'look at', 'view', 'see', 'show me', 'take me to', 'redirect', 'visit', 'access', 'reach', 'get to', 'how do i get to', 'where can i find', 'how to navigate', 'website layout', 'site structure'],
+        patterns: ['where', 'find', 'navigate', 'go to', 'locate', 'page', 'section', 'how to access', 'link to', 'menu', 'what is on', 'homepage', 'contact page', 'about page', 'terms page', 'projects page', 'services page', 'portfolio page', 'main page', 'landing page', 'home', 'navigation', 'site map', 'sitemap', 'browse', 'explore', 'check out', 'look at', 'view', 'see', 'show me', 'take me to', 'redirect', 'visit', 'access', 'reach', 'get to', 'how do i get to', 'where can i find', 'how to navigate', 'website layout', 'site structure', 'tour', 'respond', 'fastest'],
         responses: {
           'projects': {
-            text: "🎯 You can find our projects on the **Projects** page! Click the 'Projects' link in the navigation menu or",
+            text: "🎯 You can find our projects on the **Projects** page! Click the 'Projects' link in the navigation menu or use the button below.",
             action: () => this.suggestNavigation('my-projects.html', 'View Projects')
           },
           'services': {
@@ -235,7 +355,7 @@ class DAIChatbot {
 
       // Service-related questions - Enhanced with comprehensive service knowledge
       services: {
-        patterns: ['price', 'cost', 'service', 'excel', 'data', 'analysis', 'dashboard', 'cleanup', 'quote', 'budget', 'rates', 'affordable', 'how much', 'pricing', 'fees', 'charges', 'what do you offer', 'your services', 'powerbi', 'power bi', 'setup', 'tracking', 'payment', 'pay', 'mpesa', 'crypto', 'paypal', 'till', 'hire', 'work with you', 'get your services', 'data cleaning', 'data processing', 'spreadsheet', 'database', 'reporting', 'visualization', 'charts', 'graphs', 'business intelligence', 'bi', 'analytics', 'insights', 'data science', 'statistics', 'consulting', 'consultant', 'expert', 'professional', 'specialist', 'data expert', 'excel expert', 'powerbi expert', 'data consultant', 'business analytics', 'data visualization', 'automated reports', 'custom dashboards', 'data transformation', 'data management', 'data organization', 'data quality', 'data validation', 'data integration', 'etl', 'data pipeline', 'data warehouse', 'data modeling', 'data mining', 'predictive analytics', 'machine learning', 'ai', 'artificial intelligence', 'data strategy', 'data governance', 'data architecture'],
+        patterns: ['price', 'cost', 'service', 'excel', 'data', 'analysis', 'dashboard', 'cleanup', 'quote', 'budget', 'rates', 'affordable', 'how much', 'pricing', 'fees', 'charges', 'what do you offer', 'your services', 'powerbi', 'power bi', 'setup', 'tracking', 'payment', 'pay', 'mpesa', 'crypto', 'paypal', 'till', 'hire', 'work with you', 'get your services', 'data cleaning', 'data processing', 'spreadsheet', 'database', 'reporting', 'visualization', 'charts', 'graphs', 'business intelligence', 'bi', 'analytics', 'insights', 'data science', 'statistics', 'consulting', 'consultant', 'expert', 'professional', 'specialist', 'data expert', 'excel expert', 'powerbi expert', 'data consultant', 'business analytics', 'data visualization', 'automated reports', 'custom dashboards', 'data transformation', 'data management', 'data organization', 'data quality', 'data validation', 'data integration', 'etl', 'data pipeline', 'data warehouse', 'data modeling', 'data mining', 'predictive analytics', 'machine learning', 'ai', 'artificial intelligence', 'data strategy', 'data governance', 'data architecture', 'process', 'turnaround', 'security', 'guarantee', 'refund', 'confidential'],
         responses: {
           'excel_cleanup': "We specialize in transforming messy spreadsheets into clean, analysis-ready data! Our Excel cleanup service includes:\n\n🧹 Removing duplicates and fixing inconsistencies\n📐 Standardizing formats and layouts\n📊 Organizing data logically for better analysis\n⚡ Creating automated formulas and calculations\n📈 Building summary dashboards and reports\n\nPerfect for businesses struggling with chaotic data that costs time and money!",
           'data_analysis': "We turn your raw data into actionable business insights! Our data analysis service covers:\n\n📈 Statistical analysis to understand your numbers\n🔍 Trend identification and pattern recognition\n💡 Business recommendations based on data\n🎯 Profit opportunity identification\n📊 Key performance metric tracking\n📋 Actionable insights that drive decisions\n\nWe find the hidden opportunities in your data that can transform your business!",
@@ -243,15 +363,15 @@ class DAIChatbot {
           'powerbi_dashboards': "Professional PowerBI dashboards that deliver enterprise-level business intelligence! These include:\n\n📊 Real-time data visualization\n🔄 Automated updates\n📱 Mobile compatibility\n🎯 Executive reporting capabilities\n🔗 Integration with multiple data sources\n📈 Advanced analytics and insights\n\nPerfect for serious business intelligence and executive decision-making!",
           'setup_services': "Don't have data systems yet? We can set up complete tracking systems from scratch! This includes:\n\n📊 Sales tracking and monitoring\n📦 Inventory management systems\n👥 Customer database setup\n📋 Automated reporting systems\n🔄 Real-time data collection\n📈 Performance dashboards\n\nGet a complete data infrastructure that grows with your business!",
           'process': "Our process is simple and straightforward - just 4 easy steps:\n\n1️⃣ Send Data - Upload your files or tell us what you need\n2️⃣ We Analyze - Our experts clean and analyze your data\n3️⃣ Get Results - Receive clean data and actionable insights\n4️⃣ Make Decisions - Use data-driven insights to grow your business\n\nMost projects are completed within 3-7 days, and we keep you updated throughout!",
-          'pricing_structure': "Our pricing is straightforward and affordable! All prices in US Dollars:\n\n🧹 Excel Cleanup - $20\n📊 Data Analysis - $20\n💼 PowerBI Dashboards - $20\n🐍 Custom Python Dashboards - $23\n📦 Complete Package - $38 (Save $5!)\n\n💡 FREE data setup consultation available!\n📞 Contact us for volume discounts and custom quotes.",
+          'pricing_structure': "Our pricing is straightforward and affordable! All prices in US Dollars:\n\n🧹 Excel Cleanup - $20\n📊 Data Analysis - $20\n💼 PowerBI Dashboards - $20\n🐍 Custom Python Dashboards - $23\n📦 Complete Package - $38 (Save $5!)\n\n💱 For reference: $20 ≈ KSh 2,600 and $23 ≈ KSh 3,000\n💡 FREE data setup consultation available!\n📞 Contact us for volume discounts and custom quotes.",
           'value_proposition': "Here's why businesses choose dericBI for their data needs:\n\n🎯 Stop Revenue Leaks - Most businesses lose money through untracked decisions\n💰 Turn $1M into $10M - Our analytics help clients achieve 10x growth\n📊 40+ Successful Projects - Proven track record across industries\n⚡ Fast Turnaround - Most projects completed in 3-7 days\n💸 Affordable Rates - Starting from just $20\n\nWe're not just service providers - we're your data transformation partners!",
-          'contact_options': "Ready to get started? Here are the best ways to reach us:\n\n📱 WhatsApp: +254791360805 (Fastest response - usually within minutes)\n📧 Email: deric.analytics@gmail.com\n📋 Have Data? Use our form: https://forms.gle/krViHXVaJKP2JARZ7\n🔧 Need Setup? Use our setup form: https://forms.gle/Uzq3L9wtm5yM6KEX7\n\nWe respond quickly and can start working on your project right away!",
+          'contact_options': `Ready to get started? Here are the best ways to reach us:\n\n📱 WhatsApp: ${c.whatsappDisplay} (Fastest response - usually within minutes)\n📧 Email: ${c.email}\n📋 Have Data? Use our form: ${c.dataFormUrl}\n🔧 Need Setup? Use our setup form: ${c.setupFormUrl}\n\nWe respond quickly and can start working on your project right away!`,
 
           // Enhanced service knowledge
           'service_benefits': "Our services deliver real, measurable benefits for your business:\n\n🧹 Excel Cleanup - Save 10+ hours per week on manual data work\n📊 Data Analysis - Uncover hidden opportunities worth thousands\n💼 PowerBI Dashboards - Real-time business monitoring and insights\n🔧 Complete Setup - Full data infrastructure in one comprehensive package\n\nEvery service includes consultation, implementation, and follow-up support!",
           'service_guarantees': "We stand behind our work with strong guarantees:\n\n✅ Quality Assurance - All work reviewed by senior analysts\n🔒 Data Security - Your data is encrypted and never shared\n😊 Satisfaction Guarantee - We'll fix any issues at no extra cost\n🤐 Confidentiality - NDA available for sensitive projects\n🔄 Free Revisions - Unlimited fixes within 30 days\n\nYour success and security are our top priorities!",
           'industry_expertise': "We have experience across many industries and sectors:\n\n🛒 Retail & E-commerce - Sales analysis and inventory optimization\n🏥 Healthcare - Patient data analysis and resource allocation\n💰 Finance - Risk assessment and portfolio analysis\n🎓 Education - Student performance and enrollment trends\n🏭 Manufacturing - Supply chain optimization and quality control\n🌾 Agriculture - Crop yield analysis and market trends\n🏠 Real Estate - Property valuation and market analysis\n🏛️ Government - Public data analysis and policy insights\n\nWith 40+ successful projects, we understand the unique challenges of each sector!",
-          'technical_capabilities': "Our technical toolkit covers everything you need:\n\n📊 Data Sources - Excel, CSV, SQL databases, APIs, Google Sheets\n🛠️ Analysis Tools - Python (Pandas, NumPy, Scikit-learn), SQL, Excel\n📈 Visualization - Power BI, Tableau, Python (Matplotlib, Seaborn, Plotly)\n☁️ Cloud Integration - Google Drive, OneDrive, AWS, Azure\n🔄 Automation - Scheduled reports and real-time dashboards\n🔒 Security - Encrypted data handling and secure file transfers\n\nWe use the best tools for each specific project to deliver optimal results!",
+          'technical_capabilities': "Our technical toolkit covers everything you need:\n\n📊 Data Sources - Excel, CSV, SQL databases, APIs, Google Sheets\n🛠️ Analysis Tools - Python (Pandas, NumPy, Scikit-learn), SQL, Excel\n📈 Visualization - Power BI, Tableau, Python (Matplotlib, Seaborn, Plotly)\n☁️ Cloud Integration - Google Drive, OneDrive, AWS, Azure\n🔄 Automation - Scheduled reports and real-time dashboards\n🔒 Security - Encrypted data handling and secure file transfers\n\nWe use the best tools for each specific project to deliver optimal results!"
         }
       },
 
@@ -268,7 +388,7 @@ class DAIChatbot {
 
       // Business questions - Enhanced with comprehensive company knowledge
       business: {
-        patterns: ['business', 'company', 'experience', 'about', 'who', 'founded', 'location', 'ceo', 'founder', 'deric', 'marangu', 'team', 'mission', 'values', 'history', 'credentials', 'portfolio', 'background', 'story', 'journey', 'expertise', 'skills', 'qualifications', 'certifications', 'awards', 'achievements', 'success', 'track record', 'case studies', 'testimonials', 'reviews', 'clients', 'customers', 'partners', 'collaborations', 'projects completed', 'years of experience', 'industry experience', 'specialization', 'focus', 'expertise areas', 'core competencies', 'strengths', 'advantages', 'unique selling points', 'usp', 'differentiators', 'what makes you different', 'why choose you', 'company culture', 'work environment', 'team size', 'company size', 'growth', 'expansion', 'milestones', 'achievements', 'recognition', 'awards', 'certifications', 'licenses', 'accreditations'],
+        patterns: ['business', 'company', 'experience', 'about', 'who', 'founded', 'location', 'ceo', 'founder', 'deric', 'marangu', 'team', 'mission', 'values', 'history', 'credentials', 'portfolio', 'background', 'story', 'journey', 'expertise', 'skills', 'qualifications', 'certifications', 'awards', 'achievements', 'success', 'track record', 'case studies', 'testimonials', 'reviews', 'clients', 'customers', 'partners', 'collaborations', 'projects completed', 'years of experience', 'industry experience', 'specialization', 'focus', 'expertise areas', 'core competencies', 'strengths', 'advantages', 'unique selling points', 'usp', 'differentiators', 'what makes you different', 'why choose you', 'company culture', 'work environment', 'team size', 'company size', 'growth', 'expansion', 'milestones', 'achievements', 'recognition', 'awards', 'certifications', 'licenses', 'accreditations', 'choose', 'why dericbi'],
         responses: {
           'about_dericbi': "🏢 **About dericBI**: We're a Kenyan data analytics company founded by our CEO Deric Marangu. We specialize in making messy data beautiful and actionable. Our mission is to empower businesses with clear insights. Check the About page for more.",
           'experience': "👨‍💼 **Our Experience**: 40+ completed projects across various industries. We've helped businesses clean Excel files, create dashboards, and gain insights from their data. Our CEO Deric Marangu leads with years of expertise in data analysis and dashboard creation.",
@@ -286,9 +406,9 @@ class DAIChatbot {
       complex: {
         patterns: ['complex', 'advanced', 'custom', 'specific', 'detailed', 'integrate', 'api', 'database', 'algorithm', 'enterprise', 'large scale', 'sophisticated', 'technical details', 'implementation', 'how to build'],
         responses: {
-          'redirect_human': "🤝 **Complex Request Detected**: This sounds like something our team should discuss with you personally! Our experts can provide detailed answers and custom solutions. Please contact us at deric.analytics@gmail.com or WhatsApp 0791360805.",
-          'schedule_consultation': "📅 **Let's Schedule a Chat**: For detailed technical discussions or custom requirements, I recommend speaking directly with our team at deric.analytics@gmail.com or WhatsApp 0791360805.",
-          'contact_expert': "👨‍🔬 **Expert Consultation**: This requires human expertise! Our data analysts would love to discuss your specific needs in detail. Reach out to deric.analytics@gmail.com or WhatsApp 0791360805."
+          'redirect_human': `🤝 **Complex Request Detected**: This sounds like something our team should discuss with you personally! Our experts can provide detailed answers and custom solutions. Please contact us at ${c.email} or WhatsApp ${c.whatsappDisplay}.`,
+          'schedule_consultation': `📅 **Let's Schedule a Chat**: For detailed technical discussions or custom requirements, I recommend speaking directly with our team at ${c.email} or WhatsApp ${c.whatsappDisplay}.`,
+          'contact_expert': `👨‍🔬 **Expert Consultation**: This requires human expertise! Our data analysts would love to discuss your specific needs in detail. Reach out to ${c.email} or WhatsApp ${c.whatsappDisplay}.`
         }
       },
 
@@ -358,7 +478,7 @@ class DAIChatbot {
       faq: {
         patterns: ['faq', 'help', 'support', 'question', 'common questions', 'issues', 'troubleshoot', 'how does it work', 'process', 'frequently asked questions', 'frequent questions', 'common issues', 'how to', 'guide', 'tutorial', 'instructions', 'steps', 'procedure', 'what happens', 'how long', 'timeline', 'expectations', 'what to expect', 'requirements', 'prerequisites', 'qualifications', 'eligibility', 'who can join', 'how much', 'cost', 'pricing questions', 'payment questions', 'refund', 'guarantee', 'warranty', 'terms', 'conditions', 'policies', 'rules', 'guidelines', 'standards', 'quality', 'assurance', 'certification', 'credentials', 'experience', 'background', 'portfolio', 'references', 'testimonials', 'reviews', 'feedback', 'satisfaction', 'success rate', 'results', 'outcomes', 'benefits', 'advantages', 'features', 'capabilities', 'limitations', 'restrictions', 'constraints', 'availability', 'schedule', 'timing', 'deadlines', 'delivery', 'turnaround', 'completion', 'duration', 'timeframe', 'milestones', 'progress', 'updates', 'communication', 'contact methods', 'support channels', 'help desk', 'customer service', 'technical support', 'assistance', 'guidance', 'advice', 'recommendations', 'suggestions', 'tips', 'best practices', 'tricks', 'hacks', 'shortcuts', 'optimization', 'improvement', 'enhancement', 'upgrades', 'updates', 'maintenance', 'upkeep', 'monitoring', 'tracking', 'reporting', 'analytics', 'insights', 'metrics', 'kpis', 'performance', 'efficiency', 'effectiveness', 'roi', 'return on investment', 'value', 'worth', 'investment', 'budget', 'costs', 'expenses', 'fees', 'charges', 'rates', 'pricing', 'quotes', 'estimates', 'proposals', 'contracts', 'agreements', 'terms of service', 'privacy policy', 'data protection', 'security', 'confidentiality', 'trust', 'reliability', 'dependability', 'consistency', 'accuracy', 'precision', 'quality assurance', 'standards compliance', 'certifications', 'accreditations', 'licenses', 'permissions', 'approvals', 'endorsements'],
         responses: {
-          'general_help': "❓ **I'm here to help!** I can assist with:\n\n• **Navigation**: Find specific pages or features\n• **Services**: Learn about what we offer\n• **Projects**: Browse our portfolio\n• **Contact**: Connect with our team\n\nWhat would you like to know more about? If it's beyond my scope, feel free to contact dericmarangu@gmail.com or WhatsApp 0791360805."
+          'general_help': `❓ **I'm here to help!** I can assist with:\n\n• **Navigation**: Find specific pages or features\n• **Services**: Learn about what we offer\n• **Projects**: Browse our portfolio\n• **Contact**: Connect with our team\n\nWhat would you like to know more about? If it's beyond my scope, feel free to contact ${c.email} or WhatsApp ${c.whatsappDisplay}.`
         }
       },
 
@@ -366,7 +486,7 @@ class DAIChatbot {
       data_science: {
         patterns: ['machine learning', 'ai', 'artificial intelligence', 'statistics', 'analytics', 'visualization', 'predictive', 'modeling', 'big data', 'insights', 'trends', 'correlation', 'data science', 'advanced analytics'],
         responses: {
-          'advanced_analytics': "🔬 **Advanced Analytics**: We work with statistical analysis, predictive modeling, and data visualization. For AI/ML projects, our team can discuss custom solutions! Contact dericmarangu@gmail.com or WhatsApp 0791360805 for details.",
+          'advanced_analytics': `🔬 **Advanced Analytics**: We work with statistical analysis, predictive modeling, and data visualization. For AI/ML projects, our team can discuss custom solutions! Contact ${c.email} or WhatsApp ${c.whatsappDisplay} for details.`,
           'data_viz': "📊 **Data Visualization**: We create stunning dashboards and charts that make complex data easy to understand. Check our portfolio for examples!",
           'statistics': "📈 **Statistical Analysis**: We provide comprehensive statistical analysis including trend analysis, correlation studies, and predictive insights. Our CEO Deric Marangu specializes in this area."
         }
@@ -377,11 +497,11 @@ class DAIChatbot {
         patterns: ['products', 'systems', 'tools', 'platforms', 'technology', 'streamlit', 'tujengane', 'what tools', 'tech stack', 'software', 'applications', 'solutions', 'offerings', 'capabilities', 'resources', 'assets', 'frameworks', 'libraries', 'programming', 'coding', 'development', 'data tools', 'analytics tools', 'visualization tools', 'business tools', 'productivity tools', 'automation tools', 'integration tools', 'data platforms', 'cloud services', 'saas', 'software as a service', 'web applications', 'mobile apps', 'desktop apps', 'api', 'apis', 'integrations', 'connectors', 'plugins', 'extensions', 'add-ons', 'modules', 'components', 'features', 'functionality', 'capabilities', 'solutions', 'services offered', 'product catalog', 'technology stack', 'tech ecosystem', 'digital tools', 'smart tools', 'intelligent systems', 'ai tools', 'ml tools', 'data science tools'],
         responses: {
           'tech_stack': "💻 **dericBI Tech Stack**:\n\n**Frontend**: HTML, TailwindCSS, JavaScript\n**Analytics**: Python, SQL, Power BI, Excel\n**Data Processing**: Pandas, NumPy, Matplotlib, Seaborn\n**Dashboards**: Power BI, Excel, Python visualizations\n**Storage**: Google Drive, Google Sheets\n**Hosting**: GitHub Pages, vercel\n**Communication**: WhatsApp, Email, Google Forms",
-          
+
           'tujengane_programs': "🎓 **Tujengane Education Programs**:\n\n**1. Data Basics** (FREE):\n• Data collection, cleaning, storage\n• Basic Excel and database concepts\n• WhatsApp Group: Business & student support\n\n**2. Digital Literacy** ($10 per module):\n• Computer skills for business and personal growth\n• Direct WhatsApp access - no forms required\n\n**3. Analyst Pro** ($10 per module):\n• Excel, PowerBI, SQL, Python\n• Real-world analytics projects\n• Professional certification track\n\n**💰 Complete Package**: $100 for all education services!\n\nAll programs help you become data-literate!",
-          
+
           'analysis_tools': "🛠️ **Our Analysis Arsenal**:\n\n**Python**: Advanced statistical analysis, machine learning\n**Excel**: Data cleaning, pivot tables, dashboards\n**Power BI**: Interactive business intelligence dashboards\n**SQL**: Database querying, data extraction\n**Google Sheets**: Collaborative data management\n**Matplotlib/Seaborn**: Professional data visualizations",
-          
+
           'project_categories': "📊 **Project Types We Handle**:\n\n• **Excel Projects**: Cleanup, automation, dashboards\n• **Python Analytics**: Statistical analysis, ML models\n• **Power BI Dashboards**: Interactive business reports\n• **SQL Database**: Data extraction, reporting\n• **Mixed Projects**: Multi-tool comprehensive solutions\n\n40+ completed projects across all categories!"
         }
       },
@@ -412,7 +532,7 @@ class DAIChatbot {
         responses: {
           'learning_opportunities': "Great question! We offer several learning programs to help you build your data analytics skills. Here's what we have available:\n\n📚 Tujengane Data Basics - Our free introductory program for data literacy\n💻 Digital Literacy - $10 per module for essential computer skills\n📊 Analyst Pro - $10 per module for advanced analytics techniques\n🎯 Custom Training - Tailored programs for your organization's specific needs\n👨‍🏫 One-on-One Coaching - Personalized mentoring sessions\n👥 Group Workshops - Interactive learning in small groups\n📜 Certification Programs - Industry-recognized credentials\n💼 Career Support - Job placement assistance and resume building\n\nWhether you're just starting out or looking to advance your career, we can guide you every step of the way!",
           'skill_development': "We have a structured learning path that takes you from beginner to expert. Here's how we break it down:\n\n🌱 Level 1 - Foundations\n   • Data collection and cleaning basics\n   • Essential Excel and spreadsheet skills\n   • Introduction to database concepts\n\n📈 Level 2 - Intermediate\n   • Statistical analysis techniques\n   • Data visualization principles\n   • Basic SQL query writing\n\n🚀 Level 3 - Advanced\n   • Python programming for data analysis\n   • Machine learning fundamentals\n   • Advanced dashboard creation\n\n⭐ Level 4 - Expert\n   • Big data analytics strategies\n   • Predictive modeling techniques\n   • Enterprise-level solutions\n\nWe provide personalized guidance and hands-on projects at each level to ensure you build real-world skills!",
-          'career_support': "Beyond just teaching skills, we help you build a successful career in data analytics. Our comprehensive support includes:\n\n🎯 Job Placement - We connect you with relevant data analytics positions\n📁 Portfolio Building - Help you create professional project showcases\n📄 Resume Enhancement - Optimize your resume to highlight your new skills\n💬 Interview Preparation - Practice both technical and behavioral interviews\n🤝 Networking - Connect you with industry professionals and mentors\n📜 Certification - Guide you through recognized qualifications\n👨‍🏫 Mentorship - Ongoing guidance and career advice\n\nMany of our students land their dream jobs within months of completing our programs!",
+          'career_support': "Beyond just teaching skills, we help you build a successful career in data analytics. Our comprehensive support includes:\n\n🎯 Job Placement - We connect you with relevant data analytics positions\n📁 Portfolio Building - Help you create professional project showcases\n📄 Resume Enhancement - Optimize your resume to highlight your new skills\n💬 Interview Preparation - Practice both technical and behavioral interviews\n🤝 Networking - Connect you with industry professionals and mentors\n📜 Certification - Guide you through recognized qualifications\n👨‍🏫 Mentorship - Ongoing guidance and career advice\n\nMany of our students land their dream jobs within months of completing our programs!"
         }
       },
 
@@ -422,7 +542,7 @@ class DAIChatbot {
         responses: {
           'data_limits': "We can handle large datasets efficiently! Here's what we typically work with:\n\n📊 Excel Files - Up to 1 million rows and 16,000 columns\n📄 CSV Files - Unlimited rows (limited by your computer's memory)\n🗄️ Database Tables - Millions of records across various database types\n🔌 API Data - Whatever the source allows (we optimize for rate limits)\n💾 File Size - Up to 500MB per individual file\n⚡ Concurrent Projects - Up to 5 projects running simultaneously\n☁️ Storage - Unlimited cloud storage for your processed data\n🔄 Backup - Automatic daily backups of all your work\n\nFor enterprise-scale needs beyond these limits, we can discuss custom solutions!",
           'system_requirements': "Don't worry about technical requirements - we've made it simple! Here's what you need:\n\n💻 For Our Services:\n   • Any modern computer with internet access\n   • No special software installation required\n   • We handle all the heavy processing in the cloud\n\n📥 For Downloads:\n   • Excel 2010 or later (recommended for best experience)\n   • Power BI Desktop (free download available)\n   • Python with Anaconda (only if you want to run code locally)\n\n🎓 For Education Programs:\n   • WhatsApp access for group learning sessions\n   • Basic computer with internet connection\n   • Zero prior experience needed - we teach everything!\n\nEverything is designed to work on your existing setup!",
-          'integration_capabilities': "We connect your data wherever it lives! Our integration capabilities include:\n\n☁️ Cloud Storage - Google Drive, OneDrive, Dropbox\n🗄️ Databases - MySQL, PostgreSQL, SQL Server, SQLite\n🔌 APIs - REST, GraphQL, SOAP endpoints\n🏢 Business Systems - ERP, CRM, POS integrations\n🌐 Cloud Platforms - AWS, Azure, Google Cloud\n💬 Communication - Slack, Teams, WhatsApp automation\n📧 Reporting - Scheduled email and PDF reports\n🚨 Alerts - Real-time notification systems\n\nNo matter where your data is stored, we can access it and turn it into insights!",
+          'integration_capabilities': "We connect your data wherever it lives! Our integration capabilities include:\n\n☁️ Cloud Storage - Google Drive, OneDrive, Dropbox\n🗄️ Databases - MySQL, PostgreSQL, SQL Server, SQLite\n🔌 APIs - REST, GraphQL, SOAP endpoints\n🏢 Business Systems - ERP, CRM, POS integrations\n🌐 Cloud Platforms - AWS, Azure, Google Cloud\n💬 Communication - Slack, Teams, WhatsApp automation\n📧 Reporting - Scheduled email and PDF reports\n🚨 Alerts - Real-time notification systems\n\nNo matter where your data is stored, we can access it and turn it into insights!"
         }
       },
 
@@ -432,12 +552,15 @@ class DAIChatbot {
         responses: {
           'international_clients': "We're proud to serve clients around the world! Our international presence spans:\n\n🌍 East Africa - Kenya, Tanzania, Uganda (our primary market)\n🌍 West Africa - Nigeria, Ghana (rapidly growing)\n🌍 Southern Africa - South Africa, Botswana\n🌍 Europe - UK, Germany, Netherlands\n🌍 North America - USA, Canada\n🌍 Middle East - UAE, Saudi Arabia\n🌍 Asia - India, Singapore\n\nThat's clients in over 15 countries across 4 continents! We understand different business cultures and can adapt our services accordingly.",
           'remote_work': "Distance is never a barrier with our remote work approach! We excel at serving clients worldwide through:\n\n🕐 Time Zone Flexibility - 24/7 availability across all time zones\n☁️ Cloud Collaboration - Real-time project sharing and updates\n🔒 Secure Communication - Encrypted video calls and messaging\n📤 Digital Delivery - Instant file sharing and downloads\n💳 Global Payments - Multiple currency and payment options\n🌐 Cultural Adaptation - Understanding local business contexts\n🗣️ Language Support - English as primary, with multilingual team\n✅ Quality Assurance - Same high standards everywhere\n\nWhether you're next door or across the ocean, you get the same exceptional service!",
-          'payment_international': "We make international payments simple and flexible! Here are your options:\n\n₿ Cryptocurrency - USDT, BTC, ETH, BNB (fastest processing)\n💳 PayPal - Perfect for international clients\n🏦 Wire Transfer - Bank-to-bank for large enterprise projects\n🌐 Western Union - Cash pickup worldwide\n📱 Mobile Money - M-Pesa, Airtel Money\n🏪 Local Banking - Country-specific banking options\n💱 Currencies - USD, EUR, GBP, KES, and many more\n\nNo matter where you are, we have a payment method that works for you!",
+          'payment_international': "We make international payments simple and flexible! Here are your options:\n\n₿ Cryptocurrency - USDT, BTC, ETH, BNB (fastest processing)\n💳 PayPal - Perfect for international clients\n🏦 Wire Transfer - Bank-to-bank for large enterprise projects\n🌐 Western Union - Cash pickup worldwide\n📱 Mobile Money - M-Pesa, Airtel Money\n🏪 Local Banking - Country-specific banking options\n💱 Currencies - USD, EUR, GBP, KES, and many more\n\nNo matter where you are, we have a payment method that works for you!"
         }
       }
     };
   }
 
+  // ---------------------------------------------------------------------
+  // Widget markup, styles and events
+  // ---------------------------------------------------------------------
   createChatbotHTML() {
     const chatbotHTML = `
       <!-- DAI Toggle Button -->
@@ -637,6 +760,7 @@ class DAIChatbot {
           box-shadow: 0 2px 8px rgba(73, 160, 120, 0.2);
           word-wrap: break-word;
           line-height: 1.45;
+          white-space: pre-line;
         }
 
         .bot-message .message-content {
@@ -650,6 +774,15 @@ class DAIChatbot {
           font-size: 13px;
           word-wrap: break-word;
           line-height: 1.45;
+          white-space: pre-line;
+        }
+        .bot-message .message-content a {
+          color: #49A078;
+          text-decoration: underline;
+          word-break: break-all;
+        }
+        .message-action-wrap {
+          white-space: normal;
         }
 
         .action-button {
@@ -706,6 +839,7 @@ class DAIChatbot {
           gap: 8px;
           margin-top: 12px;
           flex-wrap: wrap;
+          white-space: normal;
         }
 
         .confirm-button {
@@ -762,10 +896,10 @@ class DAIChatbot {
     document.addEventListener('click', (e) => {
       const chatContainer = document.getElementById('chatbot-container');
       const chatToggle = document.getElementById('chatbot-toggle');
-      
+
       // Check if click is outside chatbot and not on toggle button
-      if (this.isOpen && 
-          !chatContainer.contains(e.target) && 
+      if (this.isOpen &&
+          !chatContainer.contains(e.target) &&
           !chatToggle.contains(e.target)) {
         this.closeChatbot();
       }
@@ -777,17 +911,19 @@ class DAIChatbot {
     });
 
     // Enter key to send
-    document.getElementById('chatbot-input').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
+    document.getElementById('chatbot-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.isComposing) {
+        e.preventDefault();
         this.sendMessage();
       }
     });
 
-    // Quick action buttons
+    // Quick action buttons (event delegation so dynamically added ones work too)
     document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('quick-action-btn')) {
-        const message = e.target.getAttribute('data-message');
-        this.handleUserMessage(message);
+      const btn = e.target.closest ? e.target.closest('.quick-action-btn') : null;
+      if (btn) {
+        const message = btn.getAttribute('data-message');
+        if (message) this.handleUserMessage(message);
       }
     });
 
@@ -800,7 +936,8 @@ class DAIChatbot {
   showSmartSuggestions() {
     const suggestionsContainer = document.getElementById('smart-suggestions');
     const pageSuggestions = document.getElementById('page-suggestions');
-    
+    if (!suggestionsContainer || !pageSuggestions) return;
+
     const contextSuggestions = {
       'homepage': [
         { text: "🏠 Tour Website", message: "Can you give me a tour of this website?" },
@@ -833,7 +970,8 @@ class DAIChatbot {
     };
 
     const suggestions = contextSuggestions[this.userContext] || contextSuggestions['homepage'];
-    
+
+    pageSuggestions.innerHTML = '';
     suggestions.forEach(suggestion => {
       const button = document.createElement('button');
       button.className = 'quick-action-btn';
@@ -848,26 +986,34 @@ class DAIChatbot {
   toggleChatbot() {
     const container = document.getElementById('chatbot-container');
     const toggleBtn = document.getElementById('chatbot-toggle');
-    
+
     if (this.isOpen) {
       this.closeChatbot();
     } else {
       this.isOpen = true;
       container.style.transform = 'translateY(0)';
       container.style.opacity = '1';
-      
+
       // Remove notification pulse when opened
       toggleBtn.classList.remove('dai-has-suggestion');
       toggleBtn.title = 'DAI - Your Intelligent Assistant';
-      
+
       document.getElementById('chatbot-input').focus();
-      
+
+      // Show the pending proactive suggestion once, now that the visitor opened DAI
+      if (this.pendingSuggestion) {
+        const suggestion = this.pendingSuggestion;
+        this.pendingSuggestion = null;
+        setTimeout(() => this.addMessage(suggestion, 'bot'), 400);
+      }
+
       // Track opening in agentic memory
       this.agenticMemory.interactionHistory.push({
         action: 'opened_DAI',
         timestamp: Date.now(),
         context: this.userContext
       });
+      this.saveAgenticMemory();
     }
   }
 
@@ -881,48 +1027,62 @@ class DAIChatbot {
   sendMessage() {
     const input = document.getElementById('chatbot-input');
     const message = input.value.trim();
-    
+
     if (message) {
       this.handleUserMessage(message);
       input.value = '';
     }
   }
 
+  // ---------------------------------------------------------------------
+  // Message handling
+  // ---------------------------------------------------------------------
   handleUserMessage(message) {
+    if (!message || !message.trim()) return;
+
     // Add to conversation history
     this.currentConversation.push({
       type: 'user',
       message: message,
       timestamp: Date.now()
     });
-    
+
     // Track user interaction for agentic behavior
     this.userInteractions.push({
       message: message,
       timestamp: Date.now(),
       context: this.userContext
     });
-    
+
     // Update user preferences
     this.updateUserPreferences(message);
-    
+
     // Add user message to chat
     this.addMessage(message, 'user');
-    
+
     // Check for agentic actions first (automatic navigation/downloads)
     if (this.detectAndOfferActions(message)) {
       return; // Don't process further if agentic action was offered
     }
-    
+
     // Show typing indicator
     this.showTypingIndicator();
-    
+
     // Process message with context awareness
     const processingDelay = this.calculateProcessingDelay(message);
     setTimeout(async () => {
+      let response;
+      try {
+        response = await this.generateContextualResponse(message);
+      } catch (error) {
+        console.error('🤖 DAI: failed to build a response', error);
+        response = {
+          text: `😔 **Sorry, something went wrong on my side.** Please try again, or reach our team directly at ${this.config.email} or WhatsApp ${this.config.whatsappDisplay}.`,
+          action: null
+        };
+      }
       this.hideTypingIndicator();
-      const response = await this.generateContextualResponse(message);
-      
+
       // Add bot response to conversation history
       this.currentConversation.push({
         type: 'bot',
@@ -930,11 +1090,12 @@ class DAIChatbot {
         timestamp: Date.now(),
         context: this.conversationContext
       });
-      
-      this.addMessage(response.text, 'bot', response.action);
-      
+
+      this.addMessage(response.text, 'bot', response.action, response.actionLabel);
+
       // Handle follow-up prompts if needed
       if (response.followUp) {
+        this.conversationContext.awaitingFollowup = true;
         setTimeout(() => {
           this.addMessage(response.followUp, 'bot');
         }, 2000);
@@ -945,17 +1106,18 @@ class DAIChatbot {
   // Update user preferences based on their messages
   updateUserPreferences(message) {
     const msg = message.toLowerCase();
-    
+    const prefs = this.agenticMemory.userPreferences;
+
     // Track technology interests
-    if (msg.includes('python')) this.agenticMemory.userPreferences.python = (this.agenticMemory.userPreferences.python || 0) + 1;
-    if (msg.includes('excel')) this.agenticMemory.userPreferences.excel = (this.agenticMemory.userPreferences.excel || 0) + 1;
-    if (msg.includes('powerbi')) this.agenticMemory.userPreferences.powerbi = (this.agenticMemory.userPreferences.powerbi || 0) + 1;
-    if (msg.includes('sql')) this.agenticMemory.userPreferences.sql = (this.agenticMemory.userPreferences.sql || 0) + 1;
-    
+    if (msg.includes('python')) prefs.python = (prefs.python || 0) + 1;
+    if (msg.includes('excel')) prefs.excel = (prefs.excel || 0) + 1;
+    if (msg.includes('powerbi') || msg.includes('power bi')) prefs.powerbi = (prefs.powerbi || 0) + 1;
+    if (msg.includes('sql')) prefs.sql = (prefs.sql || 0) + 1;
+
     // Track service interests
-    if (msg.includes('price') || msg.includes('cost')) this.agenticMemory.userPreferences.pricing = true;
-    if (msg.includes('project') || msg.includes('portfolio')) this.agenticMemory.userPreferences.projects = true;
-    
+    if (msg.includes('price') || msg.includes('cost')) prefs.pricing = true;
+    if (msg.includes('project') || msg.includes('portfolio')) prefs.projects = true;
+
     this.saveAgenticMemory();
   }
 
@@ -965,347 +1127,616 @@ class DAIChatbot {
     const wordCount = message.split(' ').length;
     const complexityMultiplier = Math.min(wordCount / 10, 2); // Cap at 2x
     const randomness = Math.random() * 500; // Add natural variation
-    
+
     return baseDelay + (complexityMultiplier * 300) + randomness;
   }
 
   // Generate contextual response with conversation flow
   async generateContextualResponse(userMessage) {
     const message = userMessage.toLowerCase().trim();
-    
+    const wordCount = message.split(/\s+/).length;
+
     // Check for conversation continuity first
     if (this.conversationContext.awaitingFollowup) {
       return await this.handleFollowUpResponse(message);
     }
-    
-    // Handle short responses and confirmations
-    if (this.isShortResponse(message)) {
-      return this.handleShortResponse(message);
-    }
-    
-    // Check for project search queries
-    const projectSearchResult = this.searchProjects(message);
-    if (projectSearchResult) {
-      this.conversationContext.lastTopic = 'projects';
-      this.conversationContext.awaitingFollowup = true;
-      this.conversationContext.contextData = { searchPerformed: true };
-      return { 
-        text: projectSearchResult, 
-        action: null,
-        followUp: "Would you like me to help you download files from any of these projects, or find something more specific?"
-      };
-    }
-    
-    // Handle greetings
-    if (this.containsPatterns(message, this.knowledgeBase.greetings.patterns)) {
+
+    // Greetings (only short messages - "hi, what are your prices?" is a question)
+    const isGreeting = wordCount <= 5 && this.containsPatterns(message, this.knowledgeBase.greetings.patterns);
+    if (isGreeting) {
       this.conversationContext.lastTopic = 'greeting';
       this.conversationContext.awaitingFollowup = true;
       return this.handleGreeting();
     }
-    
-    // Service queries
+
+    // Handle short responses and confirmations
+    if (this.isShortResponse(message)) {
+      return this.handleShortResponse(message);
+    }
+
+    // Project search: specific results first (generic help is offered later)
+    const projectSearchResult = this.searchProjects(message, false);
+    if (projectSearchResult) {
+      return this.projectSearchResponse(projectSearchResult);
+    }
+
+    // Specific knowledge-base topics (marketing, specs, trends, education...)
+    const topicResponse = this.matchKnowledgeTopic(message);
+    if (topicResponse) {
+      return topicResponse;
+    }
+
+    // Generic project-search help
+    const projectHelp = this.searchProjects(message, true);
+    if (projectHelp) {
+      return this.projectSearchResponse(projectHelp);
+    }
+
+    let response;
     if (this.containsPatterns(message, this.knowledgeBase.services.patterns)) {
-      return this.handleServiceQuery(message);
+      response = this.handleServiceQuery(message);
+    } else if (this.containsPatterns(message, this.knowledgeBase.navigation.patterns)) {
+      response = this.handleNavigationQuery(message);
+    } else if (this.containsPatterns(message, this.knowledgeBase.business.patterns)) {
+      response = this.handleBusinessQuery(message);
+    } else if (this.containsPatterns(message, this.knowledgeBase.products_systems.patterns)) {
+      response = this.handleProductsQuery(message);
+    } else if (this.containsPatterns(message, this.knowledgeBase.technical.patterns)) {
+      response = this.handleTechnicalQuery(message);
+    } else if (this.isComplexQuery(message)) {
+      response = this.handleComplexQuery(message);
+    } else {
+      // Default fallback (asks the AI assistant first, then the knowledge base)
+      return await this.handleFallbackResponse(message);
     }
-    
-    // Navigation queries
-    if (this.containsPatterns(message, this.knowledgeBase.navigation.patterns)) {
-      return this.handleNavigationQuery(message);
+
+    // Generic canned answers give way to the AI assistant when it is available;
+    // specific, exact answers (pricing, process, pages...) are never replaced.
+    if (response.generic) {
+      const aiReply = await this.queryAIAssistant(message);
+      if (aiReply) {
+        return {
+          text: aiReply,
+          action: null,
+          followUp: "Feel free to ask anything else - from technical questions to business inquiries!"
+        };
+      }
     }
-    
-    // Technical queries
-    if (this.containsPatterns(message, this.knowledgeBase.technical.patterns)) {
-      return this.handleTechnicalQuery(message);
-    }
-    
-    // Business queries
-    if (this.containsPatterns(message, this.knowledgeBase.business.patterns)) {
-      return this.handleBusinessQuery(message);
-    }
-    
-    // Products and systems
-    if (this.containsPatterns(message, this.knowledgeBase.products_systems.patterns)) {
-      return this.handleProductsQuery(message);
-    }
-    
-    // Complex queries
-    if (this.isComplexQuery(message)) {
-      return this.handleComplexQuery(message);
-    }
-    
-    // Default fallback with conversation flow
-    return await this.handleFallbackResponse(message);
+    return response;
   }
-  
+
+  // Wraps a project search result with its context and follow-up
+  projectSearchResponse(text) {
+    this.conversationContext.lastTopic = 'projects';
+    this.conversationContext.awaitingFollowup = true;
+    this.conversationContext.contextData = { searchPerformed: true };
+    return {
+      text: text,
+      action: () => this.suggestNavigation('my-projects.html', 'View Projects'),
+      actionLabel: 'Open Projects page',
+      followUp: "Would you like me to help you download files from any of these projects, or find something more specific?"
+    };
+  }
+
+  // Routes specific questions to the matching knowledge-base entry.
+  // Every entry of the knowledge base is reachable through this table,
+  // the service/business/navigation/technical handlers, or the greetings.
+  matchKnowledgeTopic(message) {
+    const kb = this.knowledgeBase;
+    const wa = (text) => () => this.openWhatsApp(text);
+    const rules = [
+      // Contact
+      { words: ['contact details', 'contact info', 'how can i contact', 'how do i contact', 'get started', 'email address', 'phone number', 'whatsapp number', 'whatsapp', 'request form'],
+        section: 'services', key: 'contact_options', action: wa('Hi Deric, I would like to get started'), label: 'Open WhatsApp' },
+
+      // International payments / global presence
+      { words: ['international payment', 'international payments', 'wire transfer', 'western union', 'currencies', 'currency', 'payment methods'],
+        section: 'global_presence', key: 'payment_international' },
+      { words: ['remote', 'time zone', 'time zones', 'work remotely'],
+        section: 'global_presence', key: 'remote_work' },
+      { words: ['international', 'worldwide', 'countries', 'overseas', 'abroad', 'outside kenya', 'global'],
+        section: 'global_presence', key: 'international_clients' },
+
+      // Technical specifications
+      { words: ['file size', 'file limit', 'file limits', 'data limits', 'maximum', 'how big', 'large dataset', 'large datasets', 'how many rows', 'rows'],
+        section: 'technical_specs', key: 'data_limits' },
+      { words: ['system requirements', 'requirements', 'prerequisites', 'compatibility', 'what do i need'],
+        section: 'technical_specs', key: 'system_requirements' },
+      { words: ['integration', 'integrations', 'integrate', 'cloud storage', 'google drive', 'connect my data'],
+        section: 'technical_specs', key: 'integration_capabilities' },
+
+      // Education / learning
+      { words: ['career', 'job placement', 'jobs', 'job', 'resume'],
+        section: 'education_learning', key: 'career_support' },
+      { words: ['learning path', 'skill levels', 'levels', 'curriculum', 'skill development'],
+        section: 'education_learning', key: 'skill_development' },
+      { words: ['want to learn', 'learn data', 'learn analytics', 'learn excel', 'teach me', 'training', 'courses', 'course', 'classes', 'coaching', 'mentoring', 'workshops', 'certification'],
+        section: 'education_learning', key: 'learning_opportunities' },
+
+      // Industry trends & competition
+      { words: ['trends', 'trending', 'analytics trends', 'industry trends'],
+        section: 'industry_trends', key: 'data_analytics_trends' },
+      { words: ['positioning'],
+        section: 'industry_trends', key: 'market_positioning' },
+      { words: ['competitive', 'competitors', 'competition', 'advantages', 'advantage', 'what makes you different', 'better than'],
+        section: 'industry_trends', key: 'competitive_advantages', follow: true },
+
+      // Business / company
+      { words: ['why choose', 'why should i choose', 'why dericbi', 'value proposition', 'choose dericbi', 'choose you', 'why businesses choose'],
+        section: 'services', key: 'value_proposition', follow: true },
+      { words: ['market position', 'market share', 'leading', 'number one', 'best in kenya'],
+        section: 'business', key: 'market_position', follow: true },
+      { words: ['future plans', 'future', 'upcoming', 'vision', 'expansion', 'roadmap'],
+        section: 'business', key: 'future_plans' },
+      { words: ['degree', 'university', 'born', 'biography', 'qualifications', 'background', 'where did he study'],
+        section: 'business', key: 'founder', action: () => this.suggestNavigation('about.html', 'About Us'), label: 'Open About page' },
+      { words: ['about dericbi', 'what is dericbi', 'who are you'],
+        section: 'business', key: 'about_dericbi', action: () => this.suggestNavigation('about.html', 'About Us'), label: 'Open About page' },
+      { words: ['where are you based', 'where are you located', 'your location', 'location', 'based in'],
+        section: 'business', key: 'location' },
+
+      // Client success
+      { words: ['success stories', 'success story', 'client stories'],
+        section: 'business', key: 'success_stories', follow: true },
+      { words: ['testimonials', 'testimonial', 'reviews', 'what clients say', 'feedback'],
+        section: 'client_success', key: 'testimonial_highlights', follow: true },
+      { words: ['case studies', 'case study'],
+        section: 'client_success', key: 'case_studies', follow: true },
+      { words: ['success metrics', 'metrics', 'kpis', 'roi', 'results'],
+        section: 'client_success', key: 'success_metrics', follow: true },
+
+      // Services extras
+      { words: ['benefits', 'benefit', 'save time', 'how will it help', 'how does it help'],
+        section: 'services', key: 'service_benefits', follow: true },
+      { words: ['industry', 'industries', 'sectors', 'healthcare', 'retail', 'finance', 'agriculture', 'real estate'],
+        section: 'services', key: 'industry_expertise' },
+      { words: ['technical capabilities', 'capabilities', 'data sources', 'what can you handle', 'technical toolkit'],
+        section: 'services', key: 'technical_capabilities' },
+
+      // Products & tools
+      { words: ['tech stack', 'technology stack', 'technology', 'what technology'],
+        section: 'products_systems', key: 'tech_stack' },
+      { words: ['analysis tools', 'tools you use', 'what tools', 'tools do you use', 'tools'],
+        section: 'products_systems', key: 'analysis_tools' },
+      { words: ['project types', 'types of projects', 'categories', 'what kind of projects', 'project categories'],
+        section: 'products_systems', key: 'project_categories' },
+
+      // Data science
+      { words: ['machine learning', 'predictive', 'artificial intelligence', 'ml', 'forecasting', 'modeling'],
+        section: 'data_science', key: 'advanced_analytics' },
+      { words: ['statistics', 'statistical', 'correlation'],
+        section: 'data_science', key: 'statistics' },
+      { words: ['visualization', 'visualisation', 'data visualization', 'charts', 'graphs'],
+        section: 'data_science', key: 'data_viz' },
+
+      // FAQ / general help
+      { words: ['faq', 'what can you do', 'how can you help', 'help me', 'i need help', 'need help', 'support'],
+        section: 'faq', key: 'general_help' }
+    ];
+
+    for (const rule of rules) {
+      if (this.containsPatterns(message, rule.words)) {
+        const result = {
+          text: kb[rule.section].responses[rule.key],
+          action: rule.action || null,
+          actionLabel: rule.label
+        };
+        if (rule.follow) {
+          this.conversationContext.lastTopic = 'services';
+          result.followUp = "Would you like to see our projects or get a personalized quote?";
+        }
+        return result;
+      }
+    }
+
+    // A bare "help"
+    if (/^\s*help\??\s*$/.test(message)) {
+      return { text: kb.faq.responses.general_help, action: null };
+    }
+
+    return null;
+  }
+
+
   // Handle follow-up responses in conversation
   async handleFollowUpResponse(message) {
     const lastTopic = this.conversationContext.lastTopic;
-    
-    if (this.isConfirmation(message)) {
+    const isShort = message.split(/\s+/).length <= 4;
+
+    // The follow-up has been consumed either way
+    this.conversationContext.awaitingFollowup = false;
+
+    if (isShort && this.isConfirmation(message)) {
       switch (lastTopic) {
         case 'projects':
-          this.conversationContext.awaitingFollowup = false;
           return {
             text: "Great! Which specific project interests you? You can say something like 'Project 3' or 'Excel dashboard project'.",
             action: null
           };
-          
+
         case 'services':
-          this.conversationContext.awaitingFollowup = false;
           return {
             text: "Excellent! Let me connect you with our team for a personalized quote. What type of data analysis do you need?",
-            action: () => window.open('https://wa.me/254791360805?text=Hi! I need a quote for data analysis services', '_blank')
+            action: () => this.openWhatsApp('Hi! I need a quote for data analysis services'),
+            actionLabel: 'Open WhatsApp'
           };
-          
+
         case 'greeting':
-          this.conversationContext.awaitingFollowup = false;
           return {
             text: "Perfect! I'm here to help. You can ask me about:\n• 📊 Our projects and portfolio\n• 💼 Services and pricing\n• 🔍 How to navigate the website\n• 📞 Getting in touch with our team\n\nWhat interests you most?",
             action: null
           };
+
+        default:
+          return this.handleShortResponse(message);
       }
     }
-    
-    if (this.isNegation(message)) {
-      this.conversationContext.awaitingFollowup = false;
+
+    if (isShort && this.isNegation(message)) {
       return {
         text: "No problem! What else can I help you with today? Feel free to ask about anything dericBI-related.",
         action: null
       };
     }
-    
-    // If it's a new question, treat it as such but maintain some context
-    this.conversationContext.awaitingFollowup = false;
+
+    // It's a new question - answer it normally
     return await this.generateContextualResponse(message);
   }
-  
+
   // Handle short responses like "yes", "no", "ok", etc.
   handleShortResponse(message) {
+    if (this.containsPatterns(message, ['thanks', 'thank you', 'thx'])) {
+      return {
+        text: "You're welcome! 😊 Anything else I can help you with?",
+        action: null
+      };
+    }
+
     if (this.isConfirmation(message)) {
       return {
         text: "Great! What would you like to know more about? I can help with projects, services, pricing, or navigation.",
         action: null
       };
     }
-    
+
     if (this.isNegation(message)) {
       return {
         text: "No worries! Is there something else I can help you with?",
         action: null
       };
     }
-    
-    if (message === 'ok' || message === 'okay' || message === 'cool' || message === 'nice') {
+
+    if (this.containsPatterns(message, ['ok', 'okay', 'cool', 'nice', 'good', 'great'])) {
       return {
         text: "😊 Glad to help! Anything else you'd like to explore?",
         action: null
       };
     }
-    
+
     return {
       text: "I'd love to help! Could you tell me a bit more about what you're looking for?",
       action: null
     };
   }
-  
+
   // Check if message is a short response
   isShortResponse(message) {
-    const shortPatterns = ['yes', 'no', 'ok', 'okay', 'sure', 'thanks', 'cool', 'nice', 'good', 'great'];
-    return message.split(' ').length <= 2 && shortPatterns.some(pattern => message.includes(pattern));
+    const shortPatterns = ['yes', 'no', 'ok', 'okay', 'sure', 'thanks', 'thank you', 'thx', 'cool', 'nice', 'good', 'great'];
+    return message.split(/\s+/).length <= 2 && this.containsPatterns(message, shortPatterns);
   }
-  
+
   // Check if message is confirmation
   isConfirmation(message) {
-    const confirmations = ['yes', 'yeah', 'yep', 'sure', 'okay', 'ok', 'definitely', 'absolutely', 'of course'];
-    return confirmations.some(conf => message.includes(conf));
+    const confirmations = ['yes', 'yeah', 'yep', 'sure', 'ok', 'okay', 'definitely', 'absolutely', 'of course'];
+    return this.containsPatterns(message, confirmations);
   }
-  
+
   // Check if message is negation
   isNegation(message) {
     const negations = ['no', 'nope', 'not really', 'no thanks', 'nah'];
-    return negations.some(neg => message.includes(neg));
+    return this.containsPatterns(message, negations);
   }
-  
-  // Enhanced greeting handler
+
+  // Enhanced greeting handler (personalized, otherwise a random greeting from the knowledge base)
   handleGreeting() {
-    let greetingText;
-    
-    if (this.userSession.returningUser && this.currentConversation.length === 1) {
-      greetingText = `🎉 **Welcome back!** I'm DAI, your dericBI assistant. Good to see you again!`;
-    } else {
-      greetingText = `👋 **Hello! I'm DAI**, your intelligent guide to dericBI Analytics. We turn data chaos into clear insights!`;
+    const personalized = this.getAgenticGreeting();
+    if (personalized) {
+      return { text: personalized + "\n\nWhat would you like to explore?", action: null };
     }
-    
-    return {
-      text: greetingText + "\n\nI can help you explore our projects, learn about services, or navigate the website. What brings you here today?",
-      action: null
-    };
+
+    const g = this.knowledgeBase.greetings.responses;
+    const pool = (this.userSession.returningUser ? g.returning_visitor : g.first_visit).slice();
+    const timed = g.time_based[this.userSession.timeOfDay];
+    if (Array.isArray(timed)) pool.push(...timed);
+
+    return { text: pool[Math.floor(Math.random() * pool.length)], action: null };
   }
-  
+
   // Service query handler with conversation flow
   handleServiceQuery(message) {
     this.conversationContext.lastTopic = 'services';
-    
-    if (message.includes('price') || message.includes('cost')) {
-      this.conversationContext.awaitingFollowup = true;
+    const kb = this.knowledgeBase.services.responses;
+    const has = (words) => this.containsPatterns(message, words);
+
+    if (has(['price', 'pricing', 'cost', 'how much', 'charge', 'rate', 'rates', 'fees', 'affordable', 'budget', 'quote', 'estimate'])) {
       this.conversationContext.contextData = { pricingQuery: true };
       return {
-        text: "💰 **Our Service Pricing**:\n\n• **Excel Cleanup**: $20\n• **Data Analysis**: $20\n• **PowerBI Dashboards**: $20\n• **Custom Python Dashboards**: $23\n• **Complete Package**: $38\n\nPrices in US Dollars. Contact us for volume discounts!",
+        text: "💰 **Our Service Pricing**\n\n" + kb.pricing_structure,
         action: null,
         followUp: "Would you like a personalized quote for your specific needs? I can connect you with our team!"
       };
     }
-    
-    if (message.includes('payment') || message.includes('pay') || message.includes('mpesa') || message.includes('crypto') || message.includes('paypal') || message.includes('till')) {
+
+    if (has(['payment', 'pay', 'mpesa', 'm-pesa', 'crypto', 'paypal', 'till'])) {
       return {
-        text: "💳 **Payment Methods**: We accept M-Pesa, Till numbers, crypto payments (USDT, BTC, ETH), PayPal, and other methods. Contact us for crypto or PayPal details!\n\n📱 **M-Pesa/Till**: Pay directly to our number\n💰 **Crypto**: Secure blockchain payments\n📧 **PayPal**: For international clients\n\nOur WhatsApp: +254791360805",
-        action: () => window.open('https://wa.me/254791360805?text=Hi%20Deric,%20I%20need%20payment%20details%20for%20your%20services', '_blank'),
+        text: `${this.knowledgeBase.global_presence.responses.payment_international}\n\n📱 **Local**: M-Pesa / Till - message us on WhatsApp ${this.config.whatsappDisplay}`,
+        action: () => this.openWhatsApp('Hi Deric, I need payment details for your services'),
+        actionLabel: 'Open WhatsApp',
         followUp: "Would you like me to open WhatsApp so you can contact our team directly?"
       };
     }
-    
-    if (message.includes('excel')) {
+
+    if (has(['process', 'turnaround', 'how long', 'timeline'])) {
+      return { text: kb.process, action: null, followUp: "Ready to send your data? I can connect you with our team!" };
+    }
+
+    if (has(['security', 'secure', 'confidential', 'confidentiality', 'guarantee', 'refund', 'privacy'])) {
+      return { text: kb.service_guarantees, action: null };
+    }
+
+    if (has(['data analysis', 'analysis service', 'analyze my data', 'analyse my data'])) {
       return {
-        text: "✨ **Excel Cleanup Service**: We transform messy spreadsheets into organized, analysis-ready data! This includes removing duplicates, standardizing formats, creating formulas, and building summary reports.\n\n**Price**: $20",
+        text: kb.data_analysis + "\n\n💰 **Price**: $20 (≈ KSh 2,600)",
+        action: null,
+        followUp: "Would you like a personalized quote for your data?"
+      };
+    }
+
+    if (has(['excel'])) {
+      return {
+        text: kb.excel_cleanup + "\n\n💰 **Price**: $20 (≈ KSh 2,600)",
         action: null,
         followUp: "Interested in seeing some Excel project examples?"
       };
     }
-    
-    if (message.includes('powerbi') || message.includes('power bi')) {
+
+    if (has(['powerbi', 'power bi'])) {
       return {
-        text: "📊 **PowerBI Dashboard Service**: We create stunning, interactive business intelligence dashboards! Features include real-time data visualization, automated updates, and mobile-friendly designs.\n\n**Price**: KSh 2,600",
+        text: kb.powerbi_dashboards + "\n\n💰 **Price**: $20 (≈ KSh 2,600)",
         action: null,
         followUp: "Want to see some PowerBI dashboard examples from our portfolio?"
       };
     }
-    
-    if (message.includes('sql')) {
+
+    if (has(['sql'])) {
       return {
-        text: "🗄️ **SQL Database Service**: We handle database design, query optimization, and data extraction! Perfect for businesses needing structured data management and reporting.\n\n**Price**: KSh 2,600",
+        text: "🗄️ **SQL Database Service**: We handle database design, query optimization, and data extraction! Perfect for businesses needing structured data management and reporting.\n\n**Price**: from $20 (≈ KSh 2,600)",
         action: null,
         followUp: "Interested in seeing our SQL project examples?"
       };
     }
-    
-    if (message.includes('python')) {
+
+    if (has(['python'])) {
       return {
-        text: "🐍 **Python Analytics Service**: Advanced data analysis using Python! We provide statistical analysis, machine learning insights, and automated reporting scripts.\n\n**Price**: KSh 3,000",
+        text: "🐍 **Python Analytics Service**: Advanced data analysis using Python! We provide statistical analysis, machine learning insights, and automated reporting scripts.\n\n**Price**: $23 (≈ KSh 3,000) for custom Python dashboards",
         action: null,
         followUp: "Want to explore our Python analysis projects?"
       };
     }
-    
+
+    if (has(['dashboard', 'dashboards'])) {
+      return { text: kb.dashboard, action: null, followUp: "Want to see some dashboard examples from our portfolio?" };
+    }
+
+    if (has(['setup', 'set up', 'tracking'])) {
+      return { text: kb.setup_services, action: null, followUp: "Want to get a setup started? I can connect you with our team!" };
+    }
+
     // Default service response
     return {
       text: "💼 **dericBI Services Overview**:\n• Excel cleanup & automation\n• Data analysis & insights\n• PowerBI dashboard creation\n• Database setup & tracking\n\nWe turn your data problems into business solutions!",
       action: null,
-      followUp: "Which service interests you most? I can provide more details!"
+      followUp: "Which service interests you most? I can provide more details!",
+      generic: true
     };
   }
 
-  // Navigation query handler
+  // Navigation query handler (the button navigates only when the visitor clicks it)
   handleNavigationQuery(message) {
     this.conversationContext.lastTopic = 'navigation';
-    
-    if (message.includes('project')) {
+    const has = (words) => this.containsPatterns(message, words);
+
+    if (has(['project', 'portfolio', 'download'])) {
       return {
         text: "🎯 **Projects Page**: Find all our portfolio work! Click the 'Projects' link in the navigation menu to explore 40+ completed projects with filtering and search options.",
-        action: () => window.location.href = 'my-projects.html',
+        action: () => this.suggestNavigation('my-projects.html', 'View Projects'),
+        actionLabel: 'Open Projects page',
         followUp: "Want me to help you find specific types of projects?"
       };
     }
-    
-    if (message.includes('service')) {
+
+    if (has(['service', 'services', 'pricing', 'price'])) {
       return {
         text: "💼 **Services Page**: Learn about our data solutions! We help businesses stop profit leaks through better data management.",
-        action: () => window.location.href = 'services.html',
+        action: () => this.suggestNavigation('services.html', 'View Services'),
+        actionLabel: 'Open Services page',
         followUp: "Curious about pricing for any specific service?"
       };
     }
-    
+
+    if (has(['contact', 'reach', 'respond', 'response', 'fastest', 'talk'])) {
+      return {
+        text: `📞 **Fastest way to reach us**: WhatsApp ${this.config.whatsappDisplay} - usually answered within minutes. You can also email ${this.config.email} or use the **Contact** page.`,
+        action: () => this.openWhatsApp('Hi Deric, I have a question about your services'),
+        actionLabel: 'Open WhatsApp'
+      };
+    }
+
+    if (has(['about', 'team', 'founder', 'who'])) {
+      return {
+        text: "👨‍💻 **About Page**: Meet our founder and CEO Deric Marangu and learn about our mission to turn data chaos into clarity.",
+        action: () => this.suggestNavigation('about.html', 'About Us'),
+        actionLabel: 'Open About page'
+      };
+    }
+
+    if (has(['terms', 'conditions', 'policy', 'policies'])) {
+      return this.knowledgeBase.navigation.responses.terms;
+    }
+
+    if (has(['homepage', 'home page', 'what is on'])) {
+      return this.knowledgeBase.navigation.responses.homepage;
+    }
+
+    if (has(['tour', 'website', 'site', 'explore', 'browse', 'overview'])) {
+      return {
+        text: "🧭 **Quick Tour**:\n• **Projects** - our portfolio with search and filters\n• **Services** - what we offer and our pricing\n• **About** - our founder and story\n• **Contact** - WhatsApp, email and request forms\n\nTell me which one you'd like to open!",
+        action: null
+      };
+    }
+
     return {
       text: "🧭 **Navigation Help**: I can guide you to any page! Try asking for 'projects', 'services', 'contact', or 'about' pages.",
-      action: null
+      action: null,
+      generic: true
     };
   }
-  
-  // Technical query handler  
+
+  // Technical query handler
   handleTechnicalQuery(message) {
-    if (message.includes('zoom')) {
+    const kb = this.knowledgeBase.technical.responses;
+    const has = (words) => this.containsPatterns(message, words);
+
+    if (has(['zoom'])) {
       return {
-        text: "🔍 **Image Zoom**: Double-click any project image to view it fullscreen. On mobile, double-tap. Press ESC or click the X to close.",
+        text: kb.zoom,
         action: null,
         followUp: "Need help with any other website features?"
       };
     }
-    
-    if (message.includes('filter') || message.includes('search')) {
+
+    if (has(['filter', 'filters'])) {
       return {
-        text: "🎛️ **Smart Filtering**: On the Projects page, use filter buttons (Excel, PowerBI, Python, SQL) to see specific types. The search box helps find projects by name or technology.",
+        text: kb.filter,
         action: null,
         followUp: "Want me to show you some specific project examples?"
       };
     }
-    
+
+    if (has(['search'])) {
+      return {
+        text: kb.search,
+        action: null,
+        followUp: "Want me to show you some specific project examples?"
+      };
+    }
+
+    if (has(['download'])) {
+      return {
+        text: kb.download,
+        action: null,
+        followUp: "Need help with any other website features?"
+      };
+    }
+
     return {
       text: "🛠️ **Technical Features**: I can help with image zoom, project filtering, search functionality, or file downloads. What do you need help with?",
-      action: null
+      action: null,
+      generic: true
     };
   }
-  
+
   // Business query handler
   handleBusinessQuery(message) {
     this.conversationContext.lastTopic = 'business';
-    
-    if (message.includes('founder') || message.includes('deric') || message.includes('ceo')) {
+    const kb = this.knowledgeBase.business.responses;
+    const has = (words) => this.containsPatterns(message, words);
+
+    if (has(['founder', 'deric', 'ceo', 'marangu'])) {
       return {
-        text: "👨‍💻 **Meet Our Founder**: Deric Marangu - CEO and founder of dericBI. Business Information Technology , data analytics expert, and passionate about turning data chaos into clarity!",
-        action: () => window.location.href = 'about.html',
+        text: "👨‍💻 **Meet Our Founder**: Deric Marangu - CEO and founder of dericBI. Business Information Technology graduate, data analytics expert, and passionate about turning data chaos into clarity!",
+        action: () => this.suggestNavigation('about.html', 'About Us'),
+        actionLabel: 'Open About page',
         followUp: "Want to see some of Deric's best project work?"
       };
     }
-    
-    if (message.includes('about') || message.includes('company')) {
+
+    if (has(['choose', 'why dericbi', 'different', 'advantages'])) {
       return {
-        text: "🏢 **About dericBI**: We're Kenya's premier data analytics company, specializing in Excel cleanup, dashboard creation, and data-driven insights. 40+ successful projects and counting!",
-        action: () => window.location.href = 'about.html',
-        followUp: "Interested in seeing our portfolio or learning about our services?"
+        text: `⭐ **Why dericBI?**\n\n📊 40+ completed projects\n⚡ Most projects delivered in 3-7 days\n💸 Services starting from $20 (≈ KSh 2,600)\n🤝 Direct contact with our founder\n🎓 Free Tujengane data-literacy training\n\nWant to see our work or get a quote?`,
+        action: null,
+        followUp: "Would you like to see our projects or get a personalized quote?"
       };
     }
-    
+
+    if (has(['story', 'history', 'founded', 'milestones'])) {
+      return { text: kb.company_history, action: null };
+    }
+
+    if (has(['mission', 'values'])) {
+      return { text: kb.mission_values, action: null };
+    }
+
+    if (has(['experience', 'track record', 'years of experience'])) {
+      return { text: kb.experience, action: null };
+    }
+
+    if (has(['location'])) {
+      return { text: kb.location, action: null };
+    }
+
+    if (has(['about', 'company'])) {
+      return {
+        text: kb.about_dericbi,
+        action: () => this.suggestNavigation('about.html', 'About Us'),
+        actionLabel: 'Open About page',
+        followUp: "Interested in seeing our portfolio or learning about our services?",
+        generic: true
+      };
+    }
+
     return {
       text: "🏢 **dericBI Business Info**: Founded by Deric Marangu, we're data analytics specialists helping businesses make better decisions. What would you like to know more about?",
-      action: null
+      action: null,
+      generic: true
     };
   }
-  
+
   // Products query handler
   handleProductsQuery(message) {
-    if (message.includes('tujengane') || message.includes('education')) {
+    const kb = this.knowledgeBase.products_systems.responses;
+
+    if (this.containsPatterns(message, ['tujengane', 'education'])) {
       return {
-        text: "🎓 **Tujengane Education**: Our data literacy programs! From free Data Basics to professional Analyst Pro courses.",
-        action: () => window.open(window.SITE_CONFIG && window.SITE_CONFIG.TUJENGANE_URL ? window.SITE_CONFIG.TUJENGANE_URL : 'https://dericbiskills.vercel.app', '_blank'),
+        text: kb.tujengane_programs,
+        action: () => window.open(this.getTujenganeUrl(), '_blank', 'noopener'),
+        actionLabel: 'Open Tujengane',
         followUp: "Interested in joining any specific program?"
       };
     }
-    
+
     return {
       text: "🛠️ **Our Tech Stack**: Python, Excel, PowerBI, SQL, and more! We use the best tools for your data needs.",
       action: null,
-      followUp: "Want to know more about specific technologies or see project examples?"
+      followUp: "Want to know more about specific technologies or see project examples?",
+      generic: true
     };
   }
-  
-  // Complex query handler
+
+  // Complex query handler (AI answers first when available, otherwise a human hand-off)
   handleComplexQuery(message) {
+    const options = this.knowledgeBase.complex.responses;
+    const keys = Object.keys(options);
+    const text = options[keys[Math.floor(Math.random() * keys.length)]];
     return {
-      text: "🤝 **Complex Request Detected**: This sounds like something our expert team should discuss with you personally! We love tackling challenging projects.",
-      action: () => window.open('https://wa.me/254791360805?text=Hi! I have a complex data analysis requirement', '_blank'),
-      followUp: "Our team typically responds within an hour for detailed consultations!"
+      text: text,
+      action: () => this.openWhatsApp('Hi! I have a complex data analysis requirement'),
+      actionLabel: 'Open WhatsApp',
+      followUp: "Our team typically responds within an hour for detailed consultations!",
+      generic: true
     };
   }
-  
+
   // Ask the secure server-side AI proxy (api/chat.js) for a grounded answer.
   // No API key ever touches the browser — the proxy holds it server-side.
   // Returns null (never throws) if no provider is configured or all fail,
@@ -1324,15 +1755,48 @@ class DAIChatbot {
         body: JSON.stringify({ message, history, context: this.userContext || '' }),
         signal: controller.signal
       });
-      if (!response.ok) return null;
+
+      if (!response.ok) {
+        this.aiStatus = { ok: false, status: response.status };
+        if (!this._aiWarned) {
+          this._aiWarned = true;
+          console.warn(
+            `🤖 DAI: /api/chat returned HTTP ${response.status}. ` +
+            (response.status === 404
+              ? 'The AI proxy is not deployed at /api/chat (the file must be api/chat.js in the project root).'
+              : 'The proxy is deployed but failing - check the Vercel function logs and that the LLM API key environment variable is set.')
+          );
+        }
+        return null;
+      }
+
       const data = await response.json();
-      return data && data.reply ? data.reply : null;
+      if (!data || !data.reply) {
+        this.aiStatus = { ok: false, status: response.status, note: 'no reply field' };
+        if (!this._aiWarned) {
+          this._aiWarned = true;
+          console.warn("🤖 DAI: /api/chat answered but without a 'reply' field:", data);
+        }
+        return null;
+      }
+
+      this.aiStatus = { ok: true, status: response.status };
+      return data.reply;
     } catch (error) {
+      this.aiStatus = { ok: false, error: error.message };
       console.log('🤖 DAI: AI assistant unavailable, using built-in knowledge base:', error.message);
       return null;
     } finally {
       clearTimeout(timeout);
     }
+  }
+
+  // Run DAIChatbot.testAI() in the browser console to check the AI proxy.
+  async testAI() {
+    const reply = await this.queryAIAssistant('Say hello in one short sentence.');
+    const result = { working: !!reply, reply: reply, status: this.aiStatus };
+    console.log('🤖 DAI AI test:', result);
+    return result;
   }
 
   // Fallback response handler
@@ -1352,9 +1816,8 @@ class DAIChatbot {
     }
 
     console.log('🤖 DAI: Using fallback response');
-    // Reuse the sentiment- and page-aware fallback logic (positive/negative
-    // tone detection + context-specific messaging) instead of a flat
-    // 3-response pool, so replies are more relevant even with no AI key set.
+    // Sentiment- and page-aware fallback logic (positive/negative tone
+    // detection + context-specific messaging), works with no AI key set.
     const fallback = this.getContextualFallback(message);
 
     // Attach a concrete next-step action when the smarter fallback above
@@ -1368,104 +1831,133 @@ class DAIChatbot {
         'contact': () => this.suggestHumanContact(),
         'about': () => this.suggestNavigation('my-projects.html', 'See Our Work')
       };
+      const contextLabels = {
+        'homepage': 'Explore Our Projects',
+        'projects': 'Get a Quote',
+        'services': 'Contact Us',
+        'contact': 'Contact options',
+        'about': 'See Our Work'
+      };
       if (contextActions[this.userContext]) {
         fallback.action = contextActions[this.userContext];
+        fallback.actionLabel = contextLabels[this.userContext];
       }
     }
 
     return {
       text: fallback.text,
       action: fallback.action,
+      actionLabel: fallback.actionLabel,
       followUp: "Feel free to ask anything else - from technical questions to business inquiries!"
     };
   }
 
+  // ---------------------------------------------------------------------
+  // Project search
+  // ---------------------------------------------------------------------
+
   // Method to search projects based on user input
-  searchProjects(input) {
-    if (!this.projectsData || !Array.isArray(this.projectsData)) {
+  searchProjects(input, includeHelp = true) {
+    const projects = this.getProjectsList();
+    if (projects.length === 0) {
       return null;
     }
-    
-    const normalizedInput = input.toLowerCase().trim();
-    
-    // Check for project number patterns
-    const projectNumberMatch = normalizedInput.match(/(?:project\s*|find\s*|show\s*me\s*)?(\d+(?:\.\d+)?)/);
-    if (projectNumberMatch) {
-      const requestedNumber = projectNumberMatch[1];
-      
-      // Smart number matching - if just a number like "3", find all variants
-      if (requestedNumber.indexOf('.') === -1) {
-        // Find all projects starting with this number (3, 3.0, 3.1, 3.2, etc.)
-        const matches = this.projectsData.filter(project => {
-          const projectNum = project.number?.toString();
-          return projectNum && (
-            projectNum === requestedNumber || 
-            projectNum.startsWith(requestedNumber + '.')
-          );
-        });
-        
-        if (matches.length > 0) {
-          return this.formatProjectSearchResults(matches, `Project ${requestedNumber}`);
-        }
-      } else {
-        // Exact match for specific project numbers like "3.1"
-        const exactMatch = this.projectsData.find(project => 
-          project.number?.toString() === requestedNumber
-        );
-        
-        if (exactMatch) {
-          return this.formatProjectSearchResults([exactMatch], `Project ${requestedNumber}`);
-        }
-      }
+
+    const q = input.toLowerCase().trim();
+
+    // "Where can I find..." / "How do I filter..." are navigation/technical
+    // questions, not project searches.
+    if (/\b(where|how)\b/.test(q)) {
+      return null;
     }
-    
+
+    const mentionsProjects = /\b(projects?|portfolio|examples?|samples?|case stud(y|ies)|demos?|best work|your work|past work|previous work)\b/.test(q);
+    const mentionsService = /\b(services?|pric(e|es|ing)|costs?|charges?|quotes?|how much|offer|pay|payments?|rates?|fees?|hire|process)\b/.test(q);
+
+    // Check for project number patterns ("project 3", "project 3.1", or just "3")
+    const numberMatch = q.match(/\bproject\s*#?\s*(\d+(?:\.\d+)?)\b/) || q.match(/^\s*(\d+(?:\.\d+)?)\s*$/);
+    if (numberMatch) {
+      const requestedNumber = numberMatch[1];
+      let matches;
+
+      if (requestedNumber.indexOf('.') === -1) {
+        // Just "3": find 3, 3.0, 3.1, 3.2 ...
+        matches = projects.filter(project => {
+          const projectNum = project.number !== undefined && project.number !== null ? String(project.number) : '';
+          return projectNum && (projectNum === requestedNumber || projectNum.startsWith(requestedNumber + '.'));
+        });
+      } else {
+        // Exact match for specific numbers like "3.1"
+        matches = projects.filter(project => String(project.number) === requestedNumber);
+      }
+
+      if (matches.length > 0) {
+        return this.formatProjectSearchResults(matches, `Project ${requestedNumber}`);
+      }
+      return this.knowledgeBase.project_search.responses.no_results;
+    }
+
+    // Questions about services/pricing that merely mention a tool ("Excel cleanup
+    // service price") belong to the service handler, not the project search.
+    if (mentionsService && !mentionsProjects) {
+      return null;
+    }
+
     // Search by keywords in title, description, or tools
     const searchTerms = [
       'excel', 'python', 'sql', 'powerbi', 'power bi',
       'dashboard', 'analysis', 'covid', 'sales', 'student',
       'inventory', 'ecommerce', 'e-commerce', 'budget',
       'retail', 'amazon', 'bike', 'blinkit', 'employee',
-      'portfolio', 'walmart', 'survey', 'president', 'supermarket', 'hardware', 'walmart', 'personal finance', 'retail shop', 'bicycle', 'e-commerce', 'grocery', 'small e-commerce', 'investment', 'programming', 'healthcare', 'government', 'warehouse', 'human resources', 'financial trading', 'professional services', 'meme', 'endangered men', 'july kids'
+      'portfolio', 'walmart', 'survey', 'president', 'supermarket', 'hardware', 'personal finance', 'retail shop', 'bicycle', 'grocery', 'small e-commerce', 'investment', 'programming', 'healthcare', 'government', 'warehouse', 'human resources', 'financial trading', 'professional services', 'meme', 'endangered men', 'july kids'
     ];
-    
-    const foundTerm = searchTerms.find(term => normalizedInput.includes(term));
-    if (foundTerm) {
-      const matches = this.projectsData.filter(project => {
+
+    const foundTerms = searchTerms.filter(term => this.wordRegex(term).test(q) && term !== 'portfolio');
+    if (foundTerms.length > 0) {
+      const matchesTerm = (project, term) => {
         const toolsText = Array.isArray(project.tools) ? project.tools.join(' ') : (project.tools || '');
-        const searchText = `${project.title} ${project.description} ${toolsText}`.toLowerCase();
-        // Check for exact match or normalized match (handle spaces)
-        const normalizedSearchText = searchText.replace(/\s+/g, '');
-        const normalizedFoundTerm = foundTerm.replace(/\s+/g, '');
-        return searchText.includes(foundTerm) || normalizedSearchText.includes(normalizedFoundTerm);
-      });
-      
-      if (matches.length > 0) {
-        return this.formatProjectSearchResults(matches, foundTerm);
+        const searchText = `${project.title || ''} ${project.description || ''} ${toolsText}`.toLowerCase();
+        // Exact match or space-insensitive match ("power bi" vs "powerbi")
+        return searchText.includes(term) || searchText.replace(/\s+/g, '').includes(term.replace(/\s+/g, ''));
+      };
+
+      // Prefer projects matching every term, then fall back to any term
+      let matches = projects.filter(project => foundTerms.every(term => matchesTerm(project, term)));
+      if (matches.length === 0) {
+        matches = projects.filter(project => foundTerms.some(term => matchesTerm(project, term)));
       }
+
+      if (matches.length > 0) {
+        return this.formatProjectSearchResults(matches, foundTerms.join(' + '));
+      }
+      return this.knowledgeBase.project_search.responses.no_results;
     }
-    
-    // General project search patterns
-    if (normalizedInput.includes('project') || normalizedInput.includes('portfolio') || 
-        normalizedInput.includes('show me') || normalizedInput.includes('find')) {
-      return `🔍 **Project Search Help**\n\nI can help you find projects! Try:\n\n**By Number:**\n• "Show me project 3" (finds all Project 3 variants)\n• "Find project 3.1" (finds exact match)\n\n**By Technology:**\n• "Excel projects"\n• "Python analysis"\n• "PowerBI dashboards"\n• "SQL projects"\n\n**By Topic:**\n• "COVID analysis"\n• "Sales dashboard"\n• "Student projects"\n• "E-commerce analysis"\n\nWhat type of project are you looking for?`;
+
+    // General project help
+    if (includeHelp && mentionsProjects && !mentionsService) {
+      return this.knowledgeBase.project_search.responses.search_help + "\n\nWhat type of project are you looking for?";
     }
-    
+
     return null;
   }
-  
+
   formatProjectSearchResults(projects, searchTerm) {
+    const kb = this.knowledgeBase.project_search.responses;
+
     if (projects.length === 1) {
       const project = projects[0];
       const toolsText = Array.isArray(project.tools) ? project.tools.join(', ') : (project.tools || 'Not specified');
-      return `🎯 **Found: ${project.title}**\n\n📊 **Project ${project.number}**\n🛠️ **Tools:** ${toolsText}\n📝 **Description:** ${project.description || 'No description available'}\n\n📍 **View this project**: Visit the "My Journey" page to see more details and download files!`;
-    } else {
-      const projectList = projects.map(p => {
-        const toolsText = Array.isArray(p.tools) ? p.tools.join(', ') : (p.tools || 'Multiple tools');
-        return `• **Project ${p.number}**: ${p.title} (${toolsText})`;
-      }).join('\n');
-      
-      return `📊 **Found ${projects.length} projects matching "${searchTerm}":**\n\n${projectList}\n\n📍 **View all projects**: Visit the "My Journey" page to explore these projects in detail!`;
+      return `${kb.single_result}\n\n📌 **${project.title}**\n📊 **Project ${project.number}**\n🛠️ **Tools:** ${toolsText}\n📝 **Description:** ${project.description || 'No description available'}\n\n📍 **View this project**: Visit the Projects page to see more details and download files!`;
     }
+
+    const maxShown = 10;
+    const projectList = projects.slice(0, maxShown).map(p => {
+      const toolsText = Array.isArray(p.tools) ? p.tools.join(', ') : (p.tools || 'Multiple tools');
+      return `• **Project ${p.number}**: ${p.title} (${toolsText})`;
+    }).join('\n');
+    const more = projects.length > maxShown ? `\n…and ${projects.length - maxShown} more.` : '';
+
+    return `${kb.multiple_results}\n\n🔎 ${projects.length} projects matching "${searchTerm}":\n\n${projectList}${more}\n\n📍 **View all projects**: Visit the Projects page to explore these projects in detail!`;
   }
 
   isComplexQuery(message) {
@@ -1474,19 +1966,21 @@ class DAIChatbot {
       'api', 'database', 'algorithm', 'machine learning', 'ai',
       'complex', 'sophisticated', 'enterprise', 'large scale', 'how to implement', 'code', 'build', 'develop'
     ];
-    
-    return complexIndicators.some(indicator => message.includes(indicator)) || 
+
+    return this.containsPatterns(message, complexIndicators) ||
            message.length > 100 || // Long messages likely complex
-           message.split(' ').length > 15; // Many words = complex
+           message.split(/\s+/).length > 15; // Many words = complex
   }
 
   getContextualFallback(message) {
+    const c = this.config;
+
     // Check for sentiment and respond accordingly
     const positiveWords = ['love', 'great', 'awesome', 'excellent', 'amazing', 'good', 'nice', 'perfect'];
     const negativeWords = ['bad', 'terrible', 'awful', 'hate', 'difficult', 'problem', 'issue', 'trouble'];
-    
-    const isPositive = positiveWords.some(word => message.includes(word));
-    const isNegative = negativeWords.some(word => message.includes(word));
+
+    const isPositive = this.containsPatterns(message, positiveWords);
+    const isNegative = this.containsPatterns(message, negativeWords);
 
     if (isPositive) {
       const positiveResponses = [
@@ -1499,8 +1993,9 @@ class DAIChatbot {
 
     if (isNegative) {
       return {
-        text: "😔 **I'm sorry you're having trouble!** Let me connect you with our team who can address any concerns and help resolve issues quickly. Please reach out to dericmarangu@gmail.com or WhatsApp 0791360805.",
-        action: () => this.suggestHumanContact()
+        text: `😔 **I'm sorry you're having trouble!** Let me connect you with our team who can address any concerns and help resolve issues quickly. Please reach out to ${c.email} or WhatsApp ${c.whatsappDisplay}.`,
+        action: () => this.suggestHumanContact(),
+        actionLabel: 'Contact options'
       };
     }
 
@@ -1535,59 +2030,93 @@ class DAIChatbot {
     // Add helpful suggestions based on common intent
     if (message.length > 50) {
       return {
-        text: randomFallback + "\n\n💬 **For detailed questions like yours**, our human experts can provide much better answers! Please contact dericmarangu@gmail.com or WhatsApp 0791360805.",
-        action: () => this.suggestHumanContact()
+        text: randomFallback + `\n\n💬 **For detailed questions like yours**, our human experts can provide much better answers! Please contact ${c.email} or WhatsApp ${c.whatsappDisplay}.`,
+        action: () => this.suggestHumanContact(),
+        actionLabel: 'Contact options'
       };
     }
 
-    return { text: randomFallback + " If this doesn't answer your question, please contact dericmarangu@gmail.com or WhatsApp 0791360805 for more help.", action: null };
+    return { text: randomFallback + ` If this doesn't answer your question, please contact ${c.email} or WhatsApp ${c.whatsappDisplay} for more help.`, action: null };
   }
 
-  containsPatterns(message, patterns) {
-    return patterns.some(pattern => message.includes(pattern));
-  }
+  // ---------------------------------------------------------------------
+  // Rendering
+  // ---------------------------------------------------------------------
 
-  addMessage(content, sender, action = null) {
+  // Adds a message to the chat and returns its .message-content element.
+  // Actions are attached as real event listeners (not stringified into an
+  // inline onclick), so `this`, closures and arguments all keep working.
+  addMessage(content, sender, action = null, actionLabel = 'Take Action') {
     const messagesContainer = document.getElementById('chatbot-messages');
+    if (!messagesContainer) return null;
+
     const messageDiv = document.createElement('div');
     messageDiv.className = `${sender}-message`;
 
+    const contentEl = document.createElement('div');
+    contentEl.className = 'message-content';
+
     if (sender === 'user') {
-      messageDiv.innerHTML = `
-        <div class="message-content">${content}</div>
-      `;
+      contentEl.textContent = content;
+      messageDiv.appendChild(contentEl);
     } else {
-      const actionButton = action ? `<button class="action-button" onclick="(${action.toString()})()">Take Action</button>` : '';
-      messageDiv.innerHTML = `
-        <div class="flex items-start gap-2">
-          <img src="assets/img/logo.png" alt="dericBI" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5">
-          <div class="message-content">
-            ${this.formatMarkdown(content)}
-            ${actionButton}
-          </div>
-        </div>
-      `;
+      const row = document.createElement('div');
+      row.className = 'flex items-start gap-2';
+
+      const avatar = document.createElement('img');
+      avatar.src = 'assets/img/logo.png';
+      avatar.alt = 'dericBI';
+      avatar.className = 'w-6 h-6 rounded-full border border-gray-200 mt-0.5 shrink-0';
+
+      contentEl.innerHTML = this.formatMarkdown(content);
+
+      if (action) {
+        const wrap = document.createElement('div');
+        wrap.className = 'message-action-wrap';
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'action-button';
+        button.textContent = actionLabel || 'Take Action';
+        button.addEventListener('click', () => {
+          try {
+            action.call(this);
+          } catch (error) {
+            console.error('🤖 DAI: action failed', error);
+          }
+        });
+        wrap.appendChild(button);
+        contentEl.appendChild(wrap);
+      }
+
+      row.appendChild(avatar);
+      row.appendChild(contentEl);
+      messageDiv.appendChild(row);
     }
 
     messagesContainer.appendChild(messageDiv);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    return contentEl;
   }
 
+  // Escapes HTML first (so neither users nor AI replies can inject markup),
+  // then applies the small markdown subset DAI uses.
   formatMarkdown(text) {
-    return text
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/`(.*?)`/g, '<code style="background:#f3f4f6;padding:2px 4px;border-radius:3px;font-size:11px;">$1</code>');
+    return this.escapeHtml(text)
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*\s][^*]*?)\*/g, '<em>$1</em>')
+      .replace(/`(.+?)`/g, '<code style="background:#f3f4f6;padding:2px 4px;border-radius:3px;font-size:11px;">$1</code>')
+      .replace(/(https?:\/\/[^\s<]*[^\s<.,;:!?)])/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
   }
 
   showTypingIndicator() {
     const messagesContainer = document.getElementById('chatbot-messages');
+    if (!messagesContainer || document.getElementById('typing-indicator')) return;
     const typingDiv = document.createElement('div');
     typingDiv.id = 'typing-indicator';
     typingDiv.className = 'bot-message';
     typingDiv.innerHTML = `
       <div class="flex items-start gap-2">
-        <img src="assets/img/logo.png" alt="dericBI" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5">
+        <img src="assets/img/logo.png" alt="dericBI" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5 shrink-0">
         <div class="message-content">
           <div class="flex gap-1">
             <div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></div>
@@ -1608,54 +2137,73 @@ class DAIChatbot {
     }
   }
 
+  // ---------------------------------------------------------------------
+  // Actions (navigation, downloads, contact)
+  // ---------------------------------------------------------------------
+
+  // Called when the visitor clicks an action button: go to the page.
   suggestNavigation(url, buttonText) {
-    const button = document.createElement('button');
-    button.className = 'action-button';
-    button.textContent = buttonText;
-    button.onclick = () => window.location.href = url;
-    return button;
+    this.addMessage('🚀 **Taking you there...**', 'bot');
+    setTimeout(() => {
+      window.location.href = url;
+    }, 800);
   }
 
-  // Enhanced Agentic Capabilities - Automatic Actions
+  // Bot message followed by Yes / No buttons that live inside that message.
+  // Buttons are hidden (not removed) after a click so the "click outside to
+  // close" handler never mistakes the click for an outside click.
+  addConfirmMessage(text, yesLabel, onYes, onNo) {
+    const content = this.addMessage(text, 'bot');
+    if (!content) return;
+
+    const row = document.createElement('div');
+    row.className = 'action-buttons-container';
+
+    const yes = document.createElement('button');
+    yes.type = 'button';
+    yes.className = 'action-button confirm-button';
+    yes.textContent = yesLabel;
+    yes.addEventListener('click', () => {
+      row.style.display = 'none';
+      onYes();
+    });
+
+    const no = document.createElement('button');
+    no.type = 'button';
+    no.className = 'action-button cancel-button';
+    no.textContent = '❌ No, thanks';
+    no.addEventListener('click', () => {
+      row.style.display = 'none';
+      onNo();
+    });
+
+    row.appendChild(yes);
+    row.appendChild(no);
+    content.appendChild(row);
+    const messagesContainer = document.getElementById('chatbot-messages');
+    if (messagesContainer) messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  // Enhanced Agentic Capabilities - Automatic Actions (always confirmed first)
   performAutomaticNavigation(url, pageName, reason = '') {
     // Open chatbot if closed for agentic action
     if (!this.isOpen) {
       this.toggleChatbot();
     }
 
-    const confirmationMessage = `🤖 **DAI Agentic Action**: I can automatically take you to the ${pageName} page${reason ? ` ${reason}` : ''}. Would you like me to navigate there now?`;
-
-    this.addMessage(confirmationMessage, 'bot', () => {
-      // Create action buttons for user choice
-      const container = document.createElement('div');
-      container.className = 'action-buttons-container';
-
-      const yesButton = document.createElement('button');
-      yesButton.className = 'action-button confirm-button';
-      yesButton.innerHTML = '✅ Yes, take me there';
-      yesButton.onclick = () => {
+    this.addConfirmMessage(
+      `🤖 **DAI Agentic Action**: I can take you to the ${pageName} page${reason ? ' ' + reason : ''}. Would you like me to navigate there now?`,
+      '✅ Yes, take me there',
+      () => {
         this.addMessage(`🚀 **Navigating to ${pageName}...**`, 'bot');
         setTimeout(() => {
           window.location.href = url;
         }, 1000);
-      };
-
-      const noButton = document.createElement('button');
-      noButton.className = 'action-button cancel-button';
-      noButton.innerHTML = '❌ No, thanks';
-      noButton.onclick = () => {
-        this.addMessage(`👍 No problem! I won't navigate automatically. You can still click the buttons above if you change your mind.`, 'bot');
-      };
-
-      container.appendChild(yesButton);
-      container.appendChild(noButton);
-
-      // Add the buttons to the last message
-      const lastMessage = document.querySelector('.chat-messages .message:last-child .message-content');
-      if (lastMessage) {
-        lastMessage.appendChild(container);
+      },
+      () => {
+        this.addMessage("👍 No problem! I'll stay right here. Just ask if you change your mind.", 'bot');
       }
-    });
+    );
   }
 
   performAutomaticDownload(projectName, downloadUrl, fileType = 'project') {
@@ -1664,98 +2212,92 @@ class DAIChatbot {
       this.toggleChatbot();
     }
 
-    const confirmationMessage = `🤖 **DAI Agentic Action**: I can automatically download the ${fileType} "${projectName}" for you. This will start the download immediately. Would you like me to proceed?`;
-
-    this.addMessage(confirmationMessage, 'bot', () => {
-      // Create action buttons for user choice
-      const container = document.createElement('div');
-      container.className = 'action-buttons-container';
-
-      const yesButton = document.createElement('button');
-      yesButton.className = 'action-button confirm-button';
-      yesButton.innerHTML = '✅ Yes, download it';
-      yesButton.onclick = () => {
+    this.addConfirmMessage(
+      `🤖 **DAI Agentic Action**: I can download the ${fileType} "${projectName}" for you. This will start the download immediately. Would you like me to proceed?`,
+      '✅ Yes, download it',
+      () => {
         this.addMessage(`⬇️ **Starting download of "${projectName}"...**`, 'bot');
 
         // Create a temporary link and trigger download
         const link = document.createElement('a');
         link.href = downloadUrl;
         link.download = projectName;
+        link.target = '_blank';
+        link.rel = 'noopener';
         link.style.display = 'none';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
 
         setTimeout(() => {
-          this.addMessage(`✅ **Download completed!** The ${fileType} "${projectName}" should now be in your downloads folder.`, 'bot');
+          this.addMessage(`✅ **Download started!** Check your downloads folder for "${projectName}".`, 'bot');
         }, 1500);
-      };
-
-      const noButton = document.createElement('button');
-      noButton.className = 'action-button cancel-button';
-      noButton.innerHTML = '❌ No, thanks';
-      noButton.onclick = () => {
-        this.addMessage(`👍 No problem! I won't download automatically. You can still download manually from the Projects page.`, 'bot');
-      };
-
-      container.appendChild(yesButton);
-      container.appendChild(noButton);
-
-      // Add the buttons to the last message
-      const lastMessage = document.querySelector('.chat-messages .message:last-child .message-content');
-      if (lastMessage) {
-        lastMessage.appendChild(container);
+      },
+      () => {
+        this.addMessage("👍 No problem! You can still download manually from the Projects page.", 'bot');
       }
-    });
+    );
   }
 
   // Enhanced Agentic Behavior - Detect and Offer Actions
   detectAndOfferActions(userMessage) {
-    const message = userMessage.toLowerCase();
+    const message = userMessage.toLowerCase().trim();
 
-    // Navigation intents
-    if (message.includes('take me to') || message.includes('go to') || message.includes('navigate to') || message.includes('show me')) {
-      if (message.includes('project') || message.includes('portfolio') || message.includes('work')) {
-        this.performAutomaticNavigation('my-projects.html', 'Projects', 'to explore our portfolio');
-        return true;
-      }
-      if (message.includes('service') || message.includes('pricing') || message.includes('cost')) {
-        this.performAutomaticNavigation('services.html', 'Services', 'to see our offerings and pricing');
-        return true;
-      }
-      if (message.includes('contact') || message.includes('reach') || message.includes('talk')) {
-        this.performAutomaticNavigation('contact.html', 'Contact', 'to get in touch with us');
-        return true;
-      }
-      if (message.includes('about') || message.includes('team') || message.includes('deric')) {
-        this.performAutomaticNavigation('about.html', 'About', 'to learn about our team');
+    // Navigation intents - only explicit "take me / go / navigate to" phrasing.
+    // ("show me ..." is a search request and is handled by the project search.)
+    if (/\b(take me to|go to|navigate to)\b/.test(message)) {
+      const targets = [
+        { test: /\b(projects?|portfolio|work)\b/, url: 'my-projects.html', page: 'Projects', context: 'projects', reason: 'to explore our portfolio' },
+        { test: /\b(services?|pricing|cost)\b/, url: 'services.html', page: 'Services', context: 'services', reason: 'to see our offerings and pricing' },
+        { test: /\b(contact|reach|talk)\b/, url: 'contact.html', page: 'Contact', context: 'contact', reason: 'to get in touch with us' },
+        { test: /\b(about|team|deric)\b/, url: 'about.html', page: 'About', context: 'about', reason: 'to learn about our team' }
+      ];
+
+      const target = targets.find(t => t.test.test(message));
+      if (target) {
+        if (this.userContext === target.context) {
+          this.addMessage(`📍 You're already on the **${target.page}** page! Is there something specific I can help you find here?`, 'bot');
+        } else {
+          this.performAutomaticNavigation(target.url, target.page, target.reason);
+        }
         return true;
       }
     }
 
-    // Download intents
-    if (message.includes('download') || message.includes('get file') || message.includes('save project')) {
-      // Try to find a matching project from the loaded data
-      if (this.projectsData && this.projectsData.length > 0) {
-        const projectKeywords = message.split(' ').filter(word =>
-          word.length > 2 && !['download', 'get', 'file', 'save', 'project', 'the', 'and', 'for', 'with'].includes(word)
-        );
+    // Download intents - "download project 3", not "how do I download files?"
+    const wantsDownload = /\bdownload\b/.test(message) && !/\b(how|where|can i|do you|is it|are there)\b/.test(message);
+    if (wantsDownload) {
+      const downloadable = this.getProjectsList().filter(p => p && p.downloadUrl);
+      if (downloadable.length > 0) {
+        let match = null;
 
-        for (const project of this.projectsData) {
-          const projectTitle = project.title?.toLowerCase() || '';
-          const projectDescription = project.description?.toLowerCase() || '';
+        // By project number first
+        const numberMatch = message.match(/project\s*#?\s*(\d+(?:\.\d+)?)/);
+        if (numberMatch) {
+          const wanted = numberMatch[1];
+          match = downloadable.find(p => String(p.number) === wanted) ||
+                  downloadable.find(p => String(p.number).startsWith(wanted + '.'));
+        }
 
-          if (projectKeywords.some(keyword =>
-            projectTitle.includes(keyword) || projectDescription.includes(keyword)
-          )) {
-            // Found a matching project - offer to download it
-            this.performAutomaticDownload(
-              project.title || 'Project',
-              project.downloadUrl || '#',
-              'project files'
-            );
-            return true;
-          }
+        // Otherwise the best keyword match on title/tools/description
+        if (!match) {
+          const stopWords = ['download', 'get', 'file', 'files', 'save', 'project', 'projects', 'the', 'and', 'for', 'with', 'please', 'me', 'my', 'all'];
+          const keywords = message.split(/[^a-z0-9]+/).filter(w => w.length > 2 && !stopWords.includes(w));
+          let bestScore = 0;
+          downloadable.forEach(project => {
+            const toolsText = Array.isArray(project.tools) ? project.tools.join(' ') : (project.tools || '');
+            const haystack = `${project.title || ''} ${project.description || ''} ${toolsText}`.toLowerCase();
+            const score = keywords.filter(k => haystack.includes(k)).length;
+            if (score > bestScore) {
+              bestScore = score;
+              match = project;
+            }
+          });
+        }
+
+        if (match) {
+          this.performAutomaticDownload(match.title || 'Project', match.downloadUrl, 'project files');
+          return true;
         }
       }
     }
@@ -1763,8 +2305,10 @@ class DAIChatbot {
     return false;
   }
 
-  // Enhanced Proactive Suggestions with Automatic Actions
+  // Enhanced Proactive Suggestions with Automatic Actions (once per session)
   enhancedProactiveSuggestions() {
+    if (this.storageGet('dai_proactive_shown', true) === 'true') return;
+
     const timeOnPage = Date.now() - this.userSession.currentTime.getTime();
     const context = this.userContext;
 
@@ -1774,12 +2318,12 @@ class DAIChatbot {
         'homepage': () => this.performAutomaticNavigation('my-projects.html', 'Projects', 'to see our amazing work'),
         'services': () => this.performAutomaticNavigation('contact.html', 'Contact', 'to discuss your project needs'),
         'projects': () => {
-          // Offer to download a featured project
-          if (this.projectsData && this.projectsData.length > 0) {
-            const featuredProject = this.projectsData[0]; // First project as featured
+          // Offer to download a featured project (only if it has a real download link)
+          const featuredProject = this.getProjectsList().find(p => p && p.downloadUrl);
+          if (featuredProject) {
             this.performAutomaticDownload(
               featuredProject.title || 'Featured Project',
-              featuredProject.downloadUrl || '#',
+              featuredProject.downloadUrl,
               'featured project'
             );
           }
@@ -1787,48 +2331,50 @@ class DAIChatbot {
       };
 
       if (actionSuggestions[context]) {
-        setTimeout(() => {
-          if (!this.isOpen) {
+        this.storageSet('dai_proactive_shown', 'true', true);
+        this.timers.push(setTimeout(() => {
+          if (!this.isOpen && this.userInteractions.length === 0) {
             actionSuggestions[context]();
           }
-        }, Math.random() * 5000 + 2000); // Random delay between 2-7 seconds
+        }, Math.random() * 5000 + 2000)); // Random delay between 2-7 seconds
       }
     }
   }
 
   suggestHumanContact() {
     setTimeout(() => {
-      this.addMessage("📞 **Let's connect you with our team:**\n\n• **WhatsApp**: 0791360805 (Fastest response)\n• **Email**: dericmarangu@gmail.com\n• **Contact Form**: More detailed inquiries\n\n💬 **Tip**: WhatsApp gets the quickest responses!", 'bot', 
-        () => window.open('https://wa.me/0791360805', '_blank'));
+      this.addMessage(`📞 **Let's connect you with our team:**\n\n• **WhatsApp**: ${this.config.whatsappDisplay} (Fastest response)\n• **Email**: ${this.config.email}\n• **Contact Form**: More detailed inquiries\n\n💬 **Tip**: WhatsApp gets the quickest responses!`, 'bot',
+        () => this.openWhatsApp(), 'Open WhatsApp');
     }, 500);
   }
 
   suggestQuoteContact() {
     setTimeout(() => {
-      this.addMessage("💰 **Get Your Free Quote:**\n\n🚀 **Quick Quote via WhatsApp**: Send us your requirements for instant estimate\n📧 **Detailed Quote via Email**: For complex projects with specifications\n📋 **Quote Form**: Use our contact page for structured requests", 'bot', 
-        () => window.open('https://wa.me/0791360805?text=Hi! I need a quote for data analysis services', '_blank'));
+      this.addMessage("💰 **Get Your Free Quote:**\n\n🚀 **Quick Quote via WhatsApp**: Send us your requirements for instant estimate\n📧 **Detailed Quote via Email**: For complex projects with specifications\n📋 **Quote Form**: Use our contact page for structured requests", 'bot',
+        () => this.openWhatsApp('Hi! I need a quote for data analysis services'), 'Open WhatsApp');
     }, 500);
   }
 
   suggestExpertConsultation() {
     setTimeout(() => {
-      this.addMessage("🔬 **Expert Consultation Available:**\n\n👨‍💼 **Free 15-min Consultation**: Discuss your project scope\n📋 **Technical Assessment**: We'll analyze your requirements\n💡 **Custom Solution Design**: Tailored approach for your needs\n\nReady to schedule?", 'bot', 
-        () => window.open('https://wa.me/0791360805?text=Hi! I need expert consultation for a complex data project', '_blank'));
+      this.addMessage("🔬 **Expert Consultation Available:**\n\n👨‍💼 **Free 15-min Consultation**: Discuss your project scope\n📋 **Technical Assessment**: We'll analyze your requirements\n💡 **Custom Solution Design**: Tailored approach for your needs\n\nReady to schedule?", 'bot',
+        () => this.openWhatsApp('Hi! I need expert consultation for a complex data project'), 'Open WhatsApp');
     }, 500);
   }
 
   // File operation suggestions
   suggestFileOperations() {
     setTimeout(() => {
-      this.addMessage("📁 **Smart File Operations:**\n\n🔍 **Quick Search**: Tell me 'download Project 3 Excel files'\n📦 **Bulk Download**: 'Get all Python projects'\n🎯 **Specific Files**: 'Show me PowerBI dashboards for retail'\n📊 **By Category**: 'Download all e-commerce analysis files'\n\nWhat files are you looking for?", 'bot');
+      this.addMessage("📁 **Smart File Operations:**\n\n🔍 **Quick Search**: Tell me 'download Project 3'\n🎯 **Specific Files**: 'Show me PowerBI dashboards'\n📊 **By Category**: 'Show me e-commerce analysis projects'\n\nWhat files are you looking for?", 'bot');
     }, 500);
   }
 
-  // Python project suggestions
+  // Python project suggestions (uses the real project data, not a hard-coded list)
   suggestPythonProjects() {
     setTimeout(() => {
-      this.addMessage("🐍 **Your Python Project Hub:**\n\n**Featured Python Projects:**\n• **Project 3**: Student Performance Analytics\n• **Project 6**: E-Commerce Data Pipeline\n• **Project 8**: COVID-19 Statistical Analysis\n\n📥 **Download Options:**\n• Individual .py files\n• Complete project folders\n• Datasets + scripts bundles", 'bot',
-        () => window.location.href = 'my-projects.html#python-filter');
+      const result = this.searchProjects('python projects');
+      this.addMessage(result || "🐍 I couldn't load the Python project list right now. Please open the Projects page and use the Python filter.", 'bot',
+        () => this.suggestNavigation('my-projects.html', 'View Projects'), 'Open Projects page');
     }, 500);
   }
 
@@ -1836,20 +2382,27 @@ class DAIChatbot {
   getAgenticGreeting() {
     const preferences = this.agenticMemory.userPreferences;
     const history = this.agenticMemory.interactionHistory;
-    
-    let greeting = this.knowledgeBase.greetings.responses;
-    
+    const names = {
+      homepage: 'homepage',
+      projects: 'projects',
+      services: 'services',
+      contact: 'contact',
+      about: 'about'
+    };
+
     // Personalize based on previous interactions
     if (history.length > 5) {
       const commonContext = this.getMostCommonContext(history);
-      return `🧠 **Welcome back to DAI!** I see you often explore our ${commonContext} section. Ready to dive deeper today?`;
+      if (commonContext && names[commonContext]) {
+        return `🧠 **Welcome back to DAI!** I see you often explore our ${names[commonContext]} section. Ready to dive deeper today?`;
+      }
     }
-    
+
     // Personalize based on preferences
     if (preferences.python > 2) {
       return "🧠 **Hello Python enthusiast!** DAI here - I remember you're interested in our data science projects. What would you like to explore today?";
     }
-    
+
     return null; // Use default greeting
   }
 
@@ -1857,17 +2410,29 @@ class DAIChatbot {
   getMostCommonContext(history) {
     const contexts = {};
     history.forEach(entry => {
-      if (entry.context) {
+      if (entry && entry.context) {
         contexts[entry.context] = (contexts[entry.context] || 0) + 1;
       }
     });
-    
-    return Object.keys(contexts).reduce((a, b) => contexts[a] > contexts[b] ? a : b);
+
+    const keys = Object.keys(contexts);
+    if (keys.length === 0) return null;
+    return keys.reduce((a, b) => contexts[a] >= contexts[b] ? a : b);
   }
 
 }
 
-// Initialize DAI when page loads
-document.addEventListener('DOMContentLoaded', () => {
-  window.DAIChatbot = new DAIChatbot();
-});
+// Initialize DAI when page loads (also works if the script is added after
+// DOMContentLoaded, and never creates two instances)
+(function initDAI() {
+  const start = () => {
+    if (!window.DAIChatbot) {
+      window.DAIChatbot = new DAIChatbot();
+    }
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
