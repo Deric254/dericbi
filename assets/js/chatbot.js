@@ -11,7 +11,7 @@ class DAIChatbot {
     this.config = {
       whatsappNumber: '254791360805',
       whatsappDisplay: '+254791360805',
-      email: 'deric.analytics@gmail.com',
+      email: 'dericmarangu@gmail.com',
       dataFormUrl: 'https://forms.gle/krViHXVaJKP2JARZ7',
       setupFormUrl: 'https://forms.gle/Uzq3L9wtm5yM6KEX7',
       tujenganeUrl: 'https://dericbiskills.vercel.app'
