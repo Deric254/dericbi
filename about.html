@@ -37,8 +37,8 @@
 <!-- ✅ Open Graph for Facebook, LinkedIn, WhatsApp -->
 <meta property="og:title" content="Welcome to dericBI" />
 <meta property="og:description" content="We help busy executives and business owners cut through data noise to gain total clarity. Our data analytics services provide clear insights, plus we train your teams to master business intelligence tools." />
-<meta property="og:image" content="https://dericbi.vercel.app/assets/img/logo.png" />
-<meta property="og:image:type" content="image/png" />
+<meta property="og:image" content="https://dericbi.vercel.app/assets/img/og-share.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dericbi.vercel.app/about.html" />
@@ -50,7 +50,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Welcome to dericBI" />
 <meta name="twitter:description" content="We help busy executives and business owners cut through data noise to gain total clarity. Our data analytics services provide clear insights, plus we train your teams to master business intelligence tools." />
-<meta name="twitter:image" content="https://dericbi.vercel.app/assets/img/logo.png" />
+<meta name="twitter:image" content="https://dericbi.vercel.app/assets/img/og-share.jpg" />
 <meta name="twitter:creator" content="@dericmwiti" />
 <meta name="twitter:site" content="@dericmwiti" />
 
@@ -89,29 +89,18 @@
 </script>
 
   <!-- ✅ Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          screens: {
-            'xs': '375px',
-          },
-        }
-      }
-    }
-  </script>
 
   <!-- ✅ Font Awesome for Social Icons -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
   
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20251129">
-  <link rel="stylesheet" href="assets/css/social_links.css?v=20251114">
+  <link rel="stylesheet" href="assets/css/style.css?v=07531de3">
+  <link rel="stylesheet" href="assets/css/social_links.css?v=885951dd">
   
   <!-- Image Loading Enhancement -->
-  <script src="assets/js/image-loader.js?v=20251129" defer></script>
-  <script src="assets/js/cache-helper.js?v=20251129" defer></script>
+  <script src="assets/js/image-loader.js?v=77941297" defer></script>
+  <script src="assets/js/cache-helper.js?v=b1155a6e" defer></script>
 
   <!-- ✅ Favicons -->
 <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
@@ -312,10 +301,11 @@ a:not(.group):not(.nav-link):not(.footer-link):hover {
   </style>
 
   <!-- ✅ dericBI Chatbot -->
- <link rel="stylesheet" href="assets/css/social_links.css">
-  <script src="assets/js/config.js?v=20251114"></script>
-  <script src="assets/js/chatbot.js?v=20251114"></script>
-  <script src="assets/js/social_links.js?v=20251114"></script>
+ <link rel="stylesheet" href="assets/css/social_links.css?v=885951dd">
+  <script defer src="assets/js/config.js?v=a0a11940"></script>
+  <script defer src="assets/js/chatbot.js?v=5d85417e"></script>
+  <script defer src="assets/js/social_links.js?v=6f1c5397"></script>
+  <link rel="stylesheet" href="assets/css/tailwind.css?v=d1045869">
 </head>
 
 <body class="bg-white text-gray-800 flex flex-col min-h-screen overflow-x-hidden w-full max-w-[100vw]">
@@ -326,7 +316,7 @@ a:not(.group):not(.nav-link):not(.footer-link):hover {
 
     <!-- ✅ Logo & Brand -->
     <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3 shrink-0">
-   <img src="assets/img/logo.png?v=20251129" 
+   <img src="assets/img/logo-avatar.webp?v=20251129" 
      alt="dericBI Logo" 
      width="64" height="64" 
      style="object-fit:cover; object-position: center;" 
@@ -486,7 +476,7 @@ document.addEventListener('click', (e) => {
     
     <div class="bg-white/90 p-4 md:p-6 rounded-xl shadow-md border border-green-100 flex flex-col md:flex-row items-center md:items-start gap-6">
       <div class="flex flex-col items-center shrink-0">
-  <img src="assets/img/deric.png?v=20251129" 
+  <img src="assets/img/deric-avatar.webp?v=20251129" 
         alt="Deric Marangu" 
         width="160" height="160" 
         style="object-fit:cover; object-position: center;" 
@@ -533,11 +523,11 @@ document.addEventListener('click', (e) => {
       <!-- Expandable Project Section -->
       <div id="projectSectionAbout" class="hidden w-full sm:w-auto rounded-xl shadow-md border border-gray-200 bg-white p-4 mb-4">
         <div class="flex gap-2 items-center">
-          <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank"
+          <a href="https://forms.gle/krViHXVaJKP2JARZ7"
             class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded-lg shadow font-semibold text-xs transition">
             <i class="fas fa-upload mr-1"></i>I Have Data
           </a>
-          <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7" target="_blank"
+          <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7"
             class="bg-[#f59e0b] hover:bg-[#d97706] text-white px-3 py-2 rounded-lg shadow font-semibold text-xs transition">
             <i class="fas fa-chart-line mr-1"></i>I Need Setup
           </a>
@@ -638,7 +628,7 @@ document.getElementById('fileNameInputAbout')?.addEventListener('keypress', func
 
 <!-- ✅ Footer Logo and Tagline -->
 <div class="flex items-center gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm hover:shadow-md transition-all border border-green-100">
-  <img src="assets/img/logo.png?v=20251129" 
+  <img src="assets/img/logo-avatar.webp?v=20251129" 
     alt="dericBI Logo" 
     width="48" height="48" 
     style="object-fit:cover; object-position: center;" 
@@ -656,7 +646,7 @@ document.getElementById('fileNameInputAbout')?.addEventListener('keypress', func
     <div class="flex flex-col items-center text-center bg-white/70 p-2 rounded-xl shadow-sm border border-green-100">
       <div class="text-xs sm:text-sm text-gray-500">
         &copy; 2025 <span>deric</span><span class="text-[#facc15] font-bold drop-shadow-sm">BI</span> – Built by 
-        <a href="https://dericmarangu.vercel.app/" target="_blank" class="footer-link font-medium hover:text-[#49A078] transition-colors underline decoration-dotted hover:decoration-solid">Deric Marangu</a>. All rights reserved.
+        <a href="https://dericmarangu.vercel.app/" class="footer-link font-medium hover:text-[#49A078] transition-colors underline decoration-dotted hover:decoration-solid">Deric Marangu</a>. All rights reserved.
       </div>
       <div class="flex flex-wrap justify-center gap-2 xs:gap-3 sm:gap-4 mt-1">
         <a href="about.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">About Us</a>
@@ -682,8 +672,8 @@ document.getElementById('fileNameInputAbout')?.addEventListener('keypress', func
     <div class="flex items-center justify-between gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm border border-green-100">
       <!-- Profile image next to name -->
       <div class="flex items-center gap-2 xs:gap-3">
-        <a href="https://dericmarangu.vercel.app/" target="_blank" class="footer-link rounded-full p-1 bg-white hover:bg-green-50 shadow-sm hover:shadow-md transition-all">
-          <img src="assets/img/deric.png?v=20251129" 
+        <a href="https://dericmarangu.vercel.app/" class="footer-link rounded-full p-1 bg-white hover:bg-green-50 shadow-sm hover:shadow-md transition-all">
+          <img src="assets/img/deric-avatar.webp?v=20251129" 
             alt="Deric's Photo" 
             width="48" height="48" 
             style="object-fit:cover; object-position: center;" 
@@ -691,10 +681,10 @@ document.getElementById('fileNameInputAbout')?.addEventListener('keypress', func
             decoding="async" />
         </a>
         <div class="flex flex-col">
-          <a href="https://dericmarangu.vercel.app/" target="_blank" class="footer-link font-semibold text-sm hover:text-[#49A078]">Deric Marangu</a>
+          <a href="https://dericmarangu.vercel.app/" class="footer-link font-semibold text-sm hover:text-[#49A078]">Deric Marangu</a>
           <p class="text-xs italic text-gray-600">
             CEO and Founder of 
-            <a href="https://dericbi.vercel.app/" target="_blank" class="footer-link font-semibold hover:text-[#49A078]">
+            <a href="https://dericbi.vercel.app/" class="footer-link font-semibold hover:text-[#49A078]">
               <span>deric</span><span class="text-[#facc15] text-[15px] font-bold drop-shadow-md">BI</span>
             </a>
           </p>
@@ -703,13 +693,13 @@ document.getElementById('fileNameInputAbout')?.addEventListener('keypress', func
       
       <!-- Social media icons in a more compact, right-aligned container -->
       <div class="flex flex-wrap justify-end gap-1">
-        <a href="https://wa.me/254791360805" target="_blank" class="footer-link bg-green-100 hover:bg-green-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-whatsapp text-green-600"></i></a>
+        <a href="https://wa.me/254791360805" class="footer-link bg-green-100 hover:bg-green-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-whatsapp text-green-600"></i></a>
         <a href="mailto:dericmarangu@gmail.com" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="Email"><i class="fas fa-envelope text-blue-600"></i></a>
-        <a href="https://web.facebook.com/deric.aldertrax" target="_blank" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-facebook text-blue-600"></i></a>
-        <a href="https://www.facebook.com/dericbiservices/" target="_blank" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="dericBI Facebook"><i class="fab fa-facebook text-blue-600"></i></a>
-        <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" class="footer-link bg-blue-700 hover:bg-blue-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-linkedin text-white"></i></a>
-        <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link bg-black hover:bg-gray-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-twitter text-white"></i></a>
-        <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link bg-pink-100 hover:bg-pink-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-instagram text-pink-600"></i></a>
+        <a href="https://web.facebook.com/deric.aldertrax" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-facebook text-blue-600"></i></a>
+        <a href="https://www.facebook.com/dericbiservices/" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="dericBI Facebook"><i class="fab fa-facebook text-blue-600"></i></a>
+        <a href="https://www.linkedin.com/in/deric-marangu-134340297/" class="footer-link bg-blue-700 hover:bg-blue-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-linkedin text-white"></i></a>
+        <a href="https://x.com/Dericmwiti" class="footer-link bg-black hover:bg-gray-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-twitter text-white"></i></a>
+        <a href="https://www.instagram.com/dericmarangu/" class="footer-link bg-pink-100 hover:bg-pink-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-instagram text-pink-600"></i></a>
       </div>
     </div>
   </div>
@@ -737,6 +727,6 @@ document.getElementById('fileNameInputAbout')?.addEventListener('keypress', func
 </script>
 
 <!-- Enhanced Analytics Tracking -->
-<script src="assets/js/analytics-tracking.js?v=20251114"></script>
+<script src="assets/js/analytics-tracking.js?v=cffb507b"></script>
 </body>
 </html>

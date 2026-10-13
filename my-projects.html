@@ -44,8 +44,8 @@
 <!-- ✅ Open Graph for Facebook, LinkedIn, WhatsApp -->
 <meta property="og:title" content="Welcome to dericBI" />
 <meta property="og:description" content="We help busy executives and business owners cut through data noise to gain total clarity. Our data analytics services provide clear insights, plus we train your teams to master business intelligence tools." />
-<meta property="og:image" content="https://dericbi.vercel.app/assets/img/logo.png" />
-<meta property="og:image:type" content="image/png" />
+<meta property="og:image" content="https://dericbi.vercel.app/assets/img/og-share.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:url" content="https://dericbi.vercel.app/my-projects.html" />
@@ -57,7 +57,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Welcome to dericBI" />
 <meta name="twitter:description" content="We help busy executives and business owners cut through data noise to gain total clarity. Our data analytics services provide clear insights, plus we train your teams to master business intelligence tools." />
-<meta name="twitter:image" content="https://dericbi.vercel.app/assets/img/logo.png" />
+<meta name="twitter:image" content="https://dericbi.vercel.app/assets/img/og-share.jpg" />
 <meta name="twitter:creator" content="@dericmwiti" />
 <meta name="twitter:site" content="@dericmwiti" />
 
@@ -103,7 +103,7 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://gc.zgo.at" crossorigin>
   <!-- Preload site logo to help LCP -->
-  <link rel="preload" as="image" href="assets/img/logo.png">
+  <link rel="preload" as="image" href="assets/img/logo-avatar.webp">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
@@ -116,18 +116,6 @@
   <meta name="theme-color" content="#ffffff">
 
   <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          screens: {
-            'xs': '375px',
-          },
-        }
-      }
-    }
-  </script>
 
   <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
@@ -138,13 +126,13 @@
   <meta name="format-detection" content="telephone=no">
 
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20251114">
-  <link rel="stylesheet" href="assets/css/social_links.css?v=20251114">
+  <link rel="stylesheet" href="assets/css/style.css?v=07531de3">
+  <link rel="stylesheet" href="assets/css/social_links.css?v=885951dd">
   
   <!-- dericBI Chatbot -->
-  <script src="assets/js/config.js?v=20251114"></script>
-  <script src="assets/js/chatbot.js?v=20251114"></script>
-  <script src="assets/js/social_links.js?v=20251114"></script>
+  <script defer src="assets/js/config.js?v=a0a11940"></script>
+  <script defer src="assets/js/chatbot.js?v=5d85417e"></script>
+  <script defer src="assets/js/social_links.js?v=6f1c5397"></script>
 
   <!-- Page-specific Styles -->
   <style>
@@ -565,6 +553,7 @@ img:not([alt]) {
       white-space: nowrap;
     }
   </style>
+  <link rel="stylesheet" href="assets/css/tailwind.css?v=d1045869">
 </head>
 
 <body class="bg-white text-gray-800 flex flex-col min-h-screen overflow-x-hidden w-full max-w-[100vw]">
@@ -573,7 +562,7 @@ img:not([alt]) {
   <div class="w-full max-w-7xl mx-auto flex items-center justify-between gap-1 xs:gap-2 sm:gap-3 md:gap-4">
     <!-- Logo & Brand -->
     <div class="flex items-center gap-1.5 xs:gap-2 sm:gap-3 shrink-0">
-      <img src="assets/img/logo.png" 
+      <img src="assets/img/logo-avatar.webp" 
            alt="dericBI Logo" 
      width="64" height="64"
      class="h-9 w-9 xs:h-10 xs:w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 rounded-full object-cover shadow-md flex-shrink-0" />
@@ -698,7 +687,7 @@ document.addEventListener('click', (e) => {
   </div>
   <!-- Try Yourself Button -->
   <div class="w-full mb-6 flex justify-end px-1">
-    <a href="https://dericbi-analytics.onrender.com" target="_blank"
+    <a href="https://dericbi-analytics.onrender.com"
   class="bg-[#facc15] hover:bg-[#eab308] text-black px-5 py-2.5 rounded-lg font-semibold flex items-center gap-2 shadow transition"
       <i class="fas fa-flask"></i>Try Yourself
     </a>
@@ -732,21 +721,21 @@ document.addEventListener('click', (e) => {
           <i class="fas fa-download mr-1"></i>Download Files
           <span class="hidden group-hover:inline ml-1 text-[#facc15]">📁</span>
         </button>
-        <a href="https://dericbi-analytics.onrender.com" target="_blank"
+        <a href="https://dericbi-analytics.onrender.com"
           class="bg-[#facc15] hover:bg-[#eab308] text-black px-3 py-2 rounded text-xs font-semibold transition flex items-center gap-1">
           <i class="fas fa-flask"></i>Try Yourself
         </a>
         <div class="hidden sm:flex items-center text-xs text-gray-500">
-          <i class="fas fa-chart-bar text-blue-500 mr-1"></i>95+ Projects
+          <i class="fas fa-chart-bar text-blue-500 mr-1"></i>100+ Projects
         </div>
       </div>
       <div id="projectSectionJourney" class="hidden w-full sm:w-auto">
         <div class="flex gap-2 items-center">
-          <a href="https://forms.gle/krViHXVaJKP2JARZ7" target="_blank"
+          <a href="https://forms.gle/krViHXVaJKP2JARZ7"
             class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded text-xs font-semibold transition">
             <i class="fas fa-upload mr-1"></i>I Have Data
           </a>
-          <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7" target="_blank"
+          <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7"
             class="bg-[#f59e0b] hover:bg-[#d97706] text-white px-3 py-2 rounded text-xs font-semibold transition">
             <i class="fas fa-chart-line mr-1"></i>I Need Setup
           </a>
@@ -1182,8 +1171,8 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
     const loading = downloadProjectBtn.querySelector('.download-loading');
     loading.style.display = 'flex';
     downloadProjectBtn.disabled = true;
-    if (cs.projectLink) {
-      window.open(cs.projectLink, '_blank');
+    if (cs.projectLink && /^https?:\/\//i.test(cs.projectLink)) {
+      window.location.assign(cs.projectLink);
     } else {
       alert('🚫 Project download link has expired. Please contact dericBI for access to the full project files.\n\n📧 Email: dericmarangu@gmail.com\n📱 WhatsApp: +254791360805');
     }
@@ -1934,7 +1923,7 @@ function toggleNewsletter() {
   <div class="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 xs:gap-4">
     <!-- Footer Logo and Tagline -->
     <div class="flex items-center gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm hover:shadow-md transition-all border border-green-100">
-      <img src="assets/img/logo.png" 
+      <img src="assets/img/logo-avatar.webp" 
            alt="dericBI Logo" 
            class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover shadow-md" />
       <div class="flex flex-col leading-tight">
@@ -1948,12 +1937,12 @@ function toggleNewsletter() {
     <div class="flex flex-col items-center text-center bg-white/70 p-2 rounded-xl shadow-sm border border-green-100">
       <div class="text-xs sm:text-sm text-gray-500">
         &copy; 2025 <span>deric</span><span class="text-[#facc15] font-bold drop-shadow-sm">BI</span> – Built by 
-        <a href="https://dericmarangu.vercel.app/" target="_blank" class="footer-link font-medium hover:text-[#49A078] transition-colors underline decoration-dotted hover:decoration-solid">Deric Marangu</a>. All rights reserved.
+        <a href="https://dericmarangu.vercel.app/" class="footer-link font-medium hover:text-[#49A078] transition-colors underline decoration-dotted hover:decoration-solid">Deric Marangu</a>. All rights reserved.
       </div>
       <div class="flex flex-wrap justify-center gap-2 xs:gap-3 sm:gap-4 mt-1">
         <a href="about.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">About Us</a>
         <a href="terms.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">T&C's</a>
-        <a href="https://dericbi-analytics.onrender.com" target="_blank" class="footer-link font-bold text-[#49A078] text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">Try Yourself</a>
+        <a href="https://dericbi-analytics.onrender.com" class="footer-link font-bold text-[#49A078] text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">Try Yourself</a>
         <button onclick="toggleNewsletter()" class="footer-link text-xs bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">
           <i class="fas fa-envelope mr-1"></i>Newsletter
         </button>
@@ -1974,14 +1963,14 @@ function toggleNewsletter() {
     <div class="flex items-center justify-between gap-2 xs:gap-3 bg-white/70 p-2 rounded-xl shadow-sm border border-green-100">
       <!-- Profile image next to name -->
       <div class="flex items-center gap-2 xs:gap-3">
-        <a href="https://dericmarangu.vercel.app/" target="_blank" class="footer-link rounded-full p-1 bg-white hover:bg-green-50 shadow-sm hover:shadow-md transition-all">
-          <img src="assets/img/deric.png" alt="Deric's Photo" class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover border-2 border-[#49A078]/30 hover:border-[#49A078] transition-all" />
+        <a href="https://dericmarangu.vercel.app/" class="footer-link rounded-full p-1 bg-white hover:bg-green-50 shadow-sm hover:shadow-md transition-all">
+          <img src="assets/img/deric-avatar.webp" alt="Deric's Photo" class="h-10 w-10 xs:h-12 xs:w-12 rounded-full object-cover border-2 border-[#49A078]/30 hover:border-[#49A078] transition-all" />
         </a>
         <div class="flex flex-col">
-          <a href="https://dericmarangu.vercel.app/" target="_blank" class="footer-link font-semibold text-sm hover:text-[#49A078]">Deric Marangu</a>
+          <a href="https://dericmarangu.vercel.app/" class="footer-link font-semibold text-sm hover:text-[#49A078]">Deric Marangu</a>
           <p class="text-xs italic text-gray-600">
             CEO and Founder of 
-            <a href="https://dericbi.vercel.app/" target="_blank" class="footer-link font-semibold hover:text-[#49A078]">
+            <a href="https://dericbi.vercel.app/" class="footer-link font-semibold hover:text-[#49A078]">
               <span>deric</span><span class="text-[#facc15] text-[15px] font-bold drop-shadow-md">BI</span>
             </a>
           </p>
@@ -1989,27 +1978,27 @@ function toggleNewsletter() {
       </div>
       <!-- Social media icons in a more compact, right-aligned container -->
       <div class="flex flex-wrap justify-end gap-1">
-        <a href="https://wa.me/254791360805" target="_blank" class="footer-link bg-green-100 hover:bg-green-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-whatsapp text-green-600"></i></a>
+        <a href="https://wa.me/254791360805" class="footer-link bg-green-100 hover:bg-green-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-whatsapp text-green-600"></i></a>
         <a href="mailto:dericmarangu@gmail.com" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="Email"><i class="fas fa-envelope text-blue-600"></i></a>
-        <a href="https://web.facebook.com/deric.aldertrax" target="_blank" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-facebook text-blue-600"></i></a>
-        <a href="https://www.facebook.com/dericbiservices/" target="_blank" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="dericBI Facebook"><i class="fab fa-facebook text-blue-600"></i></a>
-        <a href="https://www.linkedin.com/in/deric-marangu-134340297/" target="_blank" class="footer-link bg-blue-700 hover:bg-blue-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-linkedin text-white"></i></a>
-        <a href="https://x.com/Dericmwiti" target="_blank" class="footer-link bg-black hover:bg-gray-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-twitter text-white"></i></a>
-        <a href="https://www.instagram.com/dericmarangu/" target="_blank" class="footer-link bg-pink-100 hover:bg-pink-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-instagram text-pink-600"></i></a>
+        <a href="https://web.facebook.com/deric.aldertrax" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-facebook text-blue-600"></i></a>
+        <a href="https://www.facebook.com/dericbiservices/" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="dericBI Facebook"><i class="fab fa-facebook text-blue-600"></i></a>
+        <a href="https://www.linkedin.com/in/deric-marangu-134340297/" class="footer-link bg-blue-700 hover:bg-blue-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-linkedin text-white"></i></a>
+        <a href="https://x.com/Dericmwiti" class="footer-link bg-black hover:bg-gray-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-twitter text-white"></i></a>
+        <a href="https://www.instagram.com/dericmarangu/" class="footer-link bg-pink-100 hover:bg-pink-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-instagram text-pink-600"></i></a>
       </div>
     </div>
   </div>
 </footer>
 
 <!-- Enhanced Analytics Tracking -->
-<script defer src="assets/js/analytics-tracking.js?v=20251114"></script>
+<script defer src="assets/js/analytics-tracking.js?v=cffb507b"></script>
 
 <!-- Performance Optimization Script -->
 <script>
   // Register Service Worker for caching and faster repeat visits
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      navigator.serviceWorker.register('sw.js')
         .then(registration => {
           console.log('✅ Service Worker registered:', registration.scope);
         })
@@ -2086,6 +2075,13 @@ function toggleNewsletter() {
       }, 0);
     });
   }
+</script>
+<script>
+  // Open every link in the same tab, including the "Live Link" anchors that come from journey-data.json.
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest && event.target.closest('a[target="_blank"]');
+    if (link) link.removeAttribute('target');
+  }, true);
 </script>
 </body>
 </html>

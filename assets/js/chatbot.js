@@ -79,7 +79,7 @@ class DAIChatbot {
   }
 
   openWhatsApp(text) {
-    window.open(this.waLink(text), '_blank', 'noopener');
+    window.location.assign(this.waLink(text));
   }
 
   getTujenganeUrl() {
@@ -362,15 +362,15 @@ class DAIChatbot {
           'dashboard': "Beautiful, interactive dashboards that bring your data to life! We create dashboards in Excel, PowerBI, or Python that include:\n\n📊 Real-time data visualization\n📱 Interactive business reports\n🔄 Automated data updates\n📱 Mobile-friendly designs\n🎨 Professional, easy-to-understand layouts\n\nMonitor your business metrics at a glance and make data-driven decisions instantly!",
           'powerbi_dashboards': "Professional PowerBI dashboards that deliver enterprise-level business intelligence! These include:\n\n📊 Real-time data visualization\n🔄 Automated updates\n📱 Mobile compatibility\n🎯 Executive reporting capabilities\n🔗 Integration with multiple data sources\n📈 Advanced analytics and insights\n\nPerfect for serious business intelligence and executive decision-making!",
           'setup_services': "Don't have data systems yet? We can set up complete tracking systems from scratch! This includes:\n\n📊 Sales tracking and monitoring\n📦 Inventory management systems\n👥 Customer database setup\n📋 Automated reporting systems\n🔄 Real-time data collection\n📈 Performance dashboards\n\nGet a complete data infrastructure that grows with your business!",
-          'process': "Our process is simple and straightforward - just 4 easy steps:\n\n1️⃣ Send Data - Upload your files or tell us what you need\n2️⃣ We Analyze - Our experts clean and analyze your data\n3️⃣ Get Results - Receive clean data and actionable insights\n4️⃣ Make Decisions - Use data-driven insights to grow your business\n\nMost projects are completed within 3-7 days, and we keep you updated throughout!",
+          'process': "Our process is simple and straightforward - just 4 easy steps:\n\n1️⃣ Send Data - Upload your files or tell us what you need\n2️⃣ We Analyze - Our experts clean and analyze your data\n3️⃣ Get Results - Receive clean data and actionable insights\n4️⃣ Make Decisions - Use data-driven insights to grow your business\n\nStandard services are delivered from 48 hours; larger or custom projects depend on scope and are agreed with you before work begins. We keep you updated throughout!",
           'pricing_structure': "Our pricing is straightforward and affordable! All prices in US Dollars:\n\n🧹 Excel Cleanup - $20\n📊 Data Analysis - $20\n💼 PowerBI Dashboards - $20\n🐍 Custom Python Dashboards - $23\n📦 Complete Package - $38 (Save $5!)\n\n💱 For reference: $20 ≈ KSh 2,600 and $23 ≈ KSh 3,000\n💡 FREE data setup consultation available!\n📞 Contact us for volume discounts and custom quotes.",
-          'value_proposition': "Here's why businesses choose dericBI for their data needs:\n\n🎯 Stop Revenue Leaks - Most businesses lose money through untracked decisions\n💰 Turn $1M into $10M - Our analytics help clients achieve 10x growth\n📊 40+ Successful Projects - Proven track record across industries\n⚡ Fast Turnaround - Most projects completed in 3-7 days\n💸 Affordable Rates - Starting from just $20\n\nWe're not just service providers - we're your data transformation partners!",
+          'value_proposition': "Here's why businesses choose dericBI for their data needs:\n\n🎯 Stop Revenue Leaks - Most businesses lose money through untracked decisions\n📊 100+ Projects - A portfolio across many industries\n⚡ Fast Turnaround - Standard services from 48 hours\n💸 Affordable Rates - Starting from just $20\n\nWe're not just service providers - we're your data transformation partners!",
           'contact_options': `Ready to get started? Here are the best ways to reach us:\n\n📱 WhatsApp: ${c.whatsappDisplay} (Fastest response - usually within minutes)\n📧 Email: ${c.email}\n📋 Have Data? Use our form: ${c.dataFormUrl}\n🔧 Need Setup? Use our setup form: ${c.setupFormUrl}\n\nWe respond quickly and can start working on your project right away!`,
 
           // Enhanced service knowledge
           'service_benefits': "Our services deliver real, measurable benefits for your business:\n\n🧹 Excel Cleanup - Save 10+ hours per week on manual data work\n📊 Data Analysis - Uncover hidden opportunities worth thousands\n💼 PowerBI Dashboards - Real-time business monitoring and insights\n🔧 Complete Setup - Full data infrastructure in one comprehensive package\n\nEvery service includes consultation, implementation, and follow-up support!",
-          'service_guarantees': "We stand behind our work with strong guarantees:\n\n✅ Quality Assurance - All work reviewed by senior analysts\n🔒 Data Security - Your data is encrypted and never shared\n😊 Satisfaction Guarantee - We'll fix any issues at no extra cost\n🤐 Confidentiality - NDA available for sensitive projects\n🔄 Free Revisions - Unlimited fixes within 30 days\n\nYour success and security are our top priorities!",
-          'industry_expertise': "We have experience across many industries and sectors:\n\n🛒 Retail & E-commerce - Sales analysis and inventory optimization\n🏥 Healthcare - Patient data analysis and resource allocation\n💰 Finance - Risk assessment and portfolio analysis\n🎓 Education - Student performance and enrollment trends\n🏭 Manufacturing - Supply chain optimization and quality control\n🌾 Agriculture - Crop yield analysis and market trends\n🏠 Real Estate - Property valuation and market analysis\n🏛️ Government - Public data analysis and policy insights\n\nWith 40+ successful projects, we understand the unique challenges of each sector!",
+          'service_guarantees': "Here's how we handle your work and your data:\n\n🔒 Confidentiality - Your data will not be shared with third parties without your consent, except when required by law\n📝 Clear terms - Scope and payment terms are agreed with you before work begins\n💬 Refunds - If a standard service isn't delivered within 48 hours of receiving your complete data and agreed payment, you can request a refund. After delivery, refunds aren't guaranteed (see our Terms page)\n\nFor anything specific, such as an NDA or a delivery timeline, message us on WhatsApp +254791360805.",
+          'industry_expertise': "We have experience across many industries and sectors:\n\n🛒 Retail & E-commerce - Sales analysis and inventory optimization\n🏥 Healthcare - Patient data analysis and resource allocation\n💰 Finance - Risk assessment and portfolio analysis\n🎓 Education - Student performance and enrollment trends\n🏭 Manufacturing - Supply chain optimization and quality control\n🌾 Agriculture - Crop yield analysis and market trends\n🏠 Real Estate - Property valuation and market analysis\n🏛️ Government - Public data analysis and policy insights\n\nWith 100+ projects, we understand the unique challenges of each sector!",
           'technical_capabilities': "Our technical toolkit covers everything you need:\n\n📊 Data Sources - Excel, CSV, SQL databases, APIs, Google Sheets\n🛠️ Analysis Tools - Python (Pandas, NumPy, Scikit-learn), SQL, Excel\n📈 Visualization - Power BI, Tableau, Python (Matplotlib, Seaborn, Plotly)\n☁️ Cloud Integration - Google Drive, OneDrive, AWS, Azure\n🔄 Automation - Scheduled reports and real-time dashboards\n🔒 Security - Encrypted data handling and secure file transfers\n\nWe use the best tools for each specific project to deliver optimal results!"
         }
       },
@@ -391,14 +391,14 @@ class DAIChatbot {
         patterns: ['business', 'company', 'experience', 'about', 'who', 'founded', 'location', 'ceo', 'founder', 'deric', 'marangu', 'team', 'mission', 'values', 'history', 'credentials', 'portfolio', 'background', 'story', 'journey', 'expertise', 'skills', 'qualifications', 'certifications', 'awards', 'achievements', 'success', 'track record', 'case studies', 'testimonials', 'reviews', 'clients', 'customers', 'partners', 'collaborations', 'projects completed', 'years of experience', 'industry experience', 'specialization', 'focus', 'expertise areas', 'core competencies', 'strengths', 'advantages', 'unique selling points', 'usp', 'differentiators', 'what makes you different', 'why choose you', 'company culture', 'work environment', 'team size', 'company size', 'growth', 'expansion', 'milestones', 'achievements', 'recognition', 'awards', 'certifications', 'licenses', 'accreditations', 'choose', 'why dericbi'],
         responses: {
           'about_dericbi': "🏢 **About dericBI**: We're a Kenyan data analytics company founded by our CEO Deric Marangu. We specialize in making messy data beautiful and actionable. Our mission is to empower businesses with clear insights. Check the About page for more.",
-          'experience': "👨‍💼 **Our Experience**: 40+ completed projects across various industries. We've helped businesses clean Excel files, create dashboards, and gain insights from their data. Our CEO Deric Marangu leads with years of expertise in data analysis and dashboard creation.",
+          'experience': "👨‍💼 **Our Experience**: 100+ projects across various industries, from Excel cleanup to Power BI and Python dashboards. Our CEO Deric Marangu has 2+ years of hands-on experience in data analysis and dashboard creation.",
           'location': "📍 **Location**: We're based in Kenya but serve clients globally. All consultations and project deliveries can be done remotely. Contact us anytime!",
-          'founder': "👨‍💻 **Founder and CEO**: Deric Marangu - Experienced data analyst passionate about turning data chaos into clarity. Born June 11, 2001, in Meru, Kenya. Bachelor's in Business Information Technology from Kirinyaga University (2025). Skilled in SQL, Python, Power BI, Excel. Check his portfolio and credentials on the About page!",
+          'founder': "👨‍💻 **Founder and CEO**: Deric Marangu - Experienced data analyst passionate about turning data chaos into clarity. Bachelor's in Business Information Technology from Kirinyaga University (2025). Skilled in SQL, Python, Power BI, Excel. Check his portfolio and credentials on the About page!",
           'mission_values': "🎯 **Our Mission & Values**:\n\n**Mission**: Transform data chaos into business clarity and growth\n**Vision**: Become Kenya's #1 data analytics partner\n\n**Values**:\n• **Excellence**: Highest quality in every deliverable\n• **Innovation**: Cutting-edge solutions for modern problems\n• **Integrity**: Honest, transparent business practices\n• **Empowerment**: Teaching clients to understand their data\n• **Accessibility**: Making data analytics affordable for all businesses",
-          'company_history': "📈 **Company History**:\n\n• **2023**: Founded by Deric Marangu in Meru, Kenya\n• **2024**: Completed first 20+ projects, established reputation\n• **2025**: Launched Tujengane education programs, expanded services, reached 40+ successful projects\n• **Present**: Growing client base, expanding educational initiatives\n\nFrom student projects to enterprise solutions, we've grown through consistent quality and client satisfaction.",
+          'company_history': "📈 **Company History**:\n\n• **2024-2026**: Built a portfolio of 100+ data projects across Excel, Power BI, Python and SQL\n• **Education**: Launched the Tujengane data-literacy programs alongside our services\n• **Today**: Helping businesses and learners across Kenya\n\nFrom student projects to business systems, our work is documented on the Projects page.",
           'success_stories': "🏆 **Success Stories**:\n\n• **Retail Client**: Increased sales by 35% through inventory optimization\n• **Healthcare Provider**: Reduced patient wait times by 40% with resource allocation analytics\n• **E-commerce Business**: Improved conversion rates by 25% with customer behavior insights\n• **Manufacturing Firm**: Cut operational costs by 30% through supply chain analysis\n• **Educational Institution**: Enhanced student performance tracking and intervention strategies\n\nThese are just a few examples from our portfolio!",
-          'market_position': "🌍 **Market Position**:\n\n• **Kenya's Leading Data Analytics Firm**: #1 in Nairobi region\n• **40+ Successful Projects**: Proven track record\n• **Multi-Industry Expertise**: Retail, healthcare, finance, education\n• **Affordable Pricing**: Starting at KSh 2,600 vs industry average KSh 50,000+\n• **Fast Delivery**: 3-7 day turnaround vs industry 2-4 weeks\n• **Client Satisfaction**: 98% repeat business rate\n• **Innovation Leader**: First in Kenya to offer integrated education + consulting",
-          'future_plans': "🚀 **Future Plans**:\n\n• **AI Integration**: Machine learning capabilities for predictive analytics\n• **Platform Development**: Launch of dericBI Analytics Platform\n• **Global Expansion**: International client acquisition\n• **Education Scaling**: Tujengane program expansion to 1000+ students\n• **Partnerships**: Strategic alliances with tech companies\n• **Certification**: Industry-recognized data analytics certifications\n\nWe're building the future of data analytics in Africa!"
+          'market_position': "🌍 **Market Position**:\n\n• **Kenya-based data analytics specialists**\n• **100+ Projects**: A portfolio across many industries\n• **Multi-Industry Expertise**: Retail, healthcare, finance, education\n• **Affordable Pricing**: Starting at $20 (≈ KSh 2,600)\n• **Fast Delivery**: Standard services from 48 hours\n• **Education + consulting**: Tujengane training alongside our analytics services",
+          'future_plans': "🚀 **Future Plans**:\n\n• **AI Integration**: Machine learning capabilities for predictive analytics\n• **Platform Development**: Launch of dericBI Analytics Platform\n• **Global Expansion**: International client acquisition\n• **Education Scaling**: Tujengane program expansion\n• **Partnerships**: Strategic alliances with tech companies\n• **Certification**: Industry-recognized data analytics certifications\n\nWe're building the future of data analytics in Africa!"
         }
       },
 
@@ -502,7 +502,7 @@ class DAIChatbot {
 
           'analysis_tools': "🛠️ **Our Analysis Arsenal**:\n\n**Python**: Advanced statistical analysis, machine learning\n**Excel**: Data cleaning, pivot tables, dashboards\n**Power BI**: Interactive business intelligence dashboards\n**SQL**: Database querying, data extraction\n**Google Sheets**: Collaborative data management\n**Matplotlib/Seaborn**: Professional data visualizations",
 
-          'project_categories': "📊 **Project Types We Handle**:\n\n• **Excel Projects**: Cleanup, automation, dashboards\n• **Python Analytics**: Statistical analysis, ML models\n• **Power BI Dashboards**: Interactive business reports\n• **SQL Database**: Data extraction, reporting\n• **Mixed Projects**: Multi-tool comprehensive solutions\n\n40+ completed projects across all categories!"
+          'project_categories': "📊 **Project Types We Handle**:\n\n• **Excel Projects**: Cleanup, automation, dashboards\n• **Python Analytics**: Statistical analysis, ML models\n• **Power BI Dashboards**: Interactive business reports\n• **SQL Database**: Data extraction, reporting\n• **Mixed Projects**: Multi-tool comprehensive solutions\n\n100+ projects across all categories!"
         }
       },
 
@@ -511,8 +511,8 @@ class DAIChatbot {
         patterns: ['trends', 'market', 'industry', 'future', 'emerging', 'latest', 'new', 'innovation', 'cutting edge', 'modern', 'current', 'state of', 'landscape', 'evolution', 'advancement', 'progress', 'development', 'growth', 'expansion', 'opportunities', 'challenges', 'problems', 'solutions', 'best practices', 'standards', 'benchmarks', 'competitors', 'competition', 'leaders', 'pioneers'],
         responses: {
           'data_analytics_trends': "📈 **Data Analytics Trends 2025**:\n\n• **AI Integration**: Machine learning in everyday analytics\n• **Real-time Analytics**: Instant business insights\n• **Self-service BI**: Non-technical users creating reports\n• **Data Democratization**: Analytics for all employees\n• **Cloud Analytics**: Scalable, cost-effective solutions\n• **Predictive Analytics**: Forecasting and risk assessment\n• **Automated Insights**: AI-generated recommendations\n• **Privacy-First Analytics**: GDPR-compliant solutions\n• **Edge Analytics**: Processing data at source\n\nWe're at the forefront of these trends!",
-          'market_positioning': "🌍 **Market Positioning**:\n\n• **Affordable Excellence**: Premium quality at accessible prices\n• **Local Expertise**: Deep understanding of African markets\n• **Fast Delivery**: 3-7 day turnaround vs industry 2-4 weeks\n• **End-to-End Service**: From data to insights to action\n• **Education Focus**: Free training and capacity building\n• **Innovation Leader**: First integrated consulting + education\n• **Client-Centric**: 98% repeat business rate\n• **Scalable Solutions**: From startups to enterprises",
-          'competitive_advantages': "⚡ **Our Competitive Advantages**:\n\n• **Cost Leadership**: 90% cheaper than international firms\n• **Local Knowledge**: Understanding African business context\n• **Speed**: Fastest delivery in the market\n• **Quality**: Senior analyst review on every project\n• **Education**: Free training and capacity building\n• **Innovation**: Cutting-edge tools and techniques\n• **Personal Touch**: Direct CEO communication\n• **Guarantees**: Satisfaction or full refund"
+          'market_positioning': "🌍 **Market Positioning**:\n\n• **Affordable Excellence**: Quality work at accessible prices\n• **Local Expertise**: Understanding of African markets\n• **Fast Delivery**: Standard services from 48 hours\n• **End-to-End Service**: From data to insights to action\n• **Education Focus**: Tujengane training, with a free Data Basics program\n• **Client-Centric**: Direct communication with the founder",
+          'competitive_advantages': "⚡ **Our Advantages**:\n\n• **Affordable**: Services start from $20 (≈ KSh 2,600)\n• **Local Knowledge**: Understanding African business context\n• **Speed**: Standard services from 48 hours\n• **Education**: Tujengane training, with the Data Basics program free\n• **Personal Touch**: Direct communication with our founder, Deric Marangu"
         }
       },
 
@@ -520,8 +520,8 @@ class DAIChatbot {
       client_success: {
         patterns: ['success', 'testimonials', 'reviews', 'clients', 'customers', 'case studies', 'results', 'outcomes', 'impact', 'transformation', 'growth', 'improvement', 'benefits', 'value', 'roi', 'return on investment', 'savings', 'profits', 'revenue', 'efficiency', 'productivity', 'performance', 'metrics', 'kpis', 'achievements', 'accomplishments', 'milestones', 'wins', 'victories'],
         responses: {
-          'success_metrics': "📊 **Client Success Metrics**:\n\n• **Revenue Growth**: Average 35% increase in 3 months\n• **Cost Reduction**: 20-40% operational cost savings\n• **Time Savings**: 10+ hours/week on manual tasks\n• **Decision Speed**: 50% faster business decisions\n• **Accuracy Improvement**: 90% reduction in data errors\n• **Client Satisfaction**: 98% repeat business rate\n• **Project Success Rate**: 95% delivered on time/budget\n• **ROI**: Average 300% return on analytics investment",
-          'testimonial_highlights': "💬 **Client Testimonials**:\n\n• **Retail Owner**: \"Increased sales by 35% in 2 months!\"\n• **Healthcare Manager**: \"Reduced patient wait times by 40%\"\n• **E-commerce CEO**: \"25% higher conversion rates\"\n• **Manufacturing Director**: \"Cut costs by 30% through optimization\"\n• **Finance Manager**: \"Better risk assessment and forecasting\"\n• **Education Admin**: \"Improved student performance tracking\"\n\nReal results from real businesses!",
+          'success_metrics': "📊 **Client Results**:\n\nResults depend on each client's data and goals, so we don't publish blanket statistics. See real examples on our Projects page, or message us on WhatsApp +254791360805 to discuss what we could do for you.",
+          'testimonial_highlights': "💬 **Client Feedback**:\n\nYou can read client feedback on our Home page and see real project examples on our Projects page. To discuss what we could do for you, message us on WhatsApp +254791360805.",
           'case_studies': "📚 **Case Studies**:\n\n• **Supermarket Chain**: Inventory optimization → 25% less waste\n• **Healthcare Clinic**: Patient flow analysis → 40% faster service\n• **E-commerce Store**: Customer behavior insights → 30% more sales\n• **Manufacturing Plant**: Supply chain analysis → 35% cost reduction\n• **Bank Branch**: Customer segmentation → 50% better targeting\n• **School System**: Performance analytics → 20% grade improvement\n\nEach case study available in our portfolio!"
         }
       },
@@ -550,7 +550,7 @@ class DAIChatbot {
       global_presence: {
         patterns: ['global', 'international', 'worldwide', 'international clients', 'countries', 'regions', 'overseas', 'foreign', 'abroad', 'remote', 'distance', 'time zones', 'languages', 'currency', 'payment methods', 'shipping', 'delivery', 'logistics', 'international business', 'cross border', 'multinational', 'global market', 'world economy', 'international trade'],
         responses: {
-          'international_clients': "We're proud to serve clients around the world! Our international presence spans:\n\n🌍 East Africa - Kenya, Tanzania, Uganda (our primary market)\n🌍 West Africa - Nigeria, Ghana (rapidly growing)\n🌍 Southern Africa - South Africa, Botswana\n🌍 Europe - UK, Germany, Netherlands\n🌍 North America - USA, Canada\n🌍 Middle East - UAE, Saudi Arabia\n🌍 Asia - India, Singapore\n\nThat's clients in over 15 countries across 4 continents! We understand different business cultures and can adapt our services accordingly.",
+          'international_clients': "🌍 dericBI is Kenya-based, and our process works online: you send your data and receive results remotely. To check whether we can support you from your location, message us on WhatsApp +254791360805.",
           'remote_work': "Distance is never a barrier with our remote work approach! We excel at serving clients worldwide through:\n\n🕐 Time Zone Flexibility - 24/7 availability across all time zones\n☁️ Cloud Collaboration - Real-time project sharing and updates\n🔒 Secure Communication - Encrypted video calls and messaging\n📤 Digital Delivery - Instant file sharing and downloads\n💳 Global Payments - Multiple currency and payment options\n🌐 Cultural Adaptation - Understanding local business contexts\n🗣️ Language Support - English as primary, with multilingual team\n✅ Quality Assurance - Same high standards everywhere\n\nWhether you're next door or across the ocean, you get the same exceptional service!",
           'payment_international': "We make international payments simple and flexible! Here are your options:\n\n₿ Cryptocurrency - USDT, BTC, ETH, BNB (fastest processing)\n💳 PayPal - Perfect for international clients\n🏦 Wire Transfer - Bank-to-bank for large enterprise projects\n🌐 Western Union - Cash pickup worldwide\n📱 Mobile Money - M-Pesa, Airtel Money\n🏪 Local Banking - Country-specific banking options\n💱 Currencies - USD, EUR, GBP, KES, and many more\n\nNo matter where you are, we have a payment method that works for you!"
         }
@@ -579,7 +579,7 @@ class DAIChatbot {
           <!-- Header -->
           <div class="chatbot-header bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white p-2 sm:p-2.5 flex items-center justify-between">
             <div class="flex items-center gap-1.5 sm:gap-2">
-              <img src="assets/img/logo.png" alt="dericBI Logo" class="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-white/30">
+              <img src="assets/img/logo-avatar.webp" alt="dericBI Logo" class="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-white/30">
               <div>
                 <h3 class="font-bold text-xs sm:text-sm">DAI</h3>
                 <p class="text-[10px] sm:text-xs opacity-90 flex items-center">
@@ -597,7 +597,7 @@ class DAIChatbot {
           <div id="chatbot-messages" class="overflow-y-auto p-2 sm:p-2.5 space-y-1.5 sm:space-y-2 bg-gradient-to-b from-gray-50 to-white">
             <div class="bot-message">
               <div class="flex items-start gap-1.5 sm:gap-2">
-                <img src="assets/img/logo.png" alt="dericBI" class="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-gray-200 mt-0.5 shrink-0">
+                <img src="assets/img/logo-avatar.webp" alt="dericBI" class="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-gray-200 mt-0.5 shrink-0">
                 <div class="bg-white p-2 sm:p-2.5 rounded-lg shadow-sm border text-xs max-w-[85%] border-l-2 border-l-[#49A078]">
                   <p class="text-xs sm:text-sm font-semibold">👋 Welcome to DAI!</p>
                   <div class="mt-1.5 space-y-0.5">
@@ -1131,6 +1131,28 @@ class DAIChatbot {
     return baseDelay + (complexityMultiplier * 300) + randomness;
   }
 
+  // Maps common business questions to the matching knowledge-base answer.
+  matchFaqIntent(message) {
+    // Answers are spread across several knowledge-base sections; search them all.
+    const kb = Object.assign({}, ...Object.values(this.knowledgeBase).map(section => (section && section.responses) || {}));
+    const faqs = [
+      [/\bhow many (projects|clients|customers)\b|\bnumber of (projects|clients)\b/, 'experience'],
+      [/\bhow long\b|\bturnaround\b|\bdelivery time\b|\bhow (fast|soon|quickly)\b|\btimeline\b/, 'process'],
+      [/\b(guarantee|guarantees|refund|refunds|money.?back)\b/, 'service_guarantees'],
+      [/\b(testimonials?|reviews?|client feedback)\b/, 'testimonial_highlights'],
+      [/\b(success rate|roi|return on investment|how successful)\b/, 'success_metrics'],
+      [/\b(company|your) (history|story)\b|\bwhen (was|were) (you|dericbi|the company) (founded|started|established)\b|\bhow old\b/, 'company_history'],
+      [/\bcompetitors?\b|\bmarket position\b|\bwhy (should i )?(choose|pick|use) (you|dericbi)\b|\bwhat makes you different\b|\bbetter than\b/, 'competitive_advantages'],
+      [/\b(countries|international(ly)?|abroad|outside kenya|overseas|worldwide)\b/, 'international_clients']
+    ];
+    for (const [pattern, key] of faqs) {
+      if (pattern.test(message) && kb[key]) {
+        return { text: kb[key], action: null };
+      }
+    }
+    return null;
+  }
+
   // Generate contextual response with conversation flow
   async generateContextualResponse(userMessage) {
     const message = userMessage.toLowerCase().trim();
@@ -1152,6 +1174,14 @@ class DAIChatbot {
     // Handle short responses and confirmations
     if (this.isShortResponse(message)) {
       return this.handleShortResponse(message);
+    }
+
+    // Direct answers to common business questions. These run before project search so that
+    // the word "project" in "how many projects" or "how long does a project take" does not
+    // send the question to the project finder.
+    const faqResponse = this.matchFaqIntent(message);
+    if (faqResponse) {
+      return faqResponse;
     }
 
     // Project search: specific results first (generic help is offered later)
@@ -1548,7 +1578,7 @@ class DAIChatbot {
 
     if (has(['project', 'portfolio', 'download'])) {
       return {
-        text: "🎯 **Projects Page**: Find all our portfolio work! Click the 'Projects' link in the navigation menu to explore 40+ completed projects with filtering and search options.",
+        text: "🎯 **Projects Page**: Find all our portfolio work! Click the 'Projects' link in the navigation menu to explore 100+ projects with filtering and search options.",
         action: () => this.suggestNavigation('my-projects.html', 'View Projects'),
         actionLabel: 'Open Projects page',
         followUp: "Want me to help you find specific types of projects?"
@@ -1663,7 +1693,7 @@ class DAIChatbot {
 
     if (has(['choose', 'why dericbi', 'different', 'advantages'])) {
       return {
-        text: `⭐ **Why dericBI?**\n\n📊 40+ completed projects\n⚡ Most projects delivered in 3-7 days\n💸 Services starting from $20 (≈ KSh 2,600)\n🤝 Direct contact with our founder\n🎓 Free Tujengane data-literacy training\n\nWant to see our work or get a quote?`,
+        text: `⭐ **Why dericBI?**\n\n📊 100+ projects\n⚡ Standard services from 48 hours\n💸 Services starting from $20 (≈ KSh 2,600)\n🤝 Direct contact with our founder\n🎓 Tujengane data-literacy training (Data Basics is free)\n\nWant to see our work or get a quote?`,
         action: null,
         followUp: "Would you like to see our projects or get a personalized quote?"
       };
@@ -1709,7 +1739,7 @@ class DAIChatbot {
     if (this.containsPatterns(message, ['tujengane', 'education'])) {
       return {
         text: kb.tujengane_programs,
-        action: () => window.open(this.getTujenganeUrl(), '_blank', 'noopener'),
+        action: () => window.location.assign(this.getTujenganeUrl()),
         actionLabel: 'Open Tujengane',
         followUp: "Interested in joining any specific program?"
       };
@@ -2064,7 +2094,7 @@ class DAIChatbot {
       row.className = 'flex items-start gap-2';
 
       const avatar = document.createElement('img');
-      avatar.src = 'assets/img/logo.png';
+      avatar.src = 'assets/img/logo-avatar.webp';
       avatar.alt = 'dericBI';
       avatar.className = 'w-6 h-6 rounded-full border border-gray-200 mt-0.5 shrink-0';
 
@@ -2105,7 +2135,7 @@ class DAIChatbot {
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*([^*\s][^*]*?)\*/g, '<em>$1</em>')
       .replace(/`(.+?)`/g, '<code style="background:#f3f4f6;padding:2px 4px;border-radius:3px;font-size:11px;">$1</code>')
-      .replace(/(https?:\/\/[^\s<]*[^\s<.,;:!?)])/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+      .replace(/(https?:\/\/[^\s<]*[^\s<.,;:!?)])/g, '<a href="$1">$1</a>');
   }
 
   showTypingIndicator() {
@@ -2116,7 +2146,7 @@ class DAIChatbot {
     typingDiv.className = 'bot-message';
     typingDiv.innerHTML = `
       <div class="flex items-start gap-2">
-        <img src="assets/img/logo.png" alt="dericBI" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5 shrink-0">
+        <img src="assets/img/logo-avatar.webp" alt="dericBI" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5 shrink-0">
         <div class="message-content">
           <div class="flex gap-1">
             <div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></div>
@@ -2222,8 +2252,6 @@ class DAIChatbot {
         const link = document.createElement('a');
         link.href = downloadUrl;
         link.download = projectName;
-        link.target = '_blank';
-        link.rel = 'noopener';
         link.style.display = 'none';
         document.body.appendChild(link);
         link.click();

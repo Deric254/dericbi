@@ -2,41 +2,31 @@
   "name": "dericBI - Deric BI Analytics",
   "short_name": "dericBI",
   "description": "dericBI (Deric BI) - Leading data analytics services in Kenya by Deric Marangu. Transform business data into profitable insights.",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#49A078",
   "orientation": "portrait-primary",
-  "categories": ["business", "productivity", "education"],
+  "categories": [
+    "business",
+    "productivity",
+    "education"
+  ],
   "lang": "en-KE",
   "dir": "ltr",
-  "scope": "/",
+  "scope": "./",
   "icons": [
-    {
-      "src": "assets/img/logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
     {
       "src": "icon/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "any"
     },
     {
       "src": "icon/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable any"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "assets/img/logo.png",
-      "sizes": "800x600",
-      "type": "image/png",
-      "form_factor": "wide"
+      "purpose": "any"
     }
   ]
 }

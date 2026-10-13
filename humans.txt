@@ -5,12 +5,12 @@
     From: Nairobi, Kenya
 
 /* THANKS */
-    Clients from 15+ countries who trust dericBI
+    Clients who trust dericBI with their data
     Business owners who transform their data into profits
     Students learning data analytics skills
 
 /* SITE */
-    Last update: 2025/11/29
+    Last update: 2026/10/12
     Language: English
     Doctype: HTML5
     IDE: VS Code

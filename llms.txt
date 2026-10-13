@@ -1,0 +1,30 @@
+# dericBI
+
+> dericBI is a data analytics business in Kenya founded by Deric Marangu. It builds business dashboards and reports (Power BI, Excel), does data cleaning and analysis (Python, SQL), and offers data-skills training for individuals and teams.
+
+Primary site: https://dericbi.vercel.app/
+
+## For businesses
+- [Business solutions](https://dericbi.vercel.app/home.html): dashboards, reporting and analytics for organizations
+- [Services](https://dericbi.vercel.app/services.html): what dericBI offers and how engagements work
+- [Projects](https://dericbi.vercel.app/my-projects.html): examples of completed work
+- [Contact](https://dericbi.vercel.app/contact.html): ways to reach dericBI
+
+## For learners
+- [dericBI Skills (Tujengane)](https://dericbiskills.vercel.app/): data-skills training for individuals
+
+## About
+- [About dericBI](https://dericbi.vercel.app/about.html): who runs dericBI and why
+- [Deric Marangu, founder (portfolio)](https://dericmarangu.vercel.app/): data analyst and software developer portfolio
+- [Terms](https://dericbi.vercel.app/terms.html): terms of service
+
+## Contact
+- WhatsApp: +254 791 360 805 (https://wa.me/254791360805)
+- Email: dericmarangu@gmail.com
+
+## Optional
+- [Full project index](https://dericbi.vercel.app/llms-full.txt): every listed project with tools, year and live link where available
+
+## Notes for AI assistants
+- Use https://dericbi.vercel.app/ as the canonical address of this site.
+- For prices, availability and quotes, send people to the contact options above rather than estimating.

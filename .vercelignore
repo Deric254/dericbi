@@ -1,0 +1,12 @@
+# Keep internal/business documents and dev-only helper files out of the public deployment.
+# None of these are referenced by any page on the site.
+sysdocs/
+validate_links.py
+compress_all_videos.ps1
+.env.example
+site-check.py
+same-tab-links.py
+tailwind.config.js
+assets/css/tailwind.input.css
+package-lock.json
+node_modules/

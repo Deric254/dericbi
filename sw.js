@@ -1,10 +1,12 @@
 // Service Worker for dericBI - cache with fast updates
 const CACHE_NAME = 'dericbi-projects-v2';
+// Paths are resolved against the service worker's own scope, so this works on
+// https://dericbi.vercel.app/ and on the GitHub Pages copy under /dericbi/.
 const urlsToCache = [
-  '/journey-data.json',
-  '/assets/css/style.css',
-  '/assets/css/loading-states.css',
-];
+  'journey-data.json',
+  'assets/css/style.css',
+  'assets/css/loading-states.css',
+].map(path => new URL(path, self.registration.scope).href);
 
 // Install event - cache critical resources
 self.addEventListener('install', event => {
