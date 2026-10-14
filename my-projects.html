@@ -131,7 +131,7 @@
   
   <!-- dericBI Chatbot -->
   <script defer src="assets/js/config.js?v=a0a11940"></script>
-  <script defer src="assets/js/chatbot.js?v=5d85417e"></script>
+  <script defer src="assets/js/chatbot.js?v=8652d0a6"></script>
   <script defer src="assets/js/social_links.js?v=6f1c5397"></script>
 
   <!-- Page-specific Styles -->
@@ -745,7 +745,7 @@ document.addEventListener('click', (e) => {
         <div class="flex flex-col xs:flex-row gap-2 items-center">
           <input id="fileNameInputJourney" type="text" placeholder="File name..." 
             class="px-3 py-2 rounded text-xs border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#2563EB] w-full xs:w-32 min-w-0">
-          <button onclick="downloadFileJourney()" 
+          <button aria-label="Download file" onclick="downloadFileJourney()" 
             class="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs font-semibold transition">
             <i class="fas fa-download"></i>
           </button>
@@ -756,7 +756,7 @@ document.addEventListener('click', (e) => {
 </section>
 
 <!-- Back to Top Button -->
-<button id="backToTop" class="fixed bottom-10rem right-2rem bg-[#49A078] text-white w-3rem h-3rem rounded-full shadow-lg flex items-center justify-center text-xl z-40 opacity-0 transition-opacity duration-300 md:flex" style="border: none; outline: none; display: none;">
+<button aria-label="Back to top" id="backToTop" class="fixed bottom-10rem right-2rem bg-[#49A078] text-white w-3rem h-3rem rounded-full shadow-lg flex items-center justify-center text-xl z-40 opacity-0 transition-opacity duration-300 md:flex" style="border: none; outline: none; display: none;">
   <i class="fas fa-arrow-up"></i>
 </button>
 
@@ -931,16 +931,16 @@ function renderProjects(projects, container) {
         <div class="flex flex-col md:flex-row gap-6">
           <div class="w-full md:w-1/2 relative">
             <div class="absolute z-20 right-2 top-2 flex gap-2">
-              <button id="${prevBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100 ${isVideo ? 'hidden' : ''}" title="Rotate Left">
+              <button aria-label="Previous image" id="${prevBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100 ${isVideo ? 'hidden' : ''}" title="Rotate Left">
                 <i class="fas fa-undo-alt"></i>
               </button>
-              <button id="${nextBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100 ${isVideo ? 'hidden' : ''}" title="Rotate Right">
+              <button aria-label="Next image" id="${nextBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100 ${isVideo ? 'hidden' : ''}" title="Rotate Right">
                 <i class="fas fa-redo-alt"></i>
               </button>
-              <button id="${zoomBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100" title="Zoom">
+              <button aria-label="Zoom image" id="${zoomBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100" title="Zoom">
                 <i class="fas fa-expand"></i>
               </button>
-              <button id="download-img-${index}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100" title="Download">
+              <button aria-label="Download image" id="download-img-${index}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100" title="Download">
                 <i class="fas fa-download"></i>
               </button>
             </div>
@@ -967,7 +967,7 @@ function renderProjects(projects, container) {
                             <video data-src="${thumb.src}" poster="${thumb.poster}" class="w-full h-full object-cover pointer-events-none lazy-video" style="border-radius:8px;" preload="none"></video>
                             <span class="absolute top-1 left-1 bg-[#facc15] text-[#2563EB] px-2 py-0.5 rounded text-[10px] font-bold shadow">VIDEO</span>
 
-                            <button class="thumb-download absolute -top-1 -right-1 bg-[#49A078] text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#3e8865]" 
+                            <button aria-label="Download image" class="thumb-download absolute -top-1 -right-1 bg-[#49A078] text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#3e8865]" 
                                     data-media-type="video" data-media-src="${thumb.src}" title="Download Video">
                               <i class="fas fa-download text-[8px]"></i>
                             </button>
@@ -975,7 +975,7 @@ function renderProjects(projects, container) {
                         </div>`
                       : `<div class="relative group">
                           <img src="${thumb.src}" data-index="${i}" alt="Thumb ${i + 1}" loading="lazy" decoding="async" class="w-20 h-20 object-cover rounded-lg cursor-pointer transition-all border border-gray-200 hover:ring-2 hover:ring-green-500 ${i === 0 && !isVideo ? 'thumb-active' : ''}" />
-                          <button class="thumb-download absolute -top-1 -right-1 bg-[#49A078] text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#3e8865]" 
+                          <button aria-label="Download image" class="thumb-download absolute -top-1 -right-1 bg-[#49A078] text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#3e8865]" 
                                   data-media-type="image" data-media-src="${thumb.src}" title="Download Image">
                             <i class="fas fa-download text-[8px]"></i>
                           </button>
@@ -1266,7 +1266,7 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
                 </video>`
               : `<img src="${activeThumb.src}" alt="Zoomed Image" loading="lazy" class="w-full h-[80vh] object-contain rounded-xl border-4 border-[#49A078] bg-white" style="max-width:90vw; transform: rotate(${currentRotation}deg);" />`
           }
-          <button id="close-zoom-${index}" class="zoom-close-btn">
+          <button aria-label="Close zoomed image" id="close-zoom-${index}" class="zoom-close-btn">
             <i class="fas fa-times"></i>
           </button>
         `;
@@ -1952,7 +1952,7 @@ function toggleNewsletter() {
         <div class="flex text-xs">
           <input type="email" placeholder="Your email..." 
             class="flex-1 px-2 py-1 text-xs border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-[#49A078] shadow-inner">
-          <button class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white px-3 py-1 rounded-r text-xs hover:from-[#3e8865] hover:to-[#357255] transition shadow-sm hover:shadow">
+          <button aria-label="Send" class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white px-3 py-1 rounded-r text-xs hover:from-[#3e8865] hover:to-[#357255] transition shadow-sm hover:shadow">
             <i class="fas fa-paper-plane"></i>
           </button>
         </div>
@@ -1978,13 +1978,13 @@ function toggleNewsletter() {
       </div>
       <!-- Social media icons in a more compact, right-aligned container -->
       <div class="flex flex-wrap justify-end gap-1">
-        <a href="https://wa.me/254791360805" class="footer-link bg-green-100 hover:bg-green-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-whatsapp text-green-600"></i></a>
+        <a aria-label="Chat with dericBI on WhatsApp" href="https://wa.me/254791360805" class="footer-link bg-green-100 hover:bg-green-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-whatsapp text-green-600"></i></a>
         <a href="mailto:dericmarangu@gmail.com" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="Email"><i class="fas fa-envelope text-blue-600"></i></a>
-        <a href="https://web.facebook.com/deric.aldertrax" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-facebook text-blue-600"></i></a>
+        <a aria-label="dericBI on Facebook" href="https://web.facebook.com/deric.aldertrax" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-facebook text-blue-600"></i></a>
         <a href="https://www.facebook.com/dericbiservices/" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="dericBI Facebook"><i class="fab fa-facebook text-blue-600"></i></a>
-        <a href="https://www.linkedin.com/in/deric-marangu-134340297/" class="footer-link bg-blue-700 hover:bg-blue-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-linkedin text-white"></i></a>
-        <a href="https://x.com/Dericmwiti" class="footer-link bg-black hover:bg-gray-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-twitter text-white"></i></a>
-        <a href="https://www.instagram.com/dericmarangu/" class="footer-link bg-pink-100 hover:bg-pink-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-instagram text-pink-600"></i></a>
+        <a aria-label="dericBI on LinkedIn" href="https://www.linkedin.com/in/deric-marangu-134340297/" class="footer-link bg-blue-700 hover:bg-blue-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-linkedin text-white"></i></a>
+        <a aria-label="dericBI on X (Twitter)" href="https://x.com/Dericmwiti" class="footer-link bg-black hover:bg-gray-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-twitter text-white"></i></a>
+        <a aria-label="dericBI on Instagram" href="https://www.instagram.com/dericmarangu/" class="footer-link bg-pink-100 hover:bg-pink-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-instagram text-pink-600"></i></a>
       </div>
     </div>
   </div>

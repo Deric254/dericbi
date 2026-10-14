@@ -300,7 +300,7 @@
   
   <!-- ✅ dericBI Chatbot -->
   <script defer src="assets/js/config.js?v=a0a11940"></script>
-  <script defer src="assets/js/chatbot.js?v=5d85417e"></script>
+  <script defer src="assets/js/chatbot.js?v=8652d0a6"></script>
   <script defer src="assets/js/social_links.js?v=6f1c5397"></script>
 
   <!-- Analytics: Google Analytics Only -->
@@ -844,11 +844,11 @@ window.addEventListener('load', function() {
 
       <!-- Dots Indicator -->
       <div class="flex justify-center gap-2 mt-6">
-        <button onclick="goToTestimonial(0)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-800 transition-all"></button>
-        <button onclick="goToTestimonial(1)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 transition-all"></button>
-        <button onclick="goToTestimonial(2)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 transition-all"></button>
-        <button onclick="goToTestimonial(3)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 transition-all"></button>
-        <button onclick="goToTestimonial(4)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 transition-all"></button>
+        <button aria-label="Show testimonial 1" onclick="goToTestimonial(0)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-800 transition-all"></button>
+        <button aria-label="Show testimonial 2" onclick="goToTestimonial(1)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 transition-all"></button>
+        <button aria-label="Show testimonial 3" onclick="goToTestimonial(2)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 transition-all"></button>
+        <button aria-label="Show testimonial 4" onclick="goToTestimonial(3)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 transition-all"></button>
+        <button aria-label="Show testimonial 5" onclick="goToTestimonial(4)" class="testimonial-dot w-2 h-2 rounded-full bg-gray-300 transition-all"></button>
       </div>
     </div>
     
@@ -1200,7 +1200,7 @@ window.addEventListener('load', function() {
         <div class="flex text-xs">
           <input type="email" placeholder="Your email..." 
             class="flex-1 px-2 py-1 text-xs border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-[#49A078] shadow-inner">
-          <button class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white px-3 py-1 rounded-r text-xs hover:from-[#3e8865] hover:to-[#357255] transition shadow-sm hover:shadow">
+          <button aria-label="Send" class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white px-3 py-1 rounded-r text-xs hover:from-[#3e8865] hover:to-[#357255] transition shadow-sm hover:shadow">
             <i class="fas fa-paper-plane"></i>
           </button>
         </div>
@@ -1228,13 +1228,13 @@ window.addEventListener('load', function() {
       
       <!-- Social media icons in a more compact, right-aligned container -->
       <div class="flex flex-wrap justify-end gap-1">
-        <a href="https://wa.me/254791360805" class="footer-link bg-green-100 hover:bg-green-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-whatsapp text-green-600"></i></a>
+        <a aria-label="Chat with dericBI on WhatsApp" href="https://wa.me/254791360805" class="footer-link bg-green-100 hover:bg-green-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-whatsapp text-green-600"></i></a>
         <a href="mailto:dericmarangu@gmail.com" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="Email"><i class="fas fa-envelope text-blue-600"></i></a>
-        <a href="https://web.facebook.com/deric.aldertrax" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-facebook text-blue-600"></i></a>
+        <a aria-label="dericBI on Facebook" href="https://web.facebook.com/deric.aldertrax" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-facebook text-blue-600"></i></a>
         <a href="https://www.facebook.com/dericbiservices/" class="footer-link bg-blue-100 hover:bg-blue-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all" title="dericBI Facebook"><i class="fab fa-facebook text-blue-600"></i></a>
-        <a href="https://www.linkedin.com/in/deric-marangu-134340297/" class="footer-link bg-blue-700 hover:bg-blue-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-linkedin text-white"></i></a>
-        <a href="https://x.com/Dericmwiti" class="footer-link bg-black hover:bg-gray-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-twitter text-white"></i></a>
-        <a href="https://www.instagram.com/dericmarangu/" class="footer-link bg-pink-100 hover:bg-pink-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-instagram text-pink-600"></i></a>
+        <a aria-label="dericBI on LinkedIn" href="https://www.linkedin.com/in/deric-marangu-134340297/" class="footer-link bg-blue-700 hover:bg-blue-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-linkedin text-white"></i></a>
+        <a aria-label="dericBI on X (Twitter)" href="https://x.com/Dericmwiti" class="footer-link bg-black hover:bg-gray-800 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-twitter text-white"></i></a>
+        <a aria-label="dericBI on Instagram" href="https://www.instagram.com/dericmarangu/" class="footer-link bg-pink-100 hover:bg-pink-200 p-1 rounded-full w-6 h-6 flex items-center justify-center shadow-sm hover:shadow transition-all"><i class="fab fa-instagram text-pink-600"></i></a>
       </div>
     </div>
   </div>
@@ -1422,7 +1422,7 @@ startTestimonialAutoSlide();
 <!-- EAI Chatbot is automatically initialized via chatbot.js -->
 
 <!-- Back to Top Button -->
-<button id="backToTop" class="fixed bg-[#49A078] text-white rounded-full shadow-lg flex items-center justify-center text-xl z-40 opacity-0 transition-opacity duration-300 md:flex"
+<button aria-label="Back to top" id="backToTop" class="fixed bg-[#49A078] text-white rounded-full shadow-lg flex items-center justify-center text-xl z-40 opacity-0 transition-opacity duration-300 md:flex"
   style="border: none; outline: none; display: none; bottom: 11.5rem; right: 2rem; width: 3rem; height: 3rem;">
   <i class="fas fa-arrow-up"></i>
 </button>

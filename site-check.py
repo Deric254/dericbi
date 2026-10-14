@@ -117,6 +117,17 @@ for f in sorted(glob.glob('*.html')):
     if 'cdn.tailwindcss.com' in t:
         problems.append(f'{f}: still loads the Tailwind CDN script (slow; use assets/css/tailwind.css)')
 
+# ---- 3e. icon-only buttons and links need an accessible name (screen readers) -----
+for f in sorted(glob.glob('*.html')) + ['assets/js/chatbot.js']:
+    t = read(f)
+    for m in re.finditer(r'<button\b([^>]*)>(.*?)</button>', t, re.S):
+        if not re.sub(r'<[^>]+>', '', m.group(2)).strip() and 'aria-label' not in m.group(1):
+            problems.append(f'{f}: icon-only button has no aria-label ({re.sub(chr(10), " ", m.group(1))[:50].strip()})')
+    if f.endswith('.html'):
+        for m in re.finditer(r'<a\b([^>]*)>(.*?)</a>', t, re.S):
+            if '<i ' in m.group(2) and not re.sub(r'<[^>]+>', '', m.group(2)).strip() and 'aria-label' not in m.group(1) and 'title=' not in m.group(1):
+                problems.append(f'{f}: icon-only link has no aria-label ({re.sub(chr(10), " ", m.group(1))[:50].strip()})')
+
 # ---- 3d. tailwind.css matches the classes used in the pages -------------------------
 import shutil, subprocess, tempfile
 BUILD_CSS = '--build-css' in sys.argv

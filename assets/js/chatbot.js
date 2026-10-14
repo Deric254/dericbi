@@ -27,6 +27,7 @@ class DAIChatbot {
     };
     this.userContext = this.detectUserContext();
     this.projectsData = null;
+    this.projectsDataPromise = null;
     this.pendingSuggestion = null;
     this.timers = [];
     this._rxCache = new Map();
@@ -40,7 +41,7 @@ class DAIChatbot {
     this.createChatbotHTML();
     this.bindEvents();
     this.loadKnowledgeBase();
-    this.loadProjectsData(); // Load project data for search
+    this.scheduleProjectsData(); // Load project data for search once the page is idle
     this.startAgenticBehavior(); // Initialize proactive AI behavior
   }
 
@@ -274,6 +275,26 @@ class DAIChatbot {
     if (hour < 17) return 'afternoon';
     if (hour < 21) return 'evening';
     return 'night';
+  }
+
+  // The project list (about 150 KB) is only needed to answer questions, so it is fetched when the
+  // browser is idle after the page has loaded and never competes with the page's own resources.
+  scheduleProjectsData() {
+    const run = () => this.ensureProjectsData();
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(run, { timeout: 4000 });
+    } else {
+      setTimeout(run, 2500);
+    }
+  }
+
+  // Fetches the project list once; later calls reuse the same request. Awaited before every answer so
+  // a quick first question is never answered without project data.
+  ensureProjectsData() {
+    if (!this.projectsDataPromise) {
+      this.projectsDataPromise = this.loadProjectsData();
+    }
+    return this.projectsDataPromise;
   }
 
   // Load projects data for search functionality
@@ -565,7 +586,7 @@ class DAIChatbot {
     const chatbotHTML = `
       <!-- DAI Toggle Button -->
   <div id="chatbot-toggle" class="fixed bottom-3 right-3 z-40" style="bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));">
-        <button class="bg-gradient-to-r from-[#49A078] to-[#3e8865] hover:from-[#3e8865] hover:to-[#2f6b52] text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg flex items-center justify-center transition-all transform hover:scale-105 relative group">
+        <button aria-label="Open chat assistant" class="bg-gradient-to-r from-[#49A078] to-[#3e8865] hover:from-[#3e8865] hover:to-[#2f6b52] text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg flex items-center justify-center transition-all transform hover:scale-105 relative group">
           <i class="fas fa-robot text-base sm:text-lg"></i>
           <div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse"></div>
           <div class="absolute inset-0 rounded-full bg-white opacity-20 scale-0 group-hover:scale-100 transition-transform duration-300"></div>
@@ -588,7 +609,7 @@ class DAIChatbot {
                 </p>
               </div>
             </div>
-            <button id="chatbot-close" class="text-white/80 hover:text-white transition-colors p-0.5 sm:p-1">
+            <button aria-label="Close chat" id="chatbot-close" class="text-white/80 hover:text-white transition-colors p-0.5 sm:p-1">
               <i class="fas fa-times text-xs sm:text-sm"></i>
             </button>
           </div>
@@ -625,7 +646,7 @@ class DAIChatbot {
                 class="flex-1 px-2 sm:px-2.5 py-1.5 sm:py-2 text-[11px] sm:text-xs border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#49A078] focus:border-transparent"
                 maxlength="500"
               >
-              <button 
+              <button aria-label="Send message" 
                 id="chatbot-send" 
                 class="bg-gradient-to-r from-[#49A078] to-[#3e8865] hover:from-[#3e8865] hover:to-[#2f6b52] text-white px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg transition-all flex items-center justify-center min-w-[32px] sm:min-w-[36px]"
               >
@@ -1155,6 +1176,7 @@ class DAIChatbot {
 
   // Generate contextual response with conversation flow
   async generateContextualResponse(userMessage) {
+    await this.ensureProjectsData();
     const message = userMessage.toLowerCase().trim();
     const wordCount = message.split(/\s+/).length;
 
