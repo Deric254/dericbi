@@ -1152,6 +1152,17 @@ class DAIChatbot {
     return baseDelay + (complexityMultiplier * 300) + randomness;
   }
 
+  // True for open-ended questions ("how does...", "what is...", "why...") that are not asking for an exact
+  // fact such as a price, timing, contact detail, page, download or specific project.
+  isExplanatoryQuestion(message, wordCount) {
+    if (wordCount < 5) {
+      return false;
+    }
+    const opensExplanation = /^(how (does|do|can|could|should|would|to|is|are)|what (is|are|does|do)|what's|why|explain|which (is|are)|difference between|compare|can (you|i|a)|could you|should i|is it|are there)\b/;
+    const wantsExactFact = /\b(price|prices|pricing|cost|costs|how much|fee|fees|charge|quote|payment|pay|refund|guarantee|turnaround|how long|contact|whatsapp|email|phone|call|download|link|page|where|project|projects|demo|portfolio|example|sample|built|made)\b/;
+    return opensExplanation.test(message) && !wantsExactFact.test(message);
+  }
+
   // Maps common business questions to the matching knowledge-base answer.
   matchFaqIntent(message) {
     // Answers are spread across several knowledge-base sections; search them all.
@@ -1206,16 +1217,26 @@ class DAIChatbot {
       return faqResponse;
     }
 
+    // Open-ended "how / why / what is" questions are answered by the AI assistant first (it knows the
+    // services, prices and real projects). If it is unavailable, the built-in routing below takes over.
+    if (this.isExplanatoryQuestion(message, wordCount)) {
+      const explanation = await this.assistantReply(message);
+      if (explanation) {
+        return explanation;
+      }
+    }
+
     // Project search: specific results first (generic help is offered later)
     const projectSearchResult = this.searchProjects(message, false);
     if (projectSearchResult) {
       return this.projectSearchResponse(projectSearchResult);
     }
 
-    // Specific knowledge-base topics (marketing, specs, trends, education...)
+    // Specific knowledge-base topics (marketing, specs, trends, education...). These are open-ended,
+    // so the AI assistant answers first when it is available; the written topic text is the fallback.
     const topicResponse = this.matchKnowledgeTopic(message);
     if (topicResponse) {
-      return topicResponse;
+      return (wordCount >= 3 && await this.assistantReply(message)) || topicResponse;
     }
 
     // Generic project-search help
@@ -1225,36 +1246,50 @@ class DAIChatbot {
     }
 
     let response;
+    let preferAI = false; // open-ended topics: AI first, built-in answer as the fallback
     if (this.containsPatterns(message, this.knowledgeBase.services.patterns)) {
       response = this.handleServiceQuery(message);
     } else if (this.containsPatterns(message, this.knowledgeBase.navigation.patterns)) {
       response = this.handleNavigationQuery(message);
     } else if (this.containsPatterns(message, this.knowledgeBase.business.patterns)) {
       response = this.handleBusinessQuery(message);
+      preferAI = true;
     } else if (this.containsPatterns(message, this.knowledgeBase.products_systems.patterns)) {
       response = this.handleProductsQuery(message);
+      preferAI = true;
     } else if (this.containsPatterns(message, this.knowledgeBase.technical.patterns)) {
       response = this.handleTechnicalQuery(message);
+      preferAI = true;
     } else if (this.isComplexQuery(message)) {
       response = this.handleComplexQuery(message);
+      preferAI = true;
     } else {
       // Default fallback (asks the AI assistant first, then the knowledge base)
       return await this.handleFallbackResponse(message);
     }
 
-    // Generic canned answers give way to the AI assistant when it is available;
+    // Generic and open-ended answers give way to the AI assistant when it is available;
     // specific, exact answers (pricing, process, pages...) are never replaced.
-    if (response.generic) {
-      const aiReply = await this.queryAIAssistant(message);
+    if (response.generic || (preferAI && wordCount >= 3)) {
+      const aiReply = await this.assistantReply(message);
       if (aiReply) {
-        return {
-          text: aiReply,
-          action: null,
-          followUp: "Feel free to ask anything else - from technical questions to business inquiries!"
-        };
+        return aiReply;
       }
     }
     return response;
+  }
+
+  // Asks the AI assistant and wraps its reply in the standard response shape (null when unavailable).
+  async assistantReply(message) {
+    const aiReply = await this.queryAIAssistant(message);
+    if (!aiReply) {
+      return null;
+    }
+    return {
+      text: aiReply,
+      action: null,
+      followUp: "Feel free to ask anything else - from technical questions to business inquiries!"
+    };
   }
 
   // Wraps a project search result with its context and follow-up

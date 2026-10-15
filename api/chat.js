@@ -224,6 +224,20 @@ function buildProjectContext(items, query) {
 }
 
 module.exports = async function handler(req, res) {
+  // Health check: open /api/chat in a browser to see which AI providers have a key set.
+  // It only reports yes/no per provider and never reveals a key.
+  if (req.method === 'GET') {
+    res.setHeader('Cache-Control', 'no-store');
+    const order = providerOrder();
+    const configured = order.filter(hasKey);
+    return res.status(200).json({
+      ok: configured.length > 0,
+      configured,
+      order,
+      note: configured.length ? 'AI is ready. It answers open-ended questions; exact answers (prices, process, contact) stay instant.' : 'No AI key found. Add GEMINI_API_KEY (or another provider key) in Vercel and redeploy.'
+    });
+  }
+
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
@@ -248,10 +262,7 @@ module.exports = async function handler(req, res) {
     }
     const safeMessage = message.slice(0, MAX_MESSAGE_LENGTH);
 
-    const order = (process.env.AI_PROVIDER_ORDER || 'nvidia,openai,gemini,anthropic')
-      .split(',')
-      .map(s => s.trim().toLowerCase())
-      .filter(Boolean);
+    const order = providerOrder();
 
     const projectContext = buildProjectContext((await loadCatalog()).items, safeMessage);
     const systemPrompt = [BUSINESS_CONTEXT, projectContext, pageContext ? `The visitor is currently on the "${pageContext}" section of the site.` : '']
@@ -280,6 +291,13 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ reply: null, fallback: true });
   }
 };
+
+function providerOrder() {
+  return (process.env.AI_PROVIDER_ORDER || 'nvidia,openai,gemini,anthropic')
+    .split(',')
+    .map(s => s.trim().toLowerCase())
+    .filter(Boolean);
+}
 
 function hasKey(provider) {
   switch (provider) {
