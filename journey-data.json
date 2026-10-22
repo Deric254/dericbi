@@ -19,6 +19,24 @@
   ]
 },
 {
+  "serial": "Project 94",
+  "title": "Business Reality Engine — Your Business Early-Warning System",
+  "date": "2026-10-22",
+  "description": "<strong>Problem:</strong> Most owners only find out something went wrong weeks later, when the money is already gone. Sales slip, costs creep up, and nobody can say why.<br><br><strong>Business Objective:</strong> A system that watches the business for you, tells you the moment something changes, and explains why in plain words.<br><br><strong>My Approach:</strong> Built around the questions an owner actually asks: \"Are we okay? What changed? What should I do?\" It connects to the sheets and files you already use, so there is nothing new to learn and no rebuild.<br><br><strong>Key Features:</strong><br>• Catch a sales slump the week it starts, not at month-end<br>• See what is behind it: which branch, product or customer<br>• Get a clear action to take, in plain language, not charts to decode<br>• Connect Google Sheets, Excel or your shop's data in minutes<br>• Receive alerts by email, WhatsApp or Slack, and ask questions like \"why did profit drop?\"<br>• Keep every business's data private and separate<br><br><strong>Impact:</strong> Problems get fixed while they are small. Owners stop guessing, stop being surprised, and always know where the business stands.<br><br><strong>Live System:</strong> <a href=\"https://business-reality-engine.pages.dev/login\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 Open Live System</strong></a><br><br><strong>Access:</strong> Available on request. Email dericmarangu@gmail.com or WhatsApp +254791360805.",
+  "tools": "Claude",
+  "projectLink": "",
+  "liveLink": "https://business-reality-engine.pages.dev/login",
+  "images": [
+    "assets/projects/BRE/login.png",
+    "assets/projects/BRE/OVERVIEW.png",
+    "assets/projects/BRE/bsataglance.png",
+    "assets/projects/BRE/alerts.png"
+  ],
+  "video": [
+    "assets/projects/BRE/bre.mp4"
+  ]
+},
+{
   "serial": "Project 93",
   "title": "smePro — SME Business Management Platform",
   "date": "2026-10-02",
