@@ -6,5 +6,7 @@
     "build": "node -e \"console.log('no build needed')\"",
     "build:css": "npx --yes tailwindcss@3.4.19 -c tailwind.config.js -i assets/css/tailwind.input.css -o assets/css/tailwind.css --minify"
   },
-  "dependencies": {}
+  "dependencies": {
+    "nodemailer": "^6.9.14"
+  }
 }
