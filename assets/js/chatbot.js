@@ -600,7 +600,7 @@ class DAIChatbot {
           <!-- Header -->
           <div class="chatbot-header bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white p-2 sm:p-2.5 flex items-center justify-between">
             <div class="flex items-center gap-1.5 sm:gap-2">
-              <img src="assets/img/logo-avatar.webp" alt="dericBI Logo" class="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-white/30">
+              <img src="/assets/img/logo-avatar.webp" alt="dericBI Logo" width="40" height="40" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border-2 border-white/60 object-contain shrink-0">
               <div>
                 <h3 class="font-bold text-xs sm:text-sm">DAI</h3>
                 <p class="text-[10px] sm:text-xs opacity-90 flex items-center">
@@ -618,7 +618,7 @@ class DAIChatbot {
           <div id="chatbot-messages" class="overflow-y-auto p-2 sm:p-2.5 space-y-1.5 sm:space-y-2 bg-gradient-to-b from-gray-50 to-white">
             <div class="bot-message">
               <div class="flex items-start gap-1.5 sm:gap-2">
-                <img src="assets/img/logo-avatar.webp" alt="dericBI" class="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-gray-200 mt-0.5 shrink-0">
+                <img src="/assets/img/logo-avatar.webp" alt="dericBI" width="32" height="32" class="w-8 h-8 rounded-full bg-white border border-gray-200 object-contain mt-0.5 shrink-0">
                 <div class="bg-white p-2 sm:p-2.5 rounded-lg shadow-sm border text-xs max-w-[85%] border-l-2 border-l-[#49A078]">
                   <p class="text-xs sm:text-sm font-semibold">👋 Welcome to DAI!</p>
                   <div class="mt-1.5 space-y-0.5">
@@ -2151,9 +2151,9 @@ class DAIChatbot {
       row.className = 'flex items-start gap-2';
 
       const avatar = document.createElement('img');
-      avatar.src = 'assets/img/logo-avatar.webp';
+      avatar.src = '/assets/img/logo-avatar.webp';
       avatar.alt = 'dericBI';
-      avatar.className = 'w-6 h-6 rounded-full border border-gray-200 mt-0.5 shrink-0';
+      avatar.className = 'w-8 h-8 rounded-full bg-white border border-gray-200 object-contain mt-0.5 shrink-0';
 
       contentEl.innerHTML = this.formatMarkdown(content);
 
@@ -2203,7 +2203,7 @@ class DAIChatbot {
     typingDiv.className = 'bot-message';
     typingDiv.innerHTML = `
       <div class="flex items-start gap-2">
-        <img src="assets/img/logo-avatar.webp" alt="dericBI" class="w-6 h-6 rounded-full border border-gray-200 mt-0.5 shrink-0">
+        <img src="/assets/img/logo-avatar.webp" alt="dericBI" width="32" height="32" class="w-8 h-8 rounded-full bg-white border border-gray-200 object-contain mt-0.5 shrink-0">
         <div class="message-content">
           <div class="flex gap-1">
             <div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></div>
