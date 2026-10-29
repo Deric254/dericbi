@@ -4,6 +4,11 @@
   "outputDirectory": ".",
   "installCommand": "npm install --omit=dev",
   "framework": null,
+  "functions": {
+    "api/lead.js": { "maxDuration": 30 },
+    "api/lead-check.js": { "maxDuration": 30 },
+    "api/lead-retry.js": { "maxDuration": 30 }
+  },
   "headers": [
     {
       "source": "/sitemap.xml",
