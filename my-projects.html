@@ -790,6 +790,31 @@ function toggleDownloadJourney() {
   }
 }
 
+// Turns a GitHub "releases/latest" link into a direct download of the newest Windows installer.
+// Asks GitHub which release is latest right when the visitor clicks, so the link never goes out of date.
+// If anything fails (offline, GitHub rate limit, no .exe in the release) it falls back to the release page.
+async function resolveLatestInstaller(link) {
+  const m = /^https:\/\/github\.com\/([\w.-]+)\/([\w.-]+)\/releases\/latest\/?$/i.exec(link || '');
+  if (!m) return link;
+  try {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), 6000);
+    const res = await fetch(`https://api.github.com/repos/${m[1]}/${m[2]}/releases/latest`, {
+      headers: { Accept: 'application/vnd.github+json' }, signal: ctl.signal
+    });
+    clearTimeout(timer);
+    if (!res.ok) return link;
+    const rel = await res.json();
+    const files = (rel.assets || []).filter(a => a && a.browser_download_url && !/\.(blockmap|sig|yml|json)$/i.test(a.name));
+    const pick = files.find(a => /setup.*\.exe$/i.test(a.name))
+      || files.find(a => /\.exe$/i.test(a.name))
+      || files.find(a => /\.msi$/i.test(a.name));
+    return pick ? pick.browser_download_url : link;
+  } catch (e) {
+    return link;
+  }
+}
+
 // Download function with loading indicator
 function downloadFileJourney() {
   const input = document.getElementById('fileNameInputJourney');
@@ -1168,12 +1193,12 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
     }
   };
 
-  downloadProjectBtn.onclick = () => {
+  downloadProjectBtn.onclick = async () => {
     const loading = downloadProjectBtn.querySelector('.download-loading');
     loading.style.display = 'flex';
     downloadProjectBtn.disabled = true;
     if (cs.projectLink && /^https?:\/\//i.test(cs.projectLink)) {
-      window.location.assign(cs.projectLink);
+      window.location.assign(await resolveLatestInstaller(cs.projectLink));
     } else {
       alert('🚫 Project download link has expired. Please contact dericBI for access to the full project files.\n\n📧 Email: dericmarangu@gmail.com\n📱 WhatsApp: +254791360805');
     }
