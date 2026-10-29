@@ -271,9 +271,9 @@
 
   /* ------------------------------------------------------------------ the analysis */
   // a line that only SUMS other lines. Written strictly so that a product such as "Total Energies" or "Sub-zero fridge" is never mistaken for one.
-  const TOTAL_ROW = /^\s*(((grand|sub|running|daily|monthly|weekly|page|overall|net|gross)[\s-]*)?totals?(\s+(sales|amount|value|for\b.*|kes|ksh|usd))?|balance\s*(b\/?f|c\/?f|brought forward|carried forward)|brought forward|carried forward|b\/f|c\/f|jumla(\s*kuu)?|summary|sum)\s*[:.\-=]*\s*$/i;
+  const TOTAL_ROW = /^\s*((grand|sub|running|daily|monthly|weekly|page|overall|net|gross)[\s-]*totals?(\s+.*)?|totals?(\s+(sales|amount|value|for\b.*|kes|ksh|usd))?|balance\s*(b\/?f|c\/?f|brought forward|carried forward)|brought forward|carried forward|b\/f|c\/f|jumla(\s*kuu)?|summary|sum)\s*[:.\-=]*\s*$/i;
 
-  const normName = (s) => txt(s).normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[“”"']/g, '').replace(/\s+/g, ' ').replace(/[\s.,;:]+$/g, '').toLowerCase();
+  const normName = (s) => txt(s).normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[“”"']/g, '').replace(/\s+/g, ' ').replace(/[\s.,;:]+$/g, '').toLowerCase().replace(/(\d)\s+(kg|g|mg|l|ml|cl|ltr|ltrs|litres?|liters?|pcs?|oz|lbs?)\b/g, '$1$2');   // "1 kg" and "1kg" are the same product
 
   /**
    * table: { headers, rows } ; map/wide from guess() (or the person's own choice) ; opts: { currency, unit, order, sheetNames }

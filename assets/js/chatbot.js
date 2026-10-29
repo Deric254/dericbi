@@ -300,7 +300,7 @@ class DAIChatbot {
   // Load projects data for search functionality
   async loadProjectsData() {
     try {
-      const response = await fetch('journey-data.json');
+      const response = await fetch('/journey-data.json');
       if (!response.ok) throw new Error('HTTP ' + response.status);
       const data = await response.json();
       this.projectsData = Array.isArray(data)
@@ -2228,11 +2228,17 @@ class DAIChatbot {
   // Actions (navigation, downloads, contact)
   // ---------------------------------------------------------------------
 
+  // Page links are written like 'my-projects.html'. From a page in a subfolder (e.g. /free-report/) that would
+  // wrongly become /free-report/my-projects.html (404), so always resolve them from the site root.
+  rootUrl(url) {
+    return /^([a-z][a-z0-9+.-]*:|\/|#)/i.test(url) ? url : '/' + url;
+  }
+
   // Called when the visitor clicks an action button: go to the page.
   suggestNavigation(url, buttonText) {
     this.addMessage('🚀 **Taking you there...**', 'bot');
     setTimeout(() => {
-      window.location.href = url;
+      window.location.href = this.rootUrl(url);
     }, 800);
   }
 
@@ -2284,7 +2290,7 @@ class DAIChatbot {
       () => {
         this.addMessage(`🚀 **Navigating to ${pageName}...**`, 'bot');
         setTimeout(() => {
-          window.location.href = url;
+          window.location.href = this.rootUrl(url);
         }, 1000);
       },
       () => {
