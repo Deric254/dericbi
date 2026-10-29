@@ -13,6 +13,12 @@
     scroll-behavior: auto !important;
   }
 
+  /* Header ticker is the one intentional exception: slow, linear, no flashing. */
+  .animate-slide {
+    animation-duration: 15s !important;
+    animation-iteration-count: infinite !important;
+  }
+
   ::view-transition-group(*),
   ::view-transition-old(*),
   ::view-transition-new(*) {

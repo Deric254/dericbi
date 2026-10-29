@@ -306,7 +306,7 @@
 
   <!-- Analytics: Google Analytics Only -->
   
-  <link rel="stylesheet" href="assets/css/tailwind.css?v=d1045869">
+  <link rel="stylesheet" href="assets/css/tailwind.css?v=2a36e4af">
 </head>
 
 <body class="bg-white text-gray-800 min-h-screen flex flex-col">
@@ -466,44 +466,6 @@ window.addEventListener('load', function() {
   
   // FOR TESTING: You can manually reset the banner by running this in console:
   // localStorage.removeItem('promo-banner-closed'); location.reload();
-  
-  // Center Banner Alternating Animation
-  let showingWelcome = true;
-  const welcomeMsg = document.getElementById('welcome-message');
-  const promoMsg = document.getElementById('promo-message');
-  
-  function alternateMessages() {
-    if (showingWelcome) {
-      // Fade out welcome
-      welcomeMsg.style.opacity = '0';
-      setTimeout(function() {
-        welcomeMsg.style.display = 'none';
-        promoMsg.style.display = 'block';
-        promoMsg.style.pointerEvents = 'auto';
-        setTimeout(function() {
-          promoMsg.style.opacity = '1';
-        }, 50);
-      }, 1000);
-    } else {
-      // Fade out promo
-      promoMsg.style.opacity = '0';
-      setTimeout(function() {
-        promoMsg.style.display = 'none';
-        promoMsg.style.pointerEvents = 'none';
-        welcomeMsg.style.display = 'block';
-        setTimeout(function() {
-          welcomeMsg.style.opacity = '1';
-        }, 50);
-      }, 1000);
-    }
-    showingWelcome = !showingWelcome;
-  }
-  
-  // Start alternating after 4 seconds, then every 5 seconds
-  setTimeout(function() {
-    alternateMessages();
-    setInterval(alternateMessages, 5000);
-  }, 4000);
 });
 </script>
 
