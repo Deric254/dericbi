@@ -27,9 +27,10 @@
   "projectLink": "https://github.com/Deric254/dericbi-instructor/releases/latest",
   "liveLink": "",
   "images": [
-    "assets/img/logo-avatar.webp"
+	"assets/projects/dins/disp1.png",
+	"assets/projects/dins/disp2.png"
   ],
-  "video": []
+  "assets/projects/dins/vid.mp4",
 },
 {
   "serial": "Project 94",
