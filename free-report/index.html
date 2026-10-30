@@ -427,7 +427,6 @@ async function loadFiles(list) {
     useFiles(groups, files.map(function (f) { return f.name; }).join(' + '));
   } catch (e) { show('#frHow', false); fail(e.message || 'We could not read that file.'); }
 }
-function load(file) { return loadFiles([file]); }
 
 // A Google Sheets link: try the whole workbook first (so the Sales and Expenses tabs both come), then one tab.
 async function loadGoogle(link) {
@@ -662,10 +661,10 @@ function download(data, name) {
 function serial(d) { return Math.round((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - Date.UTC(1899, 11, 30)) / 86400000); }
 function saveBlob(blob, name) { var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1500); }
 function csvOf(rows) { return '\ufeff' + rows.map(function (r) { return r.map(function (c) { var v = c instanceof Date ? c.getFullYear() + '-' + String(c.getMonth() + 1).padStart(2, '0') + '-' + String(c.getDate()).padStart(2, '0') : String(c == null ? '' : c); return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(','); }).join('\r\n'); }
-async function downloadTemplate(csvOnly) {
+async function downloadTemplate() {
   try {
-    var T = E.templateRows(), X = csvOnly ? null : await loadXlsx();
-    if (!X) { saveBlob(new Blob([csvOf(T.sheets[1].rows)], { type: 'text/csv;charset=utf-8' }), 'dericBI-sales-template.csv'); if (!csvOnly) fail('The Excel maker could not load here, so you got the sales sheet as a CSV. Open it in Excel and add your own rows.'); return; }
+    var T = E.templateRows(), X = await loadXlsx();
+    if (!X) { saveBlob(new Blob([csvOf(T.sheets[1].rows)], { type: 'text/csv;charset=utf-8' }), 'dericBI-sales-template.csv'); fail('The Excel maker could not load here, so you got the sales sheet as a CSV. Open it in Excel and add your own rows.'); return; }
     var wb = X.utils.book_new(), widths = { 'Read me first': [26, 110], Sales: [12, 10, 24, 6, 11, 11, 14], Expenses: [12, 16, 22, 11] };
     T.sheets.forEach(function (sh) {
       var ws = X.utils.aoa_to_sheet(sh.rows.map(function (r) { return r.map(function (c) { return c instanceof Date ? serial(c) : c; }); }));
@@ -681,7 +680,7 @@ async function downloadTemplate(csvOnly) {
   } catch (e) { fail('We could not prepare the template on this device. Please message me and I will send it.'); }
 }
 $('#frTipList').innerHTML = E.TEMPLATE_TIPS.map(function (t) { return '<li><b>' + esc(t[0]) + '.</b> ' + esc(t[1]) + '</li>'; }).join('');
-$('#frTpl').addEventListener('click', function () { downloadTemplate(false); });
+$('#frTpl').addEventListener('click', function () { downloadTemplate(); });
 
 /* ---------- wiring ---------- */
 $('#frFile').addEventListener('change', function (e) { var fl = Array.prototype.slice.call(e.target.files); e.target.value = ''; loadFiles(fl); });
@@ -705,7 +704,7 @@ $('#frForm').addEventListener('submit', async function (e) {
   e.preventDefault();
   var f = e.target, v = function (k) { return f.elements[k].value.trim(); }, msg = $('#frMsg');
   var say = function (t, ok) { msg.textContent = t; msg.className = 'fr-sm' + (ok ? ' fr-ok' : ' fr-warn'); };
-  var phoneOk = /^[+0-9][0-9 ()\-]{6,}$/.test(v('phone')), emailOk = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('email'));
+  var phoneOk = /^[+0-9][0-9 ()-]{6,}$/.test(v('phone')), emailOk = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v('email'));
   if (!(v('name') || v('business'))) return say('Please tell us your name or your business.');
   if (!phoneOk && !emailOk) return say('Please give a phone number or an email so we can reply.');
   if (!f.elements.consent.checked) return say('Please tick the box to say we may contact you.');

@@ -1,0 +1,9 @@
+{
+  "contract": "dericbi.ecosystem/1",
+  "id": "site",
+  "name": "dericBI website",
+  "role": "public website with the free Business Health Check and lead capture",
+  "offers": ["report.health-check", "lead.capture"],
+  "accepts": [],
+  "health": "/api/lead-check"
+}
