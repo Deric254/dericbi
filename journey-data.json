@@ -30,7 +30,9 @@
 	"assets/projects/dins/disp1.png",
 	"assets/projects/dins/disp2.png"
   ],
-  "assets/projects/dins/vid.mp4"
+  "video": [
+    "assets/projects/dins/vid.mp4"
+  ]
 },
 {
   "serial": "Project 94",
