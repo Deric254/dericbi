@@ -115,7 +115,7 @@
   function dateOrder(values) {
     let dmy = 0, mdy = 0;
     for (const v of values) {
-      const m = typeof v === 'string' && txt(v).match(/^(\d{1,2})[-/.](\d{1,2})[-/.](\d{2,4})/);
+      const m = typeof v === 'string' && txt(v).match(/^(\d{1,2})[-\/.](\d{1,2})[-\/.](\d{2,4})/);
       if (!m) continue;
       if (+m[1] > 12) dmy++; else if (+m[2] > 12) mdy++;
     }
@@ -132,15 +132,15 @@
     if (v == null || v === '') return null;
     if (typeof v === 'number') return v > 20000 && v < 80000 ? new Date(Math.round((v - 25569) * 86400 * 1000) + new Date().getTimezoneOffset() * 60000) : null;
     const s = txt(v); if (!s) return null;
-    let m = s.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/);
+    let m = s.match(/^(\d{4})[-\/.](\d{1,2})[-\/.](\d{1,2})/);
     if (m) return mk(+m[1], +m[2], +m[3]);
-    m = s.match(/^(\d{1,2})[-/.](\d{1,2})[-/.](\d{2,4})/);
+    m = s.match(/^(\d{1,2})[-\/.](\d{1,2})[-\/.](\d{2,4})/);
     if (m) { let y = +m[3]; if (y < 100) y += 2000; let d = +m[1], mo = +m[2]; if (order === 'mdy') [d, mo] = [mo, d]; if (mo > 12 && d <= 12) [d, mo] = [mo, d]; return mk(y, mo, d); }
-    m = s.match(/^(\d{1,2})[-/. ]([A-Za-z]{3,9})[-/. ,]*(\d{2,4})/);   // 5-Jan-26, 5 January 2026
+    m = s.match(/^(\d{1,2})[-\/. ]([A-Za-z]{3,9})[-\/. ,]*(\d{2,4})/);   // 5-Jan-26, 5 January 2026
     if (m && monthIndex(m[2]) >= 0) { let y = +m[3]; if (y < 100) y += 2000; return mk(y, monthIndex(m[2]) + 1, +m[1]); }
-    m = s.match(/^([A-Za-z]{3,9})[-/. ]+(\d{1,2})(?:st|nd|rd|th)?[, ]+(\d{4})/);   // January 5, 2026
+    m = s.match(/^([A-Za-z]{3,9})[-\/. ]+(\d{1,2})(?:st|nd|rd|th)?[, ]+(\d{4})/);   // January 5, 2026
     if (m && monthIndex(m[1]) >= 0) return mk(+m[3], monthIndex(m[1]) + 1, +m[2]);
-    m = s.match(/^([A-Za-z]{3,9})[-/. ]+(\d{2,4})$/);   // Jan-26, January 2026 (a month, taken as its 1st)
+    m = s.match(/^([A-Za-z]{3,9})[-\/. ]+(\d{2,4})$/);   // Jan-26, January 2026 (a month, taken as its 1st)
     if (m && monthIndex(m[1]) >= 0) { let y = +m[2]; if (y < 100) y += 2000; return mk(y, monthIndex(m[1]) + 1, 1); }
     const t = Date.parse(s); const d = isNaN(t) ? null : new Date(t);
     return d && d.getFullYear() > 1990 && d.getFullYear() < 2100 ? d : null;
@@ -269,8 +269,8 @@
     const s = txt(h); if (!s) return null;
     if (/^(grand\s*)?total|jumla|avg|average|mean|%|share|qty|units|price/i.test(s)) return null;
     const d = toDate(s, 'dmy');
-    if (d && /[A-Za-z]/.test(s) || (d && /^\d{4}[-/]\d{1,2}$/.test(s))) return d;
-    const m = s.match(/^([A-Za-z]{3,9})\.?(?:[-/ ']*(\d{2,4}))?$/);
+    if (d && /[A-Za-z]/.test(s) || (d && /^\d{4}[-\/]\d{1,2}$/.test(s))) return d;
+    const m = s.match(/^([A-Za-z]{3,9})\.?(?:[-\/ ']*(\d{2,4}))?$/);
     if (m && monthIndex(m[1]) >= 0) { let y = m[2] ? +m[2] : null; if (y != null && y < 100) y += 2000; return { month: monthIndex(m[1]), year: y }; }
     return null;
   }
@@ -299,6 +299,7 @@
     const cur = { kes: 0, usd: 0, other: 0 };
 
     const addLine = (ln) => lines.push(ln);
+    const productOf = (raw) => { const n = txt(raw); return n; };
 
     if (wide) {   // ---- months across the top: unpivot, then everything below is the same
       const yearGuess = opts.defaultYear || new Date().getFullYear();
@@ -383,7 +384,7 @@
 
     /* ---- the figures that matter, from sale and return lines */
     const live = lines.filter((l) => l.type.startsWith('sale') || l.type.startsWith('return') || l.type === 'zero value');
-    const prods = new Map();
+    const prods = new Map(); let spellingMerged = 0;
     for (const l of live) {
       const key = normName(l.product); let p = prods.get(key);
       if (!p) { p = { name: l.product, amount: 0, sales: 0, returns: 0, qty: 0, hasQty: false, last: null, first: null, stock: NaN, stockAt: null, spell: new Set() }; prods.set(key, p); }
@@ -415,7 +416,7 @@
   const fmtN = (n) => Math.round(n).toLocaleString('en-KE');
 
   function analyseMore(out, live, list) {
-    const money = (n) => (out.unit ? fmtN(n) + ' ' + out.unit : out.currency + ' ' + fmtN(n));
+    const total = out.netSales; const money = (n) => (out.unit ? fmtN(n) + ' ' + out.unit : out.currency + ' ' + fmtN(n));
     out.money = money;
     if (!list.length) return;
     let acc = 0, n80 = 0; const pos = list.filter((p) => p.amount > 0), posTotal = pos.reduce((a, p) => a + p.amount, 0);
