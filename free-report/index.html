@@ -72,7 +72,26 @@
   details.fr-more summary{cursor:pointer;color:#3D8069;font-weight:700;font-size:.92rem;margin-top:10px}
   .fr-chip{display:inline-block;background:#f0fdf6;border:1px solid #cfe8dc;border-radius:999px;padding:2px 10px;font-size:.82rem;margin:2px 4px 2px 0}
   @media(max-width:480px){.fr-box{padding:14px}.fr-box td:first-child{word-break:break-word}}
+  .fr-printonly{display:none}
   @media print{nav,footer,#backToTop,.fr-noprint,.fr-drop,#frHow,#chatbot-container,[id*=chatbot]{display:none!important}body{background:#fff}.fr-box{break-inside:avoid;box-shadow:none;border-color:#bbb}.fr-cta{background:#fff;color:#000;border:1px solid #000}.fr-cta h2{color:#000}.fr-cta .fr-btn{display:none}}
+  /* Print / Save-as-PDF: report only. Hides the form, call-to-action, upload and chrome; keeps colours and bars; avoids splitting cards across pages. */
+  @page{size:A4;margin:14mm 12mm}
+  @media print{
+    #frLead,#frCta,#frUpload,#frTips,.fr-hero p,.fr-btn,#scrollProgress,body>.h-14{display:none!important}
+    html,body{background:#fff!important;overflow:visible!important;height:auto!important;min-height:0!important}
+    body{display:block!important;font-size:11pt}
+    main{overflow:visible!important;background:#fff!important;display:block!important}
+    .fr-wrap{max-width:none;padding:0}
+    .fr-hero{text-align:left;padding:0 0 8px;border-bottom:2px solid #49A078;margin-bottom:4px}
+    .fr-hero h1{font-size:20pt;margin:0}
+    .fr-hero .fr-printonly{display:block!important;max-width:none;margin:6px 0 0;font-size:9.5pt;color:#4b5563}
+    .fr-box{margin-top:12px;padding:12px 14px;box-shadow:none;border:1px solid #cfe8dc;break-inside:avoid;page-break-inside:avoid}
+    .fr-box h2{break-after:avoid;page-break-after:avoid}
+    .fr-stat,.fr-box tr,.fr-find li{break-inside:avoid;page-break-inside:avoid}
+    .fr-bar,.fr-bar>i,.fr-stat,.fr-tag,.fr-chip,.fr-check{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .fr-note{margin:14px 0 0;text-align:left;font-size:8.5pt;color:#6b7280;border-top:1px solid #e5e7eb;padding-top:8px}
+    a{color:inherit;text-decoration:none}
+  }
   </style>
   <style>
   .nav-link{transition:color .3s ease,text-shadow .3s ease}
@@ -184,6 +203,7 @@ document.addEventListener('click', (e) => {
 <div class="fr-wrap">
   <header class="fr-hero">
     <h1>Free Business Health Check</h1>
+    <p class="fr-printonly" id="frPrintMeta"></p>
     <p>Upload your sales, and your expenses if you have them, however messy they are. See what sells best, what sits too long, where your money goes and whether you are really making a profit. Free, and your files never leave your device.</p>
   </header>
 
@@ -690,6 +710,7 @@ var drop = $('#frDrop');
 ['dragleave', 'drop'].forEach(function (t) { drop.addEventListener(t, function (e) { e.preventDefault(); drop.classList.remove('over'); }); });
 drop.addEventListener('drop', function (e) { if (e.dataTransfer.files.length) loadFiles(e.dataTransfer.files); });
 $('#frPrint').addEventListener('click', function () { window.print(); });
+window.addEventListener('beforeprint', function () { var m = $('#frPrintMeta'); if (m) m.textContent = (S.file ? S.file + ' \u00b7 ' : '') + 'Prepared ' + new Date().toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' }) + ' \u00b7 dericBI \u00b7 dericbi.vercel.app'; });
 
 // sample data: the same made-up neighbourhood shop as the template, so what you try is what you download
 $('#frSample').addEventListener('click', function () {

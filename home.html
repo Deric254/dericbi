@@ -837,10 +837,42 @@ window.addEventListener('load', function() {
     <h2 class="text-base xs:text-lg sm:text-xl font-bold mb-3 xs:mb-4 text-center text-[#49A078] pr-6">Choose Your Path</h2>
     <p class="text-gray-600 text-center mb-4 xs:mb-5 sm:mb-6 text-xs xs:text-sm">Pick the option that suits your business best:</p>
     <div class="flex flex-col gap-3 xs:gap-4">
-      <a href="free-report/?src=popup"
-        class="block bg-[#49A078] hover:bg-[#3e8865] text-white text-center px-4 xs:px-5 sm:px-6 py-2.5 xs:py-3 rounded font-semibold shadow-md hover:shadow-lg transition-all text-xs xs:text-sm sm:text-base">
-        ⚡ Instant Free Report (no upload, 2 min)
+      <style>
+        /* Featured "Instant Free Report" option (prefixed pop- so it cannot collide with site styles) */
+        .pop-feature{position:relative;display:flex;align-items:center;gap:12px;text-align:left;text-decoration:none;color:#fff;
+          padding:16px 14px 14px;border-radius:12px;margin-top:6px;
+          background:linear-gradient(135deg,#49A078 0%,#2f7d5b 100%);
+          border:1px solid #2f7d5b;box-shadow:0 8px 22px rgba(47,125,91,.35),inset 0 1px 0 rgba(255,255,255,.25);
+          transition:transform .2s ease,box-shadow .2s ease;animation:pop-glow 2.6s ease-in-out infinite;overflow:visible}
+        .pop-feature,.pop-feature:visited,.pop-feature .pop-title,.pop-feature .pop-sub,.pop-feature .pop-body{color:#fff!important}
+        .pop-feature .pop-badge{color:#1f2937!important}
+        .pop-feature .pop-icon{color:#facc15!important}
+        .pop-feature .pop-go{color:#1f2937!important}
+        .pop-feature:hover,.pop-feature:focus-visible{transform:translateY(-2px);box-shadow:0 12px 28px rgba(47,125,91,.45),inset 0 1px 0 rgba(255,255,255,.25);color:#fff}
+        .pop-feature:focus-visible{outline:3px solid #facc15;outline-offset:3px}
+        .pop-badge{position:absolute;top:-10px;left:14px;background:#facc15;color:#1f2937;font-size:10.5px;font-weight:800;letter-spacing:.06em;
+          text-transform:uppercase;padding:3px 10px;border-radius:999px;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+        .pop-icon{flex:0 0 auto;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:20px;color:#facc15}
+        .pop-body{flex:1 1 auto;min-width:0}
+        .pop-title{display:block;font-weight:800;font-size:1rem;line-height:1.25}
+        .pop-sub{display:block;font-size:.8rem;line-height:1.35;opacity:.92;margin-top:2px;font-weight:500}
+        .pop-go{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:#facc15;color:#1f2937;display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:transform .2s ease}
+        .pop-feature:hover .pop-go{transform:translateX(3px)}
+        .pop-or{display:flex;align-items:center;gap:10px;font-size:.72rem;color:#6b7280;text-transform:uppercase;letter-spacing:.08em;margin:2px 0}
+        .pop-or:before,.pop-or:after{content:"";flex:1;height:1px;background:#e5e7eb}
+        @keyframes pop-glow{0%,100%{box-shadow:0 8px 22px rgba(47,125,91,.35),0 0 0 0 rgba(250,204,21,.55),inset 0 1px 0 rgba(255,255,255,.25)}50%{box-shadow:0 8px 22px rgba(47,125,91,.35),0 0 0 8px rgba(250,204,21,0),inset 0 1px 0 rgba(255,255,255,.25)}}
+        @media (prefers-reduced-motion:reduce){.pop-feature{animation:none}.pop-feature,.pop-go{transition:none}}
+      </style>
+      <a href="free-report/?src=popup" class="pop-feature">
+        <span class="pop-badge">Free &middot; No sign-up</span>
+        <span class="pop-icon" aria-hidden="true"><i class="fas fa-bolt"></i></span>
+        <span class="pop-body">
+          <span class="pop-title">Instant Free Report (no upload, 2 min)</span>
+          <span class="pop-sub">See your best sellers, slow stock and profit. Your file never leaves your device.</span>
+        </span>
+        <span class="pop-go" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
       </a>
+      <div class="pop-or" aria-hidden="true">or</div>
       <a href="https://forms.gle/krViHXVaJKP2JARZ7"
         class="block bg-gray-100 hover:bg-gray-200 text-gray-800 text-center px-4 xs:px-5 sm:px-6 py-2.5 xs:py-3 rounded font-semibold shadow-md hover:shadow-lg transition-all border border-gray-300 hover:border-gray-400 text-xs xs:text-sm sm:text-base">
         ✅ I Have Data (Upload Files)
