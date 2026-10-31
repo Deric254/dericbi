@@ -611,14 +611,20 @@
     return out;
   }
 
-  /** Sales and expenses side by side: only months both files fully cover are compared, so the profit is never flattered or dragged by a partial month. */
+  /** Sales and expenses side by side: only months both files cover alike are compared, so the profit is never flattered or dragged by a month one side
+   *  does not cover. A month still in progress (both files simply end part-way through it, on the same days) is compared too: it is real data, and it is marked "so far". */
   function harmonize(s, x) {
     const h = { finds: [], notes: [] };
     const money = s.money, cat = x.list.filter((p) => p.amount > 0);
     const sm = new Map(s.months || []), xm = new Map(x.months || []);
     const sFull = new Set((s.fullMonths || []).map((m) => m[0])), xFull = new Set((x.fullMonths || []).map((m) => m[0]));
     const keys = [...new Set([...sm.keys(), ...xm.keys()])].sort();
-    h.rows = keys.map((k) => ({ key: k, sales: sm.get(k) || 0, expenses: xm.get(k) || 0, comparable: sFull.has(k) && xFull.has(k) }));
+    const mkey = (d) => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+    const lastKey = keys[keys.length - 1], DAY = 86400000;
+    const startsEarly = (o, k) => !(o.first && mkey(o.first) === k && o.first.getDate() > 3);      // the month is not missing its first days
+    const endsTogether = !!(s.last && x.last && !s.wideUnit && !x.wideUnit && mkey(s.last) === lastKey && mkey(x.last) === lastKey && Math.abs(s.last - x.last) <= 3 * DAY);
+    const inProgress = (k) => k === lastKey && endsTogether && sm.has(k) && xm.has(k) && !(sFull.has(k) && xFull.has(k)) && startsEarly(s, k) && startsEarly(x, k);
+    h.rows = keys.map((k) => ({ key: k, sales: sm.get(k) || 0, expenses: xm.get(k) || 0, partial: inProgress(k), comparable: (sFull.has(k) && xFull.has(k)) || inProgress(k) }));
     const comp = h.rows.filter((r) => r.comparable);
     h.salesAll = s.netSales; h.expensesAll = x.netSales;
     if (comp.length) {
@@ -627,7 +633,9 @@
       const first = comp[0].key, last = comp[comp.length - 1].key;
       h.period = first === last ? monthName(first) : span(first, last);
       const outS = h.salesAll - h.sales, outX = h.expensesAll - h.expenses;
-      if (Math.abs(outS) > 0.5 || Math.abs(outX) > 0.5) h.notes.push(`Profit uses only the ${comp.length} full month${comp.length > 1 ? 's' : ''} that both your sales and expenses cover (${h.period}). Left out: ${money(outS)} of sales and ${money(outX)} of expenses from other or partial months, so one side is never compared with a period the other does not cover.`);
+      const part = comp.filter((r) => r.partial).length;
+      if (part) h.notes.push(`${monthName(lastKey)} is still in progress: your files end on ${s.last.toLocaleDateString('en-KE', { day: 'numeric', month: 'short' })}, so its figures are the month so far and will grow.`);
+      if (Math.abs(outS) > 0.5 || Math.abs(outX) > 0.5) h.notes.push(`Profit uses only the ${comp.length} month${comp.length > 1 ? 's' : ''} that both your sales and expenses cover alike (${h.period}). Left out: ${money(outS)} of sales and ${money(outX)} of expenses from other or partial months, so one side is never compared with a period the other does not cover.`);
     } else {
       h.basis = 'totals'; h.sales = h.salesAll; h.expenses = h.expensesAll; h.period = '';
       h.notes.push(!(s.months && s.months.length && x.months && x.months.length)
@@ -641,10 +649,11 @@
       const tot = cat.reduce((a, p) => a + p.amount, 0);
       h.finds.push(`${cat[0].name} is your biggest expense: ${money(cat[0].amount)}, ${Math.round(cat[0].amount / tot * 100)}% of everything you spent.` + (cat.length >= 3 ? ` With ${cat[1].name} and ${cat[2].name} it makes up ${Math.round((cat[0].amount + cat[1].amount + cat[2].amount) / tot * 100)}% of spending.` : ''));
     }
-    const loss = comp.filter((r) => r.sales - r.expenses < 0);
+    const done = comp.filter((r) => !r.partial);      // a month still in progress is shown, but never ranked against whole months
+    const loss = done.filter((r) => r.sales - r.expenses < 0);
     if (loss.length) h.finds.push(`${loss.length === 1 ? 'One month' : loss.length + ' months'} spent more than it sold: ${loss.slice(0, 4).map((r) => monthName(r.key)).join(', ')}${loss.length > 4 ? '…' : ''}.`);
-    if (comp.length >= 3) {
-      const pr = comp.map((r) => [r.key, r.sales - r.expenses]), best = pr.reduce((a, b) => (b[1] > a[1] ? b : a)), worst = pr.reduce((a, b) => (b[1] < a[1] ? b : a));
+    if (done.length >= 3) {
+      const pr = done.map((r) => [r.key, r.sales - r.expenses]), best = pr.reduce((a, b) => (b[1] > a[1] ? b : a)), worst = pr.reduce((a, b) => (b[1] < a[1] ? b : a));
       h.finds.push(`${monthName(best[0])} was your most profitable month (${money(best[1])}) and ${monthName(worst[0])} your least (${money(worst[1])}).`);
     }
     h.cat = cat.slice(0, 8); h.catTotal = cat.reduce((a, p) => a + p.amount, 0); h.comparable = comp.length;

@@ -45,7 +45,9 @@ def validate_links(base_dir):
             continue
             
         links = extract_links(content)
-        local_links = [link for link in links if not link.startswith(('http://', 'https://', 'mailto:', 'tel:', '#', 'javascript:'))]
+        # skip external URLs, data: URIs, and JavaScript template expressions like ${thumb.src}, which are values filled in
+        # in the browser at run time, not files on disk
+        local_links = [link for link in links if not link.startswith(('http://', 'https://', '//', 'mailto:', 'tel:', 'data:', '#', 'javascript:')) and '${' not in link]
         
         print(f"   Found {len(local_links)} local links")
         total_links += len(local_links)
