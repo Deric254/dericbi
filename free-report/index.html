@@ -211,10 +211,10 @@ document.addEventListener('click', (e) => {
     <div class="fr-drop" id="frDrop">
       <p style="margin:0 0 12px"><b>Drop your sales and expenses here</b><br><span class="fr-mute fr-sm">Excel or CSV, tidy or messy. Choose one file, or several at once (for example a sales file and an expenses file). We clean them, and show you exactly what we did.</span></p>
       <div class="fr-row" style="justify-content:center">
-        <label class="fr-btn" for="frFile" style="margin:0"><i class="fas fa-file-upload" aria-hidden="true"></i>&nbsp; Choose file(s)</label>
+        <label class="fr-btn" for="frFile" style="margin:0">Choose file(s)</label>
         <input id="frFile" type="file" multiple accept=".csv,.txt,.tsv,.xlsx,.xls,.xlsm,.ods" class="fr-hide">
         <button class="fr-btn fr-alt" id="frSample" type="button">Try it with sample data</button>
-        <button class="fr-btn fr-alt" id="frTpl" type="button"><i class="fas fa-file-excel" aria-hidden="true"></i>&nbsp; Download the Excel template</button>
+        <button class="fr-btn fr-alt" id="frTpl" type="button">Download the Excel template</button>
       </div>
     </div>
     <form class="fr-gs" id="frGsForm" novalidate>
@@ -222,7 +222,7 @@ document.addEventListener('click', (e) => {
       <div class="fr-row" style="flex-wrap:nowrap;margin-top:6px"><input id="frGsUrl" type="url" inputmode="url" autocomplete="off" placeholder="https://docs.google.com/spreadsheets/d/..." aria-label="Google Sheets link"><button class="fr-btn fr-alt" id="frGsGo" type="submit" style="white-space:nowrap">Read my sheet</button></div>
       <p class="fr-mute fr-sm" style="margin:6px 0 0">In Google Sheets press <b>Share</b>, set General access to <b>Anyone with the link</b> (Viewer), then copy the link. Sales and expenses can be two tabs of the same sheet. Your sheet is read in your own browser and is never sent to me.</p>
     </form>
-    <p class="fr-mute fr-sm" style="margin:12px 0 0"><i class="fas fa-lock" aria-hidden="true"></i>&nbsp; Your files are read inside your own browser and are never uploaded. I only receive your details if you choose to leave them at the end.</p>
+    <p class="fr-mute fr-sm" style="margin:12px 0 0">Your files are read inside your own browser and are never uploaded. I only receive your details if you choose to leave them at the end.</p>
     <p class="fr-mute fr-sm" style="margin:8px 0 0"><b>Sales</b> need a product and an amount (or quantity and price). <b>Expenses</b> need a category or description and an amount. Keep them in two tabs, two files, or one sheet with a Type column (Sale / Expense) or Money in / Money out columns, and we sort it out. Add a date, a receipt number and stock on hand to unlock more. Works with title lines, blank rows, totals, returns, KES amounts, repeated headings, monthly sheets and Swahili headings.</p>
     <p class="fr-warn fr-hide" id="frErr" role="alert"></p>
   </section>
@@ -239,7 +239,7 @@ document.addEventListener('click', (e) => {
   <section class="fr-cta fr-hide" id="frCta">
     <h2>Want this on your full records, every month?</h2>
     <p style="margin:6px 0 14px">I can look at your complete sales and stock records and show you exactly where money is slipping and where the opportunities are. You only pay when you see value.</p>
-    <div class="fr-row"><a class="fr-btn fr-hide" id="frWa" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i>&nbsp; Message me on WhatsApp</a><a class="fr-btn fr-alt fr-hide" id="frMail"><i class="fas fa-envelope" aria-hidden="true"></i>&nbsp; Send me an email</a><button class="fr-btn fr-alt fr-noprint" id="frPrint" type="button"><i class="fas fa-print" aria-hidden="true"></i>&nbsp; Save this report as PDF</button></div>
+    <div class="fr-row"><a class="fr-btn fr-hide" id="frWa" target="_blank" rel="noopener">Message me on WhatsApp</a><a class="fr-btn fr-alt fr-hide" id="frMail">Send me an email</a><button class="fr-btn fr-alt fr-noprint" id="frPrint" type="button">Save this report as PDF</button></div>
   </section>
 
   <section class="fr-box fr-hide" id="frLead">
@@ -288,7 +288,7 @@ document.addEventListener('click', (e) => {
         <a href="../about.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">About Us</a>
         <a href="../terms.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">T&C's</a>
         <button onclick="toggleNewsletter()" class="footer-link text-xs bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">
-          <i class="fas fa-envelope mr-1"></i>Newsletter
+          Newsletter
         </button>
       </div>
       <!-- Hidden Newsletter Signup -->
@@ -297,7 +297,7 @@ document.addEventListener('click', (e) => {
           <input type="email" placeholder="Your email..." 
             class="flex-1 px-2 py-1 text-xs border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-[#49A078] shadow-inner">
           <button aria-label="Send" class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white px-3 py-1 rounded-r text-xs hover:from-[#3e8865] hover:to-[#357255] transition shadow-sm hover:shadow">
-            <i class="fas fa-paper-plane"></i>
+            
           </button>
         </div>
         <p class="text-xs text-gray-600 mt-1 font-medium">Monthly insights & tips</p>
@@ -358,7 +358,7 @@ function toggleNewsletter() {
 <!-- Back to Top Button -->
 <button aria-label="Back to top" id="backToTop" class="fixed bg-[#49A078] text-white rounded-full shadow-lg flex items-center justify-center text-xl z-40 opacity-0 transition-opacity duration-300 md:flex"
   style="border: none; outline: none; display: none; bottom: 10rem; right: 2rem; width: 3rem; height: 3rem; pointer-events: auto !important; cursor: pointer !important;">
-  <i class="fas fa-arrow-up"></i>
+  
 </button>
 
 <script>
@@ -597,12 +597,12 @@ function qualityCard(o, X) {
   if (o.totalMismatch) extra.push('In ' + fmt(o.totalMismatch) + ' row' + (o.totalMismatch > 1 ? 's' : '') + ' your Total column does not match the months added up, for example ' + ((o.examples.totalMismatch || [])[0] ? esc(o.examples.totalMismatch[0]) : ''));
   o.notes.forEach(function (n) { extra.push(esc(n)); });
   var cls = r.ok ? '' : ' bad';
-  var h = '<section class="fr-box fr-check' + cls + '"><h2>' + (r.ok ? '<i class="fas fa-circle-check fr-ok" aria-hidden="true"></i> ' + (X ? 'Your expenses add up' : 'Your numbers add up') : (X ? 'Your expenses do not add up yet' : 'Your numbers do not add up yet')) + '</h2>';
+  var h = '<section class="fr-box fr-check' + cls + '"><h2>' + (r.ok ? '' + (X ? 'Your expenses add up' : 'Your numbers add up') : (X ? 'Your expenses do not add up yet' : 'Your numbers do not add up yet')) + '</h2>';
   h += '<p class="fr-mute fr-sm" style="margin:2px 0 8px">We read <b>' + fmt(o.rowsRead) + '</b> row' + (o.rowsRead === 1 ? '' : 's') + '. Every number in the amount column is accounted for below, and nothing was thrown away.</p>';
   h += '<table>' + rowsList.map(function (x) { return '<tr><td>' + x[0] + '</td><td class="n">' + x[1] + '</td></tr>'; }).join('') + '<tr><td><b>Everything we read from your file</b></td><td class="n"><b>' + mny(r.readSum) + '</b></td></tr></table>';
   h += '<p class="fr-sm" style="margin:8px 0 0">' + (r.ok ? '<span class="fr-ok">' + (X ? 'Expenses + credits + total lines' : 'Sales + returns + total lines') + ' = everything we read. Difference: ' + mny(0) + '.</span>' : '<span class="fr-warn">Difference of ' + mny(r.diff) + ' between what we read and what we counted. Please tell me and I will look into it.</span>') + '</p>';
   if (extra.length) h += '<ul class="fr-find fr-sm">' + extra.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>';
-  h += '<div class="fr-row fr-noprint" style="margin-top:12px"><button class="fr-btn fr-alt" id="' + (X ? 'frDlX' : 'frDl') + '" type="button"><i class="fas fa-download" aria-hidden="true"></i>&nbsp; Download the cleaned ' + (X ? 'expenses ' : '') + 'file</button><span class="fr-mute fr-sm">Every row, with what we did with it. It stays on your device.</span></div></section>';
+  h += '<div class="fr-row fr-noprint" style="margin-top:12px"><button class="fr-btn fr-alt" id="' + (X ? 'frDlX' : 'frDl') + '" type="button">Download the cleaned ' + (X ? 'expenses ' : '') + 'file</button><span class="fr-mute fr-sm">Every row, with what we did with it. It stays on your device.</span></div></section>';
   return h;
 }
 function profitCards(hm, xo, o) {
