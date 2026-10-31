@@ -2,10 +2,12 @@
 
 > Projects built by dericBI (Deric Marangu), a Kenyan data analytics business. Generated from the live project list; see https://dericbi.vercel.app/my-projects.html
 
-Projects listed: 135. Most recent entry: 2026-10-02.
+Projects listed: 137. Most recent entry: 2026-10-29.
 
 ## Projects
 
+- DericBI Instructor — Personal Analytics Mentor (Claude, 2026) - Problem: Learning data analytics from scattered videos and tutorials is slow, and learners never know if they are really improving. Business Objective: One desktop mentor where a learner can study, pr
+- Business Reality Engine — Your Business Early-Warning System (Claude, 2026) - live: https://business-reality-engine.pages.dev/login - Problem: Most owners only find out something went wrong weeks later, when the money is already gone. Sales slip, costs creep up, and nobody can say why. Business Objective: A system that watches the b
 - smePro — SME Business Management Platform (Claude, 2026) - Problem: Small businesses juggle sales, stock, debts and books in separate places, and never fully trust the numbers. Business Objective: One simple place to run the shop, with the books kept up to da
 - Pharmacy ERP — Pharmacy Operations Desktop System (Claude, 2026) - Problem: Pharmacies lose money to stockouts, expired medicines and slow counters, and often only see the numbers at month-end. Business Objective: One dependable system to run the pharmacy day to day,
 - Imara v2 — Wire Manufacturing Management System (Claude, 2026) - Problem: Manufacturers struggle to know the true profit on each batch, because costs drift and reports disagree. Business Objective: One place to run buying, production, sales and invoicing, with figu
