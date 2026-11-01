@@ -19,21 +19,21 @@
   });
 </script>
 <!-- Clean Analytics: Google Analytics Only -->
-  <!-- ✅ Page Title -->
+  <!-- Page Title -->
 <title>Data Analytics Projects | dericBI Portfolio</title>
 
-<!-- ✅ SEO Meta -->
+<!-- SEO Meta -->
 <meta name="description" content="dericBI projects: We help busy executives and business owners cut through data noise for total clarity. See our data analytics portfolio and team training solutions." />
 <meta name="keywords" content="Deric Marangu, dericBI journey, data analytics Kenya, Excel cleanup, business insights, dericbi, deric bi, dericBI, deric BI, powerbi, excel, python, sql" />
 <meta name="author" content="Deric Marangu" />
 <meta http-equiv="Content-Language" content="en-KE" />
 <link rel="canonical" href="https://dericbi.vercel.app/my-projects.html" />
 
-<!-- ✅ Contact Metadata -->
+<!-- Contact Metadata -->
 <meta name="email" content="dericmarangu@gmail.com" />
 <meta name="telephone" content="+254791360805" />
 
-<!-- ✅ Social Profiles (og:see_also) -->
+<!-- Social Profiles (og:see_also) -->
 <meta property="og:see_also" content="https://www.linkedin.com/in/deric-marangu-134340297/" />
 <meta property="og:see_also" content="https://x.com/Dericmwiti" />
 <meta property="og:see_also" content="https://web.facebook.com/deric.aldertrax" />
@@ -41,7 +41,7 @@
 <meta property="og:see_also" content="https://www.instagram.com/dericmarangu/" />
 <meta property="og:see_also" content="https://wa.me/254791360805" />
 
-<!-- ✅ Open Graph for Facebook, LinkedIn, WhatsApp -->
+<!-- Open Graph for Facebook, LinkedIn, WhatsApp -->
 <meta property="og:title" content="Welcome to dericBI" />
 <meta property="og:description" content="We help busy executives and business owners cut through data noise to gain total clarity. Our data analytics services provide clear insights, plus we train your teams to master business intelligence tools." />
 <meta property="og:image" content="https://dericbi.vercel.app/assets/img/og-share.jpg" />
@@ -53,7 +53,7 @@
 <meta property="og:site_name" content="dericBI Analytics Kenya" />
 <meta property="og:locale" content="en_KE" />
 
-<!-- ✅ Twitter Card -->
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Welcome to dericBI" />
 <meta name="twitter:description" content="We help busy executives and business owners cut through data noise to gain total clarity. Our data analytics services provide clear insights, plus we train your teams to master business intelligence tools." />
@@ -61,11 +61,11 @@
 <meta name="twitter:creator" content="@dericmwiti" />
 <meta name="twitter:site" content="@dericmwiti" />
 
-<!-- ✅ Google Site Verification -->
+<!-- Google Site Verification -->
 <meta name="google-site-verification" content="atXrWwnWwnfuGsW-bG32kFaaYl_7cX59LFFuawPIoGcPYk" />
 <meta name="google-site-verification" content="Jy01n_QNsBr6VEkwL0RMSE-ya0yPNywvSnNEdO6_TcE" />
 
-<!-- ✅ Schema.org Structured Data -->
+<!-- Schema.org Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -131,7 +131,7 @@
   
   <!-- dericBI Chatbot -->
   <script defer src="assets/js/config.js?v=a0a11940"></script>
-  <script defer src="assets/js/chatbot.js?v=bf03de00"></script>
+  <script defer src="assets/js/chatbot.js?v=10a90be5"></script>
   <script defer src="assets/js/social_links.js?v=6f1c5397"></script>
   <script defer src="assets/js/email-link.js?v=f9f40881"></script>
 
@@ -142,10 +142,8 @@ button, .fancy-btn, .glow-btn {
   transition: box-shadow 0.2s, transform 0.2s, background 0.2s, color 0.2s;
 }
 button:hover, .fancy-btn:hover, .glow-btn:hover {
-  box-shadow: 0 2px 12px 0 #49A07833, 0 0 8px #facc15;
-  transform: translateY(-2px) scale(1.03);
-  background: #fef9c3;
-  color: #222;
+  box-shadow: none;
+  transform: none;
 }
 
 /* Card hover effect */
@@ -213,10 +211,13 @@ img:not([alt]) {
       background: white !important;
       color: black !important;
       border: none !important;
-      border-radius: 50% !important;
-      width: 2rem !important;
-      height: 2rem !important;
-      font-size: 1rem !important;
+      border-radius: 0.5rem !important;
+      width: auto !important;
+      height: auto !important;
+      min-height: 0 !important;
+      padding: 0.5rem 1rem !important;
+      font-size: 0.875rem !important;
+      font-weight: 600 !important;
       cursor: pointer !important;
       z-index: 10000 !important;
       display: flex !important;
@@ -228,7 +229,7 @@ img:not([alt]) {
     }
     .zoom-close-btn:hover {
       background: #f3f4f6 !important;
-      transform: scale(1.05) !important;
+      transform: none !important;
       opacity: 1 !important;
     }
     @media (min-width: 768px) {
@@ -242,18 +243,19 @@ img:not([alt]) {
     }
     /* Tool Filter Buttons */
     .tool-filter {
-      background: #f3f4f6;
-      color: #6b7280;
+      background: #fff;
+      color: #374151;
       border: 1px solid #d1d5db;
     }
     .tool-filter:hover {
-      background: #e5e7eb;
-      color: #374151;
+      background: #f6faf8;
+      color: #276a4d;
+      border-color: #b9d9c9;
     }
     .tool-filter.active {
-      background: #49A078;
+      background: #2f7d5b;
       color: white;
-      border-color: #49A078;
+      border-color: #2f7d5b;
     }
     /* Prevent zoom on double-tap except for images */
     img, video, .zoomable {
@@ -285,24 +287,32 @@ img:not([alt]) {
     }
     /* Share Button Styles */
     .share-btn {
-      background: #2563EB;
-      color: white;
+      background: #fff;
+      color: #2f7d5b;
+      border: 1px solid #b9d9c9;
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
       font-size: 0.875rem;
-      transition: background 0.3s ease;
+      font-weight: 600;
+      transition: background 0.2s ease;
     }
     .share-btn:hover {
-      background: #1e40af;
+      background: #f6faf8;
+      border-color: #2f7d5b;
     }
     /* Loading Indicator for Downloads */
     .download-loading {
       display: none;
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      inset: 0;
+      transform: none;
       z-index: 10;
+      background: #276a4d;
+      color: #fff;
+      border-radius: inherit;
+      font-size: 0.75rem;
+      align-items: center;
+      justify-content: center;
     }
     
     /* Performance optimizations */
@@ -554,12 +564,94 @@ img:not([alt]) {
       white-space: nowrap;
     }
   </style>
-  <link rel="stylesheet" href="assets/css/tailwind.css?v=cc955cb2">
+  <link rel="stylesheet" href="assets/css/tailwind.css?v=e560a4da">
   <style>
   .ui-foot-cta{display:inline-flex;align-items:center;padding:4px 10px;border-radius:6px;font-size:.8rem;font-weight:700;border:1px solid #b9d9c9;white-space:nowrap}
   .ui-foot-primary{background:#2f7d5b;color:#fff!important;border-color:#2f7d5b}
   .ui-foot-primary:hover{color:#fff!important;background:#276a4d}
   .ui-foot-alt{background:#fff;color:#2f7d5b!important}
+  </style>
+  <link rel="stylesheet" href="assets/css/ui.css?v=24ea55ac">
+  <style>
+  /* my-projects page styles (prj- prefix) */
+  .prj-page{min-height:60vh}
+  .prj-cta{margin:0 auto 24px;max-width:760px}
+  .prj-bar{max-width:1120px;margin:0 auto 12px;background:#fff;border:1px solid var(--ui-line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}
+  .prj-bar .prj-search{position:relative;width:100%}
+  .prj-bar #searchInput{width:100%;padding:10px 14px!important;font-size:.95rem;border:1px solid #d1d5db;border-radius:10px;background:#fff;color:var(--ui-ink);min-height:44px}
+  .prj-bar #searchInput:focus{outline:none;border-color:var(--ui-green);box-shadow:0 0 0 3px rgba(47,125,91,.18)}
+  .prj-filters{display:flex;flex-wrap:wrap;gap:8px}
+  .prj-page .tool-filter{min-height:36px!important;padding:6px 14px!important;font-size:.82rem!important;font-weight:600!important;border-radius:999px!important;display:inline-flex;align-items:center;gap:4px;line-height:1.2}
+  .prj-page .tool-filter .ml-1{margin-left:2px;font-weight:500;opacity:.85}
+  .prj-page .tool-filter[hidden]{display:none!important}
+  .prj-page .tool-filter:focus-visible{outline:3px solid #facc15;outline-offset:2px}
+  #resultsProgress{max-width:1120px;margin:0 auto 12px}
+  .prj-status{max-width:1120px;margin:0 auto 16px;font-size:.9rem;color:var(--ui-mute)}
+  .prj-grid{display:grid;grid-template-columns:1fr;gap:20px;max-width:1120px;margin:0 auto}
+  @media(min-width:640px){.prj-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(min-width:1000px){.prj-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .prj-grid>.prj-span{grid-column:1/-1}
+  .prj-grid>.prj-notice{background:#fff;border:1px solid var(--ui-line);border-radius:10px;padding:10px 14px;font-size:.85rem;color:var(--ui-mute)}
+  .prj-empty{text-align:center;padding:48px 16px;background:#fff;border:1px solid var(--ui-line);border-radius:14px}
+  .prj-empty h3{font-size:1.2rem;font-weight:700;color:var(--ui-ink);margin:0 0 6px}
+  .prj-empty p{color:var(--ui-mute);margin:0 0 6px}
+  .prj-empty .ui-btn{margin-top:12px;flex:0 0 auto}
+  .prj-load{max-width:360px;margin:0 auto}
+  .prj-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--ui-line);border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(16,24,40,.05);transition:box-shadow .2s ease,border-color .2s ease;min-width:0}
+  .prj-card:hover{box-shadow:0 8px 24px rgba(16,24,40,.08);border-color:#cfe3d9}
+  .prj-thumb{display:block;width:100%;aspect-ratio:16/9;background:#f3f4f6;border-bottom:1px solid var(--ui-line);overflow:hidden;cursor:pointer;position:relative;padding:0;border-radius:0}
+  .prj-thumb img{width:100%;height:100%;min-height:0;object-fit:cover;object-position:top center;display:block}
+  .prj-thumb-empty{display:flex;align-items:center;justify-content:center;color:#6b7280;font-size:.85rem;font-weight:600}
+  .prj-main{display:flex;flex-direction:column;flex:1;padding:16px 18px 18px;min-width:0}
+  .prj-meta{display:flex;justify-content:space-between;gap:8px;font-size:.78rem;color:#6b7280;margin-bottom:6px}
+  .prj-title{font-size:1.05rem!important;font-weight:700!important;color:var(--ui-ink)!important;line-height:1.3!important;margin:0 0 8px!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.6em}
+  .prj-sum{font-size:.9rem;line-height:1.55;color:var(--ui-mute);margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:4.65em}
+  .prj-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;min-height:26px;align-content:flex-start}
+  .prj-tag{display:inline-block;font-size:.72rem;font-weight:600;color:#374151;background:#f3f4f6;border:1px solid var(--ui-line);border-radius:999px;padding:2px 10px;white-space:nowrap}
+  .prj-actions{display:flex;gap:8px;margin-top:auto}
+  .prj-actions .ui-btn{flex:1 1 0;min-width:0}
+  /* modal */
+  .prj-modal{position:fixed;inset:0;z-index:2000;background:rgba(17,24,39,.6);display:flex;align-items:flex-start;justify-content:center;padding:24px 12px;overflow-y:auto;overscroll-behavior:contain}
+  .prj-modal[hidden]{display:none}
+  .prj-modal-panel{background:#fff;border-radius:14px;width:100%;max-width:1040px;box-shadow:0 20px 50px rgba(0,0,0,.25);margin:auto 0}
+  .prj-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 20px;border-bottom:1px solid var(--ui-line);position:sticky;top:0;background:#fff;border-radius:14px 14px 0 0;z-index:5}
+  .prj-modal-head h2{font-size:1.25rem;font-weight:800;color:var(--ui-ink);line-height:1.25;margin:2px 0 0}
+  .prj-modal-head .prj-meta{margin:0;justify-content:flex-start;gap:12px}
+  .prj-modal-head .ui-btn{flex:0 0 auto}
+  .prj-modal-body{padding:20px}
+  .prj-body .prj-desc{color:#374151;font-size:.92rem;line-height:1.65}
+  .prj-body .prj-desc a{color:#2f7d5b!important;font-weight:700!important;text-decoration:underline!important}
+  .prj-mbtn{background:#fff;color:#111827;border:1px solid #d1d5db;border-radius:8px;padding:4px 12px;font-size:.78rem;font-weight:600;min-height:34px}
+  .prj-mbtn:hover{background:#f6faf8;border-color:#b9d9c9}
+  .prj-body .thumb-download{width:auto!important;height:auto!important;min-height:0!important;padding:2px 7px!important;border-radius:6px!important;font-size:10px!important;font-weight:600!important;top:4px!important;right:4px!important;background:#2f7d5b}
+  @media(hover:none){.prj-body .thumb-download{opacity:1!important}}
+  .prj-body .thumb-video-thumb>span{background:#111827!important;color:#fff!important}
+  .prj-panel{margin-top:16px;padding:14px;border:1px solid var(--ui-line);border-radius:10px;background:#f9fafb}
+  .prj-panel h4{font-size:.9rem;font-weight:700;color:var(--ui-ink);margin:0}
+  .prj-panel p{font-size:.8rem;color:var(--ui-mute);margin:2px 0 0}
+  .prj-detail{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+  @media(min-width:800px){.prj-detail{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}}
+  .prj-mtools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+  .prj-zw:not(.zoomed){overflow:hidden;border-radius:12px}
+  .prj-tools{margin:14px 0 0;font-size:.9rem;color:#374151}
+  .prj-dlrow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .prj-dlrow .ui-btn{position:relative;overflow:hidden;flex:0 0 auto}
+  .prj-share{margin-top:14px}
+  .prj-direct-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+  .prj-direct h2{font-size:1.1rem;font-weight:800;color:var(--ui-ink);margin:0}
+  .prj-direct p{margin:2px 0 0;font-size:.9rem}
+  .prj-count-note{font-size:.8rem;color:var(--ui-mute)}
+  .prj-intake{gap:12px 16px}
+  .prj-actions .ui-btn,.prj-actions a.ui-btn.ui-btn.ui-btn.ui-btn,.prj-intake .ui-btn,.prj-intake a.ui-btn.ui-btn.ui-btn.ui-btn,.prj-direct .ui-btn,.prj-modal-head .ui-btn,.prj-dlrow .ui-btn,.prj-share .ui-btn{min-height:40px!important;padding:8px 16px!important;font-size:.85rem!important;border-radius:8px}
+  .prj-card.prj-flash{border-color:#2f7d5b;box-shadow:0 0 0 3px rgba(47,125,91,.2)}
+  .prj-bottom .ui-cta-band{margin-bottom:0}
+  /* bottom CTA + intake bar */
+  .prj-bottom{padding:8px 20px 48px;background:var(--ui-soft)}
+  @media(max-width:640px){.prj-bottom{padding:8px 16px 40px}.prj-modal{padding:0}.prj-modal-panel{border-radius:0;min-height:100vh}.prj-modal-head{border-radius:0;padding:14px 16px}.prj-modal-body{padding:16px}}
+  .prj-intake{max-width:1120px;margin:16px auto 0;padding:14px 16px;background:#fff;border:1px solid var(--ui-line);border-radius:14px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+  .prj-intake .prj-intake-main{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .prj-intake .ui-btn{flex:0 0 auto}
+  .prj-intake input{min-height:36px;border:1px solid #d1d5db;border-radius:8px;padding:4px 10px}
   </style>
 </head>
 
@@ -577,7 +669,7 @@ img:not([alt]) {
         <span>deric</span><span class="text-[#facc15]">BI</span>
       </div>
     </div>
-    <!-- ✅ Extra Links for Small Screens -->
+    <!-- Extra Links for Small Screens -->
     <div class="hidden xs:flex gap-1.5 xs:gap-2 sm:gap-3 flex-1 justify-center md:hidden">
       <a href="home.html" class="nav-link text-[10px] xs:text-xs tracking-wide px-2 xs:px-2.5 sm:px-3 py-1 rounded-lg bg-white/10 shadow-md border border-white/30 hover:bg-white/20 hover:border-white/50 hover:shadow-lg transition-all whitespace-nowrap">Home</a>
       <a href="services.html" class="nav-link text-[10px] xs:text-xs tracking-wide px-2 xs:px-2.5 sm:px-3 py-1 rounded-lg bg-white/10 shadow-md border border-white/30 hover:bg-white/20 hover:border-white/50 hover:shadow-lg transition-all whitespace-nowrap">Services</a>
@@ -589,26 +681,28 @@ img:not([alt]) {
         • Stop Losing MONEY Monthly • Turn Data Chaos Into Profit • 48 Hours From Confusion to Clarity • Your Data Hiding Profits? • From Excel Hell to Business Heaven • Stop Guessing, Start Knowing • Data That Actually Makes Money • From Confused to Empowered • Stop Losing MONEY Monthly • Turn Data Chaos Into Profit • 48 Hours From Confusion to Clarity • Your Data Hiding Profits? • From Excel Hell to Business Heaven • Stop Guessing, Start Knowing • Data That Actually Makes Money • From Confused to Empowered •
       </div>
     </div>
-    <!-- ✅ Desktop Nav Links -->
+    <!-- Desktop Nav Links -->
     <ul class="hidden md:flex gap-6 text-sm font-medium items-center shrink-0">
       <li><a href="home.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Home</a></li>
       <li><a href="services.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Services</a></li>
       <li><a href="my-projects.html" class="nav-link font-bold px-3 py-2 rounded-md bg-[#3D8069]/50 shadow-inner text-yellow-300 border-b-2 border-yellow-300">Projects</a></li>
       <li><a href="contact.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Contact</a></li>
+      <li><a href="free-report/?src=nav" class="nav-link ui-nav-cta">Free Report</a></li>
       <!--<li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>
       <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">T&C's</a></li>-->
     </ul>
-    <!-- ✅ Hamburger Menu Button with Dropdown -->
+    <!-- Hamburger Menu Button with Dropdown -->
     <div class="relative block md:hidden">
       <button id="menu-toggle" class="text-xl xs:text-2xl focus:outline-none ml-1 xs:ml-2 sm:ml-3 shrink-0 bg-[#3D8069]/50 hover:bg-[#3D8069]/70 p-2 rounded-md shadow-md transition-all">☰</button>
       
-      <!-- ✅ Compact Menu Dropdown (Below Icon) -->
+      <!-- Compact Menu Dropdown (Below Icon) -->
       <div id="mobile-menu" class="absolute right-0 top-full mt-2 w-48 max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-[#3e8865] rounded-lg shadow-2xl border-2 border-[#49A078] z-50">
         <div class="py-2 px-2 flex flex-col gap-1.5">
           <a href="home.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Home</a>
           <a href="services.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Services</a>
           <a href="my-projects.html" class="nav-link block py-2 px-3 transition-all bg-[#367659]/60 font-semibold text-yellow-300 text-xs rounded-md border border-yellow-400/50 shadow-sm">Projects</a>
           <a href="contact.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Contact</a>
+          <a href="free-report/?src=nav" class="nav-link ui-nav-cta block py-2 px-3 text-xs rounded-md" style="margin-top:2px;text-align:center">Free Report</a>
           <a href="about.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367609]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">About</a>
           <a href="terms.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Terms</a>
         </div>
@@ -617,7 +711,7 @@ img:not([alt]) {
   </div>
 </nav>
 
-<!-- ✅ JS -->
+<!-- JS -->
 <script>
 const toggleBtn = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -642,125 +736,135 @@ document.addEventListener('click', (e) => {
 <div class="h-14 xs:h-16 sm:h-20"></div>
 
 <!-- Journey Section -->
-<section class="w-full py-6 px-1 min-h-screen">
-  <h1 class="text-3xl font-bold text-[#2D3142] mb-6 text-center">📘 <span class="font-bold text-[#49A078]">deric<span class="text-yellow-500">BI</span></span> Case Studies and Projects</h1>
-  
-  <!-- Compact Search & Filter -->
-  <div class="flex flex-col sm:flex-row gap-3 mb-6 w-full px-1">
-    <!-- Search Input -->
-    <div class="flex-1 relative">
-      <input type="text" id="searchInput" placeholder="Search by project number (1), name (Student), or keyword..." 
-        class="w-full px-4 py-2 pl-10 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#49A078]">
-      <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-      <div id="searchLoader" class="hidden absolute right-3 top-1/2 transform -translate-y-1/2">
-        <div class="animate-spin rounded-full h-4 w-4 border-2 border-[#49A078] border-t-transparent"></div>
-      </div>
-    </div>
-    <!-- Tool Filters -->
-    <div class="flex flex-wrap gap-2">
-      <button onclick="filterByTool('all')" id="filter-all" 
-        class="tool-filter active px-3 py-2 text-xs font-semibold rounded-lg transition">
-        All <span id="count-all" class="ml-1">(40)</span>
-      </button>
-      <button onclick="filterByTool('excel')" id="filter-excel" 
-        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
-        <i class="fas fa-file-excel mr-1"></i>Excel <span id="count-excel" class="ml-1">(14)</span>
-      </button>
-      <button onclick="filterByTool('powerbi')" id="filter-powerbi" 
-        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
-        <i class="fas fa-chart-bar mr-1"></i>PowerBI <span id="count-powerbi" class="ml-1">(12)</span>
-      </button>
-      <button onclick="filterByTool('python')" id="filter-python" 
-        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
-        <i class="fab fa-python mr-1"></i>Python <span id="count-python" class="ml-1">(9)</span>
-      </button>
-      <button onclick="filterByTool('sql')" id="filter-sql" 
-        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
-        <i class="fas fa-database mr-1"></i>SQL <span id="count-sql" class="ml-1">(9)</span>
-      </button>
-      <button onclick="filterByTool('other')" id="filter-other" 
-        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
-        <i class="fas fa-cogs mr-1"></i>Other <span id="count-other" class="ml-1">(0)</span>
-      </button>
-      <button onclick="filterByTool('databricks')" id="filter-databricks" 
-        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
-        <i class="fas fa-cloud mr-1"></i>Databricks <span id="count-databricks" class="ml-1">(0)</span>
-      </button>
-      <button onclick="filterByTool('quant')" id="filter-quant" 
-        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
-        <i class="fas fa-square-root-alt mr-1"></i>Quant <span id="count-quant" class="ml-1">(0)</span>
-      </button>
-    </div>
+<section class="ui-page prj-page">
+  <div class="ui-page-head">
+    <h1> <span class="font-bold text-[#49A078]">deric<span class="text-yellow-500">BI</span></span> Case Studies and Projects</h1>
+    <p>Browse case studies by tool, or search by project number, name or keyword.</p>
   </div>
-  <!-- Try Yourself Button -->
-  <div class="w-full mb-6 flex justify-end px-1">
-    <a href="https://dericbi-analytics.onrender.com"
-  class="bg-[#facc15] hover:bg-[#eab308] text-black px-5 py-2.5 rounded-lg font-semibold flex items-center gap-2 shadow transition">
-      <i class="fas fa-flask"></i>Try Yourself
-    </a>
+
+  <div class="ui-cta-row prj-cta">
+    <a href="https://wa.me/254791360805" class="ui-btn ui-btn-primary">Start your project</a>
+    <a href="free-report/?src=projects" class="ui-btn ui-btn-outline">Free Business Health Check</a>
+  </div>
+
+  <!-- Search & Filter -->
+  <div class="prj-bar">
+    <div class="prj-search">
+      <input type="text" id="searchInput" aria-label="Search projects" placeholder="Search by project number (1), name (Student), or keyword..."
+        class="w-full text-sm border border-gray-300 rounded-lg">
+      <div id="searchLoader" class="hidden"></div>
+    </div>
+    <div class="prj-filters" role="group" aria-label="Filter projects by tool">
+      <button onclick="filterByTool('all')" id="filter-all"
+        class="tool-filter active px-3 py-2 text-xs font-semibold rounded-lg transition">
+        All <span id="count-all" class="ml-1"></span>
+      </button>
+      <button onclick="filterByTool('excel')" id="filter-excel"
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        Excel <span id="count-excel" class="ml-1"></span>
+      </button>
+      <button onclick="filterByTool('powerbi')" id="filter-powerbi"
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        PowerBI <span id="count-powerbi" class="ml-1"></span>
+      </button>
+      <button onclick="filterByTool('python')" id="filter-python"
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        Python <span id="count-python" class="ml-1"></span>
+      </button>
+      <button onclick="filterByTool('sql')" id="filter-sql"
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        SQL <span id="count-sql" class="ml-1"></span>
+      </button>
+      <button onclick="filterByTool('other')" id="filter-other"
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        Other <span id="count-other" class="ml-1"></span>
+      </button>
+      <button onclick="filterByTool('databricks')" id="filter-databricks"
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        Databricks <span id="count-databricks" class="ml-1"></span>
+      </button>
+      <button onclick="filterByTool('quant')" id="filter-quant"
+        class="tool-filter px-3 py-2 text-xs font-semibold rounded-lg transition">
+        Quant <span id="count-quant" class="ml-1"></span>
+      </button>
+    </div>
   </div>
 
   <!-- Progress Indicator -->
   <div id="resultsProgress" class="w-full mb-4 hidden px-1">
     <div class="flex items-center justify-between text-xs text-gray-500 mb-2">
       <span id="resultsCount">Loading projects...</span>
-      <span id="loadTime" class="flex items-center"><i class="fas fa-clock mr-1"></i>0.1s</span>
+      <span id="loadTime" class="flex items-center">0.1s</span>
     </div>
     <div class="w-full bg-gray-200 rounded-full h-1">
       <div id="progressBar" class="bg-[#49A078] h-1 rounded-full transition-all duration-300" style="width: 0%"></div>
     </div>
   </div>
-  
-  <div id="case-container" class="space-y-12 px-1"></div>
+  <p id="prjStatus" class="prj-status" role="status" aria-live="polite"></p>
+
+  <div id="case-container" class="prj-grid"></div>
 </section>
 
-<!-- Compact Action Bar -->
-<section class="bg-gray-50 py-4 px-1 border-t border-gray-200">
-  <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div class="flex flex-wrap items-center gap-2">
-        <button onclick="toggleProjectJourney()" 
-          class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded text-xs font-semibold transition group">
-          <i class="fas fa-rocket mr-1"></i>Start Project
-          <span class="hidden group-hover:inline ml-1 text-[#facc15]">✓</span>
-        </button>
-        <button onclick="toggleDownloadJourney()" 
-          class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-3 py-2 rounded text-xs font-semibold transition group">
-          <i class="fas fa-download mr-1"></i>Download Files
-          <span class="hidden group-hover:inline ml-1 text-[#facc15]">📁</span>
-        </button>
-        <a href="https://dericbi-analytics.onrender.com"
-          class="bg-[#facc15] hover:bg-[#eab308] text-black px-3 py-2 rounded text-xs font-semibold transition flex items-center gap-1">
-          <i class="fas fa-flask"></i>Try Yourself
+<!-- Bottom CTA and intake tools -->
+<section class="prj-bottom">
+  <div class="ui-cta-band">
+    <h2>Ready to start your project?</h2>
+    <p>Tell us what you need on WhatsApp, or begin with a Free Business Health Check.</p>
+    <div class="ui-cta-row">
+      <a href="https://wa.me/254791360805" class="ui-btn ui-btn-primary">Start your project</a>
+      <a href="free-report/?src=projects" class="ui-btn ui-btn-outline">Free Business Health Check</a>
+    </div>
+  </div>
+
+  <!-- Compact Action Bar -->
+  <div class="prj-intake">
+    <div class="prj-intake-main">
+      <button onclick="toggleProjectJourney()" class="ui-btn ui-btn-primary ui-btn-sm">
+        Submit Project Details
+      </button>
+      <button onclick="toggleDownloadJourney()" class="ui-btn ui-btn-outline ui-btn-sm">
+        Download Files
+      </button>
+      <a href="https://dericbi-analytics.onrender.com" class="ui-btn ui-btn-outline ui-btn-sm">
+        Try Yourself
+      </a>
+      <span class="prj-count-note">100+ Projects</span>
+    </div>
+    <div id="projectSectionJourney" class="hidden w-full sm:w-auto">
+      <div class="flex gap-2 items-center">
+        <a href="https://forms.gle/krViHXVaJKP2JARZ7" class="ui-btn ui-btn-primary ui-btn-sm">
+          I Have Data
         </a>
-        <div class="hidden sm:flex items-center text-xs text-gray-500">
-          <i class="fas fa-chart-bar text-blue-500 mr-1"></i>100+ Projects
-        </div>
-      </div>
-      <div id="projectSectionJourney" class="hidden w-full sm:w-auto">
-        <div class="flex gap-2 items-center">
-          <a href="https://forms.gle/krViHXVaJKP2JARZ7"
-            class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded text-xs font-semibold transition">
-            <i class="fas fa-upload mr-1"></i>I Have Data
-          </a>
-          <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7"
-            class="bg-[#f59e0b] hover:bg-[#d97706] text-white px-3 py-2 rounded text-xs font-semibold transition">
-            <i class="fas fa-chart-line mr-1"></i>I Need Setup
-          </a>
-        </div>
-      </div>
-      <div id="downloadSectionJourney" class="hidden w-full sm:w-auto">
-        <div class="flex flex-col xs:flex-row gap-2 items-center">
-          <input id="fileNameInputJourney" type="text" placeholder="File name..." 
-            class="px-3 py-2 rounded text-xs border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#2563EB] w-full xs:w-32 min-w-0">
-          <button aria-label="Download file" onclick="downloadFileJourney()" 
-            class="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs font-semibold transition">
-            <i class="fas fa-download"></i>
-          </button>
-        </div>
-        <p id="errorMessageJourney" class="text-red-600 text-xs mt-1 hidden">File not found. Contact: +254791360805</p>
+        <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7" class="ui-btn ui-btn-outline ui-btn-sm">
+          I Need Setup
+        </a>
       </div>
     </div>
+    <div id="downloadSectionJourney" class="hidden w-full sm:w-auto">
+      <div class="flex flex-col xs:flex-row gap-2 items-center">
+        <input id="fileNameInputJourney" type="text" aria-label="File name" placeholder="File name..."
+          class="px-3 py-2 rounded text-xs border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#2563EB] w-full xs:w-32 min-w-0">
+        <button aria-label="Download file" onclick="downloadFileJourney()"
+          class="ui-btn ui-btn-primary ui-btn-sm">Get</button>
+      </div>
+      <p id="errorMessageJourney" class="text-red-600 text-xs mt-1 hidden">File not found. Contact: +254791360805</p>
+    </div>
+  </div>
 </section>
+
+<!-- Case study modal (filled by openProject) -->
+<div id="prjModal" class="prj-modal" hidden role="dialog" aria-modal="true" aria-labelledby="prjModalTitle">
+  <div class="prj-modal-panel">
+    <div class="prj-modal-head">
+      <div>
+        <div class="prj-meta" id="prjModalMeta"></div>
+        <h2 id="prjModalTitle"></h2>
+      </div>
+      <button type="button" id="prjModalClose" class="ui-btn ui-btn-outline ui-btn-sm">Close</button>
+    </div>
+    <div class="prj-modal-body prj-body" id="prjModalBody"></div>
+  </div>
+</div>
 
 <!-- Back to Top Button -->
 <button aria-label="Back to top" id="backToTop" class="fixed bottom-[10rem] right-[2rem] bg-[#49A078] text-white w-[3rem] h-[3rem] rounded-full shadow-lg flex items-center justify-center text-xl z-40 opacity-0 transition-opacity duration-300 md:flex" style="border: none; outline: none; display: none;">
@@ -837,7 +941,7 @@ function downloadFileJourney() {
   
   const btn = document.querySelector('#downloadSectionJourney button');
   const originalText = btn.innerHTML;
-  btn.innerHTML = '<i class="fas fa-spinner animate-spin"></i>';
+  btn.textContent = 'Getting...';
   btn.disabled = true;
 
   const link = document.createElement('a');
@@ -873,275 +977,296 @@ document.getElementById('fileNameInputJourney')?.addEventListener('keypress', fu
 });
 
 // Main Project Rendering and Interaction Logic
+const EMOJI_RE = /[\p{Extended_Pictographic}‍]/gu;
+const clean = (v) => String(v == null ? '' : v).replace(EMOJI_RE, '').replace(/[ \t]{2,}/g, ' ').trim();
+const esc = (v) => String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+let currentProjects = [];
+let renderToken = 0;
+let modalOpener = null;
+
+function projectIdOf(cs, index) {
+  const serial = cs.serial || `Project ${index + 1}`;
+  return serial.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+}
+
+function buildThumbs(cs) {
+  const images = cs.images || [];
+  const arr = [];
+  if (cs.video) {
+    (Array.isArray(cs.video) ? cs.video : [cs.video]).forEach(v => arr.push({ type: 'video', src: v, poster: images[0] || '' }));
+  }
+  images.forEach(img => arr.push({ type: 'image', src: img }));
+  if (!arr.length) arr.push({ type: 'image', src: 'assets/img/placeholder.png' });
+  return arr;
+}
+
+// Short plain-text summary for the card (taken from the existing description text)
+function projectSummary(cs) {
+  const html = clean(cs.description).replace(/<br\s*\/?>/gi, ' ');
+  const text = (new DOMParser().parseFromString(html, 'text/html').body.textContent || '').replace(/\s+/g, ' ').trim();
+  const m = /Business Objective\s*:?\s*(.+?)(?=\s*(?:My Approach|Key Features)\s*:|$)/i.exec(text);
+  return (m && m[1].trim()) || text;
+}
+
+function setStatus(n) {
+  const el = document.getElementById('prjStatus');
+  if (el) el.textContent = `Showing ${n} project${n !== 1 ? 's' : ''}`;
+}
+
+function buildCardHtml(cs, index) {
+  const serial = clean(cs.serial || `Project ${index + 1}`);
+  const title = clean(cs.title);
+  const img = (cs.images || [])[0];
+  const tags = String(cs.tools || '').split(',').map(t => clean(t)).filter(Boolean);
+  const tagHtml = tags.slice(0, 3).map(t => `<span class="prj-tag">${esc(t)}</span>`).join('') +
+    (tags.length > 3 ? `<span class="prj-tag">+${tags.length - 3}</span>` : '');
+  const live = cs.liveLink && /^https?:\/\//i.test(String(cs.liveLink).trim()) ? String(cs.liveLink).trim() : '';
+  return `
+    <button type="button" class="prj-thumb ${img ? '' : 'prj-thumb-empty'}" data-prj-open="${index}" aria-label="View details: ${esc(title)}">
+      ${img ? `<img src="${esc(img)}" alt="" loading="lazy" decoding="async">` : 'No preview'}
+    </button>
+    <div class="prj-main">
+      <div class="prj-meta"><span>${esc(serial)}</span><span>${esc(clean(cs.date))}</span></div>
+      <h3 class="prj-title">${esc(title)}</h3>
+      <p class="prj-sum">${esc(projectSummary(cs))}</p>
+      <div class="prj-tags">${tagHtml}</div>
+      <div class="prj-actions">
+        <button type="button" class="ui-btn ui-btn-primary ui-btn-sm" data-prj-open="${index}">Details</button>
+        ${live ? `<a href="${esc(live)}" class="ui-btn ui-btn-outline ui-btn-sm" rel="noopener">Live Link</a>` : ''}
+      </div>
+    </div>`;
+}
+
 function renderProjects(projects, container) {
+  const token = ++renderToken;
+  currentProjects = projects;
   container.innerHTML = '';
+  setStatus(projects.length);
   if (projects.length === 0) {
     container.innerHTML = `
-      <div class="text-center py-12">
-        <i class="fas fa-search text-gray-400 text-4xl mb-4"></i>
-        <h3 class="text-xl font-semibold text-gray-600 mb-2">No projects found</h3>
-        <p class="text-gray-500">Try adjusting your search or filter criteria</p>
+      <div class="prj-span prj-empty">
+        <h3>No projects found</h3>
+        <p>Try adjusting your search or filter criteria</p>
+        <button type="button" class="ui-btn ui-btn-primary ui-btn-sm" onclick="showAllProjects()">Show all projects</button>
       </div>
     `;
     return;
   }
 
-  // Render projects in batches to improve performance
-  // First batch is smaller for instant display, then larger batches
+  // Render projects in batches to improve performance (first batch small for instant display)
   let currentBatch = 0;
-  
-  const getBatchSize = (batchNum) => {
-    if (batchNum === 0) return 5; // Show first 5 INSTANTLY
-    if (batchNum === 1) return 10; // Then next 10
-    return 20; // Then 20 at a time
-  };
-  
+  const getBatchSize = (batchNum) => (batchNum === 0 ? 6 : batchNum === 1 ? 12 : 24);
+
   const renderBatch = () => {
-    const batchSize = getBatchSize(currentBatch);
+    if (token !== renderToken) return; // a newer render replaced this one
     let start = 0;
-    
-    // Calculate start position based on previous batch sizes
-    for (let i = 0; i < currentBatch; i++) {
-      start += getBatchSize(i);
-    }
-    
-    const end = Math.min(start + batchSize, projects.length);
-    
-    // Use DocumentFragment for better performance
+    for (let i = 0; i < currentBatch; i++) start += getBatchSize(i);
+    const end = Math.min(start + getBatchSize(currentBatch), projects.length);
     const fragment = document.createDocumentFragment();
-    
-    // Show progress
-    const percentComplete = Math.round((end / projects.length) * 100);
-    console.log(`📊 Rendering projects ${start + 1}-${end} of ${projects.length} (${percentComplete}%)`);
-    
     for (let index = start; index < end; index++) {
       const cs = projects[index];
-      const serial = cs.serial || `Project ${index + 1}`;
-      const images = cs.images || [];
-      const mainImgId = `main-img-${index}`;
-      const thumbsId = `thumbs-${index}`;
-      const prevBtnId = `rotate-left-${index}`;
-      const nextBtnId = `rotate-right-${index}`;
-      const zoomBtnId = `zoom-${index}`;
-      const zoomWrapperId = `zoom-wrapper-${index}`;
-      const projectId = serial.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-      let thumbsArr = [];
-      
-      if (cs.video) {
-        if (Array.isArray(cs.video)) {
-          cs.video.forEach(v => thumbsArr.push({ type: 'video', src: v, poster: images[0] || '' }));
-        } else {
-          thumbsArr.push({ type: 'video', src: cs.video, poster: images[0] || '' });
-        }
-      }
-      images.forEach(img => thumbsArr.push({ type: 'image', src: img }));
-      const isVideo = thumbsArr.length > 0 && thumbsArr[0].type === 'video';
-
-      const card = document.createElement("div");
-      card.className = "bg-white p-6 rounded-xl shadow-md border border-gray-200 space-y-4";
-      card.id = `project-${projectId}`;
-      card.innerHTML = `
-        <div class="flex items-center justify-between">
-          <div class="text-xs text-gray-400">${serial}</div>
-          <div class="flex gap-1">
-            ${categorizeByTool(cs).map(cat => {
-              const icons = {
-                excel: '<i class="fas fa-file-excel text-green-600" title="Excel"></i>',
-                powerbi: '<i class="fas fa-chart-bar text-yellow-600" title="PowerBI"></i>',
-                python: '<i class="fab fa-python text-blue-600" title="Python"></i>',
-                sql: '<i class="fas fa-database text-gray-600" title="SQL"></i>',
-                databricks: '<i class="fas fa-cloud text-blue-500" title="Databricks"></i>',
-                other: '<i class="fas fa-cogs text-purple-600" title="Other Tools"></i>'
-              };
-              return `<span class="text-sm">${icons[cat] || ''}</span>`;
-            }).join('')}
-          </div>
-        </div>
-        <h2 class="text-xl font-bold text-[#2D3142]">${cs.title}</h2>
-
-        <p class="text-sm text-gray-500">📅 ${cs.date}</p>
-        <div class="flex flex-col md:flex-row gap-6">
-          <div class="w-full md:w-1/2 relative">
-            <div class="absolute z-20 right-2 top-2 flex gap-2">
-              <button aria-label="Previous image" id="${prevBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100 ${isVideo ? 'hidden' : ''}" title="Rotate Left">
-                <i class="fas fa-undo-alt"></i>
-              </button>
-              <button aria-label="Next image" id="${nextBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100 ${isVideo ? 'hidden' : ''}" title="Rotate Right">
-                <i class="fas fa-redo-alt"></i>
-              </button>
-              <button aria-label="Zoom image" id="${zoomBtnId}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100" title="Zoom">
-                <i class="fas fa-expand"></i>
-              </button>
-              <button aria-label="Download image" id="download-img-${index}" class="bg-white text-gray-800 px-2 py-1 rounded-full shadow hover:bg-gray-100" title="Download">
-                <i class="fas fa-download"></i>
-              </button>
-            </div>
-            <div id="${zoomWrapperId}" class="relative transition-all duration-300 ease-in-out">
-              ${
-                thumbsArr.length > 0 && thumbsArr[0].type === 'video'
-                  ? `<div id="${mainImgId}" class="w-full h-[380px] flex items-center justify-center rounded-xl border border-[#2563EB] cursor-pointer video-thumb-main relative" style="box-shadow:0 0 0 3px #facc15; background:transparent;">
-                      <video data-src="${thumbsArr[0].src}" poster="${thumbsArr[0].poster || ''}" class="main-video-element lazy-video" style="width:100%;height:100%;object-fit:contain;border-radius:12px;pointer-events:none;filter:brightness(0.95);" preload="none"></video>
-                      <svg class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none" width="68" height="68" viewBox="0 0 68 68" fill="none" style="opacity:0.92;">
-                        <circle cx="34" cy="34" r="32" fill="#111" fill-opacity="0.85" stroke="#fff" stroke-width="3"/>
-                        <polygon points="30,22 50,34 30,46" fill="#fff" stroke="#111" stroke-width="2"/>
-                      </svg>
-                    </div>`
-                  : `<img id="${mainImgId}" src="${images[0] || 'assets/img/placeholder.png'}" alt="${cs.title}" loading="lazy" decoding="async" class="w-full h-[380px] object-contain rounded-xl border border-gray-300 bg-white transition-transform duration-300" style="transform: rotate(0deg);" />`
-              }
-            </div>
-            ${thumbsArr.length > 1 ? `
-              <div id="${thumbsId}" class="flex flex-wrap gap-3 mt-4">
-                ${
-                  thumbsArr.map((thumb, i) =>
-                    thumb.type === 'video'
-                      ? `<div class="relative group">
-                          <div class="w-20 h-20 rounded-lg overflow-hidden border-2 border-[#facc15] shadow-lg cursor-pointer thumb-video-thumb ${i === 0 ? 'thumb-active' : ''}" style="background:#222; position:relative;">
-                            <video data-src="${thumb.src}" poster="${thumb.poster}" class="w-full h-full object-cover pointer-events-none lazy-video" style="border-radius:8px;" preload="none"></video>
-                            <span class="absolute top-1 left-1 bg-[#facc15] text-[#2563EB] px-2 py-0.5 rounded text-[10px] font-bold shadow">VIDEO</span>
-
-                            <button aria-label="Download image" class="thumb-download absolute -top-1 -right-1 bg-[#49A078] text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#3e8865]" 
-                                    data-media-type="video" data-media-src="${thumb.src}" title="Download Video">
-                              <i class="fas fa-download text-[8px]"></i>
-                            </button>
-                          </div>
-                        </div>`
-                      : `<div class="relative group">
-                          <img src="${thumb.src}" data-index="${i}" alt="Thumb ${i + 1}" loading="lazy" decoding="async" class="w-20 h-20 object-cover rounded-lg cursor-pointer transition-all border border-gray-200 hover:ring-2 hover:ring-green-500 ${i === 0 && !isVideo ? 'thumb-active' : ''}" />
-                          <button aria-label="Download image" class="thumb-download absolute -top-1 -right-1 bg-[#49A078] text-white w-5 h-5 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#3e8865]" 
-                                  data-media-type="image" data-media-src="${thumb.src}" title="Download Image">
-                            <i class="fas fa-download text-[8px]"></i>
-                          </button>
-                        </div>`
-                  ).join('')
-                }
-              </div>
-            ` : ''}
-          </div>
-          <div class="w-full md:w-1/2 space-y-2">
-            <p class="text-gray-700 text-sm leading-relaxed">${cs.description}</p>
-            <p class="text-sm"><strong>Tools Used:</strong> ${cs.tools}</p>
-            <div class="mt-4 p-3 bg-gray-50 rounded-lg border">
-              <div class="flex items-center justify-between">
-                <div>
-                  <h4 class="text-sm font-semibold text-gray-800">📁 Full Project Download</h4>
-                  <p class="text-xs text-gray-600">Get complete project files and documentation</p>
-                </div>
-                <button id="download-project-${index}" class="bg-[#49A078] text-white px-3 py-1 rounded-md text-xs hover:bg-[#3e8865] transition-colors relative">
-                  <i class="fas fa-download mr-1"></i>Download
-                  <div class="download-loading absolute inset-0 flex items-center justify-center bg-[#49A078] bg-opacity-80 rounded-md">
-                    <i class="fas fa-spinner animate-spin text-white"></i>
-                  </div>
-                </button>
-              </div>
-            </div>
-            <!-- Share Button -->
-            <div class="mt-4">
-              <button onclick="shareProject('${projectId}', '${cs.title}')" class="share-btn">
-                <i class="fas fa-share-alt mr-1"></i>Share Project
-              </button>
-            </div>
-          </div>
-        </div>
-      `;
+      const card = document.createElement('article');
+      card.className = 'prj-card';
+      card.id = `project-${projectIdOf(cs, index)}`;
+      card.innerHTML = buildCardHtml(cs, index);
       fragment.appendChild(card);
-
-      // Initialize interaction logic
-      // Defer this to after DOM insertion for better performance
-      setTimeout(() => {
-        setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, prevBtnId, nextBtnId, zoomBtnId, zoomWrapperId, projectId);
-      }, 0);
-      
-      // Add play icon click logic for video main thumb
-      if (thumbsArr.length > 0 && thumbsArr[0].type === 'video') {
-        setTimeout(() => {
-          const mainThumb = card.querySelector('.video-thumb-main');
-          if (mainThumb) {
-            let videoActivated = false; // Flag to prevent multiple activations
-            
-            const activateVideo = function(e) {
-              if (e) {
-                e.preventDefault();
-                e.stopPropagation();
-              }
-              
-              if (videoActivated) return; // Already activated, ignore
-              
-              const svgIcon = mainThumb.querySelector('svg');
-              const videoEl = mainThumb.querySelector('video');
-              
-              if (svgIcon && videoEl) {
-                videoActivated = true; // Mark as activated
-                
-                // Mark the container as video-active
-                mainThumb.classList.add('video-active');
-                mainThumb.style.cursor = 'default';
-                
-                // Pause all other videos before playing this one
-                pauseAllVideosExcept(videoEl);
-                
-                // Permanently hide the play icon with multiple methods
-                svgIcon.classList.add('hidden-play');
-                svgIcon.style.display = 'none';
-                svgIcon.style.visibility = 'hidden';
-                svgIcon.style.opacity = '0';
-                svgIcon.style.pointerEvents = 'none';
-                
-                // Remove the click listener to prevent re-triggering
-                mainThumb.removeEventListener('click', activateVideo);
-                
-                videoEl.style.pointerEvents = 'auto';
-                videoEl.setAttribute('controls', '');
-                videoEl.setAttribute('preload', 'metadata');
-                
-                // Load video source only when user clicks play (lazy loading)
-                if (videoEl.dataset.src && !videoEl.src) {
-                  videoEl.src = videoEl.dataset.src;
-                  videoEl.load();
-                }
-                
-                // Small delay to ensure DOM updates before playing
-                setTimeout(() => {
-                  if (svgIcon.parentNode) {
-                    svgIcon.remove(); // Remove it completely
-                  }
-                  videoEl.play().catch(err => {
-                    console.error('Video play failed:', err);
-                  });
-                }, 50);
-              }
-            };
-            
-            mainThumb.addEventListener('click', activateVideo);
-          }
-        }, 0);
-      }
     }
-    
-    // Append all cards at once for better performance
     container.appendChild(fragment);
-    
     currentBatch++;
-    
-    // Continue rendering if there are more projects
-    if (end < projects.length) {
-      // Render next batch immediately using requestAnimationFrame for smooth rendering
-      requestAnimationFrame(() => {
-        renderBatch();
-      });
-    } else {
-      // All projects rendered
-      console.log('✅ All projects rendered successfully!');
-    }
+    if (end < projects.length) requestAnimationFrame(renderBatch);
   };
-  
-  // Start rendering the first batch
   renderBatch();
 }
+
+// Case-study modal
+function wireMainVideo(root) {
+  const mainThumb = root.querySelector('.video-thumb-main');
+  if (!mainThumb) return;
+  let videoActivated = false;
+  const activateVideo = function (e) {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    if (videoActivated) return;
+    const svgIcon = mainThumb.querySelector('svg');
+    const videoEl = mainThumb.querySelector('video');
+    if (svgIcon && videoEl) {
+      videoActivated = true;
+      mainThumb.classList.add('video-active');
+      mainThumb.style.cursor = 'default';
+      pauseAllVideosExcept(videoEl);
+      svgIcon.classList.add('hidden-play');
+      svgIcon.style.display = 'none';
+      svgIcon.style.visibility = 'hidden';
+      svgIcon.style.opacity = '0';
+      svgIcon.style.pointerEvents = 'none';
+      mainThumb.removeEventListener('click', activateVideo);
+      videoEl.style.pointerEvents = 'auto';
+      videoEl.setAttribute('controls', '');
+      videoEl.setAttribute('preload', 'metadata');
+      if (videoEl.dataset.src && !videoEl.src) {
+        videoEl.src = videoEl.dataset.src;
+        videoEl.load();
+      }
+      setTimeout(() => {
+        if (svgIcon.parentNode) svgIcon.remove();
+        videoEl.play().catch(err => { console.error('Video play failed:', err); });
+      }, 50);
+    }
+  };
+  mainThumb.addEventListener('click', activateVideo);
+}
+
+function buildDetailHtml(cs, index, thumbsArr) {
+  const projectId = projectIdOf(cs, index);
+  const images = cs.images || [];
+  const mainImgId = `main-img-${index}`;
+  const thumbsId = `thumbs-${index}`;
+  const prevBtnId = `rotate-left-${index}`;
+  const nextBtnId = `rotate-right-${index}`;
+  const zoomBtnId = `zoom-${index}`;
+  const zoomWrapperId = `zoom-wrapper-${index}`;
+  const isVideo = thumbsArr.length > 0 && thumbsArr[0].type === 'video';
+  const title = clean(cs.title);
+  return {
+    ids: { mainImgId, thumbsId, prevBtnId, nextBtnId, zoomBtnId, zoomWrapperId, projectId },
+    html: `
+      <div class="prj-detail">
+        <div class="prj-media">
+          <div class="prj-mtools">
+            <button type="button" aria-label="Previous image" id="${prevBtnId}" class="prj-mbtn ${isVideo ? 'hidden' : ''}" title="Rotate Left">Rotate left</button>
+            <button type="button" aria-label="Next image" id="${nextBtnId}" class="prj-mbtn ${isVideo ? 'hidden' : ''}" title="Rotate Right">Rotate right</button>
+            <button type="button" aria-label="Zoom image" id="${zoomBtnId}" class="prj-mbtn" title="Zoom">Zoom</button>
+            <button type="button" aria-label="Download image" id="download-img-${index}" class="prj-mbtn" title="Download">Download</button>
+          </div>
+          <div id="${zoomWrapperId}" class="prj-zw relative transition-all duration-300 ease-in-out">
+            ${
+              isVideo
+                ? `<div id="${mainImgId}" class="w-full h-[380px] flex items-center justify-center rounded-xl border border-gray-300 cursor-pointer video-thumb-main relative" style="background:transparent;">
+                    <video data-src="${thumbsArr[0].src}" poster="${thumbsArr[0].poster || ''}" class="main-video-element lazy-video" style="width:100%;height:100%;object-fit:contain;border-radius:12px;pointer-events:none;filter:brightness(0.95);" preload="none"></video>
+                    <svg class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none" width="68" height="68" viewBox="0 0 68 68" fill="none" style="opacity:0.92;">
+                      <circle cx="34" cy="34" r="32" fill="#111" fill-opacity="0.85" stroke="#fff" stroke-width="3"/>
+                      <polygon points="30,22 50,34 30,46" fill="#fff" stroke="#111" stroke-width="2"/>
+                    </svg>
+                  </div>`
+                : `<img id="${mainImgId}" src="${images[0] || 'assets/img/placeholder.png'}" alt="${esc(title)}" loading="lazy" decoding="async" class="w-full h-[380px] object-contain rounded-xl border border-gray-300 bg-white transition-transform duration-300" style="transform: rotate(0deg);" />`
+            }
+          </div>
+          ${thumbsArr.length > 1 ? `
+            <div id="${thumbsId}" class="flex flex-wrap gap-3 mt-4">
+              ${
+                thumbsArr.map((thumb, i) =>
+                  thumb.type === 'video'
+                    ? `<div class="relative group">
+                        <div class="w-20 h-20 rounded-lg overflow-hidden border-2 border-gray-300 shadow cursor-pointer thumb-video-thumb ${i === 0 ? 'thumb-active' : ''}" style="background:#222; position:relative;">
+                          <video data-src="${thumb.src}" poster="${thumb.poster}" class="w-full h-full object-cover pointer-events-none lazy-video" style="border-radius:8px;" preload="none"></video>
+                          <span class="absolute top-1 left-1 px-2 py-0.5 rounded text-[10px] font-bold shadow">VIDEO</span>
+                          <button type="button" aria-label="Download image" class="thumb-download absolute -top-1 -right-1 text-white rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity"
+                                  data-media-type="video" data-media-src="${thumb.src}" title="Download Video">Save</button>
+                        </div>
+                      </div>`
+                    : `<div class="relative group">
+                        <img src="${thumb.src}" data-index="${i}" alt="Thumb ${i + 1}" loading="lazy" decoding="async" class="w-20 h-20 object-cover rounded-lg cursor-pointer transition-all border border-gray-200 hover:ring-2 hover:ring-green-500 ${i === 0 && !isVideo ? 'thumb-active' : ''}" />
+                        <button type="button" aria-label="Download image" class="thumb-download absolute -top-1 -right-1 text-white rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity"
+                                data-media-type="image" data-media-src="${thumb.src}" title="Download Image">Save</button>
+                      </div>`
+                ).join('')
+              }
+            </div>
+          ` : ''}
+        </div>
+        <div class="prj-info">
+          <div class="prj-desc">${clean(cs.description)}</div>
+          <p class="prj-tools"><strong>Tools Used:</strong> ${esc(clean(cs.tools))}</p>
+          <div class="prj-panel">
+            <div class="prj-dlrow">
+              <div>
+                <h4>Full Project Download</h4>
+                <p>Get complete project files and documentation</p>
+              </div>
+              <button type="button" id="download-project-${index}" class="ui-btn ui-btn-primary ui-btn-sm">
+                Download
+                <span class="download-loading">Preparing...</span>
+              </button>
+            </div>
+          </div>
+          <div class="prj-share">
+            <button type="button" data-pid="${esc(projectId)}" data-title="${esc(title)}" onclick="shareProject(this.dataset.pid, this.dataset.title)" class="ui-btn ui-btn-outline ui-btn-sm share-btn">
+              Share Project
+            </button>
+          </div>
+        </div>
+      </div>`
+  };
+}
+
+function openProject(index, opener) {
+  const cs = currentProjects[index];
+  const modal = document.getElementById('prjModal');
+  if (!cs || !modal) return;
+  const body = document.getElementById('prjModalBody');
+  const thumbsArr = buildThumbs(cs);
+  const built = buildDetailHtml(cs, index, thumbsArr);
+  document.getElementById('prjModalTitle').textContent = clean(cs.title);
+  document.getElementById('prjModalMeta').innerHTML = `<span>${esc(clean(cs.serial || `Project ${index + 1}`))}</span><span>${esc(clean(cs.date))}</span>`;
+  body.innerHTML = built.html;
+  modalOpener = opener || null;
+  modal.hidden = false;
+  modal.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+  const i = built.ids;
+  setupProjectInteractions(index, cs, thumbsArr, i.mainImgId, i.thumbsId, i.prevBtnId, i.nextBtnId, i.zoomBtnId, i.zoomWrapperId, i.projectId);
+  wireMainVideo(body);
+  const closeBtn = document.getElementById('prjModalClose');
+  if (closeBtn) closeBtn.focus();
+}
+
+function closeProject() {
+  const modal = document.getElementById('prjModal');
+  if (!modal || modal.hidden) return;
+  modal.querySelectorAll('video').forEach(v => { try { v.pause(); } catch (e) {} });
+  document.getElementById('prjModalBody').innerHTML = '';
+  modal.hidden = true;
+  document.body.style.overflow = '';
+  if (modalOpener && document.contains(modalOpener)) modalOpener.focus();
+  modalOpener = null;
+}
+
+(function () {
+  const container = document.getElementById('case-container');
+  if (container) {
+    container.addEventListener('click', (e) => {
+      const trigger = e.target.closest('[data-prj-open]');
+      if (trigger) openProject(parseInt(trigger.getAttribute('data-prj-open'), 10), trigger);
+    });
+  }
+  if (container) {
+    container.addEventListener('error', (e) => {
+      const t = e.target && e.target.tagName === 'IMG' && e.target.closest('.prj-thumb');
+      if (t) { t.classList.add('prj-thumb-empty'); t.textContent = 'No preview'; }
+    }, true);
+  }
+  const modal = document.getElementById('prjModal');
+  const closeBtn = document.getElementById('prjModalClose');
+  if (closeBtn) closeBtn.addEventListener('click', closeProject);
+  if (modal) {
+    modal.addEventListener('mousedown', (e) => { if (e.target === modal) closeProject(); });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (!modal || modal.hidden) return;
+    if (e.key === 'Escape' && !document.querySelector('.zoomed')) { closeProject(); return; }
+    if (e.key === 'Tab') {
+      const f = Array.from(modal.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+        .filter(el => !el.disabled && el.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+})();
 
 function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, prevBtnId, nextBtnId, zoomBtnId, zoomWrapperId, projectId) {
   let currentMediaIndex = thumbsArr[0].type === 'video' ? 0 : 0;
   let currentRotation = 0;
-  const mainMediaEl = document.getElementById(mainImgId);
   const thumbElems = document.querySelectorAll(`#${thumbsId} .group`);
   const rotateLeftBtn = document.getElementById(prevBtnId);
   const rotateRightBtn = document.getElementById(nextBtnId);
@@ -1162,7 +1287,7 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
     zoomWrapper.innerHTML = `
       ${
         activeThumb.type === 'video'
-          ? `<video id="${mainImgId}" src="${activeThumb.src}" poster="${activeThumb.poster || ''}" controls class="w-full h-[380px] object-contain rounded-xl border border-[#2563EB] bg-black transition-transform duration-300" style="transform: rotate(0deg); box-shadow:0 0 0 3px #facc15;">
+          ? `<video id="${mainImgId}" src="${activeThumb.src}" poster="${activeThumb.poster || ''}" controls class="w-full h-[380px] object-contain rounded-xl border border-gray-300 bg-black transition-transform duration-300" style="transform: rotate(0deg);">
               Sorry, your browser doesn't support embedded videos.
             </video>`
           : `<img id="${mainImgId}" src="${activeThumb.src || 'assets/img/placeholder.png'}" alt="${cs.title}" loading="lazy" class="w-full h-[380px] object-contain rounded-xl border border-gray-300 bg-white transition-transform duration-300" style="transform: rotate(${currentRotation}deg);" />`
@@ -1183,17 +1308,18 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
   };
 
   downloadImgBtn.onclick = () => {
-    downloadImgBtn.innerHTML = '<i class="fas fa-spinner animate-spin"></i>';
+    const imgLabel = downloadImgBtn.textContent;
+    downloadImgBtn.textContent = 'Saving...';
     downloadImgBtn.disabled = true;
     const activeThumb = thumbsArr[currentMediaIndex];
     if (activeThumb.type === 'video') {
       downloadVideo(activeThumb.src, `${cs.title}_${serial}_video`).finally(() => {
-        downloadImgBtn.innerHTML = '<i class="fas fa-download"></i>';
+        downloadImgBtn.textContent = imgLabel;
         downloadImgBtn.disabled = false;
       });
     } else {
       downloadImage(activeThumb.src, `${cs.title}_${serial}_image_${currentMediaIndex + 1 - (cs.video ? 1 : 0)}`).finally(() => {
-        downloadImgBtn.innerHTML = '<i class="fas fa-download"></i>';
+        downloadImgBtn.textContent = imgLabel;
         downloadImgBtn.disabled = false;
       });
     }
@@ -1206,7 +1332,7 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
     if (cs.projectLink && /^https?:\/\//i.test(cs.projectLink)) {
       window.location.assign(await resolveLatestInstaller(cs.projectLink));
     } else {
-      alert('🚫 Project download link has expired. Please contact dericBI for access to the full project files.\n\n📧 Email: dericmarangu@gmail.com\n📱 WhatsApp: +254791360805');
+      alert('Project download link has expired. Please contact dericBI for access to the full project files.\n\nEmail: dericmarangu@gmail.com\nWhatsApp: +254791360805');
     }
     setTimeout(() => {
       loading.style.display = 'none';
@@ -1246,7 +1372,7 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
         e.stopPropagation();
         e.preventDefault();
         
-        downloadBtn.innerHTML = '<i class="fas fa-spinner animate-spin text-[8px]"></i>';
+        downloadBtn.textContent = '...';
         downloadBtn.disabled = true;
         
         const type = downloadBtn.getAttribute('data-media-type');
@@ -1254,12 +1380,12 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
         
         if (type === 'video') {
           downloadVideo(src, `${cs.title}_${serial}_video`).finally(() => {
-            downloadBtn.innerHTML = '<i class="fas fa-download text-[8px]"></i>';
+            downloadBtn.textContent = 'Save';
             downloadBtn.disabled = false;
           });
         } else {
           downloadImage(src, `${cs.title}_${serial}_image_${i + 1 - (cs.video ? 1 : 0)}`).finally(() => {
-            downloadBtn.innerHTML = '<i class="fas fa-download text-[8px]"></i>';
+            downloadBtn.textContent = 'Save';
             downloadBtn.disabled = false;
           });
         }
@@ -1293,14 +1419,12 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
         zoomWrapper.innerHTML = `
           ${
             activeThumb.type === 'video'
-              ? `<video src="${activeThumb.src}" poster="${activeThumb.poster || ''}" controls autoplay class="w-full h-[80vh] object-contain rounded-xl border-4 border-[#facc15] bg-black" style="max-width:90vw;">
+              ? `<video src="${activeThumb.src}" poster="${activeThumb.poster || ''}" controls autoplay class="w-full h-[80vh] object-contain rounded-xl border-4 border-white bg-black" style="max-width:90vw;">
                   Sorry, your browser doesn't support embedded videos.
                 </video>`
               : `<img src="${activeThumb.src}" alt="Zoomed Image" loading="lazy" class="w-full h-[80vh] object-contain rounded-xl border-4 border-[#49A078] bg-white" style="max-width:90vw; transform: rotate(${currentRotation}deg);" />`
           }
-          <button aria-label="Close zoomed image" id="close-zoom-${index}" class="zoom-close-btn">
-            <i class="fas fa-times"></i>
-          </button>
+          <button type="button" aria-label="Close zoomed image" id="close-zoom-${index}" class="zoom-close-btn">Close</button>
         `;
         
         // If it's a video in zoom mode, pause all other videos
@@ -1342,7 +1466,8 @@ function setupProjectInteractions(index, cs, thumbsArr, mainImgId, thumbsId, pre
 
     const closeZoom = () => {
       zoomWrapper.classList.remove('zoomed');
-      document.body.style.overflow = '';
+      const pm = document.getElementById('prjModal');
+      document.body.style.overflow = (pm && !pm.hidden) ? 'hidden' : '';
       zoomWrapper.onclick = null;
       zoomWrapper.ontouchend = null;
       document.removeEventListener('keydown', escHandler);
@@ -1406,7 +1531,7 @@ function tryLoadFromCache() {
         const parsedCache = JSON.parse(cachedData);
         allProjects = parsedCache;
         filteredProjects = parsedCache;
-        console.log('📦 Loaded from cache:', allProjects.length, 'projects');
+        console.log('Loaded from cache:', allProjects.length, 'projects');
         
         // Render cached data immediately
         const container = document.getElementById('case-container');
@@ -1416,8 +1541,8 @@ function tryLoadFromCache() {
           
           // Show cache indicator
           container.insertAdjacentHTML('afterbegin', `
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4 text-sm text-blue-800">
-              <i class="fas fa-bolt mr-2"></i>Showing cached content - Loading latest updates...
+            <div class="prj-span prj-notice bg-blue-50">
+              Showing cached content - Loading latest updates...
             </div>
           `);
           
@@ -1446,7 +1571,7 @@ function pauseAllVideosExcept(currentVideo) {
     if (video !== currentVideo && !video.paused) {
       video.pause();
       pausedCount++;
-      console.log('⏸️ Paused video:', video.src);
+      console.log('Paused video:', video.src);
       
       // Visual feedback: briefly highlight the video that was paused
       const videoContainer = video.closest('.w-full');
@@ -1461,7 +1586,7 @@ function pauseAllVideosExcept(currentVideo) {
   });
   
   if (pausedCount > 0) {
-    console.log(`✅ Paused ${pausedCount} video(s) to play the selected one`);
+    console.log(`Paused ${pausedCount} video(s) to play the selected one`);
   }
 }
 
@@ -1492,15 +1617,14 @@ const loadProjects = async (retryCount = 0, isBackgroundUpdate = false) => {
   // Show loading state (skip if background update)
   if (!isBackgroundUpdate) {
     container.innerHTML = `
-      <div class="text-center py-12">
-        <div class="animate-spin rounded-full h-16 w-16 border-4 border-[#49A078] border-t-transparent mx-auto mb-4"></div>
-        <h3 class="text-xl font-semibold text-gray-600 mb-2">Loading Projects...</h3>
-        <p class="text-gray-500" id="load-status">Connecting to server...</p>
-        <div class="mt-4 w-full max-w-md mx-auto">
-          <div class="bg-gray-200 rounded-full h-2">
-            <div id="load-progress" class="bg-[#49A078] h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+      <div class="prj-span prj-empty">
+        <h3>Loading Projects...</h3>
+        <p id="load-status">Connecting to server...</p>
+        <div class="prj-load">
+          <div style="background:#e5e7eb;border-radius:999px;height:6px">
+            <div id="load-progress" style="width:0%;height:6px;border-radius:999px;background:#2f7d5b;transition:width .3s"></div>
           </div>
-          <p class="text-xs text-gray-400 mt-2" id="load-timer">0s</p>
+          <p id="load-timer" style="font-size:.75rem;margin-top:8px">0s</p>
         </div>
       </div>
     `;
@@ -1536,7 +1660,7 @@ const loadProjects = async (retryCount = 0, isBackgroundUpdate = false) => {
     try {
       localStorage.setItem('dericbi-projects-cache', JSON.stringify(data));
       localStorage.setItem('dericbi-projects-cache-time', Date.now().toString());
-      console.log('💾 Saved to cache');
+      console.log('Saved to cache');
     } catch (e) {
       console.warn('Cache save failed:', e);
     }
@@ -1559,10 +1683,10 @@ const loadProjects = async (retryCount = 0, isBackgroundUpdate = false) => {
     if (isBackgroundUpdate) {
       const cacheNotice = container.querySelector('.bg-blue-50');
       if (cacheNotice) {
-        cacheNotice.innerHTML = '<i class="fas fa-check-circle mr-2 text-green-600"></i>Updated to latest version';
+        cacheNotice.innerHTML = 'Updated to latest version';
         setTimeout(() => cacheNotice.remove(), 3000);
       }
-      console.log('🔄 Background update complete');
+      console.log('Background update complete');
       return;
     }
     
@@ -1577,7 +1701,7 @@ const loadProjects = async (retryCount = 0, isBackgroundUpdate = false) => {
       handleDeepLink();
     }, 0);
     
-    console.log(`✅ Successfully loaded ${allProjects.length} projects in ${loadTime.toFixed(0)}ms`);
+    console.log(`Successfully loaded ${allProjects.length} projects in ${loadTime.toFixed(0)}ms`);
     
   } catch (error) {
     console.error('Error loading projects:', error);
@@ -1594,11 +1718,9 @@ const loadProjects = async (retryCount = 0, isBackgroundUpdate = false) => {
       console.log(`Retrying... (Attempt ${retryCount + 1}/3) in ${delay/1000}s`);
       
       container.innerHTML = `
-        <div class="text-center py-12">
-          <i class="fas fa-wifi text-yellow-500 text-4xl mb-4"></i>
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Slow Connection Detected</h3>
-          <p class="text-gray-600 mb-4">Retrying... (Attempt ${retryCount + 1}/3)</p>
-          <div class="animate-spin rounded-full h-8 w-8 border-2 border-[#49A078] border-t-transparent mx-auto"></div>
+        <div class="prj-span prj-empty">
+          <h3>Slow Connection Detected</h3>
+          <p>Retrying... (Attempt ${retryCount + 1}/3)</p>
         </div>
       `;
       
@@ -1606,16 +1728,13 @@ const loadProjects = async (retryCount = 0, isBackgroundUpdate = false) => {
     } else {
       // Show error after all retries
       container.innerHTML = `
-        <div class="text-center py-12">
-          <i class="fas fa-exclamation-triangle text-red-500 text-4xl mb-4"></i>
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Failed to Load Projects</h3>
-          <p class="text-gray-600 mb-2">We're having trouble loading the projects.</p>
-          <p class="text-sm text-gray-500 mb-4">This might be due to a slow or unstable connection.</p>
-          <button onclick="location.reload()" class="bg-[#49A078] hover:bg-[#3e8865] text-white px-6 py-3 rounded-lg font-semibold transition">
-            <i class="fas fa-redo mr-2"></i>Reload Page
-          </button>
-          <p class="text-xs text-gray-400 mt-4">Error: ${error.message}</p>
-          <p class="text-sm text-gray-500 mt-2">If problem persists, contact: <a href="tel:+254791360805" class="text-[#49A078] font-semibold">+254791360805</a></p>
+        <div class="prj-span prj-empty">
+          <h3>Failed to Load Projects</h3>
+          <p>We're having trouble loading the projects.</p>
+          <p style="font-size:.85rem">This might be due to a slow or unstable connection.</p>
+          <button onclick="location.reload()" class="ui-btn ui-btn-primary ui-btn-sm">Reload Page</button>
+          <p style="font-size:.75rem;margin-top:12px">Error: ${error.message}</p>
+          <p style="font-size:.85rem;margin-top:6px">If problem persists, contact: <a href="tel:+254791360805" class="text-[#49A078] font-semibold">+254791360805</a></p>
         </div>
       `;
     }
@@ -1651,6 +1770,8 @@ function updateProjectCounts() {
   Object.keys(counts).forEach(tool => {
     const countElement = document.getElementById(`count-${tool}`);
     if (countElement) countElement.textContent = `(${counts[tool]})`;
+    const btn = document.getElementById(`filter-${tool}`);
+    if (btn) btn.hidden = (tool !== 'all' && counts[tool] === 0 && !btn.classList.contains('active'));
   });
 }
 
@@ -1712,7 +1833,7 @@ document.getElementById('searchInput').addEventListener('input', debounce(functi
   resultsCount.textContent = `Found ${filteredProjects.length} project${filteredProjects.length !== 1 ? 's' : ''}`;
   const endTime = performance.now();
   const duration = ((endTime - startTime) / 1000).toFixed(2);
-  loadTime.innerHTML = `<i class="fas fa-clock mr-1"></i>${duration}s`;
+  loadTime.innerHTML = `${duration}s`;
   progressBar.style.width = '100%';
   renderProjects(filteredProjects, document.getElementById('case-container'));
   setTimeout(() => {
@@ -1746,7 +1867,7 @@ function downloadVideo(url, filename) {
   // Show loading toast
   const loadingToast = document.createElement('div');
   loadingToast.className = 'fixed bottom-4 right-4 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fade-in';
-  loadingToast.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Preparing video download...';
+  loadingToast.innerHTML = 'Preparing video download...';
   document.body.appendChild(loadingToast);
   
   // Use fetch with streaming for large files
@@ -1775,7 +1896,7 @@ function downloadVideo(url, filename) {
               // Update progress
               if (total) {
                 const percent = Math.round((loaded / total) * 100);
-                loadingToast.innerHTML = `<i class="fas fa-download mr-2"></i>Downloading... ${percent}%`;
+                loadingToast.innerHTML = `Downloading... ${percent}%`;
               }
               
               controller.enqueue(value);
@@ -1804,7 +1925,7 @@ function downloadVideo(url, filename) {
       
       // Show success
       loadingToast.className = 'fixed bottom-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
-      loadingToast.innerHTML = '<i class="fas fa-check mr-2"></i>Download complete!';
+      loadingToast.innerHTML = 'Download complete!';
       
       setTimeout(() => {
         loadingToast.style.transition = 'opacity 0.3s';
@@ -1819,7 +1940,7 @@ function downloadVideo(url, filename) {
       
       // Show error
       loadingToast.className = 'fixed bottom-4 right-4 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
-      loadingToast.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Download failed. <a href="' + url + '" download class="underline ml-2">Try direct link</a>';
+      loadingToast.innerHTML = 'Download failed. <a href="' + url + '" download class="underline ml-2">Try direct link</a>';
       
       setTimeout(() => {
         loadingToast.style.transition = 'opacity 0.3s';
@@ -1847,16 +1968,11 @@ function handleDeepLink() {
   if (hash && hash.startsWith('#project-')) {
     const projectId = hash.substring(1);
     setTimeout(() => {
-      const projectElement = document.getElementById(projectId);
+      const projectElement = document.getElementById(projectId) || document.getElementById('project-' + projectId);
       if (projectElement) {
         projectElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        projectElement.style.transition = 'all 0.5s ease';
-        projectElement.style.border = '3px solid #49A078';
-        projectElement.style.boxShadow = '0 0 20px rgba(73, 160, 120, 0.3)';
-        setTimeout(() => {
-          projectElement.style.border = '1px solid #e5e7eb';
-          projectElement.style.boxShadow = '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)';
-        }, 3000);
+        projectElement.classList.add('prj-flash');
+        setTimeout(() => projectElement.classList.remove('prj-flash'), 3000);
       }
     }, 1000);
   }
@@ -1881,33 +1997,28 @@ function filterSpecificProject(identifier) {
     });
     if (matchingProjects.length > 0) {
       filteredProjects = matchingProjects;
+      renderProjects(filteredProjects, container);
       if (matchingProjects.length === 1) {
-        searchInput.value = `Project: ${matchingProjects[0].title}`;
-        container.innerHTML = '';
-        const singleProjectCard = document.createElement('div');
-        singleProjectCard.className = 'max-w-4xl mx-auto';
-        singleProjectCard.innerHTML = `
-          <div class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white p-4 rounded-t-xl">
-            <div class="flex items-center justify-between">
-              <div>
-                <h2 class="text-2xl font-bold">📌 Direct Project Access</h2>
-                <p class="text-green-100">Showing: ${matchingProjects[0].title}</p>
-              </div>
-              <button onclick="showAllProjects()" class="bg-white text-[#49A078] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
-                <i class="fas fa-grid-3x3 mr-2"></i>View All Projects
-              </button>
+        searchInput.value = `Project: ${clean(matchingProjects[0].title)}`;
+        const panel = document.createElement('div');
+        panel.className = 'prj-span ui-card prj-direct';
+        panel.innerHTML = `
+          <div class="prj-direct-row">
+            <div>
+              <h2>Direct Project Access</h2>
+              <p>Showing: ${esc(clean(matchingProjects[0].title))}</p>
             </div>
+            <button onclick="showAllProjects()" class="ui-btn ui-btn-outline ui-btn-sm">View All Projects</button>
           </div>
         `;
-        container.appendChild(singleProjectCard);
-        renderProjects(filteredProjects, container);
+        container.insertBefore(panel, container.firstChild);
       }
     } else {
       container.innerHTML = `
-        <div class="text-center py-12">
-          <i class="fas fa-search text-gray-400 text-4xl mb-4"></i>
-          <h3 class="text-xl font-semibold text-gray-600 mb-2">Project not found</h3>
-          <p class="text-gray-500">No project matches the specified ID. Try another search.</p>
+        <div class="prj-span prj-empty">
+          <h3>Project not found</h3>
+          <p>No project matches the specified ID. Try another search.</p>
+          <button type="button" class="ui-btn ui-btn-primary ui-btn-sm" onclick="showAllProjects()">Show all projects</button>
         </div>
       `;
     }
@@ -1943,11 +2054,6 @@ async function shareProject(projectId, title) {
   bt.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
 })();
 
-// Newsletter toggle
-function toggleNewsletter() {
-  const newsletter = document.getElementById('newsletterSignup');
-  newsletter.classList.toggle('hidden');
-}
 </script>
 
 <!-- Footer -->
@@ -1976,20 +2082,6 @@ function toggleNewsletter() {
         <a href="terms.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">T&C's</a>
         <a href="free-report/?src=footer" class="footer-link ui-foot-cta ui-foot-primary">Free Report</a>
         <a href="https://dericbi-analytics.onrender.com" class="footer-link ui-foot-cta ui-foot-alt">Live Demo</a>
-        <button onclick="toggleNewsletter()" class="footer-link text-xs bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">
-          <i class="fas fa-envelope mr-1"></i>Newsletter
-        </button>
-      </div>
-      <!-- Hidden Newsletter Signup -->
-      <div id="newsletterSignup" class="hidden mt-2 w-full max-w-xs bg-white rounded-lg p-2 shadow-md border border-green-200">
-        <div class="flex text-xs">
-          <input type="email" placeholder="Your email..." 
-            class="flex-1 px-2 py-1 text-xs border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-[#49A078] shadow-inner">
-          <button aria-label="Send" class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white px-3 py-1 rounded-r text-xs hover:from-[#3e8865] hover:to-[#357255] transition shadow-sm hover:shadow">
-            <i class="fas fa-paper-plane"></i>
-          </button>
-        </div>
-        <p class="text-xs text-gray-600 mt-1 font-medium">Monthly insights & tips</p>
       </div>
     </div>
     <!-- Social + Founder -->
@@ -2033,10 +2125,10 @@ function toggleNewsletter() {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('sw.js')
         .then(registration => {
-          console.log('✅ Service Worker registered:', registration.scope);
+          console.log('Service Worker registered:', registration.scope);
         })
         .catch(error => {
-          console.log('❌ Service Worker registration failed:', error);
+          console.log('Service Worker registration failed:', error);
         });
     });
   }
@@ -2100,7 +2192,7 @@ function toggleNewsletter() {
       setTimeout(() => {
         const perfData = performance.getEntriesByType('navigation')[0];
         if (perfData) {
-          console.log('📊 Page Load Performance:');
+          console.log('Page Load Performance:');
           console.log(`  DOM Content Loaded: ${(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart).toFixed(2)}ms`);
           console.log(`  Total Load Time: ${(perfData.loadEventEnd - perfData.loadEventStart).toFixed(2)}ms`);
           console.log(`  DOM Interactive: ${(perfData.domInteractive - perfData.fetchStart).toFixed(2)}ms`);

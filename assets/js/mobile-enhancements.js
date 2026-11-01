@@ -38,15 +38,6 @@
     });
   }
 
-  // 3. Smooth page load animation
-  function smoothPageLoad() {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.3s ease-in';
-    
-    window.addEventListener('load', function() {
-      document.body.style.opacity = '1';
-    });
-  }
 
   // 4. Force minimal UI on iOS
   function enableFullscreenMode() {

@@ -300,11 +300,12 @@ a:not(.group):not(.nav-link):not(.footer-link):hover {
   <!-- ✅ dericBI Chatbot -->
  <link rel="stylesheet" href="assets/css/social_links.css?v=885951dd">
   <script defer src="assets/js/config.js?v=a0a11940"></script>
-  <script defer src="assets/js/chatbot.js?v=bf03de00"></script>
+  <script defer src="assets/js/chatbot.js?v=10a90be5"></script>
   <script defer src="assets/js/social_links.js?v=6f1c5397"></script>
   <script defer src="assets/js/email-link.js?v=f9f40881"></script>
 
-  <link rel="stylesheet" href="assets/css/tailwind.css?v=cc955cb2">
+  <link rel="stylesheet" href="assets/css/tailwind.css?v=e560a4da">
+  <link rel="stylesheet" href="assets/css/ui.css?v=24ea55ac">
 </head>
 
 <body class="bg-white text-gray-800 flex flex-col min-h-screen overflow-x-hidden w-full max-w-[100vw]">
@@ -343,6 +344,7 @@ a:not(.group):not(.nav-link):not(.footer-link):hover {
       <li><a href="services.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Services</a></li>
       <li><a href="my-projects.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Projects</a></li>
       <li><a href="contact.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Contact</a></li>
+      <li><a href="free-report/?src=nav" class="nav-link ui-nav-cta">Free Report</a></li>
       <!--<li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About Us</a></li>-->
       <li><a href="terms.html" class="nav-link font-bold px-3 py-2 rounded-md bg-[#3D8069]/50 shadow-inner text-yellow-300 border-b-2 border-yellow-300">T&C's</a></li>
     </ul>
@@ -358,6 +360,7 @@ a:not(.group):not(.nav-link):not(.footer-link):hover {
           <a href="services.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Services</a>
           <a href="my-projects.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Projects</a>
           <a href="contact.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Contact</a>
+          <a href="free-report/?src=nav" class="nav-link ui-nav-cta block py-2 px-3 text-xs rounded-md" style="margin-top:2px;text-align:center">Free Report</a>
           <a href="about.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367609]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">About</a>
           <a href="terms.html" class="nav-link block py-2 px-3 transition-all bg-[#367659]/60 font-semibold text-yellow-300 text-xs rounded-md border border-yellow-400/50 shadow-sm">Terms</a>
         </div>
@@ -412,46 +415,32 @@ document.addEventListener('click', (e) => {
 <div class="h-14 xs:h-16 sm:h-20"></div>
 
 <!-- ✅ Main Content -->
-<section class="relative pt-4 pb-2 px-1 w-full m-0 bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] flex-1 w-full overflow-hidden">
-  <!-- Decorative SVG Top Shape -->
-  <svg class="absolute top-0 left-0 w-full h-16 md:h-32 pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#49A078" fill-opacity="0.08" d="M0,32L80,69.3C160,107,320,181,480,176C640,171,800,85,960,69.3C1120,53,1280,107,1360,133.3L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
-  <!-- Decorative SVG Bottom Shape -->
-  <svg class="absolute bottom-0 left-0 w-full h-16 md:h-32 pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#2563EB" fill-opacity="0.07" d="M0,224L80,213.3C160,203,320,181,480,154.7C640,128,800,96,960,117.3C1120,139,1280,213,1360,245.3L1440,288L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
-  <!-- Document-themed SVG (left) -->
-  <div class="absolute left-0 top-1/2 -translate-y-1/2 hidden md:block z-0">
-    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="30" y="30" width="60" height="80" rx="12" fill="#2563EB" fill-opacity="0.13"/>
-      <rect x="40" y="45" width="40" height="8" rx="4" fill="#49A078" fill-opacity="0.18"/>
-      <rect x="40" y="60" width="40" height="8" rx="4" fill="#facc15" fill-opacity="0.15"/>
-      <text x="60" y="105" text-anchor="middle" fill="#2563EB" font-size="18" font-family="Arial" font-weight="bold">📄</text>
-    </svg>
-  </div>
-  <div class="w-full bg-white rounded-lg shadow-md p-1">
-    <div class="w-full px-1">
-  <h1 class="text-3xl md:text-4xl font-bold text-[#49A078] mb-6 text-center">T&C's</h1>
-    <p class="text-gray-700 mb-6 text-center italic">Last Updated: October 2026</p>
-
-  <div class="space-y-6 text-gray-700 leading-relaxed text-base md:text-lg">
-      <p>Welcome to <strong><span>deric</span><span class="text-[#facc15]">BI</span></strong>. By using our services, you agree to the following terms and conditions. Please read them carefully before engaging our services.</p>
-
-      <h2 class="font-semibold text-xl text-[#49A078]">1. Service Scope</h2>
-      <p>We provide data cleaning, Excel structuring, and business analytics services. Custom services will be agreed upon before work begins.</p>
-
-      <h2 class="font-semibold text-xl text-[#49A078]">2. Accuracy of Data</h2>
-      <p>Clients are responsible for the accuracy of data submitted. <span>deric</span><span class="text-[#facc15]">BI</span> shall not be held liable for results based on incomplete or incorrect information.</p>
-
-      <h2 class="font-semibold text-xl text-[#49A078]">3. Payment & Refund Policy</h2>
-      <p>Payment terms will be communicated before service delivery. Due to the nature of our services, refunds are not guaranteed after work has been delivered. If a standard service is not delivered within 48 hours of us receiving your complete data and agreed payment, you may request a refund.</p>
-
-      <h2 class="font-semibold text-xl text-[#49A078]">4. Confidentiality</h2>
-      <p>We respect client privacy. Your data will not be shared with third parties without your consent, except when required by law.</p>
-
-      <h2 class="font-semibold text-xl text-[#49A078]">5. Limitation of Liability</h2>
-      <p><span>deric</span><span class="text-[#facc15]">BI</span> is not liable for any business loss resulting from the use of our services. All insights provided are recommendations and do not guarantee financial outcomes.</p>
-
-      <h2 class="font-semibold text-xl text-[#49A078]">6. Updates to Terms</h2>
-      <p>We may update these T&C's from time to time. Continued use of our services constitutes acceptance of changes.</p>
+<section class="ui-page">
+  <div class="ui-wrap" style="max-width:860px">
+    <div class="ui-page-head">
+      <h1>T&amp;C's</h1>
+      <p>Last Updated: October 2026</p>
     </div>
+    <div class="ui-prose">
+      <p style="margin:0 0 6px">Welcome to <strong><span>deric</span><span class="text-[#facc15]">BI</span></strong>. By using our services, you agree to the following terms and conditions. Please read them carefully before engaging our services.</p>
+
+      <h2>1. Service Scope</h2>
+      <p style="margin:0 0 6px">We provide data cleaning, Excel structuring, and business analytics services. Custom services will be agreed upon before work begins.</p>
+
+      <h2>2. Accuracy of Data</h2>
+      <p style="margin:0 0 6px">Clients are responsible for the accuracy of data submitted. <span>deric</span><span class="text-[#facc15]">BI</span> shall not be held liable for results based on incomplete or incorrect information.</p>
+
+      <h2>3. Payment & Refund Policy</h2>
+      <p style="margin:0 0 6px">Payment terms will be communicated before service delivery. Due to the nature of our services, refunds are not guaranteed after work has been delivered. If a standard service is not delivered within 48 hours of us receiving your complete data and agreed payment, you may request a refund.</p>
+
+      <h2>4. Confidentiality</h2>
+      <p style="margin:0 0 6px">We respect client privacy. Your data will not be shared with third parties without your consent, except when required by law.</p>
+
+      <h2>5. Limitation of Liability</h2>
+      <p style="margin:0 0 6px"><span>deric</span><span class="text-[#facc15]">BI</span> is not liable for any business loss resulting from the use of our services. All insights provided are recommendations and do not guarantee financial outcomes.</p>
+
+      <h2>6. Updates to Terms</h2>
+      <p style="margin:0 0 6px">We may update these T&C's from time to time. Continued use of our services constitutes acceptance of changes.</p>
     </div>
   </div>
 </section>
@@ -464,17 +453,15 @@ document.addEventListener('click', (e) => {
       <!-- Quick Actions -->
       <div class="flex flex-wrap items-center gap-2">
         <button onclick="toggleProjectTerms()" 
-          class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded-lg shadow font-semibold text-xs transition group">
-          <i class="fas fa-rocket mr-1"></i>Start Project
-          <span class="hidden group-hover:inline ml-1 text-[#facc15]">✓</span>
-        </button>
+          class="ui-btn ui-btn-primary ui-btn-sm">
+          Start Project
+          </button>
         <button onclick="toggleDownloadTerms()" 
-          class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-3 py-2 rounded-lg shadow font-semibold text-xs transition group">
-          <i class="fas fa-download mr-1"></i>Download Files
-          <span class="hidden group-hover:inline ml-1 text-[#facc15]">📁</span>
-        </button>
+          class="ui-btn ui-btn-outline ui-btn-sm">
+          Download Files
+          </button>
         <div class="hidden sm:flex items-center text-xs text-gray-500">
-          <i class="fas fa-gavel text-gray-600 mr-1"></i>Legal Compliance
+          Legal Compliance
         </div>
       </div>
 
@@ -482,12 +469,12 @@ document.addEventListener('click', (e) => {
       <div id="projectSectionTerms" class="hidden w-full sm:w-auto rounded-xl shadow-md border border-gray-200 bg-white p-4 mb-4">
         <div class="flex gap-2 items-center">
           <a href="https://forms.gle/krViHXVaJKP2JARZ7"
-            class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded-lg shadow font-semibold text-xs transition">
-            <i class="fas fa-upload mr-1"></i>I Have Data
+            class="ui-btn ui-btn-primary ui-btn-sm">
+            I Have Data
           </a>
           <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7"
-            class="bg-[#f59e0b] hover:bg-[#d97706] text-white px-3 py-2 rounded-lg shadow font-semibold text-xs transition">
-            <i class="fas fa-chart-line mr-1"></i>I Need Setup
+            class="ui-btn ui-btn-outline ui-btn-sm">
+            I Need Setup
           </a>
         </div>
       </div>
@@ -498,9 +485,7 @@ document.addEventListener('click', (e) => {
           <input id="fileNameInputTerms" type="text" placeholder="File name..." 
             class="px-3 py-2 rounded text-xs border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#2563EB] w-full xs:w-32 min-w-0">
           <button aria-label="Download file" onclick="downloadFileTerms()" 
-            class="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs font-semibold transition">
-            <i class="fas fa-download"></i>
-          </button>
+            class="ui-btn ui-btn-primary ui-btn-sm">Get</button>
         </div>
         <p id="errorMessageTerms" class="text-red-600 text-xs mt-1 hidden">File not found. Contact: +254791360805</p>
       </div>
@@ -600,20 +585,7 @@ document.getElementById('fileNameInputTerms')?.addEventListener('keypress', func
       <div class="flex flex-wrap justify-center gap-2 xs:gap-3 sm:gap-4 mt-1">
         <a href="about.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">About Us</a>
         <a href="terms.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">T&C's</a>
-        <button onclick="toggleNewsletter()" class="footer-link text-xs bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">
-          <i class="fas fa-envelope mr-1"></i>Newsletter
-        </button>
-      </div>
-      <!-- Hidden Newsletter Signup -->
-      <div id="newsletterSignup" class="hidden mt-2 w-full max-w-xs bg-white rounded-lg p-2 shadow-md border border-green-200">
-        <div class="flex text-xs">
-          <input type="email" placeholder="Your email..." 
-            class="flex-1 px-2 py-1 text-xs border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-[#49A078] shadow-inner">
-          <button aria-label="Send" class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white px-3 py-1 rounded-r text-xs hover:from-[#3e8865] hover:to-[#357255] transition shadow-sm hover:shadow">
-            <i class="fas fa-paper-plane"></i>
-          </button>
-        </div>
-        <p class="text-xs text-gray-600 mt-1 font-medium">Monthly insights & tips</p>
+        <a href="free-report/?src=footer" class="footer-link ui-foot-cta ui-foot-primary">Free Report</a>
       </div>
     </div>
 
@@ -659,13 +631,6 @@ document.getElementById('fileNameInputTerms')?.addEventListener('keypress', func
   text-shadow: 0 0 4px rgba(250, 204, 21, 0.5); /* Subtle glow */
 }
 </style>
-
-<script>
-function toggleNewsletter() {
-  const newsletterSignup = document.getElementById('newsletterSignup');
-  newsletterSignup.classList.toggle('hidden');
-}
-</script>
 </footer>
 
 <!-- Back to Top Button -->

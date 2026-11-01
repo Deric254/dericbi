@@ -38,7 +38,6 @@
   .fr-btn:hover{background:#3D8069;color:#fff}
   .fr-btn.fr-alt,.fr-btn.fr-alt:hover{background:#fff;color:#3D8069;border:1px solid #49A078}
   .fr-btn.fr-alt:hover{background:#f0fdf6}
-  .fr-btn.fr-gold,.fr-btn.fr-gold:hover{background:#facc15;color:#1f2937}
   .fr-btn[disabled]{opacity:.55;cursor:not-allowed}
   .fr-btn:focus-visible,.fr-box select:focus-visible,.fr-box input:focus-visible,.fr-box textarea:focus-visible,summary:focus-visible{outline:3px solid #facc15;outline-offset:2px}
   .fr-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
@@ -287,20 +286,6 @@ document.addEventListener('click', (e) => {
       <div class="flex flex-wrap justify-center gap-2 xs:gap-3 sm:gap-4 mt-1">
         <a href="../about.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">About Us</a>
         <a href="../terms.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">T&C's</a>
-        <button onclick="toggleNewsletter()" class="footer-link text-xs bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">
-          Newsletter
-        </button>
-      </div>
-      <!-- Hidden Newsletter Signup -->
-      <div id="newsletterSignup" class="hidden mt-2 w-full max-w-xs bg-white rounded-lg p-2 shadow-md border border-green-200">
-        <div class="flex text-xs">
-          <input type="email" placeholder="Your email..." 
-            class="flex-1 px-2 py-1 text-xs border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-[#49A078] shadow-inner">
-          <button aria-label="Send" class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white px-3 py-1 rounded-r text-xs hover:from-[#3e8865] hover:to-[#357255] transition shadow-sm hover:shadow">
-            
-          </button>
-        </div>
-        <p class="text-xs text-gray-600 mt-1 font-medium">Monthly insights & tips</p>
       </div>
     </div>
 
@@ -346,13 +331,6 @@ document.addEventListener('click', (e) => {
   text-shadow: 0 0 4px rgba(250, 204, 21, 0.5); /* Subtle glow */
 }
 </style>
-
-<script>
-function toggleNewsletter() {
-  const newsletterSignup = document.getElementById('newsletterSignup');
-  newsletterSignup.classList.toggle('hidden');
-}
-</script>
 </footer>
 
 <!-- Back to Top Button -->

@@ -303,10 +303,11 @@ a:not(.group):not(.nav-link):not(.footer-link):hover {
   <!-- ✅ dericBI Chatbot -->
  <link rel="stylesheet" href="assets/css/social_links.css?v=885951dd">
   <script defer src="assets/js/config.js?v=a0a11940"></script>
-  <script defer src="assets/js/chatbot.js?v=bf03de00"></script>
+  <script defer src="assets/js/chatbot.js?v=10a90be5"></script>
   <script defer src="assets/js/social_links.js?v=6f1c5397"></script>
   <script defer src="assets/js/email-link.js?v=f9f40881"></script>
-  <link rel="stylesheet" href="assets/css/tailwind.css?v=cc955cb2">
+  <link rel="stylesheet" href="assets/css/tailwind.css?v=e560a4da">
+  <link rel="stylesheet" href="assets/css/ui.css?v=24ea55ac">
 </head>
 
 <body class="bg-white text-gray-800 flex flex-col min-h-screen overflow-x-hidden w-full max-w-[100vw]">
@@ -348,6 +349,7 @@ a:not(.group):not(.nav-link):not(.footer-link):hover {
       <li><a href="services.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Services</a></li>
       <li><a href="my-projects.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Projects</a></li>
       <li><a href="contact.html" class="nav-link font-bold px-3 py-2 rounded-md bg-[#3D8069]/50 shadow-inner text-yellow-300 border-b-2 border-yellow-300">Contact</a></li>
+      <li><a href="free-report/?src=nav" class="nav-link ui-nav-cta">Free Report</a></li>
       <li><a href="about.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">About</a></li>
       <li><a href="terms.html" class="nav-link hover:bg-[#3D8069]/40 px-3 py-2 rounded-md transition-all">Terms</a></li>
     </ul>
@@ -363,6 +365,7 @@ a:not(.group):not(.nav-link):not(.footer-link):hover {
           <a href="services.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Services</a>
           <a href="my-projects.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Projects</a>
           <a href="contact.html" class="nav-link block py-2 px-3 transition-all bg-[#367659]/60 font-semibold text-yellow-300 text-xs rounded-md border border-yellow-400/50 shadow-sm">Contact</a>
+          <a href="free-report/?src=nav" class="nav-link ui-nav-cta block py-2 px-3 text-xs rounded-md" style="margin-top:2px;text-align:center">Free Report</a>
           <a href="about.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">About</a>
           <a href="terms.html" class="nav-link block py-2 px-3 transition-all hover:bg-[#367659]/50 text-xs rounded-md border border-white/20 hover:border-white/50 shadow-sm">Terms</a>
         </div>
@@ -422,84 +425,71 @@ document.addEventListener('click', (e) => {
 <!-- Spacer for Fixed Navbar -->
 <div class="h-14 xs:h-16 sm:h-20"></div>
 
-  <!-- ✅ About Us Section -->
-  <section class="relative pt-4 pb-2 px-1 w-full m-0 bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] flex-1 w-full overflow-hidden">
-  <div class="w-full px-1">
-  <!-- Decorative SVG Top Shape -->
-  <svg class="absolute top-0 left-0 w-full h-16 md:h-32 pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#49A078" fill-opacity="0.08" d="M0,32L80,69.3C160,107,320,181,480,176C640,171,800,85,960,69.3C1120,53,1280,107,1360,133.3L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
-  <!-- Decorative SVG Bottom Shape -->
-  <svg class="absolute bottom-0 left-0 w-full h-16 md:h-32 pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#2563EB" fill-opacity="0.07" d="M0,224L80,213.3C160,203,320,181,480,154.7C640,128,800,96,960,117.3C1120,139,1280,213,1360,245.3L1440,288L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
-    <!-- User-themed SVG (left) -->
-    <div class="absolute left-0 top-1/2 -translate-y-1/2 hidden md:block z-0">
-      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="60" cy="40" r="30" fill="#49A078" fill-opacity="0.18"/>
-        <rect x="30" y="70" width="60" height="30" rx="15" fill="#2563EB" fill-opacity="0.13"/>
-        <text x="60" y="95" text-anchor="middle" fill="#49A078" font-size="18" font-family="Arial" font-weight="bold">👤</text>
-      </svg>
-    </div>
-   <!-- <h1 class="text-3xl md:text-4xl font-bold text-center text-[#2D3142] mb-6">About Us – The dericBI Story</h1>-->
-
-  <p class="text-lg mb-2 text-gray-700">
-  In a world where giant companies  like <span class="font-semibold">Amazon, Google, and Microsoft</span> dominate by leveraging oceans of <strong>Data,</strong> small businesses are left navigating blind. These tech titans thrive—even when selling similar products—Not because they arent competitors or rivals but because:
-      </p>
-        <ol class="font-bold pl-4 mb-2 list-decimal">
+  <!-- About -->
+  <section class="ui-page">
+    <div class="ui-wrap" style="max-width:860px">
+      <div class="ui-page-head">
+        <h1>About dericBI</h1>
+        <p>Practical business intelligence for small and growing businesses.</p>
+      </div>
+      <div class="ui-prose">
+        <p class="text-lg mb-2 text-gray-700">
+          In a world where giant companies like <span class="font-semibold">Amazon, Google, and Microsoft</span> dominate by leveraging oceans of <strong>Data,</strong> small businesses are left navigating blind. These tech titans thrive, even when selling similar products. Not because they aren't competitors or rivals but because:
+        </p>
+        <ol class="ui-list ui-yes" style="margin:14px 0 14px;font-weight:700;color:#111827">
           <li>They analyze</li>
           <li>They optimize</li>
           <li>They win</li>
-          <li>They don’t guess</li>
+          <li>They don't guess</li>
         </ol>
-        <span class="font-bold">and that's the secret.</span>
-
-  <p class="text-lg mb-2 text-gray-700">
-      But what if even a boutique in Nairobi , hardware in meru, or a local kiosk in Kisumu could have the same edge?
-    </p>
-
-  <p class="text-xl mb-3 font-semibold text-[#49A078] text-center bg-[#f0fdfa] py-2 px-4 rounded-lg shadow-inner">
-      dericBI was built from that belief.
-    </p>
-
-  <p class="text-lg mb-2 text-gray-700">
-      We deliver powerful insights without requiring complex systems or big budgets. Whether you're tracking sales through notes or restocking from memory, dericBI helps transform raw habits into smart decisions.
-    </p>
-  </div>
-  </section>
-
-<!-- ✅ Founder Section -->
-<section class="relative pt-6 pb-8 px-2 xs:px-3 sm:px-4 w-full m-0 bg-gradient-to-br from-[#f0fdfa] via-[#e0f7fa] to-[#d9f99d] overflow-hidden">
-  <!-- Decorative SVG Top Shape -->
-  <svg class="absolute top-0 left-0 w-full h-16 md:h-24 pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#49A078" fill-opacity="0.08" d="M0,32L80,69.3C160,107,320,181,480,176C640,171,800,85,960,69.3C1120,53,1280,107,1360,133.3L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
-  <!-- Decorative SVG Bottom Shape -->
-  <svg class="absolute bottom-0 left-0 w-full h-16 md:h-24 pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#2563EB" fill-opacity="0.07" d="M0,224L80,213.3C160,203,320,181,480,154.7C640,128,800,96,960,117.3C1120,139,1280,213,1360,245.3L1440,288L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
-  
-  <div class="relative z-10 w-full max-w-6xl mx-auto">
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#49A078] mb-6 flex items-center justify-center gap-2">
-      <span class="bg-[#49A078]/10 p-2 rounded-full shadow-inner">👤</span> Meet the Founder – Deric Marangu
-    </h2>
-    
-    <div class="bg-white/90 p-4 md:p-6 rounded-xl shadow-md border border-green-100 flex flex-col md:flex-row items-center md:items-start gap-6">
-      <div class="flex flex-col items-center shrink-0">
-  <img src="assets/img/deric-avatar.webp?v=20251129" 
-        alt="Deric Marangu" 
-        width="160" height="160" 
-        style="object-fit:cover; object-position: center;" 
-        class="w-32 h-32 sm:w-40 sm:h-40 rounded-full shadow-lg hover:shadow-xl transition-all" 
-        decoding="async">
-        <span class="bg-[#49A078] text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-sm mt-3">Founder & CEO</span>
-      </div>
-      
-      <div class="flex-1">
-        <p class="text-lg md:text-xl mb-3 font-semibold text-gray-800"><strong>You're not just using a tool—you're working with a genius in this.</strong></p>
-        <p class="text-base md:text-lg mb-4 text-gray-700 leading-relaxed">
-          A quiet observer with sharp instincts, <strong>Deric Marangu</strong> saw something others missed. Armed with a bachelor's degree in Business Information Technology and a gift for simplifying complex patterns, he noticed small shops suffering while big tech thrived on data which is unfair to SMEs.
+        <p class="font-bold" style="margin:0 0 14px">and that's the secret.</p>
+        <p class="text-lg mb-2 text-gray-700">
+          But what if even a boutique in Nairobi, a hardware shop in Meru, or a local kiosk in Kisumu could have the same edge?
         </p>
-        <blockquote class="italic text-[#49A078] border-l-4 border-[#49A078] pl-5 py-2 mt-2 text-lg md:text-xl bg-green-50/70 rounded-r-lg">
-          "I believe data should be accessible to everyone—not just those with servers and strategy teams. dericBI is my way of making that happen."<br>
-          — <strong>Deric Marangu, Founder & CEO</strong>
-        </blockquote>
+        <p style="margin:18px 0;padding:14px 18px;background:#f0fdf6;border:1px solid #cfe8dc;border-radius:12px;font-weight:700;color:#2f7d5b;text-align:center;font-size:1.15rem">
+          dericBI was built from that belief.
+        </p>
+        <p class="text-lg mb-2 text-gray-700">
+          We deliver powerful insights without requiring complex systems or big budgets. Whether you're tracking sales through notes or restocking from memory, dericBI helps transform raw habits into smart decisions.
+        </p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Founder -->
+  <section class="ui-section" style="background:#fff">
+    <div class="ui-wrap" style="max-width:860px">
+      <div class="ui-head"><h2>Meet the Founder: Deric Marangu</h2></div>
+      <div class="ui-card" style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;padding:28px">
+        <div style="display:flex;flex-direction:column;align-items:center;flex:0 0 auto;margin:0 auto">
+          <img src="assets/img/deric-avatar.webp?v=20251129" alt="Deric Marangu" width="160" height="160" style="object-fit:cover;object-position:center;width:150px;height:150px;border-radius:50%;box-shadow:0 4px 14px rgba(16,24,40,.15)" decoding="async">
+          <span style="margin-top:12px;background:#2f7d5b;color:#fff;font-size:.75rem;font-weight:700;padding:5px 14px;border-radius:999px;letter-spacing:.02em">Founder &amp; CEO</span>
+        </div>
+        <div style="flex:1 1 320px;min-width:0">
+          <p style="font-size:1.2rem;font-weight:700;color:#111827;margin:0 0 10px"><strong>You're not just using a tool. You're working directly with the person who built it.</strong></p>
+          <p style="margin:0 0 14px;color:#374151;line-height:1.7">
+            A quiet observer with sharp instincts, <strong>Deric Marangu</strong> saw something others missed. Armed with a bachelor's degree in Business Information Technology and a gift for simplifying complex patterns, he noticed small shops suffering while big tech thrived on data, which is unfair to SMEs.
+          </p>
+          <blockquote style="margin:0;padding:12px 18px;border-left:4px solid #2f7d5b;background:#f0fdf6;border-radius:0 10px 10px 0;color:#1f2937;line-height:1.6">
+            "I believe data should be accessible to everyone, not just those with servers and strategy teams. dericBI is my way of making that happen."<br>
+            <span style="display:block;margin-top:6px;font-size:.9rem">&mdash; <strong>Deric Marangu, Founder &amp; CEO</strong></span>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to action -->
+  <section class="ui-section" style="padding-top:0;background:#fff">
+    <div class="ui-cta-band">
+      <h2>See what your own numbers say</h2>
+      <p>Upload your sales sheet to the free Business Health Check. It is free, and your file stays on your device.</p>
+      <div class="ui-cta-row">
+        <a href="free-report/?src=about" class="ui-btn ui-btn-primary">Free Business Health Check</a>
+        <a href="https://wa.me/254791360805" class="ui-btn ui-btn-outline">Talk to Deric</a>
+      </div>
+    </div>
+  </section>
 <!-- ✅ Compact Action Bar -->
 <section class="bg-gray-50 py-4 px-4 border-t border-gray-200">
   <div class="container mx-auto max-w-4xl">
@@ -508,17 +498,15 @@ document.addEventListener('click', (e) => {
       <!-- Quick Actions -->
       <div class="flex flex-wrap items-center gap-2">
         <button onclick="toggleProjectAbout()" 
-          class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded-lg shadow font-semibold text-xs transition group">
-          <i class="fas fa-rocket mr-1"></i>Start Project
-          <span class="hidden group-hover:inline ml-1 text-[#facc15]">✓</span>
-        </button>
+          class="ui-btn ui-btn-primary ui-btn-sm">
+          Start Project
+          </button>
         <button onclick="toggleDownloadAbout()" 
-          class="bg-[#2563EB] hover:bg-[#1e40af] text-white px-3 py-2 rounded-lg shadow font-semibold text-xs transition group">
-          <i class="fas fa-download mr-1"></i>Download Files
-          <span class="hidden group-hover:inline ml-1 text-[#facc15]">📁</span>
-        </button>
+          class="ui-btn ui-btn-outline ui-btn-sm">
+          Download Files
+          </button>
         <div class="hidden sm:flex items-center text-xs text-gray-500">
-          <i class="fas fa-handshake text-purple-500 mr-1"></i>Trusted Partner
+          Trusted Partner
         </div>
       </div>
 
@@ -526,12 +514,12 @@ document.addEventListener('click', (e) => {
       <div id="projectSectionAbout" class="hidden w-full sm:w-auto rounded-xl shadow-md border border-gray-200 bg-white p-4 mb-4">
         <div class="flex gap-2 items-center">
           <a href="https://forms.gle/krViHXVaJKP2JARZ7"
-            class="bg-[#49A078] hover:bg-[#3e8865] text-white px-3 py-2 rounded-lg shadow font-semibold text-xs transition">
-            <i class="fas fa-upload mr-1"></i>I Have Data
+            class="ui-btn ui-btn-primary ui-btn-sm">
+            I Have Data
           </a>
           <a href="https://forms.gle/Uzq3L9wtm5yM6KEX7"
-            class="bg-[#f59e0b] hover:bg-[#d97706] text-white px-3 py-2 rounded-lg shadow font-semibold text-xs transition">
-            <i class="fas fa-chart-line mr-1"></i>I Need Setup
+            class="ui-btn ui-btn-outline ui-btn-sm">
+            I Need Setup
           </a>
         </div>
       </div>
@@ -542,9 +530,7 @@ document.addEventListener('click', (e) => {
           <input id="fileNameInputAbout" type="text" placeholder="File name..." 
             class="px-3 py-2 rounded text-xs border border-gray-300 focus:outline-none focus:ring-1 focus:ring-[#2563EB] w-full xs:w-32 min-w-0">
           <button aria-label="Download file" onclick="downloadFileAbout()" 
-            class="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-lg shadow font-semibold text-xs transition">
-            <i class="fas fa-download"></i>
-          </button>
+            class="ui-btn ui-btn-primary ui-btn-sm">Get</button>
         </div>
         <p id="errorMessageAbout" class="text-red-600 text-xs mt-1 hidden">File not found. Contact: +254791360805</p>
       </div>
@@ -647,20 +633,7 @@ document.getElementById('fileNameInputAbout')?.addEventListener('keypress', func
       <div class="flex flex-wrap justify-center gap-2 xs:gap-3 sm:gap-4 mt-1">
         <a href="about.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">About Us</a>
         <a href="terms.html" class="footer-link text-xs xs:text-sm bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">T&C's</a>
-        <button onclick="toggleNewsletter()" class="footer-link text-xs bg-green-50 hover:bg-green-100 px-2 py-1 rounded-md shadow-sm hover:shadow transition-all">
-          <i class="fas fa-envelope mr-1"></i>Newsletter
-        </button>
-      </div>
-      <!-- Hidden Newsletter Signup -->
-      <div id="newsletterSignup" class="hidden mt-2 w-full max-w-xs bg-white rounded-lg p-2 shadow-md border border-green-200">
-        <div class="flex text-xs">
-          <input type="email" placeholder="Your email..." 
-            class="flex-1 px-2 py-1 text-xs border border-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-[#49A078] shadow-inner">
-          <button aria-label="Send" class="bg-gradient-to-r from-[#49A078] to-[#3e8865] text-white px-3 py-1 rounded-r text-xs hover:from-[#3e8865] hover:to-[#357255] transition shadow-sm hover:shadow">
-            <i class="fas fa-paper-plane"></i>
-          </button>
-        </div>
-        <p class="text-xs text-gray-600 mt-1 font-medium">Monthly insights & tips</p>
+        <a href="free-report/?src=footer" class="footer-link ui-foot-cta ui-foot-primary">Free Report</a>
       </div>
     </div>
 
