@@ -463,6 +463,16 @@ document.head.appendChild(o)}initApollo();</script>
   .idx-foot-social{display:flex;flex-wrap:wrap;justify-content:center;gap:.5em}
   .idx-foot-social a{border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:.25em .9em;font-size:.95em;font-weight:600;color:#fff;transition:background .15s ease,color .15s ease,border-color .15s ease}
   .idx-foot-social a:hover{background:#facc15;border-color:#facc15;color:#1f2937}
+
+  /* ---- Side charts: no card, drawn straight onto the page and faded into it ---- */
+  @media(min-width:1024px){
+    .idx-panel{background:transparent;border-color:transparent;box-shadow:none;padding:1.2em .6em;transition:transform .2s ease}
+    .idx-panel:hover{transform:none;border-color:transparent;box-shadow:none}
+    .idx-panel svg{opacity:.8;-webkit-mask-image:linear-gradient(180deg,#000 35%,rgba(0,0,0,.5) 100%);mask-image:linear-gradient(180deg,#000 35%,rgba(0,0,0,.5) 100%);transition:opacity .25s ease}
+    .idx-panel:hover svg{opacity:1}
+    .idx-panel-head strong{font-weight:600;color:var(--ui-mute)}
+    .idx-sample{background:transparent;border-color:#d4e9dd}
+  }
 </style>
 
 <div class="idx-shell">
