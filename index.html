@@ -622,159 +622,165 @@ document.head.appendChild(o)}initApollo();</script>
 <meta name="theme-color" content="#49A078">
 
   <!-- ✅ Icons & Fonts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" media="print" onload="this.media='all'" />
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="assets/css/style.css?v=07531de3">
   <link rel="stylesheet" href="assets/css/social_links.css?v=885951dd">
 
   <!-- ✅ dericBI Chatbot -->
+  <script defer src="assets/js/promo.js?v=5890be0b"></script>
   <script defer src="assets/js/config.js?v=a0a11940"></script>
   <script defer src="assets/js/chatbot.js?v=10a90be5"></script>
   <script defer src="assets/js/social_links.js?v=6f1c5397"></script>
 
   <!-- Analytics: Single, clean Google Analytics implementation -->
-  <link rel="stylesheet" href="assets/css/tailwind.css?v=e560a4da">
-  <link rel="stylesheet" href="assets/css/ui.css?v=24ea55ac">
+  <link rel="stylesheet" href="assets/css/tailwind.css?v=1401b0df">
+  <link rel="stylesheet" href="assets/css/ui.css?v=665eef2a">
 </head>
 
 <body class="idx-body min-h-screen flex flex-col relative">
 
 <style>
-  .idx-body{background:#f6faf8!important;background-image:none!important;overflow:visible!important}
-  .idx-top{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;max-width:1120px;margin:0 auto;padding:14px 16px 0;width:100%}
-  .idx-top .quick-action-hide{display:inline-flex!important}
-  .idx-top .dance,.idx-top .fire{animation:none!important;box-shadow:0 1px 2px rgba(16,24,40,.12)}
-  .idx-top .pour-text{position:static;transform:none;animation:none;opacity:1;color:inherit;text-shadow:none;font-size:inherit;font-weight:inherit}
-  .idx-main{flex:1;width:100%;padding:24px 16px 48px}
-  .idx-wrap{max-width:860px;margin:0 auto;text-align:center}
-  .idx-logo{margin:0 auto 14px;border:1px solid var(--ui-line);box-shadow:none}
-  .idx-eyebrow{display:block;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ui-green);margin:0 0 10px}
-  .idx-h1{font-size:clamp(1.75rem,5vw,2.75rem)!important;font-weight:800!important;color:var(--ui-ink)!important;letter-spacing:-.02em;line-height:1.15!important;margin:0 0 8px!important;text-wrap:balance}
-  .idx-h1 .idx-sub{display:block;font-size:clamp(1rem,2.4vw,1.35rem);font-weight:500;color:var(--ui-mute);margin-top:6px;letter-spacing:0}
+  .idx-body{background:#f6faf8!important;background-image:none!important;overflow-x:hidden!important}
+  .idx-shell{width:100%;max-width:1440px;margin:0 auto;padding:0 clamp(16px,3vw,48px)}
+  .idx-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0}
+  .idx-brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--ui-ink);font-size:1.1rem}
+  .idx-brand .idx-logo{width:44px;height:44px;border-radius:50%;border:1px solid var(--ui-line)}
+  .idx-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+  .idx-actions .quick-action-hide{display:inline-flex!important}
+  .idx-actions .dance,.idx-actions .fire{animation:none!important}
+  .idx-actions .pour-text{position:static;transform:none;animation:none;opacity:1;color:inherit;text-shadow:none;font-size:inherit;font-weight:inherit}
+  .idx-promo{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 18px;background:#b91c1c;color:#fff;border-radius:12px;padding:12px 20px;margin-bottom:24px}
+  .idx-promo b{font-size:1rem;letter-spacing:.02em}
+  .idx-promo .idx-off{background:#facc15;color:#111;border-radius:999px;padding:3px 12px;font-weight:800;font-size:.9rem}
+  .idx-promo .idx-cd{font-variant-numeric:tabular-nums;font-weight:700;background:rgba(0,0,0,.25);border-radius:8px;padding:4px 12px}
+  .idx-main{flex:1;width:100%;padding:0 0 56px}
+  .idx-hero{display:grid;grid-template-columns:1fr;gap:32px;align-items:stretch}
+  @media(min-width:1024px){.idx-hero{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:48px}}
+  .idx-copy{display:flex;flex-direction:column;justify-content:center;text-align:left}
+  .idx-eyebrow{display:block;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ui-green);margin:0 0 12px}
+  .idx-h1{font-size:clamp(2rem,4.2vw,3.5rem)!important;font-weight:800!important;color:var(--ui-ink)!important;letter-spacing:-.02em;line-height:1.1!important;margin:0 0 8px!important}
+  .idx-h1 .idx-sub{display:block;font-size:clamp(1rem,1.8vw,1.35rem);font-weight:500;color:var(--ui-mute);margin-top:8px;letter-spacing:0}
   .idx-g{color:var(--ui-green)}
-  .idx-h2{font-size:clamp(1.25rem,3vw,1.75rem)!important;font-weight:800!important;color:var(--ui-ink)!important;line-height:1.25!important;margin:28px 0 10px!important;text-wrap:balance}
-  .idx-lead{font-size:clamp(1rem,2vw,1.15rem);color:var(--ui-mute);line-height:1.6;max-width:640px;margin:0 auto}
-  .idx-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+  .idx-h2{font-size:clamp(1.25rem,2.4vw,1.9rem)!important;font-weight:800!important;color:var(--ui-ink)!important;line-height:1.25!important;margin:24px 0 10px!important}
+  .idx-lead{font-size:clamp(1rem,1.5vw,1.15rem);color:var(--ui-mute);line-height:1.65;max-width:640px;margin:0}
+  .idx-chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
   .idx-chips li{font-size:.85rem;color:var(--ui-mute);background:#fff;border:1px solid var(--ui-line);border-radius:999px;padding:6px 14px}
-  .idx-choose{font-weight:600;color:var(--ui-ink);margin:28px auto 14px;max-width:320px}
-  @media(min-width:640px){.idx-choose{max-width:none}}
-  @media(max-width:480px){.idx-top{gap:6px;justify-content:center}.idx-top .ui-btn-sm{padding:6px 10px}}
-  .idx-paths{display:grid;grid-template-columns:1fr;gap:12px;max-width:640px;margin:0 auto}
-  @media(min-width:640px){.idx-paths{grid-template-columns:1fr 1fr}}
+  .idx-choose{font-weight:600;color:var(--ui-ink);margin:26px 0 12px}
+  .idx-paths{display:grid;grid-template-columns:1fr;gap:12px;max-width:640px}
+  @media(min-width:560px){.idx-paths{grid-template-columns:1fr 1fr}}
   a.ui-btn.idx-path{flex-direction:column;gap:4px;padding:16px 20px;min-height:84px}
   .idx-path b{font-size:1.05rem;font-weight:700}
   .idx-path small{font-size:.82rem;font-weight:500;opacity:.9}
-  .idx-health{margin:14px auto 0;max-width:640px}
+  .idx-health{margin-top:12px;max-width:640px}
   .idx-health .ui-btn{width:100%}
-  .idx-stats{margin-top:32px}
-  .idx-stats.ui-stats{grid-template-columns:repeat(3,1fr);text-align:center}
-  .idx-stats .ui-stat{border-bottom:0;padding:18px 10px}
-  .idx-stats .ui-stat b{font-size:clamp(1rem,2.6vw,1.5rem)}
-  .idx-trust{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;margin:18px 0 0;padding:0;list-style:none;font-size:.85rem;color:var(--ui-mute)}
-  .idx-trust li{position:relative;padding-left:14px}
-  .idx-trust li:before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--ui-green-2)}
-  .idx-facts{margin-top:32px;display:grid;grid-template-columns:1fr;gap:12px;text-align:left}
-  @media(min-width:640px){.idx-facts{grid-template-columns:1fr 1fr}}
-  @media(min-width:1000px){.idx-facts{grid-template-columns:repeat(4,1fr);max-width:860px}}
-  .idx-facts .ui-card{padding:16px}
-  .idx-facts h4{font-size:.95rem;margin:0 0 6px}
-  .idx-facts p{font-size:.88rem}
+  .idx-side{display:grid;grid-template-columns:1fr;gap:16px;grid-auto-rows:1fr;align-content:stretch}
+  @media(min-width:560px){.idx-side{grid-template-columns:1fr 1fr}}
+  .idx-side .ui-card,.idx-facts .ui-card{height:100%;padding:24px;display:flex;flex-direction:column;justify-content:center;background:#fff;border:1px solid var(--ui-line);border-radius:14px;box-shadow:0 1px 2px rgba(16,24,40,.06)}
+  .idx-side h4{font-size:1.05rem;font-weight:700;color:var(--ui-ink);margin:0 0 6px}
+  .idx-side p{font-size:.92rem;color:var(--ui-mute);margin:0}
+  .idx-stats{margin-top:40px;display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:720px){.idx-stats{grid-template-columns:repeat(3,1fr)}}
+  .idx-stats>div{background:#fff;border:1px solid var(--ui-line);border-radius:14px;padding:22px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+  .idx-stats b{display:block;font-size:clamp(1.15rem,2vw,1.6rem);color:var(--ui-green);font-weight:800}
+  .idx-stats span{color:var(--ui-mute);font-size:.9rem}
+  .idx-trust{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0 0;padding:0;list-style:none;font-size:.9rem;color:var(--ui-ink)}
+  @media(min-width:900px){.idx-trust{grid-template-columns:repeat(4,1fr)}.idx-trust.idx-trust3{grid-template-columns:repeat(3,1fr)}}
+  .idx-trust li{background:#fff;border:1px solid var(--ui-line);border-radius:12px;padding:14px 16px;text-align:center}
   .idx-modal-card{width:calc(100% - 32px);max-width:28rem;border:1px solid var(--ui-line)}
   .idx-modal-card h3{font-size:1.25rem;font-weight:800;color:var(--ui-ink);text-align:center;margin:0 0 8px}
   .idx-modal-card p{color:var(--ui-mute);text-align:center;margin:0 0 18px}
   .idx-modal-actions{display:grid;gap:10px}
   .idx-modal-actions .ui-btn{width:100%;flex:none}
+  @media(max-width:560px){.idx-top{flex-direction:column;align-items:flex-start}.idx-actions{justify-content:flex-start}}
 </style>
 
+<div class="idx-shell">
 <!-- Top actions -->
 <div class="idx-top">
-  <button onclick="openHireModal()" title="Hire Me" class="dance fire ui-btn ui-btn-primary ui-btn-sm">
-    <span class="pour-text">Hire Me</span>
-  </button>
-  <a aria-label="Chat with dericBI on WhatsApp" href="https://wa.me/254791360805?text=hey%20deric%20iam%20new%20in%20dericbi%20guide%20me" class="quick-action-hide ui-btn ui-btn-outline ui-btn-sm">WhatsApp</a>
-  <a aria-label="View projects" href="my-projects.html" class="quick-action-hide ui-btn ui-btn-outline ui-btn-sm">Projects</a>
-  <a aria-label="Contact dericBI" href="contact.html" class="quick-action-hide ui-btn ui-btn-outline ui-btn-sm">Contact</a>
+  <div class="idx-brand">
+    <img src="assets/img/logo-avatar.webp" alt="dericBI Logo" width="44" height="44" class="logo-circle idx-logo" />
+    <span>dericBI</span>
+  </div>
+  <div class="idx-actions">
+    <button onclick="openHireModal()" title="Hire Me" class="dance fire ui-btn ui-btn-primary ui-btn-sm">
+      <span class="pour-text">Hire Me</span>
+    </button>
+    <a aria-label="Chat with dericBI on WhatsApp" href="https://wa.me/254791360805?text=hey%20deric%20iam%20new%20in%20dericbi%20guide%20me" class="quick-action-hide ui-btn ui-btn-outline ui-btn-sm">WhatsApp</a>
+    <a aria-label="View projects" href="my-projects.html" class="quick-action-hide ui-btn ui-btn-outline ui-btn-sm">Projects</a>
+    <a aria-label="Contact dericBI" href="contact.html" class="quick-action-hide ui-btn ui-btn-outline ui-btn-sm">Contact</a>
+  </div>
+</div>
+
+<div class="idx-promo" data-promo>
+  <b>LIMITED TIME OFFER</b>
+  <span class="idx-off">50% OFF</span>
+  <span>All services &mdash; ends in</span>
+  <span class="idx-cd" data-promo-countdown>&nbsp;</span>
 </div>
 
 <main class="idx-main relative">
-  <div class="idx-wrap">
-    <img src="assets/img/logo-avatar.webp"
-         alt="dericBI Logo"
-         loading="lazy"
-         width="80" height="80"
-         class="logo-circle idx-logo" />
-    <span class="idx-eyebrow">Data Insights &middot; Transforming businesses daily</span>
-    <h1 class="idx-h1">
-      Welcome to <span class="idx-g">dericBI</span>
-      <span class="idx-sub">Deric BI Analytics Kenya</span>
-    </h1>
-
-    <h2 class="idx-h2">Transform Data Into Business Profits</h2>
-    <p class="idx-lead">
-      You don't need more reports&mdash;you need proven tools.<br class="hidden sm:block">
-      We give you clear dashboards and expert training to easily turn your data into real profit.
-    </p>
-    <ul class="idx-chips">
-      <li>No prior experience needed</li>
-      <li>Delivery from 48 hours</li>
-      <li>Clear terms, agreed upfront</li>
-    </ul>
-
-    <p class="idx-choose">Choose your path and let's turn your data into powerful insights!</p>
-    <div class="idx-paths">
-      <a href="home.html" class="ui-btn ui-btn-primary idx-path">
-        <b>Are you a Business?</b>
-        <small>Solutions for your organization</small>
-      </a>
-      <a href="https://dericbiskills.vercel.app/" class="ui-btn ui-btn-outline idx-path">
-        <b>Are you a Learner?</b>
-        <small>Start your personal skill journey</small>
-      </a>
-    </div>
-    <div class="idx-health">
-      <a href="free-report/?src=landing" class="ui-btn ui-btn-outline">Free Business Health Check</a>
-    </div>
-
-    <div class="ui-stats idx-stats">
-      <div class="ui-stat"><b>100+ Projects</b><span>Successfully completed</span></div>
-      <div class="ui-stat"><b>Online Delivery</b><span>Send data, get results</span></div>
-      <div class="ui-stat"><b>Clear Terms</b><span>Agreed upfront</span></div>
-    </div>
-
-    <ul class="idx-trust">
-      <li>Confidential handling</li>
-      <li>Support on WhatsApp</li>
-      <li>Scope agreed upfront</li>
-      <li>Real case studies online</li>
-    </ul>
-
-    <div class="idx-facts">
-      <div class="ui-card">
-        <h4>Our Work</h4>
-        <p>Browse project case studies online</p>
+  <div class="idx-hero">
+    <div class="idx-copy">
+      <span class="idx-eyebrow">Data Insights &middot; Transforming businesses daily</span>
+      <h1 class="idx-h1">
+        Welcome to <span class="idx-g">dericBI</span>
+        <span class="idx-sub">Deric BI Analytics Kenya</span>
+      </h1>
+      <h2 class="idx-h2">Transform Data Into Business Profits</h2>
+      <p class="idx-lead">
+        You don't need more reports&mdash;you need proven tools.
+        We give you clear dashboards and expert training to easily turn your data into real profit.
+      </p>
+      <ul class="idx-chips">
+        <li>No prior experience needed</li>
+        <li>Delivery from 48 hours</li>
+        <li>Clear terms, agreed upfront</li>
+      </ul>
+      <p class="idx-choose">Choose your path and let's turn your data into powerful insights!</p>
+      <div class="idx-paths">
+        <a href="home.html" class="ui-btn ui-btn-primary idx-path">
+          <b>Are you a Business?</b>
+          <small>Solutions for your organization</small>
+        </a>
+        <a href="https://dericbiskills.vercel.app/" class="ui-btn ui-btn-outline idx-path">
+          <b>Are you a Learner?</b>
+          <small>Start your personal skill journey</small>
+        </a>
       </div>
-      <div class="ui-card">
-        <h4>Quick Start</h4>
-        <p>Delivery from 48 hours</p>
-      </div>
-      <div class="ui-card">
-        <h4>Works Online</h4>
-        <p>Send your data and get results remotely</p>
-      </div>
-      <div class="ui-card">
-        <h4>Your Analyst</h4>
-        <p>Business IT graduate, hands-on delivery</p>
+      <div class="idx-health">
+        <a href="free-report/?src=landing" class="ui-btn ui-btn-outline">Free Business Health Check</a>
       </div>
     </div>
 
-    <ul class="idx-trust" style="margin-top:24px">
-      <li>Free consultation</li>
-      <li>Quick results</li>
-      <li>Case studies you can browse</li>
-    </ul>
+    <div class="idx-side">
+      <div class="ui-card"><h4>Our Work</h4><p>Browse project case studies online</p></div>
+      <div class="ui-card"><h4>Quick Start</h4><p>Delivery from 48 hours</p></div>
+      <div class="ui-card"><h4>Works Online</h4><p>Send your data and get results remotely</p></div>
+      <div class="ui-card"><h4>Your Analyst</h4><p>Business IT graduate, hands-on delivery</p></div>
+    </div>
   </div>
+
+  <div class="idx-stats">
+    <div><b>100+ Projects</b><span>Successfully completed</span></div>
+    <div><b>Online Delivery</b><span>Send data, get results</span></div>
+    <div><b>Clear Terms</b><span>Agreed upfront</span></div>
+  </div>
+
+  <ul class="idx-trust">
+    <li>Confidential handling</li>
+    <li>Support on WhatsApp</li>
+    <li>Scope agreed upfront</li>
+    <li>Real case studies online</li>
+  </ul>
+  <ul class="idx-trust idx-trust3">
+    <li>Free consultation</li>
+    <li>Quick results</li>
+    <li>Case studies you can browse</li>
+  </ul>
 </main>
+</div>
 
 <!-- Hire Me Modal -->
 <div id="hireModal" onclick="closeHireModal()" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">

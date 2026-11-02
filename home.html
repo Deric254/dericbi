@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="assets/js/storage-safe.js?v=fb01db21"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   
@@ -306,9 +307,10 @@
 
   <!-- Analytics: Google Analytics Only -->
   
-  <link rel="stylesheet" href="assets/css/tailwind.css?v=e560a4da">
+  <link rel="stylesheet" href="assets/css/tailwind.css?v=1401b0df">
 
-  <link rel="stylesheet" href="assets/css/ui.css?v=24ea55ac">
+  <link rel="stylesheet" href="assets/css/ui.css?v=665eef2a">
+<script defer src="assets/js/promo.js?v=5890be0b"></script>
 </head>
 
 <body class="bg-white text-gray-800 min-h-screen flex flex-col">
@@ -423,8 +425,9 @@ mobileMenu.querySelectorAll('a').forEach(link => {
     <div class="flex items-center gap-1 xs:gap-2 flex-1 min-w-0">
       
       <div class="flex flex-col xs:flex-row xs:items-center xs:gap-1.5 sm:gap-2 flex-1 min-w-0">
-        <span class="text-[10px] xs:text-xs sm:text-sm md:text-base font-bold whitespace-nowrap">FREE TOOL:</span>
-        <span class="text-[9px] xs:text-[10px] sm:text-xs md:text-sm font-semibold bg-[#facc15] text-black px-1.5 xs:px-2 py-0.5 xs:py-1 rounded-full whitespace-nowrap">No sign-up</span>
+        <span data-promo class="text-[10px] xs:text-xs sm:text-sm md:text-base font-bold whitespace-nowrap">LIMITED TIME OFFER:</span>
+        <span data-promo class="text-[9px] xs:text-[10px] sm:text-xs md:text-sm font-semibold bg-[#facc15] text-black px-1.5 xs:px-2 py-0.5 xs:py-1 rounded-full whitespace-nowrap">50% OFF</span>
+        <span data-promo class="text-[9px] xs:text-[10px] sm:text-xs md:text-sm whitespace-nowrap">All services &middot; ends in <b data-promo-countdown></b></span>
         <a href="free-report/?src=banner" class="bg-transparent text-white underline text-[9px] xs:text-[10px] sm:text-xs md:text-sm truncate">Try the free Business Health Check</a>
       </div>
     </div>
@@ -893,7 +896,7 @@ window.addEventListener('load', function() {
 
   <!-- ✅ Embedded EXES Add-ons -->
   <section class="bg-gradient-to-br from-gray-100 via-white to-green-50 py-4 xs:py-6 sm:py-8 md:py-10 px-4 sm:px-3 md:px-2 text-sm w-full" style="padding:clamp(40px,6vw,56px) clamp(16px,3vw,20px)">
-  <div class="mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 w-full" style="max-width:1120px">
+  <div class="mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 xs:gap-7 sm:gap-8 w-full" style="max-width:1360px">
       <!-- FAQ: Modern Card -->
       <div class="flex flex-col h-full justify-between ui-col">
         <div>
