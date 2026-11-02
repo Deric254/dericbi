@@ -1038,8 +1038,31 @@ class DAIChatbot {
     }
   }
 
+  // Chat opened by DAI itself (agentic suggestion): closes after 3s unless the visitor engages with it
+  openForSuggestion() {
+    if (this.isOpen) return;
+    this.toggleChatbot();
+    const container = document.getElementById('chatbot-container');
+    const events = ['pointerenter', 'pointerdown', 'touchstart', 'keydown', 'focusin'];
+    this.cancelPeek();
+    const timer = setTimeout(() => {
+      this.cancelPeek();
+      if (this.isOpen) this.closeChatbot();
+    }, 3000);
+    const cancel = () => {
+      clearTimeout(timer);
+      events.forEach(e => container.removeEventListener(e, cancel));
+      if (this.cancelPeek === cancel) this.cancelPeek = () => {};
+    };
+    events.forEach(e => container.addEventListener(e, cancel));
+    this.cancelPeek = cancel;
+  }
+
+  cancelPeek() {}
+
   closeChatbot() {
     const container = document.getElementById('chatbot-container');
+    this.cancelPeek();
     this.isOpen = false;
     container.style.transform = 'translateY(100%)';
     container.style.opacity = '0';
@@ -2279,10 +2302,8 @@ class DAIChatbot {
 
   // Enhanced Agentic Capabilities - Automatic Actions (always confirmed first)
   performAutomaticNavigation(url, pageName, reason = '') {
-    // Open chatbot if closed for agentic action
-    if (!this.isOpen) {
-      this.toggleChatbot();
-    }
+    // Open chatbot if closed for agentic action (auto-closes after 3s with no interaction)
+    this.openForSuggestion();
 
     this.addConfirmMessage(
       `🤖 **DAI Agentic Action**: I can take you to the ${pageName} page${reason ? ' ' + reason : ''}. Would you like me to navigate there now?`,
@@ -2300,10 +2321,8 @@ class DAIChatbot {
   }
 
   performAutomaticDownload(projectName, downloadUrl, fileType = 'project') {
-    // Open chatbot if closed for agentic action
-    if (!this.isOpen) {
-      this.toggleChatbot();
-    }
+    // Open chatbot if closed for agentic action (auto-closes after 3s with no interaction)
+    this.openForSuggestion();
 
     this.addConfirmMessage(
       `🤖 **DAI Agentic Action**: I can download the ${fileType} "${projectName}" for you. This will start the download immediately. Would you like me to proceed?`,
