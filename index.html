@@ -387,7 +387,7 @@ document.head.appendChild(o)}initApollo();</script>
     background:var(--bi-canvas)!important;background-image:none!important;color:var(--bi-ink);
     overflow-x:hidden!important;
   }
-  .idx-shell{width:100%;padding:0 clamp(14px,3.5vw,44px)}
+  .idx-shell{--bi-gut:clamp(14px,3.5vw,44px);width:100%;padding:0 var(--bi-gut)}
 
   /* soft decorative glows that stay in brand */
   .idx-body::before{
@@ -399,30 +399,29 @@ document.head.appendChild(o)}initApollo();</script>
 
   /* ---------------- NAV ---------------- */
   .idx-nav{
-    position:sticky;top:12px;z-index:60;
+    position:sticky;top:0;z-index:60;
     display:flex;align-items:center;justify-content:space-between;gap:1rem;
-    max-width:1180px;margin:12px auto 0;
-    padding:.6rem 1rem;
-    background:rgba(255,255,255,.85);
-    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-    border:1px solid var(--bi-line);border-radius:16px;
-    box-shadow:0 8px 28px rgba(37,98,71,.10);
+    width:auto;margin:0 calc(-1*var(--bi-gut));
+    padding:.8rem var(--bi-gut);
+    background:linear-gradient(135deg,#256247 0%,#1b4d39 100%);
+    border:0;border-bottom:4px solid #facc15;border-radius:0;
+    box-shadow:0 6px 22px rgba(27,77,57,.25);
   }
-  .idx-brand{display:flex;align-items:center;gap:.6rem;font-weight:800;color:var(--bi-ink);font-size:1.15rem;letter-spacing:-.01em;text-decoration:none}
-  .idx-brand .idx-logo{width:2.15rem;height:2.15rem;border-radius:50%;object-fit:cover;border:2px solid var(--bi-green);box-shadow:0 0 0 3px rgba(73,160,120,.15)}
-  .idx-brand b{color:var(--bi-green)}
+  .idx-brand{display:flex;align-items:center;gap:.6rem;font-weight:800;color:#fff;font-size:clamp(1.35rem,2.4vw,1.75rem);letter-spacing:-.01em;text-decoration:none}
+  .idx-brand .idx-logo{width:clamp(2.5rem,4vw,3.1rem);height:clamp(2.5rem,4vw,3.1rem);border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.6)}
+  .idx-brand b{color:#facc15}
   .idx-nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
   .idx-nav-links a{
     display:inline-flex;align-items:center;gap:.4rem;
-    color:var(--bi-mute);text-decoration:none;font-size:.88rem;font-weight:600;
-    padding:.45rem .85rem;border-radius:999px;border:1px solid transparent;
+    color:#e4f2ea;text-decoration:none;font-size:1.1rem;font-weight:600;
+    padding:.55rem 1.1rem;border-radius:999px;border:1px solid transparent;
     transition:all .18s ease;
   }
-  .idx-nav-links a:hover{color:var(--bi-deep);border-color:var(--bi-line);background:#eef7f2}
+  .idx-nav-links a:hover{color:#facc15;border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.12)}
   .idx-nav-cta{
     display:inline-flex;align-items:center;gap:.45rem;
     background:linear-gradient(135deg,#25D366,#1ebe5b);color:#fff!important;
-    font-weight:800;border-radius:999px;padding:.5rem 1.05rem;font-size:.88rem;text-decoration:none;
+    font-weight:800;border-radius:999px;padding:.65rem 1.3rem;font-size:1.1rem;text-decoration:none;
     box-shadow:0 6px 16px rgba(37,211,102,.30);transition:transform .18s ease, box-shadow .18s ease;
   }
   .idx-nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(37,211,102,.4)}
@@ -431,10 +430,10 @@ document.head.appendChild(o)}initApollo();</script>
   /* ---------------- PROMO BAR ---------------- */
   .idx-promo{
     position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.35em .9em;
-    max-width:1180px;margin:12px auto 0;
+    width:auto;margin:0 calc(-1*var(--bi-gut));
     background:linear-gradient(90deg,var(--bi-deep),#2f7d5b);
-    color:#fff;border-radius:14px;padding:.55em 2.6em;font-size:.86em;
-    box-shadow:0 8px 22px rgba(37,98,71,.22);
+    color:#fff;border-radius:0;padding:.7em 3em;font-size:1.05rem;
+    box-shadow:0 6px 18px rgba(37,98,71,.18);
   }
   .idx-promo b{letter-spacing:.04em;color:var(--bi-gold)}
   .idx-promo .idx-off{background:var(--bi-gold);color:#1f2937;border-radius:999px;padding:.12em .8em;font-weight:800}
@@ -561,23 +560,38 @@ document.head.appendChild(o)}initApollo();</script>
   @media(min-width:720px){.idx-foot-grid{grid-template-columns:1fr 1fr}}
   @media(min-width:1024px){.idx-foot-grid{grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:2.2rem}}
   .idx-foot-logo-row{display:flex;align-items:center;gap:.7em}
-  .idx-foot-logo{width:2.5em;height:2.5em;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.6)}
-  .idx-foot-name{font-size:1.25em;font-weight:800;color:#fff;line-height:1.1}
+  .idx-foot-logo{width:3.2em;height:3.2em;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.6)}
+  .idx-foot-name{font-size:1.75em;font-weight:800;color:#fff;line-height:1.1}
   .idx-foot-name b{color:#facc15}
-  .idx-foot-tag{font-size:.76em;font-style:italic;color:#c3e3d1}
-  .idx-foot-brand p{margin:.7em 0 .9em;max-width:24em;font-size:.88em;line-height:1.55;color:#cde8d9}
-  .idx-foot-cta{display:inline-flex;align-items:center;gap:.45rem;background:#facc15;color:#1f2937!important;font-weight:800;font-size:.85em;border-radius:.6em;padding:.55em 1em;text-decoration:none!important;transition:all .16s ease}
+  .idx-foot-tag{font-size:1rem;font-style:italic;color:#c3e3d1}
+  .idx-foot-brand p{margin:.7em 0 .9em;max-width:26em;font-size:1.1rem;line-height:1.6;color:#cde8d9}
+  .idx-foot-cta{display:inline-flex;align-items:center;gap:.45rem;background:#facc15;color:#1f2937!important;font-weight:800;font-size:1.05rem;border-radius:.6em;padding:.65em 1.2em;text-decoration:none!important;transition:all .16s ease}
   .idx-foot-cta:hover{background:#fde047;transform:translateY(-2px)}
-  .idx-foot h5{margin:0 0 .7em;font-size:.72em;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff}
-  .idx-foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.5em;font-size:.88em}
+  .idx-foot h5{margin:0 0 .8em;font-size:.95rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+  .idx-foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.6em;font-size:1.1rem}
   .idx-foot a{color:#e4f2ea;text-decoration:none}
   .idx-foot ul a:hover{color:#facc15}
-  .idx-foot-bar{display:flex;flex-direction:column;gap:.8em;align-items:center;justify-content:space-between;margin-top:1.8em;padding-top:1.1em;border-top:1px solid rgba(255,255,255,.18);font-size:.8em;text-align:center;color:#c3e3d1}
+  .idx-foot-bar{display:flex;flex-direction:column;gap:.8em;align-items:center;justify-content:space-between;margin-top:1.8em;padding-top:1.1em;border-top:1px solid rgba(255,255,255,.18);font-size:1rem;text-align:center;color:#c3e3d1}
   @media(min-width:720px){.idx-foot-bar{flex-direction:row;text-align:left}}
   .idx-foot-bar b{color:#facc15}
   .idx-foot-social{display:flex;flex-wrap:wrap;justify-content:center;gap:.5em}
-  .idx-foot-social a{border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:.28em .95em;font-size:.92em;font-weight:700;color:#fff;transition:all .16s ease}
+  .idx-foot-social a{border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:.35em 1.05em;font-size:1rem;font-weight:700;color:#fff;transition:all .16s ease}
   .idx-foot-social a:hover{background:#facc15;border-color:#facc15;color:#1f2937}
+
+  /* ---------------- ONE-SCREEN VIEW (desktop / landscape) ----------------
+     Everything is sized in rem, so scaling the root font to the screen height
+     makes the whole page fit without scrolling. overflow-y:auto is a safety net:
+     if some odd screen still cannot fit it, the page scrolls instead of clipping. */
+  @media(min-width:900px) and (min-height:520px){
+    html:has(body.idx-body){font-size:clamp(9px,1.5vh,18px)!important}
+    .idx-body{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow-y:auto!important}
+    .idx-shell{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+    .idx-main{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:.5rem 0}
+    .idx-stats{padding-bottom:1rem}
+    .idx-foot{flex:0 0 auto;margin-top:0}
+    .idx-foot-in{padding-top:1.4rem;padding-bottom:.6rem}
+    .idx-foot-bar{margin-top:1rem;padding-top:.7rem}
+  }
 </style>
 
 <div class="idx-shell">
