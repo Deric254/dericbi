@@ -361,6 +361,7 @@ document.head.appendChild(o)}initApollo();</script>
   <script defer src="assets/js/config.js?v=a0a11940"></script>
   <script defer src="assets/js/chatbot.js?v=66fecb6d"></script>
   <script defer src="assets/js/social_links.js?v=6f1c5397"></script>
+  <script defer src="assets/js/email-link.js?v=f9f40881"></script>
 
   <!-- Analytics: Single, clean Google Analytics implementation -->
   <link rel="stylesheet" href="assets/css/tailwind.css?v=107da323">
@@ -387,7 +388,7 @@ document.head.appendChild(o)}initApollo();</script>
     background:var(--bi-canvas)!important;background-image:none!important;color:var(--bi-ink);
     overflow-x:hidden!important;
   }
-  .idx-shell{width:100%;padding:0 clamp(14px,3.5vw,44px)}
+  .idx-shell{width:100%;padding:0 clamp(16px,4vw,64px)}
 
   /* soft decorative glows that stay in brand */
   .idx-body::before{
@@ -399,26 +400,25 @@ document.head.appendChild(o)}initApollo();</script>
 
   /* ---------------- NAV ---------------- */
   .idx-nav{
-    position:sticky;top:12px;z-index:60;
+    position:relative;z-index:60;
     display:flex;align-items:center;justify-content:space-between;gap:1rem;
-    max-width:1180px;margin:12px auto 0;
-    padding:.6rem 1rem;
-    background:rgba(255,255,255,.85);
-    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-    border:1px solid var(--bi-line);border-radius:16px;
-    box-shadow:0 8px 28px rgba(37,98,71,.10);
+    width:100%;margin:0;
+    padding:.65rem clamp(14px,3.5vw,44px);
+    background:linear-gradient(135deg,#256247 0%,#1b4d39 100%);
+    border-bottom:4px solid #facc15;
+    box-shadow:0 6px 22px rgba(27,77,57,.28);
   }
-  .idx-brand{display:flex;align-items:center;gap:.6rem;font-weight:800;color:var(--bi-ink);font-size:1.15rem;letter-spacing:-.01em;text-decoration:none}
-  .idx-brand .idx-logo{width:2.15rem;height:2.15rem;border-radius:50%;object-fit:cover;border:2px solid var(--bi-green);box-shadow:0 0 0 3px rgba(73,160,120,.15)}
-  .idx-brand b{color:var(--bi-green)}
+  .idx-brand{display:flex;align-items:center;gap:.6rem;font-weight:800;color:#fff;font-size:1.15rem;letter-spacing:-.01em;text-decoration:none}
+  .idx-brand .idx-logo{width:2.15rem;height:2.15rem;border-radius:50%;object-fit:cover;border:2px solid rgba(250,204,21,.8);box-shadow:0 0 0 3px rgba(255,255,255,.15)}
+  .idx-brand b{color:#facc15}
   .idx-nav-links{display:flex;align-items:center;gap:.25rem;list-style:none;margin:0;padding:0}
   .idx-nav-links a{
     display:inline-flex;align-items:center;gap:.4rem;
-    color:var(--bi-mute);text-decoration:none;font-size:.88rem;font-weight:600;
+    color:#e4f2ea;text-decoration:none;font-size:.88rem;font-weight:600;
     padding:.45rem .85rem;border-radius:999px;border:1px solid transparent;
     transition:all .18s ease;
   }
-  .idx-nav-links a:hover{color:var(--bi-deep);border-color:var(--bi-line);background:#eef7f2}
+  .idx-nav-links a:hover{color:#facc15;border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.08)}
   .idx-nav-cta{
     display:inline-flex;align-items:center;gap:.45rem;
     background:linear-gradient(135deg,#25D366,#1ebe5b);color:#fff!important;
@@ -426,15 +426,23 @@ document.head.appendChild(o)}initApollo();</script>
     box-shadow:0 6px 16px rgba(37,211,102,.30);transition:transform .18s ease, box-shadow .18s ease;
   }
   .idx-nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(37,211,102,.4)}
-  @media(max-width:680px){.idx-nav-links{display:none}}
+  .idx-nav-right{display:flex;align-items:center;gap:.5rem;flex:0 0 auto}
+  .idx-marquee{display:flex;flex:1 1 auto;min-width:0;margin-left:.9rem;overflow:hidden;position:relative;height:2em;align-items:center;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .idx-marquee-track{flex:0 0 auto;width:max-content;max-width:none;white-space:nowrap;display:flex;align-items:center;font-size:.85em;font-weight:600;letter-spacing:.03em;color:#facc15;animation:idxSlide 28s linear infinite;will-change:transform}
+  .idx-marquee:hover .idx-marquee-track{animation-play-state:paused}
+  @keyframes idxSlide{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  @media(max-width:1100px){.idx-marquee{display:none}}
+  @media(max-width:680px){.idx-marquee{display:none}.idx-nav-right{display:contents}.idx-nav-cta{order:2;margin-left:auto}.idx-nav-links{order:3;flex:1 1 100%;flex-wrap:wrap;justify-content:center;gap:.1rem}.idx-nav-links a{font-size:.8rem;padding:.3rem .55rem}.idx-nav-links a i{display:none}}
+  @media(max-width:900px){.idx-nav{flex-wrap:wrap}.idx-marquee{order:3;flex:0 0 auto;width:100%}}
 
   /* ---------------- PROMO BAR ---------------- */
   .idx-promo{
     position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.35em .9em;
-    max-width:1180px;margin:12px auto 0;
-    background:linear-gradient(90deg,var(--bi-deep),#2f7d5b);
-    color:#fff;border-radius:14px;padding:.55em 2.6em;font-size:.86em;
-    box-shadow:0 8px 22px rgba(37,98,71,.22);
+    width:100%;margin:0;
+    background:linear-gradient(90deg,#2f7d5b,#256247);
+    color:#fff;border-radius:0;padding:.5em 2.8em;font-size:.86em;
+    box-shadow:0 4px 14px rgba(37,98,71,.18);
   }
   .idx-promo b{letter-spacing:.04em;color:var(--bi-gold)}
   .idx-promo .idx-off{background:var(--bi-gold);color:#1f2937;border-radius:999px;padding:.12em .8em;font-weight:800}
@@ -444,8 +452,8 @@ document.head.appendChild(o)}initApollo();</script>
   .idx-promo-close:focus-visible{outline:3px solid var(--bi-gold);outline-offset:1px}
 
   /* ---------------- HERO ---------------- */
-  .idx-main{position:relative;z-index:5;flex:1;width:100%;padding:clamp(2rem,5vh,3.5rem) 0 2.5rem}
-  .idx-hero{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(2rem,4vw,3.5rem);align-items:center}
+  .idx-main{position:relative;z-index:5;flex:1;width:100%;display:flex;flex-direction:column;justify-content:center;padding:clamp(1.2rem,3vh,2.2rem) 0 1.6rem}
+  .idx-hero{width:100%;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(1.6rem,3.5vw,3.5rem);align-items:center}
   @media(max-width:900px){.idx-hero{grid-template-columns:1fr;text-align:center}}
 
   .idx-pill{
@@ -457,14 +465,14 @@ document.head.appendChild(o)}initApollo();</script>
   .idx-pill .dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--bi-green);box-shadow:0 0 0 4px rgba(73,160,120,.18);animation:idxBlink 1.8s ease-in-out infinite}
   @keyframes idxBlink{0%,100%{opacity:1}50%{opacity:.4}}
 
-  .idx-h1{margin:.9rem 0 .5rem;font-size:clamp(2.3rem,5vw,3.7rem)!important;font-weight:800!important;line-height:1.06!important;letter-spacing:-.025em;color:var(--bi-ink)!important}
+  .idx-h1{margin:.2rem 0 .45rem;font-size:clamp(2.2rem,4.6vw,3.4rem)!important;font-weight:800!important;line-height:1.06!important;letter-spacing:-.025em;color:var(--bi-ink)!important}
   .idx-h1 .idx-g{color:var(--bi-green)!important}
   .idx-h1 .idx-sub{display:block;font-size:.4em;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--bi-mute);margin-top:.55rem}
   .idx-h2{font-size:clamp(1.1rem,1.9vw,1.45rem)!important;font-weight:800!important;color:var(--bi-deep)!important;line-height:1.3!important;margin:0 0 .7rem!important}
   .idx-lead{font-size:clamp(.98rem,1.35vw,1.1rem);color:var(--bi-mute);line-height:1.65;max-width:33em;margin:0}
   @media(max-width:900px){.idx-lead{margin:0 auto}}
 
-  .idx-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.15rem 0 0;padding:0;list-style:none}
+  .idx-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.95rem 0 0;padding:0;list-style:none}
   @media(max-width:900px){.idx-chips{justify-content:center}}
   .idx-chips li{
     display:inline-flex;align-items:center;gap:.45rem;
@@ -474,13 +482,13 @@ document.head.appendChild(o)}initApollo();</script>
   }
   .idx-chips li i{color:var(--bi-green);font-size:.75rem}
 
-  .idx-choose{margin:1.7rem 0 .8rem;font-size:.8rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bi-mute)}
+  .idx-choose{margin:1.25rem 0 .7rem;font-size:.8rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--bi-mute)}
   .idx-paths{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;max-width:520px}
   @media(max-width:900px){.idx-paths{margin:0 auto}}
   @media(max-width:460px){.idx-paths{grid-template-columns:1fr}}
   .idx-path{
     position:relative;display:flex;flex-direction:column;gap:.2rem;align-items:flex-start;
-    padding:1rem 1.15rem;border-radius:16px;text-decoration:none;
+    padding:.85rem 1.05rem;border-radius:16px;text-decoration:none;
     border:1px solid var(--bi-line);background:#fff;
     box-shadow:0 6px 20px rgba(37,98,71,.08);
     transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
@@ -497,7 +505,7 @@ document.head.appendChild(o)}initApollo();</script>
   .idx-path-outline .ico{background:#fef9e3;color:#b45309}
   .idx-path-outline .go{color:var(--bi-green)}
 
-  .idx-health{margin-top:1rem;max-width:520px}
+  .idx-health{margin-top:.85rem;max-width:520px}
   @media(max-width:900px){.idx-health{margin:1rem auto 0}}
   .idx-health-btn{
     display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;
@@ -508,11 +516,11 @@ document.head.appendChild(o)}initApollo();</script>
   .idx-health-btn:hover{background:#fff7d6;border-color:#eab308}
 
   /* ---- Right visual column: brand-toned insight cards (no charts) ---- */
-  .idx-visual{position:relative;display:flex;flex-direction:column;gap:1rem}
+  .idx-visual{position:relative;display:flex;flex-direction:column;gap:.8rem}
   @media(max-width:900px){.idx-visual{max-width:460px;margin:0 auto;width:100%}}
   .idx-card{
-    background:#fff;border:1px solid var(--bi-line);border-radius:18px;
-    padding:1.05rem 1.2rem;color:var(--bi-ink);
+    background:#fff;border:1px solid var(--bi-line);border-radius:16px;
+    padding:.85rem 1.05rem;color:var(--bi-ink);
     box-shadow:0 10px 30px rgba(37,98,71,.10);
   }
   .idx-card-top{display:flex;align-items:center;gap:.6rem;margin-bottom:.7rem}
@@ -524,7 +532,7 @@ document.head.appendChild(o)}initApollo();</script>
   .idx-kpi.up b{color:var(--bi-green)}
   .idx-kpi.gold b{color:#b45309}
   .idx-kpi span{font-size:.68rem;color:var(--bi-mute);font-weight:700;letter-spacing:.03em}
-  .idx-spark{display:flex;align-items:flex-end;gap:5px;height:52px;margin-top:.65rem}
+  .idx-spark{display:flex;align-items:flex-end;gap:5px;height:42px;margin-top:.55rem}
   .idx-spark i{flex:1;border-radius:4px 4px 2px 2px;background:linear-gradient(180deg,#49A078,#9fd4ba);animation:idxGrow .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(.15s + var(--i)*.1s);transform-origin:bottom}
   .idx-spark i:nth-child(6){background:linear-gradient(180deg,#facc15,#fde68a)}
   @keyframes idxGrow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
@@ -546,17 +554,9 @@ document.head.appendChild(o)}initApollo();</script>
   @keyframes idxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
   @media(prefers-reduced-motion:reduce){.idx-rise,.idx-spark i,.idx-float-a,.idx-float-b,.idx-pill .dot{animation:none!important}}
 
-  /* ---------------- STATS STRIP ---------------- */
-  .idx-stats{max-width:1180px;margin:0 auto;padding:0 0 2.5rem}
-  .idx-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-  @media(max-width:760px){.idx-stats-grid{grid-template-columns:repeat(2,1fr)}}
-  .idx-stat{background:#fff;border:1px solid var(--bi-line);border-radius:16px;padding:1.3rem 1.1rem;text-align:center;box-shadow:0 6px 18px rgba(37,98,71,.07)}
-  .idx-stat b{display:block;font-size:clamp(1.4rem,2.4vw,1.85rem);font-weight:800;color:var(--bi-green);letter-spacing:-.02em}
-  .idx-stat span{font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--bi-mute)}
-
   /* ---------------- FOOTER (unchanged brand look) ---------------- */
   .idx-foot{position:relative;z-index:5;margin-top:auto;background:linear-gradient(135deg,#256247 0%,#1b4d39 100%);border-top:4px solid #facc15;color:#e4f2ea}
-  .idx-foot-in{max-width:1180px;margin:0 auto;padding:2.4rem clamp(14px,3.5vw,44px) 1rem}
+  .idx-foot-in{max-width:1180px;margin:0 auto;padding:1.7rem clamp(14px,3.5vw,44px) .8rem}
   .idx-foot-grid{display:grid;grid-template-columns:1fr;gap:1.8rem}
   @media(min-width:720px){.idx-foot-grid{grid-template-columns:1fr 1fr}}
   @media(min-width:1024px){.idx-foot-grid{grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:2.2rem}}
@@ -572,7 +572,7 @@ document.head.appendChild(o)}initApollo();</script>
   .idx-foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.5em;font-size:.88em}
   .idx-foot a{color:#e4f2ea;text-decoration:none}
   .idx-foot ul a:hover{color:#facc15}
-  .idx-foot-bar{display:flex;flex-direction:column;gap:.8em;align-items:center;justify-content:space-between;margin-top:1.8em;padding-top:1.1em;border-top:1px solid rgba(255,255,255,.18);font-size:.8em;text-align:center;color:#c3e3d1}
+  .idx-foot-bar{display:flex;flex-direction:column;gap:.8em;align-items:center;justify-content:space-between;margin-top:1.2em;padding-top:.8em;border-top:1px solid rgba(255,255,255,.18);font-size:.8em;text-align:center;color:#c3e3d1}
   @media(min-width:720px){.idx-foot-bar{flex-direction:row;text-align:left}}
   .idx-foot-bar b{color:#facc15}
   .idx-foot-social{display:flex;flex-wrap:wrap;justify-content:center;gap:.5em}
@@ -580,21 +580,23 @@ document.head.appendChild(o)}initApollo();</script>
   .idx-foot-social a:hover{background:#facc15;border-color:#facc15;color:#1f2937}
 </style>
 
-<div class="idx-shell">
-
 <!-- ============ NAV ============ -->
 <nav class="idx-nav" aria-label="Main navigation">
   <a class="idx-brand" href="index.html">
     <img src="assets/img/logo-avatar.webp" alt="dericBI Logo" width="40" height="40" class="idx-logo" />
     <span>deric<b>BI</b></span>
   </a>
-  <ul class="idx-nav-links">
-    <li><a href="home.html"><i class="fa-solid fa-briefcase"></i> Business</a></li>
-    <li><a href="services.html"><i class="fa-solid fa-layer-group"></i> Services</a></li>
-    <li><a href="my-projects.html"><i class="fa-solid fa-diagram-project"></i> Projects</a></li>
-    <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-  </ul>
-  <a class="idx-nav-cta" href="https://wa.me/254791360805?text=hey%20deric%20iam%20new%20in%20dericbi%20guide%20me"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+  <div class="idx-marquee" aria-hidden="true"><div class="idx-marquee-track">&bull; Your data already holds the answers &bull; Clear dashboards, real confidence &bull; From confusion to clarity in 48 hours &bull; Every business can grow with its data &bull; Learn at your own pace, we are with you &bull; &bull; Your data already holds the answers &bull; Clear dashboards, real confidence &bull; From confusion to clarity in 48 hours &bull; Every business can grow with its data &bull; Learn at your own pace, we are with you &bull; </div></div>
+  <div class="idx-nav-right">
+    <ul class="idx-nav-links">
+      <li><a href="home.html"><i class="fa-solid fa-briefcase"></i> Business</a></li>
+      <li><a href="services.html"><i class="fa-solid fa-layer-group"></i> Services</a></li>
+      <li><a href="my-projects.html"><i class="fa-solid fa-diagram-project"></i> Projects</a></li>
+      <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+      <li><a href="free-report/?src=nav"><i class="fa-solid fa-heart-pulse"></i> Free Report</a></li>
+    </ul>
+    <a class="idx-nav-cta" href="https://wa.me/254791360805?text=hey%20deric%20iam%20new%20in%20dericbi%20guide%20me"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+  </div>
 </nav>
 
 <!-- ============ PROMO BAR (promo.js countdown hooks preserved) ============ -->
@@ -623,19 +625,19 @@ document.head.appendChild(o)}initApollo();</script>
 })();
 </script>
 
+<div class="idx-shell">
 <main class="idx-main relative">
   <div class="idx-hero">
     <!-- Left: copy -->
     <div>
-      <span class="idx-pill idx-rise" style="--d:0"><span class="dot"></span> Data Insights &middot; Transforming businesses daily</span>
       <h1 class="idx-h1 idx-rise" style="--d:1">
         Welcome to <span class="idx-g">dericBI</span>
-        <span class="idx-sub">Analytics where</span>
+        <span class="idx-sub">Data Analytics Kenya</span>
       </h1>
-      <h2 class="idx-h2 idx-rise" style="--d:2">We transform Your Business data Into Cash Profits</h2>
+      <h2 class="idx-h2 idx-rise" style="--d:2">We Transform Your Business Data Into Cash Profits</h2>
       <p class="idx-lead idx-rise" style="--d:3">
         You don't need more reports&mdash;you need proven tools.
-        We give you clear Business inteligence and  training to easily turn your data into  profits.
+        We give you clear business intelligence and training to easily turn your data into profits.
       </p>
       <p class="idx-choose idx-rise" style="--d:5">Choose your path</p>
       <div class="idx-paths idx-rise" style="--d:6">
@@ -661,11 +663,11 @@ document.head.appendChild(o)}initApollo();</script>
     <div class="idx-visual">
       <div class="idx-card idx-rise idx-float-a" style="--d:3">
         <div class="idx-card-top">
-          <span class="badge" style="background:#e8f5ee;color:#256247;border:1px solid #b7e4cf">Live insight</span>
-          <span class="t">Revenue performance</span>
+          <span class="badge" style="background:#e8f5ee;color:#256247;border:1px solid #b7e4cf">At a glance</span>
+          <span class="t">What you get</span>
         </div>
         <div class="idx-kpis">
-          <div class="idx-kpi up"><b>+32%</b><span>Revenue</span></div>
+          <div class="idx-kpi up"><b>Free</b><span>Health check</span></div>
           <div class="idx-kpi gold"><b>48h</b><span>First dashboard</span></div>
           <div class="idx-kpi"><b>100+</b><span>Projects</span></div>
         </div>
@@ -698,15 +700,6 @@ document.head.appendChild(o)}initApollo();</script>
   </div>
 </main>
 
-<!-- ============ STATS STRIP ============ -->
-<section class="idx-stats" aria-label="dericBI at a glance">
-  <div class="idx-stats-grid idx-rise" style="--d:8">
-    <div class="idx-stat"><b>100+</b><span>Projects delivered</span></div>
-    <div class="idx-stat"><b>48h</b><span>Fastest delivery</span></div>
-    <div class="idx-stat"><b>4</b><span>Tools mastered</span></div>
-    <div class="idx-stat"><b>360&deg;</b><span>Business visibility</span></div>
-  </div>
-</section>
 </div>
 
 <footer class="idx-foot">
@@ -763,5 +756,7 @@ document.head.appendChild(o)}initApollo();</script>
   </div>
 </footer>
 
+<!-- Enhanced Analytics Tracking -->
+<script src="assets/js/analytics-tracking.js?v=cffb507b"></script>
 </body>
 </html>
