@@ -2,10 +2,13 @@
 
 > Projects built by dericBI (Deric Marangu), a Kenyan data analytics business. Generated from the live project list; see https://dericbi.vercel.app/my-projects.html
 
-Projects listed: 137. Most recent entry: 2026-10-29.
+Projects listed: 140. Most recent entry: 2026-11-01.
 
 ## Projects
 
+- DericBI Inventory Control — Stock Desktop App (Electron, Python, SQLite, 2026) - Problem: Shops and stores lose money to stock that is miscounted, expired or reordered too late, and the records live in notebooks and scattered files. Business Objective: One desktop app that keeps s
+- DericBI CRM — Lead Finder and Outreach Desktop App (Tauri, Python, SQLite, 2026) - Problem: Finding businesses that need analytics, and following up with them, is slow manual work. Business Objective: Find, organise and follow up leads in one place, and pass the businesses that sign
+- Free Business Health Check (JavaScript, 2026) - live: https://dericbi.vercel.app/free-report/ - Problem: Many small businesses do not know how their sales, spending and profit are really moving. Business Objective: A free way to see the numbers in minutes, with no sign-up needed. My Approach: A 
 - DericBI Instructor — Personal Analytics Mentor (Claude, 2026) - Problem: Learning data analytics from scattered videos and tutorials is slow, and learners never know if they are really improving. Business Objective: One desktop mentor where a learner can study, pr
 - Business Reality Engine — Your Business Early-Warning System (Claude, 2026) - live: https://business-reality-engine.pages.dev/login - Problem: Most owners only find out something went wrong weeks later, when the money is already gone. Sales slip, costs creep up, and nobody can say why. Business Objective: A system that watches the b
 - smePro — SME Business Management Platform (Claude, 2026) - Problem: Small businesses juggle sales, stock, debts and books in separate places, and never fully trust the numbers. Business Objective: One simple place to run the shop, with the books kept up to da

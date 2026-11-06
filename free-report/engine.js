@@ -399,6 +399,7 @@
     const dates = live.map((l) => l.date).filter(Boolean).sort((a, b) => a - b);
     out.lines = lines; out.live = live; out.list = list;
     out.first = dates[0] || null; out.last = dates[dates.length - 1] || null;
+    out.now = (opts && opts.now) || new Date();      // "today": a day, week or month that contains it is still in progress
     out.netSales = out.recon.net; out.grossSales = sale; out.returns = ret;
     out.currency = opts.currency || (cur.usd > cur.kes ? 'USD' : 'KES');
     out.unit = opts.unit || (wide && opts.valueKind === 'qty' ? 'units' : null);
@@ -438,13 +439,18 @@
       out.tied = { value: tied, count };
       if (count) out.finds.push(`About ${money(tied)} is tied up in ${count} slow-moving product${count > 1 ? 's' : ''} (stock that would take 90 days or more to sell at the current pace, or has not moved in a month). This is an estimate at selling price.`);
       const mon = new Map(), wk = [0, 0, 0, 0, 0, 0, 0], days = new Map();
+      const weekStart = new Date(out.now.getFullYear(), out.now.getMonth(), out.now.getDate() - (out.now.getDay() + 6) % 7);   // Monday of the week that contains today
       for (const l of withDates) {
         const k = l.date.getFullYear() + '-' + String(l.date.getMonth() + 1).padStart(2, '0');
-        mon.set(k, (mon.get(k) || 0) + l.amount); wk[(l.date.getDay() + 6) % 7] += l.amount;
+        mon.set(k, (mon.get(k) || 0) + l.amount);
+        if (l.date >= weekStart) continue;      // a week (and so a day) that is still running would tilt the busiest-day count
+        wk[(l.date.getDay() + 6) % 7] += l.amount;
         const dk = k + '-' + l.date.getDate(); days.set(dk, 1);
       }
       out.months = [...mon.entries()].sort(); out.wk = wk; out.dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+      const curKey = out.now.getFullYear() + '-' + String(out.now.getMonth() + 1).padStart(2, '0');
       out.fullMonths = out.months.filter(([k], i) => {
+        if (k === curKey) return false;   // the month that contains today is still in progress: never ranked as a whole month
         if (out.wideUnit) return true;   // month columns are whole months by nature
         const [y, m] = k.split('-').map(Number), len = new Date(y, m, 0).getDate();
         if (i === 0 && out.first.getDate() > 3) return false;
@@ -612,18 +618,16 @@
   }
 
   /** Sales and expenses side by side: only months both files cover alike are compared, so the profit is never flattered or dragged by a month one side
-   *  does not cover. A month still in progress (both files simply end part-way through it, on the same days) is compared too: it is real data, and it is marked "so far". */
+   *  does not cover. The month that contains today is still in progress: it is compared too (it is real data) and marked "so far", but never ranked
+   *  against whole months. In progress means the calendar says so; where a file's data starts or ends inside a month says nothing about that. */
   function harmonize(s, x) {
     const h = { finds: [], notes: [] };
     const money = s.money, cat = x.list.filter((p) => p.amount > 0);
     const sm = new Map(s.months || []), xm = new Map(x.months || []);
     const sFull = new Set((s.fullMonths || []).map((m) => m[0])), xFull = new Set((x.fullMonths || []).map((m) => m[0]));
     const keys = [...new Set([...sm.keys(), ...xm.keys()])].sort();
-    const mkey = (d) => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
-    const lastKey = keys[keys.length - 1], DAY = 86400000;
-    const startsEarly = (o, k) => !(o.first && mkey(o.first) === k && o.first.getDate() > 3);      // the month is not missing its first days
-    const endsTogether = !!(s.last && x.last && !s.wideUnit && !x.wideUnit && mkey(s.last) === lastKey && mkey(x.last) === lastKey && Math.abs(s.last - x.last) <= 3 * DAY);
-    const inProgress = (k) => k === lastKey && endsTogether && sm.has(k) && xm.has(k) && !(sFull.has(k) && xFull.has(k)) && startsEarly(s, k) && startsEarly(x, k);
+    const now = s.now || x.now || new Date(), curKey = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+    const inProgress = (k) => k === curKey && sm.has(k) && xm.has(k);
     h.rows = keys.map((k) => ({ key: k, sales: sm.get(k) || 0, expenses: xm.get(k) || 0, partial: inProgress(k), comparable: (sFull.has(k) && xFull.has(k)) || inProgress(k) }));
     const comp = h.rows.filter((r) => r.comparable);
     h.salesAll = s.netSales; h.expensesAll = x.netSales;
@@ -634,7 +638,7 @@
       h.period = first === last ? monthName(first) : span(first, last);
       const outS = h.salesAll - h.sales, outX = h.expensesAll - h.expenses;
       const part = comp.filter((r) => r.partial).length;
-      if (part) h.notes.push(`${monthName(lastKey)} is still in progress: your files end on ${s.last.toLocaleDateString('en-KE', { day: 'numeric', month: 'short' })}, so its figures are the month so far and will grow.`);
+      if (part) h.notes.push(`${monthName(curKey)} is still in progress, so its figures are the month so far and will grow. It is shown but never ranked against whole months.`);
       if (Math.abs(outS) > 0.5 || Math.abs(outX) > 0.5) h.notes.push(`Profit uses only the ${comp.length} month${comp.length > 1 ? 's' : ''} that both your sales and expenses cover alike (${h.period}). Left out: ${money(outS)} of sales and ${money(outX)} of expenses from other or partial months, so one side is never compared with a period the other does not cover.`);
     } else {
       h.basis = 'totals'; h.sales = h.salesAll; h.expenses = h.expensesAll; h.period = '';

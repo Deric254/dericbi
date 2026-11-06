@@ -419,13 +419,13 @@ mobileMenu.querySelectorAll('a').forEach(link => {
 </script>
 
 <!-- 🎉 Promotional Banner - Dismissible -->
-<div id="promo-banner" class="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-[#ef4444] via-[#dc2626] to-[#ef4444] text-white py-1.5 xs:py-2 px-2 xs:px-3 sm:px-4 shadow-2xl transform -translate-y-full opacity-0 transition-all duration-700 ease-out">
+<div id="promo-banner" data-promo class="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-[#ef4444] via-[#dc2626] to-[#ef4444] text-white py-1.5 xs:py-2 px-2 xs:px-3 sm:px-4 shadow-2xl transform -translate-y-full opacity-0 transition-all duration-700 ease-out">
   <div class="max-w-7xl mx-auto flex items-center justify-between gap-1 xs:gap-2">
     <div class="flex items-center gap-1 xs:gap-2 flex-1 min-w-0">
       
       <div class="flex flex-col xs:flex-row xs:items-center xs:gap-1.5 sm:gap-2 flex-1 min-w-0">
         <span data-promo class="text-[10px] xs:text-xs sm:text-sm md:text-base font-bold whitespace-nowrap">LIMITED TIME OFFER:</span>
-        <span data-promo class="text-[9px] xs:text-[10px] sm:text-xs md:text-sm font-semibold bg-[#facc15] text-black px-1.5 xs:px-2 py-0.5 xs:py-1 rounded-full whitespace-nowrap">50% OFF</span>
+        <span data-promo class="text-[9px] xs:text-[10px] sm:text-xs md:text-sm font-semibold bg-[#facc15] text-black px-1.5 xs:px-2 py-0.5 xs:py-1 rounded-full whitespace-nowrap"><span data-promo-percent>50</span>% OFF</span>
         <span data-promo class="text-[9px] xs:text-[10px] sm:text-xs md:text-sm whitespace-nowrap">All services &middot; ends in <b data-promo-countdown></b></span>
         <a href="free-report/?src=banner" class="bg-transparent text-white underline text-[9px] xs:text-[10px] sm:text-xs md:text-sm truncate">Try the free Business Health Check</a>
       </div>
@@ -1235,64 +1235,6 @@ window.addEventListener('load', function() {
     const scrolled = (winScroll / height) * 100;
     document.getElementById('scrollProgress').style.width = scrolled + '%';
   });
-
-  // ⭐ Testimonial Carousel Script (5 testimonials)
-let currentTestimonial = 0;
-const totalTestimonials = 5;
-let testimonialInterval;
-
-function goToTestimonial(index) {
-  currentTestimonial = index;
-  const carousel = document.getElementById('testimonialCarousel');
-  carousel.style.transform = `translateX(-${currentTestimonial * 100}%)`;
-  
-  // Update dots
-  document.querySelectorAll('.testimonial-dot').forEach((dot, i) => {
-    if (i === currentTestimonial) {
-      dot.classList.remove('bg-gray-300');
-      dot.classList.add('bg-gray-800');
-    } else {
-      dot.classList.remove('bg-gray-800');
-      dot.classList.add('bg-gray-300');
-    }
-  });
-}
-
-function nextTestimonial() {
-  currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
-  goToTestimonial(currentTestimonial);
-  resetAutoSlide();
-}
-
-function prevTestimonial() {
-  currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
-  goToTestimonial(currentTestimonial);
-  resetAutoSlide();
-}
-
-function resetAutoSlide() {
-  clearInterval(testimonialInterval);
-  startTestimonialAutoSlide();
-}
-
-function startTestimonialAutoSlide() {
-  testimonialInterval = setInterval(() => {
-    nextTestimonial();
-  }, 5000); // Change every 5 seconds
-}
-
-// Pause auto-slide on hover
-const testimonialSection = document.getElementById('testimonialCarousel').parentElement.parentElement;
-testimonialSection.addEventListener('mouseenter', () => {
-  clearInterval(testimonialInterval);
-});
-
-testimonialSection.addEventListener('mouseleave', () => {
-  startTestimonialAutoSlide();
-});
-
-// Start auto-slide
-startTestimonialAutoSlide();
 
 // EAI chatbot is loaded via chatbot.js - no additional chat widget needed
 
