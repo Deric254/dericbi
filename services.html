@@ -330,6 +330,7 @@ html, body {
   <script defer src="assets/js/chatbot.js?v=66fecb6d"></script>
   <script defer src="assets/js/social_links.js?v=6f1c5397"></script>
   <script defer src="assets/js/email-link.js?v=f9f40881"></script>
+  <script defer src="assets/js/pay.js?v=7472a7b7"></script>
   <link rel="stylesheet" href="assets/css/tailwind.css?v=107da323">
   <style>
   .ui-foot-cta{display:inline-flex;align-items:center;padding:4px 10px;border-radius:6px;font-size:.8rem;font-weight:700;border:1px solid #b9d9c9;white-space:nowrap}
@@ -338,6 +339,7 @@ html, body {
   .ui-foot-alt{background:#fff;color:#2f7d5b!important}
   </style>
   <link rel="stylesheet" href="assets/css/ui.css?v=665eef2a">
+  <link rel="stylesheet" href="assets/css/pay.css?v=7f0a4492">
 </head>
 <body class="bg-white text-gray-800 flex flex-col min-h-screen overflow-x-hidden w-full max-w-[100vw]">
 
@@ -550,6 +552,7 @@ mobileMenu.querySelectorAll('a').forEach(link => {
         <div class="svc-foot">
           <div class="svc-price">$20</div>
           <a href="https://wa.me/254791360805?text=Hi%20dericBI!%20I'm%20interested%20in%20Excel%20Cleanup%20service.%20Can%20we%20discuss%20my%20data%20needs?" class="ui-btn ui-btn-outline">Get Excel Clean</a>
+          <a href="#" data-pay="excel" class="ui-btn ui-btn-primary" rel="nofollow">Pay now with PayPal</a>
         </div>
       </div>
 
@@ -560,6 +563,7 @@ mobileMenu.querySelectorAll('a').forEach(link => {
         <div class="svc-foot">
           <div class="svc-price">$20</div>
           <a href="https://wa.me/254791360805?text=Hi%20dericBI!%20I'm%20interested%20in%20PowerBI%20Dashboard%20service.%20Can%20we%20discuss%20my%20reporting%20needs?" class="ui-btn ui-btn-outline">Get PowerBI Dashboard</a>
+          <a href="#" data-pay="powerbi" class="ui-btn ui-btn-primary" rel="nofollow">Pay now with PayPal</a>
         </div>
       </div>
 
@@ -570,6 +574,7 @@ mobileMenu.querySelectorAll('a').forEach(link => {
         <div class="svc-foot">
           <div class="svc-price">$23</div>
           <a href="https://wa.me/254791360805?text=Hi%20dericBI!%20I'm%20interested%20in%20Custom%20Python%20Dashboard%20service.%20Can%20we%20discuss%20my%20advanced%20analytics%20needs?" class="ui-btn ui-btn-outline">Get Python Dashboard</a>
+          <a href="#" data-pay="python" class="ui-btn ui-btn-primary" rel="nofollow">Pay now with PayPal</a>
         </div>
       </div>
 
@@ -581,6 +586,7 @@ mobileMenu.querySelectorAll('a').forEach(link => {
           <div class="svc-price">$38</div>
           <div class="svc-save">$38 instead of $60 bought separately</div>
           <a href="https://wa.me/254791360805?text=Hi%20dericBI!%20I'm%20interested%20in%20the%20Complete%20Package.%20Can%20we%20discuss%20my%20full%20data%20transformation%20needs?" class="ui-btn ui-btn-outline">Get Complete Package</a>
+          <a href="#" data-pay="complete" class="ui-btn ui-btn-primary" rel="nofollow">Pay now with PayPal</a>
         </div>
       </div>
     </div>
