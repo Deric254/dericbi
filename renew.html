@@ -8,9 +8,9 @@
 <meta name="description" content="Renew or buy a licence for your DericBI business app: $100 per month or $1000 for life, paid by PayPal.">
 <link rel="canonical" href="https://dericbi.vercel.app/renew.html">
 <link rel="icon" href="favicon.ico">
-<link rel="stylesheet" href="assets/css/tailwind.css?v=107da323">
+<link rel="stylesheet" href="assets/css/tailwind.css?v=0e10e260">
 <link rel="stylesheet" href="assets/css/ui.css?v=665eef2a">
-<link rel="stylesheet" href="assets/css/pay.css?v=7f0a4492">
+<link rel="stylesheet" href="assets/css/paypal-pay.css?v=8bbb5f12">
 <style>
 body{margin:0;background:var(--ui-soft,#f0f9f4);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#1f2937}
 .rn-top{background:linear-gradient(90deg,#49A078,#3D8069);color:#fff;padding:14px 16px}
@@ -30,8 +30,8 @@ body{margin:0;background:var(--ui-soft,#f0f9f4);font-family:Inter,system-ui,-app
 .rn-plan h2{margin:0;font-size:1.05rem}
 .rn-price{font-size:2rem;font-weight:800;color:#1f6f4a;margin:6px 0}
 .rn-plan ul{margin:0 0 16px;padding-left:18px;color:#4b5563;font-size:.92rem;flex:1}
-.rn-plan .dpay-btn{flex:0 0 auto;width:100%}
-.rn-plan .dpay-paypal{background:#0070ba;color:#fff}.rn-plan .dpay-mail{background:#facc15;color:#1f2937}
+.rn-btn{width:100%;min-height:46px;padding:10px 16px;border:0;border-radius:10px;font-weight:800;font-size:.95rem;cursor:pointer}
+.rn-btn-m{background:#0070ba;color:#fff}.rn-btn-l{background:#facc15;color:#1f2937}
 .rn-note{color:#6b7280;font-size:.85rem;margin-top:18px}
 </style>
 </head>
@@ -41,7 +41,7 @@ body{margin:0;background:var(--ui-soft,#f0f9f4);font-family:Inter,system-ui,-app
   <h1>Renew your licence</h1>
   <p class="rn-lead">Pick a plan, pay with PayPal, and email your proof. We send your new licence back to that email.</p>
 
-  <div class="rn-miss" id="rn-miss">We could not read your app details from the link. Open this page from the <b>Renew</b> button inside your app, or type your app and activation code below.</div>
+  <div class="rn-miss" id="rn-miss">We could not read your app details from the link. Open this page from the <b>Renew</b> button inside your app, or pick your app below.</div>
 
   <dl class="rn-box" id="rn-info">
     <dt>App</dt><dd id="rn-app"></dd>
@@ -49,59 +49,51 @@ body{margin:0;background:var(--ui-soft,#f0f9f4);font-family:Inter,system-ui,-app
   </dl>
   <div class="rn-box" id="rn-manual" hidden>
     <label for="rn-app-pick" style="font-weight:700">App</label><br>
-    <select id="rn-app-pick" style="margin:4px 0 12px;padding:8px;border:1px solid #d1d5db;border-radius:8px;width:100%"></select><br>
-    <label for="rn-code-in" style="font-weight:700">Activation code (shown in the app, like ABCD-EFGH-JKLM)</label><br>
-    <input id="rn-code-in" autocomplete="off" spellcheck="false" maxlength="14" style="margin-top:4px;padding:8px;border:1px solid #d1d5db;border-radius:8px;width:100%;font-family:monospace;text-transform:uppercase">
+    <select id="rn-app-pick" style="margin:4px 0 4px;padding:8px;border:1px solid #d1d5db;border-radius:8px;width:100%"></select>
+    <div style="font-size:.85rem;color:#6b7280">The payment window asks for the activation code shown in the app (like ABCD-EFGH-JKLM).</div>
   </div>
 
   <section class="rn-plans" aria-label="Plans">
     <div class="rn-plan">
       <h2>Monthly</h2><div class="rn-price">$100</div>
       <ul><li>Full use for 30 days from your payment</li><li>5 extra days to renew, still full use</li><li>After that, view-only: you keep access to your data</li></ul>
-      <button type="button" class="dpay-btn dpay-paypal" id="rn-pay-m">Pay $100 with PayPal</button>
+      <button type="button" class="rn-btn rn-btn-m" id="rn-pay-m" data-pay data-pay-item="Licence (monthly, 30 days)" data-pay-amount="100" data-pay-extra="Activation code">Pay $100 with PayPal</button>
     </div>
     <div class="rn-plan best">
       <h2>Lifetime</h2><div class="rn-price">$1000</div>
       <ul><li>Pay once, use forever on this computer</li><li>No renewals, no reminders</li><li>Best value after 10 months</li></ul>
-      <button type="button" class="dpay-btn dpay-mail" id="rn-pay-l">Pay $1000 with PayPal</button>
+      <button type="button" class="rn-btn rn-btn-l" id="rn-pay-l" data-pay data-pay-item="Licence (lifetime)" data-pay-amount="1000" data-pay-extra="Activation code">Pay $1000 with PayPal</button>
     </div>
   </section>
   <p class="rn-note">Your data is never locked. If a licence ends you can still sign in, read and export everything.</p>
 </main>
-<script src="assets/js/pay.js?v=7472a7b7"></script>
+<script defer src="assets/js/paypal-pay.js?v=6cf93c61"></script>
 <script>
 (function () {
-  var APPS = { 'inventory-control': ['Inventory Control', 'INV'], 'pharmacy-erp': ['Pharmacy ERP', 'PHA'],
-               'smepro': ['smePro', 'SME'], 'instructor': ['DericBI Instructor', 'INS'] };
+  var APPS = { 'inventory-control': 'Inventory Control', 'pharmacy-erp': 'Pharmacy ERP', 'smepro': 'smePro', 'instructor': 'DericBI Instructor' };
   var q = new URLSearchParams(location.search);
-  var app = q.get('app'), code = (q.get('code') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
-  var known = APPS[app] ? app : '', valid = code.length === 12;
-  function fmt(c) { return c.replace(/(.{4})(?=.)/g, '$1-'); }
-  var pick = document.getElementById('rn-app-pick'), input = document.getElementById('rn-code-in');
-  Object.keys(APPS).forEach(function (k) { var o = document.createElement('option'); o.value = k; o.textContent = APPS[k][0]; pick.appendChild(o); });
+  var app = APPS[q.get('app')] ? q.get('app') : '';
+  var code = (q.get('code') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  var hasCode = code.length === 12;
+  var pick = document.getElementById('rn-app-pick');
+  Object.keys(APPS).forEach(function (k) { var o = document.createElement('option'); o.value = k; o.textContent = APPS[k]; pick.appendChild(o); });
+  var m = document.getElementById('rn-pay-m'), l = document.getElementById('rn-pay-l');
   function sync() {
-    document.getElementById('rn-info').hidden = !(known && valid);
-    document.getElementById('rn-manual').hidden = !!(known && valid);
-    document.getElementById('rn-miss').style.display = (known && valid) ? 'none' : 'block';
-    if (known && valid) { document.getElementById('rn-app').textContent = APPS[known][0]; document.getElementById('rn-code').textContent = fmt(code); }
+    var known = !!app;
+    document.getElementById('rn-info').hidden = !(known && hasCode);
+    document.getElementById('rn-manual').hidden = known && hasCode;
+    document.getElementById('rn-miss').style.display = (known && hasCode) ? 'none' : 'block';
+    if (known && hasCode) {
+      document.getElementById('rn-app').textContent = APPS[app];
+      document.getElementById('rn-code').textContent = code.replace(/(.{4})(?=.)/g, '$1-');
+    }
+    var name = APPS[app || pick.value];
+    m.setAttribute('data-pay-item', name + ' licence (monthly, 30 days)');
+    l.setAttribute('data-pay-item', name + ' licence (lifetime)');
   }
-  pick.addEventListener('change', function () { app = pick.value; known = app; sync(); });
-  input.addEventListener('input', function () { code = input.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); valid = code.length === 12; });
-  if (known) pick.value = known;
+  pick.addEventListener('change', function () { app = pick.value; sync(); });
+  if (app) pick.value = app;
   sync();
-  function pay(plan) {
-    if (!known) known = pick.value;
-    if (code.length !== 12) { input.focus(); input.style.borderColor = '#dc2626'; document.getElementById('rn-miss').style.display = 'block'; return; }
-    var life = plan === 'L', name = APPS[known][0];
-    DericBIPay.open({
-      name: name + ' licence - ' + (life ? 'Lifetime' : 'Monthly (30 days)'),
-      amount: life ? 1000 : 100,
-      ref: 'LIC-' + APPS[known][1] + '-' + code + '-' + plan,       // the same app, computer and plan always give the same reference
-      extra: [['App', name], ['Activation code', fmt(code)], ['Plan', life ? 'Lifetime' : 'Monthly (30 days)']]
-    });
-  }
-  document.getElementById('rn-pay-m').addEventListener('click', function () { pay('M'); });
-  document.getElementById('rn-pay-l').addEventListener('click', function () { pay('L'); });
 })();
 </script>
 </body>

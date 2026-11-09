@@ -60,6 +60,7 @@ for f in text_files():
     for m in re.finditer(r'\+?254[\s-]?7[\d\s-]{8,12}', t):
         phones.setdefault(re.sub(r'\D', '', m.group(0))[:12], set()).add(f)
     for m in re.finditer(r'[\w.\-]+@[\w\-]+\.[\w.]+', t):
+        if m.group(0).lower() == 'name@email.com': continue      # the pay window's input hint, not a contact address
         if not re.search(r'\.(png|jpg|jpeg|webp|svg|gif|js|css)$', m.group(0), re.I):
             emails.setdefault(m.group(0).lower(), set()).add(f)
 if len(phones) > 1: problems.append(f'more than one phone number found: {sorted(phones)}')
