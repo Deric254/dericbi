@@ -65,6 +65,8 @@ test('a valid proof is emailed to the owner through Gmail with the screenshot at
   assert.equal(m.attachments[0].content.toString('base64'), jpeg)
   assert.match(m.text, /Jane Doe/)
   assert.match(m.text, /5TY05013RG002845M/)
+  assert.match(m.subject, /^PayPal proof \[DericBI customer\]: /) // so it is never mistaken for a learner's proof
+  assert.match(m.text, /Paid from: DericBI customer/)
 })
 
 test('GMAIL_USER and PROOF_TO can be changed', async () => {

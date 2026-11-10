@@ -195,6 +195,10 @@ a:not(.group):not(.nav-link):not(.footer-link) {
 
 a:not(.group):not(.nav-link):not(.footer-link):hover {
   filter: brightness(1.05);
+}
+
+/* Plain text links underline on hover; links that are buttons or cards never do. */
+a:not(.group):not(.nav-link):not(.footer-link):not(.ct-card):not(.cta-button):not(.ui-btn):not(.ui-nav-cta):not([class*="bg-"]):not([class*="btn"]):not([role="button"]):hover {
   text-decoration: underline;
 }
 

@@ -15,6 +15,8 @@
 const nodemailer = require('nodemailer');
 
 const DEFAULT_USER = 'dericmarangu@gmail.com';
+// Who pays through this site, so the owner can tell these proofs from the other sites' (learners, website customers, BRE subscribers).
+const SOURCE = 'DericBI customer';
 const MAX_BODY_BYTES = 4 * 1024 * 1024;
 const MAX_FILE_BYTES = 3 * 1024 * 1024;
 const MAX_SENDS = 5; // per IP ...
@@ -147,8 +149,9 @@ function validate(data) {
 
 function emailText(c) {
   const lines = [
-    'A learner says they have paid by PayPal.',
+    'A customer says they have paid by PayPal.',
     '',
+    'Paid from: ' + SOURCE,
     'Item: ' + c.item,
     'Amount: ' + c.amount.toLocaleString('en-US') + ' ' + c.currency,
     'Name: ' + c.name,
@@ -200,7 +203,7 @@ module.exports = async function handler(req, res) {
   const message = {
     from: '"DericBI Payments" <' + user + '>',
     to: (process.env.PROOF_TO || user).trim(),
-    subject: 'PayPal proof: ' + clean.item + (clean.qty > 1 ? ' x' + clean.qty : '') + ' - ' + clean.amount.toLocaleString('en-US') + ' ' + clean.currency + ' - ' + clean.name,
+    subject: 'PayPal proof [' + SOURCE + ']: ' + clean.item + (clean.qty > 1 ? ' x' + clean.qty : '') + ' - ' + clean.amount.toLocaleString('en-US') + ' ' + clean.currency + ' - ' + clean.name,
     text: emailText(clean),
     attachments: [{ filename: 'payment-proof.' + clean.file.ext, content: Buffer.from(clean.file.base64, 'base64'), contentType: clean.file.type }],
   };

@@ -1,7 +1,7 @@
 /* PayPal "Pay now" modal. Shared by the home page and the DericBI Instructor page.
    Every colour is set explicitly so the modal reads the same on any page or device theme.
    No inline styles are needed (the Instructor page forbids them). */
-.pp-lock { overflow: hidden; }
+.pp-lock, .pp-lock body { overflow: hidden; overscroll-behavior: none; }   /* the page behind never scrolls while the window is open */
 
 /* trigger buttons (Pay now) */
 button.pp-trigger {
@@ -17,13 +17,15 @@ button.app-btn[data-pay] { font-family: inherit; cursor: pointer; }
 /* overlay + dialog */
 .pp-overlay {
   position: fixed; inset: 0; z-index: 10000; display: flex; align-items: center; justify-content: center;
-  padding: 1rem; background: rgba(15, 23, 42, .62); backdrop-filter: blur(3px);
+  padding: 1rem; background: rgba(15, 23, 42, .62);
+  overflow: hidden; overscroll-behavior: contain;
   opacity: 0; transition: opacity .2s ease;
 }
 .pp-overlay[hidden] { display: none; }
 .pp-overlay.pp-open { opacity: 1; }
 .pp-modal {
-  position: relative; width: 100%; max-width: 30rem; max-height: calc(100vh - 2rem); overflow-y: auto;
+  position: relative; width: 100%; max-width: 30rem; max-height: calc(100vh - 2rem); max-height: calc(100dvh - 2rem); overflow-y: auto;
+  overscroll-behavior: contain; -webkit-overflow-scrolling: touch; scrollbar-width: thin; touch-action: pan-y;
   background: #fff; color: #1f2937; border-radius: 1.1rem; padding: 1.4rem 1.4rem 1.2rem;
   box-shadow: 0 30px 80px -20px rgba(15, 23, 42, .55); text-align: left; line-height: 1.5;
   font-size: .95rem; transform: translateY(14px) scale(.98); transition: transform .22s ease;
@@ -103,7 +105,13 @@ button.app-btn[data-pay] { font-family: inherit; cursor: pointer; }
 
 @media (max-width: 560px) {
   .pp-overlay { align-items: flex-end; padding: 0; }
-  .pp-modal { max-width: none; max-height: 94vh; border-radius: 1.1rem 1.1rem 0 0; padding: 1.2rem 1rem 1.4rem; }
+  .pp-modal { max-width: none; max-height: 94vh; max-height: 94dvh; border-radius: 1.1rem 1.1rem 0 0; padding: 1.2rem 1rem calc(1.4rem + env(safe-area-inset-bottom, 0px)); }
+  .pp-email-row { flex-wrap: wrap; }
+  .pp-copy { min-height: 2.5rem; }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  .pp-overlay { align-items: stretch; padding: .5rem; }
+  .pp-modal { max-height: none; border-radius: 1rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .pp-overlay, .pp-modal, .pp-btn, button.pp-trigger { transition: none; }
