@@ -4,7 +4,7 @@
   "title": "Know Your Expert",
   "date": "2025-11-29",
   "description": "<strong>Problem :</strong> Business owners get confused by too much information and fake promises. They need to make important decisions quickly, but without clear data, they make expensive mistakes. Companies need someone who can find the real facts and help them make smart choices.<br><br><strong>Business Objective:</strong> Use my skills to help businesses get clear answers from their data. I help leaders make confident, data-backed decisions — not guesses.<br><br><strong>My Approach:</strong> I help business owners and executives save money and time every day. I find products sitting in warehouses that aren't selling (dead stock) and help companies stop losing money on them. I fix messy supply chains and delivery problems. I also spot trends before competitors do, reduce employee stress from bad data, help reduce operational costs, and predict cash flow problems before they happen. Using Power BI, Python, SQL, and Excel, I turn confusing data into clear business answers that make companies more profitable.<br><br><strong>Impact:</strong> Companies that work with me get clearer visibility of slow-moving stock, delivery costs and cash flow. Employees spend less time on manual reports and more time on growth. Business owners sleep better knowing they can predict problems before they happen and stay ahead of competitors with data-driven decisions.<br><br><strong>Live Link:</strong> <a href=\"https://dericmarangu.vercel.app\" target=\"_blank\" style=\"color:#0055ff; font-weight:bold; text-decoration:underline;\"><strong>🚀 View Introduction</strong></a>",
-  "tools": "Power BI, Python, SQL, Excel",
+  "tools": "Power BI, Python, SQL, Excel,"AI",
   "projectLink": "",
   "liveLink": "https://dericmarangu.vercel.app",
   "images": [
@@ -23,7 +23,7 @@
   "title": "DericBI Inventory Control — Stock Desktop App",
   "date": "2026-11-01",
   "description": "<strong>Problem:</strong> Shops and stores lose money to stock that is miscounted, expired or reordered too late, and the records live in notebooks and scattered files.<br><br><strong>Business Objective:</strong> One desktop app that keeps stock accurate and tells the owner what to reorder.<br><br><strong>My Approach:</strong> Runs on the shop's own computer, keeps working offline, and checks every entry before it is saved so the records stay trustworthy.<br><br><strong>Key Features:</strong><br>• Record stock in, stock out and adjustments with a clear history<br>• See low stock and expiring stock before it costs money<br>• Offline-first: works without internet<br>• Licensed per computer with a simple activation code<br><br><strong>Impact:</strong> Fewer stock-outs, less expired stock and a clear answer to what is on the shelf.<br><br>Need help? Email dericmarangu@gmail.com or WhatsApp +254791360805.",
-  "tools": "Electron, Python, SQLite",
+  "tools": "Claude",
   "projectLink": "",
   "liveLink": "",
   "images": ["assets/projects/inventory-control/1-dashboard.jpg", "assets/projects/inventory-control/2-inventory.jpg", "assets/projects/inventory-control/3-add-asset.jpg"]
@@ -33,7 +33,7 @@
   "title": "DericBI CRM — Lead Finder and Outreach Desktop App",
   "date": "2026-11-01",
   "description": "<strong>Problem:</strong> Finding businesses that need analytics, and following up with them, is slow manual work.<br><br><strong>Business Objective:</strong> Find, organise and follow up leads in one place, and pass the businesses that sign up on to the other DericBI systems.<br><br><strong>My Approach:</strong> Desktop app that collects business leads, tracks each conversation, and reads business alerts from the Business Reality Engine only for businesses that opted in.<br><br><strong>Key Features:</strong><br>• Lead search and a pipeline from first contact to client<br>• Email and SMS outreach with follow-up reminders<br>• Hands a new client over to licence issuing in the Business Reality Engine<br>• Optional alert feed per business, off unless the business agrees<br><br><strong>Impact:</strong> Leads are found, contacted and followed up in one place instead of across notebooks and chats.<br><br>Need help? Email dericmarangu@gmail.com or WhatsApp +254791360805.",
-  "tools": "Tauri, Python, SQLite",
+  "tools": "Claude",
   "projectLink": "",
   "liveLink": "",
   "images": ["assets/projects/dericbi-crm/1-overview.jpg", "assets/projects/dericbi-crm/2-today.jpg", "assets/projects/dericbi-crm/3-leads.jpg"]
@@ -43,7 +43,7 @@
   "title": "Free Business Health Check",
   "date": "2026-11-01",
   "description": "<strong>Problem:</strong> Many small businesses do not know how their sales, spending and profit are really moving.<br><br><strong>Business Objective:</strong> A free way to see the numbers in minutes, with no sign-up needed.<br><br><strong>My Approach:</strong> A web page that reads the owner's sales and expenses file on their own device, so the data never leaves their computer, and shows a plain-language report.<br><br><strong>Key Features:</strong><br>• Upload a spreadsheet, CSV or Google Sheet<br>• Months, profit, best and worst periods and what customers buy together<br>• Print or save the report as PDF<br>• Runs in the browser; your file is not uploaded<br><br><strong>Impact:</strong> A first clear picture of the business, free, before any paid work.<br><br>Need help? Email dericmarangu@gmail.com or WhatsApp +254791360805.",
-  "tools": "JavaScript",
+  "tools": "Free Analyst",
   "projectLink": "",
   "liveLink": "https://dericbi.vercel.app/free-report/",
   "images": ["assets/projects/business-health-check/1-upload.jpg", "assets/projects/business-health-check/2-report-summary.jpg", "assets/projects/business-health-check/3-report-details.jpg"]
