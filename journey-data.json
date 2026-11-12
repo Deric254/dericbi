@@ -7,7 +7,7 @@
   "tools": "Electron, Python, SQLite",
   "projectLink": "",
   "liveLink": "",
-  "images": []
+  "images": ["assets/projects/inventory-control/1-dashboard.jpg", "assets/projects/inventory-control/2-inventory.jpg", "assets/projects/inventory-control/3-add-asset.jpg"]
 },
 {
   "serial": "Project 97",
@@ -17,7 +17,7 @@
   "tools": "Tauri, Python, SQLite",
   "projectLink": "",
   "liveLink": "",
-  "images": []
+  "images": ["assets/projects/dericbi-crm/1-overview.jpg", "assets/projects/dericbi-crm/2-today.jpg", "assets/projects/dericbi-crm/3-leads.jpg"]
 },
 {
   "serial": "Project 98",
@@ -27,7 +27,7 @@
   "tools": "JavaScript",
   "projectLink": "",
   "liveLink": "https://dericbi.vercel.app/free-report/",
-  "images": []
+  "images": ["assets/projects/business-health-check/1-upload.jpg", "assets/projects/business-health-check/2-report-summary.jpg", "assets/projects/business-health-check/3-report-details.jpg"]
 },
 {
   "serial": "Project X",
